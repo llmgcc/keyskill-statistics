@@ -1,0 +1,3301 @@
+[
+  {
+    "place": 1,
+    "name": "Python",
+    "translation": null,
+    "count": 44,
+    "prev_count": 52,
+    "prev_place": 3,
+    "average_salary": 75000.0,
+    "image": "36420f89c463e610.webp",
+    "categories": [
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.4629666272154456
+      },
+      { "name": "Quality assurance", "confidence": 0.1575570782933022 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.10075527511715317 },
+      { "name": "Backend", "confidence": 0.08484036268269379 },
+      { "name": "Systems programming", "confidence": 0.036812092104220706 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.937715672439837 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.03187544139075698
+      },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.009598290416045967
+      }
+    ]
+  },
+  {
+    "place": 2,
+    "name": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a",
+    "translation": "English",
+    "count": 36,
+    "prev_count": 77,
+    "prev_place": 1,
+    "average_salary": 39160.13232050968,
+    "image": null,
+    "categories": [
+      { "name": "Blockchain", "confidence": 0.43654522419991443 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.08517885847060552 },
+      { "name": "Project management", "confidence": 0.07355270158392085 },
+      { "name": "Mobile", "confidence": 0.050187788469310435 },
+      { "name": "HR Management", "confidence": 0.048854399433242775 },
+      { "name": "Analytics", "confidence": 0.03721706169286032 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.031963938549426495
+      },
+      { "name": "Backend", "confidence": 0.03103448467696364 },
+      { "name": "Other", "confidence": 0.028765394157123307 },
+      { "name": "Design", "confidence": 0.02710850913379293 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9802317909857998 },
+      { "name": "Cloud platforms", "confidence": 0.0029201976685370844 },
+      { "name": "Languages", "confidence": 0.001767705301782567 }
+    ]
+  },
+  {
+    "place": 3,
+    "name": "SQL",
+    "translation": null,
+    "count": 34,
+    "prev_count": 71,
+    "prev_place": 2,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.2651127999212762 },
+      { "name": "Backend", "confidence": 0.24912850494461802 },
+      { "name": "Analytics", "confidence": 0.1982879663091268 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.07720869479431672
+      },
+      { "name": "Project management", "confidence": 0.05755606301680235 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.026878072856234225 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.5557339261001596 },
+      { "name": "Languages", "confidence": 0.4197020622557449 },
+      { "name": "Soft skills", "confidence": 0.00587054273635669 }
+    ]
+  },
+  {
+    "place": 4,
+    "name": "Git",
+    "translation": null,
+    "count": 32,
+    "prev_count": 44,
+    "prev_place": 4,
+    "average_salary": 75000.0,
+    "image": "235c7e45f162c94a.webp",
+    "categories": [
+      { "name": "Backend", "confidence": 0.29884420922029536 },
+      { "name": "Frontend", "confidence": 0.17339232522037454 },
+      { "name": "Quality assurance", "confidence": 0.1516782191115398 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.12063065320847559 },
+      { "name": "Mobile", "confidence": 0.07082537875426463 },
+      { "name": "Website administration", "confidence": 0.037584339059857114 },
+      { "name": "Systems programming", "confidence": 0.036072644772029885 }
+    ],
+    "technologies": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.965972196676217
+      },
+      { "name": "Languages", "confidence": 0.015356640645323667 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.009091563075117971
+      }
+    ]
+  },
+  {
+    "place": 5,
+    "name": "HTML",
+    "translation": null,
+    "count": 31,
+    "prev_count": 34,
+    "prev_place": 7,
+    "average_salary": 52000.0,
+    "image": "30a915e5b4d65cc6.webp",
+    "categories": [
+      { "name": "Website administration", "confidence": 0.46659249769505345 },
+      { "name": "Frontend", "confidence": 0.37632028763605946 },
+      { "name": "Backend", "confidence": 0.0373217969123949 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.5219862630777565 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.33169564170182025
+      },
+      { "name": "Languages", "confidence": 0.05216678983524598 }
+    ]
+  },
+  {
+    "place": 6,
+    "name": "JavaScript",
+    "translation": null,
+    "count": 27,
+    "prev_count": 43,
+    "prev_place": 5,
+    "average_salary": 55000.0,
+    "image": "3985200b4e22ada5.webp",
+    "categories": [
+      { "name": "Frontend", "confidence": 0.6310002029237289 },
+      { "name": "Website administration", "confidence": 0.11779398468427846 },
+      { "name": "Backend", "confidence": 0.10649873452223028 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.7800286546247346 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.15534361010445358
+      },
+      { "name": "Testing Tools", "confidence": 0.021863150966705495 }
+    ]
+  },
+  {
+    "place": 7,
+    "name": "Linux",
+    "translation": null,
+    "count": 26,
+    "prev_count": 38,
+    "prev_place": 6,
+    "average_salary": 62500.0,
+    "image": "c8d4850fb0ba34fb.webp",
+    "categories": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.29752722058565895 },
+      { "name": "Systems programming", "confidence": 0.2523378299787089 },
+      { "name": "Network administration", "confidence": 0.11627219738303933 },
+      { "name": "System Administration", "confidence": 0.11378165732677496 },
+      { "name": "Information security", "confidence": 0.051748946333973804 },
+      { "name": "Backend", "confidence": 0.049248236335655976 },
+      { "name": "Quality assurance", "confidence": 0.035925431932194926 }
+    ],
+    "technologies": [
+      { "name": "Operating systems", "confidence": 0.9576498786993419 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.017553057357714622
+      },
+      { "name": "Databases", "confidence": 0.004327541679414601 }
+    ]
+  },
+  {
+    "place": 8,
+    "name": "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u0440\u0435\u0447\u044c",
+    "translation": "Literacy",
+    "count": 20,
+    "prev_count": 19,
+    "prev_place": 25,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.5233723081762753 },
+      { "name": "HR Management", "confidence": 0.1515064305107279 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.04129883286844066
+      },
+      { "name": "Digital Marketing & SEO", "confidence": 0.04009523556905289 },
+      { "name": "Analytics", "confidence": 0.02683494097439069 },
+      { "name": "1C Development", "confidence": 0.02564074788869197 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9692984669354633 },
+      { "name": "Languages", "confidence": 0.01602489320932638 },
+      { "name": "Game engines", "confidence": 0.005137951590331842 }
+    ]
+  },
+  {
+    "place": 9,
+    "name": "Java",
+    "translation": null,
+    "count": 20,
+    "prev_count": 25,
+    "prev_place": 9,
+    "average_salary": 61250.0,
+    "image": "1fe7f8eaad41d221.webp",
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.42767259647967143 },
+      { "name": "Backend", "confidence": 0.30013899410978656 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.06220023180975032 },
+      { "name": "Mobile", "confidence": 0.05073976004567713 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.922461820862703 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.03890204603330027
+      },
+      { "name": "Operating systems", "confidence": 0.006783258048450138 }
+    ]
+  },
+  {
+    "place": 10,
+    "name": "Unity",
+    "translation": null,
+    "count": 20,
+    "prev_count": 10,
+    "prev_place": 40,
+    "average_salary": 75000.0,
+    "image": "afa4112916f5589f.webp",
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.743174364384434
+      },
+      { "name": "Design", "confidence": 0.07390908494594556 },
+      { "name": "Mobile", "confidence": 0.04306663228846722 }
+    ],
+    "technologies": [
+      { "name": "Game engines", "confidence": 0.9798110424085202 },
+      { "name": "Operating systems", "confidence": 0.006086101253033075 },
+      { "name": "Graphic design", "confidence": 0.004665547042500123 }
+    ]
+  },
+  {
+    "place": 11,
+    "name": "Adobe Photoshop",
+    "translation": null,
+    "count": 19,
+    "prev_count": 9,
+    "prev_place": 44,
+    "average_salary": 40000.0,
+    "image": "e424fbc0209d7e47.webp",
+    "categories": [
+      { "name": "Design", "confidence": 0.5283628496311593 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.2543975621314399
+      },
+      { "name": "Frontend", "confidence": 0.04965939251296657 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.0274451982217085 },
+      { "name": "Website administration", "confidence": 0.026501817002171416 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9797897690262749 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.00677288747962417
+      },
+      { "name": "Operating systems", "confidence": 0.0021934613076403666 }
+    ]
+  },
+  {
+    "place": 12,
+    "name": "C#",
+    "translation": null,
+    "count": 19,
+    "prev_count": 23,
+    "prev_place": 12,
+    "average_salary": 57500.0,
+    "image": "97519bdd63d361f8.webp",
+    "categories": [
+      { "name": "Backend", "confidence": 0.3263737714980996 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.1482951190287569
+      },
+      { "name": "Quality assurance", "confidence": 0.081388121053917 },
+      { "name": "Mobile", "confidence": 0.06989649269126443 },
+      { "name": "Frontend", "confidence": 0.057101757576759386 },
+      { "name": "Systems programming", "confidence": 0.05609188891578274 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.04856508984837395 },
+      { "name": "Project management", "confidence": 0.033553525555156546 },
+      { "name": "Analytics", "confidence": 0.02663419532892063 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.8068850640852243 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.14622351857787153
+      },
+      { "name": "Game engines", "confidence": 0.022341734433114116 }
+    ]
+  },
+  {
+    "place": 13,
+    "name": "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u0438 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435",
+    "translation": "Learning and Development",
+    "count": 19,
+    "prev_count": 20,
+    "prev_place": 21,
+    "average_salary": 70000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.48798110897478664 },
+      { "name": "Other", "confidence": 0.10959705056126422 },
+      { "name": "Analytics", "confidence": 0.05716185697334493 },
+      { "name": "1C Development", "confidence": 0.039368159846008735 },
+      { "name": "Project management", "confidence": 0.03923058329089058 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03803057632531177
+      }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9571084988894989 },
+      { "name": "Game engines", "confidence": 0.019136251620051375 },
+      { "name": "Graphic design", "confidence": 0.0035475723712859444 }
+    ]
+  },
+  {
+    "place": 14,
+    "name": "\u0412\u0435\u0431-\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+    "translation": "Web Programming",
+    "count": 18,
+    "prev_count": 8,
+    "prev_place": 50,
+    "average_salary": 65000.0,
+    "image": null,
+    "categories": [
+      { "name": "Website administration", "confidence": 0.536959326773566 },
+      { "name": "Frontend", "confidence": 0.1414812065899241 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.06387469453884655
+      },
+      { "name": "Backend", "confidence": 0.06364464072534723 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.5266116020216569 },
+      { "name": "CMS", "confidence": 0.21820189868210974 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.05696917025063621
+      }
+    ]
+  },
+  {
+    "place": 15,
+    "name": "PHP",
+    "translation": null,
+    "count": 18,
+    "prev_count": 21,
+    "prev_place": 15,
+    "average_salary": 52000.0,
+    "image": "5582fff1f8c21188.webp",
+    "categories": [
+      { "name": "Website administration", "confidence": 0.6246317660431131 },
+      { "name": "Backend", "confidence": 0.16465883869413667 },
+      { "name": "Frontend", "confidence": 0.07622276565513005 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.8621001173129035 },
+      { "name": "CMS", "confidence": 0.08862511725245188 },
+      { "name": "Databases", "confidence": 0.03223471662853561 }
+    ]
+  },
+  {
+    "place": 16,
+    "name": "API",
+    "translation": null,
+    "count": 18,
+    "prev_count": 16,
+    "prev_place": 31,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.33797308464426595 },
+      { "name": "Quality assurance", "confidence": 0.32026142901154714 },
+      { "name": "Analytics", "confidence": 0.07614855905281775 },
+      { "name": "Mobile", "confidence": 0.03769601131597437 },
+      { "name": "Project management", "confidence": 0.03545971215496027 },
+      { "name": "Website administration", "confidence": 0.034231278718135985 },
+      { "name": "Frontend", "confidence": 0.026590625485947924 }
+    ],
+    "technologies": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.8628337886070383
+      },
+      { "name": "Languages", "confidence": 0.043847984489178905 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.04228456438860882
+      }
+    ]
+  },
+  {
+    "place": 17,
+    "name": "PostgreSQL",
+    "translation": null,
+    "count": 18,
+    "prev_count": 20,
+    "prev_place": 22,
+    "average_salary": 75000.0,
+    "image": "f4fa3056c5688f9e.webp",
+    "categories": [
+      { "name": "Backend", "confidence": 0.4954955294013766 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.32982560672780564 },
+      { "name": "Quality assurance", "confidence": 0.050909018168955364 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.9336753858423932 },
+      { "name": "Languages", "confidence": 0.027844635158254537 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.0139536178542895
+      }
+    ]
+  },
+  {
+    "place": 18,
+    "name": "C++",
+    "translation": null,
+    "count": 17,
+    "prev_count": 21,
+    "prev_place": 16,
+    "average_salary": 72500.0,
+    "image": "050777f76a22dc15.webp",
+    "categories": [
+      { "name": "Systems programming", "confidence": 0.6337087641766415 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.1491543548429701
+      },
+      { "name": "Quality assurance", "confidence": 0.029540790845252032 },
+      { "name": "Network administration", "confidence": 0.025231444819865466 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.9238472703390315 },
+      { "name": "Game engines", "confidence": 0.024041228304643666 },
+      { "name": "Operating systems", "confidence": 0.020776464010702288 }
+    ]
+  },
+  {
+    "place": 19,
+    "name": "CSS",
+    "translation": null,
+    "count": 17,
+    "prev_count": 22,
+    "prev_place": 13,
+    "average_salary": 50000.0,
+    "image": "9a6f0345215145c6.webp",
+    "categories": [
+      { "name": "Frontend", "confidence": 0.4256325866055772 },
+      { "name": "Website administration", "confidence": 0.4133591364342123 },
+      { "name": "Backend", "confidence": 0.04026500019868805 }
+    ],
+    "technologies": [
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.6192155585203447
+      },
+      { "name": "CMS", "confidence": 0.324280351582938 },
+      { "name": "Testing Tools", "confidence": 0.017199374082913835 }
+    ]
+  },
+  {
+    "place": 20,
+    "name": "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435",
+    "translation": "Team Work",
+    "count": 16,
+    "prev_count": 21,
+    "prev_place": 19,
+    "average_salary": 45000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.5400852061695673 },
+      { "name": "HR Management", "confidence": 0.1362771824932567 },
+      { "name": "Project management", "confidence": 0.0424441428639259 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.030354412757678324 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.026448598397264298
+      },
+      { "name": "Website administration", "confidence": 0.02594467391394094 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9129479362939933 },
+      {
+        "name": "Project Management Tools",
+        "confidence": 0.036626050393561635
+      },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.012862906108552029
+      }
+    ]
+  },
+  {
+    "place": 21,
+    "name": "MySQL",
+    "translation": null,
+    "count": 16,
+    "prev_count": 22,
+    "prev_place": 14,
+    "average_salary": 75000.0,
+    "image": "b0a3e7d6863662b5.webp",
+    "categories": [
+      { "name": "Website administration", "confidence": 0.4410315352913265 },
+      { "name": "Backend", "confidence": 0.2590055928402886 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.06570617416018103 },
+      { "name": "Frontend", "confidence": 0.060067404477012275 },
+      { "name": "Quality assurance", "confidence": 0.03300721394752968 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.8251933455365703 },
+      { "name": "Languages", "confidence": 0.13932590704592396 },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.00841622292691368
+      }
+    ]
+  },
+  {
+    "place": 22,
+    "name": "Figma",
+    "translation": null,
+    "count": 16,
+    "prev_count": 3,
+    "prev_place": 87,
+    "average_salary": 31017.586820516095,
+    "image": "2932ac6bfc954ff5.webp",
+    "categories": [
+      { "name": "Design", "confidence": 0.6558945780122957 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.10528512308582821
+      },
+      { "name": "Frontend", "confidence": 0.056107847997945236 },
+      { "name": "Website administration", "confidence": 0.02654578560921571 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9893513386247837 },
+      { "name": "Monitoring", "confidence": 0.003485033509955368 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.0015937324309291331
+      }
+    ]
+  },
+  {
+    "place": 23,
+    "name": "\u0414\u0435\u043b\u043e\u0432\u043e\u0435 \u043e\u0431\u0449\u0435\u043d\u0438\u0435",
+    "translation": "Business Communication",
+    "count": 15,
+    "prev_count": 17,
+    "prev_place": 29,
+    "average_salary": 60000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.4302795501809282 },
+      { "name": "HR Management", "confidence": 0.32221239534244334 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.036658804819030485 },
+      { "name": "Project management", "confidence": 0.032708465088390745 },
+      { "name": "Analytics", "confidence": 0.028200633399873155 },
+      { "name": "System Administration", "confidence": 0.025489268710113873 },
+      { "name": "1C Development", "confidence": 0.025030390667537615 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9530790959203461 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.019401643537442316
+      },
+      {
+        "name": "Blockchain platforms & tools",
+        "confidence": 0.005534658425599204
+      }
+    ]
+  },
+  {
+    "place": 24,
+    "name": "\u041e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Responsibility",
+    "count": 14,
+    "prev_count": 14,
+    "prev_place": 33,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.6256597885473044 },
+      { "name": "HR Management", "confidence": 0.07403064362708053 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05007775272910456 },
+      { "name": "Project management", "confidence": 0.03545105291923612 },
+      { "name": "1C Development", "confidence": 0.028666764571643057 },
+      { "name": "System Administration", "confidence": 0.025624276786686245 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.849872516102621 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.11194728966154385
+      },
+      { "name": "Game engines", "confidence": 0.013872548546068043 }
+    ]
+  },
+  {
+    "place": 25,
+    "name": "Docker",
+    "translation": null,
+    "count": 14,
+    "prev_count": 14,
+    "prev_place": 32,
+    "average_salary": 77500.0,
+    "image": "f9889d55c2127ef8.webp",
+    "categories": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.5311027269373583 },
+      { "name": "Backend", "confidence": 0.2715104888449314 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.04346649014699515
+      },
+      { "name": "Frontend", "confidence": 0.03431485399154802 }
+    ],
+    "technologies": [
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.9479083581651165
+      },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.02817299731650799
+      },
+      { "name": "Operating systems", "confidence": 0.005980450612089335 }
+    ]
+  },
+  {
+    "place": 26,
+    "name": "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435",
+    "translation": "Analytical Thinking",
+    "count": 13,
+    "prev_count": 18,
+    "prev_place": 27,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.5752555269015747 },
+      { "name": "Project management", "confidence": 0.07403301042826926 },
+      { "name": "HR Management", "confidence": 0.059292287044237606 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.049483283953335164 },
+      { "name": "1C Development", "confidence": 0.039877125362203905 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.026926210805304735
+      },
+      { "name": "System Administration", "confidence": 0.026137071586852335 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9441442065931471 },
+      {
+        "name": "Project Management Tools",
+        "confidence": 0.024582276659730375
+      },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.00691097029563316
+      }
+    ]
+  },
+  {
+    "place": 27,
+    "name": "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u041f\u041a",
+    "translation": "PC user",
+    "count": 13,
+    "prev_count": 24,
+    "prev_place": 10,
+    "average_salary": 72500.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.38260792514726083 },
+      { "name": "HR Management", "confidence": 0.15374778783954576 },
+      { "name": "System Administration", "confidence": 0.04973022228068238 },
+      { "name": "1C Development", "confidence": 0.049025089472759555 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.047617525289476124
+      },
+      { "name": "Analytics", "confidence": 0.039085535897155625 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.038874622595114386 },
+      { "name": "Blockchain", "confidence": 0.02850378537849428 },
+      { "name": "Information security", "confidence": 0.02579689971318332 }
+    ],
+    "technologies": [
+      { "name": "Operating systems", "confidence": 0.7721406941831711 },
+      { "name": "Soft skills", "confidence": 0.18979546537332215 },
+      { "name": "Graphic design", "confidence": 0.013352590185283552 }
+    ]
+  },
+  {
+    "place": 28,
+    "name": "MS Excel",
+    "translation": null,
+    "count": 13,
+    "prev_count": 23,
+    "prev_place": 11,
+    "average_salary": 75000.0,
+    "image": "c50acc69c4c8f5e7.webp",
+    "categories": [
+      { "name": "Analytics", "confidence": 0.560585479864106 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06163248396359162 },
+      { "name": "1C Development", "confidence": 0.05157204684401058 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.041200946176924304
+      },
+      { "name": "Project management", "confidence": 0.04019168924428764 },
+      { "name": "HR Management", "confidence": 0.03306479360377796 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.354009802735775 },
+      { "name": "Languages", "confidence": 0.25882614186519987 },
+      { "name": "Graphic design", "confidence": 0.14788556908195374 },
+      { "name": "Soft skills", "confidence": 0.10915654681438952 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.1045479007277405
+      }
+    ]
+  },
+  {
+    "place": 29,
+    "name": "\u041e\u041e\u041f",
+    "translation": "PLO",
+    "count": 13,
+    "prev_count": 33,
+    "prev_place": 8,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.3434306916819782 },
+      { "name": "Quality assurance", "confidence": 0.14207452878517152 },
+      { "name": "Frontend", "confidence": 0.10756934954048812 },
+      { "name": "Mobile", "confidence": 0.07614695314243043 },
+      { "name": "Website administration", "confidence": 0.04913887362027829 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.044013258793036074
+      },
+      { "name": "DevOps & Infrastructure", "confidence": 0.04023193914182766 },
+      { "name": "Systems programming", "confidence": 0.028849555677188145 }
+    ],
+    "technologies": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.2638453614487094
+      },
+      { "name": "Languages", "confidence": 0.1811264403621423 },
+      { "name": "Network Protocols", "confidence": 0.1287304297087463 },
+      { "name": "Soft skills", "confidence": 0.07581226201706245 },
+      { "name": "CMS", "confidence": 0.06756674783665183 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.05397713742766226
+      },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.04923515950461459
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.04477030992075131
+      }
+    ]
+  },
+  {
+    "place": 30,
+    "name": "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u043d\u044b\u0445 \u0418\u0433\u0440",
+    "translation": "Computer Games Development",
+    "count": 13,
+    "prev_count": 4,
+    "prev_place": 84,
+    "average_salary": 52000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.7224745211074719
+      },
+      { "name": "Design", "confidence": 0.05229234598755913 },
+      { "name": "Frontend", "confidence": 0.025450816558338425 }
+    ],
+    "technologies": [
+      { "name": "Game engines", "confidence": 0.7194655644545193 },
+      { "name": "Graphic design", "confidence": 0.10884359169299053 },
+      { "name": "Soft skills", "confidence": 0.08512592840023424 }
+    ]
+  },
+  {
+    "place": 31,
+    "name": "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0430",
+    "translation": "Business Communication",
+    "count": 12,
+    "prev_count": 21,
+    "prev_place": 17,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.3592930092381451 },
+      { "name": "HR Management", "confidence": 0.2607939466525238 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05392764432927406 },
+      { "name": "Project management", "confidence": 0.04596908473425377 },
+      { "name": "System Administration", "confidence": 0.04221772150789069 },
+      { "name": "Analytics", "confidence": 0.040423329772432764 },
+      { "name": "1C Development", "confidence": 0.03693759243805056 },
+      { "name": "Blockchain", "confidence": 0.03676192405453341 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9508112639035232 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.021360046390299762
+      },
+      {
+        "name": "Blockchain platforms & tools",
+        "confidence": 0.005600923669171007
+      }
+    ]
+  },
+  {
+    "place": 32,
+    "name": "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u041f\u041e",
+    "translation": "software development",
+    "count": 11,
+    "prev_count": 14,
+    "prev_place": 35,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.16247335627547438 },
+      { "name": "Analytics", "confidence": 0.14107582240991964 },
+      { "name": "Systems programming", "confidence": 0.1404459856420238 },
+      { "name": "Project management", "confidence": 0.10878200684409647 },
+      { "name": "Backend", "confidence": 0.0845285578003567 },
+      { "name": "Mobile", "confidence": 0.057305402173950595 },
+      { "name": "Frontend", "confidence": 0.04536913083394528 },
+      { "name": "1C Development", "confidence": 0.04415287653434341 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.028792626771843178 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.027398561769986476
+      },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.025029379844531647
+      }
+    ],
+    "technologies": [
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.3747580607104935
+      },
+      { "name": "Languages", "confidence": 0.13184127944427376 },
+      { "name": "Soft skills", "confidence": 0.099908792713158 },
+      { "name": "Project Management Tools", "confidence": 0.07865551028342702 },
+      { "name": "Game engines", "confidence": 0.05967064344324719 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.04010043763395306
+      }
+    ]
+  },
+  {
+    "place": 33,
+    "name": "Scratch",
+    "translation": null,
+    "count": 11,
+    "prev_count": 4,
+    "prev_place": 77,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.5930289787199902
+      },
+      { "name": "Design", "confidence": 0.05175688822484731 },
+      { "name": "Mobile", "confidence": 0.037300783725865226 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.03244850823185668
+      },
+      { "name": "Systems programming", "confidence": 0.02716383929851319 },
+      { "name": "Other", "confidence": 0.025479564767752486 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.47024442521465976 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.16092866038459655
+      },
+      { "name": "Game engines", "confidence": 0.08781810707973195 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.07401687970695342
+      },
+      { "name": "Soft skills", "confidence": 0.06291553253596456 }
+    ]
+  },
+  {
+    "place": 34,
+    "name": "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0431\u043e\u043b\u044c\u0448\u0438\u043c \u043e\u0431\u044a\u0435\u043c\u043e\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
+    "translation": "Much Information",
+    "count": 11,
+    "prev_count": 14,
+    "prev_place": 34,
+    "average_salary": 63250.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.3643142593696843 },
+      { "name": "Other", "confidence": 0.13181415554626777 },
+      { "name": "HR Management", "confidence": 0.10940181379109719 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.0667274500371967 },
+      { "name": "1C Development", "confidence": 0.06469497000407812 },
+      { "name": "System Administration", "confidence": 0.041667112431274064 },
+      { "name": "Blockchain", "confidence": 0.03271037172682194 },
+      { "name": "Project management", "confidence": 0.032177662574509554 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9086176981143504 },
+      { "name": "Databases", "confidence": 0.017677883623704687 },
+      { "name": "CMS", "confidence": 0.014704092919891679 }
+    ]
+  },
+  {
+    "place": 35,
+    "name": "CI/CD",
+    "translation": null,
+    "count": 10,
+    "prev_count": 10,
+    "prev_place": 41,
+    "average_salary": 67500.0,
+    "image": null,
+    "categories": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.680140126607855 },
+      { "name": "Backend", "confidence": 0.0835095518650605 },
+      { "name": "Information security", "confidence": 0.035923253352977774 },
+      { "name": "Quality assurance", "confidence": 0.033418690162919845 }
+    ],
+    "technologies": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.9546126014802434
+      },
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.017945183449766432
+      },
+      { "name": "Monitoring", "confidence": 0.006930303110360675 }
+    ]
+  },
+  {
+    "place": 36,
+    "name": "\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445",
+    "translation": "Databases",
+    "count": 10,
+    "prev_count": 18,
+    "prev_place": 28,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.25406101768960937 },
+      { "name": "Quality assurance", "confidence": 0.1597911376399053 },
+      { "name": "Analytics", "confidence": 0.15314068068443243 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.08498444253303698
+      },
+      { "name": "DevOps & Infrastructure", "confidence": 0.050702686964756404 },
+      { "name": "Project management", "confidence": 0.04178467667646827 },
+      { "name": "System Administration", "confidence": 0.04055677804003255 },
+      { "name": "1C Development", "confidence": 0.03027688743331843 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.026792099336340146 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.8684538060346979 },
+      { "name": "Languages", "confidence": 0.04255147688061796 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.03213297431759669
+      }
+    ]
+  },
+  {
+    "place": 37,
+    "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438",
+    "translation": "Active Sales",
+    "count": 10,
+    "prev_count": 21,
+    "prev_place": 18,
+    "average_salary": 70000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.38225782554443094 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.13140226546913436 },
+      { "name": "Other", "confidence": 0.09190602576765353 },
+      { "name": "Blockchain", "confidence": 0.08654789162520474 },
+      { "name": "System Administration", "confidence": 0.03717570679973359 },
+      { "name": "1C Development", "confidence": 0.03522396657996155 },
+      { "name": "Project management", "confidence": 0.02912886871800799 },
+      { "name": "Analytics", "confidence": 0.027055972669906916 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8565059375929553 },
+      { "name": "Databases", "confidence": 0.07997111549894774 },
+      { "name": "CMS", "confidence": 0.01652840345565242 }
+    ]
+  },
+  {
+    "place": 38,
+    "name": "\u0410\u043d\u0430\u043b\u0438\u0437 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "translation": "Data Analysis",
+    "count": 9,
+    "prev_count": 4,
+    "prev_place": 78,
+    "average_salary": 57000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.4096349181007966 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.2440051539051973
+      },
+      { "name": "Project management", "confidence": 0.06782455561013419 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.041309824747871204 },
+      { "name": "System Administration", "confidence": 0.036263680437268575 },
+      { "name": "Backend", "confidence": 0.028223506897637248 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.6057438304110115 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.10867088880193869
+      },
+      { "name": "Databases", "confidence": 0.06574570234553613 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.05650364242772567
+      }
+    ]
+  },
+  {
+    "place": 39,
+    "name": "\u041d\u0430\u0432\u044b\u043a\u0438 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0438",
+    "translation": "Presentation Skills",
+    "count": 9,
+    "prev_count": 6,
+    "prev_place": 63,
+    "average_salary": 32500.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.2333260655472121 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.13572615099890523 },
+      { "name": "Other", "confidence": 0.0766878573080468 },
+      { "name": "Project management", "confidence": 0.07444925839213536 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.07089470404738227
+      },
+      { "name": "Design", "confidence": 0.06486362068649099 },
+      { "name": "Analytics", "confidence": 0.06353437101661796 },
+      { "name": "Blockchain", "confidence": 0.04699153980186297 },
+      { "name": "Website administration", "confidence": 0.034083878555192584 },
+      { "name": "System Administration", "confidence": 0.030125872773802777 },
+      { "name": "1C Development", "confidence": 0.027204427127552167 },
+      { "name": "Frontend", "confidence": 0.026552300654764785 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9301134944189073 },
+      { "name": "Graphic design", "confidence": 0.04982348422994004 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.002811749859172439
+      }
+    ]
+  },
+  {
+    "place": 40,
+    "name": "REST",
+    "translation": null,
+    "count": 9,
+    "prev_count": 6,
+    "prev_place": 59,
+    "average_salary": 60000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.43045099627886885 },
+      { "name": "Analytics", "confidence": 0.15484270533885894 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.095139013270935 },
+      { "name": "Quality assurance", "confidence": 0.07082730503275798 },
+      { "name": "Project management", "confidence": 0.05501754270367849 },
+      { "name": "Frontend", "confidence": 0.041237211110616276 },
+      { "name": "Mobile", "confidence": 0.03086824635679586 }
+    ],
+    "technologies": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.9763718915454819
+      },
+      { "name": "Network Protocols", "confidence": 0.007118687595533127 },
+      { "name": "Cloud platforms", "confidence": 0.003055231845297975 }
+    ]
+  },
+  {
+    "place": 41,
+    "name": "MS SQL Server",
+    "translation": null,
+    "count": 9,
+    "prev_count": 4,
+    "prev_place": 76,
+    "average_salary": 48500.0,
+    "image": null,
+    "categories": [
+      { "name": "System Administration", "confidence": 0.17432926502644522 },
+      { "name": "Backend", "confidence": 0.15210172842144198 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.14884253868674752 },
+      { "name": "1C Development", "confidence": 0.10318001996302462 },
+      { "name": "Network administration", "confidence": 0.05129509609435789 },
+      { "name": "Quality assurance", "confidence": 0.04504803517864163 },
+      { "name": "Analytics", "confidence": 0.04123253047080928 },
+      { "name": "Frontend", "confidence": 0.036060019077559236 },
+      { "name": "Website administration", "confidence": 0.03079643044882195 },
+      { "name": "Information security", "confidence": 0.029475237653078117 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.028988018369961965
+      },
+      { "name": "Project management", "confidence": 0.025092573927616595 }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.80604802233403 },
+      { "name": "Languages", "confidence": 0.15670753014197042 },
+      { "name": "Operating systems", "confidence": 0.011812631949249497 }
+    ]
+  },
+  {
+    "place": 42,
+    "name": "\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c",
+    "translation": "Professor",
+    "count": 9,
+    "prev_count": 2,
+    "prev_place": 95,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.4560146678717766
+      },
+      { "name": "HR Management", "confidence": 0.05366601770216843 },
+      { "name": "Other", "confidence": 0.04628198841115647 },
+      { "name": "Design", "confidence": 0.04514641715512037 },
+      { "name": "Mobile", "confidence": 0.03858361693631367 },
+      { "name": "Systems programming", "confidence": 0.0328244810638757 },
+      { "name": "Frontend", "confidence": 0.03164422094158467 },
+      { "name": "Blockchain", "confidence": 0.03125772086524798 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.03044366224600057 },
+      { "name": "Analytics", "confidence": 0.027211573723755857 },
+      { "name": "Backend", "confidence": 0.026987459270269396 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.0265433396475989
+      }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9674832764015019 },
+      { "name": "Testing Tools", "confidence": 0.010361852025021257 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.006253305544752387
+      }
+    ]
+  },
+  {
+    "place": 43,
+    "name": "\u041a\u0440\u0435\u0430\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Creative",
+    "count": 9,
+    "prev_count": 1,
+    "prev_place": 110,
+    "average_salary": 35000.0,
+    "image": null,
+    "categories": [
+      { "name": "Design", "confidence": 0.3705096085834593 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.21564930574625948 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.07314780954655084
+      },
+      { "name": "HR Management", "confidence": 0.06881829098753597 },
+      { "name": "Other", "confidence": 0.047796844633082265 },
+      { "name": "Frontend", "confidence": 0.032972200289270295 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.48191755183260165 },
+      { "name": "Soft skills", "confidence": 0.4655672144200071 },
+      { "name": "Project Management Tools", "confidence": 0.026383159094387217 }
+    ]
+  },
+  {
+    "place": 44,
+    "name": "Blender 3D",
+    "translation": null,
+    "count": 9,
+    "prev_count": 5,
+    "prev_place": 70,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.7145479231608356
+      },
+      { "name": "Design", "confidence": 0.11173710005721191 },
+      { "name": "Frontend", "confidence": 0.01712670818007133 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9451787272010188 },
+      { "name": "Game engines", "confidence": 0.04000750429417925 },
+      { "name": "Languages", "confidence": 0.004212943323364876 }
+    ]
+  },
+  {
+    "place": 45,
+    "name": "BPMN",
+    "translation": null,
+    "count": 9,
+    "prev_count": 4,
+    "prev_place": 75,
+    "average_salary": 86250.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.6061052149595331 },
+      { "name": "Project management", "confidence": 0.1428841949118093 },
+      { "name": "Backend", "confidence": 0.07222962555478096 }
+    ],
+    "technologies": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.6164222125854116
+      },
+      { "name": "Soft skills", "confidence": 0.09244260122794962 },
+      { "name": "Languages", "confidence": 0.09052060017304882 },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.05913675759977403
+      },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.03995816707026423
+      }
+    ]
+  },
+  {
+    "place": 46,
+    "name": "\u041a\u043b\u0438\u0435\u043d\u0442\u043e\u043e\u0440\u0438\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Client Focus",
+    "count": 9,
+    "prev_count": 5,
+    "prev_place": 73,
+    "average_salary": 57500.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.410165446940943 },
+      { "name": "HR Management", "confidence": 0.19508444275645456 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.050141041311207564 },
+      { "name": "1C Development", "confidence": 0.0422446265057847 },
+      { "name": "System Administration", "confidence": 0.03138546640313543 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.030907529887693623
+      },
+      { "name": "Blockchain", "confidence": 0.029108655024690216 },
+      { "name": "Project management", "confidence": 0.02715212335715609 },
+      { "name": "Analytics", "confidence": 0.026992002517589084 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9201680881654167 },
+      { "name": "Languages", "confidence": 0.024674746858202045 },
+      { "name": "Cloud platforms", "confidence": 0.00973118364906843 }
+    ]
+  },
+  {
+    "place": 47,
+    "name": "3D",
+    "translation": null,
+    "count": 8,
+    "prev_count": 2,
+    "prev_place": 94,
+    "average_salary": 66000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.6996995849351403
+      },
+      { "name": "Design", "confidence": 0.11038730692327799 },
+      { "name": "Frontend", "confidence": 0.029275100304613454 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9659265667117384 },
+      { "name": "Game engines", "confidence": 0.021950546474383024 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.00416574326259151
+      }
+    ]
+  },
+  {
+    "place": 48,
+    "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+    "translation": "Functional Testing",
+    "count": 8,
+    "prev_count": 19,
+    "prev_place": 24,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.7495750558575335 },
+      { "name": "Analytics", "confidence": 0.05104226446130833 },
+      { "name": "Mobile", "confidence": 0.026756167662691913 }
+    ],
+    "technologies": [
+      { "name": "Testing Tools", "confidence": 0.5163994383781227 },
+      { "name": "Languages", "confidence": 0.3452120616315097 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.04309303884555415
+      }
+    ]
+  },
+  {
+    "place": 49,
+    "name": "\u0412\u044b\u043a\u043b\u0430\u0434\u043a\u0430 \u0442\u043e\u0432\u0430\u0440\u043e\u0432",
+    "translation": "Goods",
+    "count": 8,
+    "prev_count": 0,
+    "prev_place": 112,
+    "average_salary": 47000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.41875240261168134 },
+      { "name": "Mobile", "confidence": 0.08636180944056622 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05849471197650271 },
+      { "name": "1C Development", "confidence": 0.0454512656877312 },
+      { "name": "HR Management", "confidence": 0.042545637990911156 },
+      { "name": "System Administration", "confidence": 0.038944262382293246 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03480321326003603
+      },
+      { "name": "Design", "confidence": 0.030717260226177732 },
+      { "name": "Network administration", "confidence": 0.027810673806522704 },
+      { "name": "Analytics", "confidence": 0.027533311206532293 },
+      { "name": "Information security", "confidence": 0.027068350609604212 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9037556885683404 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.02954245997701529
+      },
+      { "name": "Cloud platforms", "confidence": 0.028148854353674372 }
+    ]
+  },
+  {
+    "place": 50,
+    "name": "ORACLE",
+    "translation": null,
+    "count": 8,
+    "prev_count": 10,
+    "prev_place": 42,
+    "average_salary": 75000.0,
+    "image": "a7f6883fa71e8c71.webp",
+    "categories": [
+      { "name": "Backend", "confidence": 0.3990651950177914 },
+      { "name": "Quality assurance", "confidence": 0.14245359956321468 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.10855490113836493 },
+      { "name": "Analytics", "confidence": 0.0791056130285103 },
+      { "name": "System Administration", "confidence": 0.03901865352806305 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.0345450810297799
+      }
+    ],
+    "technologies": [
+      { "name": "Databases", "confidence": 0.9501801109162773 },
+      { "name": "Languages", "confidence": 0.028302345584890167 },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.0037392515603411765
+      }
+    ]
+  },
+  {
+    "place": 51,
+    "name": "\u0411\u0438\u0437\u043d\u0435\u0441-\u0430\u043d\u0430\u043b\u0438\u0437",
+    "translation": "Business Analysis",
+    "count": 8,
+    "prev_count": 20,
+    "prev_place": 20,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.6057591373544173 },
+      { "name": "Project management", "confidence": 0.20338771878920317 },
+      { "name": "1C Development", "confidence": 0.03557843750404764 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.6072553740905458 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.22201288863844967
+      },
+      { "name": "Project Management Tools", "confidence": 0.03487008901552518 }
+    ]
+  },
+  {
+    "place": 52,
+    "name": "QA",
+    "translation": null,
+    "count": 8,
+    "prev_count": 16,
+    "prev_place": 30,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.7549738846862687 },
+      { "name": "Analytics", "confidence": 0.04301737777664259 },
+      { "name": "Mobile", "confidence": 0.03686144637058073 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.42079252133611583
+      },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.1958161065059385
+      },
+      { "name": "Soft skills", "confidence": 0.11420985996121925 },
+      {
+        "name": "Project Management Tools",
+        "confidence": 0.058208196099973165
+      },
+      { "name": "Languages", "confidence": 0.053757354713853546 }
+    ]
+  },
+  {
+    "place": 53,
+    "name": "UML",
+    "translation": null,
+    "count": 8,
+    "prev_count": 3,
+    "prev_place": 89,
+    "average_salary": 86250.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.6232606121131371 },
+      { "name": "Project management", "confidence": 0.10278321130619993 },
+      { "name": "Backend", "confidence": 0.08262985012417107 }
+    ],
+    "technologies": [
+      { "name": "Game engines", "confidence": 0.4119312593778111 },
+      { "name": "Soft skills", "confidence": 0.18403341666677273 },
+      { "name": "Project Management Tools", "confidence": 0.14128077141881668 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.12141714947444165
+      }
+    ]
+  },
+  {
+    "place": 54,
+    "name": "\u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0434\u0438\u0437\u0430\u0439\u043d",
+    "translation": "Graphic Design",
+    "count": 8,
+    "prev_count": 3,
+    "prev_place": 86,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      { "name": "Design", "confidence": 0.6180578707228153 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.14166152016571054
+      },
+      { "name": "Frontend", "confidence": 0.06478695583166591 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.03232334492316446 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.8275968017852452 },
+      { "name": "Soft skills", "confidence": 0.15028272968712025 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.005805199428822256
+      }
+    ]
+  },
+  {
+    "place": 55,
+    "name": "REST API",
+    "translation": null,
+    "count": 8,
+    "prev_count": 6,
+    "prev_place": 58,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.40986221385929217 },
+      { "name": "Frontend", "confidence": 0.20040988017631653 },
+      { "name": "Quality assurance", "confidence": 0.07723460900970334 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.05819125347845344 },
+      { "name": "Mobile", "confidence": 0.05301424369965745 },
+      { "name": "Analytics", "confidence": 0.042881725702052335 },
+      { "name": "Website administration", "confidence": 0.03451960462364176 },
+      { "name": "Project management", "confidence": 0.026828844121380646 }
+    ],
+    "technologies": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.9551701603013137
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.019527603090316054
+      },
+      { "name": "Network Protocols", "confidence": 0.006872960043554431 }
+    ]
+  },
+  {
+    "place": 56,
+    "name": "HTML5",
+    "translation": null,
+    "count": 8,
+    "prev_count": 6,
+    "prev_place": 60,
+    "average_salary": 51000.0,
+    "image": "30a915e5b4d65cc6.webp",
+    "categories": [
+      { "name": "Frontend", "confidence": 0.6223295952355545 },
+      { "name": "Website administration", "confidence": 0.16014030997885875 },
+      { "name": "Backend", "confidence": 0.04633778803858066 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.02876729667497262
+      },
+      { "name": "Mobile", "confidence": 0.02709514312647826 }
+    ],
+    "technologies": [
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.7304011780376012
+      },
+      { "name": "Languages", "confidence": 0.13654530833520745 },
+      { "name": "CMS", "confidence": 0.07198181719187872 }
+    ]
+  },
+  {
+    "place": 57,
+    "name": "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435",
+    "translation": "Learning",
+    "count": 7,
+    "prev_count": 5,
+    "prev_place": 67,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.3481698109135918
+      },
+      { "name": "HR Management", "confidence": 0.09631037107551359 },
+      { "name": "Other", "confidence": 0.0731691583280843 },
+      { "name": "Systems programming", "confidence": 0.045290947241872645 },
+      { "name": "Analytics", "confidence": 0.04176026071624801 },
+      { "name": "Mobile", "confidence": 0.038373760991722405 },
+      { "name": "Design", "confidence": 0.03226214645486128 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.029701125808788656
+      },
+      { "name": "Digital Marketing & SEO", "confidence": 0.02882918490969973 },
+      { "name": "Frontend", "confidence": 0.02832848303273092 },
+      { "name": "Backend", "confidence": 0.02745505674040961 },
+      { "name": "Blockchain", "confidence": 0.026651542819143365 },
+      { "name": "Quality assurance", "confidence": 0.02664009894255863 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9571649489620792 },
+      { "name": "Graphic design", "confidence": 0.007946106017457903 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.0053221039582999775
+      }
+    ]
+  },
+  {
+    "place": 58,
+    "name": "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u043f\u0438\u0441\u044c\u043c\u0435\u043d\u043d\u0430\u044f \u0440\u0435\u0447\u044c",
+    "translation": "Literacy Letters",
+    "count": 7,
+    "prev_count": 1,
+    "prev_place": 103,
+    "average_salary": 42500.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.2273806789132808 },
+      { "name": "Other", "confidence": 0.19558222634392963 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.10798323914926115 },
+      { "name": "Blockchain", "confidence": 0.06113939972620412 },
+      { "name": "1C Development", "confidence": 0.05721886034660266 },
+      { "name": "Analytics", "confidence": 0.05265672341329749 },
+      { "name": "System Administration", "confidence": 0.05233369087590951 },
+      { "name": "Design", "confidence": 0.037427190732332805 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.0303628646607937
+      },
+      { "name": "Project management", "confidence": 0.026329773159028843 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.952571185218011 },
+      { "name": "Languages", "confidence": 0.038576086519496317 },
+      {
+        "name": "Search & Indexing engines",
+        "confidence": 0.006479058372843651
+      }
+    ]
+  },
+  {
+    "place": 59,
+    "name": "Adobe Illustrator",
+    "translation": null,
+    "count": 7,
+    "prev_count": 2,
+    "prev_place": 98,
+    "average_salary": 57500.0,
+    "image": "18c002516426b25d.webp",
+    "categories": [
+      { "name": "Design", "confidence": 0.592174389989794 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.18296020301038285
+      },
+      { "name": "Frontend", "confidence": 0.056967098905681954 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.025622076678317108 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9879367531193674 },
+      { "name": "Game engines", "confidence": 0.001801259724306263 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.0016523904181052393
+      }
+    ]
+  },
+  {
+    "place": 60,
+    "name": "SEO",
+    "translation": null,
+    "count": 7,
+    "prev_count": 1,
+    "prev_place": 108,
+    "average_salary": 73750.0,
+    "image": null,
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.497805064383454 },
+      { "name": "Website administration", "confidence": 0.2128836990404812 },
+      { "name": "HR Management", "confidence": 0.08346561330619365 },
+      { "name": "Analytics", "confidence": 0.044835134517857325 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.629960271737539 },
+      { "name": "Search & Indexing engines", "confidence": 0.2849331318244826 },
+      { "name": "Network Protocols", "confidence": 0.03681138731593645 }
+    ]
+  },
+  {
+    "place": 61,
+    "name": "\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u043d\u0438\u0435",
+    "translation": "Teaching",
+    "count": 7,
+    "prev_count": 4,
+    "prev_place": 83,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.5046301658761099
+      },
+      { "name": "Systems programming", "confidence": 0.04578338293496931 },
+      { "name": "Other", "confidence": 0.042667364719436184 },
+      { "name": "Frontend", "confidence": 0.04015387319389477 },
+      { "name": "HR Management", "confidence": 0.039997324990401935 },
+      { "name": "Design", "confidence": 0.03231368803612722 },
+      { "name": "Website administration", "confidence": 0.031218465185302642 },
+      { "name": "Quality assurance", "confidence": 0.027290047909748705 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.027056968749376707
+      },
+      { "name": "Mobile", "confidence": 0.025019402092072898 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9336939068867928 },
+      { "name": "Languages", "confidence": 0.04244835569675328 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.006085312376084805
+      }
+    ]
+  },
+  {
+    "place": 62,
+    "name": "\u041d\u0430\u0432\u044b\u043a\u0438 \u043f\u0440\u043e\u0434\u0430\u0436",
+    "translation": "Sales Skills",
+    "count": 7,
+    "prev_count": 4,
+    "prev_place": 80,
+    "average_salary": 65000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.429579965370517 },
+      { "name": "Other", "confidence": 0.1522426829298503 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.08480622956229235 },
+      { "name": "Blockchain", "confidence": 0.0435170911098556 },
+      { "name": "1C Development", "confidence": 0.03629319517776969 },
+      { "name": "Analytics", "confidence": 0.032701993466886965 },
+      { "name": "Project management", "confidence": 0.03206992037312763 },
+      { "name": "System Administration", "confidence": 0.030693560523513463 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8695742890104374 },
+      { "name": "Databases", "confidence": 0.053558672263013904 },
+      { "name": "Graphic design", "confidence": 0.02718395263101178 }
+    ]
+  },
+  {
+    "place": 63,
+    "name": "GitHub",
+    "translation": null,
+    "count": 7,
+    "prev_count": 7,
+    "prev_place": 52,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.34234733188032784 },
+      { "name": "Frontend", "confidence": 0.21461470107724817 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.09712755669415717 },
+      { "name": "Quality assurance", "confidence": 0.05789381330899779 },
+      { "name": "Website administration", "confidence": 0.05711165875391965 },
+      { "name": "Mobile", "confidence": 0.04432737334493498 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.027235878560413103
+      }
+    ],
+    "technologies": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.948347672976176
+      },
+      {
+        "name": "Project Management Tools",
+        "confidence": 0.014903869977222064
+      },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.013540844063767887
+      }
+    ]
+  },
+  {
+    "place": 64,
+    "name": "\u0414\u0438\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435",
+    "translation": "Distance Learning",
+    "count": 7,
+    "prev_count": 2,
+    "prev_place": 101,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.23152119679139269
+      },
+      { "name": "HR Management", "confidence": 0.16051703568988437 },
+      { "name": "Other", "confidence": 0.06920693559965156 },
+      { "name": "Analytics", "confidence": 0.044300522078433616 },
+      { "name": "Design", "confidence": 0.03870285210362519 },
+      { "name": "Mobile", "confidence": 0.038626782068961495 },
+      { "name": "Backend", "confidence": 0.03798761597208642 },
+      { "name": "1C Development", "confidence": 0.03700930302604693 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.034910639164002936 },
+      { "name": "Systems programming", "confidence": 0.03311646287754675 },
+      { "name": "Blockchain", "confidence": 0.0323185261073999 },
+      { "name": "System Administration", "confidence": 0.03141594914086189 },
+      { "name": "Frontend", "confidence": 0.03013370671792469 },
+      { "name": "Network administration", "confidence": 0.029768128860246372 },
+      { "name": "Quality assurance", "confidence": 0.02942636502725606 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.026828391302366184
+      },
+      { "name": "Project management", "confidence": 0.026463149858088293 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9185749349098654 },
+      { "name": "Network Protocols", "confidence": 0.048445549967021946 },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.010033446759228732
+      }
+    ]
+  },
+  {
+    "place": 65,
+    "name": "\u0412\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Attention",
+    "count": 7,
+    "prev_count": 8,
+    "prev_place": 51,
+    "average_salary": 72500.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.6032493731673438 },
+      { "name": "HR Management", "confidence": 0.07172335933489009 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.037304701839142584 },
+      { "name": "Analytics", "confidence": 0.032619661995547666 },
+      { "name": "1C Development", "confidence": 0.027248306294544982 },
+      { "name": "Mobile", "confidence": 0.026403516247237895 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.990189331077191 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.003224019916628289
+      },
+      { "name": "Cloud platforms", "confidence": 0.001746731313985048 }
+    ]
+  },
+  {
+    "place": 66,
+    "name": "\u0421#",
+    "translation": "C#",
+    "count": 6,
+    "prev_count": 4,
+    "prev_place": 85,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.3070362795184364 },
+      { "name": "Quality assurance", "confidence": 0.13426739942163765 },
+      { "name": "Frontend", "confidence": 0.07129719272816691 },
+      { "name": "Systems programming", "confidence": 0.06347900659309255 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.055334129330605476
+      },
+      { "name": "Mobile", "confidence": 0.055157380920806895 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.05299964796263068 },
+      { "name": "Analytics", "confidence": 0.03565814860078802 },
+      { "name": "Project management", "confidence": 0.033941743433171856 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.03133450266527119
+      }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.8801078967531798 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.07621082484547387
+      },
+      { "name": "Operating systems", "confidence": 0.013145781344909518 }
+    ]
+  },
+  {
+    "place": 67,
+    "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u043d\u044b\u0435 \u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u044b",
+    "translation": "Telephone",
+    "count": 6,
+    "prev_count": 18,
+    "prev_place": 26,
+    "average_salary": 67500.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.3356312498346246 },
+      { "name": "Other", "confidence": 0.16564088652835562 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.09440156870411442 },
+      { "name": "Blockchain", "confidence": 0.0634006226459226 },
+      { "name": "System Administration", "confidence": 0.046907763145550056 },
+      { "name": "1C Development", "confidence": 0.04259140998821395 },
+      { "name": "Project management", "confidence": 0.027725066011231134 },
+      { "name": "Analytics", "confidence": 0.02763453046594774 },
+      { "name": "Mobile", "confidence": 0.02515591451255697 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9283150147092363 },
+      { "name": "Network Protocols", "confidence": 0.03045866203036888 },
+      { "name": "Languages", "confidence": 0.014188122836482927 }
+    ]
+  },
+  {
+    "place": 68,
+    "name": "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f",
+    "translation": "Business Communication",
+    "count": 6,
+    "prev_count": 12,
+    "prev_place": 36,
+    "average_salary": 42625.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.4441396535210812 },
+      { "name": "Project management", "confidence": 0.15123455894527923 },
+      { "name": "Other", "confidence": 0.10086062043162254 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05402421734565452 },
+      { "name": "Analytics", "confidence": 0.05069999703190938 },
+      { "name": "Blockchain", "confidence": 0.047773774366901056 },
+      { "name": "1C Development", "confidence": 0.02563939445751251 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.951591817192494 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.0201389157739954
+      },
+      {
+        "name": "Blockchain platforms & tools",
+        "confidence": 0.005526331953098635
+      }
+    ]
+  },
+  {
+    "place": 69,
+    "name": "Google Docs",
+    "translation": null,
+    "count": 6,
+    "prev_count": 9,
+    "prev_place": 45,
+    "average_salary": 52625.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.3519985445152596 },
+      { "name": "HR Management", "confidence": 0.13626496771473495 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.09973011935443625 },
+      { "name": "1C Development", "confidence": 0.07485564777093387 },
+      { "name": "Project management", "confidence": 0.06530905205231248 },
+      { "name": "Other", "confidence": 0.04486105803795803 },
+      { "name": "Website administration", "confidence": 0.03500790752903121 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.42444941856702995 },
+      { "name": "CMS", "confidence": 0.16480300142565346 },
+      { "name": "Operating systems", "confidence": 0.1117385254732711 },
+      { "name": "Databases", "confidence": 0.07242164845750923 },
+      { "name": "Project Management Tools", "confidence": 0.06735603481777151 }
+    ]
+  },
+  {
+    "place": 70,
+    "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 Linux",
+    "translation": "Linux server administration",
+    "count": 6,
+    "prev_count": 8,
+    "prev_place": 46,
+    "average_salary": 20703807.556080285,
+    "image": null,
+    "categories": [
+      { "name": "System Administration", "confidence": 0.5257114693793267 },
+      { "name": "Network administration", "confidence": 0.1601561426155449 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.13790381872787663 },
+      { "name": "Information security", "confidence": 0.04193941724518759 }
+    ],
+    "technologies": [
+      { "name": "Operating systems", "confidence": 0.6302445752771376 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.277829785608573
+      },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.03501589384371402
+      }
+    ]
+  },
+  {
+    "place": 71,
+    "name": "\u041d\u0435\u043c\u0435\u0446\u043a\u0438\u0439 \u044f\u0437\u044b\u043a",
+    "translation": "German",
+    "count": 6,
+    "prev_count": 4,
+    "prev_place": 81,
+    "average_salary": null,
+    "image": null,
+    "categories": [
+      { "name": "Blockchain", "confidence": 0.1713444584526685 },
+      { "name": "Project management", "confidence": 0.16076901794533005 },
+      { "name": "Analytics", "confidence": 0.10906747507769825 },
+      { "name": "Backend", "confidence": 0.07929266556620693 },
+      { "name": "Mobile", "confidence": 0.07552578878269325 },
+      { "name": "Quality assurance", "confidence": 0.06688382137318619 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05895397357081596 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03624620018741819
+      },
+      { "name": "Other", "confidence": 0.031264839364954125 },
+      { "name": "Design", "confidence": 0.030859861628855196 },
+      { "name": "HR Management", "confidence": 0.02811728283887434 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9838675804448626 },
+      { "name": "Languages", "confidence": 0.0029347463689314486 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.002119106083092805
+      }
+    ]
+  },
+  {
+    "place": 72,
+    "name": "\u0412\u0435\u0431-\u0434\u0438\u0437\u0430\u0439\u043d",
+    "translation": "Web Design",
+    "count": 6,
+    "prev_count": 3,
+    "prev_place": 88,
+    "average_salary": 51000.0,
+    "image": null,
+    "categories": [
+      { "name": "Design", "confidence": 0.6590572087194051 },
+      { "name": "Frontend", "confidence": 0.06986732839268588 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.06308454502645809
+      },
+      { "name": "Website administration", "confidence": 0.0369485446866935 },
+      { "name": "Mobile", "confidence": 0.027618140390284495 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.4014211911182546 },
+      { "name": "Graphic design", "confidence": 0.3633844581785497 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.04974026259894178
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.038607680023857366
+      }
+    ]
+  },
+  {
+    "place": 73,
+    "name": "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0439",
+    "translation": "Preparation of Presentations",
+    "count": 6,
+    "prev_count": 3,
+    "prev_place": 90,
+    "average_salary": 72500.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.18411836050992803 },
+      { "name": "Design", "confidence": 0.16030300043735043 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.1334370116671528 },
+      { "name": "Analytics", "confidence": 0.09273331325467508 },
+      { "name": "Project management", "confidence": 0.07077767182655502 },
+      { "name": "Other", "confidence": 0.05084091046759685 },
+      { "name": "Blockchain", "confidence": 0.04529129015449795 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.04256265346658798
+      },
+      { "name": "System Administration", "confidence": 0.03326280503105647 },
+      { "name": "1C Development", "confidence": 0.03219935848201181 },
+      { "name": "Frontend", "confidence": 0.026605452501433584 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8905185923088714 },
+      { "name": "Graphic design", "confidence": 0.0910805815060968 },
+      { "name": "Project Management Tools", "confidence": 0.005501089149172406 }
+    ]
+  },
+  {
+    "place": 74,
+    "name": "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437",
+    "translation": "System Analysis",
+    "count": 6,
+    "prev_count": 3,
+    "prev_place": 91,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.6237826747232992 },
+      { "name": "Project management", "confidence": 0.1446283601160462 },
+      { "name": "Backend", "confidence": 0.04680720466261191 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.6660458646819237
+      },
+      { "name": "Soft skills", "confidence": 0.08335826781350242 },
+      { "name": "Languages", "confidence": 0.060294107686494285 },
+      { "name": "Game engines", "confidence": 0.0442345665334432 }
+    ]
+  },
+  {
+    "place": 75,
+    "name": "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0435\u0442\u044c\u043c\u0438",
+    "translation": "Child Work",
+    "count": 6,
+    "prev_count": 2,
+    "prev_place": 97,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.32257399556080013
+      },
+      { "name": "HR Management", "confidence": 0.10107832375694982 },
+      { "name": "Other", "confidence": 0.09617713770829707 },
+      { "name": "Design", "confidence": 0.041461610481126634 },
+      { "name": "Mobile", "confidence": 0.038787455417371414 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.03810595775977739 },
+      { "name": "1C Development", "confidence": 0.034555362923813095 },
+      { "name": "Systems programming", "confidence": 0.03258838699374821 },
+      { "name": "Analytics", "confidence": 0.0322122092530627 },
+      { "name": "Frontend", "confidence": 0.03178389049928066 },
+      { "name": "Blockchain", "confidence": 0.03177939847210647 },
+      { "name": "Backend", "confidence": 0.027366934868525206 },
+      { "name": "System Administration", "confidence": 0.025719749202448572 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9356124616714112 },
+      { "name": "Languages", "confidence": 0.01686939395518609 },
+      {
+        "name": "Blockchain platforms & tools",
+        "confidence": 0.014712965017908792
+      }
+    ]
+  },
+  {
+    "place": 76,
+    "name": "Adobe After Effect",
+    "translation": null,
+    "count": 6,
+    "prev_count": 1,
+    "prev_place": 104,
+    "average_salary": 35000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.4463640874506622
+      },
+      { "name": "Design", "confidence": 0.32866056159481627 },
+      { "name": "Frontend", "confidence": 0.047258448456508506 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9750072253072606 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.009557821870629505
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.005176620580355427
+      }
+    ]
+  },
+  {
+    "place": 77,
+    "name": "SEO \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f",
+    "translation": "SEO Optimization",
+    "count": 6,
+    "prev_count": 1,
+    "prev_place": 106,
+    "average_salary": 55000.0,
+    "image": null,
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.4681460050386067 },
+      { "name": "Website administration", "confidence": 0.14831477211575977 },
+      { "name": "HR Management", "confidence": 0.13257842506897394 },
+      { "name": "Analytics", "confidence": 0.060957038431865854 },
+      { "name": "Frontend", "confidence": 0.025039908347325533 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.6164201592942273 },
+      {
+        "name": "Search & Indexing engines",
+        "confidence": 0.24421733414132057
+      },
+      { "name": "Soft skills", "confidence": 0.06339808785340761 },
+      { "name": "Network Protocols", "confidence": 0.04929439857672876 }
+    ]
+  },
+  {
+    "place": 78,
+    "name": "\u041f\u0440\u044f\u043c\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438",
+    "translation": "Direct Sales",
+    "count": 6,
+    "prev_count": 1,
+    "prev_place": 107,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.37066861504013215 },
+      { "name": "Other", "confidence": 0.13771412073582623 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.12060107599655352 },
+      { "name": "Blockchain", "confidence": 0.055927394093058864 },
+      { "name": "System Administration", "confidence": 0.04243823652093341 },
+      { "name": "1C Development", "confidence": 0.035680902557834335 },
+      { "name": "Project management", "confidence": 0.030701131156160397 },
+      { "name": "Analytics", "confidence": 0.027333659161935815 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8548715004414482 },
+      { "name": "Graphic design", "confidence": 0.037244093744351024 },
+      { "name": "Databases", "confidence": 0.03392693905691269 }
+    ]
+  },
+  {
+    "place": 79,
+    "name": "ChatGPT",
+    "translation": null,
+    "count": 6,
+    "prev_count": 1,
+    "prev_place": 109,
+    "average_salary": 58750.0,
+    "image": "e24e47087cd28218.webp",
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.15300378226399908 },
+      { "name": "HR Management", "confidence": 0.13116072596586528 },
+      { "name": "Analytics", "confidence": 0.09785246603053835 },
+      { "name": "Blockchain", "confidence": 0.07117728983306429 },
+      { "name": "Design", "confidence": 0.06609492068078035 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.05166469505423671
+      },
+      { "name": "System Administration", "confidence": 0.04001748169937076 },
+      { "name": "Backend", "confidence": 0.039008034948270445 },
+      { "name": "Mobile", "confidence": 0.038703078459357824 },
+      { "name": "Website administration", "confidence": 0.036545550802985965 },
+      { "name": "Project management", "confidence": 0.03559771739662523 },
+      { "name": "1C Development", "confidence": 0.03455646254587048 },
+      { "name": "Other", "confidence": 0.034278100374911774 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.03426709496245008
+      },
+      { "name": "Frontend", "confidence": 0.032229061990785325 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8696626083135195 },
+      { "name": "Operating systems", "confidence": 0.03928809582607411 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.0337763068143354
+      }
+    ]
+  },
+  {
+    "place": 80,
+    "name": "\u0412\u044b\u043a\u043b\u0430\u0434\u043a\u0430 \u0442\u043e\u0432\u0430\u0440\u0430",
+    "translation": "Product Set",
+    "count": 6,
+    "prev_count": 0,
+    "prev_place": 111,
+    "average_salary": 47000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.48497522008723437 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06063970211739519 },
+      { "name": "1C Development", "confidence": 0.04787041086786723 },
+      { "name": "System Administration", "confidence": 0.038264653368379024 },
+      { "name": "Mobile", "confidence": 0.038064163634091215 },
+      { "name": "HR Management", "confidence": 0.03620417364665451 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03350179017731289
+      },
+      { "name": "Analytics", "confidence": 0.0264958344276921 },
+      { "name": "Information security", "confidence": 0.025382638903775418 },
+      { "name": "Design", "confidence": 0.025344904538851014 }
+    ],
+    "technologies": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.5773197620763986
+      },
+      { "name": "Soft skills", "confidence": 0.34379327130393267 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.027396845650202204
+      }
+    ]
+  },
+  {
+    "place": 81,
+    "name": "Roblox",
+    "translation": null,
+    "count": 6,
+    "prev_count": 0,
+    "prev_place": 113,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.5768062408400747
+      },
+      { "name": "Design", "confidence": 0.04220881465808476 },
+      { "name": "Mobile", "confidence": 0.03530071610063701 },
+      { "name": "Other", "confidence": 0.03023849604841521 },
+      { "name": "Systems programming", "confidence": 0.02869352948284058 },
+      { "name": "HR Management", "confidence": 0.02776837974497137 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.027314466398317198
+      }
+    ],
+    "technologies": [
+      { "name": "Game engines", "confidence": 0.7742061373477723 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.05877234959356603
+      },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.03532147982618798
+      }
+    ]
+  },
+  {
+    "place": 82,
+    "name": "\u041f\u043e\u0438\u0441\u043a \u0438 \u043f\u0440\u0438\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432",
+    "translation": "Customer Search and Engagement",
+    "count": 5,
+    "prev_count": 4,
+    "prev_place": 82,
+    "average_salary": 120000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.40504301012777694 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.14927746542064999 },
+      { "name": "Blockchain", "confidence": 0.0716836307229147 },
+      { "name": "Other", "confidence": 0.06826974085986645 },
+      { "name": "System Administration", "confidence": 0.03727535085052802 },
+      { "name": "1C Development", "confidence": 0.03272416721451799 },
+      { "name": "Analytics", "confidence": 0.028366350599475 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.6410866020080052 },
+      {
+        "name": "Search & Indexing engines",
+        "confidence": 0.29270131202403943
+      },
+      { "name": "CMS", "confidence": 0.050690731412763014 }
+    ]
+  },
+  {
+    "place": 83,
+    "name": "CRM",
+    "translation": null,
+    "count": 5,
+    "prev_count": 6,
+    "prev_place": 61,
+    "average_salary": 40000.0,
+    "image": null,
+    "categories": [
+      { "name": "Website administration", "confidence": 0.17115884289052072 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.15627811549642948 },
+      { "name": "Analytics", "confidence": 0.12888677008918092 },
+      { "name": "HR Management", "confidence": 0.10481638513219432 },
+      { "name": "Project management", "confidence": 0.068627702135591 },
+      { "name": "Other", "confidence": 0.05152606793918951 },
+      { "name": "1C Development", "confidence": 0.05043122347767536 },
+      { "name": "Blockchain", "confidence": 0.046683283974314906 },
+      { "name": "System Administration", "confidence": 0.03229995406532384 },
+      { "name": "Backend", "confidence": 0.02782446421960123 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.6619219229788162 },
+      { "name": "Soft skills", "confidence": 0.21510473917762576 },
+      { "name": "Databases", "confidence": 0.024205556448567 }
+    ]
+  },
+  {
+    "place": 84,
+    "name": "\u041c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442",
+    "translation": "Management",
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 57,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.44022194017414173 },
+      { "name": "Project management", "confidence": 0.11384948028202709 },
+      { "name": "1C Development", "confidence": 0.10013030305683115 },
+      { "name": "Quality assurance", "confidence": 0.0730238885185569 },
+      { "name": "HR Management", "confidence": 0.04459326755148854 },
+      { "name": "Other", "confidence": 0.03810882094840909 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.4735069092349367
+      },
+      { "name": "Soft skills", "confidence": 0.38065615902057076 },
+      { "name": "Databases", "confidence": 0.021513014489633834 }
+    ]
+  },
+  {
+    "place": 85,
+    "name": "Kotlin",
+    "translation": null,
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 56,
+    "average_salary": 75000.0,
+    "image": "7a22567f0288ed84.webp",
+    "categories": [
+      { "name": "Mobile", "confidence": 0.5834266973353024 },
+      { "name": "Quality assurance", "confidence": 0.12733138140188785 },
+      { "name": "Backend", "confidence": 0.12675725674095195 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.028359028517783713 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.9092309493830847 },
+      { "name": "Operating systems", "confidence": 0.039778518899853024 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.01488061185555027
+      }
+    ]
+  },
+  {
+    "place": 86,
+    "name": "3D \u041c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+    "translation": "3D Modelling",
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 55,
+    "average_salary": 45000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.7461194890036104
+      },
+      { "name": "Design", "confidence": 0.04800310705393795 },
+      { "name": "Systems programming", "confidence": 0.02442941220051911 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9262032905744108 },
+      { "name": "Game engines", "confidence": 0.057109010501675134 },
+      { "name": "Soft skills", "confidence": 0.00430638046586213 }
+    ]
+  },
+  {
+    "place": 87,
+    "name": "\u041a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0431\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Communication",
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 54,
+    "average_salary": 65000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.2594445171694016 },
+      { "name": "HR Management", "confidence": 0.12422830521344524 },
+      { "name": "1C Development", "confidence": 0.08992612070197882 },
+      { "name": "Analytics", "confidence": 0.08330566099360812 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06886571234345944 },
+      { "name": "Project management", "confidence": 0.05694231650096514 },
+      { "name": "Blockchain", "confidence": 0.046835442176768556 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03234685379421546
+      },
+      { "name": "Frontend", "confidence": 0.025936611627992552 },
+      { "name": "Mobile", "confidence": 0.025431898400933062 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9459847886034929 },
+      { "name": "Network Protocols", "confidence": 0.03512438914374646 },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.00475729468260849
+      }
+    ]
+  },
+  {
+    "place": 88,
+    "name": "Spring Framework",
+    "translation": null,
+    "count": 5,
+    "prev_count": 10,
+    "prev_place": 38,
+    "average_salary": 75000.0,
+    "image": "d8e77ac87fff2296.webp",
+    "categories": [
+      { "name": "Backend", "confidence": 0.44914869917138206 },
+      { "name": "Quality assurance", "confidence": 0.20458287715736242 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.1158751839382619 },
+      { "name": "Mobile", "confidence": 0.03821322850451961 }
+    ],
+    "technologies": [
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.9772177671652694
+      },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.004390645555672256
+      },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.003522691280188447
+      }
+    ]
+  },
+  {
+    "place": 89,
+    "name": "\u041f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0439",
+    "translation": "Presentations",
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 53,
+    "average_salary": 45000.0,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.33741961473465487 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.1093521476920815 },
+      { "name": "Other", "confidence": 0.09114645079812944 },
+      { "name": "Blockchain", "confidence": 0.06928317232873688 },
+      { "name": "Project management", "confidence": 0.06482814619933247 },
+      { "name": "System Administration", "confidence": 0.06040575873201804 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03354981082675934
+      },
+      { "name": "1C Development", "confidence": 0.03126907415844469 },
+      { "name": "Analytics", "confidence": 0.030665362786936334 },
+      { "name": "Design", "confidence": 0.027057868603314737 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.7707819444744919 },
+      { "name": "Graphic design", "confidence": 0.21137346162881782 },
+      { "name": "CMS", "confidence": 0.004977468029019623 }
+    ]
+  },
+  {
+    "place": 90,
+    "name": "Adobe Premier Pro",
+    "translation": null,
+    "count": 5,
+    "prev_count": 1,
+    "prev_place": 105,
+    "average_salary": 40000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.5693539892731316
+      },
+      { "name": "Design", "confidence": 0.12404707563059189 },
+      { "name": "Frontend", "confidence": 0.05368501750629617 },
+      { "name": "Website administration", "confidence": 0.03893636945273701 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.9154245426143295 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.059950637383993005
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.00906367465208422
+      }
+    ]
+  },
+  {
+    "place": 91,
+    "name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430",
+    "translation": "Technical Support",
+    "count": 5,
+    "prev_count": 20,
+    "prev_place": 23,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "System Administration", "confidence": 0.545551272098249 },
+      { "name": "Other", "confidence": 0.07358498631789362 },
+      { "name": "Network administration", "confidence": 0.06809239084690687 },
+      { "name": "1C Development", "confidence": 0.05137738326673191 },
+      { "name": "HR Management", "confidence": 0.033593154155112916 },
+      { "name": "Project management", "confidence": 0.03210142198810349 },
+      { "name": "Analytics", "confidence": 0.028132706437309793 },
+      { "name": "Information security", "confidence": 0.026001460394279727 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.4307147344354628
+      },
+      { "name": "Soft skills", "confidence": 0.34647094787784005 },
+      { "name": "Operating systems", "confidence": 0.0748356160484788 }
+    ]
+  },
+  {
+    "place": 92,
+    "name": "UI",
+    "translation": null,
+    "count": 5,
+    "prev_count": 3,
+    "prev_place": 92,
+    "average_salary": 62500.0,
+    "image": null,
+    "categories": [
+      { "name": "Design", "confidence": 0.6290045572626668 },
+      { "name": "Mobile", "confidence": 0.07637554789033216 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.07102640137997579
+      },
+      { "name": "Frontend", "confidence": 0.028411233255028746 },
+      { "name": "Blockchain", "confidence": 0.026353816475241973 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.426700254103817 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.1811540999007584
+      },
+      { "name": "Operating systems", "confidence": 0.10819770352219504 },
+      { "name": "Game engines", "confidence": 0.05570189513110352 },
+      { "name": "CMS", "confidence": 0.054175989989168234 }
+    ]
+  },
+  {
+    "place": 93,
+    "name": "\u0414\u0438\u0437\u0430\u0439\u043d",
+    "translation": "Design",
+    "count": 5,
+    "prev_count": 2,
+    "prev_place": 93,
+    "average_salary": 40125.0,
+    "image": null,
+    "categories": [
+      { "name": "Design", "confidence": 0.599319069369393 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.14973785538718937
+      },
+      { "name": "Frontend", "confidence": 0.04017381941738801 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.03669854504933384 }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.4927106460609589 },
+      { "name": "Soft skills", "confidence": 0.4533601342025092 },
+      { "name": "CMS", "confidence": 0.015671617203941543 }
+    ]
+  },
+  {
+    "place": 94,
+    "name": "User Story",
+    "translation": null,
+    "count": 5,
+    "prev_count": 8,
+    "prev_place": 49,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.6232005633732245 },
+      { "name": "Project management", "confidence": 0.16708657247520387 },
+      { "name": "1C Development", "confidence": 0.031285970263488394 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.7223864510470102 },
+      { "name": "Project Management Tools", "confidence": 0.20401164864272475 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.01731802445851491
+      }
+    ]
+  },
+  {
+    "place": 95,
+    "name": "Unit Testing",
+    "translation": null,
+    "count": 5,
+    "prev_count": 8,
+    "prev_place": 48,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Backend", "confidence": 0.32580601635984735 },
+      { "name": "Quality assurance", "confidence": 0.31657126422088655 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.09254632544953287 },
+      { "name": "Mobile", "confidence": 0.05672619245673811 },
+      { "name": "Frontend", "confidence": 0.04280360624892071 }
+    ],
+    "technologies": [
+      { "name": "Game engines", "confidence": 0.396136871603347 },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.1391911572536216
+      },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.11496696696259794
+      },
+      { "name": "Testing Tools", "confidence": 0.10088399743886313 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.06995844756628462
+      },
+      { "name": "Languages", "confidence": 0.05176958252188905 }
+    ]
+  },
+  {
+    "place": 96,
+    "name": "\u0414\u0435\u0442\u0441\u043a\u0430\u044f \u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433\u0438\u044f",
+    "translation": "Child Psychology",
+    "count": 5,
+    "prev_count": 2,
+    "prev_place": 96,
+    "average_salary": 80000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.2573248752798211
+      },
+      { "name": "Other", "confidence": 0.159260158125713 },
+      { "name": "HR Management", "confidence": 0.14206941295513245 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.04421099087338432 },
+      { "name": "Blockchain", "confidence": 0.035654401996438656 },
+      { "name": "Design", "confidence": 0.03401595893271132 },
+      { "name": "Analytics", "confidence": 0.03324314126658875 },
+      { "name": "1C Development", "confidence": 0.032000165706306545 },
+      { "name": "Systems programming", "confidence": 0.03088119920690278 },
+      { "name": "Mobile", "confidence": 0.027719308397566943 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.026084004494766
+      },
+      { "name": "Project management", "confidence": 0.02594192234736498 },
+      { "name": "System Administration", "confidence": 0.025450678749186797 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9655880029114248 },
+      { "name": "Game engines", "confidence": 0.009326073232249432 },
+      { "name": "Languages", "confidence": 0.005751025725678913 }
+    ]
+  },
+  {
+    "place": 97,
+    "name": "Business Analysis",
+    "translation": null,
+    "count": 5,
+    "prev_count": 12,
+    "prev_place": 37,
+    "average_salary": null,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.41839400373628916 },
+      { "name": "Project management", "confidence": 0.27411188530114156 },
+      { "name": "Blockchain", "confidence": 0.0494739056613997 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.029117115756996534 },
+      { "name": "Design", "confidence": 0.025305664818150473 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.5538086828379101 },
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.268087941870796
+      },
+      { "name": "Project Management Tools", "confidence": 0.03365162975825805 }
+    ]
+  },
+  {
+    "place": 98,
+    "name": "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439",
+    "translation": "Development of Tasks",
+    "count": 5,
+    "prev_count": 8,
+    "prev_place": 47,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Analytics", "confidence": 0.48998457657970507 },
+      { "name": "Project management", "confidence": 0.1761451884073012 },
+      { "name": "1C Development", "confidence": 0.10546080560991349 },
+      { "name": "Other", "confidence": 0.03273866935585459 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8959050576465415 },
+      {
+        "name": "Project Management Tools",
+        "confidence": 0.047422516188477336
+      },
+      { "name": "Game engines", "confidence": 0.01176527311332575 }
+    ]
+  },
+  {
+    "place": 99,
+    "name": "\u0420\u043e\u0431\u043e\u0442\u043e\u0442\u0435\u0445\u043d\u0438\u043a\u0430",
+    "translation": "Robotics",
+    "count": 5,
+    "prev_count": 2,
+    "prev_place": 99,
+    "average_salary": 52000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.6403604267099152
+      },
+      { "name": "Systems programming", "confidence": 0.05930011092402546 },
+      { "name": "Design", "confidence": 0.025923083596489586 },
+      { "name": "Frontend", "confidence": 0.02535487345237042 },
+      { "name": "Other", "confidence": 0.025182008235082733 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.6058755080897995 },
+      { "name": "Game engines", "confidence": 0.23271873427118794 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.02953593725940851
+      }
+    ]
+  },
+  {
+    "place": 100,
+    "name": "\u0412\u0435\u0440\u0441\u0442\u043a\u0430 \u0441\u0430\u0439\u0442\u043e\u0432",
+    "translation": "Web Stick",
+    "count": 5,
+    "prev_count": 2,
+    "prev_place": 100,
+    "average_salary": 93750.0,
+    "image": null,
+    "categories": [
+      { "name": "Website administration", "confidence": 0.5166134886739024 },
+      { "name": "Frontend", "confidence": 0.2374812627607589 },
+      { "name": "Design", "confidence": 0.0874742045293791 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.0266801481313594 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.026249059481024874
+      }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.5470822062809672 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.20417993397505746
+      },
+      { "name": "Web Servers", "confidence": 0.17754024013846356 }
+    ]
+  },
+  {
+    "place": 101,
+    "name": "Kubernetes",
+    "translation": null,
+    "count": 5,
+    "prev_count": 9,
+    "prev_place": 43,
+    "average_salary": 75000.0,
+    "image": "71c49b0636077b12.webp",
+    "categories": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.6239076709813635 },
+      { "name": "Backend", "confidence": 0.15193492051323176 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.0572412966314616
+      },
+      { "name": "Information security", "confidence": 0.030994438517922846 }
+    ],
+    "technologies": [
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.9559490324452019
+      },
+      { "name": "Monitoring", "confidence": 0.014508428615502878 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.01116887174298371
+      }
+    ]
+  },
+  {
+    "place": 102,
+    "name": "\u041b\u0438\u043d\u0435\u0439\u043d\u043e\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+    "translation": "Liner Programming",
+    "count": 5,
+    "prev_count": 1,
+    "prev_place": 102,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.447680705664985
+      },
+      { "name": "Website administration", "confidence": 0.09455172737876545 },
+      { "name": "Frontend", "confidence": 0.07116910938363996 },
+      { "name": "Systems programming", "confidence": 0.04279256526850896 },
+      { "name": "Other", "confidence": 0.030649193714943606 },
+      { "name": "Backend", "confidence": 0.03031622581771719 },
+      { "name": "1C Development", "confidence": 0.028687566757093552 },
+      { "name": "Quality assurance", "confidence": 0.026270645518167206 },
+      { "name": "Mobile", "confidence": 0.02585436215519653 },
+      { "name": "Design", "confidence": 0.025366466128269406 }
+    ],
+    "technologies": [
+      { "name": "Languages", "confidence": 0.9328349420821027 },
+      { "name": "Soft skills", "confidence": 0.024861284379098337 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.016258264747159145
+      }
+    ]
+  },
+  {
+    "place": 103,
+    "name": "CSS3",
+    "translation": null,
+    "count": 5,
+    "prev_count": 5,
+    "prev_place": 71,
+    "average_salary": 48500.0,
+    "image": "9a6f0345215145c6.webp",
+    "categories": [
+      { "name": "Frontend", "confidence": 0.6482271427205756 },
+      { "name": "Website administration", "confidence": 0.14295080754158554 },
+      { "name": "Backend", "confidence": 0.03797325381888115 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.028781034494738324
+      },
+      { "name": "Mobile", "confidence": 0.027374080483833184 }
+    ],
+    "technologies": [
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.8856010495561989
+      },
+      { "name": "Languages", "confidence": 0.05510389177062649 },
+      { "name": "CMS", "confidence": 0.04701002749260496 }
+    ]
+  },
+  {
+    "place": 104,
+    "name": "\u041a\u043e\u043f\u0438\u0440\u0430\u0439\u0442\u0438\u043d\u0433",
+    "translation": "Copymaking",
+    "count": 5,
+    "prev_count": 5,
+    "prev_place": 72,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.5101122547384457 },
+      { "name": "Design", "confidence": 0.10616424205991565 },
+      { "name": "HR Management", "confidence": 0.0858948327957534 },
+      { "name": "Website administration", "confidence": 0.03668115261968766 },
+      { "name": "Analytics", "confidence": 0.03117749846332614 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.02816237215257999
+      }
+    ],
+    "technologies": [
+      { "name": "Graphic design", "confidence": 0.5268088601371386 },
+      { "name": "Soft skills", "confidence": 0.3580450383792737 },
+      { "name": "CMS", "confidence": 0.04286272972212556 }
+    ]
+  },
+  {
+    "place": 105,
+    "name": "React",
+    "translation": null,
+    "count": 5,
+    "prev_count": 5,
+    "prev_place": 69,
+    "average_salary": 57500.0,
+    "image": "32c9a5b920252c62.webp",
+    "categories": [
+      { "name": "Frontend", "confidence": 0.7091811306208634 },
+      { "name": "Backend", "confidence": 0.10654043954634528 },
+      { "name": "Mobile", "confidence": 0.029574654786724924 }
+    ],
+    "technologies": [
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.9776893926553228
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.0038994529558959174
+      },
+      {
+        "name": "Mobile Libraries and Frameworks",
+        "confidence": 0.0027020804227856398
+      }
+    ]
+  },
+  {
+    "place": 106,
+    "name": "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u0443\u0441\u0442\u043d\u0430\u044f \u0440\u0435\u0447\u044c",
+    "translation": "Literacy oral speech",
+    "count": 5,
+    "prev_count": 4,
+    "prev_place": 74,
+    "average_salary": 66500.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.3814838811932445 },
+      { "name": "HR Management", "confidence": 0.20972403370151474 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06358360313380877 },
+      { "name": "1C Development", "confidence": 0.04994352166222587 },
+      { "name": "Blockchain", "confidence": 0.03749929770194857 },
+      { "name": "System Administration", "confidence": 0.034642482740387386 },
+      { "name": "Analytics", "confidence": 0.031734336996501335 },
+      { "name": "Project management", "confidence": 0.025986259558036354 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9922478806322 },
+      { "name": "Languages", "confidence": 0.004543128183432052 },
+      { "name": "Testing Tools", "confidence": 0.0005293772512603597 }
+    ]
+  },
+  {
+    "place": 107,
+    "name": "\u041d\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u043e\u043c",
+    "translation": "Content Filling",
+    "count": 5,
+    "prev_count": 5,
+    "prev_place": 68,
+    "average_salary": 66250.0,
+    "image": null,
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.3644065135764637 },
+      { "name": "Website administration", "confidence": 0.16687981267215377 },
+      { "name": "Design", "confidence": 0.0971038111916766 },
+      { "name": "HR Management", "confidence": 0.09023547858184972 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.03793203309967556
+      },
+      { "name": "Frontend", "confidence": 0.0378838685943865 },
+      { "name": "Analytics", "confidence": 0.030380635956062885 }
+    ],
+    "technologies": [
+      { "name": "CMS", "confidence": 0.7694330610878797 },
+      { "name": "Graphic design", "confidence": 0.20885920215987494 },
+      { "name": "Soft skills", "confidence": 0.008430651316077816 }
+    ]
+  },
+  {
+    "place": 108,
+    "name": "\u0413\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435",
+    "translation": "Group Training",
+    "count": 5,
+    "prev_count": 5,
+    "prev_place": 66,
+    "average_salary": 50000.0,
+    "image": null,
+    "categories": [
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.26386301603311313
+      },
+      { "name": "HR Management", "confidence": 0.17985716397975007 },
+      { "name": "Other", "confidence": 0.0784427083593112 },
+      { "name": "Blockchain", "confidence": 0.03778294361053674 },
+      { "name": "Frontend", "confidence": 0.03637682001734912 },
+      { "name": "Mobile", "confidence": 0.03511694959590361 },
+      { "name": "Systems programming", "confidence": 0.03368937385419646 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.0336124349981427 },
+      { "name": "Project management", "confidence": 0.030620333856362564 },
+      { "name": "1C Development", "confidence": 0.029173340957162917 },
+      { "name": "Analytics", "confidence": 0.02883389744074516 },
+      { "name": "Quality assurance", "confidence": 0.028647571495252128 },
+      { "name": "Backend", "confidence": 0.028098032329661418 },
+      { "name": "Design", "confidence": 0.02629717286549499 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.02594884938081142
+      }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.9805115217384073 },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.0046158235035190015
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.002314713428873403
+      }
+    ]
+  },
+  {
+    "place": 109,
+    "name": "Scrum",
+    "translation": null,
+    "count": 5,
+    "prev_count": 6,
+    "prev_place": 65,
+    "average_salary": null,
+    "image": null,
+    "categories": [
+      { "name": "Project management", "confidence": 0.7103909703345913 },
+      { "name": "Analytics", "confidence": 0.06635238610917926 },
+      { "name": "Quality assurance", "confidence": 0.036443197549367055 },
+      { "name": "Backend", "confidence": 0.029814767849579264 },
+      { "name": "Mobile", "confidence": 0.025396831168823283 }
+    ],
+    "technologies": [
+      { "name": "Project Management Tools", "confidence": 0.4602178004976581 },
+      { "name": "Soft skills", "confidence": 0.27427036892709544 },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.16533372035846142
+      },
+      { "name": "Cloud platforms", "confidence": 0.05901923818503884 }
+    ]
+  },
+  {
+    "place": 110,
+    "name": "SVN",
+    "translation": null,
+    "count": 5,
+    "prev_count": 6,
+    "prev_place": 64,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Quality assurance", "confidence": 0.2686283391452395 },
+      { "name": "Backend", "confidence": 0.23576389081414975 },
+      { "name": "Systems programming", "confidence": 0.10597620365234489 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.08039483882057834 },
+      { "name": "Mobile", "confidence": 0.05893427393860252 },
+      { "name": "Frontend", "confidence": 0.031555177697516174 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.026887761830439245
+      }
+    ],
+    "technologies": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.9193386074886168
+      },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.0437576970348788
+      },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.014764898559880838
+      }
+    ]
+  },
+  {
+    "place": 111,
+    "name": "\u0412\u0435\u0431-\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430",
+    "translation": "Web Analyst",
+    "count": 5,
+    "prev_count": 4,
+    "prev_place": 79,
+    "average_salary": 75000.0,
+    "image": null,
+    "categories": [
+      { "name": "Digital Marketing & SEO", "confidence": 0.3742543033869631 },
+      { "name": "Analytics", "confidence": 0.2952763300317679 },
+      { "name": "Website administration", "confidence": 0.07085955229972107 },
+      { "name": "HR Management", "confidence": 0.051005244436202656 },
+      { "name": "Project management", "confidence": 0.03959916959030926 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.29081048523021835
+      },
+      { "name": "Databases", "confidence": 0.1451336774356637 },
+      { "name": "Languages", "confidence": 0.11065925888039396 },
+      { "name": "CMS", "confidence": 0.07619429205753193 },
+      { "name": "Project Management Tools", "confidence": 0.07262212892586566 },
+      { "name": "Graphic design", "confidence": 0.0559480531473198 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.039493122980057145
+      }
+    ]
+  },
+  {
+    "place": 112,
+    "name": "\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
+    "translation": "Executive",
+    "count": 5,
+    "prev_count": 6,
+    "prev_place": 62,
+    "average_salary": 70000.0,
+    "image": null,
+    "categories": [
+      { "name": "Other", "confidence": 0.6370014841055779 },
+      { "name": "HR Management", "confidence": 0.06020142808122263 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.05299765822632143 },
+      { "name": "Project management", "confidence": 0.0363347387915869 },
+      { "name": "Analytics", "confidence": 0.025773123558654135 },
+      { "name": "1C Development", "confidence": 0.025362955066030958 }
+    ],
+    "technologies": [
+      {
+        "name": "Security tools and frameworks",
+        "confidence": 0.5719661902943883
+      },
+      { "name": "Soft skills", "confidence": 0.39999047322372305 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.010118166198880172
+      }
+    ]
+  },
+  {
+    "place": 113,
+    "name": "B2B \u041f\u0440\u043e\u0434\u0430\u0436\u0438",
+    "translation": "B2B Sales",
+    "count": 5,
+    "prev_count": 10,
+    "prev_place": 39,
+    "average_salary": 83908.17089776948,
+    "image": null,
+    "categories": [
+      { "name": "HR Management", "confidence": 0.33590843400775594 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.15150384539623488 },
+      { "name": "Blockchain", "confidence": 0.12704019530502872 },
+      { "name": "Other", "confidence": 0.056875176484397785 },
+      { "name": "System Administration", "confidence": 0.038090848917240995 },
+      { "name": "Project management", "confidence": 0.03280373677565131 },
+      { "name": "Analytics", "confidence": 0.03215881225585352 },
+      { "name": "1C Development", "confidence": 0.031665794950588515 },
+      { "name": "Website administration", "confidence": 0.031099253156662007 }
+    ],
+    "technologies": [
+      { "name": "Soft skills", "confidence": 0.8175080038338385 },
+      { "name": "Cloud platforms", "confidence": 0.0822643522386478 },
+      { "name": "Databases", "confidence": 0.04018996430169029 }
+    ]
+  }
+]

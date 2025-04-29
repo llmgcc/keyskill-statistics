@@ -1,0 +1,3714 @@
+{
+  "SQL": [
+    { "bin": 1, "count": 29 },
+    { "bin": 2, "count": 92 },
+    { "bin": 3, "count": 54 },
+    { "bin": 4, "count": 15 },
+    { "bin": 5, "count": 6 },
+    { "bin": 6, "count": 2 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Linux": [
+    { "bin": 1, "count": 32 },
+    { "bin": 2, "count": 97 },
+    { "bin": 3, "count": 56 },
+    { "bin": 4, "count": 12 },
+    { "bin": 5, "count": 11 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Git": [
+    { "bin": 1, "count": 30 },
+    { "bin": 2, "count": 111 },
+    { "bin": 3, "count": 59 },
+    { "bin": 4, "count": 17 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "Python": [
+    { "bin": 1, "count": 20 },
+    { "bin": 2, "count": 45 },
+    { "bin": 3, "count": 41 },
+    { "bin": 4, "count": 10 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 4 },
+    { "bin": 8, "count": 1 }
+  ],
+  "PostgreSQL": [
+    { "bin": 1, "count": 18 },
+    { "bin": 2, "count": 61 },
+    { "bin": 3, "count": 36 },
+    { "bin": 4, "count": 21 },
+    { "bin": 5, "count": 9 },
+    { "bin": 6, "count": 1 }
+  ],
+  "JavaScript": [
+    { "bin": 1, "count": 37 },
+    { "bin": 2, "count": 103 },
+    { "bin": 3, "count": 48 },
+    { "bin": 4, "count": 18 },
+    { "bin": 6, "count": 1 }
+  ],
+  "PHP": [
+    { "bin": 1, "count": 30 },
+    { "bin": 2, "count": 103 },
+    { "bin": 3, "count": 53 },
+    { "bin": 4, "count": 14 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Docker": [
+    { "bin": 1, "count": 18 },
+    { "bin": 2, "count": 51 },
+    { "bin": 3, "count": 36 },
+    { "bin": 4, "count": 9 },
+    { "bin": 5, "count": 5 },
+    { "bin": 6, "count": 2 }
+  ],
+  "HTML": [
+    { "bin": 1, "count": 49 },
+    { "bin": 2, "count": 99 },
+    { "bin": 3, "count": 27 },
+    { "bin": 4, "count": 4 }
+  ],
+  "MySQL": [
+    { "bin": 1, "count": 31 },
+    { "bin": 2, "count": 82 },
+    { "bin": 3, "count": 32 },
+    { "bin": 4, "count": 7 },
+    { "bin": 5, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a": [
+    { "bin": 1, "count": 15 },
+    { "bin": 2, "count": 38 },
+    { "bin": 3, "count": 30 },
+    { "bin": 4, "count": 5 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Figma": [
+    { "bin": 1, "count": 27 },
+    { "bin": 2, "count": 67 },
+    { "bin": 3, "count": 17 },
+    { "bin": 4, "count": 2 }
+  ],
+  "CSS": [
+    { "bin": 1, "count": 25 },
+    { "bin": 2, "count": 65 },
+    { "bin": 3, "count": 15 },
+    { "bin": 4, "count": 4 }
+  ],
+  "Adobe Photoshop": [
+    { "bin": 1, "count": 34 },
+    { "bin": 2, "count": 57 },
+    { "bin": 3, "count": 14 },
+    { "bin": 4, "count": 3 }
+  ],
+  "REST API": [
+    { "bin": 1, "count": 12 },
+    { "bin": 2, "count": 37 },
+    { "bin": 3, "count": 14 },
+    { "bin": 4, "count": 10 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 1 }
+  ],
+  "TypeScript": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 37 },
+    { "bin": 3, "count": 20 },
+    { "bin": 4, "count": 11 }
+  ],
+  "API": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 39 },
+    { "bin": 3, "count": 10 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u043e\u0433\u043e \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 24 },
+    { "bin": 2, "count": 37 },
+    { "bin": 3, "count": 16 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 41 },
+    { "bin": 3, "count": 18 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Laravel": [
+    { "bin": 1, "count": 12 },
+    { "bin": 2, "count": 36 },
+    { "bin": 3, "count": 16 },
+    { "bin": 4, "count": 6 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 26 },
+    { "bin": 3, "count": 12 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Java": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 1 }
+  ],
+  "React": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 33 },
+    { "bin": 3, "count": 14 },
+    { "bin": 4, "count": 5 }
+  ],
+  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430": [
+    { "bin": 1, "count": 19 },
+    { "bin": 2, "count": 22 },
+    { "bin": 3, "count": 10 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 Linux": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 28 },
+    { "bin": 3, "count": 12 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 },
+    { "bin": 8, "count": 1 }
+  ],
+  "1\u0421-\u0411\u0438\u0442\u0440\u0438\u043a\u0441": [
+    { "bin": 1, "count": 20 },
+    { "bin": 2, "count": 48 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 2 }
+  ],
+  "MS SQL": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 12 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0435\u0442\u0435\u0432\u044b\u0445 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0439": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 37 },
+    { "bin": 3, "count": 11 }
+  ],
+  "CI/CD": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 12 },
+    { "bin": 3, "count": 13 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 5 },
+    { "bin": 6, "count": 3 }
+  ],
+  "Bash": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 10 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 5 }
+  ],
+  "\u041e\u041e\u041f": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 29 },
+    { "bin": 3, "count": 15 },
+    { "bin": 4, "count": 4 }
+  ],
+  "Zabbix": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 10 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "C#": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 23 },
+    { "bin": 3, "count": 9 },
+    { "bin": 4, "count": 3 }
+  ],
+  "HTML5": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 33 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 3 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u041f\u041a": [
+    { "bin": 1, "count": 20 },
+    { "bin": 2, "count": 31 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0430": [
+    { "bin": 1, "count": 23 },
+    { "bin": 2, "count": 27 },
+    { "bin": 3, "count": 10 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Kubernetes": [
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 7 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 Windows": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 24 },
+    { "bin": 3, "count": 12 }
+  ],
+  "Grafana": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 5 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0431\u043e\u043b\u044c\u0448\u0438\u043c \u043e\u0431\u044a\u0435\u043c\u043e\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 14 },
+    { "bin": 2, "count": 18 },
+    { "bin": 3, "count": 11 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Node.js": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 18 },
+    { "bin": 3, "count": 16 },
+    { "bin": 4, "count": 5 }
+  ],
+  "Redis": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 13 },
+    { "bin": 4, "count": 7 },
+    { "bin": 5, "count": 3 }
+  ],
+  "\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 25 },
+    { "bin": 3, "count": 13 },
+    { "bin": 4, "count": 7 },
+    { "bin": 5, "count": 3 },
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Ansible": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 4 },
+    { "bin": 8, "count": 1 }
+  ],
+  "TCP/IP": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 9 }
+  ],
+  "Adobe Illustrator": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 33 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 2 }
+  ],
+  "jQuery": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 32 },
+    { "bin": 3, "count": 11 }
+  ],
+  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 21 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "MS Excel": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 18 },
+    { "bin": 2, "count": 34 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u043d\u044b\u0435 \u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u044b": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 32 },
+    { "bin": 3, "count": 11 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 2 }
+  ],
+  "CSS3": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 28 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 3 }
+  ],
+  "Atlassian Jira": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 }
+  ],
+  "Gitlab": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 9 },
+    { "bin": 4, "count": 6 },
+    { "bin": 5, "count": 6 }
+  ],
+  "Nginx": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 17 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 5 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439": [
+    { "bin": 1, "count": 14 },
+    { "bin": 2, "count": 24 },
+    { "bin": 3, "count": 4 }
+  ],
+  "SEO": [
+    { "bin": 1, "count": 12 },
+    { "bin": 2, "count": 30 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "UX": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 25 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u0414\u0435\u043b\u043e\u0432\u043e\u0435 \u043e\u0431\u0449\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 22 },
+    { "bin": 2, "count": 23 },
+    { "bin": 3, "count": 3 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "RabbitMQ": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 11 },
+    { "bin": 4, "count": 6 },
+    { "bin": 5, "count": 5 }
+  ],
+  "UI": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 27 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u041f\u041e": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 23 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Clickhouse": [
+    { "bin": 1, "count": 2 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0412\u0435\u0431-\u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 26 },
+    { "bin": 3, "count": 6 }
+  ],
+  "C++": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 18 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u042f\u043d\u0434\u0435\u043a\u0441.\u041c\u0435\u0442\u0440\u0438\u043a\u0430": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 26 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u0438 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435": [
+    { "bin": 1, "count": 18 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Active Directory": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 14 },
+    { "bin": 2, "count": 17 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "SMM": [
+    { "bin": 1, "count": 17 },
+    { "bin": 2, "count": 22 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Symfony": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "REST": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 9 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 2 },
+    { "bin": 8, "count": 1 }
+  ],
+  "1\u0421 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 12 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 2 }
+  ],
+  "ORACLE": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 5 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u041e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 5 }
+  ],
+  "VueJS": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0442\u043e\u0440\u0441\u043a\u0438\u0435 \u043d\u0430\u0432\u044b\u043a\u0438": [
+    { "bin": 1, "count": 16 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 7 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 12 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Postman": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 2 }
+  ],
+  "DevOps": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u0440\u0435\u0447\u044c": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 23 },
+    { "bin": 3, "count": 5 }
+  ],
+  "\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 2 },
+    { "bin": 6, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Unity": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0431\u0430\u0437\u0430\u043c\u0438 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 10 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u041a\u043e\u043f\u0438\u0440\u0430\u0439\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 14 },
+    { "bin": 2, "count": 21 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Google Analytics": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Unix": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 10 }
+  ],
+  "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u0440\u0435\u043a\u043b\u0430\u043c\u0430": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 23 },
+    { "bin": 3, "count": 3 },
+    { "bin": 9, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "MongoDB": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 1 }
+  ],
+  "QA": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 3 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 18 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Power BI": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u041f\u043e\u0438\u0441\u043a \u0438 \u043f\u0440\u0438\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "B2B \u041f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 12 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 4 }
+  ],
+  "Agile": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "SEO \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 20 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 8 }
+  ],
+  "\u0412\u0435\u0431-\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 24 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0411\u0438\u0442\u0440\u0438\u043a\u044124": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 17 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0421\u0423\u0411\u0414": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u041f\u041e": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u041f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c\u0438": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u043e\u0432": [
+    { "bin": 1, "count": 14 },
+    { "bin": 2, "count": 17 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "GitHub": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u0431\u0440\u0435\u043d\u0434\u0430": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 6 }
+  ],
+  "Golang": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 4 }
+  ],
+  "MS PowerPoint": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 }
+  ],
+  "Scrum": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 12 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "VMware": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u041f\u041a": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 20 },
+    { "bin": 3, "count": 6 }
+  ],
+  "Apache Kafka": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "CMS Wordpress": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043a\u043e\u043d\u0442\u0435\u043d\u0442-\u043f\u043b\u0430\u043d\u0430": [
+    { "bin": 1, "count": 13 },
+    { "bin": 2, "count": 17 },
+    { "bin": 3, "count": 2 }
+  ],
+  "MS SQL Server": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 5 }
+  ],
+  "HTTP": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u043e\u0432": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0439": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a\u043e\u043c\u043c\u0435\u0440\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u042f\u043d\u0434\u0435\u043a\u0441.\u0414\u0438\u0440\u0435\u043a\u0442": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 19 },
+    { "bin": 3, "count": 4 }
+  ],
+  "XML": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 3 }
+  ],
+  "ETL": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "Atlassian Confluence": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 4 }
+  ],
+  "\u0421\u0431\u043e\u0440\u043a\u0430 \u041f\u041a": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0437\u0430\u0434\u0430\u0447 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 9 }
+  ],
+  "Prometheus": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 3 }
+  ],
+  "VPN": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u043d\u0430\u044f \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 7 }
+  ],
+  "PowerShell": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 7 }
+  ],
+  "\u041a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 5 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041e\u0440\u0438\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043d\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0423\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u041a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0431\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 8 }
+  ],
+  "CRM": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 2 }
+  ],
+  ".NET Core": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 3 }
+  ],
+  "3D \u041c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Blender 3D": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0443\u0447\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Kotlin": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Angular": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 3 }
+  ],
+  "1\u0421: \u041f\u0440\u0435\u0434\u043f\u0440\u0438\u044f\u0442\u0438\u0435 8": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 9 },
+    { "bin": 5, "count": 1 }
+  ],
+  "BPMN": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 6 }
+  ],
+  "JSON": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "1\u0421": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Kafka": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "\u0411\u0438\u0437\u043d\u0435\u0441-\u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Bootstrap": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 5 }
+  ],
+  "AutoCAD": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0435\u043c\u043e\u043d\u0442 \u041f\u041a": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 11 }
+  ],
+  "Swagger": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 10 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u0430\u044f \u0432\u0435\u0440\u0441\u0442\u043a\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 16 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0435\u043d\u0442-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u041e\u0421": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Oracle Pl/SQL": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Windows Server": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Wordpress": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041a\u0440\u0435\u0430\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "Yii": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0425\u043e\u043b\u043e\u0434\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "MikroTik": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 6 }
+  ],
+  "\u041a\u043b\u0438\u0435\u043d\u0442\u043e\u043e\u0440\u0438\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0441\u0435\u043c\u0430\u043d\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u044f\u0434\u0440\u0430": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u043f\u043e\u0447\u0442\u043e\u0432\u044b\u0445 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 13 },
+    { "bin": 3, "count": 3 }
+  ],
+  "DHCP": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 }
+  ],
+  "UML": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 5 }
+  ],
+  "Vue.js": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041f\u043e\u0434\u0431\u043e\u0440 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u0438": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u043a\u043e\u0434\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  ".NET Framework": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Elasticsearch": [
+    { "bin": 1, "count": 3 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Android": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Project management": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 4 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041a\u0440\u043e\u0441\u0441\u0431\u0440\u0430\u0443\u0437\u0435\u0440\u043d\u0430\u044f \u0432\u0435\u0440\u0441\u0442\u043a\u0430": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 CRM": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u041d\u0430\u0432\u044b\u043a\u0438 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 12 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u041d\u0430\u0432\u044b\u043a\u0438 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0412\u0435\u0440\u0441\u0442\u043a\u0430": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 14 }
+  ],
+  "Tilda": [
+    { "bin": 1, "count": 12 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Qt": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 9 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 7 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 4 }
+  ],
+  "Web-\u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 9 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Ubuntu": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041e\u0444\u0438\u0441\u043d\u0430\u044f \u0442\u0435\u0445\u043d\u0438\u043a\u0430": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "MATLAB": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 13 }
+  ],
+  "CorelDRAW": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 10 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u041f\u041e": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 8 }
+  ],
+  "ASP.NET": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Redux": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0412\u0435\u0440\u0441\u0442\u043a\u0430 \u0441\u0430\u0439\u0442\u043e\u0432": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 1 }
+  ],
+  "A/B \u0442\u0435\u0441\u0442\u044b": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Docker-compose": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0420\u0435\u0433\u0440\u0435\u0441\u0441\u0438\u043e\u043d\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 15 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0414\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u044f\u044f \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0441\u0430\u0439\u0442\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u0435\u0431-\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "GitLab CI": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0422\u0430\u0440\u0433\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 9 }
+  ],
+  "Digital Marketing": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u043d\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 11 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0421\u0442\u0440\u0435\u0441\u0441\u043e\u0443\u0441\u0442\u043e\u0439\u0447\u0438\u0432\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u041d\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u043e\u043c": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 DNS": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Internet Marketing": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 14 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Jira": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "pandas": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0435\u0444\u0430\u043a\u0442\u043e\u0440\u0438\u043d\u0433 \u043a\u043e\u0434\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 4 }
+  ],
+  "SOAP": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u043a\u043e\u043d\u043a\u0443\u0440\u0435\u043d\u0442\u043d\u043e\u0439 \u0441\u0440\u0435\u0434\u044b": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 }
+  ],
+  "NoSQL": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 3 }
+  ],
+  "ChatGPT": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "DNS": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "CentOS": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 6 }
+  ],
+  "Django Framework": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "JSON API": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Jenkins": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Bitrix": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 12 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0432\u0438\u0434\u0435\u043e": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 1 }
+  ],
+  "SOLID": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0422\u0435\u043f\u043b\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u041e\u0431\u0435\u0441\u043f\u0435\u0447\u0435\u043d\u0438\u0435 \u0430\u043d\u0442\u0438\u0432\u0438\u0440\u0443\u0441\u043d\u043e\u0439 \u0437\u0430\u0449\u0438\u0442\u044b": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 3 }
+  ],
+  "1\u0421: \u0411\u0443\u0445\u0433\u0430\u043b\u0442\u0435\u0440\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 5 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0438\u0437\u0430\u0439\u043d-\u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u043d\u0430\u044f \u0440\u0435\u043a\u043b\u0430\u043c\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 10 },
+    { "bin": 3, "count": 2 },
+    { "bin": 9, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "Hadoop": [
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0410\u043b\u0433\u043e\u0440\u0438\u0442\u043c\u044b \u0438 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "React Native": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 2 }
+  ],
+  "SIEM": null,
+  "Big Data": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0410\u0443\u0434\u0438\u0442 \u043f\u043e\u0438\u0441\u043a\u043e\u0432\u043e\u0439 \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u0438 \u0441\u0430\u0439\u0442\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 11 }
+  ],
+  "Terraform": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 }
+  ],
+  "Helpdesk": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0410\u0421\u0423 \u0422\u041f": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Selenium": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "MVC": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Hyper-V": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041c\u0435\u0434\u0438\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 12 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Ajax": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0432\u043e\u0437\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c\u0438": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "iOS": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0420\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0435 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 5 }
+  ],
+  "SMM-\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 9 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0413\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440\u044b": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u0441 \u0431\u043b\u043e\u0433\u0435\u0440\u0430\u043c\u0438": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Spring Framework": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0432\u043e\u0440\u043e\u043d\u043a\u0438 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 3 }
+  ],
+  "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u043e\u0432": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 }
+  ],
+  "FastAPI": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Flutter": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u0443\u0441\u0442\u043d\u0430\u044f \u0440\u0435\u0447\u044c": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 7 }
+  ],
+  "\u0414\u0435\u043b\u043e\u0432\u044b\u0435 \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Cisco": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Google Docs": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u0439": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 3 },
+    { "bin": 15, "count": 1 }
+  ],
+  "SEO-\u0442\u0435\u043a\u0441\u0442\u044b": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 9 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Sass": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Pytest": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "ML": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0435\u0442\u0438": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 4 }
+  ],
+  "Debian": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041b\u0438\u0434\u043e\u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 10 }
+  ],
+  "\u041f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u044f \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 4 }
+  ],
+  "Agile Project Management": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 4 }
+  ],
+  "Apache Airflow": null,
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0444\u0438\u0440\u043c\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u0442\u0438\u043b\u044f": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u0438\u0434\u0435\u043e\u0441\u044a\u0435\u043c\u043a\u0430": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0432\u043e\u0440\u043e\u043d\u043a\u0438 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0412\u044b\u044f\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0442\u0440\u0435\u0431\u043d\u043e\u0441\u0442\u0435\u0439": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u0441\u0430\u0439\u0442\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0412\u0438\u0437\u0443\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0435 \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 8 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "C/C++": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u043e\u0434\u0431\u043e\u0440 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430": [
+    { "bin": 1, "count": 10 },
+    { "bin": 2, "count": 5 }
+  ],
+  "\u0418\u043d\u0444\u043e\u0433\u0440\u0430\u0444\u0438\u043a\u0430": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 7 }
+  ],
+  "\u041f\u0440\u044f\u043c\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0421#": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "E-Commerce": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "DWH": [
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0432\u0438\u0442\u0438\u0435 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438": [
+    { "bin": 1, "count": 7 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0421\u0442\u043e\u0440\u0438\u0441\u043c\u0435\u0439\u043a\u0438\u043d\u0433": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 9 }
+  ],
+  "\u0412\u043d\u0435\u0448\u043d\u044f\u044f \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0441\u0430\u0439\u0442\u0430": [
+    { "bin": 2, "count": 10 }
+  ],
+  "MS Exchange": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 5 }
+  ],
+  "\u0421\u043e\u043f\u0440\u043e\u0432\u043e\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0413\u0440\u0430\u043c\u043e\u0442\u043d\u0430\u044f \u043f\u0438\u0441\u044c\u043c\u0435\u043d\u043d\u0430\u044f \u0440\u0435\u0447\u044c": [
+    { "bin": 1, "count": 8 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0442\u0438\u0432\u043d\u044b\u0435 \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "KVM": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u044b\u0435 \u043c\u0435\u0442\u0440\u0438\u043a\u0438": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0414\u0438\u0437\u0430\u0439\u043d \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041c\u0438\u043a\u0440\u043e\u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0430\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Firebase": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Unit Testing": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Windows 7": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 9 }
+  ],
+  "Apache HTTP Server": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430": [
+    { "bin": 3, "count": 2 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Tableau": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u043e\u0432 \u0434\u043b\u044f \u0441\u043e\u0446\u0441\u0435\u0442\u0435\u0439": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 8 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0441\u043a\u0440\u0438\u043f\u0442\u043e\u0432 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Numpy": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0412\u0438\u0434\u0435\u043e\u043c\u043e\u043d\u0442\u0430\u0436": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 9 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u044b \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 }
+  ],
+  "MS Office": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0440\u043e\u0443\u0442\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0412\u044b\u0435\u0437\u0434\u043d\u043e\u0435 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f\u043c\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0442\u0440\u0430\u0444\u0438\u043a\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 }
+  ],
+  "1\u0421: \u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u043e\u0431\u043e\u0440\u043e\u0442": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041d\u0430\u0432\u044b\u043a\u0438 \u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u043e\u0432": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Simulink": [{ "bin": 3, "count": 12 }],
+  "PHP5": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043e\u043b\u0438\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 7 }
+  ],
+  "Windows": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0434\u0440\u0430\u0439\u0432\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Backend": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "PyTorch": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "ELK": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "WEB \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "VLAN": [{ "bin": 3, "count": 2 }],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Ubuntu Server": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 5 },
+    { "bin": 5, "count": 1 }
+  ],
+  "JS": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Asterisk": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0434\u0435\u043b\u043e\u0432\u044b\u0445 \u0432\u0441\u0442\u0440\u0435\u0447": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0442\u043e\u0442\u0438\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0417\u0430\u043f\u0443\u0441\u043a \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0435 \u043c\u0435\u0442\u0440\u0438\u043a\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0418\u0422-\u0438\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Unreal Engine": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044f": [
+    { "bin": 1, "count": 11 },
+    { "bin": 2, "count": 1 }
+  ],
+  "ASP.NET Core": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Telegram": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u0445 \u043c\u043d\u043e\u0433\u043e\u0437\u0430\u0434\u0430\u0447\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0413\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Frontend": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u044b\u0439 \u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "SAP": [{ "bin": 3, "count": 1 }],
+  "Windows Os": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0435 \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Test case": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 }
+  ],
+  "\u041d\u0430\u0433\u0440\u0443\u0437\u043e\u0447\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 3 }
+  ],
+  "Flask": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Adobe InDesign": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 5 }
+  ],
+  "\u041f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0423\u043c\u0435\u043d\u0438\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0432 \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u0435": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 }
+  ],
+  "1\u0421: \u041f\u0440\u0435\u0434\u043f\u0440\u0438\u044f\u0442\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 }
+  ],
+  "HTTPS": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "E-Mail Marketing": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 5 }
+  ],
+  "C": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 9 }
+  ],
+  "\u0418\u043d\u0444\u043b\u044e\u0435\u043d\u0441-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043e\u0438\u0441\u043a\u043e\u0432\u0430\u044f \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0441\u0430\u0439\u0442\u043e\u0432": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0440\u044b\u043d\u043a\u0430": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041e\u0446\u0435\u043d\u043a\u0430 \u043f\u043e\u0442\u0440\u0435\u0431\u043d\u043e\u0441\u0442\u0435\u0439 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Gamedev": [{ "bin": 2, "count": 2 }],
+  "1\u0421: \u0417\u0430\u0440\u043f\u043b\u0430\u0442\u0430 \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u043e\u043c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u043e\u0431\u043e\u0440\u043e\u0442": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u043a\u043b\u0430\u0434 \u0443\u043c\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0435\u043d\u0442\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 6 }
+  ],
+  "OSI": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 }
+  ],
+  "\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0440\u044b\u043d\u043a\u0430": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 4 }
+  ],
+  "\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043a\u043e\u043d\u0444\u0435\u0440\u0435\u043d\u0446\u0438\u044f\u0445": [
+    { "bin": 1, "count": 5 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Yii2": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u042f\u043d\u0434\u0435\u043a\u0441.\u0412\u0435\u0431\u043c\u0430\u0441\u0442\u0435\u0440": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Altium Designer": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 10 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u043e\u0432": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Google Ads": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 9, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "amoCRM": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u041c\u043e\u043d\u0442\u0430\u0436 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u0430\u044f \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 SEO-\u0442\u0435\u043a\u0441\u0442\u043e\u0432": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 3 }
+  ],
+  "3D": [{ "bin": 2, "count": 6 }],
+  "\u041c\u043e\u0443\u0448\u043d-\u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0430\u0439\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 6 }
+  ],
+  "\u041f\u0443\u0441\u043a\u043e-\u043d\u0430\u043b\u0430\u0434\u043e\u0447\u043d\u044b\u0435 \u0440\u0430\u0431\u043e\u0442\u044b": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 }
+  ],
+  "RTOS": [{ "bin": 3, "count": 9 }],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u0434\u0430\u043f\u0442\u0430\u0446\u0438\u044f \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "C\u0438\u0441\u0442\u0435\u043c\u044b \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0431\u0430\u0437\u0430\u043c\u0438 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 }
+  ],
+  "Spark": [
+    { "bin": 1, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u041c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0438\u0437\u043d\u0435\u0441 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 4 }
+  ],
+  "GraphQL": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 }
+  ],
+  "Joomla CMS": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 6 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u044b \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430 \u0441\u0435\u0442\u0435\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0427\u0442\u0435\u043d\u0438\u0435 \u0447\u0435\u0440\u0442\u0435\u0436\u0435\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0415\u0421\u041a\u0414": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Adobe After Effects": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u0440\u0435\u043c\u0435\u043d\u0435\u043c": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 }
+  ],
+  "HTML/CSS": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Dart": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 2, "count": 1 }
+  ],
+  "Confluence": [{ "bin": 3, "count": 1 }],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u043d\u044b\u0439 \u043c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Greenplum": null,
+  "\u041d\u0430\u0439\u043c \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Kibana": [
+    { "bin": 2, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0423\u043c\u0435\u043d\u0438\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 }
+  ],
+  "IT": [{ "bin": 3, "count": 1 }],
+  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0417\u0430\u043f\u0443\u0441\u043a \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u043d\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 9, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "SCADA": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "ASP.NET MVC": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "TestRail": [{ "bin": 2, "count": 5 }],
+  "Astra": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 5 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u043e\u0440\u0433\u0442\u0435\u0445\u043d\u0438\u043a\u043e\u0439": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0412\u0435\u043a\u0442\u043e\u0440\u043d\u0430\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430": [
+    { "bin": 2, "count": 9 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u043f\u043f \u0432 \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u0435\u0442\u044f\u0445": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u043e\u043c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 5 }
+  ],
+  "\u041b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0435\u0442\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0435\u043a\u043b\u0430\u043c\u043d\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Power Query": [{ "bin": 2, "count": 1 }],
+  "\u0418\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 1\u0421": [
+    { "bin": 2, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Sales Skills": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "Redmine": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "PHP7": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0418\u0441\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u043b\u0438\u0447\u043d\u044b\u0445 \u043f\u043e\u0440\u0443\u0447\u0435\u043d\u0438\u0439 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044f": [
+    { "bin": 1, "count": 9 }
+  ],
+  "\u041a\u041a\u0422": [{ "bin": 2, "count": 3 }],
+  "\u042f\u043d\u0434\u0435\u043a\u0441.Wordstat": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 7 }
+  ],
+  "\u041f\u0440\u0435\u0434\u043c\u0435\u0442\u043d\u0430\u044f \u0444\u043e\u0442\u043e\u0441\u044a\u0435\u043c\u043a\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Kanban": [
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "OpenStack": [{ "bin": 5, "count": 1 }],
+  "Entity Framework": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 2 }
+  ],
+  "RDP": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Java Script": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 }
+  ],
+  "3ds Max": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 5 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041a\u043e\u043d\u043a\u0443\u0440\u0435\u043d\u0442\u043d\u0430\u044f \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 }
+  ],
+  "\u0412\u043e\u0434\u043e\u0441\u043d\u0430\u0431\u0436\u0435\u043d\u0438\u0435 \u0438 \u043a\u0430\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 9 }
+  ],
+  "Vue": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u043e\u0431\u043e\u0440\u043e\u0442": [
+    { "bin": 1, "count": 6 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u0438\u0441\u043f\u0440\u0430\u0432\u043d\u043e\u0441\u0442\u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 2, "count": 8 },
+    { "bin": 4, "count": 1 }
+  ],
+  "CMS": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041f\u043e\u0437\u0438\u0446\u0438\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0440\u0435\u043d\u0434\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Adobe After Effect": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043e\u0442\u0447\u0435\u0442\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "B2B-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Webpack": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0421\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041a\u043e\u043c\u043f\u0430\u0441-3D": [
+    { "bin": 2, "count": 7 },
+    { "bin": 3, "count": 1 }
+  ],
+  "3D \u0430\u043d\u0438\u043c\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Business English": [{ "bin": 2, "count": 1 }],
+  "Nexus": [{ "bin": 3, "count": 5 }],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u044f\u043c\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 }
+  ],
+  "B2C \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 }
+  ],
+  "SSH": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Spring Boot": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "SAST": [{ "bin": 2, "count": 1 }],
+  "\u041e\u0446\u0435\u043d\u043a\u0430 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0422\u043e\u0447\u043d\u043e\u0441\u0442\u044c \u0438 \u0432\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u043a \u0434\u0435\u0442\u0430\u043b\u044f\u043c": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0412\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u0435 \u0441\u0438\u0441\u0442\u0435\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0421\u0425\u0414": [{ "bin": 2, "count": 1 }],
+  "\u0420\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043e\u043c": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 3 }
+  ],
+  "B2C \u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 5 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Email-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 2, "count": 4 },
+    { "bin": 15, "count": 1 }
+  ],
+  "VBA": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Roadmap": [{ "bin": 3, "count": 1 }],
+  "\u041e\u0441\u043d\u043e\u0432\u044b \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c\u0438": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Miro": [
+    { "bin": 1, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0423\u0434\u0430\u043b\u0435\u043d\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Autodesk Maya": [{ "bin": 2, "count": 4 }],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u043e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u044f\u043c\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 6 }
+  ],
+  "call-\u0446\u0435\u043d\u0442\u0440": [{ "bin": 2, "count": 8 }],
+  "\u041a\u0440\u043e\u0441\u0441-\u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "B2B \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 }
+  ],
+  "voolna": [{ "bin": 2, "count": 8 }],
+  "Business Development": [{ "bin": 2, "count": 1 }],
+  "SolidWorks": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0433\u0438\u0431\u043a\u0438\u0439 \u0433\u0440\u0430\u0444\u0438\u043a": [
+    { "bin": 2, "count": 8 }
+  ],
+  "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 }
+  ],
+  "ERP": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u044e\u0434\u0436\u0435\u0442\u043e\u043c": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 }
+  ],
+  "Usability": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u043a\u0443\u043b\u044c\u0442\u0443\u0440\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0414\u0438\u0437\u0430\u0439\u043d \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 5 }
+  ],
+  "\u041f\u043e\u0438\u0441\u043a \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u0432 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "voxys": [{ "bin": 2, "count": 8 }],
+  "UX-\u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "GPO": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0421\u0435\u0442\u0435\u0432\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "VipNet": [{ "bin": 3, "count": 2 }],
+  "Apache Maven": [
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u043a\u0440\u0435\u0430\u0442\u0438\u0432\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 }
+  ],
+  "TikTok": [{ "bin": 2, "count": 5 }],
+  "\u0413\u0435\u0439\u043c-\u0434\u0438\u0437\u0430\u0439\u043d": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Web Design": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "ORM": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Proxmox": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Airflow": [
+    { "bin": 1, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "Yandex Cloud": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0421\u0435\u0433\u043c\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "UX/UI": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0422\u0432\u043e\u0440\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 }
+  ],
+  "1\u0421: \u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441\u043d\u0430\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041e\u043d\u0431\u043e\u0440\u0434\u0438\u043d\u0433": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Huawei": null,
+  "Java SE": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Machine Learning": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0431\u0435\u0437 \u043e\u043f\u044b\u0442\u0430": [
+    { "bin": 2, "count": 7 }
+  ],
+  "\u0421\u0431\u043e\u0440 \u0438 \u0430\u043d\u0430\u043b\u0438\u0437 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 API": [
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041e\u0441\u043d\u043e\u0432\u044b \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0435\u0442\u0443\u0448\u044c": [{ "bin": 2, "count": 5 }],
+  "Data Analysis": [{ "bin": 2, "count": 1 }],
+  "\u0410\u043d\u0438\u043c\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041c\u043d\u043e\u0433\u043e\u0437\u0430\u0434\u0430\u0447\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 }
+  ],
+  "WAF": null,
+  "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0435": [
+    { "bin": 2, "count": 7 }
+  ],
+  "\u041c\u043e\u043d\u0442\u0430\u0436 \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u0445 \u0432\u0438\u0434\u0435\u043e": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041a\u0440\u043e\u0441\u0441\u0431\u0440\u0430\u0443\u0437\u0435\u0440\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "DAX": [{ "bin": 4, "count": 1 }],
+  "B2C-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 2, "count": 4 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 2, "count": 7 }
+  ],
+  "CRM-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041f\u043e\u0441\u0442\u044b \u0434\u043b\u044f \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u0435\u0442\u0435\u0439": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 1 }
+  ],
+  "SEO-\u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442\u0438\u043d\u0433": [
+    { "bin": 2, "count": 6 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Less": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u044e\u0434\u0436\u0435\u0442\u0430": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0422\u0438\u043f\u043e\u0433\u0440\u0430\u0444\u0438\u043a\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u041c\u043e\u0442\u0438\u0432\u0430\u0446\u0438\u044f \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u044d\u0442\u0438\u043a\u0430": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0410\u0443\u0434\u0438\u0442 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u043e\u043b\u0433\u043e\u0441\u0440\u043e\u0447\u043d\u043e\u0439 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u043c\u043e\u0442\u0438\u0432\u0430\u0446\u0438\u0438": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0418\u043d\u0438\u0446\u0438\u0430\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 }
+  ],
+  "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u044b \u0432\u0438\u0434\u0435\u043e\u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Ahrefs": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "Trello": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "zebracall": [{ "bin": 2, "count": 7 }],
+  "Android SDK": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0421\u0435\u0440\u0432\u0435\u0440\u043d\u043e\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 }
+  ],
+  "Hibernate ORM": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0434\u0438\u0437\u0430\u0439\u043d-\u0441\u0438\u0441\u0442\u0435\u043c\u044b": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "NGFW": [{ "bin": 3, "count": 1 }],
+  "TensorFlow": [{ "bin": 2, "count": 1 }],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 8, "count": 1 }
+  ],
+  "gRPC": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u041d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0442\u0430\u0442\u0435\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 6 }
+  ],
+  "Celery": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0442\u0435\u043a\u0441\u0442\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0438\u043d\u0442\u0435\u0440\u0442\u0440\u0435\u0439\u043421": [
+    { "bin": 2, "count": 7 }
+  ],
+  "R": null,
+  "Internet": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442 \u043f\u043e \u0440\u0430\u0431\u043e\u0442\u0435 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438": [
+    { "bin": 2, "count": 7 }
+  ],
+  "Pentest": null,
+  "\u041e\u0441\u043d\u043e\u0432\u044b \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0445 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u043e\u0432": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u043e\u0439 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 }
+  ],
+  "Performance-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Google Tag Manager": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u0445": [
+    { "bin": 2, "count": 6 }
+  ],
+  "\u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043e\u0442\u0447\u0435\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041e\u0431\u0449\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u043f\u0438\u0442\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Nuxt": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Go": [{ "bin": 3, "count": 1 }],
+  "POS-\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b": null,
+  "Instagram": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "OpenShift": [{ "bin": 5, "count": 2 }],
+  "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445: Oracle": [
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041a\u043e\u0440\u0440\u0435\u043a\u0442\u0443\u0440\u0430 \u0442\u0435\u043a\u0441\u0442\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0420\u043e\u0441\u0442\u0435\u043b\u0435\u043a\u043e\u043c": [
+    { "bin": 2, "count": 6 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u044d\u043a\u043b\u043e\u0433\u043e\u043c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 }
+  ],
+  "\u0424\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 1 }
+  ],
+  "\u0425\u043e\u043b\u043e\u0434\u043d\u044b\u0435 \u0437\u0432\u043e\u043d\u043a\u0438": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0433\u043d\u043e\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "Swift": null,
+  "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 2 }
+  ],
+  "\u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u043a\u043e\u043b\u043b-\u0446\u0435\u043d\u0442\u0440\u0430": [
+    { "bin": 2, "count": 6 }
+  ],
+  "Xcode": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "MS Visual Studio": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 3 }
+  ],
+  "Programmatic": [{ "bin": 1, "count": 1 }],
+  "YouTube": [{ "bin": 2, "count": 5 }],
+  "\u041a\u0440\u043e\u0441\u0441\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0435\u043d\u043d\u043e\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "ARM": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 4 }
+  ],
+  "DevTools": [{ "bin": 2, "count": 1 }],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0437\u043d\u0430\u043d\u0438\u044f\u043c\u0438\u200e": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0426\u0435\u043b\u0435\u0432\u043e\u0439 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0424\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "MS Visio": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "SMMplanner": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 }
+  ],
+  "Gulp": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u041f\u041a": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0412\u044b\u0435\u0437\u0434\u043d\u043e\u0435 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 2, "count": 5 }
+  ],
+  "\u0417\u043d\u0430\u043d\u0438\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 4 }
+  ],
+  "LAN": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "Customer Support": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "SPIN-\u043f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u043c\u043e\u0442\u0438\u0432\u0430\u0446\u0438\u0438 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0414\u0438\u0437\u0430\u0439\u043d \u043d\u0430\u0440\u0443\u0436\u043d\u043e\u0439 \u0440\u0435\u043a\u043b\u0430\u043c\u044b": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u043e \u0442\u0435\u0441\u0442-\u043a\u0435\u0439\u0441\u0430\u043c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "Android Studio": [{ "bin": 2, "count": 3 }],
+  "\u041f\u0440\u043e\u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u0432 \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0433\u0440\u0443\u043f\u043f\u0430\u0445": [
+    { "bin": 2, "count": 4 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 15, "count": 1 }
+  ],
+  "Networking": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0421\u0431\u043e\u0440 \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u0439": [
+    { "bin": 3, "count": 1 }
+  ],
+  "STM32": [{ "bin": 3, "count": 2 }],
+  "\u0424\u043e\u0442\u043e\u0441\u044a\u0435\u043c\u043a\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 }
+  ],
+  "FIrewall": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "ArchiCAD": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041c\u043e\u0431\u0438\u043b\u044c\u043d\u0430\u044f \u0432\u0438\u0434\u0435\u043e\u0441\u044a\u0435\u043c\u043a\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "SQLAlchemy": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u0440\u044f\u0434\u0447\u0438\u043a\u0430\u043c\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0420\u0435\u043a\u0440\u0443\u0442\u043c\u0435\u043d\u0442": [
+    { "bin": 1, "count": 1 }
+  ],
+  "\u0411\u0438\u043b\u0430\u0439\u043d": [{ "bin": 2, "count": 6 }],
+  "HAProxy": [{ "bin": 4, "count": 1 }],
+  "\u0410\u043d\u0430\u043b\u0438\u0437 \u0431\u0438\u0437\u043d\u0435\u0441 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u0435\u0439": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041f\u0440\u043e\u0434\u0432\u0438\u043d\u0443\u0442\u044b\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u041f\u041a": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 callmedia": [
+    { "bin": 2, "count": 6 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u0443\u0434\u0438\u0442 \u0441\u0430\u0439\u0442\u0430": [
+    { "bin": 2, "count": 4 }
+  ],
+  "ERP-\u0441\u0438\u0441\u0442\u0435\u043c\u044b \u043d\u0430 \u0431\u0430\u0437\u0435 1\u0421": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0414\u0438\u0437\u0430\u0439\u043d \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 3 }
+  ],
+  "ReactJS": [{ "bin": 2, "count": 3 }],
+  "\u0423\u043c\u0435\u043d\u0438\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0432 \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u0445 \u043c\u043d\u043e\u0433\u043e\u0437\u0430\u0434\u0430\u0447\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Allure": null,
+  "\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0441\u0430\u0439\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 3 }
+  ],
+  "AppsFlyer": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "AWS": [{ "bin": 2, "count": 1 }],
+  "Key Collector": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "SCSS": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0424\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u0430\u044f \u043e\u0442\u0447\u0435\u0442\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0431\u0438\u0437\u043d\u0435\u0441-\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u0439": [
+    { "bin": 3, "count": 3 }
+  ],
+  "\u0440\u0430\u0431\u043e\u0442\u0430 \u0438\u0437 \u0434\u043e\u043c\u0430": [
+    { "bin": 2, "count": 6 }
+  ],
+  "gamedev": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u043f\u0440\u043e\u0434\u0430\u0436": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "OWASP": [{ "bin": 2, "count": 1 }],
+  "CMS Bitrix": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Notion": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0440\u043e\u0446\u0435\u0441\u0441": [
+    { "bin": 1, "count": 5 }
+  ],
+  "\u041d\u0435\u0439\u0440\u043e\u043d\u043d\u044b\u0435 \u0441\u0435\u0442\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 }
+  ],
+  "\u0424\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 5 }
+  ],
+  "IIS": null,
+  "Django Rest Framework": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0426\u0435\u043d\u043e\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "Scala": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041e\u0444\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430": [
+    { "bin": 1, "count": 5 }
+  ],
+  "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c": [
+    { "bin": 2, "count": 6 }
+  ],
+  "\u041c\u0422\u0421": [{ "bin": 2, "count": 6 }],
+  "Cinema 4D": [{ "bin": 2, "count": 3 }],
+  "ABC-\u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u043e\u0439 \u0431\u0430\u0437\u044b": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Data Science": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "PR": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "WebSocket": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 2 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c\u044e": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0412\u0438\u0440\u0442\u0443\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 }
+  ],
+  "D-Link": null,
+  "Ms Exchange Server": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Excel": [{ "bin": 2, "count": 2 }],
+  "\u041e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u0435 \u0441 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0435\u0439": [
+    { "bin": 2, "count": 4 }
+  ],
+  "3D-\u0433\u0440\u0430\u0444\u0438\u043a\u0430": [{ "bin": 4, "count": 1 }],
+  "Adobe XD": [{ "bin": 1, "count": 2 }],
+  "API Key": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u043d\u044b\u0445 \u0418\u0433\u0440": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "Memcached": [{ "bin": 3, "count": 2 }],
+  "\u0414\u0438\u0437\u0430\u0439\u043d-\u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 2, "count": 2 }
+  ],
+  "Apache": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "call-team": [{ "bin": 2, "count": 5 }],
+  "HTML-\u0432\u0435\u0440\u0441\u0442\u043a\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Web": [
+    { "bin": 2, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Lua": [
+    { "bin": 2, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0441\u043b\u0430\u0431\u043e\u0442\u043e\u0447\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b": [
+    { "bin": 2, "count": 5 }
+  ],
+  "Ruby": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0422\u0430\u0439\u043c-\u043c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u044b \u0441 \u043f\u0435\u0440\u0432\u044b\u043c\u0438 \u043b\u0438\u0446\u0430\u043c\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439": null,
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0438": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Visual Studio C#": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u043f\u0440\u0438\u043d\u0442\u0435\u0440\u043e\u0432": [
+    { "bin": 2, "count": 2 }
+  ],
+  "\u043e\u0444\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043a\u0430\u0437\u043e\u0432": [
+    { "bin": 2, "count": 5 }
+  ],
+  "Delphi": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0440\u0430\u0431\u043e\u0442\u044b": [
+    { "bin": 2, "count": 5 }
+  ],
+  "DFS": [{ "bin": 3, "count": 3 }],
+  "SaaS": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0414\u0435\u043b\u0435\u0433\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u043c \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u043e\u043c": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u044e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u0432": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "DAST": [{ "bin": 2, "count": 1 }],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u043f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a\u0430\u043c\u0438": [
+    { "bin": 2, "count": 3 }
+  ],
+  "STL": null,
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0440\u0430\u0431\u043e\u0447\u0435\u0433\u043e \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041c\u0435\u0434\u0438\u0439\u043d\u0430\u044f \u0440\u0435\u043a\u043b\u0430\u043c\u0430": [
+    { "bin": 2, "count": 1 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0438 \u0432\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u0435 KPI": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Apache HTTP Proxy": [{ "bin": 3, "count": 5 }],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0432\u0441\u0442\u0440\u0435\u0447": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 }
+  ],
+  "Kaspersky Labs": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "MS Outlook": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0426\u0432\u0435\u0442\u043e\u043a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u044f": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 VPS/VDS \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432": [
+    { "bin": 1, "count": 1 }
+  ],
+  "\u0425\u0443\u0434\u043e\u0436\u043d\u0438\u043a": [
+    { "bin": 2, "count": 1 }
+  ],
+  "Kubernetes (K8S)": [{ "bin": 3, "count": 5 }],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0435 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "Playwright": [{ "bin": 2, "count": 2 }],
+  "Citrix": [{ "bin": 2, "count": 1 }],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0435\u0439": [
+    { "bin": 2, "count": 5 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043e\u0442\u0447\u0451\u0442\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "PHP8": [{ "bin": 3, "count": 2 }],
+  "\u041a\u0430\u0440\u044c\u0435\u0440\u043d\u044b\u0439 \u0440\u043e\u0441\u0442": [
+    { "bin": 2, "count": 5 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043b\u043e\u0433\u043e\u0442\u0438\u043f\u043e\u0432": [
+    { "bin": 1, "count": 4 },
+    { "bin": 2, "count": 1 }
+  ],
+  "Gradle": [{ "bin": 3, "count": 1 }],
+  "Charles Proxy": [{ "bin": 2, "count": 1 }],
+  "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": [
+    { "bin": 2, "count": 3 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u0420\u0435\u043a\u043b\u0430\u043c\u0430": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 CMS": [
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u041f\u041e": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "SMS-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 15, "count": 1 }
+  ],
+  "\u041c\u0435\u0436\u0441\u0435\u0442\u0435\u0432\u044b\u0435 \u044d\u043a\u0440\u0430\u043d\u044b": [
+    { "bin": 3, "count": 1 }
+  ],
+  "Composer": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "UI/UX": [{ "bin": 1, "count": 1 }],
+  "\u041e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "LinkedIn": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "IP-\u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0438\u044f": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 3 }
+  ],
+  "1C: \u0411\u0443\u0445\u0433\u0430\u043b\u0442\u0435\u0440\u0438\u044f": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "ITIL": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "CustDev": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "VK Ads": [{ "bin": 2, "count": 1 }],
+  "CCNA": [{ "bin": 3, "count": 1 }],
+  "ASO": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Redhat": [{ "bin": 3, "count": 5 }],
+  "\u0418\u043b\u043b\u044e\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 1, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 3D-\u0433\u0440\u0430\u0444\u0438\u043a\u0438": [
+    { "bin": 2, "count": 3 }
+  ],
+  "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Google Search Console": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 4 }
+  ],
+  "\u0414\u0438\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0414\u043e\u0431\u0440\u043e\u0436\u0435\u043b\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u0438\u0437\u043d\u0435\u0441-\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u0439": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Helm": [{ "bin": 5, "count": 1 }],
+  "\u0411\u0440\u0435\u0439\u043d\u0441\u0442\u043e\u0440\u043c\u0438\u043d\u0433": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u044f\u043c\u0438 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u0441\u043e\u043f\u0440\u043e\u0432\u043e\u0436\u0434\u0435\u043d\u0438\u044e": [
+    { "bin": 2, "count": 5 }
+  ],
+  "\u0417\u0430\u043a\u0443\u043f\u043a\u0430 \u043e\u0440\u0433\u0442\u0435\u0445\u043d\u0438\u043a\u0438 \u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u041e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u043e\u0444\u0438\u0441\u043d\u043e\u0439 \u0442\u0435\u0445\u043d\u0438\u043a\u0438": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "Data Mining": [{ "bin": 3, "count": 3 }],
+  "\u0421\u0445\u0435\u043c\u043e\u0442\u0435\u0445\u043d\u0438\u043a\u0430 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0433\u043e \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "Bitrix24": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Azure": [{ "bin": 2, "count": 1 }],
+  "\u041c\u0430\u0448\u0438\u043d\u043d\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u044b": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u043e\u0435 \u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "\u041a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0442\u0438\u0432\u043d\u044b\u0435 \u043d\u0430\u0432\u044b\u043a\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 }
+  ],
+  "\u0424\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u043e\u0442\u0447\u0435\u0442\u043d\u043e\u0441\u0442\u0438": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0433\u043d\u043e\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": null,
+  "\u0421\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043a\u0440\u0438\u043f\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0437\u0430\u0449\u0438\u0442\u044b \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": [
+    { "bin": 2, "count": 1 }
+  ],
+  "Astra Linux": [{ "bin": 2, "count": 1 }],
+  "CMake": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 }
+  ],
+  "OpenCart": [{ "bin": 2, "count": 5 }],
+  "Webflow": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "IT Recruitment": [{ "bin": 2, "count": 1 }],
+  "Power Pivot": null,
+  "Shell Scripting": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 3 }
+  ],
+  "OpenVPN": [
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u043d\u043e-\u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440\u0441\u043a\u0430\u044f \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 2, "count": 3 }
+  ],
+  "Mac Os": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "leomax": [{ "bin": 2, "count": 5 }],
+  "\u0420\u043e\u0441\u0442 \u0432 \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0435": [
+    { "bin": 2, "count": 5 }
+  ],
+  "Roistat": [{ "bin": 2, "count": 4 }],
+  "1\u0421: \u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0422\u043e\u0440\u0433\u043e\u0432\u043b\u0435\u0439": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 }
+  ],
+  "Veeam": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 }
+  ],
+  "CAD": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Cypress": [{ "bin": 2, "count": 2 }],
+  "ip-call": [{ "bin": 2, "count": 5 }],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0438 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u0440\u0430\u0431\u043e\u0442\u044b \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "\u041c\u0435\u0441\u0441\u0435\u043d\u0434\u0436\u0435\u0440-\u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433": [
+    { "bin": 1, "count": 3 },
+    { "bin": 2, "count": 1 }
+  ],
+  "\u0412\u0435\u0434\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u043d\u043e\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
+    { "bin": 2, "count": 2 },
+    { "bin": 4, "count": 1 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0445 \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u0439": [
+    { "bin": 1, "count": 3 }
+  ],
+  "Service Desk": [{ "bin": 2, "count": 1 }]
+}
