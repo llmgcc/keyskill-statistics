@@ -9,6 +9,7 @@ import { Category } from '@/config/types';
 import SkillImage from '@/components/ui/SkillImage';
 
 import { CategoryPieChart } from '../plot/CategoryPieChart';
+import { useTranslation } from 'react-i18next';
 
 type SkillDescriptionProps = {
   name: string;
@@ -27,8 +28,10 @@ function CategoryPopover({
 }) {
   const [buttonKey, setButtonKey] = useState<string | null>(null);
   const [popoverContent, setPopoverContent] = useState<Category[]>([]);
-
+  const {t} = useTranslation()
   const categories = skill[defaultKey as string] ?? [];
+  const translationKey = defaultKey == 'categories' ? 'domains' : 'categories'
+
 
   const getColor = (category) => {
     if (Object.values(Categories).includes(category.name as Categories)) {
@@ -56,7 +59,10 @@ function CategoryPopover({
         color: getColor(c),
         value: c.confidence,
         icon: getIcon(c),
+        name: t(`${translationKey}.${c.name}`),
       })) ?? [];
+
+      console.log('content', content)
 
     const maxValue = Math.max(...content.map((c) => c.value));
 
@@ -68,7 +74,7 @@ function CategoryPopover({
       .reduce((a, b) => a + b, 0);
 
     filteredContent.push({
-      name: 'Unknown',
+      name: t('common.unknownCategory'),
       value: 1 - confidenceSum,
       color: '#999999',
     });
@@ -124,7 +130,7 @@ function CategoryPopover({
           className={`'cursor-pointer' ${color(category?.confidence ?? 0)}`}
           onClick={() => setButtonKey(defaultKey)}
         >
-          {category?.name ?? 'Unknown'}
+          {t(`${translationKey}.${category?.name}`) ?? t(`common.unknownCategory`)}
         </div>
       </Popover.Trigger>
       <Popover.Content className="min-w-max rounded-md border-[1px] border-background-secondary !p-0 shadow-background-secondary">
