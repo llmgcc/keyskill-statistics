@@ -38,6 +38,7 @@ export const translations = {
         days: 'days',
         experience: 'Experience',
         period: 'Period',
+        unknownCategory: 'Unknown',
       },
       domains: Categories,
       categories: Technologies,
@@ -86,6 +87,7 @@ export const translations = {
         days: 'дней',
         experience: 'Опыт работы',
         period: 'Период',
+        unknownCategory: 'Неизвестно',
       },
       domains: {
         [Categories.Frontend]: 'Фронтэнд',
