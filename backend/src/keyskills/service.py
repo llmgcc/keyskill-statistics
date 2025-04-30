@@ -1,4 +1,4 @@
-from sqlmodel import Session, select, func, and_, cast, Date, desc, extract, case
+from sqlmodel import Session, String, select, func, and_, cast, Date, desc, extract, case
 from src.models import (
     KeySkill,
     Vacancy,
@@ -12,8 +12,9 @@ from src.models import (
     KeySkillTranslation,
 )
 import datetime
-from sqlalchemy.dialects.postgresql import aggregate_order_by
+from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg, json
 from src.config import settings
+import sqlalchemy
 
 
 def get_base_skills(
@@ -119,7 +120,7 @@ def get_base_skills(
         categories_subquery = (
             select(
                 KeySkillCategory.name,
-                func.array_agg(
+                array_agg(
                     aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
                 ).label("categories"),
             )
@@ -137,7 +138,7 @@ def get_base_skills(
         categories_subquery = (
             select(
                 KeySkillTechnology.name,
-                func.array_agg(
+                array_agg(
                     aggregate_order_by(
                         json_object, KeySkillTechnology.confidence.desc()
                     )
@@ -160,6 +161,22 @@ def get_base_skills(
             technologies_subquery.c.categories.label("technologies"),
             KeySkillImage.image,
             KeySkillTranslation.translation.label("translation"),
+
+            
+            # sqlalchemy.func.json_extract_path(
+            #     cast(
+            #         categories_subquery.c.categories[1],
+            #         sqlalchemy.JSON
+            #     ),
+            #     'name'
+            # ).label("category"),
+            #     sqlalchemy.func.json_extract_path(
+            #         cast(
+            #             categories_subquery.c.categories[1],
+            #             sqlalchemy.JSON
+            #         ),
+            #         'name'
+            #     ).label("technology")
         )
         .select_from(skills)
         .join(
@@ -304,6 +321,25 @@ def get_base_skills(
     # )
 
     # return result
+
+
+def create_categories_subquery():
+    json_object = func.json_build_object(
+        "name", Category.name, "confidence", KeySkillCategory.confidence
+    )
+    categories_subquery = (
+        select(
+            KeySkillCategory.name,
+            func.array_agg(
+                aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
+            ).label("categories"),
+        )
+        .select_from(KeySkillCategory)
+        .join(Category, Category.id == KeySkillCategory.category_id)
+        .group_by(KeySkillCategory.name)
+    ).subquery()
+
+    return categories_subquery
 
 
 def get_skills(date_from: datetime.date, date_to: datetime.date):

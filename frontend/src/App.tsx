@@ -18,6 +18,8 @@ import { Stats } from './interfaces/index';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
 import { useDomainsStore } from './store/domainsStore.ts';
+import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
+import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -63,10 +65,10 @@ function App() {
           <div>
             <MdCategory />
           </div>
-          <div className="ml-1">Categories</div>
+          <div className="ml-1">Domains</div>
         </div>
       ),
-      body: () => <div></div>,
+      body: () => <div><CategoriesTable/></div>,
       name: 'categories',
     },
     {
@@ -75,10 +77,10 @@ function App() {
           <div>
             <GrTechnology />
           </div>
-          <div className="ml-1">Technologies</div>
+          <div className="ml-1">Categories</div>
         </div>
       ),
-      body: () => <div></div>,
+      body: () => <div><TechnologiesTable/></div>,
       name: 'technologies',
     },
   ];

@@ -20,22 +20,14 @@ import { TanTable } from '@/components/table/TanTable';
 import { SkillHist } from '../plot/Hist';
 import { SkillPlot } from '../plot/Plot';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
+import { placeAccessor, prevPlaceAccessor, skillNameAccessor } from './accessors';
+import { KeySkill } from '@/interfaces';
 
 type Category = {
   name: string;
   confidence: number;
 };
 
-type KeySkill = {
-  place: number;
-  name: string;
-  count: number;
-  prev_place: number;
-  prev_count: number;
-  average_salary: number;
-  categories: Category[];
-  technologies: Category[];
-};
 
 function getPercentDifference(current: number, prev: number) {
   return ((current - prev) / prev) * 100;
@@ -110,63 +102,15 @@ function KeySkills() {
     experience: selectedExperience,
   });
 
+  
   const columns = [
-    columnHelper.accessor('place', {
-      cell: (info) => (
-        <div className="text-text-secondary">{info.getValue()}</div>
-      ),
-      header: () => <div>#</div>,
-      size: 50,
-      meta: {
-        alignRight: true,
-      },
-      enablePinning: true,
-    }),
-    columnHelper.accessor('prev_place', {
-      header: () => (
-        <div>
-          <GoDiff className="stroke-1" />
-        </div>
-      ),
-      sortingFn: (rowa, rowb) => {
-        const a = rowa.original.prev_place - rowa.original.place;
-        const b = rowb.original.prev_place - rowb.original.place;
-        if (rowa.original.prev_place && rowb.original.prev_place) {
-          return a < b ? 1 : a > b ? -1 : 0;
-        }
-        if (!rowa.original.prev_place) {
-          return 1;
-        }
-        if (!rowb.original.prev_place) {
-          return -1;
-        }
-        return 0;
-      },
-      cell: (info) => {
-        const prev = info.row.original.prev_place;
-        const current = info.row.original.place;
-        return <ValueChangeRenderer prev={prev} current={current} />;
-      },
-      size: 50,
-      enablePinning: true,
-      meta: {
-        alignRight: true,
-      },
-    }),
-    columnHelper.accessor('name', {
-      header: () => <div>Name</div>,
-      sortingFn: sortingFns.alphanumeric,
-      cell: (info) => {
-        return <SkillDescription {...info.row.original} />;
-      },
-      size: 0,
-      enablePinning: true,
-    }),
+    placeAccessor({accessorKey: 'place'}),
+    prevPlaceAccessor({accessorKey: 'prev_place'}),
+    skillNameAccessor({accessorKey: 'name'}),
     columnHelper.accessor('average_salary', {
       header: () => (
         <div className="flex items-center">
           <div className="mr-1">Salary</div>
-          {/* <div className='bg-background-secondary rounded-full h-3 w-3 flex items-center justify-center cursor-help'><BiQuestionMark/></div> */}
         </div>
       ),
       cell: (info) => {
@@ -316,24 +260,12 @@ function KeySkills() {
     columnHelper.accessor('chart', {
       header: 'Trend',
       cell: (info) => {
-        // const plot = info.row.original.chart ?? [];
         const color =
           info.row.original.count >= info.row.original.prev_count
             ? 'rgb(74, 222, 128)'
             : 'rgb(239, 68, 68)';
-
-        // const data = [];
-        // for (let i = 1; i <= (skillsData?.count_bins ?? 1); i++) {
-        //   const index = plot.findIndex((p) => p.bin == i);
-        //   if (index !== -1) {
-        //     data.push(plot[index].count);
-        //   } else {
-        //     data.push(0);
-        //   }
-        // }
         return (
           <div style={{ height: '40px' }} className="w-40">
-            {/* <Plot data={data} color={color} strokeWidth={2} /> */}
             <div className="size-full">
               <Skeleton loading={isLoading || isFetching} className="size-full">
                 {(!isLoading || !isFetching) && (

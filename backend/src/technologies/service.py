@@ -9,7 +9,7 @@ import datetime
 from src.keyskills.service import create_salary_subquery
 
 
-def technologies_list(session: Session, days_period=15):
+def technologies_list(session: Session, days_period=30, experience = None):
     current_to = func.now()
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -20,6 +20,7 @@ def technologies_list(session: Session, days_period=15):
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(Vacancy.created_at.between(current_from, current_to))
+        .where(Vacancy.experience == experience if experience else True)
         .group_by(KeySkill.name)
         .order_by(desc("count"))
     ).cte("skills")
@@ -29,6 +30,7 @@ def technologies_list(session: Session, days_period=15):
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(Vacancy.created_at.between(prev_from, prev_to))
+        .where(Vacancy.experience == experience if experience else True)
         .group_by(KeySkill.name)
     ).cte("prev_skills")
 
