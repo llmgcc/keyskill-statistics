@@ -9,6 +9,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Experience } from '@/config/experience';
 
 import { svgCurveFromPoints } from './svg-curve';
+import { Chart } from '@/interfaces';
 
 function SVGPlot(props: {
   data: number[];
@@ -130,6 +131,8 @@ function Plot(props: { data: number[]; color: string; strokeWidth?: number }) {
 
 type SkillPlotProps = {
   name: string;
+  key: string;
+  source (name: string, period: number, experience?: Experience) : Promise<Chart[]>;
   period: number;
   color: string;
   strokeWidth: number;
@@ -138,20 +141,18 @@ type SkillPlotProps = {
 
 export function SkillPlot({
   name,
+  source,
+  key,
   period,
   color,
   strokeWidth,
   experience,
 }: SkillPlotProps) {
   const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: [`${name}_plot`, period, experience],
+    queryKey: [`${name}_plot_${key}`, period, experience],
     queryFn: async () => {
-      const data = await API.skillPlot(
-        name,
-        period,
-        experience == Experience.any ? undefined : (experience ?? undefined),
-      );
-      return data ?? [];
+      const data = await source(name, period, experience == Experience.any ? undefined : (experience ?? undefined))
+      return data ?? []
     },
     placeholderData: keepPreviousData,
     staleTime: Infinity,

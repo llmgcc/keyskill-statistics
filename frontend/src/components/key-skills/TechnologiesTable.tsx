@@ -21,6 +21,9 @@ import { useExperienceStore } from '@/store/experienceStore';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { API } from '@/api/api';
 import { Experience } from '@/config/experience';
+import { Skeleton } from '@radix-ui/themes';
+import { SkillPlot } from '../plot/Plot';
+import { SkillHist } from '../plot/Hist';
 
 type Category = {
   place: number;
@@ -67,29 +70,47 @@ export function TechnologiesTable() {
     categoryNameAccessor({accessorKey: 'name', category: 'technology'}),
 
 
-    columnHelper.accessor('average_salary', {
+
+ columnHelper.accessor('average_salary', {
       header: () => (
         <div className="flex items-center">
           <div className="mr-1">Salary</div>
-          <div className="flex h-3 w-3 cursor-help items-center justify-center rounded-full bg-background-secondary">
-            <BiQuestionMark />
-          </div>
         </div>
       ),
       cell: (info) => {
+        const color = 'rgba(229, 231, 235)';
+        const data: any[] = [];
+        const salary = info.getValue();
         return (
           <div>
-            <div className="z-40 flex justify-end text-text">
-              <div className="z-40">₽{Number(info.getValue()).toFixed(0)}</div>
-            </div>
-            <div className="relative z-10">
-              <div className="relative z-20 h-[2px] w-20 rounded bg-[#E0E0E0]">
-                <div className="absolute left-5 z-20 flex h-full w-5 justify-center rounded bg-gray-600">
-                  <div className="h-full w-[4px] rounded bg-gray-400"></div>
+            <div className="flex justify-end text-text">
+              {salary ? (
+                <div className="z-40 font-[500]">
+                  <>
+                    <span className="">₽</span>
+                    {Number(info.getValue()).toFixed(0)}
+                  </>
                 </div>
-                <div className="absolute left-2 z-10 h-full w-16 rounded bg-gray-400"></div>
-              </div>
+              ) : (
+                <div>N/A</div>
+              )}
             </div>
+
+            <Skeleton loading={isLoading || isFetching} className="size-full">
+              {/* {!isLoading && <SkillPlot name={info.row.original.name} period={selectedPeriod} color={color} strokeWidth={2}  />} */}
+              {(!isLoading || !isFetching) && (
+                <SkillHist
+                  name={info.row.original.name}
+                  key='technologies_salary'
+                  source={API.technologySalaryPlot}
+                  period={selectedPeriod}
+                  color={color}
+                  strokeWidth={2}
+                  average={info.row.original.average_salary}
+                  experience={selectedExperience}
+                />
+              )}
+            </Skeleton>
           </div>
         );
       },
@@ -98,93 +119,128 @@ export function TechnologiesTable() {
         alignRight: true,
       },
     }),
+
     columnHelper.accessor('count', {
+             cell: (info) => {
+               const max = Math.max(
+                 ...info.table.getCenterRows().map((r) => r.original.count),
+               );
+               const width = (info.getValue() / max) * 100;
+               return (
+                 <div className="relative">
+                   <div className="flex w-32 items-end justify-end font-[500]">
+                     {info.getValue()}
+                   </div>
+                   <div className="absolute bottom-[-10px] flex h-[4px] w-full rounded bg-gray-200 text-text">
+                     <div
+                       className={`rounded bg-gray-300`}
+                       style={{ width: `${Math.max(5, width)}%` }}
+                     ></div>
+                   </div>
+                 </div>
+               );
+             },
+             header: () => (
+               <div className="flex items-center">
+                 <div className="">Mentions</div>
+               </div>
+             ),
+             size: 125,
+             meta: {
+               alignRight: true,
+             },
+           }),
+           columnHelper.accessor('prev_count', {
+             header: () => <GoDiff className="stroke-1" />,
+             sortingFn: (rowa, rowb) => {
+               const a = getPercentDifference(
+                 rowa.original.count,
+                 rowa.original.prev_count,
+               );
+               const b = getPercentDifference(
+                 rowb.original.count,
+                 rowb.original.prev_count,
+               );
+               if (rowa.original.prev_place && rowb.original.prev_place) {
+                 return a < b ? 1 : a > b ? -1 : 0;
+               }
+               if (!rowa.original.prev_place) {
+                 return 1;
+               }
+               if (!rowb.original.prev_place) {
+                 return -1;
+               }
+               return 0;
+             },
+             cell: (info) => {
+               const current = info.row.original.count;
+               const prev = info.row.original.prev_count;
+               const difference =
+                 info.row.original.count - info.row.original.prev_count;
+               let className = 'text-yellow-400';
+               if (difference < 0 && Number.isInteger(info.row.original.prev_count)) {
+                 className = 'text-red-500';
+               } else {
+                 className = 'text-green-400';
+               }
+               return (
+                 <div style={{ textAlign: 'left' }}>
+                   <div className={`${className} keyskills-badge`}>
+                     <div className="keyskills-badge-arrow"></div>
+                     <div className="keyskills-difference-value">
+                       {prev && current ? (
+                         <div>
+                           {getPercentDifference(
+                             info.row.original.count,
+                             info.row.original.prev_count,
+                           ).toFixed(2)}
+                           %
+                         </div>
+                       ) : (
+                         <div>
+                           <MdOutlineFiberNew size={25} />
+                         </div>
+                       )}
+                     </div>
+                   </div>
+                 </div>
+               );
+             },
+             size: 100,
+             meta: {
+               alignRight: true,
+             },
+           }),
+
+    columnHelper.accessor('chart', {
+      header: 'Trend',
       cell: (info) => {
-        const max = Math.max(
-          ...info.table.getCenterRows().map((r) => r.original.count),
-        );
-        const width = (info.getValue() / max) * 100;
+        const color =
+          info.row.original.count >= info.row.original.prev_count
+            ? 'rgb(74, 222, 128)'
+            : 'rgb(239, 68, 68)';
         return (
-          <div className="">
-            <div className="flex w-20 items-end justify-end">
-              {info.getValue()}
-            </div>
-            <div className="mx-2 flex h-[3px] w-full rounded bg-background-secondary text-text">
-              <div
-                className={`rounded bg-gray-400`}
-                style={{ width: `${Math.max(5, width)}%` }}
-              ></div>
-            </div>
-          </div>
-        );
-      },
-      header: () => (
-        <div className="flex items-center">
-          <div className="">Count</div>
-        </div>
-      ),
-      size: 125,
-      meta: {
-        alignRight: true,
-      },
-    }),
-    columnHelper.accessor('prev_count', {
-      header: () => <GoDiff className="stroke-1" />,
-      sortingFn: (rowa, rowb) => {
-        const a = getPercentDifference(
-          rowa.original.count,
-          rowa.original.prev_count,
-        );
-        const b = getPercentDifference(
-          rowb.original.count,
-          rowb.original.prev_count,
-        );
-        if (rowa.original.prev_place && rowb.original.prev_place) {
-          return a < b ? 1 : a > b ? -1 : 0;
-        }
-        if (!rowa.original.prev_place) {
-          return 1;
-        }
-        if (!rowb.original.prev_place) {
-          return -1;
-        }
-        return 0;
-      },
-      cell: (info) => {
-        const current = info.row.original.count;
-        const prev = info.row.original.prev_count;
-        const difference =
-          info.row.original.count - info.row.original.prev_count;
-        let className = 'text-yellow-400';
-        if (difference < 0 && Number.isInteger(info.row.original.prev_count)) {
-          className = 'text-red-400';
-        } else {
-          className = 'text-green-400';
-        }
-        return (
-          <div style={{ textAlign: 'left' }}>
-            <div className={`${className} keyskills-badge`}>
-              <div className="keyskills-badge-arrow"></div>
-              <div className="keyskills-difference-value">
-                {prev && current ? (
-                  <div>
-                    {getPercentDifference(
-                      info.row.original.count,
-                      info.row.original.prev_count,
-                    ).toFixed(2)}
-                    %
-                  </div>
-                ) : (
-                  <div>
-                    <MdOutlineFiberNew size={25} />
-                  </div>
+          <div style={{ height: '40px' }} className="w-40">
+            <div className="size-full">
+              <Skeleton loading={isLoading || isFetching} className="size-full">
+                {(!isLoading || !isFetching) && (
+                  <SkillPlot
+                    name={info.row.original.name}
+                    key='technology_plot'
+                    source={API.technologyPlot}
+                    period={selectedPeriod}
+                    color={color}
+                    strokeWidth={2}
+                    experience={selectedExperience}
+                  />
                 )}
-              </div>
+              </Skeleton>
             </div>
           </div>
         );
       },
-      size: 100,
+      size: 150,
+      enableSorting: false,
       meta: {
         alignRight: true,
       },

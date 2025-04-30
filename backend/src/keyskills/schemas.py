@@ -24,7 +24,7 @@ class SkillsResponse(SQLModel):
     categories: List[CategoriesResponse] | None
     technologies: List[CategoriesResponse] | None
     # technology: str | None
-    category: Any | None
+    # category: Any | None
 
 
 class KeySkillsResponse(SQLModel):

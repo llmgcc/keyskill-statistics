@@ -32,8 +32,6 @@ def get_base_skills(
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
 
-    print(days_period, "days")
-
     count = (
         func.count()
         .filter(Vacancy.created_at.between(current_from, current_to))
@@ -323,23 +321,6 @@ def get_base_skills(
     # return result
 
 
-def create_categories_subquery():
-    json_object = func.json_build_object(
-        "name", Category.name, "confidence", KeySkillCategory.confidence
-    )
-    categories_subquery = (
-        select(
-            KeySkillCategory.name,
-            func.array_agg(
-                aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
-            ).label("categories"),
-        )
-        .select_from(KeySkillCategory)
-        .join(Category, Category.id == KeySkillCategory.category_id)
-        .group_by(KeySkillCategory.name)
-    ).subquery()
-
-    return categories_subquery
 
 
 def get_skills(date_from: datetime.date, date_to: datetime.date):
@@ -717,8 +698,6 @@ def skills_list(
     total_count = session.exec(
         select(func.count(func.distinct(skills_base.c.name))).select_from(skills_base)
     ).one()
-
-    print("ROOOOOWS", total_count)
 
     return {
         "skills": session.exec(result).all(),

@@ -111,7 +111,7 @@ function App() {
         <Highlights />
         <div className="app-container mt-4">
           {/* <Tabs tabs={tabs} /> */}
-          <Tabs.Root defaultValue={tabs[0].name}>
+          <Tabs.Root defaultValue={tabs[2].name}>
             <Tabs.List>
               {tabs.map((tab) => {
                 return (
