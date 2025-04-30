@@ -13,6 +13,14 @@ import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import { TanTable } from '../table/TanTable';
 import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { DataTable } from '../table/DataTable';
+import { categoryNameAccessor, placeAccessor, prevPlaceAccessor } from './accessors';
+import { usePeriodStore } from '@/store/periodStore';
+import { useExperienceStore } from '@/store/experienceStore';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { API } from '@/api/api';
+import { Experience } from '@/config/experience';
 
 type Category = {
   place: number;
@@ -28,64 +36,37 @@ function getPercentDifference(current: number, prev: number) {
 }
 
 export function TechnologiesTable() {
-  const [categories, setCategories] = useState<Category[] | null>(null);
+
+  const { selectedPeriod } = usePeriodStore();
+  const { selectedExperience } = useExperienceStore();
+
+  const {
+    data: categories,
+    isLoading,
+    isFetching,
+    error,
+  } = useQuery({
+    queryKey: ['categories_list', selectedPeriod, selectedExperience],
+    queryFn: async () => {
+      const data = await API.categoriesList(
+        selectedPeriod ?? 10,
+        selectedExperience == Experience.any ? undefined : (selectedExperience ?? undefined),
+      );
+      return data;
+    },
+    placeholderData: keepPreviousData,
+    staleTime: Infinity,
+  });
+  // const [categories, setCategories] = useState<Category[] | null>(null);
 
   const columnHelper = createColumnHelper<Category>();
 
   const columns = [
-    columnHelper.accessor('place', {
-      cell: (info) => <div>{info.getValue()}</div>,
-      header: () => <div>#</div>,
-      size: 50,
-      meta: {
-        alignRight: true,
-      },
-    }),
-    columnHelper.accessor('prev_place', {
-      header: () => (
-        <div>
-          <GoDiff className="stroke-1" />
-        </div>
-      ),
-      sortingFn: (rowa, rowb) => {
-        const a = rowa.original.prev_place - rowa.original.place;
-        const b = rowb.original.prev_place - rowb.original.place;
-        if (rowa.original.prev_place && rowb.original.prev_place) {
-          return a < b ? 1 : a > b ? -1 : 0;
-        }
-        if (!rowa.original.prev_place) {
-          return 1;
-        }
-        if (!rowb.original.prev_place) {
-          return -1;
-        }
-        return 0;
-      },
-      cell: (info) => {
-        const prev = info.row.original.prev_place;
-        const current = info.row.original.place;
-        return <ValueChangeRenderer prev={prev} current={current} />;
-      },
-      size: 50,
-      meta: {
-        alignRight: true,
-      },
-    }),
-    columnHelper.accessor('name', {
-      header: () => <div>Title</div>,
-      sortingFn: sortingFns.alphanumeric,
-      cell: (info) => {
-        return (
-          <div className="flex items-center">
-            <div className="mr-2 flex aspect-square w-6 items-center justify-center">
-              <SkillImage technology={info.row.original.name} />
-            </div>
-            <div className="text-sm font-bold">{info.row.original.name}</div>
-          </div>
-        );
-      },
-      size: 0,
-    }),
+    placeAccessor({accessorKey: 'place'}),
+    prevPlaceAccessor({accessorKey: 'prev_place'}),
+    categoryNameAccessor({accessorKey: 'name', category: 'technology'}),
+
+
     columnHelper.accessor('average_salary', {
       header: () => (
         <div className="flex items-center">
@@ -210,11 +191,6 @@ export function TechnologiesTable() {
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
-  useEffect(() => {
-    axios.get('/api/technologies/list').then((response) => {
-      setCategories(response.data);
-    });
-  }, []);
 
-  return <TanTable columns={columns} data={categories ?? []} />;
+  return <DataTable columns={columns} data={categories ?? []} isLoading={isLoading || isFetching}/>;
 }

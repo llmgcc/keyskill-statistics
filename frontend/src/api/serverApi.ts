@@ -23,14 +23,32 @@ export class ServerAPI implements API {
     return response.json();
   }
 
-  async categoriesList(): Promise<Category[]> {
-    const response = await fetch('/api/technologies/list');
-    return response.json();
+  async categoriesList(
+    period: number = 10,
+    experience?: Experience = undefined,
+  ): Promise<Category[]> {
+    const response = await axios.get('/api/technologies/list',
+      {
+        params: {
+          period,
+          experience,
+        },
+      }
+    );
+    return response.data;
   }
 
-  async domainsList(): Promise<Category[]> {
-    const response = await fetch('/api/categories/list');
-    return response.json();
+  async domainsList(
+    period: number = 10,
+    experience?: Experience = undefined,
+  ): Promise<Category[]> {
+    const response = await axios.get('/api/categories/list', {
+        params: {
+          period,
+          experience,
+        },
+    });
+    return response.data;
   }
 
   async skillPlot(
