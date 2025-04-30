@@ -48,7 +48,6 @@ def build_static(router):
 with Session(engine) as session:
     for period in PERIOD:
         for experience in EXPERIENCE:
-            print(period, experience)
             e = None if experience == "any" else experience
             skills = get_base_skills(
                 period, limit=None, offset=0, experience=e, min_count=5

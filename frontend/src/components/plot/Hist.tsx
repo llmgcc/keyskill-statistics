@@ -7,6 +7,7 @@ import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { Experience } from '@/config/experience';
+import { SalaryChart } from '@/interfaces';
 
 function SVGPlot(props: {
   data: number[];
@@ -117,6 +118,8 @@ function Hist(props: { data: number[]; color: string; strokeWidth?: number }) {
 
 type SkillHistProps = {
   name: string;
+  key: string;
+  source (name: string, period: number, experience?: Experience) : Promise<SalaryChart>;
   period: number;
   color: string;
   strokeWidth: number;
@@ -126,6 +129,8 @@ type SkillHistProps = {
 
 export function SkillHist({
   name,
+  source,
+  key,
   period,
   color,
   strokeWidth,
@@ -133,18 +138,16 @@ export function SkillHist({
   experience,
 }: SkillHistProps) {
   const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: [`${name}_hist`, period, experience],
+    queryKey: [`${name}_hist_${key}`, period, experience],
     queryFn: async () => {
-      const data = await API.salaryPlot(
-        name,
-        period,
-        experience == Experience.any ? undefined : (experience ?? undefined),
-      );
-      return data;
+      const data = await source(name, period, experience == Experience.any ? undefined : (experience ?? undefined))
+      console.log('DATA', data);
+      return data
     },
     placeholderData: keepPreviousData,
     staleTime: Infinity,
   });
+
 
   const chartData = [];
   if (data) {

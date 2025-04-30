@@ -115,19 +115,6 @@ function KeySkills() {
       ),
       cell: (info) => {
         const color = 'rgba(229, 231, 235)';
-        // const plot = info.row.original?.salary_chart ?? [];
-        // const data = [];
-        // for (let i = 1; i <= (skillsData?.salary_bins ?? 1); i++) {
-        //   const index = plot.findIndex((p) => p.bin == i);
-        //   if (index !== -1) {
-        //     data.push(plot[index].count);
-        //   } else {
-        //     data.push(0);
-        //   }
-        // }
-        // const max = skillsData?.max_salary ?? 1;
-        // const width = (info.row.original.average_salary / max) * 100;
-
         const data: any[] = [];
         const salary = info.getValue();
         return (
@@ -150,6 +137,8 @@ function KeySkills() {
               {(!isLoading || !isFetching) && (
                 <SkillHist
                   name={info.row.original.name}
+                  key='skills_salary'
+                  source={API.salaryPlot}
                   period={selectedPeriod}
                   color={color}
                   strokeWidth={2}
@@ -271,6 +260,8 @@ function KeySkills() {
                 {(!isLoading || !isFetching) && (
                   <SkillPlot
                     name={info.row.original.name}
+                    key='skills_plot'
+                    source={API.skillPlot}
                     period={selectedPeriod}
                     color={color}
                     strokeWidth={2}

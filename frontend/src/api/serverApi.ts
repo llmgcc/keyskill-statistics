@@ -66,6 +66,38 @@ export class ServerAPI implements API {
     return response.data as Chart[];
   }
 
+
+  async domainPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get('/api/charts/category', {
+      params: {
+        category: name,
+        period,
+        experience,
+      },
+    });
+    return response.data as Chart[];
+  }
+
+
+  async technologyPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get('/api/charts/technology', {
+      params: {
+        technology: name,
+        period,
+        experience,
+      },
+    });
+    return response.data as Chart[];
+  }
+
   async salaryPlot(
     name: string,
     period: number,
@@ -74,6 +106,38 @@ export class ServerAPI implements API {
     const response = await axios.get('/api/charts/salary', {
       params: {
         skill_name: name,
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+
+  async categorySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get('/api/charts/category-salary', {
+      params: {
+        category: name,
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+
+  async technologySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get('/api/charts/technology-salary', {
+      params: {
+        technology: name,
         period,
         experience,
       },
