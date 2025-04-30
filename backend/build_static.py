@@ -4,17 +4,22 @@ from src.main_page.router import router as main_router
 from src.categories.router import router as categories_router
 from src.technologies.router import router as technologies_router
 from src.highlights.router import router as highlights_router
+from src.categories.service import categories_list
+from src.technologies.service import technologies_list
 import os
 from src.keyskills.service import get_base_skills
-from src.charts.service import skills_chart, salary_chart
+from src.charts.service import skills_chart, salary_chart, category_chart, category_salary_chart, technologies_chart, technologies_salary_chart
 from src.database import engine
 from sqlmodel import Session, select
 from src.keyskills.schemas import SkillsResponse
+from src.categories.schemas import CategoriesResponse
+from src.technologies.schemas import TechnologiesResponse
 import json
+import time
 
 FRONTEND_STATIC_API_PATH = (
     os.path.dirname(os.path.abspath(__file__ + "/../"))
-    + "/vacancies-statistics/public/static-api"
+    + "/frontend/public/static-api"
 )
 app = FastAPI()
 app.include_router(main_router)
@@ -46,56 +51,170 @@ def build_static(router):
 
 
 with Session(engine) as session:
-    for period in PERIOD:
-        for experience in EXPERIENCE:
+    for period in (PERIOD):
+        print(period, len(PERIOD))
+        for experience in (EXPERIENCE):
+            print('\t', experience, len(EXPERIENCE))
             e = None if experience == "any" else experience
-            skills = get_base_skills(
-                period, limit=None, offset=0, experience=e, min_count=5
-            )
 
+            print('categories')
+            #  CATEGORIES
+            categories = categories_list(session, period, experience=e)
             data = [
-                SkillsResponse.model_validate(item).model_dump_json()
-                for item in session.exec(skills).all()
+                CategoriesResponse.model_validate(item).model_dump_json()
+                for item in categories
             ]
-            file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/categories/categories_{period}_{experience}'}.json"
             os.makedirs(os.path.dirname(file_name), exist_ok=True)
             data = list(map(lambda x: json.loads(x), data))
             with open(file_name, "w", encoding="utf-8") as f:
                 json.dump(data, f)
 
-            charts_subquery = skills_chart(
-                None, session, period, for_all_skills=True, experience=e
-            )
-            result = (
-                select(skills.c.name, charts_subquery.c.chart)
-                .select_from(skills)
-                .outerjoin(charts_subquery, skills.c.name == charts_subquery.c.name)
-            )
-            charts = session.exec(result).all()
-            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/skills_{period}_{experience}'}.json"
+
+            
+            # CATEGORIES CHART
+            categories = {}
+            for category in data:
+                print('categories chart')
+                chart = category_chart(
+                    category['name'], session, period, experience=e
+                )
+                categories[category['name']] = chart
+
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/categories_{period}_{experience}'}.json"
             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-            data = {}
-            for item in charts:
-                data[item[0]] = item[1]
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(categories, f)
+
+            # CATEGORIES SALARY
+            categories = {}
+            for category in data:
+                print('categories salary')
+                chart = category_salary_chart(
+                    category['name'], session, period, experience=e
+                )
+                categories[category['name']] = chart
+
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/categories_salary_{period}_{experience}'}.json"
+            os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(categories, f)
+
+            #  TECHNOLOGIES
+            categories = technologies_list(session, period, experience=e)
+            data = [
+                TechnologiesResponse.model_validate(item).model_dump_json()
+                for item in categories
+            ]
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/technologies/technologies_{period}_{experience}'}.json"
+            os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            data = list(map(lambda x: json.loads(x), data))
             with open(file_name, "w", encoding="utf-8") as f:
                 json.dump(data, f)
 
-            salary_charts_subquery, max_salary = salary_chart(
-                None, session, period, for_all_skills=True, experience=e
-            )
-            result = (
-                select(skills.c.name, salary_charts_subquery.c.salary_chart)
-                .select_from(skills)
-                .outerjoin(
-                    salary_charts_subquery,
-                    skills.c.name == salary_charts_subquery.c.name,
+
+            # TECHNOLOGIES CHART
+            categories = {}
+            for category in data:
+                chart = technologies_chart(
+                    category['name'], session, period, experience=e
                 )
-            )
-            charts = session.exec(result).all()
-            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/salary_{period}_{experience}'}.json"
+                categories[category['name']] = chart
+
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/technologies_{period}_{experience}'}.json"
             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-            data = {}
-            for item in charts:
-                data[item[0]] = item[1]
             with open(file_name, "w", encoding="utf-8") as f:
-                json.dump(data, f)
+                json.dump(categories, f)
+
+            # TECHNOLOGIES SALARY
+            categories = {}
+            for category in data:
+                chart = technologies_salary_chart(
+                    category['name'], session, period, experience=e
+                )
+                categories[category['name']] = chart
+
+            file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/technologies_salary_{period}_{experience}'}.json"
+            os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(categories, f)
+
+
+            # CATEGORIES CHART
+            # charts_subquery = category_chart(
+            #     None, session, period, for_all_skills=True, experience=e
+            # )
+            # result = (
+            #     select(categories.c.name, charts_subquery.c.chart)
+            #     .select_from(categories)
+            #     .outerjoin(charts_subquery, categories.c.name == charts_subquery.c.name)
+            # )
+            # charts = session.exec(result).all()
+            # file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/categories_{period}_{experience}'}.json"
+            # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            # data = {}
+            # for item in charts:
+            #     data[item[0]] = item[1]
+            # with open(file_name, "w", encoding="utf-8") as f:
+            #     json.dump(data, f)
+
+
+
+            # skills = get_base_skills(
+            #     period, limit=None, offset=0, experience=e, min_count=5
+            # )
+
+            # # SKILLS
+            # data = [
+            #     SkillsResponse.model_validate(item).model_dump_json()
+            #     for item in session.exec(skills).all()
+            # ]
+            # file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
+            # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            # data = list(map(lambda x: json.loads(x), data))
+            # with open(file_name, "w", encoding="utf-8") as f:
+            #     json.dump(data, f)
+
+
+            # # SKILLS CHARTS
+            # charts_subquery = skills_chart(
+            #     None, session, period, for_all_skills=True, experience=e
+            # )
+            # result = (
+            #     select(skills.c.name, charts_subquery.c.chart)
+            #     .select_from(skills)
+            #     .outerjoin(charts_subquery, skills.c.name == charts_subquery.c.name)
+            # )
+            # charts = session.exec(result).all()
+            # file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/skills_{period}_{experience}'}.json"
+            # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            # data = {}
+            # for item in charts:
+            #     data[item[0]] = item[1]
+            # with open(file_name, "w", encoding="utf-8") as f:
+            #     json.dump(data, f)
+
+
+            # # SKILLS SALARY CHARTS
+            # salary_charts_subquery, max_salary = salary_chart(
+            #     None, session, period, for_all_skills=True, experience=e
+            # )
+            # result = (
+            #     select(skills.c.name, salary_charts_subquery.c.salary_chart)
+            #     .select_from(skills)
+            #     .outerjoin(
+            #         salary_charts_subquery,
+            #         skills.c.name == salary_charts_subquery.c.name,
+            #     )
+            # )
+            # charts = session.exec(result).all()
+            # file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/salary_{period}_{experience}'}.json"
+            # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+            # data = {}
+            # for item in charts:
+            #     data[item[0]] = item[1]
+            # with open(file_name, "w", encoding="utf-8") as f:
+            #     json.dump(data, f)
+
+
+            # CATEGORIES
