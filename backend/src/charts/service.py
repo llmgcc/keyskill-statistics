@@ -347,7 +347,6 @@ def category_salary_chart(
     average_salary_per_skill = (
         select(
             bins.c.name,
-            # sqlalchemy.func.median(bins.c.average_salary).label('average_salary')
             func.percentile_cont(0.5)
             .within_group(bins.c.average_salary)
             .label("average_salary"),
