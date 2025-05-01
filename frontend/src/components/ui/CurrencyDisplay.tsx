@@ -32,6 +32,7 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
                 transition: "color 0.5s ease",
                 color: animate ? "rgb(var(--color-background-secondary))" : "inherit"
             }}
+            className="z-40"
         >
             {selectedCurrency?.currency_abbr}
             {(valueInRUB*selectedCurrency.currency_rate).toLocaleString(undefined, {
