@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { API } from '@/api/api';
+import { KeySkill } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { Skeleton } from '@radix-ui/themes';
@@ -19,15 +20,21 @@ import { TanTable } from '@/components/table/TanTable';
 
 import { SkillHist } from '../plot/Hist';
 import { SkillPlot } from '../plot/Plot';
+import { CountRenderer } from '../table/renderers/CountRenderer';
+import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
-import { placeAccessor, prevPlaceAccessor, skillNameAccessor } from './accessors';
-import { KeySkill } from '@/interfaces';
+import {
+  countAccessor,
+  placeAccessor,
+  prevPlaceAccessor,
+  salaryAccessor,
+  skillNameAccessor,
+} from './accessors';
 
 type Category = {
   name: string;
   confidence: number;
 };
-
 
 function getPercentDifference(current: number, prev: number) {
   return ((current - prev) / prev) * 100;
@@ -102,89 +109,42 @@ function KeySkills() {
     experience: selectedExperience,
   });
 
-  
   const columns = [
-    placeAccessor({accessorKey: 'place'}),
-    prevPlaceAccessor({accessorKey: 'prev_place'}),
-    skillNameAccessor({accessorKey: 'name'}),
-    columnHelper.accessor('average_salary', {
-      header: () => (
-        <div className="flex items-center">
-          <div className="mr-1">Salary</div>
-        </div>
-      ),
-      cell: (info) => {
-        const color = 'rgba(229, 231, 235)';
-        const data: any[] = [];
-        const salary = info.getValue();
-        return (
-          <div>
-            <div className="flex justify-end text-text">
-              {salary ? (
-                <div className="z-40 font-[500]">
-                  <>
-                    <span className="">₽</span>
-                    {Number(info.getValue()).toFixed(0)}
-                  </>
-                </div>
-              ) : (
-                <div>N/A</div>
-              )}
-            </div>
-
-            <Skeleton loading={isLoading || isFetching} className="size-full">
-              {/* {!isLoading && <SkillPlot name={info.row.original.name} period={selectedPeriod} color={color} strokeWidth={2}  />} */}
-              {(!isLoading || !isFetching) && (
-                <SkillHist
-                  name={info.row.original.name}
-                  key='skills_salary'
-                  source={API.salaryPlot}
-                  period={selectedPeriod}
-                  color={color}
-                  strokeWidth={2}
-                  average={info.row.original.average_salary}
-                  experience={selectedExperience}
-                />
-              )}
-            </Skeleton>
-          </div>
-        );
-      },
-      size: 120,
-      meta: {
-        alignRight: true,
-      },
+    placeAccessor({ accessorKey: 'place' }),
+    prevPlaceAccessor({ accessorKey: 'prev_place' }),
+    skillNameAccessor({ accessorKey: 'name' }),
+    salaryAccessor({
+      accessorKey: 'average_salary',
+      isLoading: isLoading || isFetching,
+      selectedPeriod: selectedPeriod,
+      selectedExperience: selectedExperience,
+      key: 'skills_salary',
+      source: API.salaryPlot,
     }),
-    columnHelper.accessor('count', {
-      cell: (info) => {
-        const max = Math.max(
-          ...info.table.getCenterRows().map((r) => r.original.count),
-        );
-        const width = (info.getValue() / max) * 100;
-        return (
-          <div className="relative">
-            <div className="flex w-32 items-end justify-end font-[500]">
-              {info.getValue()}
-            </div>
-            <div className="absolute bottom-[-10px] flex h-[4px] w-full rounded bg-gray-200 text-text">
-              <div
-                className={`rounded bg-gray-300`}
-                style={{ width: `${Math.max(5, width)}%` }}
-              ></div>
-            </div>
-          </div>
-        );
-      },
-      header: () => (
-        <div className="flex items-center">
-          <div className="">Mentions</div>
-        </div>
-      ),
-      size: 125,
-      meta: {
-        alignRight: true,
-      },
-    }),
+    // columnHelper.accessor('average_salary', {
+    //   header: () => (
+    //     <div className="flex items-center">
+    //       <div className="mr-1">Salary</div>
+    //     </div>
+    //   ),
+    //   cell: (info) => {
+    //     return (
+    //       <SalaryRenderer count={info.getValue() ?? undefined}
+    //         maxCount={10**6}
+    //         isLoading={isLoading || isFetching}
+    //         selectedPeriod={selectedPeriod}
+    //         selectedExperience={selectedExperience}
+    //         name={info.row.original.name}
+    //         key='skills_salary'
+    //       />
+    //     )
+    //   },
+    //   size: 150,
+    //   meta: {
+    //     alignRight: true,
+    //   },
+    // }),
+    countAccessor({ accessorKey: 'count' }),
     columnHelper.accessor('prev_count', {
       header: () => <GoDiff className="stroke-1" />,
       sortingFn: (rowa, rowb) => {
@@ -219,7 +179,7 @@ function KeySkills() {
           className = 'text-green-400';
         }
         return (
-          <div style={{ textAlign: 'left' }}>
+          <div>
             <div className={`${className} keyskills-badge`}>
               <div className="keyskills-badge-arrow"></div>
               <div className="keyskills-difference-value">
@@ -260,7 +220,7 @@ function KeySkills() {
                 {(!isLoading || !isFetching) && (
                   <SkillPlot
                     name={info.row.original.name}
-                    key='skills_plot'
+                    key="skills_plot"
                     source={API.skillPlot}
                     period={selectedPeriod}
                     color={color}

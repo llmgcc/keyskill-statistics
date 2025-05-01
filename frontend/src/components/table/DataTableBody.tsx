@@ -1,5 +1,6 @@
 import { Skeleton } from '@radix-ui/themes';
 import { flexRender, Table } from '@tanstack/react-table';
+
 import { alignRight } from './common';
 
 interface DataTableBodyProps<T extends object> {
@@ -13,7 +14,9 @@ export function DataTableBody<T extends object>({
 }: DataTableBodyProps<T>) {
   function data(cell: any) {
     return (
-      <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
+      <div className="size-full">
+        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+      </div>
     );
   }
 
@@ -24,7 +27,7 @@ export function DataTableBody<T extends object>({
           {row.getVisibleCells().map((cell) => (
             <td
               key={cell.id}
-              className="p-4"
+              className="size-full p-4"
               style={{
                 width: cell.column.getSize()
                   ? `${cell.column.getSize()}px`
@@ -32,9 +35,9 @@ export function DataTableBody<T extends object>({
               }}
             >
               <div
-                className={`${alignRight(cell.column.columnDef.meta) ? 'flex items-end justify-end' : 'flex items-start justify-start'}`}
+                className={`${alignRight(cell.column.columnDef.meta) ? 'size-full text-right' : 'size-full text-left'}`}
               >
-                <div>
+                <div className="size-full">
                   {isLoading ? (
                     <Skeleton className="min-w-5">{data(cell)}</Skeleton>
                   ) : (

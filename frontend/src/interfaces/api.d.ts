@@ -27,13 +27,12 @@ export interface API {
     period: number,
     experience?: Experience,
   ) => Promise<Chart[]>;
-  
+
   domainPlot: (
     name: string,
     period: number,
     experience?: Experience,
   ) => Promise<Chart[]>;
-
 
   domainPlot: (
     name: string,
@@ -46,7 +45,6 @@ export interface API {
     period: number,
     experience?: Experience,
   ) => Promise<Chart[]>;
-
 
   salaryPlot: (
     name: string,
@@ -65,7 +63,6 @@ export interface API {
     period: number,
     experience?: Experience,
   ) => Promise<SalaryChart>;
-
 
   highlightsHighestSalary: (
     experience?: Experience,

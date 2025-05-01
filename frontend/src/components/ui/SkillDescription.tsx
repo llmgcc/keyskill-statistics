@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLangStore } from '@/store/languageStore';
 import { Popover, SegmentedControl } from '@radix-ui/themes';
+import { useTranslation } from 'react-i18next';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Language } from '@/config/languages';
@@ -9,7 +10,6 @@ import { Category } from '@/config/types';
 import SkillImage from '@/components/ui/SkillImage';
 
 import { CategoryPieChart } from '../plot/CategoryPieChart';
-import { useTranslation } from 'react-i18next';
 
 type SkillDescriptionProps = {
   name: string;
@@ -28,10 +28,9 @@ function CategoryPopover({
 }) {
   const [buttonKey, setButtonKey] = useState<string | null>(null);
   const [popoverContent, setPopoverContent] = useState<Category[]>([]);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const categories = skill[defaultKey as string] ?? [];
-  const translationKey = defaultKey == 'categories' ? 'domains' : 'categories'
-
+  const translationKey = defaultKey == 'categories' ? 'domains' : 'categories';
 
   const getColor = (category) => {
     if (Object.values(Categories).includes(category.name as Categories)) {
@@ -62,7 +61,7 @@ function CategoryPopover({
         name: t(`${translationKey}.${c.name}`),
       })) ?? [];
 
-      console.log('content', content)
+    console.log('content', content);
 
     const maxValue = Math.max(...content.map((c) => c.value));
 
@@ -130,7 +129,8 @@ function CategoryPopover({
           className={`'cursor-pointer' ${color(category?.confidence ?? 0)}`}
           onClick={() => setButtonKey(defaultKey)}
         >
-          {t(`${translationKey}.${category?.name}`) ?? t(`common.unknownCategory`)}
+          {t(`${translationKey}.${category?.name}`) ??
+            t(`common.unknownCategory`)}
         </div>
       </Popover.Trigger>
       <Popover.Content className="min-w-max rounded-md border-[1px] border-background-secondary !p-0 shadow-background-secondary">
