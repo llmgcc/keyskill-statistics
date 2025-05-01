@@ -32,6 +32,7 @@ import {
   salaryAccessor,
   skillNameAccessor,
 } from './accessors';
+import { useCategoriesStore } from '@/store/categoriesStore';
 
 type Category = {
   place: number;
@@ -233,11 +234,25 @@ export function CategoriesTable() {
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
+
+  const empty: Category = {
+    place: 100,
+    name: ' '.repeat(10),
+    count: 100,
+    prev_count: 200,
+    prev_place: 200,
+    average_salary: 100
+  };
+  const fillData = [];
+  for (let i = 0; i < 20; i++) {
+    fillData.push(empty);
+  }
+
   return (
     <div>
       <DataTable
         columns={columns as any}
-        data={domains ?? []}
+        data={domains ?? fillData}
         isLoading={isLoading || isFetching}
       />
     </div>

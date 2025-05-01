@@ -121,29 +121,6 @@ function KeySkills() {
       key: 'skills_salary',
       source: API.salaryPlot,
     }),
-    // columnHelper.accessor('average_salary', {
-    //   header: () => (
-    //     <div className="flex items-center">
-    //       <div className="mr-1">Salary</div>
-    //     </div>
-    //   ),
-    //   cell: (info) => {
-    //     return (
-    //       <SalaryRenderer count={info.getValue() ?? undefined}
-    //         maxCount={10**6}
-    //         isLoading={isLoading || isFetching}
-    //         selectedPeriod={selectedPeriod}
-    //         selectedExperience={selectedExperience}
-    //         name={info.row.original.name}
-    //         key='skills_salary'
-    //       />
-    //     )
-    //   },
-    //   size: 150,
-    //   meta: {
-    //     alignRight: true,
-    //   },
-    // }),
     countAccessor({ accessorKey: 'count' }),
     columnHelper.accessor('prev_count', {
       header: () => <GoDiff className="stroke-1" />,
@@ -245,7 +222,7 @@ function KeySkills() {
 
   const empty: KeySkill = {
     place: 100,
-    name: 'a'.repeat(20),
+    name: ' '.repeat(10),
     count: 100,
     prev_count: 200,
     prev_place: 200,
