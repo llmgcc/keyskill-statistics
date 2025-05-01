@@ -39,8 +39,11 @@ export class StaticAPI implements API {
     return response.json();
   }
 
-  async categoriesList(): Promise<Category[]> {
-    const response = await fetch('/static-api/technologies/list.json');
+  async categoriesList(
+    period?: number,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await fetch(`/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`);
     return response.json();
   }
 
@@ -75,6 +78,54 @@ export class StaticAPI implements API {
     );
     return response.data[name] as Chart[];
   }
+
+  async domainPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get(
+      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data[name] as Chart[];
+  }
+
+  async technologyPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get(
+      `/static-api/charts/technologies_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data[name] as Chart[];
+  }
+
+  async technologySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get(
+      `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
+    );
+    console.log(response.data)
+    return { max_salary: 1, chart: response.data[name][0] };
+  }
+
+  async categorySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get(
+      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
+    );
+    console.log(response.data)
+    return { max_salary: 1, chart: response.data[name][0] };
+  }
+  
+
   async salaryPlot(
     name: string,
     period: number,
@@ -91,7 +142,6 @@ export class StaticAPI implements API {
     period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
-    console.log(skills);
     return skills
       .sort((a, b) => (b?.average_salary ?? 0) - (a?.average_salary ?? 0))
       .slice(0, HIGHLIGHTS_LIMIT);

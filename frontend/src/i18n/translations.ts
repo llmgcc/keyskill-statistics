@@ -114,32 +114,32 @@ export const translations = {
         [Categories.Other]: 'Другое',
       },
       categories: {
-        Languages: 'Языки программирования',
-        Databases: 'Базы данных',
-        'Frontend Libraries and Frameworks':
-          'Библиотеки и фреймворки фронтэнда',
-        'Backend Libraries and Frameworks': 'Библиотеки и фреймворки бэкэнда',
-        'Soft skills': 'Гибкие навыки',
-        'Operating systems': 'Операционные системы',
-        'Containerization & Orchestration': 'Контейнеризация и оркестрация',
-        'Infrastructure Automation & Configuration':
-          'Автоматизация и конфигурация инфраструктуры',
-        'Code Collaboration & Integration':
-          'Совместная разработка и интеграция кода',
-        'Graphic design': 'Графический дизайн',
-        Monitoring: 'Мониторинг',
-        CMS: 'Системы управления контентом',
-        'Network Protocols': 'Сетевые протоколы',
-        'Web Servers': 'Веб-серверы',
-        'Integrated Development Environments':
-          'Интегрированные среды разработки',
-        'Cloud platforms': 'Облачные платформы',
-        'Mobile Libraries and Frameworks':
-          'Библиотеки и фреймворки для мобильной разработки',
-        'Message Brokers': 'Брокеры сообщений',
-        'Testing Tools': 'Инструменты тестирования',
-        'Machine Learning Libraries and Frameworks':
-          'Библиотеки и фреймворки машинного обучения',
+        // Languages: 'Языки программирования',
+        // Databases: 'Базы данных',
+        // 'Frontend Libraries and Frameworks':
+        //   'Библиотеки и фреймворки фронтэнда',
+        // 'Backend Libraries and Frameworks': 'Библиотеки и фреймворки бэкэнда',
+        // 'Soft skills': 'Гибкие навыки',
+        // 'Operating systems': 'Операционные системы',
+        // 'Containerization & Orchestration': 'Контейнеризация и оркестрация',
+        // 'Infrastructure Automation & Configuration':
+        //   'Автоматизация и конфигурация инфраструктуры',
+        // 'Code Collaboration & Integration':
+        //   'Совместная разработка и интеграция кода',
+        // 'Graphic design': 'Графический дизайн',
+        // Monitoring: 'Мониторинг',
+        // CMS: 'Системы управления контентом',
+        // 'Network Protocols': 'Сетевые протоколы',
+        // 'Web Servers': 'Веб-серверы',
+        // 'Integrated Development Environments':
+        //   'Интегрированные среды разработки',
+        // 'Cloud platforms': 'Облачные платформы',
+        // 'Mobile Libraries and Frameworks':
+        //   'Библиотеки и фреймворки для мобильной разработки',
+        // 'Message Brokers': 'Брокеры сообщений',
+        // 'Testing Tools': 'Инструменты тестирования',
+        // 'Machine Learning Libraries and Frameworks':
+        //   'Библиотеки и фреймворки машинного обучения',
       },
       experience: {
         [Experience.any]: 'Любой',
