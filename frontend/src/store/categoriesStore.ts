@@ -10,7 +10,7 @@ type CategoriesStore = {
 export const useCategoriesStore = create<CategoriesStore>()((set) => ({
   categories: [],
   fetchCategories: async () => {
-    const categories = await API.categoriesList();
+    const categories = await API.categoriesList(30);
     set({ categories: categories });
   },
 }));
