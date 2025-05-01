@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './App.css';
 import '@/i18n/i18n';
@@ -33,6 +33,8 @@ function App() {
   const [generalStats, setGeneralStats] = useState<Stats>();
   const { fetchCategories } = useCategoriesStore();
   const { fetchDomains } = useDomainsStore();
+  const [currentTab, setCurrentTab] = useState(0)
+  const tabsRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     useCurrencyStore.getState().fetchCurrencies();
@@ -73,7 +75,7 @@ function App() {
           <CategoriesTable />
         </div>
       ),
-      name: 'categories',
+      name: 'domains',
     },
     {
       title: (
@@ -89,15 +91,31 @@ function App() {
           <TechnologiesTable />
         </div>
       ),
-      name: 'technologies',
+      name: 'categories',
     },
   ];
+
+  function openNewTab(tabIndex : number) {
+    const offset = 100
+    const element = tabsRef.current;
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+    }
+    console.log(tabIndex)
+    setCurrentTab(tabIndex)
+  }
+
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
         <Navigation stats={generalStats} />
-        <TextSection stats={generalStats} />
+            
+        <TextSection stats={generalStats} onLinkClick={tab => openNewTab(tab)}/>
         {/* 
         <div className='app-container'>
           {
@@ -117,9 +135,15 @@ function App() {
         <Filters />
 
         <Highlights />
-        <div className="app-container mt-4">
-          {/* <Tabs tabs={tabs} /> */}
-          <Tabs.Root defaultValue={tabs[1].name}>
+
+        <div className="app-container mt-4" ref={tabsRef}>
+          <Tabs.Root 
+            value={tabs[currentTab].name} 
+            onValueChange={(value) => {
+              const newIndex = tabs.findIndex(tab => tab.name === value);
+              setCurrentTab(newIndex);
+            }}
+          >
             <Tabs.List>
               {tabs.map((tab) => {
                 return (
