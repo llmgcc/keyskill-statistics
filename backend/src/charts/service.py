@@ -6,6 +6,8 @@ import datetime
 from src.keyskills.service import create_categories_subquery
 import sqlalchemy
 
+
+
 def skills_chart(
     skill_name,
     session: Session,
@@ -383,10 +385,6 @@ def category_salary_chart(
     )
 
     return session.exec(salary_chart_with_avg).first(), right
-
-
-
-
 
 
 def technologies_chart(
