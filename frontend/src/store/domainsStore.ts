@@ -10,7 +10,7 @@ type DomainsStore = {
 export const useDomainsStore = create<DomainsStore>()((set) => ({
   domains: [],
   fetchDomains: async () => {
-    const domains = await API.domainsList();
+    const domains = await API.domainsList(30);
     set({ domains });
   },
 }));

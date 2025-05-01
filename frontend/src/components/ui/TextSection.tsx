@@ -1,6 +1,7 @@
 import { Category, Stats } from '@/interfaces';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
+import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
 
 interface TextSectionProps {
@@ -41,7 +42,7 @@ function ListEnumeration({
     <>
       {displayList
         .slice(0, -1)
-        .map((item, i) => renderItem(item))
+        .map((item) => renderItem(item))
         .reduce((result, item) => (
           <>
             {result}, {item}
@@ -61,7 +62,7 @@ export function TextSection({ stats }: TextSectionProps) {
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
   );
   const text = <span className="text-text-primary" />;
-  const linkto = <span className="text-blue-400" />;
+  const linkto = <Link href='https://dev.hh.ru/' target="_blank" rel="noopener noreferrer" />
 
   return (
     <div className="app-container">
