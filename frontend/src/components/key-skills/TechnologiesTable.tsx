@@ -1,4 +1,10 @@
 import { useEffect, useState } from 'react';
+import { API } from '@/api/api';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
+import { Skeleton } from '@radix-ui/themes';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import {
   ColumnDef,
   createColumnHelper,
@@ -9,21 +15,22 @@ import { BiQuestionMark } from 'react-icons/bi';
 import { GoDiff } from 'react-icons/go';
 import { MdOutlineFiberNew } from 'react-icons/md';
 
+import { Experience } from '@/config/experience';
+
+import { SkillHist } from '../plot/Hist';
+import { SkillPlot } from '../plot/Plot';
+import { DataTable } from '../table/DataTable';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import { TanTable } from '../table/TanTable';
 import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
-import { useCategoriesStore } from '@/store/categoriesStore';
-import { DataTable } from '../table/DataTable';
-import { categoryNameAccessor, placeAccessor, prevPlaceAccessor } from './accessors';
-import { usePeriodStore } from '@/store/periodStore';
-import { useExperienceStore } from '@/store/experienceStore';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { API } from '@/api/api';
-import { Experience } from '@/config/experience';
-import { Skeleton } from '@radix-ui/themes';
-import { SkillPlot } from '../plot/Plot';
-import { SkillHist } from '../plot/Hist';
+import {
+  categoryNameAccessor,
+  countAccessor,
+  placeAccessor,
+  prevPlaceAccessor,
+  salaryAccessor,
+} from './accessors';
 
 type Category = {
   place: number;
@@ -39,7 +46,6 @@ function getPercentDifference(current: number, prev: number) {
 }
 
 export function TechnologiesTable() {
-
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
 
@@ -53,7 +59,9 @@ export function TechnologiesTable() {
     queryFn: async () => {
       const data = await API.categoriesList(
         selectedPeriod ?? 10,
-        selectedExperience == Experience.any ? undefined : (selectedExperience ?? undefined),
+        selectedExperience == Experience.any
+          ? undefined
+          : (selectedExperience ?? undefined),
       );
       return data;
     },
@@ -65,152 +73,131 @@ export function TechnologiesTable() {
   const columnHelper = createColumnHelper<Category>();
 
   const columns = [
-    placeAccessor({accessorKey: 'place'}),
-    prevPlaceAccessor({accessorKey: 'prev_place'}),
-    categoryNameAccessor({accessorKey: 'name', category: 'technology'}),
+    placeAccessor({ accessorKey: 'place' }),
+    prevPlaceAccessor({ accessorKey: 'prev_place' }),
+    categoryNameAccessor({ accessorKey: 'name', category: 'technology' }),
 
+    salaryAccessor({
+      accessorKey: 'average_salary',
+      isLoading: isLoading || isFetching,
+      selectedPeriod: selectedPeriod,
+      selectedExperience: selectedExperience,
+      key: 'technologies_salary',
+      source: API.technologySalaryPlot,
+    }),
 
+    //  columnHelper.accessor('average_salary', {
+    //       header: () => (
+    //         <div className="flex items-center">
+    //           <div className="mr-1">Salary</div>
+    //         </div>
+    //       ),
+    //       cell: (info) => {
+    //         const color = 'rgba(229, 231, 235)';
+    //         const data: any[] = [];
+    //         const salary = info.getValue();
+    //         return (
+    //           <div>
+    //             <div className="flex justify-end text-text">
+    //               {salary ? (
+    //                 <div className="z-40 font-[500]">
+    //                   <>
+    //                     <span className="">₽</span>
+    //                     {Number(info.getValue()).toFixed(0)}
+    //                   </>
+    //                 </div>
+    //               ) : (
+    //                 <div>N/A</div>
+    //               )}
+    //             </div>
 
- columnHelper.accessor('average_salary', {
-      header: () => (
-        <div className="flex items-center">
-          <div className="mr-1">Salary</div>
-        </div>
-      ),
+    //             <Skeleton loading={isLoading || isFetching} className="size-full">
+    //               {/* {!isLoading && <SkillPlot name={info.row.original.name} period={selectedPeriod} color={color} strokeWidth={2}  />} */}
+    //               {(!isLoading || !isFetching) && (
+    //                 <SkillHist
+    //                   name={info.row.original.name}
+    //                   key='technologies_salary'
+    //                   source={API.technologySalaryPlot}
+    //                   period={selectedPeriod}
+    //                   color={color}
+    //                   strokeWidth={2}
+    //                   average={info.row.original.average_salary}
+    //                   experience={selectedExperience}
+    //                 />
+    //               )}
+    //             </Skeleton>
+    //           </div>
+    //         );
+    //       },
+    //       size: 120,
+    //       meta: {
+    //         alignRight: true,
+    //       },
+    //     }),
+
+    countAccessor({ accessorKey: 'count' }),
+
+    columnHelper.accessor('prev_count', {
+      header: () => <GoDiff className="stroke-1" />,
+      sortingFn: (rowa, rowb) => {
+        const a = getPercentDifference(
+          rowa.original.count,
+          rowa.original.prev_count,
+        );
+        const b = getPercentDifference(
+          rowb.original.count,
+          rowb.original.prev_count,
+        );
+        if (rowa.original.prev_place && rowb.original.prev_place) {
+          return a < b ? 1 : a > b ? -1 : 0;
+        }
+        if (!rowa.original.prev_place) {
+          return 1;
+        }
+        if (!rowb.original.prev_place) {
+          return -1;
+        }
+        return 0;
+      },
       cell: (info) => {
-        const color = 'rgba(229, 231, 235)';
-        const data: any[] = [];
-        const salary = info.getValue();
+        const current = info.row.original.count;
+        const prev = info.row.original.prev_count;
+        const difference =
+          info.row.original.count - info.row.original.prev_count;
+        let className = 'text-yellow-400';
+        if (difference < 0 && Number.isInteger(info.row.original.prev_count)) {
+          className = 'text-red-500';
+        } else {
+          className = 'text-green-400';
+        }
         return (
           <div>
-            <div className="flex justify-end text-text">
-              {salary ? (
-                <div className="z-40 font-[500]">
-                  <>
-                    <span className="">₽</span>
-                    {Number(info.getValue()).toFixed(0)}
-                  </>
-                </div>
-              ) : (
-                <div>N/A</div>
-              )}
+            <div className={`${className} keyskills-badge`}>
+              <div className="keyskills-badge-arrow"></div>
+              <div className="keyskills-difference-value">
+                {prev && current ? (
+                  <div>
+                    {getPercentDifference(
+                      info.row.original.count,
+                      info.row.original.prev_count,
+                    ).toFixed(2)}
+                    %
+                  </div>
+                ) : (
+                  <div>
+                    <MdOutlineFiberNew size={25} />
+                  </div>
+                )}
+              </div>
             </div>
-
-            <Skeleton loading={isLoading || isFetching} className="size-full">
-              {/* {!isLoading && <SkillPlot name={info.row.original.name} period={selectedPeriod} color={color} strokeWidth={2}  />} */}
-              {(!isLoading || !isFetching) && (
-                <SkillHist
-                  name={info.row.original.name}
-                  key='technologies_salary'
-                  source={API.technologySalaryPlot}
-                  period={selectedPeriod}
-                  color={color}
-                  strokeWidth={2}
-                  average={info.row.original.average_salary}
-                  experience={selectedExperience}
-                />
-              )}
-            </Skeleton>
           </div>
         );
       },
-      size: 120,
+      size: 100,
       meta: {
         alignRight: true,
       },
     }),
-
-    columnHelper.accessor('count', {
-             cell: (info) => {
-               const max = Math.max(
-                 ...info.table.getCenterRows().map((r) => r.original.count),
-               );
-               const width = (info.getValue() / max) * 100;
-               return (
-                 <div className="relative">
-                   <div className="flex w-32 items-end justify-end font-[500]">
-                     {info.getValue()}
-                   </div>
-                   <div className="absolute bottom-[-10px] flex h-[4px] w-full rounded bg-gray-200 text-text">
-                     <div
-                       className={`rounded bg-gray-300`}
-                       style={{ width: `${Math.max(5, width)}%` }}
-                     ></div>
-                   </div>
-                 </div>
-               );
-             },
-             header: () => (
-               <div className="flex items-center">
-                 <div className="">Mentions</div>
-               </div>
-             ),
-             size: 125,
-             meta: {
-               alignRight: true,
-             },
-           }),
-           columnHelper.accessor('prev_count', {
-             header: () => <GoDiff className="stroke-1" />,
-             sortingFn: (rowa, rowb) => {
-               const a = getPercentDifference(
-                 rowa.original.count,
-                 rowa.original.prev_count,
-               );
-               const b = getPercentDifference(
-                 rowb.original.count,
-                 rowb.original.prev_count,
-               );
-               if (rowa.original.prev_place && rowb.original.prev_place) {
-                 return a < b ? 1 : a > b ? -1 : 0;
-               }
-               if (!rowa.original.prev_place) {
-                 return 1;
-               }
-               if (!rowb.original.prev_place) {
-                 return -1;
-               }
-               return 0;
-             },
-             cell: (info) => {
-               const current = info.row.original.count;
-               const prev = info.row.original.prev_count;
-               const difference =
-                 info.row.original.count - info.row.original.prev_count;
-               let className = 'text-yellow-400';
-               if (difference < 0 && Number.isInteger(info.row.original.prev_count)) {
-                 className = 'text-red-500';
-               } else {
-                 className = 'text-green-400';
-               }
-               return (
-                 <div style={{ textAlign: 'left' }}>
-                   <div className={`${className} keyskills-badge`}>
-                     <div className="keyskills-badge-arrow"></div>
-                     <div className="keyskills-difference-value">
-                       {prev && current ? (
-                         <div>
-                           {getPercentDifference(
-                             info.row.original.count,
-                             info.row.original.prev_count,
-                           ).toFixed(2)}
-                           %
-                         </div>
-                       ) : (
-                         <div>
-                           <MdOutlineFiberNew size={25} />
-                         </div>
-                       )}
-                     </div>
-                   </div>
-                 </div>
-               );
-             },
-             size: 100,
-             meta: {
-               alignRight: true,
-             },
-           }),
 
     columnHelper.accessor('chart', {
       header: 'Trend',
@@ -226,7 +213,7 @@ export function TechnologiesTable() {
                 {(!isLoading || !isFetching) && (
                   <SkillPlot
                     name={info.row.original.name}
-                    key='technology_plot'
+                    key="technology_plot"
                     source={API.technologyPlot}
                     period={selectedPeriod}
                     color={color}
@@ -247,6 +234,11 @@ export function TechnologiesTable() {
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
-
-  return <DataTable columns={columns} data={categories ?? []} isLoading={isLoading || isFetching}/>;
+  return (
+    <DataTable
+      columns={columns}
+      data={categories ?? []}
+      isLoading={isLoading || isFetching}
+    />
+  );
 }

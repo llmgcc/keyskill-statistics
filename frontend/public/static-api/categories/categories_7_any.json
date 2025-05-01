@@ -1,1 +1,162 @@
-[{"name": "Backend", "count": 335, "prev_count": 454, "place": 1, "prev_place": 1, "average_salary": 194425.43113495345}, {"name": "Digital Marketing & SEO", "count": 253, "prev_count": 302, "place": 2, "prev_place": 2, "average_salary": 103880.52338020073}, {"name": "DevOps & Infrastructure", "count": 234, "prev_count": 245, "place": 3, "prev_place": 7, "average_salary": 241232.78182770417}, {"name": "Systems programming", "count": 224, "prev_count": 263, "place": 4, "prev_place": 5, "average_salary": 201562.6971923495}, {"name": "HR Management", "count": 207, "prev_count": 268, "place": 5, "prev_place": 4, "average_salary": 225698.14795093046}, {"name": "Computer graphics & Game development", "count": 199, "prev_count": 252, "place": 6, "prev_place": 6, "average_salary": 104642.10360364219}, {"name": "Frontend", "count": 194, "prev_count": 231, "place": 7, "prev_place": 8, "average_salary": 180028.10210775872}, {"name": "System Administration", "count": 192, "prev_count": 271, "place": 8, "prev_place": 3, "average_salary": 125083.98807150533}, {"name": "Analytics", "count": 180, "prev_count": 216, "place": 9, "prev_place": 11, "average_salary": 154548.92969381242}, {"name": "Design", "count": 160, "prev_count": 177, "place": 10, "prev_place": 12, "average_salary": 96437.63838993479}, {"name": "Data Science & Machine Learning", "count": 160, "prev_count": 221, "place": 11, "prev_place": 9, "average_salary": 230347.02181094806}, {"name": "Network administration", "count": 146, "prev_count": 163, "place": 12, "prev_place": 13, "average_salary": 188771.3439850894}, {"name": "Quality assurance", "count": 138, "prev_count": 162, "place": 13, "prev_place": 14, "average_salary": 153390.36321067825}, {"name": "Website administration", "count": 121, "prev_count": 107, "place": 14, "prev_place": 19, "average_salary": 133690.0889424706}, {"name": "Information security", "count": 113, "prev_count": 216, "place": 15, "prev_place": 10, "average_salary": 127549.17827836247}, {"name": "Project management", "count": 112, "prev_count": 129, "place": 16, "prev_place": 17, "average_salary": 1115264.0113671578}, {"name": "Other", "count": 107, "prev_count": 147, "place": 17, "prev_place": 15, "average_salary": 79542.43017604567}, {"name": "1C Development", "count": 82, "prev_count": 147, "place": 18, "prev_place": 16, "average_salary": 186901.20582322864}, {"name": "Mobile", "count": 52, "prev_count": 109, "place": 19, "prev_place": 18, "average_salary": 125297.00430913112}, {"name": "Blockchain", "count": 41, "prev_count": 65, "place": 20, "prev_place": 20, "average_salary": 316218.689788054}]
+[
+  {
+    "name": "Backend",
+    "count": 347,
+    "prev_count": 423,
+    "place": 1,
+    "prev_place": 1,
+    "average_salary": 193097.11834834702
+  },
+  {
+    "name": "Digital Marketing & SEO",
+    "count": 266,
+    "prev_count": 288,
+    "place": 2,
+    "prev_place": 2,
+    "average_salary": 94133.61874619158
+  },
+  {
+    "name": "DevOps & Infrastructure",
+    "count": 253,
+    "prev_count": 230,
+    "place": 3,
+    "prev_place": 6,
+    "average_salary": 231614.78994302388
+  },
+  {
+    "name": "Systems programming",
+    "count": 213,
+    "prev_count": 222,
+    "place": 4,
+    "prev_place": 8,
+    "average_salary": 196482.93379675853
+  },
+  {
+    "name": "HR Management",
+    "count": 212,
+    "prev_count": 259,
+    "place": 5,
+    "prev_place": 5,
+    "average_salary": 221326.35806396723
+  },
+  {
+    "name": "System Administration",
+    "count": 203,
+    "prev_count": 263,
+    "place": 6,
+    "prev_place": 3,
+    "average_salary": 131348.06688442512
+  },
+  {
+    "name": "Frontend",
+    "count": 193,
+    "prev_count": 223,
+    "place": 7,
+    "prev_place": 7,
+    "average_salary": 184330.64006300084
+  },
+  {
+    "name": "Computer graphics & Game development",
+    "count": 189,
+    "prev_count": 259,
+    "place": 8,
+    "prev_place": 4,
+    "average_salary": 105513.05593689173
+  },
+  {
+    "name": "Analytics",
+    "count": 170,
+    "prev_count": 213,
+    "place": 9,
+    "prev_place": 9,
+    "average_salary": 139909.02055600888
+  },
+  {
+    "name": "Design",
+    "count": 157,
+    "prev_count": 190,
+    "place": 10,
+    "prev_place": 12,
+    "average_salary": 86456.89670264054
+  },
+  {
+    "name": "Data Science & Machine Learning",
+    "count": 153,
+    "prev_count": 196,
+    "place": 11,
+    "prev_place": 10,
+    "average_salary": 236579.97531647442
+  },
+  {
+    "name": "Network administration",
+    "count": 146,
+    "prev_count": 145,
+    "place": 12,
+    "prev_place": 14,
+    "average_salary": 176351.34283312957
+  },
+  {
+    "name": "Quality assurance",
+    "count": 133,
+    "prev_count": 149,
+    "place": 13,
+    "prev_place": 13,
+    "average_salary": 156426.9302716279
+  },
+  {
+    "name": "Information security",
+    "count": 121,
+    "prev_count": 194,
+    "place": 14,
+    "prev_place": 11,
+    "average_salary": 135727.50603012712
+  },
+  {
+    "name": "Website administration",
+    "count": 120,
+    "prev_count": 109,
+    "place": 15,
+    "prev_place": 18,
+    "average_salary": 135914.81480904014
+  },
+  {
+    "name": "Other",
+    "count": 106,
+    "prev_count": 139,
+    "place": 16,
+    "prev_place": 15,
+    "average_salary": 82563.0940182603
+  },
+  {
+    "name": "Project management",
+    "count": 102,
+    "prev_count": 123,
+    "place": 17,
+    "prev_place": 17,
+    "average_salary": 1684123.4532872527
+  },
+  {
+    "name": "1C Development",
+    "count": 89,
+    "prev_count": 137,
+    "place": 18,
+    "prev_place": 16,
+    "average_salary": 169773.3299326753
+  },
+  {
+    "name": "Mobile",
+    "count": 51,
+    "prev_count": 107,
+    "place": 19,
+    "prev_place": 19,
+    "average_salary": 130267.54243681554
+  },
+  {
+    "name": "Blockchain",
+    "count": 45,
+    "prev_count": 65,
+    "place": 20,
+    "prev_place": 20,
+    "average_salary": 316427.69821865176
+  }
+]

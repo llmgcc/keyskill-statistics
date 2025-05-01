@@ -1,1 +1,245 @@
-{"Soft skills": [[{"bin": 1, "count": 2163}, {"bin": 2, "count": 2177}, {"bin": 3, "count": 304}, {"bin": 4, "count": 18}, {"bin": 5, "count": 15}, {"bin": 6, "count": 3}, {"bin": 9, "count": 4}, {"bin": 12, "count": 4}, {"bin": 13, "count": 9}, {"bin": 15, "count": 39}], 1000000], "Security tools and frameworks": [[{"bin": 1, "count": 461}, {"bin": 2, "count": 560}, {"bin": 3, "count": 54}, {"bin": 4, "count": 5}, {"bin": 5, "count": 1}, {"bin": 6, "count": 2}], 1000000], "Graphic design": [[{"bin": 1, "count": 469}, {"bin": 2, "count": 344}, {"bin": 3, "count": 24}, {"bin": 4, "count": 6}, {"bin": 5, "count": 2}], 1000000], "Languages": [[{"bin": 1, "count": 515}, {"bin": 2, "count": 742}, {"bin": 3, "count": 56}, {"bin": 4, "count": 2}, {"bin": 5, "count": 5}], 1000000], "Operating systems": [[{"bin": 1, "count": 348}, {"bin": 2, "count": 307}, {"bin": 3, "count": 27}], 1000000], "CMS": [[{"bin": 1, "count": 424}, {"bin": 2, "count": 178}, {"bin": 3, "count": 15}, {"bin": 4, "count": 2}, {"bin": 5, "count": 4}, {"bin": 13, "count": 1}], 1000000], "Network Protocols": [[{"bin": 1, "count": 172}, {"bin": 2, "count": 193}, {"bin": 3, "count": 10}], 1000000], "Frontend Libraries and Frameworks": [[{"bin": 1, "count": 224}, {"bin": 2, "count": 130}, {"bin": 3, "count": 6}, {"bin": 4, "count": 2}, {"bin": 5, "count": 1}], 1000000], "Game engines": [[{"bin": 1, "count": 120}, {"bin": 2, "count": 140}, {"bin": 3, "count": 15}, {"bin": 4, "count": 1}], 1000000], "Databases": [[{"bin": 1, "count": 194}, {"bin": 2, "count": 292}, {"bin": 3, "count": 17}, {"bin": 5, "count": 2}, {"bin": 6, "count": 1}, {"bin": 9, "count": 1}, {"bin": 12, "count": 1}], 1000000], "Backend Libraries and Frameworks": [[{"bin": 1, "count": 79}, {"bin": 2, "count": 122}, {"bin": 3, "count": 12}], 1000000], "Testing Tools": [[{"bin": 1, "count": 61}, {"bin": 2, "count": 72}, {"bin": 3, "count": 14}, {"bin": 4, "count": 1}], 1000000], "Project Management Tools": [[{"bin": 1, "count": 115}, {"bin": 2, "count": 92}, {"bin": 3, "count": 4}, {"bin": 4, "count": 3}], 1000000], "API technologies and protocols": [[{"bin": 1, "count": 71}, {"bin": 2, "count": 77}, {"bin": 3, "count": 30}, {"bin": 4, "count": 2}, {"bin": 5, "count": 2}, {"bin": 9, "count": 1}, {"bin": 12, "count": 1}], 1000000], "Code Collaboration & Integration": [[{"bin": 1, "count": 121}, {"bin": 2, "count": 129}, {"bin": 3, "count": 15}, {"bin": 5, "count": 1}], 1000000], "Search & Indexing engines": [[{"bin": 1, "count": 75}, {"bin": 2, "count": 35}, {"bin": 3, "count": 4}], 1000000], "Monitoring": [[{"bin": 1, "count": 35}, {"bin": 2, "count": 47}, {"bin": 3, "count": 8}, {"bin": 5, "count": 1}, {"bin": 6, "count": 1}], 1000000], "Messaging & Queuing systems": [[{"bin": 1, "count": 8}, {"bin": 2, "count": 40}, {"bin": 3, "count": 4}], 1000000], "Containerization & Orchestration": [[{"bin": 1, "count": 76}, {"bin": 2, "count": 73}, {"bin": 3, "count": 11}], 1000000], "Machine Learning Libraries and Frameworks": [[{"bin": 1, "count": 10}, {"bin": 2, "count": 25}, {"bin": 3, "count": 4}], 1000000], "Blockchain platforms & tools": [[{"bin": 1, "count": 21}, {"bin": 2, "count": 43}, {"bin": 3, "count": 5}, {"bin": 6, "count": 2}, {"bin": 9, "count": 3}, {"bin": 12, "count": 3}], 1000000], "Web Servers": [[{"bin": 1, "count": 18}, {"bin": 2, "count": 44}, {"bin": 3, "count": 3}], 1000000], "Integrated Development Environments": [[{"bin": 1, "count": 27}, {"bin": 2, "count": 56}, {"bin": 3, "count": 2}], 1000000], "Cloud platforms": [[{"bin": 1, "count": 7}, {"bin": 2, "count": 6}, {"bin": 3, "count": 1}], 1000000], "Infrastructure Automation & Configuration": [[{"bin": 1, "count": 3}, {"bin": 2, "count": 4}], 1000000], "Mobile Libraries and Frameworks": [[{"bin": 1, "count": 9}, {"bin": 2, "count": 1}, {"bin": 3, "count": 6}], 1000000]}
+{
+  "Soft skills": [
+    [
+      { "bin": 1, "count": 2163 },
+      { "bin": 2, "count": 2177 },
+      { "bin": 3, "count": 304 },
+      { "bin": 4, "count": 18 },
+      { "bin": 5, "count": 15 },
+      { "bin": 6, "count": 3 },
+      { "bin": 9, "count": 4 },
+      { "bin": 12, "count": 4 },
+      { "bin": 13, "count": 9 },
+      { "bin": 15, "count": 39 }
+    ],
+    1000000
+  ],
+  "Security tools and frameworks": [
+    [
+      { "bin": 1, "count": 461 },
+      { "bin": 2, "count": 560 },
+      { "bin": 3, "count": 54 },
+      { "bin": 4, "count": 5 },
+      { "bin": 5, "count": 1 },
+      { "bin": 6, "count": 2 }
+    ],
+    1000000
+  ],
+  "Graphic design": [
+    [
+      { "bin": 1, "count": 469 },
+      { "bin": 2, "count": 344 },
+      { "bin": 3, "count": 24 },
+      { "bin": 4, "count": 6 },
+      { "bin": 5, "count": 2 }
+    ],
+    1000000
+  ],
+  "Languages": [
+    [
+      { "bin": 1, "count": 515 },
+      { "bin": 2, "count": 742 },
+      { "bin": 3, "count": 56 },
+      { "bin": 4, "count": 2 },
+      { "bin": 5, "count": 5 }
+    ],
+    1000000
+  ],
+  "Operating systems": [
+    [
+      { "bin": 1, "count": 348 },
+      { "bin": 2, "count": 307 },
+      { "bin": 3, "count": 27 }
+    ],
+    1000000
+  ],
+  "CMS": [
+    [
+      { "bin": 1, "count": 424 },
+      { "bin": 2, "count": 178 },
+      { "bin": 3, "count": 15 },
+      { "bin": 4, "count": 2 },
+      { "bin": 5, "count": 4 },
+      { "bin": 13, "count": 1 }
+    ],
+    1000000
+  ],
+  "Network Protocols": [
+    [
+      { "bin": 1, "count": 172 },
+      { "bin": 2, "count": 193 },
+      { "bin": 3, "count": 10 }
+    ],
+    1000000
+  ],
+  "Frontend Libraries and Frameworks": [
+    [
+      { "bin": 1, "count": 224 },
+      { "bin": 2, "count": 130 },
+      { "bin": 3, "count": 6 },
+      { "bin": 4, "count": 2 },
+      { "bin": 5, "count": 1 }
+    ],
+    1000000
+  ],
+  "Game engines": [
+    [
+      { "bin": 1, "count": 120 },
+      { "bin": 2, "count": 140 },
+      { "bin": 3, "count": 15 },
+      { "bin": 4, "count": 1 }
+    ],
+    1000000
+  ],
+  "Databases": [
+    [
+      { "bin": 1, "count": 194 },
+      { "bin": 2, "count": 292 },
+      { "bin": 3, "count": 17 },
+      { "bin": 5, "count": 2 },
+      { "bin": 6, "count": 1 },
+      { "bin": 9, "count": 1 },
+      { "bin": 12, "count": 1 }
+    ],
+    1000000
+  ],
+  "Backend Libraries and Frameworks": [
+    [
+      { "bin": 1, "count": 79 },
+      { "bin": 2, "count": 122 },
+      { "bin": 3, "count": 12 }
+    ],
+    1000000
+  ],
+  "Testing Tools": [
+    [
+      { "bin": 1, "count": 61 },
+      { "bin": 2, "count": 72 },
+      { "bin": 3, "count": 14 },
+      { "bin": 4, "count": 1 }
+    ],
+    1000000
+  ],
+  "Project Management Tools": [
+    [
+      { "bin": 1, "count": 115 },
+      { "bin": 2, "count": 92 },
+      { "bin": 3, "count": 4 },
+      { "bin": 4, "count": 3 }
+    ],
+    1000000
+  ],
+  "API technologies and protocols": [
+    [
+      { "bin": 1, "count": 71 },
+      { "bin": 2, "count": 77 },
+      { "bin": 3, "count": 30 },
+      { "bin": 4, "count": 2 },
+      { "bin": 5, "count": 2 },
+      { "bin": 9, "count": 1 },
+      { "bin": 12, "count": 1 }
+    ],
+    1000000
+  ],
+  "Code Collaboration & Integration": [
+    [
+      { "bin": 1, "count": 121 },
+      { "bin": 2, "count": 129 },
+      { "bin": 3, "count": 15 },
+      { "bin": 5, "count": 1 }
+    ],
+    1000000
+  ],
+  "Search & Indexing engines": [
+    [
+      { "bin": 1, "count": 75 },
+      { "bin": 2, "count": 35 },
+      { "bin": 3, "count": 4 }
+    ],
+    1000000
+  ],
+  "Monitoring": [
+    [
+      { "bin": 1, "count": 35 },
+      { "bin": 2, "count": 47 },
+      { "bin": 3, "count": 8 },
+      { "bin": 5, "count": 1 },
+      { "bin": 6, "count": 1 }
+    ],
+    1000000
+  ],
+  "Messaging & Queuing systems": [
+    [
+      { "bin": 1, "count": 8 },
+      { "bin": 2, "count": 40 },
+      { "bin": 3, "count": 4 }
+    ],
+    1000000
+  ],
+  "Containerization & Orchestration": [
+    [
+      { "bin": 1, "count": 76 },
+      { "bin": 2, "count": 73 },
+      { "bin": 3, "count": 11 }
+    ],
+    1000000
+  ],
+  "Machine Learning Libraries and Frameworks": [
+    [
+      { "bin": 1, "count": 10 },
+      { "bin": 2, "count": 25 },
+      { "bin": 3, "count": 4 }
+    ],
+    1000000
+  ],
+  "Blockchain platforms & tools": [
+    [
+      { "bin": 1, "count": 21 },
+      { "bin": 2, "count": 43 },
+      { "bin": 3, "count": 5 },
+      { "bin": 6, "count": 2 },
+      { "bin": 9, "count": 3 },
+      { "bin": 12, "count": 3 }
+    ],
+    1000000
+  ],
+  "Web Servers": [
+    [
+      { "bin": 1, "count": 18 },
+      { "bin": 2, "count": 44 },
+      { "bin": 3, "count": 3 }
+    ],
+    1000000
+  ],
+  "Integrated Development Environments": [
+    [
+      { "bin": 1, "count": 27 },
+      { "bin": 2, "count": 56 },
+      { "bin": 3, "count": 2 }
+    ],
+    1000000
+  ],
+  "Cloud platforms": [
+    [
+      { "bin": 1, "count": 7 },
+      { "bin": 2, "count": 6 },
+      { "bin": 3, "count": 1 }
+    ],
+    1000000
+  ],
+  "Infrastructure Automation & Configuration": [
+    [
+      { "bin": 1, "count": 3 },
+      { "bin": 2, "count": 4 }
+    ],
+    1000000
+  ],
+  "Mobile Libraries and Frameworks": [
+    [
+      { "bin": 1, "count": 9 },
+      { "bin": 2, "count": 1 },
+      { "bin": 3, "count": 6 }
+    ],
+    1000000
+  ]
+}

@@ -1,7 +1,14 @@
-import { ColumnDef, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
-import { DataTableHeader } from "./DataTableHeader";
-import { DataTableBody } from "./DataTableBody";
-import { useState } from "react";
+import { useState } from 'react';
+import {
+  ColumnDef,
+  getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
+  useReactTable,
+} from '@tanstack/react-table';
+
+import { DataTableBody } from './DataTableBody';
+import { DataTableHeader } from './DataTableHeader';
 
 interface DataTableProps<T extends object> {
   data: T[];
@@ -12,10 +19,10 @@ interface DataTableProps<T extends object> {
 export function DataTable<T extends object>({
   data,
   columns,
-  isLoading = false
+  isLoading = false,
 }: DataTableProps<T>) {
-      const [sorting, setSorting] = useState<SortingState>([]);
-    
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const table = useReactTable({
     data: data ?? [],
     columns,
@@ -33,20 +40,14 @@ export function DataTable<T extends object>({
     enableSortingRemoval: true,
   });
 
-
-    return (
-
-        <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500] leading-none">
-            <div className="max-w-full overflow-x-clip">
-                <table className="border-shadow w-full bg-background-primary text-text-primary">
-                    <DataTableHeader table={table} />
-                    <DataTableBody
-                        table={table}
-                        isLoading={isLoading}
-                    />
-                </table>
-            </div>
-        </div>
-    )
-
+  return (
+    <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500] leading-none">
+      <div className="max-w-full overflow-x-clip">
+        <table className="border-shadow w-full bg-background-primary text-text-primary">
+          <DataTableHeader table={table} />
+          <DataTableBody table={table} isLoading={isLoading} />
+        </table>
+      </div>
+    </div>
+  );
 }

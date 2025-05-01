@@ -18,7 +18,7 @@ export function ValueChangeRenderer({
   }
 
   return (
-    <div style={{ textAlign: 'left' }}>
+    <div>
       <div className={colorClass}>
         {prev && current ? <div>{current - prev}</div> : <div>NEW</div>}
       </div>

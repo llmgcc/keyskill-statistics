@@ -43,12 +43,19 @@ export class StaticAPI implements API {
     period?: number,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await fetch(`/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`);
+    const response = await fetch(
+      `/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`,
+    );
     return response.json();
   }
 
-  async domainsList(): Promise<Category[]> {
-    const response = await fetch('/static-api/categories/list.json');
+  async domainsList(
+    period?: number,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await fetch(
+      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
+    );
     return response.json();
   }
 
@@ -109,7 +116,7 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
     );
-    console.log(response.data)
+    console.log(response.data);
     return { max_salary: 1, chart: response.data[name][0] };
   }
 
@@ -121,10 +128,9 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
     );
-    console.log(response.data)
+    console.log(response.data);
     return { max_salary: 1, chart: response.data[name][0] };
   }
-  
 
   async salaryPlot(
     name: string,

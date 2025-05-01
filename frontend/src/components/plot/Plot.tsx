@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import './Plot.css';
 
 import { API } from '@/api/api';
+import { Chart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { Experience } from '@/config/experience';
 
 import { svgCurveFromPoints } from './svg-curve';
-import { Chart } from '@/interfaces';
 
 function SVGPlot(props: {
   data: number[];
@@ -132,7 +132,11 @@ function Plot(props: { data: number[]; color: string; strokeWidth?: number }) {
 type SkillPlotProps = {
   name: string;
   key: string;
-  source (name: string, period: number, experience?: Experience) : Promise<Chart[]>;
+  source(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]>;
   period: number;
   color: string;
   strokeWidth: number;
@@ -151,8 +155,12 @@ export function SkillPlot({
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: [`${name}_plot_${key}`, period, experience],
     queryFn: async () => {
-      const data = await source(name, period, experience == Experience.any ? undefined : (experience ?? undefined))
-      return data ?? []
+      const data = await source(
+        name,
+        period,
+        experience == Experience.any ? undefined : (experience ?? undefined),
+      );
+      return data ?? [];
     },
     placeholderData: keepPreviousData,
     staleTime: Infinity,

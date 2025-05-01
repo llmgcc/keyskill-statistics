@@ -27,14 +27,12 @@ export class ServerAPI implements API {
     period: number = 10,
     experience?: Experience = undefined,
   ): Promise<Category[]> {
-    const response = await axios.get('/api/technologies/list',
-      {
-        params: {
-          period,
-          experience,
-        },
-      }
-    );
+    const response = await axios.get('/api/technologies/list', {
+      params: {
+        period,
+        experience,
+      },
+    });
     return response.data;
   }
 
@@ -43,10 +41,10 @@ export class ServerAPI implements API {
     experience?: Experience = undefined,
   ): Promise<Category[]> {
     const response = await axios.get('/api/categories/list', {
-        params: {
-          period,
-          experience,
-        },
+      params: {
+        period,
+        experience,
+      },
     });
     return response.data;
   }
@@ -66,7 +64,6 @@ export class ServerAPI implements API {
     return response.data as Chart[];
   }
 
-
   async domainPlot(
     name: string,
     period: number,
@@ -81,7 +78,6 @@ export class ServerAPI implements API {
     });
     return response.data as Chart[];
   }
-
 
   async technologyPlot(
     name: string,
@@ -113,7 +109,6 @@ export class ServerAPI implements API {
     return response.data;
   }
 
-
   async categorySalaryPlot(
     name: string,
     period: number,
@@ -128,7 +123,6 @@ export class ServerAPI implements API {
     });
     return response.data;
   }
-
 
   async technologySalaryPlot(
     name: string,
