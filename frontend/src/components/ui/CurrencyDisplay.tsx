@@ -1,19 +1,25 @@
 
 import { useCurrencyStore } from "@/store/currencyStore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type CurrencyDisplayProps = {
     valueInRUB?: number;
 };
 
+
 export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
     const {selectedCurrency} = useCurrencyStore();
     const [animate, setAnimate] = useState(false);
-    
+    const prevCurrencyRef = useRef(selectedCurrency);
+
     useEffect(() => {
-        setAnimate(true);
-        const timer = setTimeout(() => setAnimate(false), 300);
-        return () => clearTimeout(timer);
+        if (selectedCurrency && prevCurrencyRef.current?.currency_abbr !== selectedCurrency?.currency_abbr) {
+            setAnimate(true);
+            const timer = setTimeout(() => setAnimate(false), 300);
+            prevCurrencyRef.current = selectedCurrency;
+            return () => clearTimeout(timer);
+        }
+        prevCurrencyRef.current = selectedCurrency;
     }, [selectedCurrency]);
 
     if(!valueInRUB || !selectedCurrency?.currency_rate) {
