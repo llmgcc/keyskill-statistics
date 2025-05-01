@@ -23,12 +23,12 @@ export const translations = {
       mainText: {
         title: 'Analysis of <badge>key skills</badge> in the IT Sector',
         subtitle:
-          'Skills and salary data is collected based on the analysis of <text>{{vacancies}}</text> IT vacancies using the <linkto>HeadHunter API</linkto> for the period from <text>{{dateFrom}}</text> to <text>{{dateTo}}</text>.',
+          'Skills and salary data were collected by analyzing <text>{{vacancies}}</text> IT job postings via the <linkto>HeadHunter API</linkto> from <text>{{dateFrom}}</text> to <text>{{dateTo}}</text>.',
         enumeration:
-          'Key skills are classified using machine learning techniques into:',
+          'Key skills were classified using machine learning methods into:',
         domains: '- <linkto>{{count}} domains</linkto>, such as',
         categories: '- <linkto>{{count}} categories</linkto>, including',
-        end: 'This classification allows evaluating skill demand and comparing salary ranges between IT domains.',
+        end: 'This classification helps to gauge which skills are in demand and to observe differences in salary ranges across IT domains.',
       },
       filters: {
         title: 'Filters',
@@ -72,12 +72,12 @@ export const translations = {
       mainText: {
         title: 'Анализ <badge>ключевых навыков</badge> в сфере IT',
         subtitle:
-          'Данные о навыках и зарплатах собраны на основе анализа <text>{{vacancies}}</text> IT-вакансий с использованием <linkto>HeadHunter API</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
+          'Данные по навыкам и диапазонам зарплат собраны на основе анализа <text>{{vacancies}}</text> IT вакансий через <linkto>API HeadHunter</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
         enumeration:
-          'Ключевые навыки классифицированы с использованием методов машинного обучения на:',
-        domains: '- <linkto>{{count}} направлений</linkto>, такие как',
-        categories: '- <linkto>{{count}} категорий</linkto>, включая',
-        end: 'На основе этой классификации можно анализировать востребованность навыков и сравнивать уровень оплаты для различных IT-направлений.',
+          'Ключевые навыки классифицированы с помощью методов машинного обучения по:',
+        domains: '- <linkto>{{count}} направлениям</linkto>, таким как',
+        categories: '- <linkto>{{count}} категориям</linkto>, включая',
+        end: 'Эта классификация помогает оценить, какие навыки востребованы, и увидеть различия в диапазонах зарплат между IT-направлениями.',
       },
       filters: {
         title: 'Фильтры',
