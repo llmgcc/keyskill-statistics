@@ -39,7 +39,7 @@ export function SalaryRenderer({
       <div className="flex justify-end text-text">
         <CurrencyDisplay valueInRUB={salary}/>
       </div>
-      {salary && <ProgressBar count={count} maxCount={maxCount} offset={-10} />}
+      {!!salary && <ProgressBar count={count} maxCount={maxCount} offset={-10} />}
 
       <Skeleton loading={isLoading} className="size-full">
         {!isLoading && (

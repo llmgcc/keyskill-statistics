@@ -61,8 +61,6 @@ function CategoryPopover({
         name: t(`${translationKey}.${c.name}`),
       })) ?? [];
 
-    console.log('content', content);
-
     const maxValue = Math.max(...content.map((c) => c.value));
 
     const filteredContent = content.filter(

@@ -20,7 +20,7 @@ export function ValueChangeRenderer({
   return (
     <div>
       <div className={colorClass}>
-        {prev && current ? <div>{current - prev}</div> : <div>NEW</div>}
+        {prev && current ? <div>{current - prev}</div> : <div className="text-background-secondary">-</div>}
       </div>
     </div>
   );
