@@ -15,6 +15,7 @@ import { Highlights as HighlightsEnum } from '@/config/highlights';
 
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
+import { CurrencyDisplay } from './CurrencyDisplay';
 
 function getPercentDifference(current: number, prev: number) {
   return ((current - prev) / prev) * 100;
@@ -201,11 +202,7 @@ export function Highlights() {
     }
     return (
       <div className="text-xs text-text-primary">
-        ₽
-        {skill.average_salary?.toLocaleString(undefined, {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        })}
+        <CurrencyDisplay valueInRUB={skill.average_salary} />
       </div>
     );
   };

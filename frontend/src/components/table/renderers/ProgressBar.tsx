@@ -9,11 +9,11 @@ export function ProgressBar({ count, maxCount, offset }: ProgressBarProps) {
 
   return (
     <div
-      className="absolute flex h-[4px] w-full rounded bg-gray-200 text-text"
+      className="absolute flex h-[4px] w-full rounded bg-background-secondary text-text"
       style={{ bottom: offset }}
     >
       <div
-        className={`z-20 rounded bg-gray-300`}
+        className={`z-20 rounded bg-text-secondary/45`}
         style={{ width: `${Math.max(5, width)}%` }}
       ></div>
     </div>
