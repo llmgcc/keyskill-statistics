@@ -16,6 +16,8 @@ import { Highlights as HighlightsEnum } from '@/config/highlights';
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
 import { CurrencyDisplay } from './CurrencyDisplay';
+import { MdArrowRight, MdArrowRightAlt, MdOutlineArrowDropUp } from 'react-icons/md';
+import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 
 function getPercentDifference(current: number, prev: number) {
   return ((current - prev) / prev) * 100;
@@ -175,24 +177,29 @@ export function Highlights() {
     },
   ];
 
+
+  const skillValueRenderer = (skill: KeySkill) => {
+    return <div className='flex flex-col items-end'>
+      <div className='text-xs text-text-primary font-[400] flex items-center'>{skill.prev_count} <MdArrowRightAlt className="mx-1" size={15} /> {skill.count}</div>
+      <div>{change(skill.count, skill.prev_count, true)}</div>
+    </div>
+  }
+
   const highlights: Record<string, HiglightBase> = {
     [HighlightsEnum['Fastest-Growing Skills']]: {
       icon: <FaFire />,
       source: API.highlightsGainers,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Skills Losing Demand']]: {
       icon: <FaArrowTrendDown />,
       source: API.highlightsDecliners,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Newly Emerging Skills']]: {
       icon: <CiLock />,
       source: API.highlightsNewSkills,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
   };
 
@@ -202,7 +209,19 @@ export function Highlights() {
     }
     return (
       <div className="text-xs text-text-primary">
-        <CurrencyDisplay valueInRUB={skill.average_salary} />
+              <div className='w-28'>
+                <SalaryRenderer
+                  maxCount={10 ** 6}
+                  isLoading={false}
+                  selectedPeriod={7}
+                  selectedExperience={undefined}
+                  name={skill.name}
+                  key={'skills_salary'}
+                  count={skill.average_salary ?? 0}
+                  source={API.salaryPlot}
+                />
+              </div>
+        {/* <CurrencyDisplay valueInRUB={skill.average_salary} /> */}
       </div>
     );
   };

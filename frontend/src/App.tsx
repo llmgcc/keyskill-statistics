@@ -20,6 +20,7 @@ import { Stats } from './interfaces/index';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
 import { useDomainsStore } from './store/domainsStore.ts';
+import { useStatsStore } from './store/statsStore.ts';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,9 +31,9 @@ export const queryClient = new QueryClient({
 });
 
 function App() {
-  const [generalStats, setGeneralStats] = useState<Stats>();
   const { fetchCategories } = useCategoriesStore();
   const { fetchDomains } = useDomainsStore();
+  const {fetchStats, stats} = useStatsStore();
   const [currentTab, setCurrentTab] = useState(0)
   const tabsRef = useRef<HTMLDivElement | null>(null)
 
@@ -40,12 +41,7 @@ function App() {
     useCurrencyStore.getState().fetchCurrencies();
     fetchCategories();
     fetchDomains();
-  }, []);
-
-  useEffect(() => {
-    API.mainStats().then((data) => {
-      setGeneralStats(data);
-    });
+    fetchStats()
   }, []);
 
   const tabs = [
@@ -112,9 +108,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-        <Navigation stats={generalStats} />
+        <Navigation stats={stats} />
             
-        <TextSection stats={generalStats} onLinkClick={tab => openNewTab(tab)}/>
+        <TextSection stats={stats} onLinkClick={tab => openNewTab(tab)}/>
         {/* 
         <div className='app-container'>
           {

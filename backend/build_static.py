@@ -45,10 +45,10 @@ def build_static(router):
             f.write(response.text)
 
 
-# build_static(main_router)
-# build_static(categories_router)
-# build_static(technologies_router)
-
+build_static(main_router)
+build_static(categories_router)
+build_static(technologies_router)
+exit()
 
 with Session(engine) as session:
     for period in (PERIOD):

@@ -1,3 +1,4 @@
+from sqlalchemy import and_, case
 from sqlmodel import Session, select, func, cast, Date, distinct
 from src.models import *
 from src.config import settings
@@ -27,12 +28,50 @@ def get_main_page_stats(session: Session):
         .where(Vacancy.created_at >= settings.min_date)
     )
 
+    average_salary_case = case(
+        (
+            and_(
+                VacancySalary.salary_from.is_not(None),
+                VacancySalary.salary_to.is_not(None),
+            ),
+            (
+                VacancySalary.salary_from / Currency.currency_rate
+                + VacancySalary.salary_to / Currency.currency_rate
+            )
+            / 2,
+        ),
+        (
+            and_(
+                VacancySalary.salary_from.is_(None),
+                VacancySalary.salary_to.is_not(None),
+            ),
+            VacancySalary.salary_to / Currency.currency_rate,
+        ),
+        (
+            and_(
+                VacancySalary.salary_from.is_not(None),
+                VacancySalary.salary_to.is_(None),
+            ),
+            VacancySalary.salary_from / Currency.currency_rate,
+        ),
+    )
+    
+    avg_salary_query = (
+        select(func.avg(average_salary_case).label("max_salary"))
+            .select_from(Vacancy)
+            .where(Vacancy.created_at <= settings.max_date)
+            .where(Vacancy.created_at >= settings.min_date)
+            .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
+            .join(Currency, Currency.currency_code == VacancySalary.currency)
+    )
+       
     return {
         "last_update": session.exec(last_update).first().strftime("%d.%m.%Y"),
         "unique_skills": session.exec(unique_skills).first(),
         "date_from": session.exec(min_date).first().strftime("%d.%m.%Y"),
         "date_to": session.exec(last_update).first().strftime("%d.%m.%Y"),
         "number_of_vacancies": session.exec(vacancies).first(),
+        "max_salary": session.exec(avg_salary_query).first()*5
     }
 
 

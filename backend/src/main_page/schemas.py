@@ -17,3 +17,4 @@ class StatsResponse(SQLModel):
     date_from: str
     date_to: str
     number_of_vacancies: int
+    max_salary: float

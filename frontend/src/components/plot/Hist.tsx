@@ -79,7 +79,7 @@ function SVGPlot(props: {
   );
 }
 
-function Hist(props: { data: number[]; color: string; strokeWidth?: number }) {
+function Hist(props: { data: number[]; color: string; strokeWidth?: number, height: number }) {
   const svgWrapper = useRef<HTMLDivElement>(null);
   const data = props.data;
 
@@ -128,6 +128,7 @@ type SkillHistProps = {
   color: string;
   experience: Experience | null;
   average: number;
+  height?: number;
 };
 
 export function SkillHist({
@@ -138,6 +139,7 @@ export function SkillHist({
   color,
   average,
   experience,
+  height = 40,
 }: SkillHistProps) {
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: [`${name}_hist_${key}`, period, experience],
@@ -155,7 +157,7 @@ export function SkillHist({
 
   const chartData = [];
   if (data?.chart?.length) {
-    const COUNT_BINS = 20;
+    const COUNT_BINS = 15;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
       const index = data.chart.findIndex((p) => p.bin == i);
       if (index !== -1) {
@@ -176,7 +178,7 @@ export function SkillHist({
           <div className="size-full">
             <Skeleton loading={isLoading || isFetching} className="size-full">
               {!!chartData?.length && (
-                <Hist data={chartData} color={color} strokeWidth={2} /> 
+                <Hist data={chartData} color={color} strokeWidth={2} height={height} /> 
               )}
             </Skeleton>
           </div>
