@@ -116,7 +116,6 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
     );
-    console.log(response.data);
     return { max_salary: 1, chart: response.data[name][0] };
   }
 
@@ -128,7 +127,6 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
     );
-    console.log(response.data);
     return { max_salary: 1, chart: response.data[name][0] };
   }
 

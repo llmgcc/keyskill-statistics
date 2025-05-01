@@ -105,7 +105,6 @@ function App() {
         behavior: 'smooth'
       });
     }
-    console.log(tabIndex)
     setCurrentTab(tabIndex)
   }
 

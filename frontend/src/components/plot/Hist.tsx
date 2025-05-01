@@ -147,7 +147,6 @@ export function SkillHist({
         period,
         experience == Experience.any ? undefined : (experience ?? undefined),
       );
-      console.log('DATA', data);
       return data;
     },
     placeholderData: keepPreviousData,
@@ -155,7 +154,7 @@ export function SkillHist({
   });
 
   const chartData = [];
-  if (data) {
+  if (data?.chart?.length) {
     const COUNT_BINS = 20;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
       const index = data.chart.findIndex((p) => p.bin == i);
@@ -176,8 +175,8 @@ export function SkillHist({
         <div style={{ height: '40px' }}>
           <div className="size-full">
             <Skeleton loading={isLoading || isFetching} className="size-full">
-              {chartData.length && (
-                <Hist data={chartData} color={color} strokeWidth={2} />
+              {!!chartData?.length && (
+                <Hist data={chartData} color={color} strokeWidth={2} /> 
               )}
             </Skeleton>
           </div>

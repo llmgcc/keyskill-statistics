@@ -167,7 +167,6 @@ export function SkillPlot({
   });
 
   const chartData = [];
-  console.log('DATA', data);
   if (data) {
     const COUNT_BINS = 15;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
