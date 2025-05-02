@@ -140,7 +140,7 @@ type SkillPlotProps = {
   period: number;
   color: string;
   strokeWidth: number;
-  experience: Experience;
+  experience?: Experience;
 };
 
 export function SkillPlot({

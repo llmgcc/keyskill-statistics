@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 type PeriodStore = {
   periodList: number[];
-  selectedPeriod: number | null;
+  selectedPeriod: number;
   setPeriod: (period: number) => void;
 };
 

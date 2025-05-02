@@ -1,19 +1,18 @@
-// columns/commonColumns.ts
-import { KeySkill, SalaryChart } from '@/interfaces';
+import { Chart, KeySkill, SalaryChart } from '@/interfaces';
+import { getPercentDifference } from '@/utils/common';
+import { Skeleton } from '@radix-ui/themes';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
 import { GoDiff } from 'react-icons/go';
+import colors from 'tailwindcss/colors';
 
 import { Experience } from '@/config/experience';
 
+import { SkillPlot } from '../plot/Plot';
 import { CountRenderer } from '../table/renderers/CountRenderer';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
-
-export type RankedItem = {
-  [key: string]: any;
-};
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -135,12 +134,12 @@ export const salaryAccessor = <T extends KeySkill>(config: {
   size?: number;
   isLoading: boolean;
   selectedPeriod: number;
-  selectedExperience?: Experience;
+  selectedExperience?: Experience | null;
   key: string;
   source(
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience | null,
   ): Promise<SalaryChart>;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
@@ -155,7 +154,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
         maxCount={10 ** 6}
         isLoading={config.isLoading}
         selectedPeriod={config.selectedPeriod}
-        selectedExperience={config.selectedExperience}
+        selectedExperience={config.selectedExperience ?? undefined}
         name={info.row.original.name}
         key={config.key}
         count={(info.getValue() as number) ?? 0}
@@ -164,6 +163,101 @@ export const salaryAccessor = <T extends KeySkill>(config: {
     );
   },
   size: 150,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const prevCountAccessor = <T extends KeySkill>(
+  config: {
+    accessorKey: string;
+    header?: string;
+    size?: number;
+  } = { accessorKey: 'prev_count', size: 50 },
+): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => <GoDiff className="stroke-1" />,
+  sortingFn: (rowa, rowb) => {
+    if (!rowa.original.prev_count) {
+      return 1;
+    }
+    if (!rowb.original.prev_count) {
+      return -1;
+    }
+    const a = getPercentDifference(
+      rowa.original.count,
+      rowa.original.prev_count,
+    );
+    const b = getPercentDifference(
+      rowb.original.count,
+      rowb.original.prev_count,
+    );
+    if (rowa.original.prev_place && rowb.original.prev_place) {
+      return a < b ? 1 : a > b ? -1 : 0;
+    }
+    return 0;
+  },
+  cell: (info) => {
+    return (
+      <div>
+        <ValueChangeRenderer
+          current={info.row.original.count}
+          prev={info.row.original.prev_count}
+          percent={true}
+        />
+      </div>
+    );
+  },
+  size: 100,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const chartAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  header?: string;
+  size?: number;
+  isLoading: boolean;
+  selectedPeriod: number;
+  selectedExperience?: Experience;
+  key: string;
+  source(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]>;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: 'Trend',
+  cell: (info) => {
+    const color =
+      info.row.original.prev_count &&
+      info.row.original.count >= info.row.original.prev_count
+        ? colors.green[400]
+        : colors.red[500];
+    return (
+      <div style={{ height: '40px' }} className="w-40">
+        <div className="size-full">
+          <Skeleton loading={config.isLoading} className="size-full">
+            {!config.isLoading && (
+              <SkillPlot
+                name={info.row.original.name}
+                key={config.key}
+                source={config.source}
+                period={config.selectedPeriod}
+                color={color}
+                strokeWidth={2}
+                experience={config.selectedExperience}
+              />
+            )}
+          </Skeleton>
+        </div>
+      </div>
+    );
+  },
+  size: 150,
+  enableSorting: false,
   meta: {
     alignRight: true,
   },

@@ -1,22 +1,22 @@
-import { getPercentDifference } from "@/utils/common";
+import { getPercentDifference } from '@/utils/common';
 
 interface ValueChangeRendererProps {
   current: number;
   prev?: number;
-  percent?: boolean
+  percent?: boolean;
 }
 
 export function ValueChangeRenderer({
   current,
   prev,
-  percent = false
+  percent = false,
 }: ValueChangeRendererProps) {
   let colorClass = '';
-  let difference : number | null = null
+  let difference: number | null = null;
   if (prev && current) {
     difference = percent ? getPercentDifference(current, prev) : current - prev;
     if (difference < 0) {
-      colorClass = 'text-red-400';
+      colorClass = 'text-red-500';
     } else {
       colorClass = 'text-green-400';
     }
@@ -26,7 +26,11 @@ export function ValueChangeRenderer({
     <div>
       <div className={colorClass}>
         {prev && current !== null ? (
-          <div>{percent ? `${getPercentDifference(current, prev).toFixed(2)}%` : difference}</div>
+          <div>
+            {percent
+              ? `${getPercentDifference(current, prev).toFixed(2)}%`
+              : difference}
+          </div>
         ) : (
           <div className="text-text-secondary">-</div>
         )}
