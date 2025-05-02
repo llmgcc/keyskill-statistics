@@ -30,15 +30,13 @@ import {
   salaryAccessor,
   skillNameAccessor,
 } from './accessors';
+import { getPercentDifference } from '@/utils/common';
 
 type Category = {
   name: string;
   confidence: number;
 };
 
-function getPercentDifference(current: number, prev: number) {
-  return ((current - prev) / prev) * 100;
-}
 
 type TableData = {
   skills: KeySkill[];
@@ -157,24 +155,7 @@ function KeySkills() {
         }
         return (
           <div>
-            <div className={`${className} keyskills-badge`}>
-              <div className="keyskills-badge-arrow"></div>
-              <div className="keyskills-difference-value">
-                {prev && current ? (
-                  <div>
-                    {getPercentDifference(
-                      info.row.original.count,
-                      info.row.original.prev_count,
-                    ).toFixed(2)}
-                    %
-                  </div>
-                ) : (
-                  <div>
-                    <MdOutlineFiberNew size={25} />
-                  </div>
-                )}
-              </div>
-            </div>
+            <ValueChangeRenderer current={info.row.original.count} prev={info.row.original.prev_count} percent={true}/>
           </div>
         );
       },
