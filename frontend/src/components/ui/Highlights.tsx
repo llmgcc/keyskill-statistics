@@ -22,10 +22,8 @@ import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { CurrencyDisplay } from './CurrencyDisplay';
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
+import { getPercentDifference } from '@/utils/common';
 
-function getPercentDifference(current: number, prev: number) {
-  return ((current - prev) / prev) * 100;
-}
 
 function change(count: number, prev_count?: number, percent = true) {
   if (!prev_count) {

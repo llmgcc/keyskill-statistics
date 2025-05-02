@@ -18,6 +18,7 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from './accessors';
+import { getPercentDifference } from '@/utils/common';
 
 type Category = {
   place: number;
@@ -27,10 +28,6 @@ type Category = {
   prev_count: number;
   average_salary: number;
 };
-
-function getPercentDifference(current: number, prev: number) {
-  return ((current - prev) / prev) * 100;
-}
 
 export function CategoriesTable() {
   const { selectedPeriod } = usePeriodStore();
