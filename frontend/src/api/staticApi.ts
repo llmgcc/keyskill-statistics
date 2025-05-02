@@ -30,40 +30,40 @@ function change(current: number, prev?: number) {
 
 export class StaticAPI implements API {
   async mainStats(): Promise<Stats> {
-    const response = await fetch('/static-api/main-page/stats.json');
-    return response.json();
+    const response = await axios.get('/static-api/main-page/stats.json');
+    return response.data;
   }
 
   async currencyList(): Promise<Currency[]> {
-    const response = await fetch('/static-api/main-page/currency.json');
-    return response.json();
+    const response = await axios.get('/static-api/main-page/currency.json');
+    return response.data;
   }
 
   async categoriesList(
-    period?: number,
+    period: number,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await fetch(
+    const response = await axios.get(
       `/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`,
     );
-    return response.json();
+    return response.data;
   }
 
   async domainsList(
-    period?: number,
+    period: number,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await fetch(
+    const response = await axios.get(
       `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
     );
-    return response.json();
+    return response.data;
   }
 
   async skillsList(
+    limit: number,
+    offset: number,
+    period: number,
     experience?: Experience,
-    period?: number,
-    limit?: number,
-    offset?: number,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
     return {
@@ -142,8 +142,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsHighestSalary(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -152,8 +152,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsLowestSalary(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -163,8 +163,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsUndefinedSalary(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
 
@@ -175,8 +175,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsGainers(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -188,8 +188,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsDecliners(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -201,8 +201,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsNewSkills(
-    experience?: Experience,
-    period?: number,
+    period: number,
+    experience?: Experience
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills

@@ -76,10 +76,10 @@ function HighlightsCardTab({
     queryKey: [title, selectedExperience, selectedPeriod],
     queryFn: async () => {
       const data = await source(
+        selectedPeriod,
         selectedExperience == Experience.any
           ? undefined
           : (selectedExperience ?? undefined),
-        selectedPeriod ?? undefined,
       );
       return data;
     },

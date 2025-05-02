@@ -65,10 +65,10 @@ function useSkills({
     queryKey: ['skills', limit, offset, days_period, experience],
     queryFn: async () => {
       const data = await API.skillsList(
-        experience == Experience.any ? undefined : (experience ?? undefined),
-        days_period,
         limit,
         offset,
+        days_period,
+        experience == Experience.any ? undefined : (experience ?? undefined),
       );
 
       return {
