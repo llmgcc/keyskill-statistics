@@ -143,7 +143,7 @@ export class StaticAPI implements API {
 
   async highlightsHighestSalary(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -153,7 +153,7 @@ export class StaticAPI implements API {
 
   async highlightsLowestSalary(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -164,7 +164,7 @@ export class StaticAPI implements API {
 
   async highlightsUndefinedSalary(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
 
@@ -176,7 +176,7 @@ export class StaticAPI implements API {
 
   async highlightsGainers(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -189,7 +189,7 @@ export class StaticAPI implements API {
 
   async highlightsDecliners(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -202,7 +202,7 @@ export class StaticAPI implements API {
 
   async highlightsNewSkills(
     period: number,
-    experience?: Experience
+    experience?: Experience,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills

@@ -16,10 +16,7 @@ export interface API {
     period: number,
     experience?: Experience,
   ) => Promise<Category[]>;
-  domainsList: (
-    period: number,
-    experience?: Experience,
-  ) => Promise<Category[]>;
+  domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
 
   skillsList: (
     limit: number,
@@ -77,12 +74,10 @@ export interface API {
   highlightsLowestSalary: (
     period: number,
     experience?: Experience,
-   
   ) => Promise<KeySkill[]>;
   highlightsUndefinedSalary: (
     period: number,
     experience?: Experience,
-   
   ) => Promise<KeySkill[]>;
   highlightsGainers: (
     period: number,

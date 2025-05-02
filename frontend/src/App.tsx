@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
 
-import { API } from './api/api';
 import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
@@ -16,7 +15,6 @@ import { Filters } from './components/ui/Filters.tsx';
 import { Highlights } from './components/ui/Highlights.tsx';
 import Navigation from './components/ui/Navigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
-import { Stats } from './interfaces/index';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
 import { useDomainsStore } from './store/domainsStore.ts';
@@ -33,15 +31,15 @@ export const queryClient = new QueryClient({
 function App() {
   const { fetchCategories } = useCategoriesStore();
   const { fetchDomains } = useDomainsStore();
-  const {fetchStats, stats} = useStatsStore();
-  const [currentTab, setCurrentTab] = useState(0)
-  const tabsRef = useRef<HTMLDivElement | null>(null)
+  const { fetchStats, stats } = useStatsStore();
+  const [currentTab, setCurrentTab] = useState(0);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     useCurrencyStore.getState().fetchCurrencies();
     fetchCategories();
     fetchDomains();
-    fetchStats()
+    fetchStats();
   }, []);
 
   const tabs = [
@@ -91,26 +89,26 @@ function App() {
     },
   ];
 
-  function openNewTab(tabIndex : number) {
-    const offset = 100
+  function openNewTab(tabIndex: number) {
+    const offset = 100;
     const element = tabsRef.current;
     if (element) {
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
-    setCurrentTab(tabIndex)
+    setCurrentTab(tabIndex);
   }
-
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
         <Navigation stats={stats} />
-            
-        <TextSection stats={stats} onLinkClick={tab => openNewTab(tab)}/>
+
+        <TextSection stats={stats} onLinkClick={(tab) => openNewTab(tab)} />
         {/* 
         <div className='app-container'>
           {
@@ -132,23 +130,25 @@ function App() {
         <Highlights />
 
         <div className="app-container mt-4" ref={tabsRef}>
-          <Tabs.Root 
-            value={tabs[currentTab].name} 
+          <Tabs.Root
+            value={tabs[currentTab].name}
             onValueChange={(value) => {
-              const newIndex = tabs.findIndex(tab => tab.name === value);
+              const newIndex = tabs.findIndex((tab) => tab.name === value);
               setCurrentTab(newIndex);
             }}
           >
             <Tabs.List>
               {tabs.map((tab) => {
                 return (
-                  <Tabs.Trigger value={tab.name}>{tab.title}</Tabs.Trigger>
+                  <Tabs.Trigger value={tab.name} key={tab.name}>
+                    {tab.title}
+                  </Tabs.Trigger>
                 );
               })}
             </Tabs.List>
             {tabs.map((tab) => {
               return (
-                <Tabs.Content value={tab.name} className="py-2">
+                <Tabs.Content value={tab.name} className="py-2" key={tab.name}>
                   {tab.body()}
                 </Tabs.Content>
               );
