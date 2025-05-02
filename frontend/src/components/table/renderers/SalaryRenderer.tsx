@@ -25,7 +25,6 @@ interface SalaryRendererProps {
 
 export function SalaryRenderer({
   count,
-  maxCount,
   isLoading,
   selectedPeriod,
   selectedExperience,

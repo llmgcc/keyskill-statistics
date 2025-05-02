@@ -3,6 +3,7 @@ import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
+import { getPercentDifference } from '@/utils/common';
 import { SegmentedControl, Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -22,8 +23,6 @@ import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { CurrencyDisplay } from './CurrencyDisplay';
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
-import { getPercentDifference } from '@/utils/common';
-
 
 function change(count: number, prev_count?: number, percent = true) {
   if (!prev_count) {
