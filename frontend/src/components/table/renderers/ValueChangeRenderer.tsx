@@ -13,7 +13,8 @@ export function ValueChangeRenderer({
 }: ValueChangeRendererProps) {
   let colorClass = '';
   let difference: number | null = null;
-  if (prev && current) {
+  const isValid = prev && !isNaN(prev) && !isNaN(current);
+  if (isValid) {
     difference = percent ? getPercentDifference(current, prev) : current - prev;
     if (difference < 0) {
       colorClass = 'text-red-500';
@@ -25,7 +26,7 @@ export function ValueChangeRenderer({
   return (
     <div>
       <div className={colorClass}>
-        {prev && current !== null ? (
+        {isValid ? (
           <div>
             {percent
               ? `${getPercentDifference(current, prev).toFixed(2)}%`
