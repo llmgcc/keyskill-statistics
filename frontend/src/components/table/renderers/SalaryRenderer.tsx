@@ -1,12 +1,12 @@
 import { SalaryChart } from '@/interfaces';
+import { useStatsStore } from '@/store/statsStore';
 import { Skeleton } from '@radix-ui/themes';
 
 import { Experience } from '@/config/experience';
+import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { SkillHist } from '@/components/plot/Hist';
 
 import { ProgressBar } from './ProgressBar';
-import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
-import { useStatsStore } from '@/store/statsStore';
 
 interface SalaryRendererProps {
   count?: number;
@@ -33,17 +33,22 @@ export function SalaryRenderer({
   key,
   source,
 }: SalaryRendererProps) {
-  const {stats} = useStatsStore()
-
+  const { stats } = useStatsStore();
 
   const color = 'rgb(var(--color-background-secondary))';
   const salary = count;
   return (
-    <div className="relative w-full size-full">
-      <div className="flex justify-end text-text z-50">
-        <CurrencyDisplay valueInRUB={salary}/>
+    <div className="relative size-full w-full">
+      <div className="z-50 flex justify-end text-text">
+        <CurrencyDisplay valueInRUB={salary} />
       </div>
-      {!!salary && <ProgressBar count={count} maxCount={stats?.max_salary ?? 0} offset={-10} />}
+      {!!salary && (
+        <ProgressBar
+          count={count}
+          maxCount={stats?.max_salary ?? 0}
+          offset={-10}
+        />
+      )}
 
       <Skeleton loading={isLoading} className="size-full">
         {!isLoading && (

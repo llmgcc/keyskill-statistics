@@ -1,38 +1,23 @@
-import { useEffect, useState } from 'react';
 import { API } from '@/api/api';
-import { useDomainsStore } from '@/store/domainsStore';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import {
-  ColumnDef,
-  createColumnHelper,
-  sortingFns,
-} from '@tanstack/react-table';
-import axios from 'axios';
-import { BiQuestionMark } from 'react-icons/bi';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { GoDiff } from 'react-icons/go';
 import { MdOutlineFiberNew } from 'react-icons/md';
 
 import { Experience } from '@/config/experience';
 
-import { SkillHist } from '../plot/Hist';
 import { SkillPlot } from '../plot/Plot';
 import { DataTable } from '../table/DataTable';
-import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
-import { TanTable } from '../table/TanTable';
-import SkillDescription from '../ui/SkillDescription';
-import SkillImage from '../ui/SkillImage';
 import {
   categoryNameAccessor,
   countAccessor,
   placeAccessor,
   prevPlaceAccessor,
   salaryAccessor,
-  skillNameAccessor,
 } from './accessors';
-import { useCategoriesStore } from '@/store/categoriesStore';
 
 type Category = {
   place: number;
@@ -55,7 +40,6 @@ export function CategoriesTable() {
     data: domains,
     isLoading,
     isFetching,
-    error,
   } = useQuery({
     queryKey: ['domains_list', selectedPeriod, selectedExperience],
     queryFn: async () => {
@@ -234,14 +218,13 @@ export function CategoriesTable() {
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
-
   const empty: Category = {
     place: 100,
     name: ' '.repeat(10),
     count: 100,
     prev_count: 200,
     prev_place: 200,
-    average_salary: 100
+    average_salary: 100,
   };
   const fillData = [];
   for (let i = 0; i < 20; i++) {

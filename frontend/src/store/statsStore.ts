@@ -3,8 +3,8 @@ import { Stats } from '@/interfaces/index';
 import { create } from 'zustand';
 
 type StatsStore = {
-    stats: Stats | null;
-    fetchStats: () => Promise<void>;
+  stats: Stats | null;
+  fetchStats: () => Promise<void>;
 };
 
 export const useStatsStore = create<StatsStore>()((set) => ({
@@ -13,5 +13,4 @@ export const useStatsStore = create<StatsStore>()((set) => ({
     const stats = await API.mainStats();
     set({ stats });
   },
-}))
-
+}));

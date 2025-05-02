@@ -79,7 +79,12 @@ function SVGPlot(props: {
   );
 }
 
-function Hist(props: { data: number[]; color: string; strokeWidth?: number, height: number }) {
+function Hist(props: {
+  data: number[];
+  color: string;
+  strokeWidth?: number;
+  height: number;
+}) {
   const svgWrapper = useRef<HTMLDivElement>(null);
   const data = props.data;
 
@@ -178,7 +183,12 @@ export function SkillHist({
           <div className="size-full">
             <Skeleton loading={isLoading || isFetching} className="size-full">
               {!!chartData?.length && (
-                <Hist data={chartData} color={color} strokeWidth={2} height={height} /> 
+                <Hist
+                  data={chartData}
+                  color={color}
+                  strokeWidth={2}
+                  height={height}
+                />
               )}
             </Skeleton>
           </div>

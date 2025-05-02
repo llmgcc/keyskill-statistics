@@ -18,7 +18,7 @@ interface ListEnumerationProps {
 function ListEnumeration({
   list,
   maxToDisplay = 3,
-  translationKey
+  translationKey,
 }: ListEnumerationProps) {
   const { t } = useTranslation();
   if (!list?.length) return '';
@@ -54,7 +54,10 @@ function ListEnumeration({
   );
 }
 
-export function TextSection({ stats, onLinkClick = () => {}, }: TextSectionProps) {
+export function TextSection({
+  stats,
+  onLinkClick = () => {},
+}: TextSectionProps) {
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
   const { t } = useTranslation();
@@ -63,18 +66,32 @@ export function TextSection({ stats, onLinkClick = () => {}, }: TextSectionProps
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
   );
   const text = <span className="text-text-primary" />;
-  const linkto = <Link href='https://dev.hh.ru/' target="_blank" rel="noopener noreferrer" /> 
+  const linkto = (
+    <Link href="https://dev.hh.ru/" target="_blank" rel="noopener noreferrer" />
+  );
 
-
-  
-  const linkToCategory = <Link href="" rel="noopener noreferrer" onClick={(e) => {
-    e.preventDefault();
-    onLinkClick(2);
-  }} className='cursor-pointer'/>
-  const linkToDomain = <Link href="" rel="noopener noreferrer" onClick={(e) => {
-    e.preventDefault();
-    onLinkClick(1);
-  }} className='cursor-pointer'/>
+  const linkToCategory = (
+    <Link
+      href=""
+      rel="noopener noreferrer"
+      onClick={(e) => {
+        e.preventDefault();
+        onLinkClick(2);
+      }}
+      className="cursor-pointer"
+    />
+  );
+  const linkToDomain = (
+    <Link
+      href=""
+      rel="noopener noreferrer"
+      onClick={(e) => {
+        e.preventDefault();
+        onLinkClick(1);
+      }}
+      className="cursor-pointer"
+    />
+  );
 
   return (
     <div className="app-container">

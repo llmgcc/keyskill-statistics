@@ -48,7 +48,7 @@ function getPercentDifference(current: number, prev: number) {
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
-  const {categories : categoriesShort} = useCategoriesStore()
+  const { categories: categoriesShort } = useCategoriesStore();
   const {
     data: categories,
     isLoading,
@@ -234,14 +234,13 @@ export function TechnologiesTable() {
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
-
   const empty: Category = {
     place: 100,
     name: ' '.repeat(10),
     count: 100,
     prev_count: 200,
     prev_place: 200,
-    average_salary: 100
+    average_salary: 100,
   };
   const fillData = [];
   for (let i = 0; i < 20; i++) {

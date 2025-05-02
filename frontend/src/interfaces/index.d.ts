@@ -11,7 +11,7 @@ export type Stats = {
   date_from: string;
   date_to: string;
   number_of_vacancies: string;
-  max_salary: number
+  max_salary: number;
 };
 
 export type Category = {
