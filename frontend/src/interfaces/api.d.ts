@@ -23,6 +23,10 @@ export interface API {
     offset: number,
     period: number,
     experience?: Experience,
+    domain?: string,
+    domainStrict?: boolean,
+    category?: string,
+    categoryStrict?: boolean,
   ) => Promise<KeySkillServer>;
 
   skillPlot: (
