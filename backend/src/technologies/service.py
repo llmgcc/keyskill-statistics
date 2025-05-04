@@ -49,7 +49,8 @@ def technologies_list(session: Session, days_period=30, experience = None):
     )
 
     skills = (
-        select(KeySkill.name, func.count(KeySkill.name).label("count"), func.percentile_cont(0.5)
+        select(KeySkill.name, func.count(KeySkill.name).label("count"), 
+            func.percentile_cont(0.5)
             .within_group(average_salary_case)
             .filter(Vacancy.created_at.between(current_from, current_to))
             .label("average_salary"))
@@ -83,13 +84,15 @@ def technologies_list(session: Session, days_period=30, experience = None):
             prev_count,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.avg(skills.c.average_salary).label("average_salary"),
+            func.percentile_cont(0.5)
+            .within_group(skills.c.average_salary)
+            .label("average_salary")
         )
         .select_from(KeySkillTechnology)
         .outerjoin(Technology, Technology.id == KeySkillTechnology.technology_id)
         .outerjoin(skills, skills.c.name == KeySkillTechnology.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillTechnology.name)
-        .where(KeySkillTechnology.confidence >= 0.5)
+        # .where(KeySkillTechnology.confidence >= 0.2)
         .group_by(Technology.name)
         .order_by(desc("count"))
     )

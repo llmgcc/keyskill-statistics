@@ -4,14 +4,21 @@ from src.models import *
 from src.config import settings
 
 
-def get_main_page_stats(session: Session):
-    last_update = select(
+def get_general_stats(session: Session):
+    last_update = (
+        select(
         func.max(cast(Vacancy.created_at, Date)).label("last_update"),
     ).select_from(Vacancy)
+        .where(Vacancy.created_at <= settings.max_date)
+        .where(Vacancy.created_at >= settings.min_date)
+    )
 
-    min_date = select(
+    min_date = (select(
         func.min(cast(Vacancy.created_at, Date)).label("date_from"),
     ).select_from(Vacancy)
+        .where(Vacancy.created_at <= settings.max_date)
+        .where(Vacancy.created_at >= settings.min_date)
+    )
 
     unique_skills = (
         select(func.count(distinct(KeySkill.name)).label("unique_skills"))

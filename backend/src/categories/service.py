@@ -88,7 +88,7 @@ def categories_list(session: Session, days_period=30, experience = None):
         .outerjoin(Category, Category.id == KeySkillCategory.category_id)
         .outerjoin(skills, skills.c.name == KeySkillCategory.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillCategory.name)
-        .where(KeySkillCategory.confidence >= 0.25)
+        # .where(KeySkillCategory.confidence >= 0.2)
         .group_by(Category.name)
         .order_by(desc("count"))
     )

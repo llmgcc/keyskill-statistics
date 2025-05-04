@@ -3,7 +3,7 @@ from src.keyskills.router import router as skills_router
 from src.highlights.router import router as highlights_router
 from src.categories.router import router as categories_router
 from src.technologies.router import router as technologies_router
-from src.main_page.router import router as main_router
+from src.general.router import router as main_router
 from src.charts.router import router as charts_router
 import time
 from fastapi.staticfiles import StaticFiles
