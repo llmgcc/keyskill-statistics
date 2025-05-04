@@ -13,10 +13,8 @@ interface TanTableBodyProps<T extends object> {
 export function TanTableBody<T extends object>({
   table,
   isLoading,
-  isFetching,
-  pageSize,
 }: TanTableBodyProps<T>) {
-  function data(cell: any) {
+  function data(cell: Cell<T, unknown>) {
     return (
       <div className="size-full">
         {flexRender(cell.column.columnDef.cell, cell.getContext())}

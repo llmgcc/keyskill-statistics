@@ -8,6 +8,7 @@ import { ColumnDef, PaginationState } from '@tanstack/react-table';
 import { useSkills } from '@/hooks/useSkills';
 import { TanTable } from '@/components/table/TanTable';
 
+import { SkillsFilter, SkillsFilterState } from '../SkillsFilter/SkillsFilter';
 import {
   chartAccessor,
   countAccessor,
@@ -21,6 +22,18 @@ import {
 function KeySkills() {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
+
+  const [filterState, setFilterState] = useState<SkillsFilterState>({
+    category: {
+      selected: null,
+      strict: true,
+    },
+    domain: {
+      selected: null,
+      strict: true,
+    },
+    skill: '',
+  });
 
   const pageSizeVariants = [25, 50, 100];
 
@@ -38,6 +51,11 @@ function KeySkills() {
     offset: pagination.pageSize * pagination.pageIndex,
     period: selectedPeriod,
     experience: selectedExperience,
+    category: filterState?.category?.selected?.name,
+    domain: filterState?.domain?.selected?.name,
+    categoryStrict: filterState?.category?.strict,
+    domainStrict: filterState?.domain?.strict,
+    skillName: filterState.skill,
   });
 
   const columns = [
@@ -82,23 +100,26 @@ function KeySkills() {
   }
 
   return (
-    <TanTable
-      columns={columns}
-      data={skillsData?.skills ?? fillData}
-      onPaginationChange={setPagination}
-      manualPagination={true}
-      totalPages={totalRows}
-      pagination={pagination}
-      isLoading={isLoading || isFetching}
-      isFetching={isFetching}
-      pageSizeVariants={pageSizeVariants}
-      onPageSizeChange={(pageSize) => {
-        setPagination((prev) => ({
-          ...prev,
-          pageSize: pageSize,
-        }));
-      }}
-    />
+    <div>
+      <SkillsFilter state={filterState} onChange={setFilterState} />
+      <TanTable
+        columns={columns}
+        data={skillsData?.skills ?? fillData}
+        onPaginationChange={setPagination}
+        manualPagination={true}
+        totalPages={totalRows}
+        pagination={pagination}
+        isLoading={isLoading || isFetching}
+        isFetching={isFetching}
+        pageSizeVariants={pageSizeVariants}
+        onPageSizeChange={(pageSize) => {
+          setPagination((prev) => ({
+            ...prev,
+            pageSize: pageSize,
+          }));
+        }}
+      />
+    </div>
   );
 }
 

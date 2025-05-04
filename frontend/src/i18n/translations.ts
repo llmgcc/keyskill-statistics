@@ -33,6 +33,15 @@ export const translations = {
       filters: {
         title: 'Filters',
       },
+      categoryFilter: {
+        allDomains: 'All domains',
+        allCategories: 'All categories',
+        placeholder: 'Title',
+        placeholderForSkill: 'Search for a skill',
+        strictMatch: 'Strict match',
+        strictModeTooltipCategory:
+          'Show only skills where the selected category is the primary category (highest confidence score)',
+      },
       common: {
         and: 'and',
         days: 'days',
@@ -81,6 +90,15 @@ export const translations = {
       },
       filters: {
         title: 'Фильтры',
+      },
+      categoryFilter: {
+        allDomains: 'Все направления',
+        allCategories: 'Все категории',
+        placeholder: 'Название',
+        placeholderForSkill: 'Название навыка',
+        strictMatch: 'Точное совпадение',
+        strictModeTooltipCategory:
+          'Показывать только навыки, где выбранная категория является основной (с наивысшим показателем уверенности)',
       },
       common: {
         and: 'и',

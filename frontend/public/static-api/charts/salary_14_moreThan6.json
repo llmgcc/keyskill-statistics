@@ -1,263 +1,276 @@
 {
   "PostgreSQL": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 7 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 6 },
     { "bin": 4, "count": 7 },
-    { "bin": 5, "count": 14 },
+    { "bin": 5, "count": 15 },
     { "bin": 6, "count": 12 },
-    { "bin": 7, "count": 8 },
-    { "bin": 8, "count": 3 },
-    { "bin": 9, "count": 4 }
+    { "bin": 7, "count": 7 },
+    { "bin": 8, "count": 2 },
+    { "bin": 9, "count": 4 },
+    { "bin": 11, "count": 1 }
   ],
   "Python": [
     { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 3 },
+    { "bin": 3, "count": 1 },
     { "bin": 4, "count": 6 },
-    { "bin": 5, "count": 14 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 7 },
-    { "bin": 8, "count": 8 },
-    { "bin": 9, "count": 2 },
-    { "bin": 14, "count": 1 }
+    { "bin": 5, "count": 12 },
+    { "bin": 6, "count": 5 },
+    { "bin": 7, "count": 4 },
+    { "bin": 8, "count": 6 },
+    { "bin": 9, "count": 2 }
   ],
   "Linux": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 7 },
-    { "bin": 4, "count": 6 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 6 },
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 4 },
+    { "bin": 3, "count": 8 },
+    { "bin": 4, "count": 7 },
+    { "bin": 5, "count": 6 },
+    { "bin": 6, "count": 7 },
     { "bin": 7, "count": 5 },
     { "bin": 8, "count": 3 },
     { "bin": 9, "count": 4 }
   ],
   "SQL": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 5 },
-    { "bin": 4, "count": 7 },
-    { "bin": 5, "count": 16 },
-    { "bin": 6, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 11 },
+    { "bin": 5, "count": 17 },
+    { "bin": 6, "count": 6 },
     { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 3 },
-    { "bin": 9, "count": 2 }
+    { "bin": 8, "count": 2 },
+    { "bin": 9, "count": 1 }
   ],
   "Docker": [
     { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 4 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
     { "bin": 4, "count": 5 },
     { "bin": 5, "count": 4 },
-    { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 9 },
-    { "bin": 8, "count": 1 }
-  ],
-  "Git": [
-    { "bin": 2, "count": 3 },
-    { "bin": 3, "count": 6 },
-    { "bin": 4, "count": 10 },
-    { "bin": 5, "count": 14 },
-    { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 3 },
+    { "bin": 6, "count": 7 },
+    { "bin": 7, "count": 7 },
     { "bin": 8, "count": 1 },
-    { "bin": 9, "count": 1 }
+    { "bin": 11, "count": 1 }
   ],
   "Kubernetes": [
     { "bin": 2, "count": 1 },
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 4 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 7 },
-    { "bin": 7, "count": 7 },
-    { "bin": 8, "count": 4 },
-    { "bin": 9, "count": 4 }
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 8 },
+    { "bin": 7, "count": 5 },
+    { "bin": 8, "count": 3 },
+    { "bin": 9, "count": 4 },
+    { "bin": 11, "count": 1 }
+  ],
+  "Git": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 10 },
+    { "bin": 5, "count": 16 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 2 },
+    { "bin": 9, "count": 1 }
+  ],
+  "Java": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 6 },
+    { "bin": 6, "count": 3 },
+    { "bin": 7, "count": 5 },
+    { "bin": 8, "count": 2 }
   ],
   "JavaScript": [
     { "bin": 2, "count": 3 },
-    { "bin": 3, "count": 5 },
-    { "bin": 4, "count": 5 },
-    { "bin": 5, "count": 11 },
-    { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 5 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 6 },
+    { "bin": 5, "count": 10 },
+    { "bin": 6, "count": 6 },
+    { "bin": 7, "count": 3 },
     { "bin": 9, "count": 2 }
   ],
-  "Java": [
+  "Golang": [
     { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 6 },
-    { "bin": 6, "count": 3 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 5 },
     { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 2 }
+    { "bin": 8, "count": 1 }
+  ],
+  "MySQL": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 3, "count": 6 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 7 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
   ],
   "CI/CD": [
     { "bin": 3, "count": 2 },
     { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 4 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 8 },
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 3 },
+    { "bin": 7, "count": 6 },
     { "bin": 8, "count": 2 },
     { "bin": 9, "count": 4 }
   ],
-  "PHP": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 5 },
+  "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a": [
+    { "bin": 1, "count": 2 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
     { "bin": 4, "count": 3 },
-    { "bin": 5, "count": 5 },
-    { "bin": 6, "count": 4 },
-    { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 1 }
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 4 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 1 }
   ],
   "TypeScript": [
     { "bin": 2, "count": 1 },
     { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 4 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 4 },
+    { "bin": 4, "count": 6 },
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 5 },
     { "bin": 7, "count": 5 },
     { "bin": 9, "count": 2 }
   ],
-  "MySQL": [
-    { "bin": 2, "count": 2 },
+  "PHP": [
+    { "bin": 2, "count": 3 },
     { "bin": 3, "count": 4 },
     { "bin": 4, "count": 3 },
-    { "bin": 5, "count": 6 },
-    { "bin": 6, "count": 3 },
-    { "bin": 8, "count": 1 }
-  ],
-  "C#": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 6 },
-    { "bin": 6, "count": 6 },
-    { "bin": 7, "count": 3 }
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 7 },
+    { "bin": 7, "count": 2 }
   ],
   "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u0439": [
     { "bin": 2, "count": 1 },
     { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 2 },
-    { "bin": 14, "count": 1 }
-  ],
-  "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a": [
-    { "bin": 1, "count": 2 },
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 4 },
     { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 1 }
+    { "bin": 6, "count": 4 },
+    { "bin": 7, "count": 1 }
   ],
-  "Golang": [
+  "C#": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 5 },
+    { "bin": 7, "count": 3 },
+    { "bin": 9, "count": 1 }
+  ],
+  "RabbitMQ": [
     { "bin": 2, "count": 1 },
     { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 1 },
     { "bin": 6, "count": 5 },
-    { "bin": 7, "count": 4 }
+    { "bin": 7, "count": 3 },
+    { "bin": 8, "count": 1 },
+    { "bin": 11, "count": 1 }
+  ],
+  "Redis": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 8 },
+    { "bin": 7, "count": 1 }
   ],
   "Apache Kafka": [
     { "bin": 2, "count": 1 },
     { "bin": 4, "count": 3 },
     { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 1 },
-    { "bin": 8, "count": 2 }
-  ],
-  "RabbitMQ": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 4 },
-    { "bin": 7, "count": 1 },
-    { "bin": 8, "count": 2 }
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 1 },
+    { "bin": 11, "count": 1 }
   ],
   "Node.js": [
     { "bin": 3, "count": 2 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 6 },
-    { "bin": 9, "count": 2 }
-  ],
-  "React": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 3 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 1 },
-    { "bin": 9, "count": 2 }
-  ],
-  "Ansible": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 4 },
-    { "bin": 4, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 1 },
-    { "bin": 9, "count": 4 }
-  ],
-  "MongoDB": [
-    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 4 },
     { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 3 },
+    { "bin": 7, "count": 6 },
     { "bin": 8, "count": 1 },
-    { "bin": 9, "count": 4 }
-  ],
-  ".NET Core": [
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 5 },
-    { "bin": 6, "count": 8 },
-    { "bin": 7, "count": 2 }
-  ],
-  "Redis": [
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 1 }
+    { "bin": 9, "count": 2 },
+    { "bin": 11, "count": 1 }
   ],
   "Clickhouse": [
     { "bin": 4, "count": 1 },
     { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 5 },
+    { "bin": 6, "count": 8 },
     { "bin": 7, "count": 2 },
-    { "bin": 8, "count": 2 }
+    { "bin": 8, "count": 3 }
   ],
-  "REST": [
+  "MongoDB": [
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 5 },
+    { "bin": 7, "count": 3 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 4 }
+  ],
+  "Ansible": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 5 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 4 }
+  ],
+  "React": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 4 },
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 3 },
+    { "bin": 7, "count": 1 },
+    { "bin": 9, "count": 2 }
+  ],
+  "Kafka": [
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 5 },
+    { "bin": 8, "count": 1 }
+  ],
+  "REST API": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 4 },
+    { "bin": 6, "count": 3 },
+    { "bin": 9, "count": 1 }
+  ],
+  ".NET Core": [
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 7 },
+    { "bin": 7, "count": 2 },
+    { "bin": 9, "count": 1 }
+  ],
+  "C++": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
     { "bin": 4, "count": 1 },
     { "bin": 5, "count": 5 },
     { "bin": 6, "count": 2 },
     { "bin": 7, "count": 2 }
   ],
-  "REST API": [
-    { "bin": 2, "count": 2 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 2 },
-    { "bin": 6, "count": 2 },
-    { "bin": 9, "count": 1 }
-  ],
   "Spring Framework": [
     { "bin": 2, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 2 },
-    { "bin": 8, "count": 1 }
-  ],
-  "MS SQL": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
+    { "bin": 4, "count": 2 },
     { "bin": 5, "count": 1 },
     { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 2 }
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
   ],
-  "DevOps": [
+  "REST": [
+    { "bin": 2, "count": 1 },
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 2 },
-    { "bin": 8, "count": 4 }
+    { "bin": 5, "count": 3 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 }
   ],
   "HTML": [
     { "bin": 2, "count": 2 },
@@ -267,61 +280,90 @@
     { "bin": 6, "count": 2 },
     { "bin": 7, "count": 2 }
   ],
-  "C++": [
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 3 }
-  ],
-  "API": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 3 },
+  "Zabbix": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 2 },
     { "bin": 6, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "Agile": [
+  "API": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "Kotlin": [
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 2 }
+  ],
+  "Bash": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 4 },
+    { "bin": 7, "count": 4 }
+  ],
+  "MS SQL": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 2 }
+  ],
+  "DevOps": [
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 1 },
     { "bin": 7, "count": 1 },
-    { "bin": 9, "count": 1 }
+    { "bin": 8, "count": 3 }
+  ],
+  "Go": null,
+  "\u041e\u041e\u041f": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 2 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "AWS": [
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 4 },
+    { "bin": 8, "count": 1 }
+  ],
+  "Spring Boot": [
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 3 }
+  ],
+  "FastAPI": [
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 2 },
+    { "bin": 6, "count": 2 }
   ],
   "Atlassian Jira": [
     { "bin": 2, "count": 1 },
     { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 5 },
-    { "bin": 7, "count": 1 }
+    { "bin": 5, "count": 4 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
   ],
-  "\u041c\u0438\u043a\u0440\u043e\u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0430\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430": [
-    { "bin": 3, "count": 3 },
-    { "bin": 4, "count": 1 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 1 }
-  ],
-  "Terraform": [
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 2 },
-    { "bin": 9, "count": 4 }
-  ],
-  "Kotlin": [
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 1 },
+  "CSS": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 3 },
     { "bin": 7, "count": 2 }
   ],
-  "FastAPI": [
-    { "bin": 4, "count": 3 },
-    { "bin": 5, "count": 3 },
-    { "bin": 6, "count": 2 }
-  ],
-  "Kafka": [
+  "Agile": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 4 },
-    { "bin": 8, "count": 2 }
-  ],
-  "Bash": [
-    { "bin": 3, "count": 3 },
-    { "bin": 7, "count": 5 }
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 1 }
   ],
   "Laravel": [
     { "bin": 2, "count": 1 },
@@ -329,534 +371,526 @@
     { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 },
     { "bin": 6, "count": 3 },
-    { "bin": 7, "count": 2 }
+    { "bin": 7, "count": 1 }
   ],
-  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0442\u043e\u0440\u0441\u043a\u0438\u0435 \u043d\u0430\u0432\u044b\u043a\u0438": [
-    { "bin": 2, "count": 2 },
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 1 },
-    { "bin": 14, "count": 1 }
+  "Terraform": [
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 2 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 4 }
   ],
-  "Zabbix": [
-    { "bin": 2, "count": 1 },
+  "Grafana": [
     { "bin": 3, "count": 3 },
     { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
     { "bin": 6, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "ASP.NET": [
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 4 }
-  ],
-  "AWS": [
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 5 },
-    { "bin": 8, "count": 1 }
-  ],
-  "CSS": [
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 Linux": [
+    { "bin": 1, "count": 2 },
     { "bin": 2, "count": 2 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
     { "bin": 6, "count": 1 },
     { "bin": 7, "count": 2 }
+  ],
+  "Big Data": [
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 5 }
   ],
   "Angular": [
     { "bin": 2, "count": 1 },
-    { "bin": 5, "count": 3 },
+    { "bin": 5, "count": 2 },
     { "bin": 6, "count": 1 },
     { "bin": 7, "count": 2 }
   ],
-  "Prometheus": [
+  "\u041c\u0438\u043a\u0440\u043e\u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0430\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430": [
+    { "bin": 2, "count": 1 },
     { "bin": 3, "count": 2 },
     { "bin": 4, "count": 1 },
     { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0442\u043e\u0440\u0441\u043a\u0438\u0435 \u043d\u0430\u0432\u044b\u043a\u0438": [
+    { "bin": 2, "count": 3 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Elasticsearch": [
+    { "bin": 3, "count": 2 },
+    { "bin": 6, "count": 4 },
     { "bin": 7, "count": 2 },
     { "bin": 8, "count": 1 }
+  ],
+  "Scrum": [
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "CSS3": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 3 },
+    { "bin": 5, "count": 4 },
+    { "bin": 6, "count": 1 }
   ],
   "UML": [
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 2 },
     { "bin": 8, "count": 3 }
   ],
-  "Grafana": [
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 2 }
-  ],
-  "Scrum": [
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "VueJS": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 },
-    { "bin": 9, "count": 1 }
-  ],
-  "\u041f\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0437\u0430\u0434\u0430\u0447 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
   "HTML5": [
     { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 3 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 4 },
     { "bin": 5, "count": 4 },
     { "bin": 6, "count": 1 }
   ],
   "HTTP": [
     { "bin": 2, "count": 1 },
     { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 4 },
-    { "bin": 6, "count": 1 }
-  ],
-  "Spring Boot": [
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 2 }
-  ],
-  "BPMN": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 3 },
-    { "bin": 5, "count": 1 }
-  ],
-  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 Linux": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 2 }
-  ],
-  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 }
-  ],
-  "Big Data": [
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 4 }
-  ],
-  "CSS3": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 4 },
-    { "bin": 6, "count": 1 }
-  ],
-  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c\u0438": [
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 2 }
-  ],
-  "GCP": [
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 3 },
-    { "bin": 8, "count": 2 },
-    { "bin": 9, "count": 2 }
-  ],
-  "Django Framework": [
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 2 }
-  ],
-  "GraphQL": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
-    { "bin": 6, "count": 3 }
-  ],
-  "NoSQL": [
-    { "bin": 4, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 2 }
-  ],
-  "DNS": [{ "bin": 3, "count": 6 }],
-  "SOLID": [
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 3 }
-  ],
-  "Go": null,
-  "Nginx": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 2 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 1 }
-  ],
-  "C/C++": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 }
-  ],
-  "Gitlab": [
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "1\u0421 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
-    { "bin": 2, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 6, "count": 1 }
-  ],
-  "Elasticsearch": [
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 2 },
-    { "bin": 8, "count": 1 }
-  ],
-  ".NET Framework": [
-    { "bin": 2, "count": 1 },
-    { "bin": 5, "count": 2 },
-    { "bin": 7, "count": 2 }
-  ],
-  "ELK": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 2 },
-    { "bin": 8, "count": 1 }
-  ],
-  "gRPC": null,
-  "\u041e\u041e\u041f": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "Entity Framework": [{ "bin": 5, "count": 1 }],
-  "ETL": [{ "bin": 5, "count": 5 }],
-  "OpenStack": [
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 },
-    { "bin": 9, "count": 4 }
-  ],
-  "TCP/IP": [{ "bin": 4, "count": 1 }],
-  "Symfony": [
-    { "bin": 5, "count": 3 },
-    { "bin": 7, "count": 1 },
-    { "bin": 8, "count": 1 }
-  ],
-  "DDD": [
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 4 }
-  ],
-  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
-    { "bin": 2, "count": 1 }
-  ],
-  "Atlassian Confluence": [{ "bin": 5, "count": 4 }],
-  "Jenkins": [
-    { "bin": 3, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 2 }
-  ],
-  "Hadoop": [
     { "bin": 5, "count": 5 },
     { "bin": 6, "count": 1 }
   ],
-  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439": [
+  "Nginx": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "VueJS": [
     { "bin": 2, "count": 1 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 9, "count": 1 }
+  ],
+  "Prometheus": [
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "BPMN": [
     { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 3 }
+  ],
+  "C/C++": [
     { "bin": 4, "count": 2 },
     { "bin": 5, "count": 2 }
   ],
-  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
-    { "bin": 3, "count": 5 },
-    { "bin": 14, "count": 1 }
-  ],
-  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f": [
-    { "bin": 2, "count": 2 },
-    { "bin": 5, "count": 1 }
-  ],
-  "\u0418\u0422-\u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430": [
-    { "bin": 3, "count": 1 }
-  ],
-  "Sass": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 4 },
-    { "bin": 6, "count": 1 }
-  ],
-  "Figma": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
+  "gRPC": [{ "bin": 7, "count": 1 }],
+  "NoSQL": [
     { "bin": 4, "count": 2 },
-    { "bin": 7, "count": 1 }
-  ],
-  "GitLab CI": [
-    { "bin": 3, "count": 2 },
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 8, "count": 1 }
-  ],
-  "Leadership Skills": [{ "bin": 5, "count": 1 }],
-  "C4": [
-    { "bin": 6, "count": 1 },
-    { "bin": 8, "count": 4 }
-  ],
-  "microservices architecture": [
-    { "bin": 6, "count": 2 },
-    { "bin": 7, "count": 2 },
-    { "bin": 8, "count": 2 }
-  ],
-  "pandas": [
-    { "bin": 5, "count": 4 },
-    { "bin": 8, "count": 1 }
-  ],
-  "Project management": [
-    { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 14, "count": 1 }
-  ],
-  "PyTorch": [
-    { "bin": 8, "count": 1 },
-    { "bin": 9, "count": 1 }
-  ],
-  "QA": [
     { "bin": 5, "count": 1 },
     { "bin": 6, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "ASP.NET Core": [
+  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "ASP.NET": [
+    { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 },
-    { "bin": 6, "count": 1 }
+    { "bin": 6, "count": 3 }
   ],
   "Redux": [
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "ELK": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c\u0438": [
+    { "bin": 2, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "OpenStack": [
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 9, "count": 4 }
+  ],
+  "Hadoop": [
+    { "bin": 5, "count": 5 },
     { "bin": 6, "count": 1 }
+  ],
+  "GitLab CI": [
+    { "bin": 3, "count": 1 },
+    { "bin": 6, "count": 3 },
+    { "bin": 8, "count": 1 }
+  ],
+  "GCP": [
+    { "bin": 6, "count": 2 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 },
+    { "bin": 9, "count": 1 }
+  ],
+  ".NET Framework": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 2 }
+  ],
+  "GraphQL": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 3 },
+    { "bin": 11, "count": 1 }
+  ],
+  "VMware": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "Ubuntu": [
+    { "bin": 1, "count": 1 },
+    { "bin": 3, "count": 4 }
+  ],
+  "ETL": [{ "bin": 5, "count": 5 }],
+  "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Django Framework": [
+    { "bin": 4, "count": 2 },
+    { "bin": 6, "count": 2 }
+  ],
+  "SOLID": [
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 3 }
+  ],
+  "Jenkins": [
+    { "bin": 3, "count": 3 },
+    { "bin": 7, "count": 1 }
   ],
   "SOAP": [
     { "bin": 3, "count": 1 },
     { "bin": 4, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "Ubuntu": [{ "bin": 3, "count": 3 }],
-  "UI": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 3 }
-  ],
-  "WebSocket": [
-    { "bin": 3, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
+  "Adobe Photoshop": [{ "bin": 2, "count": 3 }],
   "XML": [
-    { "bin": 3, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
     { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
     { "bin": 6, "count": 1 }
   ],
-  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432": [
+  "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
     { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 5 }
+    { "bin": 3, "count": 2 },
+    { "bin": 6, "count": 2 }
   ],
-  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c": [
-    { "bin": 2, "count": 1 },
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438": [
-    { "bin": 3, "count": 1 },
+  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 3 },
     { "bin": 5, "count": 1 }
   ],
-  "1\u0421-\u0411\u0438\u0442\u0440\u0438\u043a\u0441": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u041f\u041e": [
+    { "bin": 4, "count": 3 }
+  ],
+  "DWH": [{ "bin": 2, "count": 1 }],
+  "\u041f\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0437\u0430\u0434\u0430\u0447 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c": [
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "Gitlab": [
+    { "bin": 3, "count": 4 },
+    { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 }
   ],
   "\u041f\u0440\u043e\u0435\u043a\u0442\u043d\u0430\u044f \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f": [
+    { "bin": 2, "count": 1 },
     { "bin": 3, "count": 2 },
-    { "bin": 5, "count": 1 },
+    { "bin": 5, "count": 2 },
     { "bin": 6, "count": 1 }
   ],
-  "\u0420\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043e\u043c": [
-    { "bin": 2, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "GitHub": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 2 },
+  "Hyper-V": [
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
     { "bin": 5, "count": 1 }
   ],
-  "1\u0421: \u0417\u0430\u0440\u043f\u043b\u0430\u0442\u0430 \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u043e\u043c": [
+  "Atlassian Confluence": [{ "bin": 5, "count": 4 }],
+  "Debian": [
+    { "bin": 1, "count": 1 },
     { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
-    { "bin": 5, "count": 2 }
-  ],
-  "DWH": [{ "bin": 2, "count": 1 }],
-  "VMware": [
-    { "bin": 3, "count": 1 },
-    { "bin": 7, "count": 2 }
-  ],
-  "Vue.js": [{ "bin": 5, "count": 3 }],
-  "Webpack": [
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "C": [
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "LLM": [{ "bin": 5, "count": 1 }],
-  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u043e\u0433\u043e \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
-    { "bin": 3, "count": 4 }
-  ],
-  "Celery": [{ "bin": 4, "count": 1 }],
-  "DHCP": [{ "bin": 3, "count": 4 }],
-  "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430": [
-    { "bin": 5, "count": 4 }
-  ],
-  "\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 4 }
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
   ],
   "JSON": [
-    { "bin": 4, "count": 1 },
-    { "bin": 7, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 },
     { "bin": 9, "count": 1 }
   ],
-  "AngularJS": [
+  "Leadership Skills": null,
+  "LLM": [
     { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
+    { "bin": 8, "count": 1 }
   ],
-  "Adobe Photoshop": [{ "bin": 2, "count": 2 }],
-  "Adobe Illustrator": [{ "bin": 2, "count": 2 }],
-  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0431\u043e\u043b\u044c\u0448\u0438\u043c \u043e\u0431\u044a\u0435\u043c\u043e\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 2 },
-    { "bin": 3, "count": 1 }
-  ],
-  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442": [
-    { "bin": 5, "count": 1 }
-  ],
-  "Postman": [
+  "ORACLE": [{ "bin": 3, "count": 1 }],
+  "Project management": [
     { "bin": 2, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "ReactJS": [
-    { "bin": 3, "count": 1 },
-    { "bin": 4, "count": 1 },
-    { "bin": 5, "count": 3 }
-  ],
-  "Docker-compose": [
-    { "bin": 3, "count": 2 },
     { "bin": 6, "count": 1 },
     { "bin": 8, "count": 1 }
   ],
-  "CentOS": [
-    { "bin": 2, "count": 1 },
-    { "bin": 3, "count": 1 },
+  "Qt": [
     { "bin": 4, "count": 1 },
-    { "bin": 7, "count": 1 }
-  ],
-  "\u0412\u0432\u043e\u0434\u043d\u044b\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u0430\u0436 \u043e \u043c\u0435\u0440\u0430\u0445 \u043f\u043e\u0436\u0430\u0440\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
-    { "bin": 2, "count": 5 }
-  ],
-  "\u0412\u0432\u043e\u0434\u043d\u044b\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u0430\u0436 \u043f\u043e \u043e\u0445\u0440\u0430\u043d\u0435 \u0442\u0440\u0443\u0434\u0430 \u0438 \u0442\u0435\u0445\u043d\u0438\u043a\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
-    { "bin": 2, "count": 5 }
-  ],
-  "Kanban": null,
-  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0430": [
-    { "bin": 1, "count": 1 },
-    { "bin": 2, "count": 3 },
-    { "bin": 6, "count": 1 }
-  ],
-  "Proxmox": [
-    { "bin": 3, "count": 2 },
-    { "bin": 7, "count": 1 }
-  ],
-  "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f": [
-    { "bin": 3, "count": 4 },
     { "bin": 5, "count": 1 }
   ],
-  "Cisco": [{ "bin": 7, "count": 1 }],
-  "\u041b\u0438\u0434\u0435\u0440\u0441\u0442\u0432\u043e": null,
-  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": null,
-  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u043e\u0435 \u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
+  "Sass": [
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 4 },
     { "bin": 6, "count": 1 }
   ],
-  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0435\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438": [
-    { "bin": 2, "count": 5 }
-  ],
-  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u044e\u0434\u0436\u0435\u0442\u043e\u043c": null,
-  "Power BI": null,
+  "SEO": null,
   "Spark": [
     { "bin": 5, "count": 1 },
     { "bin": 6, "count": 1 }
   ],
-  "Internet Marketing": null,
-  "\u041e\u0445\u0440\u0430\u043d\u0430 \u0442\u0440\u0443\u0434\u0430 \u0438 \u0442\u0435\u0445\u043d\u0438\u043a\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
-    { "bin": 2, "count": 5 }
-  ],
-  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": null,
-  "\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c": [
-    { "bin": 2, "count": 5 }
-  ],
-  "ORACLE": null,
-  "Teamleading": [
-    { "bin": 5, "count": 1 },
-    { "bin": 14, "count": 1 }
-  ],
-  "\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0441\u0438\u0433\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f": [
-    { "bin": 2, "count": 5 }
-  ],
-  "TOGAF": [
-    { "bin": 6, "count": 1 },
-    { "bin": 9, "count": 1 }
-  ],
-  "1\u0421: \u0411\u0443\u0445\u0433\u0430\u043b\u0442\u0435\u0440\u0438\u044f": [
+  "TCP/IP": [{ "bin": 4, "count": 2 }],
+  "UI": [
     { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 3 }
+  ],
+  "Webpack": [
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445": [
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 2 }
+  ],
+  "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
     { "bin": 5, "count": 1 }
   ],
-  "Debian": [
-    { "bin": 3, "count": 2 },
-    { "bin": 4, "count": 1 },
+  "\u041b\u0438\u0434\u0435\u0440\u0441\u0442\u0432\u043e": null,
+  "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0420\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043e\u043c": [
+    { "bin": 5, "count": 2 },
     { "bin": 7, "count": 1 }
   ],
-  "Helm": [{ "bin": 7, "count": 2 }],
-  "NLP": [
-    { "bin": 6, "count": 1 },
-    { "bin": 7, "count": 1 }
+  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435": [
+    { "bin": 2, "count": 1 }
+  ],
+  "\u0421\u0423\u0411\u0414": [
+    { "bin": 4, "count": 2 },
+    { "bin": 5, "count": 1 }
+  ],
+  "\u041c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f": null,
+  "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430": [
+    { "bin": 5, "count": 4 }
+  ],
+  "Backend": [{ "bin": 5, "count": 1 }],
+  "CentOS": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
   ],
   "Unity": [
     { "bin": 2, "count": 1 },
     { "bin": 3, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "Digital Marketing": [{ "bin": 4, "count": 1 }],
-  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435": [
+  "AutoCAD": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Docker-compose": [
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 },
+    { "bin": 8, "count": 1 }
+  ],
+  "ASP.NET Core": null,
+  "C4": [
+    { "bin": 6, "count": 1 },
+    { "bin": 8, "count": 4 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u044e\u0434\u0436\u0435\u0442\u043e\u043c": null,
+  "Proxmox": [
+    { "bin": 3, "count": 2 },
+    { "bin": 7, "count": 1 }
+  ],
+  "DNS": [{ "bin": 3, "count": 3 }],
+  "PyTorch": null,
+  "QA": [
+    { "bin": 5, "count": 1 },
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0432\u044b\u0441\u043e\u043a\u043e\u043d\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c": [
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 3 }
+  ],
+  "\u0411\u0438\u0437\u043d\u0435\u0441-\u0430\u043d\u0430\u043b\u0438\u0437": [
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Figma": [
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 }
+  ],
+  "1\u0421: \u0417\u0430\u0440\u043f\u043b\u0430\u0442\u0430 \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u043e\u043c": [
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 2 }
+  ],
+  "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0431\u043e\u043b\u044c\u0448\u0438\u043c \u043e\u0431\u044a\u0435\u043c\u043e\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 2 },
+    { "bin": 3, "count": 1 }
+  ],
+  "1\u0421-\u0411\u0438\u0442\u0440\u0438\u043a\u0441": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "Hibernate": [
+    { "bin": 2, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0447\u0435\u0441\u043a\u0438\u0435 \u043d\u0430\u0432\u044b\u043a\u0438": [
+    { "bin": 5, "count": 1 },
+    { "bin": 9, "count": 1 }
+  ],
+  "Android": [{ "bin": 2, "count": 1 }],
+  "\u0414\u0435\u043b\u043e\u0432\u0430\u044f \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0430": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 3 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Bootstrap": [{ "bin": 4, "count": 2 }],
+  "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0430": [
+    { "bin": 3, "count": 3 }
+  ],
+  "B2B \u041f\u0440\u043e\u0434\u0430\u0436\u0438": [
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "\u041e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0431\u0438\u0437\u043d\u0435\u0441-\u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432": [
+    { "bin": 2, "count": 2 }
+  ],
+  "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433\u043e\u0432\u044b\u0445 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0439": null,
+  "\u041f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435": [
     { "bin": 2, "count": 2 },
     { "bin": 3, "count": 2 }
   ],
+  "Power BI": null,
+  "Postman": [
+    { "bin": 2, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "MikroTik": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
+  "OpenVPN": [
+    { "bin": 3, "count": 3 },
+    { "bin": 4, "count": 1 }
+  ],
+  "ReactJS": [
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 1 },
+    { "bin": 5, "count": 3 }
+  ],
+  "NLP": [
+    { "bin": 6, "count": 1 },
+    { "bin": 7, "count": 1 }
+  ],
+  "MVC": [
+    { "bin": 3, "count": 1 },
+    { "bin": 5, "count": 1 }
+  ],
   "MS SQL Server": [{ "bin": 2, "count": 1 }],
-  "Apache Airflow": [
+  "ML": [{ "bin": 8, "count": 1 }],
+  "pandas": [{ "bin": 5, "count": 4 }],
+  "SEO \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f": null,
+  "Memcached": [
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 3 }
+  ],
+  "JSON API": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 2 },
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Adobe Illustrator": [{ "bin": 2, "count": 2 }],
+  "Spring": [{ "bin": 8, "count": 1 }],
+  "jQuery": [{ "bin": 3, "count": 2 }],
+  "Internet Marketing": null,
+  "Team management": [
+    { "bin": 4, "count": 1 },
+    { "bin": 8, "count": 1 },
+    { "bin": 11, "count": 1 }
+  ],
+  "Greenplum": null,
+  "GitHub": [
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 },
+    { "bin": 4, "count": 2 }
+  ],
+  "Entity Framework": [{ "bin": 5, "count": 1 }],
+  "Unit Testing": [{ "bin": 5, "count": 3 }],
+  "Vue.js": [{ "bin": 5, "count": 3 }],
+  "Active Directory": [{ "bin": 4, "count": 1 }],
+  "Windows Server": [
+    { "bin": 4, "count": 1 },
+    { "bin": 6, "count": 1 }
+  ],
+  "Digital Marketing": [{ "bin": 4, "count": 1 }],
+  "Cisco": [
     { "bin": 4, "count": 1 },
     { "bin": 7, "count": 1 }
   ],
-  "AutoCAD": [
-    { "bin": 3, "count": 2 },
+  "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u043e\u0433\u043e \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f": [
+    { "bin": 1, "count": 1 },
+    { "bin": 2, "count": 1 },
+    { "bin": 3, "count": 1 }
+  ],
+  "Celery": [
+    { "bin": 4, "count": 1 },
     { "bin": 6, "count": 1 }
   ],
-  "Windows Server": [
-    { "bin": 3, "count": 1 },
-    { "bin": 6, "count": 1 }
+  "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430": [
+    { "bin": 2, "count": 1 },
+    { "bin": 6, "count": 3 },
+    { "bin": 7, "count": 1 }
   ],
-  "\u0421\u0438\u0441\u0442\u0435\u043c\u044b \u043f\u043e\u0436\u0430\u0440\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438": [
-    { "bin": 2, "count": 5 }
+  "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043c\u0435\u043d\u0435\u0434\u0436\u043c\u0435\u043d\u0442": [
+    { "bin": 5, "count": 1 }
+  ],
+  "C": [
+    { "bin": 5, "count": 1 },
+    { "bin": 7, "count": 1 }
   ]
 }

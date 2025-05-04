@@ -1,226 +1,223 @@
 {
   "Digital Marketing & SEO": [
     [
-      { "bin": 1, "count": 491 },
-      { "bin": 2, "count": 909 },
-      { "bin": 3, "count": 201 },
-      { "bin": 4, "count": 35 },
-      { "bin": 5, "count": 3 },
-      { "bin": 6, "count": 2 },
+      { "bin": 1, "count": 690 },
+      { "bin": 2, "count": 1173 },
+      { "bin": 3, "count": 293 },
+      { "bin": 4, "count": 37 },
+      { "bin": 5, "count": 14 },
+      { "bin": 6, "count": 3 },
+      { "bin": 7, "count": 10 },
+      { "bin": 8, "count": 11 },
       { "bin": 9, "count": 7 },
       { "bin": 15, "count": 15 }
     ],
     1000000
   ],
-  "Backend": [
+  "1C Development": [
     [
-      { "bin": 1, "count": 272 },
-      { "bin": 2, "count": 849 },
-      { "bin": 3, "count": 509 },
-      { "bin": 4, "count": 177 },
-      { "bin": 5, "count": 74 },
-      { "bin": 6, "count": 23 },
-      { "bin": 7, "count": 3 }
-    ],
-    1000000
-  ],
-  "HR Management": [
-    [
-      { "bin": 1, "count": 345 },
-      { "bin": 2, "count": 501 },
-      { "bin": 3, "count": 216 },
-      { "bin": 4, "count": 72 },
-      { "bin": 5, "count": 44 },
-      { "bin": 6, "count": 3 },
-      { "bin": 7, "count": 8 },
-      { "bin": 8, "count": 4 }
-    ],
-    1000000
-  ],
-  "System Administration": [
-    [
-      { "bin": 1, "count": 295 },
-      { "bin": 2, "count": 652 },
-      { "bin": 3, "count": 243 },
-      { "bin": 4, "count": 12 },
-      { "bin": 5, "count": 12 },
-      { "bin": 7, "count": 5 }
-    ],
-    1000000
-  ],
-  "Computer graphics & Game development": [
-    [
-      { "bin": 1, "count": 101 },
-      { "bin": 2, "count": 285 },
-      { "bin": 3, "count": 71 },
-      { "bin": 4, "count": 14 },
-      { "bin": 5, "count": 2 }
-    ],
-    1000000
-  ],
-  "Frontend": [
-    [
-      { "bin": 1, "count": 285 },
-      { "bin": 2, "count": 632 },
-      { "bin": 3, "count": 258 },
-      { "bin": 4, "count": 77 },
-      { "bin": 5, "count": 2 },
-      { "bin": 6, "count": 5 }
+      { "bin": 1, "count": 41 },
+      { "bin": 2, "count": 126 },
+      { "bin": 3, "count": 93 },
+      { "bin": 4, "count": 9 },
+      { "bin": 5, "count": 27 }
     ],
     1000000
   ],
   "Analytics": [
     [
-      { "bin": 1, "count": 121 },
-      { "bin": 2, "count": 235 },
-      { "bin": 3, "count": 166 },
-      { "bin": 4, "count": 20 },
-      { "bin": 5, "count": 8 },
-      { "bin": 6, "count": 1 }
+      { "bin": 1, "count": 126 },
+      { "bin": 2, "count": 282 },
+      { "bin": 3, "count": 140 },
+      { "bin": 4, "count": 39 },
+      { "bin": 5, "count": 9 },
+      { "bin": 8, "count": 3 }
+    ],
+    1000000
+  ],
+  "Backend": [
+    [
+      { "bin": 1, "count": 335 },
+      { "bin": 2, "count": 1193 },
+      { "bin": 3, "count": 710 },
+      { "bin": 4, "count": 198 },
+      { "bin": 5, "count": 110 },
+      { "bin": 6, "count": 5 },
+      { "bin": 7, "count": 6 },
+      { "bin": 8, "count": 2 },
+      { "bin": 9, "count": 1 }
+    ],
+    1000000
+  ],
+  "HR Management": [
+    [
+      { "bin": 1, "count": 304 },
+      { "bin": 2, "count": 556 },
+      { "bin": 3, "count": 221 },
+      { "bin": 4, "count": 53 },
+      { "bin": 5, "count": 42 },
+      { "bin": 6, "count": 3 },
+      { "bin": 7, "count": 5 },
+      { "bin": 8, "count": 1 }
     ],
     1000000
   ],
   "Design": [
     [
-      { "bin": 1, "count": 278 },
-      { "bin": 2, "count": 502 },
-      { "bin": 3, "count": 130 },
-      { "bin": 4, "count": 6 },
-      { "bin": 5, "count": 1 }
+      { "bin": 1, "count": 448 },
+      { "bin": 2, "count": 626 },
+      { "bin": 3, "count": 118 },
+      { "bin": 4, "count": 2 },
+      { "bin": 5, "count": 3 },
+      { "bin": 8, "count": 1 }
     ],
     1000000
   ],
-  "Data Science & Machine Learning": [
+  "System Administration": [
     [
-      { "bin": 1, "count": 33 },
-      { "bin": 2, "count": 78 },
-      { "bin": 3, "count": 97 },
-      { "bin": 4, "count": 22 },
-      { "bin": 5, "count": 7 },
-      { "bin": 6, "count": 12 },
-      { "bin": 7, "count": 1 }
-    ],
-    1000000
-  ],
-  "Quality assurance": [
-    [
-      { "bin": 1, "count": 89 },
-      { "bin": 2, "count": 371 },
-      { "bin": 3, "count": 130 },
+      { "bin": 1, "count": 272 },
+      { "bin": 2, "count": 431 },
+      { "bin": 3, "count": 157 },
       { "bin": 4, "count": 24 },
-      { "bin": 5, "count": 21 },
-      { "bin": 6, "count": 6 },
-      { "bin": 7, "count": 1 }
-    ],
-    1000000
-  ],
-  "DevOps & Infrastructure": [
-    [
-      { "bin": 1, "count": 117 },
-      { "bin": 2, "count": 402 },
-      { "bin": 3, "count": 329 },
-      { "bin": 4, "count": 118 },
-      { "bin": 5, "count": 101 },
-      { "bin": 6, "count": 13 },
-      { "bin": 7, "count": 4 }
+      { "bin": 5, "count": 7 },
+      { "bin": 7, "count": 5 }
     ],
     1000000
   ],
   "Other": [
     [
-      { "bin": 1, "count": 207 },
-      { "bin": 2, "count": 304 },
-      { "bin": 3, "count": 95 },
+      { "bin": 1, "count": 193 },
+      { "bin": 2, "count": 291 },
+      { "bin": 3, "count": 84 },
       { "bin": 4, "count": 4 },
-      { "bin": 5, "count": 6 },
-      { "bin": 7, "count": 2 },
-      { "bin": 8, "count": 1 }
-    ],
-    1000000
-  ],
-  "Systems programming": [
-    [
-      { "bin": 1, "count": 40 },
-      { "bin": 2, "count": 136 },
-      { "bin": 3, "count": 205 },
-      { "bin": 4, "count": 21 },
-      { "bin": 5, "count": 11 },
-      { "bin": 7, "count": 1 }
-    ],
-    1000000
-  ],
-  "Information security": [
-    [
-      { "bin": 1, "count": 13 },
-      { "bin": 2, "count": 30 },
-      { "bin": 3, "count": 32 },
-      { "bin": 4, "count": 10 },
-      { "bin": 5, "count": 3 },
-      { "bin": 7, "count": 1 }
-    ],
-    1000000
-  ],
-  "Website administration": [
-    [
-      { "bin": 1, "count": 293 },
-      { "bin": 2, "count": 715 },
-      { "bin": 3, "count": 234 },
-      { "bin": 4, "count": 45 },
       { "bin": 5, "count": 8 },
-      { "bin": 7, "count": 1 }
-    ],
-    1000000
-  ],
-  "Network administration": [
-    [
-      { "bin": 1, "count": 25 },
-      { "bin": 2, "count": 94 },
-      { "bin": 3, "count": 62 },
-      { "bin": 4, "count": 3 },
-      { "bin": 5, "count": 1 }
-    ],
-    1000000
-  ],
-  "Project management": [
-    [
-      { "bin": 1, "count": 65 },
-      { "bin": 2, "count": 182 },
-      { "bin": 3, "count": 115 },
-      { "bin": 4, "count": 9 },
-      { "bin": 5, "count": 21 },
-      { "bin": 6, "count": 1 }
-    ],
-    1000000
-  ],
-  "1C Development": [
-    [
-      { "bin": 1, "count": 23 },
-      { "bin": 2, "count": 90 },
-      { "bin": 3, "count": 70 },
-      { "bin": 4, "count": 1 },
-      { "bin": 5, "count": 11 }
+      { "bin": 8, "count": 1 }
     ],
     1000000
   ],
   "Mobile": [
     [
       { "bin": 1, "count": 18 },
-      { "bin": 2, "count": 44 },
-      { "bin": 3, "count": 19 },
-      { "bin": 4, "count": 16 },
+      { "bin": 2, "count": 43 },
+      { "bin": 3, "count": 20 },
+      { "bin": 4, "count": 12 },
+      { "bin": 5, "count": 1 },
       { "bin": 6, "count": 1 }
+    ],
+    1000000
+  ],
+  "Frontend": [
+    [
+      { "bin": 1, "count": 283 },
+      { "bin": 2, "count": 628 },
+      { "bin": 3, "count": 290 },
+      { "bin": 4, "count": 63 },
+      { "bin": 5, "count": 6 },
+      { "bin": 6, "count": 4 }
+    ],
+    1000000
+  ],
+  "Computer graphics & Game development": [
+    [
+      { "bin": 1, "count": 58 },
+      { "bin": 2, "count": 216 },
+      { "bin": 3, "count": 45 },
+      { "bin": 4, "count": 1 },
+      { "bin": 5, "count": 2 }
+    ],
+    1000000
+  ],
+  "Network administration": [
+    [
+      { "bin": 1, "count": 38 },
+      { "bin": 2, "count": 104 },
+      { "bin": 3, "count": 64 },
+      { "bin": 4, "count": 27 }
+    ],
+    1000000
+  ],
+  "DevOps & Infrastructure": [
+    [
+      { "bin": 1, "count": 69 },
+      { "bin": 2, "count": 253 },
+      { "bin": 3, "count": 234 },
+      { "bin": 4, "count": 58 },
+      { "bin": 5, "count": 65 },
+      { "bin": 6, "count": 3 },
+      { "bin": 7, "count": 4 },
+      { "bin": 9, "count": 1 }
+    ],
+    1000000
+  ],
+  "Information security": [
+    [
+      { "bin": 1, "count": 10 },
+      { "bin": 2, "count": 38 },
+      { "bin": 3, "count": 29 },
+      { "bin": 4, "count": 4 },
+      { "bin": 5, "count": 3 },
+      { "bin": 7, "count": 1 }
+    ],
+    1000000
+  ],
+  "Quality assurance": [
+    [
+      { "bin": 1, "count": 41 },
+      { "bin": 2, "count": 159 },
+      { "bin": 3, "count": 48 },
+      { "bin": 4, "count": 6 },
+      { "bin": 5, "count": 8 }
+    ],
+    1000000
+  ],
+  "Project management": [
+    [
+      { "bin": 1, "count": 34 },
+      { "bin": 2, "count": 136 },
+      { "bin": 3, "count": 51 },
+      { "bin": 4, "count": 5 },
+      { "bin": 5, "count": 17 },
+      { "bin": 6, "count": 1 }
+    ],
+    1000000
+  ],
+  "Systems programming": [
+    [
+      { "bin": 1, "count": 4 },
+      { "bin": 2, "count": 30 },
+      { "bin": 3, "count": 153 },
+      { "bin": 4, "count": 7 }
+    ],
+    1000000
+  ],
+  "Website administration": [
+    [
+      { "bin": 1, "count": 244 },
+      { "bin": 2, "count": 609 },
+      { "bin": 3, "count": 206 },
+      { "bin": 4, "count": 30 },
+      { "bin": 5, "count": 5 },
+      { "bin": 7, "count": 1 }
+    ],
+    1000000
+  ],
+  "Data Science & Machine Learning": [
+    [
+      { "bin": 1, "count": 23 },
+      { "bin": 2, "count": 72 },
+      { "bin": 3, "count": 76 },
+      { "bin": 4, "count": 11 },
+      { "bin": 5, "count": 7 },
+      { "bin": 6, "count": 3 },
+      { "bin": 7, "count": 1 },
+      { "bin": 9, "count": 3 }
     ],
     1000000
   ],
   "Blockchain": [
     [
-      { "bin": 1, "count": 18 },
-      { "bin": 2, "count": 50 },
-      { "bin": 3, "count": 34 },
-      { "bin": 4, "count": 5 },
-      { "bin": 5, "count": 2 },
-      { "bin": 7, "count": 2 },
-      { "bin": 8, "count": 1 }
+      { "bin": 2, "count": 5 },
+      { "bin": 3, "count": 2 }
     ],
     1000000
   ]

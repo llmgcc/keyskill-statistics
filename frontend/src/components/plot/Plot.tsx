@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import './Plot.css';
 
-import { API } from '@/api/api';
 import { Chart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
@@ -149,10 +148,9 @@ export function SkillPlot({
   key,
   period,
   color,
-  strokeWidth,
   experience,
 }: SkillPlotProps) {
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: [`${name}_plot_${key}`, period, experience],
     queryFn: async () => {
       const data = await source(

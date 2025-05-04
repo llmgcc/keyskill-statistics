@@ -10,17 +10,12 @@ import { useTranslation } from 'react-i18next';
 import { CiLock } from 'react-icons/ci';
 import { FaFire } from 'react-icons/fa';
 import { FaArrowTrendDown } from 'react-icons/fa6';
-import {
-  MdArrowRight,
-  MdArrowRightAlt,
-  MdOutlineArrowDropUp,
-} from 'react-icons/md';
+import { MdArrowRightAlt } from 'react-icons/md';
 
 import { Experience } from '@/config/experience';
 import { Highlights as HighlightsEnum } from '@/config/highlights';
 
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
-import { CurrencyDisplay } from './CurrencyDisplay';
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
 
@@ -73,7 +68,7 @@ function HighlightsCardTab({
   const { selectedExperience } = useExperienceStore();
   const { selectedPeriod } = usePeriodStore();
 
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: [title, selectedExperience, selectedPeriod],
     queryFn: async () => {
       const data = await source(

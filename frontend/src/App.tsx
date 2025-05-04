@@ -3,14 +3,17 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import '@/i18n/i18n';
 
-import { Tabs } from '@radix-ui/themes';
+import { Tabs, TextField } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
+import { BiCategory, BiSearch } from 'react-icons/bi';
 import { GrTechnology } from 'react-icons/gr';
-import { MdCategory, MdLeaderboard } from 'react-icons/md';
+import { MdCategory, MdLeaderboard, MdOutlineCategory } from 'react-icons/md';
 
 import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
+import CategoryFilter from './components/SkillsFilter/CategoryFilter.tsx';
 import { Filters } from './components/ui/Filters.tsx';
 import { Highlights } from './components/ui/Highlights.tsx';
 import Navigation from './components/ui/Navigation.tsx';
@@ -29,11 +32,22 @@ export const queryClient = new QueryClient({
 });
 
 function App() {
-  const { fetchCategories } = useCategoriesStore();
-  const { fetchDomains } = useDomainsStore();
+  const {
+    fetchCategories,
+    categories,
+    setSelectedCategory,
+    setStrict: setCategoryStrict,
+  } = useCategoriesStore();
+  const {
+    fetchDomains,
+    domains,
+    setSelectedDomain,
+    setStrict: setDomainStrict,
+  } = useDomainsStore();
   const { fetchStats, stats } = useStatsStore();
   const [currentTab, setCurrentTab] = useState(0);
   const tabsRef = useRef<HTMLDivElement | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     useCurrencyStore.getState().fetchCurrencies();
@@ -137,15 +151,17 @@ function App() {
               setCurrentTab(newIndex);
             }}
           >
-            <Tabs.List>
-              {tabs.map((tab) => {
-                return (
-                  <Tabs.Trigger value={tab.name} key={tab.name}>
-                    {tab.title}
-                  </Tabs.Trigger>
-                );
-              })}
-            </Tabs.List>
+            <div className="flex items-center justify-between">
+              <Tabs.List>
+                {tabs.map((tab) => {
+                  return (
+                    <Tabs.Trigger value={tab.name} key={tab.name}>
+                      {tab.title}
+                    </Tabs.Trigger>
+                  );
+                })}
+              </Tabs.List>
+            </div>
             {tabs.map((tab) => {
               return (
                 <Tabs.Content value={tab.name} className="py-2" key={tab.name}>

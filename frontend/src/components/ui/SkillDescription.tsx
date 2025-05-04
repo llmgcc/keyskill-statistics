@@ -187,7 +187,7 @@ function SkillDescription(props: SkillDescriptionProps) {
         />
       </div>
       <div className="mx-[4px]">
-        <div className="text-sm font-[600] capitalize">{skillName}</div>
+        <div className="text-sm font-[600]">{skillName}</div>
         <div className="flex items-center text-[0.8em] leading-3 text-text-secondary">
           <div className="">
             <CategoryPopover skill={props} defaultKey="categories" />

@@ -8,6 +8,11 @@ interface UseSkillsOptions {
   offset: number;
   period: number;
   experience?: Experience | null;
+  domain?: string;
+  category?: string;
+  categoryStrict?: boolean;
+  domainStrict?: boolean;
+  skillName?: string;
 }
 
 export function useSkills({
@@ -15,15 +20,36 @@ export function useSkills({
   offset,
   period,
   experience,
+  domain,
+  category,
+  categoryStrict,
+  domainStrict,
+  skillName,
 }: UseSkillsOptions) {
   return useQuery({
-    queryKey: ['skills', limit, offset, period, experience],
+    queryKey: [
+      'skills',
+      limit,
+      offset,
+      period,
+      experience,
+      domain,
+      category,
+      categoryStrict,
+      domainStrict,
+      skillName,
+    ],
     queryFn: async () => {
       const data = await API.skillsList(
         limit,
         offset,
         period,
         experience == Experience.any ? undefined : (experience ?? undefined),
+        domain,
+        domainStrict,
+        category,
+        categoryStrict,
+        skillName,
       );
 
       return {
