@@ -13,6 +13,7 @@ import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
+import { CategoryDescription } from '../ui/CategoryDescription';
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -85,21 +86,25 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
   size?: number;
-  category: string;
+  category: 'category' | 'technology';
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div>Name</div>,
   sortingFn: sortingFns.alphanumeric,
   cell: (info) => {
     return (
-      <div className="flex items-center">
-        <div className="mr-2 flex aspect-square w-6 items-center justify-center">
-          <SkillImage {...{ [config.category]: info.row.original.name }} />
-        </div>
-        <div className="text-sm font-[600] capitalize">
-          {info.row.original.name}
-        </div>
-      </div>
+      <CategoryDescription
+        categoryKey={config.category}
+        categoryName={info.row.original.name}
+      />
+      // <div className="flex items-center">
+      //   <div className="mr-2 flex aspect-square w-6 items-center justify-center">
+      //     <SkillImage {...{ [config.category]: info.row.original.name }} />
+      //   </div>
+      //   <div className="text-sm font-[600] capitalize">
+      //     {info.row.original.name}
+      //   </div>
+      // </div>
     );
   },
   size: 0,

@@ -34,7 +34,7 @@ function Navigation({ stats }: NavigationProps) {
   }, []);
 
   function openRepo() {
-    window.open('https://github.com/torvalds/linux', '_blank');
+    window.open('https://github.com/llmgcc/keyskill-statistics', '_blank');
   }
 
   return (
