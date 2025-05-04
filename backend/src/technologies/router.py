@@ -11,5 +11,5 @@ router = APIRouter(prefix="/technologies", tags=["Technologies"])
 @router.get(
     summary="Technologies", path="/list", response_model=List[TechnologiesResponse]
 )
-async def get_technologies(session: Session = Depends(get_session)):
-    return technologies_list(session)
+async def get_technologies_list(session: Session = Depends(get_session), experience=None, period : int = 30):
+    return technologies_list(session, experience=experience, days_period=period)

@@ -14,23 +14,39 @@ import { Experience } from '@/config/experience';
 
 export class ServerAPI implements API {
   async mainStats(): Promise<Stats> {
-    const response = await fetch('/api/main-page/stats');
-    return response.json();
+    const response = await axios.get('/api/general/stats');
+    return response.data;
   }
 
   async currencyList(): Promise<Currency[]> {
-    const response = await fetch('/api/main-page/currency');
-    return response.json();
+    const response = await axios.get('/api/general/currency');
+    return response.data;
   }
 
-  async categoriesList(): Promise<Category[]> {
-    const response = await fetch('/api/technologies/list');
-    return response.json();
+  async categoriesList(
+    period: number = 10,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await axios.get('/api/technologies/list', {
+      params: {
+        period,
+        experience,
+      },
+    });
+    return response.data;
   }
 
-  async domainsList(): Promise<Category[]> {
-    const response = await fetch('/api/categories/list');
-    return response.json();
+  async domainsList(
+    period: number = 10,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await axios.get('/api/categories/list', {
+      params: {
+        period,
+        experience,
+      },
+    });
+    return response.data;
   }
 
   async skillPlot(
@@ -41,6 +57,36 @@ export class ServerAPI implements API {
     const response = await axios.get('/api/charts/skill', {
       params: {
         skill_name: name,
+        period,
+        experience,
+      },
+    });
+    return response.data as Chart[];
+  }
+
+  async domainPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get('/api/charts/category', {
+      params: {
+        category: name,
+        period,
+        experience,
+      },
+    });
+    return response.data as Chart[];
+  }
+
+  async technologyPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get('/api/charts/technology', {
+      params: {
+        technology: name,
         period,
         experience,
       },
@@ -63,11 +109,41 @@ export class ServerAPI implements API {
     return response.data;
   }
 
-  async skillsList(
+  async categorySalaryPlot(
+    name: string,
+    period: number,
     experience?: Experience,
-    period?: number,
-    limit?: number,
-    offset?: number,
+  ): Promise<SalaryChart> {
+    const response = await axios.get('/api/charts/category-salary', {
+      params: {
+        category: name,
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+  async technologySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get('/api/charts/technology-salary', {
+      params: {
+        technology: name,
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+  async skillsList(
+    limit: number,
+    offset: number,
+    period: number,
+    experience?: Experience,
   ): Promise<KeySkillServer> {
     const response = await axios.get('/api/key-skills/list', {
       params: {
@@ -81,8 +157,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsHighestSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/highest-salary', {
       params: {
@@ -94,8 +170,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsLowestSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/lowest-salary', {
       params: {
@@ -107,8 +183,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsUndefinedSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/undefined-salary', {
       params: {
@@ -120,8 +196,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsGainers(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/gainers', {
       params: {
@@ -133,8 +209,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsDecliners(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/decliners', {
       params: {
@@ -146,8 +222,8 @@ export class ServerAPI implements API {
   }
 
   async highlightsNewSkills(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const response = await axios.get('/api/highlights/new', {
       params: {

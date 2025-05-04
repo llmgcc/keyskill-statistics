@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLangStore } from '@/store/languageStore';
 import { Popover, SegmentedControl } from '@radix-ui/themes';
+import { useTranslation } from 'react-i18next';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Language } from '@/config/languages';
@@ -27,8 +28,9 @@ function CategoryPopover({
 }) {
   const [buttonKey, setButtonKey] = useState<string | null>(null);
   const [popoverContent, setPopoverContent] = useState<Category[]>([]);
-
+  const { t } = useTranslation();
   const categories = skill[defaultKey as string] ?? [];
+  const translationKey = defaultKey == 'categories' ? 'domains' : 'categories';
 
   const getColor = (category) => {
     if (Object.values(Categories).includes(category.name as Categories)) {
@@ -56,6 +58,7 @@ function CategoryPopover({
         color: getColor(c),
         value: c.confidence,
         icon: getIcon(c),
+        name: t(`${translationKey}.${c.name}`),
       })) ?? [];
 
     const maxValue = Math.max(...content.map((c) => c.value));
@@ -68,7 +71,7 @@ function CategoryPopover({
       .reduce((a, b) => a + b, 0);
 
     filteredContent.push({
-      name: 'Unknown',
+      name: t('common.unknownCategory'),
       value: 1 - confidenceSum,
       color: '#999999',
     });
@@ -124,7 +127,8 @@ function CategoryPopover({
           className={`'cursor-pointer' ${color(category?.confidence ?? 0)}`}
           onClick={() => setButtonKey(defaultKey)}
         >
-          {category?.name ?? 'Unknown'}
+          {t(`${translationKey}.${category?.name}`) ??
+            t(`common.unknownCategory`)}
         </div>
       </Popover.Trigger>
       <Popover.Content className="min-w-max rounded-md border-[1px] border-background-secondary !p-0 shadow-background-secondary">
@@ -183,7 +187,7 @@ function SkillDescription(props: SkillDescriptionProps) {
         />
       </div>
       <div className="mx-[4px]">
-        <div className="text-sm font-[600] capitalize">{skillName}</div>
+        <div className="text-sm font-[600]">{skillName}</div>
         <div className="flex items-center text-[0.8em] leading-3 text-text-secondary">
           <div className="">
             <CategoryPopover skill={props} defaultKey="categories" />

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
 from src.dependencies import get_session
-from src.charts.service import skills_chart, salary_chart
+from src.charts.service import skills_chart, salary_chart, category_chart,category_salary_chart, technologies_chart, technologies_salary_chart
 from src.charts.schemas import ChartsResponse, SalaryChartResponse
 from typing import List
 
@@ -13,14 +13,13 @@ async def get_skills_chart(
     skill_name,
     experience=None,
     session: Session = Depends(get_session),
-    period: int = 30,
+    period: int = 30
 ):
-    print("EXP", experience)
     return skills_chart(
         skill_name=skill_name,
         session=session,
         days_period=period,
-        experience=experience,
+        experience=experience
     )
 
 
@@ -38,3 +37,73 @@ async def get_salary_chart(
     )
 
     return {"chart": chart, "max_salary": max_salary}
+
+
+
+
+@router.get(summary="Category chart", path="/category", response_model=List[ChartsResponse])
+async def get_category_chart(
+    experience=None,
+    session: Session = Depends(get_session),
+    period: int = 30,
+    category: str = None
+):
+    return category_chart(
+        session=session,
+        days_period=period,
+        experience=experience,
+        category=category
+    )
+
+
+@router.get(summary="Salary Category chart", path="/category-salary", response_model=SalaryChartResponse)
+async def get_salary_category_chart(
+    experience=None,
+    session: Session = Depends(get_session),
+    period: int = 30,
+    category: str = None
+):
+    chart, max_salary = category_salary_chart(
+        session=session,
+        days_period=period,
+        experience=experience,
+        category=category
+    )
+    return {"chart": chart, "max_salary": max_salary}
+
+
+
+
+
+
+@router.get(summary="Tech chart", path="/technology", response_model=List[ChartsResponse])
+async def get_tech_chart(
+    experience=None,
+    session: Session = Depends(get_session),
+    period: int = 30,
+    technology: str = None
+):
+    return technologies_chart(
+        session=session,
+        days_period=period,
+        experience=experience,
+        technology=technology
+    )
+
+
+@router.get(summary="Salary Tech chart", path="/technology-salary", response_model=SalaryChartResponse)
+async def get_salary_category_chart(
+    experience=None,
+    session: Session = Depends(get_session),
+    period: int = 30,
+    technology: str = None
+):
+    chart, max_salary = technologies_salary_chart(
+        session=session,
+        days_period=period,
+        experience=experience,
+        technology=technology
+    )
+    return {"chart": chart, "max_salary": max_salary}
+
+

@@ -1,25 +1,65 @@
+from sqlalchemy import and_, case
 from sqlmodel import Session, select, func, desc
 from src.models import (
+    Currency,
     KeySkill,
     Vacancy,
     Technology,
     KeySkillTechnology,
+    VacancySalary,
 )
 import datetime
 from src.keyskills.service import create_salary_subquery
 
 
-def technologies_list(session: Session, days_period=15):
+def technologies_list(session: Session, days_period=30, experience = None):
     current_to = func.now()
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
 
+
+
+    average_salary_case = case(
+        (
+            and_(
+                VacancySalary.salary_from.is_not(None),
+                VacancySalary.salary_to.is_not(None),
+            ),
+            (
+                VacancySalary.salary_from / Currency.currency_rate
+                + VacancySalary.salary_to / Currency.currency_rate
+            )
+            / 2,
+        ),
+        (
+            and_(
+                VacancySalary.salary_from.is_(None),
+                VacancySalary.salary_to.is_not(None),
+            ),
+            VacancySalary.salary_to / Currency.currency_rate,
+        ),
+        (
+            and_(
+                VacancySalary.salary_from.is_not(None),
+                VacancySalary.salary_to.is_(None),
+            ),
+            VacancySalary.salary_from / Currency.currency_rate,
+        ),
+    )
+
     skills = (
-        select(KeySkill.name, func.count(KeySkill.name).label("count"))
+        select(KeySkill.name, func.count(KeySkill.name).label("count"), 
+            func.percentile_cont(0.5)
+            .within_group(average_salary_case)
+            .filter(Vacancy.created_at.between(current_from, current_to))
+            .label("average_salary"))
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
+        .where(Vacancy.experience == experience if experience else True)
         .group_by(KeySkill.name)
         .order_by(desc("count"))
     ).cte("skills")
@@ -29,16 +69,13 @@ def technologies_list(session: Session, days_period=15):
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(Vacancy.created_at.between(prev_from, prev_to))
+        .where(Vacancy.experience == experience if experience else True)
         .group_by(KeySkill.name)
     ).cte("prev_skills")
 
     count = func.count(skills.c.name).label("count")
     prev_count = func.count(prev_skills.c.name).label("prev_count")
 
-    SALARY_BINS = 1
-    salary_subquery, max_salary = create_salary_subquery(
-        session, current_from, current_to, SALARY_BINS
-    )
 
     categories = (
         select(
@@ -47,14 +84,15 @@ def technologies_list(session: Session, days_period=15):
             prev_count,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.avg(salary_subquery.c.average_salary).label("average_salary"),
+            func.percentile_cont(0.5)
+            .within_group(skills.c.average_salary)
+            .label("average_salary")
         )
         .select_from(KeySkillTechnology)
         .outerjoin(Technology, Technology.id == KeySkillTechnology.technology_id)
         .outerjoin(skills, skills.c.name == KeySkillTechnology.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillTechnology.name)
-        .outerjoin(salary_subquery, salary_subquery.c.name == KeySkillTechnology.name)
-        .where(KeySkillTechnology.confidence >= 0.5)
+        # .where(KeySkillTechnology.confidence >= 0.2)
         .group_by(Technology.name)
         .order_by(desc("count"))
     )

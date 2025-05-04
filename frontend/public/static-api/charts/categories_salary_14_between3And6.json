@@ -1,0 +1,256 @@
+{
+  "Backend": [
+    [
+      { "bin": 1, "count": 91 },
+      { "bin": 2, "count": 395 },
+      { "bin": 3, "count": 799 },
+      { "bin": 4, "count": 681 },
+      { "bin": 5, "count": 463 },
+      { "bin": 6, "count": 142 },
+      { "bin": 7, "count": 34 },
+      { "bin": 8, "count": 42 },
+      { "bin": 9, "count": 9 },
+      { "bin": 10, "count": 1 },
+      { "bin": 11, "count": 3 },
+      { "bin": 12, "count": 2 }
+    ],
+    1000000
+  ],
+  "Analytics": [
+    [
+      { "bin": 1, "count": 12 },
+      { "bin": 2, "count": 96 },
+      { "bin": 3, "count": 109 },
+      { "bin": 4, "count": 78 },
+      { "bin": 5, "count": 42 },
+      { "bin": 6, "count": 20 },
+      { "bin": 7, "count": 2 },
+      { "bin": 8, "count": 6 }
+    ],
+    1000000
+  ],
+  "1C Development": [
+    [
+      { "bin": 1, "count": 7 },
+      { "bin": 2, "count": 40 },
+      { "bin": 3, "count": 86 },
+      { "bin": 4, "count": 89 },
+      { "bin": 5, "count": 47 },
+      { "bin": 6, "count": 5 }
+    ],
+    1000000
+  ],
+  "Digital Marketing & SEO": [
+    [
+      { "bin": 1, "count": 42 },
+      { "bin": 2, "count": 338 },
+      { "bin": 3, "count": 204 },
+      { "bin": 4, "count": 35 },
+      { "bin": 5, "count": 3 },
+      { "bin": 6, "count": 10 },
+      { "bin": 7, "count": 2 },
+      { "bin": 8, "count": 1 },
+      { "bin": 13, "count": 2 }
+    ],
+    1000000
+  ],
+  "System Administration": [
+    [
+      { "bin": 1, "count": 86 },
+      { "bin": 2, "count": 210 },
+      { "bin": 3, "count": 189 },
+      { "bin": 4, "count": 38 },
+      { "bin": 5, "count": 47 },
+      { "bin": 6, "count": 13 },
+      { "bin": 7, "count": 2 },
+      { "bin": 8, "count": 5 }
+    ],
+    1000000
+  ],
+  "DevOps & Infrastructure": [
+    [
+      { "bin": 1, "count": 24 },
+      { "bin": 2, "count": 164 },
+      { "bin": 3, "count": 237 },
+      { "bin": 4, "count": 259 },
+      { "bin": 5, "count": 199 },
+      { "bin": 6, "count": 131 },
+      { "bin": 7, "count": 26 },
+      { "bin": 8, "count": 45 },
+      { "bin": 9, "count": 2 },
+      { "bin": 11, "count": 7 }
+    ],
+    1000000
+  ],
+  "Design": [
+    [
+      { "bin": 1, "count": 112 },
+      { "bin": 2, "count": 298 },
+      { "bin": 3, "count": 131 },
+      { "bin": 4, "count": 38 },
+      { "bin": 5, "count": 18 },
+      { "bin": 6, "count": 4 },
+      { "bin": 8, "count": 3 }
+    ],
+    1000000
+  ],
+  "HR Management": [
+    [
+      { "bin": 1, "count": 17 },
+      { "bin": 2, "count": 117 },
+      { "bin": 3, "count": 170 },
+      { "bin": 4, "count": 46 },
+      { "bin": 5, "count": 6 },
+      { "bin": 6, "count": 12 },
+      { "bin": 7, "count": 4 },
+      { "bin": 13, "count": 8 }
+    ],
+    1000000
+  ],
+  "Network administration": [
+    [
+      { "bin": 1, "count": 22 },
+      { "bin": 2, "count": 42 },
+      { "bin": 3, "count": 80 },
+      { "bin": 4, "count": 16 },
+      { "bin": 5, "count": 36 },
+      { "bin": 6, "count": 7 },
+      { "bin": 7, "count": 2 },
+      { "bin": 12, "count": 1 }
+    ],
+    1000000
+  ],
+  "Information security": [
+    [
+      { "bin": 1, "count": 9 },
+      { "bin": 2, "count": 22 },
+      { "bin": 3, "count": 44 },
+      { "bin": 4, "count": 7 },
+      { "bin": 5, "count": 9 },
+      { "bin": 6, "count": 1 },
+      { "bin": 7, "count": 13 },
+      { "bin": 12, "count": 1 }
+    ],
+    1000000
+  ],
+  "Mobile": [
+    [
+      { "bin": 2, "count": 19 },
+      { "bin": 3, "count": 25 },
+      { "bin": 4, "count": 28 },
+      { "bin": 5, "count": 3 },
+      { "bin": 6, "count": 3 },
+      { "bin": 7, "count": 1 },
+      { "bin": 8, "count": 6 }
+    ],
+    1000000
+  ],
+  "Frontend": [
+    [
+      { "bin": 1, "count": 35 },
+      { "bin": 2, "count": 191 },
+      { "bin": 3, "count": 350 },
+      { "bin": 4, "count": 175 },
+      { "bin": 5, "count": 98 },
+      { "bin": 6, "count": 22 },
+      { "bin": 7, "count": 9 },
+      { "bin": 8, "count": 7 }
+    ],
+    1000000
+  ],
+  "Computer graphics & Game development": [
+    [
+      { "bin": 1, "count": 6 },
+      { "bin": 2, "count": 54 },
+      { "bin": 3, "count": 62 },
+      { "bin": 4, "count": 25 },
+      { "bin": 6, "count": 3 }
+    ],
+    1000000
+  ],
+  "Other": [
+    [
+      { "bin": 1, "count": 13 },
+      { "bin": 2, "count": 56 },
+      { "bin": 3, "count": 54 },
+      { "bin": 4, "count": 12 },
+      { "bin": 5, "count": 5 },
+      { "bin": 6, "count": 1 }
+    ],
+    1000000
+  ],
+  "Quality assurance": [
+    [
+      { "bin": 1, "count": 8 },
+      { "bin": 2, "count": 57 },
+      { "bin": 3, "count": 72 },
+      { "bin": 4, "count": 41 },
+      { "bin": 5, "count": 7 },
+      { "bin": 6, "count": 5 },
+      { "bin": 8, "count": 1 }
+    ],
+    1000000
+  ],
+  "Systems programming": [
+    [
+      { "bin": 1, "count": 2 },
+      { "bin": 2, "count": 11 },
+      { "bin": 3, "count": 45 },
+      { "bin": 4, "count": 23 },
+      { "bin": 5, "count": 65 },
+      { "bin": 6, "count": 2 },
+      { "bin": 8, "count": 4 }
+    ],
+    1000000
+  ],
+  "Project management": [
+    [
+      { "bin": 1, "count": 9 },
+      { "bin": 2, "count": 24 },
+      { "bin": 3, "count": 37 },
+      { "bin": 4, "count": 41 },
+      { "bin": 5, "count": 25 },
+      { "bin": 6, "count": 10 },
+      { "bin": 7, "count": 2 },
+      { "bin": 8, "count": 5 },
+      { "bin": 9, "count": 1 }
+    ],
+    1000000
+  ],
+  "Data Science & Machine Learning": [
+    [
+      { "bin": 1, "count": 6 },
+      { "bin": 2, "count": 16 },
+      { "bin": 3, "count": 44 },
+      { "bin": 4, "count": 62 },
+      { "bin": 5, "count": 28 },
+      { "bin": 6, "count": 19 },
+      { "bin": 7, "count": 5 },
+      { "bin": 8, "count": 10 },
+      { "bin": 9, "count": 4 },
+      { "bin": 10, "count": 1 },
+      { "bin": 11, "count": 1 }
+    ],
+    1000000
+  ],
+  "Website administration": [
+    [
+      { "bin": 1, "count": 28 },
+      { "bin": 2, "count": 126 },
+      { "bin": 3, "count": 217 },
+      { "bin": 4, "count": 109 },
+      { "bin": 5, "count": 54 },
+      { "bin": 6, "count": 14 }
+    ],
+    1000000
+  ],
+  "Blockchain": [
+    [
+      { "bin": 3, "count": 6 },
+      { "bin": 4, "count": 2 },
+      { "bin": 6, "count": 4 },
+      { "bin": 12, "count": 4 }
+    ],
+    1000000
+  ]
+}

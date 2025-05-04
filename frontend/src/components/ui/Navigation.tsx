@@ -34,7 +34,7 @@ function Navigation({ stats }: NavigationProps) {
   }, []);
 
   function openRepo() {
-    window.open('https://github.com/torvalds/linux', '_blank');
+    window.open('https://github.com/llmgcc/keyskill-statistics', '_blank');
   }
 
   return (
@@ -120,10 +120,10 @@ function Navigation({ stats }: NavigationProps) {
                 </Popover.Trigger>
                 <Popover.Content className="min-w-max rounded-md border-[1px] border-background-secondary bg-background-primary !p-2 shadow-background-secondary">
                   <div className="min-w-44">
-                    {currencies.map((c, index) => (
+                    {currencies.map((c) => (
                       <div
                         className={`flex min-w-max cursor-pointer items-center justify-between rounded px-2 py-3 hover:text-background-accent ${selectedCurrency?.currency_code === c.currency_code ? 'bg-background-secondary' : ''}`}
-                        key={index}
+                        key={c.currency_code}
                         onClick={() => setSelectedCurrency(c.currency_code)}
                       >
                         <div className="flex">
@@ -159,10 +159,10 @@ function Navigation({ stats }: NavigationProps) {
                 </Popover.Trigger>
                 <Popover.Content className="min-w-max rounded-md border-[1px] border-background-secondary bg-background-primary !p-2 shadow-background-secondary">
                   <div className="min-w-36">
-                    {languages.map((c, index) => (
+                    {languages.map((c) => (
                       <div
                         className={`flex min-w-max cursor-pointer items-center justify-between rounded px-2 py-3 hover:text-background-accent ${c == lang ? 'bg-background-secondary' : ''}`}
-                        key={index}
+                        key={c}
                         onClick={() => setLang(c as Language)}
                       >
                         <div className="flex">

@@ -7,7 +7,7 @@ export const translations = {
   en: {
     translation: {
       navigation: {
-        uniqueSkills: 'Unique Key Skills',
+        uniqueSkills: 'Unique Key Skills (All-Time)',
         lastUpdate: 'Last update',
         tooltips: {
           theme: 'Theme',
@@ -23,21 +23,31 @@ export const translations = {
       mainText: {
         title: 'Analysis of <badge>key skills</badge> in the IT Sector',
         subtitle:
-          'Skills and salary data is collected based on the analysis of <text>{{vacancies}}</text> IT vacancies using the <linkto>HeadHunter API</linkto> for the period from <text>{{dateFrom}}</text> to <text>{{dateTo}}</text>.',
+          'Skills and salary data were collected by analyzing <text>{{vacancies}}</text> IT job postings via the <linkto>HeadHunter API</linkto> from <text>{{dateFrom}}</text> to <text>{{dateTo}}</text>.',
         enumeration:
-          'Key skills are classified using machine learning techniques into:',
+          'Key skills were classified using machine learning methods into:',
         domains: '- <linkto>{{count}} domains</linkto>, such as',
         categories: '- <linkto>{{count}} categories</linkto>, including',
-        end: 'This classification allows evaluating skill demand and comparing salary ranges between IT domains.',
+        end: 'This classification helps to gauge which skills are in demand and to observe differences in salary ranges across IT domains.',
       },
       filters: {
         title: 'Filters',
+      },
+      categoryFilter: {
+        allDomains: 'All domains',
+        allCategories: 'All categories',
+        placeholder: 'Title',
+        placeholderForSkill: 'Search for a skill',
+        strictMatch: 'Strict match',
+        strictModeTooltipCategory:
+          'Show only skills where the selected category is the primary category (highest confidence score)',
       },
       common: {
         and: 'and',
         days: 'days',
         experience: 'Experience',
         period: 'Period',
+        unknownCategory: 'Unknown',
       },
       domains: Categories,
       categories: Technologies,
@@ -55,7 +65,7 @@ export const translations = {
   ru: {
     translation: {
       navigation: {
-        uniqueSkills: 'Уникальные ключевые навыки',
+        uniqueSkills: 'Уникальные ключевые навыки (за все время)',
         lastUpdate: 'Последнее обновление',
         tooltips: {
           theme: 'Тема',
@@ -66,26 +76,36 @@ export const translations = {
       currency: {
         EUR: 'Евро',
         USD: 'Доллар США',
-        RUR: 'Рубль',
+        RUR: 'Российский рубль',
       },
       mainText: {
         title: 'Анализ <badge>ключевых навыков</badge> в сфере IT',
         subtitle:
-          'Данные о навыках и зарплатах собраны на основе анализа <text>{{vacancies}}</text> IT-вакансий с использованием <linkto>HeadHunter API</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
+          'Данные по навыкам и диапазонам зарплат собраны на основе анализа <text>{{vacancies}}</text> IT вакансий через <linkto>API HeadHunter</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
         enumeration:
-          'Ключевые навыки классифицированы с использованием методов машинного обучения на:',
-        domains: '- <linkto>{{count}} направлений</linkto>, такие как',
-        categories: '- <linkto>{{count}} категорий</linkto>, включая',
-        end: 'На основе этой классификации можно анализировать востребованность навыков и сравнивать уровень оплаты для различных IT-направлений.',
+          'Ключевые навыки классифицированы с помощью методов машинного обучения по:',
+        domains: '- <linkto>{{count}} направлениям</linkto>, таким как',
+        categories: '- <linkto>{{count}} категориям</linkto>, включая',
+        end: 'Эта классификация помогает оценить, какие навыки востребованы, и увидеть различия в диапазонах зарплат между IT-направлениями.',
       },
       filters: {
         title: 'Фильтры',
+      },
+      categoryFilter: {
+        allDomains: 'Все направления',
+        allCategories: 'Все категории',
+        placeholder: 'Название',
+        placeholderForSkill: 'Название навыка',
+        strictMatch: 'Точное совпадение',
+        strictModeTooltipCategory:
+          'Показывать только навыки, где выбранная категория является основной (с наивысшим показателем уверенности)',
       },
       common: {
         and: 'и',
         days: 'дней',
         experience: 'Опыт работы',
         period: 'Период',
+        unknownCategory: 'Неизвестно',
       },
       domains: {
         [Categories.Frontend]: 'Фронтэнд',
@@ -112,32 +132,37 @@ export const translations = {
         [Categories.Other]: 'Другое',
       },
       categories: {
-        Languages: 'Языки программирования',
-        Databases: 'Базы данных',
-        'Frontend Libraries and Frameworks':
-          'Библиотеки и фреймворки фронтэнда',
-        'Backend Libraries and Frameworks': 'Библиотеки и фреймворки бэкэнда',
-        'Soft skills': 'Гибкие навыки',
-        'Operating systems': 'Операционные системы',
-        'Containerization & Orchestration': 'Контейнеризация и оркестрация',
-        'Infrastructure Automation & Configuration':
-          'Автоматизация и конфигурация инфраструктуры',
-        'Code Collaboration & Integration':
-          'Совместная разработка и интеграция кода',
-        'Graphic design': 'Графический дизайн',
-        Monitoring: 'Мониторинг',
-        CMS: 'Системы управления контентом',
-        'Network Protocols': 'Сетевые протоколы',
-        'Web Servers': 'Веб-серверы',
-        'Integrated Development Environments':
-          'Интегрированные среды разработки',
-        'Cloud platforms': 'Облачные платформы',
-        'Mobile Libraries and Frameworks':
-          'Библиотеки и фреймворки для мобильной разработки',
-        'Message Brokers': 'Брокеры сообщений',
-        'Testing Tools': 'Инструменты тестирования',
-        'Machine Learning Libraries and Frameworks':
-          'Библиотеки и фреймворки машинного обучения',
+        [Technologies.Languages]: 'Языки',
+        [Technologies.Databases]: 'Базы данных',
+        [Technologies['Frontend Libraries and Frameworks']]: 'Фронтенд библиотеки и фреймворки',
+        [Technologies['Backend Libraries and Frameworks']]: 'Бэкенд библиотеки и фреймворки',
+        [Technologies['Soft skills']]: 'Гибкие навыки',
+        [Technologies['Operating systems']]: 'Операционные системы',
+        [Technologies['Containerization & Orchestration']]: 'Контейнеризация и оркестрация',
+        [Technologies['Infrastructure Automation & Configuration']]: 'Автоматизация и конфигурация инфраструктуры',
+        [Technologies['Code Collaboration & Integration']]: 'Совместная разработка и интеграция',
+        [Technologies['Graphic design']]: 'Графический дизайн',
+        [Technologies.Monitoring]: 'Мониторинг',
+        [Technologies.CMS]: 'Системы управления контентом',
+        [Technologies['Network Protocols']]: 'Сетевые протоколы',
+        [Technologies['Web Servers']]: 'Веб-серверы',
+        [Technologies['Integrated Development Environments']]: 'Интегрированные среды разработки',
+        [Technologies['Cloud platforms']]: 'Облачные платформы',
+        [Technologies['Mobile Libraries and Frameworks']]: 'Мобильные библиотеки и фреймворки',
+        [Technologies['Message Brokers']]: 'Брокеры сообщений',
+        [Technologies['Testing Tools']]: 'Инструменты тестирования',
+        [Technologies['Machine Learning Libraries and Frameworks']]: 'Библиотеки и фреймворки машинного обучения',
+        [Technologies['Security tools and frameworks']]: 'Инструменты и фреймворки безопасности',
+        [Technologies['API technologies and protocols']]: 'API технологии и протоколы',
+        [Technologies['Game engines']]: 'Игровые движки',
+        [Technologies['Project Management Tools']]: 'Инструменты управления проектами',
+        [Technologies['Blockchain platforms & tools']]: 'Блокчейн платформы и инструменты',
+        [Technologies['Messaging & Queuing systems']]: 'Системы обмена сообщениями и очереди',
+        [Technologies['Search & Indexing engines']]: 'Поисковые и индексирующие движки',
+        [Technologies['Data Visualization & BI tools']]: 'Инструменты визуализации данных и бизнес-аналитики',
+        [Technologies['Graphics APIs & GPGPU']]: 'Графические API и GPGPU',
+        [Technologies['Documentation tools']]: 'Инструменты документации',
+        [Technologies['Code Quality Tools']]: 'Инструменты контроля качества кода'
       },
       experience: {
         [Experience.any]: 'Любой',

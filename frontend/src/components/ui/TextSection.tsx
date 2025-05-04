@@ -1,10 +1,12 @@
 import { Category, Stats } from '@/interfaces';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
+import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
 
 interface TextSectionProps {
   stats?: Stats;
+  onLinkClick?: (tabIndex: number) => void;
 }
 
 interface ListEnumerationProps {
@@ -41,7 +43,7 @@ function ListEnumeration({
     <>
       {displayList
         .slice(0, -1)
-        .map((item, i) => renderItem(item))
+        .map((item) => renderItem(item))
         .reduce((result, item) => (
           <>
             {result}, {item}
@@ -52,7 +54,10 @@ function ListEnumeration({
   );
 }
 
-export function TextSection({ stats }: TextSectionProps) {
+export function TextSection({
+  stats,
+  onLinkClick = () => {},
+}: TextSectionProps) {
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
   const { t } = useTranslation();
@@ -61,7 +66,34 @@ export function TextSection({ stats }: TextSectionProps) {
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
   );
   const text = <span className="text-text-primary" />;
-  const linkto = <span className="text-blue-400" />;
+  const linkto = (
+    <Link href="https://dev.hh.ru/" target="_blank" rel="noopener noreferrer" underline='always' />
+  );
+
+  const linkToCategory = (
+    <Link
+      href=""
+      rel="noopener noreferrer"
+      onClick={(e) => {
+        e.preventDefault();
+        onLinkClick(2);
+      }}
+      className="cursor-pointer"
+      underline='always'
+    />
+  );
+  const linkToDomain = (
+    <Link
+      href=""
+      rel="noopener noreferrer"
+      onClick={(e) => {
+        e.preventDefault();
+        onLinkClick(1);
+      }}
+      className="cursor-pointer"
+      underline='always'
+    />
+  );
 
   return (
     <div className="app-container">
@@ -86,7 +118,7 @@ export function TextSection({ stats }: TextSectionProps) {
             <div className="mx-5">
               <Trans
                 i18nKey="mainText.domains"
-                components={{ linkto }}
+                components={{ linkto: linkToDomain }}
                 values={{
                   count: domains?.length ?? 0,
                 }}
@@ -100,7 +132,7 @@ export function TextSection({ stats }: TextSectionProps) {
             <div className="mx-5">
               <Trans
                 i18nKey="mainText.categories"
-                components={{ linkto }}
+                components={{ linkto: linkToCategory }}
                 values={{
                   count: categories?.length ?? 0,
                 }}
