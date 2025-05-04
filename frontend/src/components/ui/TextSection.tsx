@@ -67,7 +67,7 @@ export function TextSection({
   );
   const text = <span className="text-text-primary" />;
   const linkto = (
-    <Link href="https://dev.hh.ru/" target="_blank" rel="noopener noreferrer" />
+    <Link href="https://dev.hh.ru/" target="_blank" rel="noopener noreferrer" underline='always' />
   );
 
   const linkToCategory = (
@@ -79,6 +79,7 @@ export function TextSection({
         onLinkClick(2);
       }}
       className="cursor-pointer"
+      underline='always'
     />
   );
   const linkToDomain = (
@@ -90,6 +91,7 @@ export function TextSection({
         onLinkClick(1);
       }}
       className="cursor-pointer"
+      underline='always'
     />
   );
 

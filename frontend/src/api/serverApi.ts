@@ -14,12 +14,12 @@ import { Experience } from '@/config/experience';
 
 export class ServerAPI implements API {
   async mainStats(): Promise<Stats> {
-    const response = await axios.get('/api/main-page/stats');
+    const response = await axios.get('/api/general/stats');
     return response.data;
   }
 
   async currencyList(): Promise<Currency[]> {
-    const response = await axios.get('/api/main-page/currency');
+    const response = await axios.get('/api/general/currency');
     return response.data;
   }
 

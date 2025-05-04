@@ -30,12 +30,12 @@ function change(current: number, prev?: number) {
 
 export class StaticAPI implements API {
   async mainStats(): Promise<Stats> {
-    const response = await axios.get('/static-api/main-page/stats.json');
+    const response = await axios.get('/static-api/general/stats.json');
     return response.data;
   }
 
   async currencyList(): Promise<Currency[]> {
-    const response = await axios.get('/static-api/main-page/currency.json');
+    const response = await axios.get('/static-api/general/currency.json');
     return response.data;
   }
 
