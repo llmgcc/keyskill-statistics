@@ -50,6 +50,11 @@ export enum Technologies {
   'Blockchain platforms & tools' = 'Blockchain platforms & tools',
   'Messaging & Queuing systems' = 'Messaging & Queuing systems',
   'Search & Indexing engines' = 'Search & Indexing engines',
+
+  'Data Visualization & BI tools' = 'Data Visualization & BI tools',
+  'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
+  'Documentation tools' = 'Documentation tools',
+  'Code Quality Tools' = 'Code Quality Tools'
 }
 
 export const TechnologiesStyle = {
@@ -158,6 +163,23 @@ export const TechnologiesStyle = {
     color: colors.blue[500],
   },
   [Technologies['Search & Indexing engines']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+
+  [Technologies['Data Visualization & BI tools']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Technologies['Graphics APIs & GPGPU']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Technologies['Documentation tools']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Technologies['Code Quality Tools']]: {
     logo: <SiElasticsearch />,
     color: colors.red[400],
   },

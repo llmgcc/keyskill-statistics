@@ -3,22 +3,21 @@ import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
+import { getPercentDifference } from '@/utils/common';
 import { SegmentedControl, Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { CiLock } from 'react-icons/ci';
 import { FaFire } from 'react-icons/fa';
 import { FaArrowTrendDown } from 'react-icons/fa6';
+import { MdArrowRightAlt } from 'react-icons/md';
 
 import { Experience } from '@/config/experience';
 import { Highlights as HighlightsEnum } from '@/config/highlights';
 
+import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
-
-function getPercentDifference(current: number, prev: number) {
-  return ((current - prev) / prev) * 100;
-}
 
 function change(count: number, prev_count?: number, percent = true) {
   if (!prev_count) {
@@ -69,14 +68,14 @@ function HighlightsCardTab({
   const { selectedExperience } = useExperienceStore();
   const { selectedPeriod } = usePeriodStore();
 
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: [title, selectedExperience, selectedPeriod],
     queryFn: async () => {
       const data = await source(
+        selectedPeriod,
         selectedExperience == Experience.any
           ? undefined
           : (selectedExperience ?? undefined),
-        selectedPeriod ?? undefined,
       );
       return data;
     },
@@ -174,24 +173,33 @@ export function Highlights() {
     },
   ];
 
+  const skillValueRenderer = (skill: KeySkill) => {
+    return (
+      <div className="flex flex-col items-end">
+        <div className="flex items-center text-xs font-[400] text-text-primary">
+          {skill.prev_count} <MdArrowRightAlt className="mx-1" size={15} />{' '}
+          {skill.count}
+        </div>
+        <div>{change(skill.count, skill.prev_count, true)}</div>
+      </div>
+    );
+  };
+
   const highlights: Record<string, HiglightBase> = {
     [HighlightsEnum['Fastest-Growing Skills']]: {
       icon: <FaFire />,
       source: API.highlightsGainers,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Skills Losing Demand']]: {
       icon: <FaArrowTrendDown />,
       source: API.highlightsDecliners,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Newly Emerging Skills']]: {
       icon: <CiLock />,
       source: API.highlightsNewSkills,
-      valueRenderer: (skill: KeySkill) =>
-        change(skill.count, skill.prev_count, true),
+      valueRenderer: skillValueRenderer,
     },
   };
 
@@ -201,11 +209,19 @@ export function Highlights() {
     }
     return (
       <div className="text-xs text-text-primary">
-        ₽
-        {skill.average_salary?.toLocaleString(undefined, {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        })}
+        <div className="w-28">
+          <SalaryRenderer
+            maxCount={10 ** 6}
+            isLoading={false}
+            selectedPeriod={7}
+            selectedExperience={undefined}
+            name={skill.name}
+            key={'skills_salary'}
+            count={skill.average_salary ?? 0}
+            source={API.salaryPlot}
+          />
+        </div>
+        {/* <CurrencyDisplay valueInRUB={skill.average_salary} /> */}
       </div>
     );
   };

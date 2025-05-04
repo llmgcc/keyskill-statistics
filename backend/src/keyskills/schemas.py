@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel
-from typing import List
+from typing import List, Any
 
 
 class ChartResponse(SQLModel):
@@ -23,6 +23,8 @@ class SkillsResponse(SQLModel):
     image: str | None
     categories: List[CategoriesResponse] | None
     technologies: List[CategoriesResponse] | None
+    # technology: str | None
+    # category: Any | None
 
 
 class KeySkillsResponse(SQLModel):

@@ -12,4 +12,5 @@ class HighlightsDefaultResponse(SQLModel):
     categories: List[CategoriesResponse] | None
     technologies: List[CategoriesResponse] | None
     average_salary: float | None
+    translation: str | None
     # chart: List[ChartResponse]

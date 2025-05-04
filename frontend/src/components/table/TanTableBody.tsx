@@ -13,12 +13,12 @@ interface TanTableBodyProps<T extends object> {
 export function TanTableBody<T extends object>({
   table,
   isLoading,
-  isFetching,
-  pageSize,
 }: TanTableBodyProps<T>) {
-  function data(cell: any) {
+  function data(cell: Cell<T, unknown>) {
     return (
-      <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
+      <div className="size-full">
+        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+      </div>
     );
   }
 
@@ -29,7 +29,7 @@ export function TanTableBody<T extends object>({
           {row.getVisibleCells().map((cell) => (
             <td
               key={cell.id}
-              className="p-4"
+              className="size-full p-4"
               style={{
                 ...getCommonPinningStyles(cell.column),
                 width: cell.column.getSize()
@@ -38,9 +38,9 @@ export function TanTableBody<T extends object>({
               }}
             >
               <div
-                className={`${alignRight(cell.column.columnDef.meta) ? 'flex items-end justify-end' : 'flex items-start justify-start'}`}
+                className={`${alignRight(cell.column.columnDef.meta) ? 'size-full text-right' : 'size-full text-left'}`}
               >
-                <div>
+                <div className="size-full">
                   {isLoading ? (
                     <Skeleton className="min-w-5">{data(cell)}</Skeleton>
                   ) : (

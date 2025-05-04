@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import './Plot.css';
 
 import { API } from '@/api/api';
+import { SalaryChart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
@@ -78,7 +79,12 @@ function SVGPlot(props: {
   );
 }
 
-function Hist(props: { data: number[]; color: string; strokeWidth?: number }) {
+function Hist(props: {
+  data: number[];
+  color: string;
+  strokeWidth?: number;
+  height: number;
+}) {
   const svgWrapper = useRef<HTMLDivElement>(null);
   const data = props.data;
 
@@ -117,25 +123,33 @@ function Hist(props: { data: number[]; color: string; strokeWidth?: number }) {
 
 type SkillHistProps = {
   name: string;
+  key: string;
+  source(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart>;
   period: number;
   color: string;
-  strokeWidth: number;
   experience: Experience | null;
   average: number;
+  height?: number;
 };
 
 export function SkillHist({
   name,
+  source,
+  key,
   period,
   color,
-  strokeWidth,
   average,
   experience,
+  height = 40,
 }: SkillHistProps) {
   const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: [`${name}_hist`, period, experience],
+    queryKey: [`${name}_hist_${key}`, period, experience],
     queryFn: async () => {
-      const data = await API.salaryPlot(
+      const data = await source(
         name,
         period,
         experience == Experience.any ? undefined : (experience ?? undefined),
@@ -147,8 +161,8 @@ export function SkillHist({
   });
 
   const chartData = [];
-  if (data) {
-    const COUNT_BINS = 20;
+  if (data?.chart?.length) {
+    const COUNT_BINS = 15;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
       const index = data.chart.findIndex((p) => p.bin == i);
       if (index !== -1) {
@@ -163,34 +177,18 @@ export function SkillHist({
   const width = (average / max) * 100;
 
   return (
-    // <div className='size-full'>
-    //           <div className="absolute bottom-[-10px] flex h-[4px] w-full rounded bg-gray-200 text-text">
-    //               <div
-    //                 className={`rounded bg-gray-300`}
-    //                 style={{ width: `${Math.max(5, width)}%` }}
-    //               ></div>
-    //         </div>
-
-    //   <Skeleton loading={isLoading || isFetching} className='size-full'>
-    //     {chartData.length && <Hist data={chartData} color={color} strokeWidth={2} />}
-    //   </Skeleton>
-    // </div>
-
-    <div className="relative z-10 w-32">
-      <div className="!z-50">
-        <div className="absolute bottom-[-10px] flex h-[4px] w-full rounded bg-gray-200 text-text">
-          <div
-            className={`rounded bg-gray-300`}
-            style={{ width: `${Math.max(5, width)}%` }}
-          ></div>
-        </div>
-      </div>
-      <div className="absolute bottom-[-10px] -z-10 h-10 w-full">
-        <div style={{ height: '40px' }} className="w-40">
+    <div className="relative z-10 size-full">
+      <div className="absolute bottom-[-6px] -z-10 h-10 w-full">
+        <div style={{ height: '40px' }}>
           <div className="size-full">
             <Skeleton loading={isLoading || isFetching} className="size-full">
-              {chartData.length && (
-                <Hist data={chartData} color={color} strokeWidth={2} />
+              {!!chartData?.length && (
+                <Hist
+                  data={chartData}
+                  color={color}
+                  strokeWidth={2}
+                  height={height}
+                />
               )}
             </Skeleton>
           </div>

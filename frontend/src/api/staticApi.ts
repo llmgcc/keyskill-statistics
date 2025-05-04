@@ -30,38 +30,98 @@ function change(current: number, prev?: number) {
 
 export class StaticAPI implements API {
   async mainStats(): Promise<Stats> {
-    const response = await fetch('/static-api/main-page/stats.json');
-    return response.json();
+    const response = await axios.get('/static-api/general/stats.json');
+    return response.data;
   }
 
   async currencyList(): Promise<Currency[]> {
-    const response = await fetch('/static-api/main-page/currency.json');
-    return response.json();
+    const response = await axios.get('/static-api/general/currency.json');
+    return response.data;
   }
 
-  async categoriesList(): Promise<Category[]> {
-    const response = await fetch('/static-api/technologies/list.json');
-    return response.json();
+  async categoriesList(
+    period: number,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await axios.get(
+      `/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data;
   }
 
-  async domainsList(): Promise<Category[]> {
-    const response = await fetch('/static-api/categories/list.json');
-    return response.json();
+  async domainsList(
+    period: number,
+    experience?: Experience,
+  ): Promise<Category[]> {
+    const response = await axios.get(
+      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data;
   }
 
   async skillsList(
+    limit: number,
+    offset: number,
+    period: number,
     experience?: Experience,
-    period?: number,
-    limit?: number,
-    offset?: number,
+    domain?: string,
+    domainStrict?: boolean,
+    category?: string,
+    categoryStrict?: boolean,
+    skillName?: string,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
+
+    const getCategoryConfidence = (
+      skill: KeySkill,
+      category: string,
+      key: 'categories' | 'technologies',
+    ) => {
+      const foundCategory = skill[key].find((c) => c.name == category);
+
+      const strictMode = key == 'categories' ? domainStrict : categoryStrict;
+      if (strictMode) {
+        const maxConfidence = skill[key].reduce(
+          (a, b) => Math.max(a, b.confidence),
+          0,
+        );
+        const maxConfidenceCategory = skill[key].find(
+          (c) => c.confidence == maxConfidence,
+        );
+        if (maxConfidenceCategory?.name !== category) {
+          return null;
+        }
+        return maxConfidenceCategory.confidence;
+      } else {
+        return foundCategory?.confidence ?? null;
+      }
+    };
+
+    let skillsData = skills;
+    if (domain) {
+      skillsData = skillsData.filter(
+        (c) => getCategoryConfidence(c, domain, 'categories') !== null,
+      );
+    }
+    if (category) {
+      skillsData = skillsData.filter(
+        (c) => getCategoryConfidence(c, category, 'technologies') !== null,
+      );
+    }
+
+    console.log(skillName);
+    if (skillName) {
+      skillsData = skillsData.filter((c) =>
+        c.name.toLowerCase().includes(skillName.toLowerCase()),
+      );
+    }
+
     return {
-      skills: skills.slice(
+      skills: skillsData.slice(
         offset ?? 0,
         (offset ?? 0) + (limit ?? skills.length),
       ),
-      rows: skills.length,
+      rows: skillsData.length,
     };
   }
 
@@ -75,6 +135,51 @@ export class StaticAPI implements API {
     );
     return response.data[name] as Chart[];
   }
+
+  async domainPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get(
+      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data[name] as Chart[];
+  }
+
+  async technologyPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]> {
+    const response = await axios.get(
+      `/static-api/charts/technologies_${period}_${experience ?? 'any'}.json`,
+    );
+    return response.data[name] as Chart[];
+  }
+
+  async technologySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get(
+      `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
+    );
+    return { max_salary: 1, chart: response.data[name][0] };
+  }
+
+  async categorySalaryPlot(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<SalaryChart> {
+    const response = await axios.get(
+      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
+    );
+    return { max_salary: 1, chart: response.data[name][0] };
+  }
+
   async salaryPlot(
     name: string,
     period: number,
@@ -87,19 +192,18 @@ export class StaticAPI implements API {
   }
 
   async highlightsHighestSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
-    console.log(skills);
     return skills
       .sort((a, b) => (b?.average_salary ?? 0) - (a?.average_salary ?? 0))
       .slice(0, HIGHLIGHTS_LIMIT);
   }
 
   async highlightsLowestSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -109,8 +213,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsUndefinedSalary(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
 
@@ -121,8 +225,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsGainers(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -134,8 +238,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsDecliners(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
@@ -147,8 +251,8 @@ export class StaticAPI implements API {
   }
 
   async highlightsNewSkills(
+    period: number,
     experience?: Experience,
-    period?: number,
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills

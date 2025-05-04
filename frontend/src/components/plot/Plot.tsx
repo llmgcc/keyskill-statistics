@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import './Plot.css';
 
-import { API } from '@/api/api';
+import { Chart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
@@ -130,23 +130,30 @@ function Plot(props: { data: number[]; color: string; strokeWidth?: number }) {
 
 type SkillPlotProps = {
   name: string;
+  key: string;
+  source(
+    name: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Chart[]>;
   period: number;
   color: string;
   strokeWidth: number;
-  experience: Experience;
+  experience?: Experience;
 };
 
 export function SkillPlot({
   name,
+  source,
+  key,
   period,
   color,
-  strokeWidth,
   experience,
 }: SkillPlotProps) {
-  const { data, isLoading, isFetching, error } = useQuery({
-    queryKey: [`${name}_plot`, period, experience],
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: [`${name}_plot_${key}`, period, experience],
     queryFn: async () => {
-      const data = await API.skillPlot(
+      const data = await source(
         name,
         period,
         experience == Experience.any ? undefined : (experience ?? undefined),
@@ -158,7 +165,6 @@ export function SkillPlot({
   });
 
   const chartData = [];
-  console.log('DATA', data);
   if (data) {
     const COUNT_BINS = 15;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {

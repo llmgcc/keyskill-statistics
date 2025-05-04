@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './App.css';
 import '@/i18n/i18n';
 
-import { Tabs } from '@radix-ui/themes';
+import { Tabs, TextField } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
+import { BiCategory, BiSearch } from 'react-icons/bi';
 import { GrTechnology } from 'react-icons/gr';
-import { MdCategory, MdLeaderboard } from 'react-icons/md';
+import { MdCategory, MdLeaderboard, MdOutlineCategory } from 'react-icons/md';
 
-import { API } from './api/api';
+import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
+import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
+import CategoryFilter from './components/SkillsFilter/CategoryFilter.tsx';
 import { Filters } from './components/ui/Filters.tsx';
 import { Highlights } from './components/ui/Highlights.tsx';
 import Navigation from './components/ui/Navigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
-import { Stats } from './interfaces/index';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
 import { useDomainsStore } from './store/domainsStore.ts';
+import { useStatsStore } from './store/statsStore.ts';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,20 +32,28 @@ export const queryClient = new QueryClient({
 });
 
 function App() {
-  const [generalStats, setGeneralStats] = useState<Stats>();
-  const { fetchCategories } = useCategoriesStore();
-  const { fetchDomains } = useDomainsStore();
+  const {
+    fetchCategories,
+    categories,
+    setSelectedCategory,
+    setStrict: setCategoryStrict,
+  } = useCategoriesStore();
+  const {
+    fetchDomains,
+    domains,
+    setSelectedDomain,
+    setStrict: setDomainStrict,
+  } = useDomainsStore();
+  const { fetchStats, stats } = useStatsStore();
+  const [currentTab, setCurrentTab] = useState(0);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     useCurrencyStore.getState().fetchCurrencies();
     fetchCategories();
     fetchDomains();
-  }, []);
-
-  useEffect(() => {
-    API.mainStats().then((data) => {
-      setGeneralStats(data);
-    });
+    fetchStats();
   }, []);
 
   const tabs = [
@@ -63,11 +75,15 @@ function App() {
           <div>
             <MdCategory />
           </div>
-          <div className="ml-1">Categories</div>
+          <div className="ml-1">Domains</div>
         </div>
       ),
-      body: () => <div></div>,
-      name: 'categories',
+      body: () => (
+        <div>
+          <CategoriesTable />
+        </div>
+      ),
+      name: 'domains',
     },
     {
       title: (
@@ -75,19 +91,38 @@ function App() {
           <div>
             <GrTechnology />
           </div>
-          <div className="ml-1">Technologies</div>
+          <div className="ml-1">Categories</div>
         </div>
       ),
-      body: () => <div></div>,
-      name: 'technologies',
+      body: () => (
+        <div>
+          <TechnologiesTable />
+        </div>
+      ),
+      name: 'categories',
     },
   ];
+
+  function openNewTab(tabIndex: number) {
+    const offset = 100;
+    const element = tabsRef.current;
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth',
+      });
+    }
+    setCurrentTab(tabIndex);
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-        <Navigation stats={generalStats} />
-        <TextSection stats={generalStats} />
+        <Navigation stats={stats} />
+
+        <TextSection stats={stats} onLinkClick={(tab) => openNewTab(tab)} />
         {/* 
         <div className='app-container'>
           {
@@ -107,19 +142,29 @@ function App() {
         <Filters />
 
         <Highlights />
-        <div className="app-container mt-4">
-          {/* <Tabs tabs={tabs} /> */}
-          <Tabs.Root defaultValue={tabs[0].name}>
-            <Tabs.List>
-              {tabs.map((tab) => {
-                return (
-                  <Tabs.Trigger value={tab.name}>{tab.title}</Tabs.Trigger>
-                );
-              })}
-            </Tabs.List>
+
+        <div className="app-container mt-4" ref={tabsRef}>
+          <Tabs.Root
+            value={tabs[currentTab].name}
+            onValueChange={(value) => {
+              const newIndex = tabs.findIndex((tab) => tab.name === value);
+              setCurrentTab(newIndex);
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <Tabs.List>
+                {tabs.map((tab) => {
+                  return (
+                    <Tabs.Trigger value={tab.name} key={tab.name}>
+                      {tab.title}
+                    </Tabs.Trigger>
+                  );
+                })}
+              </Tabs.List>
+            </div>
             {tabs.map((tab) => {
               return (
-                <Tabs.Content value={tab.name} className="py-2">
+                <Tabs.Content value={tab.name} className="py-2" key={tab.name}>
                   {tab.body()}
                 </Tabs.Content>
               );
