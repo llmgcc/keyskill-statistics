@@ -12,7 +12,7 @@ import axios from 'axios';
 
 import { Experience } from '@/config/experience';
 
-const HIGHLIGHTS_LIMIT = 5;
+const HIGHLIGHTS_LIMIT = 100;
 
 async function getSkills(
   experience?: Experience,
@@ -109,7 +109,6 @@ export class StaticAPI implements API {
       );
     }
 
-    console.log(skillName);
     if (skillName) {
       skillsData = skillsData.filter((c) =>
         c.name.toLowerCase().includes(skillName.toLowerCase()),

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Stats } from '@/interfaces/index';
 import { useCurrencyStore } from '@/store/currencyStore';
 import { useLangStore } from '@/store/languageStore';
 import { Theme, useThemeStore } from '@/store/themeStore';
@@ -9,15 +8,12 @@ import { BsGithub } from 'react-icons/bs';
 import { FaCheck } from 'react-icons/fa';
 import { IoLanguageOutline } from 'react-icons/io5';
 import { RiLightbulbFlashLine, RiLightbulbLine } from 'react-icons/ri';
-
 import { CurrencyIcons } from '@/config/currencies';
 import { Language, LanguageTitle } from '@/config/languages';
+import { useStatsStore } from '@/store/statsStore';
 
-interface NavigationProps {
-  stats?: Stats;
-}
-
-function Navigation({ stats }: NavigationProps) {
+export function Navigation() {
+  const {stats} = useStatsStore();
   const { t } = useTranslation();
   const [scrollTop, setScrollTop] = useState(true);
   const { setTheme, theme } = useThemeStore();
@@ -39,7 +35,7 @@ function Navigation({ stats }: NavigationProps) {
 
   return (
     <>
-      <div className="">
+      <div>
         <div className="border-b-[1px] border-background-secondary">
           <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
             <div className="flex">
@@ -198,5 +194,3 @@ function Navigation({ stats }: NavigationProps) {
     </>
   );
 }
-
-export default Navigation;
