@@ -29,9 +29,7 @@ app.include_router(highlights_router)
 
 client = TestClient(app)
 
-
 EXPERIENCE = ["any", "noExperience", "between1And3", "between3And6", "moreThan6"]
-
 PERIOD = [7, 14, 30]
 
 
@@ -44,8 +42,12 @@ def build_static(router):
         with open(file_name, "w", encoding="utf-8") as f:
             f.write(response.text)
 
-
 build_static(main_router)
+
+
+exit()
+
+
 build_static(categories_router)
 build_static(technologies_router)
 exit()
