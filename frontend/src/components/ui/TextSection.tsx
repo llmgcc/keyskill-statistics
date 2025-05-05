@@ -1,3 +1,5 @@
+import { Categories } from '@/config/categories';
+import { Technologies } from '@/config/technologies';
 import { Category } from '@/interfaces';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
@@ -55,12 +57,24 @@ function ListEnumeration({
 }
 
 export function TextSection({
-  onLinkClick = () => {},
+  onLinkClick,
 }: TextSectionProps) {
   const {stats} = useStatsStore();
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
   const { t } = useTranslation();
+
+  const preferredDomains : Category[] = [
+    domains.find(c => c.name === Categories.Backend) ?? null,
+    domains.find(c => c.name === Categories['Data Science & Machine Learning']) ?? null,
+    domains.find(c => c.name === Categories['Project management']) ?? null
+  ].filter(e => e !== null)
+
+  const preferredCategories : Category[] = [
+    categories.find(c => c.name === Technologies['Soft skills']) ?? null,
+    categories.find(c => c.name === Technologies.Languages) ?? null,
+    categories.find(c => c.name === Technologies.Databases) ?? null
+  ].filter(e => e !== null)
 
   const badge = (
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
@@ -76,7 +90,7 @@ export function TextSection({
       rel="noopener noreferrer"
       onClick={(e) => {
         e.preventDefault();
-        onLinkClick(2);
+        onLinkClick?.(2);
       }}
       className="cursor-pointer"
       underline='always'
@@ -88,7 +102,7 @@ export function TextSection({
       rel="noopener noreferrer"
       onClick={(e) => {
         e.preventDefault();
-        onLinkClick(1);
+        onLinkClick?.(1);
       }}
       className="cursor-pointer"
       underline='always'
@@ -124,7 +138,7 @@ export function TextSection({
                 }}
               />{' '}
               <ListEnumeration
-                list={domains}
+                list={preferredDomains}
                 maxToDisplay={3}
                 translationKey={'domains'}
               />
@@ -138,7 +152,7 @@ export function TextSection({
                 }}
               />{' '}
               <ListEnumeration
-                list={categories}
+                list={preferredCategories}
                 maxToDisplay={3}
                 translationKey={'categories'}
               />
