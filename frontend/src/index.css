@@ -29,14 +29,9 @@
 
 @layer base {
   :root {
-    /* --color-background: 246 244 242; */
-    --color-background-primary: 256 254 252;
-
-    --color-background-secondary: 235 235 235;
     --color-background-accent: 200 100 50;
-
-    /* 88 102 126 */
-    /* --color-background-gray: 239 242 245; */
+    --color-background-primary: 256 254 252;
+    --color-background-secondary: 235 235 235;
     --color-background-gray: 88 102 126;
     --color-text: 15 16 26;
     --color-text-primary: 15 16 26;
@@ -45,22 +40,13 @@
 
   :root[class~='dark'] {
     --color-background-accent: 200 100 50;
-
     --color-background-primary: 23 25 36;
     --color-background-secondary: 34 37 49;
     --color-background-gray: 50 53 70;
-    --color-text-secondary: 134 165 168;
-    --color-text-primary: 251 235 249;
     --color-text: 251 235 249;
+    --color-text-primary: 251 235 249;
+    --color-text-secondary: 134 165 168;
   }
-}
-
-/* @theme {
-  --shadow-3xl: 0 35px 35px rgba(0, 0, 0, 0.25); 
-} */
-* {
-  /* background-color: black !important; */
-  /* color: white; */
 }
 
 html,

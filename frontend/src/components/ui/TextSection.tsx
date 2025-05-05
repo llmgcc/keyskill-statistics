@@ -1,11 +1,11 @@
-import { Category, Stats } from '@/interfaces';
+import { Category } from '@/interfaces';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
+import { useStatsStore } from '@/store/statsStore';
 import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
 
 interface TextSectionProps {
-  stats?: Stats;
   onLinkClick?: (tabIndex: number) => void;
 }
 
@@ -55,9 +55,9 @@ function ListEnumeration({
 }
 
 export function TextSection({
-  stats,
   onLinkClick = () => {},
 }: TextSectionProps) {
+  const {stats} = useStatsStore();
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
   const { t } = useTranslation();

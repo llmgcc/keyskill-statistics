@@ -1,44 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
 
 .app {
   font-size: 0.75rem;
-  /* font-family: ui-monospace; */
-  /* font-family: "Noto Sans Mono", sans-serif; */
   font-family: 'Inter', sans-serif;
-  /* display: flex; */
   font-weight: 450;
   line-height: 1;
-  /* align-items: ; */
-  /* font-size: 900; */
-  /* justify-content: center; */
-  /* -webkit-font-smoothing: antialiased; */
-  /* padding-top: 60px; */
-  /* font-variation-settings: "wght" 450; */
   width: 100%;
-  /* max-width: 1200px; */
   width: 100%;
-  /* padding-left: 45px; */
-  /* padding-right: 45px; */
-  /* height: 100vh; */
-  /* -webkit-font-smoothing: antialiased; */
-  /* font-family: monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .app {
   width: 100%;
-  /* padding-right: 15px; */
-  /* padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
 }
 
-.app-container-wrapper {
-}
 
 .app-container {
   padding-left: 1rem;
@@ -60,39 +40,3 @@
     margin-right: auto;
   }
 }
-
-/* @media(min-width: 640px) {
-  .app {
-      max-width:600px
-  }
-}
-
-@media(min-width: 768px) {
-  .app {
-      max-width:720px;
-  }
-}
-
-@media(min-width: 1024px) {
-  .app {
-      max-width:992px;
-  }
-}
-
-@media(min-width: 1100px) {
-  .app {
-      max-width:1300px;
-      width: 100%;
-  }
-} */
-
-/* .navbar {
-  height: 72px;
-  width: 100%;
-  box-shadow: inset 0 1px 0 #ebecee, inset 0 -1px 0 #ebecee;
-  background-color: white;
-  position: sticky;
-  top: 0px;
-  z-index: 1020;
-  grid-area: header;
-} */

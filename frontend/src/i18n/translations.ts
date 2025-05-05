@@ -7,7 +7,7 @@ export const translations = {
   en: {
     translation: {
       navigation: {
-        uniqueSkills: 'Unique Key Skills (All-Time)',
+        uniqueSkills: 'Unique Key Skills (All Time)',
         lastUpdate: 'Last update',
         tooltips: {
           theme: 'Theme',
@@ -18,7 +18,7 @@ export const translations = {
       currency: {
         EUR: 'Euro',
         USD: 'US Dollar',
-        RUR: 'Russian Ruble',
+        RUB: 'Russian Ruble',
       },
       mainText: {
         title: 'Analysis of <badge>key skills</badge> in the IT Sector',
@@ -65,7 +65,7 @@ export const translations = {
   ru: {
     translation: {
       navigation: {
-        uniqueSkills: 'Уникальные ключевые навыки (за все время)',
+        uniqueSkills: 'Уникальных ключевых навыков (за все время)',
         lastUpdate: 'Последнее обновление',
         tooltips: {
           theme: 'Тема',
@@ -76,7 +76,7 @@ export const translations = {
       currency: {
         EUR: 'Евро',
         USD: 'Доллар США',
-        RUR: 'Российский рубль',
+        RUB: 'Российский рубль',
       },
       mainText: {
         title: 'Анализ <badge>ключевых навыков</badge> в сфере IT',

@@ -1,22 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-
 import './App.css';
 import '@/i18n/i18n';
-
-import { Tabs, TextField } from '@radix-ui/themes';
+import { Tabs } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
-import { BiCategory, BiSearch } from 'react-icons/bi';
 import { GrTechnology } from 'react-icons/gr';
-import { MdCategory, MdLeaderboard, MdOutlineCategory } from 'react-icons/md';
-
+import { MdCategory, MdLeaderboard } from 'react-icons/md';
 import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
-import CategoryFilter from './components/SkillsFilter/CategoryFilter.tsx';
 import { Filters } from './components/ui/Filters.tsx';
 import { Highlights } from './components/ui/Highlights.tsx';
-import Navigation from './components/ui/Navigation.tsx';
+import {Navigation} from './components/ui/Navigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
@@ -33,21 +27,14 @@ export const queryClient = new QueryClient({
 
 function App() {
   const {
-    fetchCategories,
-    categories,
-    setSelectedCategory,
-    setStrict: setCategoryStrict,
+    fetchCategories
   } = useCategoriesStore();
   const {
-    fetchDomains,
-    domains,
-    setSelectedDomain,
-    setStrict: setDomainStrict,
+    fetchDomains
   } = useDomainsStore();
-  const { fetchStats, stats } = useStatsStore();
+  const { fetchStats } = useStatsStore();
   const [currentTab, setCurrentTab] = useState(0);
   const tabsRef = useRef<HTMLDivElement | null>(null);
-  const { t } = useTranslation();
 
   useEffect(() => {
     useCurrencyStore.getState().fetchCurrencies();
@@ -120,9 +107,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-        <Navigation stats={stats} />
+        <Navigation />
 
-        <TextSection stats={stats} onLinkClick={(tab) => openNewTab(tab)} />
+        <TextSection onLinkClick={(tab) => openNewTab(tab)} />
         {/* 
         <div className='app-container'>
           {

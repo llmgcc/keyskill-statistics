@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 
     max_date: datetime.datetime = MAX_DATE
     min_date: datetime.datetime = MAX_DATE - datetime.timedelta(days=60)
+    skills_min_count: int = 5
 
     model_config = SettingsConfigDict(env_file="./.env.example")
 
