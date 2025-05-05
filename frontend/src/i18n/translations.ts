@@ -28,7 +28,7 @@ export const translations = {
           'Key skills were classified using machine learning methods into:',
         domains: '- <linkto>{{count}} domains</linkto>, such as',
         categories: '- <linkto>{{count}} categories</linkto>, including',
-        end: 'This classification helps to gauge which skills are in demand and to observe differences in salary ranges across IT domains.',
+        end: 'Classification helps to gauge which skills are in demand and to observe differences in salary ranges across IT domains.',
       },
       filters: {
         title: 'Filters',
@@ -79,14 +79,14 @@ export const translations = {
         RUB: 'Российский рубль',
       },
       mainText: {
-        title: 'Анализ <badge>ключевых навыков</badge> в сфере IT',
+        title: 'Анализ <badge>ключевых навыков</badge> в IT-сфере',
         subtitle:
-          'Данные по навыкам и диапазонам зарплат собраны на основе анализа <text>{{vacancies}}</text> IT вакансий через <linkto>API HeadHunter</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
+          'Данные о навыках и зарплатах собраны на основе анализа <text>{{vacancies}}</text> IT-вакансий с использованием <linkto>HeadHunter API</linkto> за период с <text>{{dateFrom}}</text> по <text>{{dateTo}}</text>.',
         enumeration:
           'Ключевые навыки классифицированы с помощью методов машинного обучения по:',
         domains: '- <linkto>{{count}} направлениям</linkto>, таким как',
         categories: '- <linkto>{{count}} категориям</linkto>, включая',
-        end: 'Эта классификация помогает оценить, какие навыки востребованы, и увидеть различия в диапазонах зарплат между IT-направлениями.',
+        end: 'Классификация помогает оценить, какие навыки востребованы, и увидеть различия в диапазонах зарплат между IT-направлениями.',
       },
       filters: {
         title: 'Фильтры',
