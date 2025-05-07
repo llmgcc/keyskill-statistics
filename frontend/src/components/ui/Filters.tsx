@@ -1,10 +1,12 @@
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
-import { Select } from '@radix-ui/themes';
+import { Select } from "radix-ui";
 import { useTranslation } from 'react-i18next';
 import { IoFilterSharp } from 'react-icons/io5';
 
 import { Experience } from '@/config/experience';
+import { BiChevronDown } from 'react-icons/bi';
+import { FaCheck } from 'react-icons/fa';
 
 type FiltersProps = {};
 
@@ -29,57 +31,85 @@ export function Filters({}: FiltersProps) {
           <div className="mx-2 flex items-center">
             <Select.Root
               defaultValue={selectedExperience ?? undefined}
-              size={'1'}
               onValueChange={(v) => setExperience(v as Experience)}
             >
-              <Select.Trigger className="border-shadow-full cursor-pointer bg-background-primary outline-background-secondary" />
+              <Select.Trigger className="px-2 py-1 flex items-center rounded border-shadow-full cursor-pointer outline-background-secondary bg-background-secondary text-sm focus:shadow-background-gray focus:outline-background-gray  hover:bg-background-gray hover:outline-background-gray hover:shadow-none">
+                <Select.Value>
+                  <span className='text-text-primary'>{t('common.experience')}</span> <span className='text-text-secondary text-sm'>{t(`experience.${selectedExperience}`)}</span>
+                </Select.Value>
+                <Select.Icon>
+                  <BiChevronDown size={20}/>
+                </Select.Icon>
+              </Select.Trigger>
+              <Select.Portal>
               <Select.Content
                 position="popper"
-                className="bg-background-primary shadow-md shadow-background-secondary"
+                className="SelectContent shadow-md rounded-md border-[2px] border-background-secondary bg-background-primary !p-2 shadow-background-secondary"
+                sideOffset={5}
+                align='end'
               >
-                {experienceList.map((e, i) => (
+                {experienceList.map((experience) => (
                   <Select.Item
-                    key={i}
-                    className="cursor-pointer focus:bg-background-secondary"
-                    value={e}
+                    key={experience}
+                    className={`text-sm text-text-primary cursor-pointer focus:bg-background-secondary flex items-center justify-between rounded px-2 py-1 hover:text-background-secondary ${selectedExperience === experience ? 'bg-background-secondary' : ''}`}
+                    value={experience}
                   >
-                    <span className="font-[500] text-text">
-                      {t('common.experience')}
-                    </span>{' '}
-                    <span className="text-text-secondary">
-                      {t(`experience.${e}`)}
-                    </span>
+                    <div className='flex'>
+                      <div className="text-text-primary mr-1">
+                        {t(`experience.${experience}`)}
+                      </div>
+                    </div>
+                    <div className="ml-4 text-xs text-green-400">
+                      {selectedExperience == experience ? (
+                        <FaCheck />
+                      ) : null}
+                    </div>
                   </Select.Item>
                 ))}
               </Select.Content>
+              </Select.Portal>
             </Select.Root>
           </div>
           <div className="flex items-center">
             <Select.Root
-              defaultValue={String(selectedPeriod) ?? undefined}
-              size={'1'}
+              defaultValue={String(selectedPeriod)}
               onValueChange={(v) => setPeriod(Number(v))}
             >
-              <Select.Trigger className="border-shadow-full cursor-pointer bg-background-primary outline-background-secondary" />
+              <Select.Trigger className="px-2 py-1 flex items-center rounded border-shadow-full cursor-pointer outline-background-secondary bg-background-secondary text-sm focus:shadow-background-gray focus:outline-background-gray  hover:bg-background-gray hover:outline-background-gray hover:shadow-none">
+                <Select.Value>
+                  <span className='text-text-primary'>{t('common.period')}</span> <span className='text-text-secondary text-sm'>{selectedPeriod} {t('common.days')}</span>
+                </Select.Value>
+                <Select.Icon>
+                  <BiChevronDown size={20}/>
+                </Select.Icon>
+              </Select.Trigger>
+              <Select.Portal>
               <Select.Content
                 position="popper"
-                className="bg-background-primary shadow-md shadow-background-secondary"
+                className="SelectContent shadow-md rounded-md border-[2px] border-background-secondary bg-background-primary !p-2 shadow-background-secondary"
+                sideOffset={5}
+                align='end'
               >
-                {periodList.map((e, i) => (
+                {periodList.map((period) => (
                   <Select.Item
-                    key={i}
-                    className="cursor-pointer focus:bg-background-secondary"
-                    value={String(e)}
+                    key={period}
+                    className={`text-sm text-text-primary cursor-pointer focus:bg-background-secondary flex items-center justify-between rounded px-2 py-1 hover:text-background-secondary ${selectedPeriod === period ? 'bg-background-secondary' : ''}`}
+                    value={String(period)}
                   >
-                    <span className="font-[500] text-text">
-                      {t('common.period')}
-                    </span>{' '}
-                    <span className="text-text-secondary">
-                      {e} {t('common.days')}
-                    </span>
+                    <div className='flex'>
+                      <div className="text-text-primary mr-1">
+                        {period} {t('common.days')}
+                      </div>
+                    </div>
+                    <div className="ml-4 text-xs text-green-400">
+                      {selectedPeriod == period ? (
+                        <FaCheck />
+                      ) : null}
+                    </div>
                   </Select.Item>
                 ))}
               </Select.Content>
+              </Select.Portal>
             </Select.Root>
           </div>
         </div>

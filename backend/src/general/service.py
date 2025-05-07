@@ -4,7 +4,7 @@ from src.models import *
 from src.config import settings
 
 
-def get_general_stats(session: Session):
+async def get_general_stats(session: Session):
     last_update = (
         select(
         func.max(cast(Vacancy.created_at, Date)).label("last_update"),
@@ -71,14 +71,15 @@ def get_general_stats(session: Session):
             .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
             .join(Currency, Currency.currency_code == VacancySalary.currency)
     )
-       
+
+    last_update_awaited = (await session.exec(last_update)).first()
     return {
-        "last_update": session.exec(last_update).first().strftime("%d.%m.%Y"),
-        "unique_skills": session.exec(unique_skills).first(),
-        "date_from": session.exec(min_date).first().strftime("%d.%m.%Y"),
-        "date_to": session.exec(last_update).first().strftime("%d.%m.%Y"),
-        "number_of_vacancies": session.exec(vacancies).first(),
-        "max_salary": session.exec(avg_salary_query).first()*5
+        "last_update": last_update_awaited.strftime("%d.%m.%Y"),
+        "unique_skills": (await session.exec(unique_skills)).first(),
+        "date_from": (await session.exec(min_date)).first().strftime("%d.%m.%Y"),
+        "date_to": last_update_awaited.strftime("%d.%m.%Y"),
+        "number_of_vacancies": (await session.exec(vacancies)).first(),
+        "max_salary": (await session.exec(avg_salary_query)).first()*8
     }
 
 
@@ -89,11 +90,11 @@ def get_currency_list(session: Session):
         Currency.currency_name,
         Currency.currency_code,
     )
-    return session.exec(currency_query).all()
+    return session.exec(currency_query)
 
 
 def get_experience_list(session: Session):
     experience_query = (
         select(Vacancy.experience).distinct().order_by(Vacancy.experience)
     )
-    return session.exec(experience_query).all()
+    return session.exec(experience_query)

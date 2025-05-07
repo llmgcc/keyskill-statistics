@@ -12,7 +12,7 @@ import axios from 'axios';
 
 import { Experience } from '@/config/experience';
 
-const HIGHLIGHTS_LIMIT = 100;
+const HIGHLIGHTS_LIMIT = 5;
 
 async function getSkills(
   experience?: Experience,
