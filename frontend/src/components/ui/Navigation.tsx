@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useCurrencyStore } from '@/store/currencyStore';
 import { useLangStore } from '@/store/languageStore';
-import { Theme, useThemeStore } from '@/store/themeStore';
+// import { Theme, useThemeStore } from '@/store/themeStore';
 import { Button, Popover, Spinner } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BsGithub } from 'react-icons/bs';
@@ -11,12 +11,14 @@ import { RiLightbulbFlashLine, RiLightbulbLine } from 'react-icons/ri';
 import { CurrencyIcons } from '@/config/currencies';
 import { Language, LanguageTitle } from '@/config/languages';
 import { useStatsStore } from '@/store/statsStore';
+import { Theme, useTheme } from '@/providers/ThemeProvider';
 
 export function Navigation() {
   const {stats} = useStatsStore();
   const { t } = useTranslation();
   const [scrollTop, setScrollTop] = useState(true);
-  const { setTheme, theme } = useThemeStore();
+  // const { setTheme, theme } = useThemeStore();
+  const {theme, toggleTheme} = useTheme()
   const { setLang, lang, languages } = useLangStore();
   const { setSelectedCurrency, selectedCurrency, currencies } =
     useCurrencyStore();
@@ -87,7 +89,7 @@ export function Navigation() {
                 className="flex aspect-square size-fit items-center !bg-transparent !p-0"
                 title={t('navigation.tooltips.theme')}
                 onClick={() =>
-                  setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark)
+                  toggleTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark)
                 }
               >
                 {theme === Theme.Light ? (

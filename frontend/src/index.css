@@ -27,12 +27,18 @@
   border: none !important;
 }
 
+
+.SelectContent {
+	min-width: var(--radix-select-trigger-width);
+	max-height: var(--radix-select-content-available-height);
+}
+
 @layer base {
   :root {
     --color-background-accent: 200 100 50;
     --color-background-primary: 256 254 252;
-    --color-background-secondary: 235 235 235;
-    --color-background-gray: 88 102 126;
+    --color-background-secondary: 239 242 245;
+    --color-background-gray: 223 223 223;
     --color-text: 15 16 26;
     --color-text-primary: 15 16 26;
     --color-text-secondary: 71 85 105;
