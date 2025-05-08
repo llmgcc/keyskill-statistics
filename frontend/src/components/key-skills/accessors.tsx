@@ -11,9 +11,9 @@ import { SkillPlot } from '../plot/Plot';
 import { CountRenderer } from '../table/renderers/CountRenderer';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
+import { CategoryDescription } from '../ui/CategoryDescription';
 import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
-import { CategoryDescription } from '../ui/CategoryDescription';
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;

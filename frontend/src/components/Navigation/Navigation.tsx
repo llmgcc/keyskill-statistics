@@ -1,0 +1,106 @@
+import { useEffect, useState } from 'react';
+import { useStatsStore } from '@/store/statsStore';
+import { Button } from '@radix-ui/themes';
+import { useTranslation } from 'react-i18next';
+import { BsGithub } from 'react-icons/bs';
+
+import { CurrencySwitch } from './CurrencySwitch';
+import { LanguageSwitch } from './LanguageSwitch';
+import { ThemeSwitch } from './ThemeSwitch';
+import { useStickyOffset } from '@/hooks/useStickyOffset';
+
+export function Navigation() {
+  const stats = useStatsStore((state) => state.stats);
+  const { t } = useTranslation();
+  const [scrollTop, setScrollTop] = useState(true);
+  const { ref, offset } = useStickyOffset('navigation');
+  
+  useEffect(() => {
+    const scrollHandler = () => {
+      setScrollTop(window.scrollY <= 10);
+    };
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
+
+  function openRepo() {
+    window.open('https://github.com/llmgcc/keyskill-statistics', '_blank');
+  }
+
+  return (
+    <>
+      <div>
+        <div className="border-b-[1px] border-background-secondary">
+          <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
+            <div className="flex">
+              <div className="text-xs sm:block md:flex">
+                <div>{t('navigation.uniqueSkills')}:</div>{' '}
+                <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
+                  {stats?.unique_skills ?? null}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="text-xs sm:block md:flex">
+                <div>{t('navigation.lastUpdate')}:</div>{' '}
+                <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
+                  {stats?.last_update ?? null}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        ref={ref}
+        className={`sticky z-50 border-b-[1px] border-background-secondary bg-background-primary ${!scrollTop && 'border-b-0  shadow-background-gray'}`}
+        style={{ top: offset }}
+      >
+        <div
+          className={`app-container flex h-12 w-full items-center justify-between py-4`}
+        >
+          <div className="flex items-center justify-center text-sm">
+            <div className="flex items-center text-text">
+              <div className="flex size-5 items-center justify-center rounded">
+                <div>
+                  <div className="mb-[1px] flex">
+                    <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
+                    <div className="size-2 rounded-sm bg-background-accent/50"></div>
+                  </div>
+                  <div className="flex">
+                    <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
+                    <div className="size-2 rounded-sm bg-background-accent/100"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent">
+                Keystats
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="mx-2 flex items-center">
+              <ThemeSwitch />
+            </div>
+            <div className="mx-2 flex items-center">
+              <CurrencySwitch />
+            </div>
+            <div className="mx-2 flex items-center">
+              <LanguageSwitch />
+            </div>
+            <div className="ml-2 flex items-center">
+              <Button
+                variant="soft"
+                className="ml-1 aspect-square size-fit !bg-transparent !p-0"
+                title="Github"
+                onClick={openRepo}
+              >
+                <BsGithub className="cursor-pointer text-xl text-text transition-colors duration-150 hover:text-background-accent" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

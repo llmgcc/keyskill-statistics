@@ -24,10 +24,19 @@ export const useCurrencyStore = create<CurrencyStore>()(
           // Fix RUR
           const rur = currencies.find((c) => c.currency_code === 'RUR');
           if (rur) rur.currency_code = 'RUB';
-          
-          const filteredCurrencies = currencies.filter((c: Currency) =>
-            usedCurrencies.includes(c?.currency_code),
-          );
+
+          const filteredCurrencies = currencies
+            .filter((c: Currency) => usedCurrencies.includes(c?.currency_code))
+            .sort((a, b) => {
+              const aIndex = Object.keys(CurrencyIcons).indexOf(
+                a.currency_code,
+              );
+              const bIndex = Object.keys(CurrencyIcons).indexOf(
+                b.currency_code,
+              );
+              return aIndex - bIndex;
+            });
+
           set({ currencies: filteredCurrencies });
           if (!get().selectedCurrency)
             set({ selectedCurrency: filteredCurrencies[0] });

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLangStore } from '@/store/languageStore';
 import { Popover, SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
@@ -172,10 +171,12 @@ function CategoryPopover({
 }
 
 function SkillDescription(props: SkillDescriptionProps) {
-  const { lang } = useLangStore();
+  const { i18n } = useTranslation();
 
   const skillName =
-    lang == Language.ru ? props.name : (props.translation ?? props.name);
+    i18n.language == Language.ru
+      ? props.name
+      : (props.translation ?? props.name);
 
   return (
     <div className="flex items-center text-sm font-[500] leading-none">
