@@ -1,22 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
+
 import './App.css';
 import '@/i18n/i18n';
+
+import i18n from '@/i18n/i18n';
 import { Tabs } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { I18nextProvider } from 'react-i18next';
 import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
+
 import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
+import { Navigation } from './components/Navigation/Navigation.tsx';
 import { Filters } from './components/ui/Filters.tsx';
 import { Highlights } from './components/ui/Highlights.tsx';
-import {Navigation} from './components/ui/Navigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
+import { ThemeProvider } from './providers/ThemeProvider.tsx';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
 import { useDomainsStore } from './store/domainsStore.ts';
 import { useStatsStore } from './store/statsStore.ts';
-import { ThemeProvider } from './providers/ThemeProvider.tsx';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,19 +31,16 @@ export const queryClient = new QueryClient({
   },
 });
 
-function App() {
-  const {
-    fetchCategories
-  } = useCategoriesStore();
-  const {
-    fetchDomains
-  } = useDomainsStore();
-  const { fetchStats } = useStatsStore();
+export default function App() {
+  const fetchCategories = useCategoriesStore((state) => state.fetchCategories);
+  const fetchDomains = useDomainsStore((state) => state.fetchDomains);
+  const fetchStats = useStatsStore((state) => state.fetchStats);
+  const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
   const [currentTab, setCurrentTab] = useState(0);
   const tabsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    useCurrencyStore.getState().fetchCurrencies();
+    fetchCurrencies();
     fetchCategories();
     fetchDomains();
     fetchStats();
@@ -106,78 +108,50 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-    <QueryClientProvider client={queryClient}>
-      <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-        <Navigation />
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
+            <Navigation />
+            <TextSection onLinkClick={(tab) => openNewTab(tab)} />
+            <Filters />
+            <Highlights />
 
-        <TextSection onLinkClick={(tab) => openNewTab(tab)} />
-        {/* 
-        <div className='app-container'>
-          {
-            categories.map(d => {
-              return (
-                <div className=' p-2'>
-                  <div className='flex items-center'>
-                    <div className='w-10 aspect-square p-0'><SkillImage technology={d.name}/></div>
-                    <div className='mx-2'>{d.name}</div>
-                  </div>
+            <div className="app-container mt-4" ref={tabsRef}>
+              <Tabs.Root
+                value={tabs[currentTab].name}
+                onValueChange={(value) => {
+                  const newIndex = tabs.findIndex((tab) => tab.name === value);
+                  setCurrentTab(newIndex);
+                }}
+              >
+                <div className="flex items-center justify-between">
+                  <Tabs.List>
+                    {tabs.map((tab) => {
+                      return (
+                        <Tabs.Trigger value={tab.name} key={tab.name}>
+                          {tab.title}
+                        </Tabs.Trigger>
+                      );
+                    })}
+                  </Tabs.List>
                 </div>
-              )
-            })
-          }
-        </div> */}
-
-        <Filters />
-
-        <Highlights />
-
-        <div className="app-container mt-4" ref={tabsRef}>
-          <Tabs.Root
-            value={tabs[currentTab].name}
-            onValueChange={(value) => {
-              const newIndex = tabs.findIndex((tab) => tab.name === value);
-              setCurrentTab(newIndex);
-            }}
-          >
-            <div className="flex items-center justify-between">
-              <Tabs.List>
                 {tabs.map((tab) => {
                   return (
-                    <Tabs.Trigger value={tab.name} key={tab.name}>
-                      {tab.title}
-                    </Tabs.Trigger>
+                    <Tabs.Content
+                      value={tab.name}
+                      className="py-2"
+                      key={tab.name}
+                    >
+                      {tab.body()}
+                    </Tabs.Content>
                   );
                 })}
-              </Tabs.List>
-            </div>
-            {tabs.map((tab) => {
-              return (
-                <Tabs.Content value={tab.name} className="py-2" key={tab.name}>
-                  {tab.body()}
-                </Tabs.Content>
-              );
-            })}
-          </Tabs.Root>
-        </div>
-
-
-        <div className="flex">
-          <div className="app w-full">
-            <div>
-              {/* <Highlights/> */}
-
-              <div className="">
-                <div>
-                </div>
-              </div>
+              </Tabs.Root>
             </div>
           </div>
-        </div>
-      </div>
-    </QueryClientProvider>
-    </ThemeProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }
-
-export default App;

@@ -131,7 +131,7 @@ function HighlightsCard({ highlights }: HighlightsCardProps) {
             <SegmentedControl.Root
               defaultValue={currentTab}
               size={'1'}
-              variant="classic"
+              variant="surface"
               onValueChange={(v) => setCurrentTab(v)}
             >
               {Object.keys(highlights).map((k) => (

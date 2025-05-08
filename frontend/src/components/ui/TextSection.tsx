@@ -1,11 +1,12 @@
-import { Categories } from '@/config/categories';
-import { Technologies } from '@/config/technologies';
 import { Category } from '@/interfaces';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
 import { useStatsStore } from '@/store/statsStore';
 import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
+
+import { Categories } from '@/config/categories';
+import { Technologies } from '@/config/technologies';
 
 interface TextSectionProps {
   onLinkClick?: (tabIndex: number) => void;
@@ -56,32 +57,37 @@ function ListEnumeration({
   );
 }
 
-export function TextSection({
-  onLinkClick,
-}: TextSectionProps) {
-  const {stats} = useStatsStore();
+export function TextSection({ onLinkClick }: TextSectionProps) {
+  const { stats } = useStatsStore();
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
   const { t } = useTranslation();
 
-  const preferredDomains : Category[] = [
-    domains.find(c => c.name === Categories.Backend) ?? null,
-    domains.find(c => c.name === Categories['Data Science & Machine Learning']) ?? null,
-    domains.find(c => c.name === Categories['Project management']) ?? null
-  ].filter(e => e !== null)
+  const preferredDomains: Category[] = [
+    domains.find((c) => c.name === Categories.Backend) ?? null,
+    domains.find(
+      (c) => c.name === Categories['Data Science & Machine Learning'],
+    ) ?? null,
+    domains.find((c) => c.name === Categories['Project management']) ?? null,
+  ].filter((e) => e !== null);
 
-  const preferredCategories : Category[] = [
-    categories.find(c => c.name === Technologies['Soft skills']) ?? null,
-    categories.find(c => c.name === Technologies.Languages) ?? null,
-    categories.find(c => c.name === Technologies.Databases) ?? null
-  ].filter(e => e !== null)
+  const preferredCategories: Category[] = [
+    categories.find((c) => c.name === Technologies['Soft skills']) ?? null,
+    categories.find((c) => c.name === Technologies.Languages) ?? null,
+    categories.find((c) => c.name === Technologies.Databases) ?? null,
+  ].filter((e) => e !== null);
 
   const badge = (
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
   );
   const text = <span className="text-text-primary" />;
   const linkto = (
-    <Link href="https://dev.hh.ru/" target="_blank" rel="noopener noreferrer" underline='always' />
+    <Link
+      href="https://dev.hh.ru/"
+      target="_blank"
+      rel="noopener noreferrer"
+      underline="always"
+    />
   );
 
   const linkToCategory = (
@@ -93,7 +99,7 @@ export function TextSection({
         onLinkClick?.(2);
       }}
       className="cursor-pointer"
-      underline='always'
+      underline="always"
     />
   );
   const linkToDomain = (
@@ -105,7 +111,7 @@ export function TextSection({
         onLinkClick?.(1);
       }}
       className="cursor-pointer"
-      underline='always'
+      underline="always"
     />
   );
 

@@ -54,7 +54,7 @@ export enum Technologies {
   'Data Visualization & BI tools' = 'Data Visualization & BI tools',
   'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
   'Documentation tools' = 'Documentation tools',
-  'Code Quality Tools' = 'Code Quality Tools'
+  'Code Quality Tools' = 'Code Quality Tools',
 }
 
 export const TechnologiesStyle = {

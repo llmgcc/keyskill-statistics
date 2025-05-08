@@ -13,5 +13,5 @@ export const useDomainsStore = create<DomainsStore>()((set) => ({
   fetchDomains: async () => {
     const domains = await API.domainsList(30);
     set({ domains });
-  }
+  },
 }));

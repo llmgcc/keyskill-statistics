@@ -134,35 +134,51 @@ export const translations = {
       categories: {
         [Technologies.Languages]: 'Языки',
         [Technologies.Databases]: 'Базы данных',
-        [Technologies['Frontend Libraries and Frameworks']]: 'Фронтенд библиотеки и фреймворки',
-        [Technologies['Backend Libraries and Frameworks']]: 'Бэкенд библиотеки и фреймворки',
+        [Technologies['Frontend Libraries and Frameworks']]:
+          'Фронтенд библиотеки и фреймворки',
+        [Technologies['Backend Libraries and Frameworks']]:
+          'Бэкенд библиотеки и фреймворки',
         [Technologies['Soft skills']]: 'Гибкие навыки',
         [Technologies['Operating systems']]: 'Операционные системы',
-        [Technologies['Containerization & Orchestration']]: 'Контейнеризация и оркестрация',
-        [Technologies['Infrastructure Automation & Configuration']]: 'Автоматизация и конфигурация инфраструктуры',
-        [Technologies['Code Collaboration & Integration']]: 'Совместная разработка и интеграция',
+        [Technologies['Containerization & Orchestration']]:
+          'Контейнеризация и оркестрация',
+        [Technologies['Infrastructure Automation & Configuration']]:
+          'Автоматизация и конфигурация инфраструктуры',
+        [Technologies['Code Collaboration & Integration']]:
+          'Совместная разработка и интеграция',
         [Technologies['Graphic design']]: 'Графический дизайн',
         [Technologies.Monitoring]: 'Мониторинг',
         [Technologies.CMS]: 'Системы управления контентом',
         [Technologies['Network Protocols']]: 'Сетевые протоколы',
         [Technologies['Web Servers']]: 'Веб-серверы',
-        [Technologies['Integrated Development Environments']]: 'Интегрированные среды разработки',
+        [Technologies['Integrated Development Environments']]:
+          'Интегрированные среды разработки',
         [Technologies['Cloud platforms']]: 'Облачные платформы',
-        [Technologies['Mobile Libraries and Frameworks']]: 'Мобильные библиотеки и фреймворки',
+        [Technologies['Mobile Libraries and Frameworks']]:
+          'Мобильные библиотеки и фреймворки',
         [Technologies['Message Brokers']]: 'Брокеры сообщений',
         [Technologies['Testing Tools']]: 'Инструменты тестирования',
-        [Technologies['Machine Learning Libraries and Frameworks']]: 'Библиотеки и фреймворки машинного обучения',
-        [Technologies['Security tools and frameworks']]: 'Инструменты и фреймворки безопасности',
-        [Technologies['API technologies and protocols']]: 'API технологии и протоколы',
+        [Technologies['Machine Learning Libraries and Frameworks']]:
+          'Библиотеки и фреймворки машинного обучения',
+        [Technologies['Security tools and frameworks']]:
+          'Инструменты и фреймворки безопасности',
+        [Technologies['API technologies and protocols']]:
+          'API технологии и протоколы',
         [Technologies['Game engines']]: 'Игровые движки',
-        [Technologies['Project Management Tools']]: 'Инструменты управления проектами',
-        [Technologies['Blockchain platforms & tools']]: 'Блокчейн платформы и инструменты',
-        [Technologies['Messaging & Queuing systems']]: 'Системы обмена сообщениями и очереди',
-        [Technologies['Search & Indexing engines']]: 'Поисковые и индексирующие движки',
-        [Technologies['Data Visualization & BI tools']]: 'Инструменты визуализации данных и бизнес-аналитики',
+        [Technologies['Project Management Tools']]:
+          'Инструменты управления проектами',
+        [Technologies['Blockchain platforms & tools']]:
+          'Блокчейн платформы и инструменты',
+        [Technologies['Messaging & Queuing systems']]:
+          'Системы обмена сообщениями и очереди',
+        [Technologies['Search & Indexing engines']]:
+          'Поисковые и индексирующие движки',
+        [Technologies['Data Visualization & BI tools']]:
+          'Инструменты визуализации данных и бизнес-аналитики',
         [Technologies['Graphics APIs & GPGPU']]: 'Графические API и GPGPU',
         [Technologies['Documentation tools']]: 'Инструменты документации',
-        [Technologies['Code Quality Tools']]: 'Инструменты контроля качества кода'
+        [Technologies['Code Quality Tools']]:
+          'Инструменты контроля качества кода',
       },
       experience: {
         [Experience.any]: 'Любой',
