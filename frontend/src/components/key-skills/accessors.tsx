@@ -8,11 +8,11 @@ import colors from 'tailwindcss/colors';
 import { Experience } from '@/config/experience';
 
 import { SkillPlot } from '../plot/Plot';
+import SkillDescription from '../SkillDescription/SkillDescription';
 import { CountRenderer } from '../table/renderers/CountRenderer';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import { CategoryDescription } from '../ui/CategoryDescription';
-import SkillDescription from '../ui/SkillDescription';
 import SkillImage from '../ui/SkillImage';
 
 export const placeAccessor = <T extends KeySkill>(config: {

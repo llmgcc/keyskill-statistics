@@ -4,17 +4,18 @@ import { Button } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BsGithub } from 'react-icons/bs';
 
+import { useStickyOffset } from '@/hooks/useStickyOffset';
+
 import { CurrencySwitch } from './CurrencySwitch';
 import { LanguageSwitch } from './LanguageSwitch';
 import { ThemeSwitch } from './ThemeSwitch';
-import { useStickyOffset } from '@/hooks/useStickyOffset';
 
 export function Navigation() {
   const stats = useStatsStore((state) => state.stats);
   const { t } = useTranslation();
   const [scrollTop, setScrollTop] = useState(true);
   const { ref, offset } = useStickyOffset('navigation');
-  
+
   useEffect(() => {
     const scrollHandler = () => {
       setScrollTop(window.scrollY <= 10);
@@ -53,7 +54,7 @@ export function Navigation() {
       </div>
       <div
         ref={ref}
-        className={`sticky z-50 border-b-[1px] border-background-secondary bg-background-primary ${!scrollTop && 'border-b-0  shadow-background-gray'}`}
+        className={`sticky z-50 border-b-[1px] border-background-secondary bg-background-primary ${!scrollTop && 'border-b-0 shadow-background-gray'}`}
         style={{ top: offset }}
       >
         <div
