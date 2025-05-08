@@ -7,16 +7,17 @@ import { getPercentDifference } from '@/utils/common';
 import { SegmentedControl, Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { BsQuestion, BsStars } from 'react-icons/bs';
 import { CiLock } from 'react-icons/ci';
-import { FaFire } from 'react-icons/fa';
+import { FaFire, FaQuestion } from 'react-icons/fa';
 import { FaArrowTrendDown } from 'react-icons/fa6';
 import { MdArrowRightAlt } from 'react-icons/md';
 
 import { Experience } from '@/config/experience';
 import { Highlights as HighlightsEnum } from '@/config/highlights';
 
+import SkillDescription from '../SkillDescription/SkillDescription';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
-import SkillDescription from './SkillDescription';
 import StatCard from './StatCard';
 
 function change(count: number, prev_count?: number, percent = true) {
@@ -187,17 +188,17 @@ export function Highlights() {
 
   const highlights: Record<string, HiglightBase> = {
     [HighlightsEnum['Fastest-Growing Skills']]: {
-      icon: <FaFire />,
+      icon: <FaFire className="text-background-accent" />,
       source: API.highlightsGainers,
       valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Skills Losing Demand']]: {
-      icon: <FaArrowTrendDown />,
+      icon: <FaArrowTrendDown className="text-background-accent" />,
       source: API.highlightsDecliners,
       valueRenderer: skillValueRenderer,
     },
     [HighlightsEnum['Newly Emerging Skills']]: {
-      icon: <CiLock />,
+      icon: <BsStars className="text-background-accent" />,
       source: API.highlightsNewSkills,
       valueRenderer: skillValueRenderer,
     },
@@ -228,17 +229,17 @@ export function Highlights() {
 
   const highlightsSalary: Record<string, HiglightBase> = {
     [HighlightsEnum['Highest-Paying Skills']]: {
-      icon: <FaFire />,
+      icon: <FaFire className="text-background-accent" />,
       source: API.highlightsHighestSalary,
       valueRenderer: salaryRenderer,
     },
     [HighlightsEnum['Lowest-Paying Skills']]: {
-      icon: <FaArrowTrendDown />,
+      icon: <FaArrowTrendDown className="text-background-accent" />,
       source: API.highlightsLowestSalary,
       valueRenderer: salaryRenderer,
     },
     [HighlightsEnum['Skills with Undisclosed Salaries']]: {
-      icon: <CiLock />,
+      icon: <FaQuestion className="text-background-accent" size={10} />,
       source: API.highlightsUndefinedSalary,
       valueRenderer: salaryRenderer,
     },

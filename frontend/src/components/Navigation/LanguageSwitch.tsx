@@ -28,7 +28,7 @@ export function LanguageSwitch() {
         </Button>
       </PopoverTrigger>
       <PopoverContent>
-        <div className="min-w-36">
+        <div className="min-w-36 p-2">
           {languages.map((currentLanguage) => (
             <div
               className={`flex min-w-max cursor-pointer items-center justify-between rounded px-2 py-3 hover:text-background-accent ${currentLanguage == selectedLanguage ? 'bg-background-secondary' : ''}`}

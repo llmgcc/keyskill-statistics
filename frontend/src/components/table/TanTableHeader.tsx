@@ -1,8 +1,9 @@
 import { flexRender, Header, Table } from '@tanstack/react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 
-import { alignRight, getCommonPinningStyles } from './common';
 import { useStickyOffset } from '@/hooks/useStickyOffset';
+
+import { alignRight, getCommonPinningStyles } from './common';
 
 interface TanTableHeaderProps<T extends object> {
   table: Table<T>;
@@ -12,7 +13,6 @@ export function TanTableHeader<T extends object>({
   table,
 }: TanTableHeaderProps<T>) {
   const { ref, offset } = useStickyOffset('tableHeader');
-
 
   function sortingIcon(header: Header<T, unknown>) {
     function sortingDirection() {
@@ -31,7 +31,11 @@ export function TanTableHeader<T extends object>({
   }
 
   return (
-    <thead className="sticky z-50 h-10 border-spacing-0 bg-background-primary text-xs shadow-background-secondary" ref={ref} style={{top: offset}}>
+    <thead
+      className="sticky z-50 h-10 border-spacing-0 bg-background-primary text-xs shadow-background-secondary"
+      ref={ref}
+      style={{ top: offset }}
+    >
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header) => (

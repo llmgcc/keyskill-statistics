@@ -39,7 +39,7 @@ export function CurrencySwitch() {
         </Button>
       </PopoverTrigger>
       <PopoverContent>
-        <div className="min-w-44">
+        <div className="min-w-44 p-2">
           {currencies.map((c) => (
             <div
               className={`flex min-w-max cursor-pointer items-center justify-between rounded px-2 py-3 hover:text-background-accent ${selectedCurrency?.currency_code === c.currency_code ? 'bg-background-secondary' : ''}`}

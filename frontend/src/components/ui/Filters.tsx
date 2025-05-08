@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { IoFilterSharp } from 'react-icons/io5';
 
 import { Experience } from '@/config/experience';
+import { useStickyOffset } from '@/hooks/useStickyOffset';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
 } from '@/components/ui/AppSelect';
-import { useStickyOffset } from '@/hooks/useStickyOffset';
 
 export function Filters() {
   const { setExperience, selectedExperience, experienceList } =
@@ -19,9 +19,12 @@ export function Filters() {
   const { t } = useTranslation();
   const { ref, offset } = useStickyOffset('filters');
 
-
   return (
-    <div className="app-container text sticky top-[48px] z-50 text-text" ref={ref} style={{top: offset}}>
+    <div
+      className="app-container text sticky top-[48px] z-50 text-text"
+      ref={ref}
+      style={{ top: offset }}
+    >
       <div
         className={`z-40 flex h-10 justify-between rounded border-[1px] border-background-secondary bg-background-primary p-2 !shadow-sm`}
       >

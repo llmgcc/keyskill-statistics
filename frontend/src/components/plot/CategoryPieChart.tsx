@@ -1,17 +1,12 @@
-import { cloneElement, useState } from 'react';
+import { useState } from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from 'recharts';
+import { PieSectorDataItem } from 'recharts/types/polar/Pie';
 
-const renderActiveShape = (props: any) => {
-  // const RADIAN = Math.PI / 180;
-
-  // const a = 10;
-  // const b = 30;
-
+const renderActiveShape = (props: PieSectorDataItem) => {
   const {
     cx,
     cy,
-    // midAngle,
     innerRadius,
     outerRadius,
     startAngle,
@@ -19,23 +14,13 @@ const renderActiveShape = (props: any) => {
     fill,
     payload,
   } = props;
-  // const sin = Math.sin(-RADIAN * midAngle);
-  // const cos = Math.cos(-RADIAN * midAngle);
-  // const sx = cx + (outerRadius + a) * cos;
-  // const sy = cy + (outerRadius + a) * sin;
-  // const mx = cx + (outerRadius + b) * cos;
-  // const my = cy + (outerRadius + b) * sin;
-  // const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  // const ey = my;
-  // const textAnchor = cos >= 0 ? 'start' : 'end';
-
   return (
     <g>
       <Sector
         cx={cx}
         cy={cy}
         innerRadius={innerRadius}
-        outerRadius={outerRadius + 5}
+        outerRadius={(outerRadius ?? 0) + 5}
         startAngle={startAngle}
         endAngle={endAngle}
         fill={fill}
@@ -49,25 +34,32 @@ const renderActiveShape = (props: any) => {
 
       <g>
         <foreignObject
-          x={cx - 10} // Adjust these values based on your icon size
-          y={cy - 15}
+          x={(cx ?? 0) - 10}
+          y={(cy ?? 0) - 15}
           width={20}
           height={20}
         >
           <div className="flex h-full w-full items-center justify-center">
-            {/* <FaChartPie size={20} className="text-text-secondary text-xs" style={{color: fill}}/> */}
-            {/* {payload.icon} */}
-            {cloneElement(payload.icon ?? <FaQuestion />, {
-              size: 20,
-              className: 'text-text-secondary text-xs',
-              style: { color: fill },
-            })}
+            {payload.icon ? (
+              <payload.icon.type
+                {...payload.icon.props}
+                size={20}
+                className="text-xs text-text-secondary"
+                style={{ color: fill }}
+              />
+            ) : (
+              <FaQuestion
+                size={20}
+                className="text-xs text-text-secondary"
+                style={{ color: fill }}
+              />
+            )}
           </div>
         </foreignObject>
       </g>
       <text
-        x={cx + 2}
-        y={cy + 10}
+        x={(cx ?? 0) + 2}
+        y={(cy ?? 0) + 10}
         dy={8}
         textAnchor="middle"
         fill={'rgb(var(--color-text-secondary))'}
@@ -82,9 +74,9 @@ const renderActiveShape = (props: any) => {
 export function CategoryPieChart(props: {
   data: { name: string; value: number; color: string }[];
 }) {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const onPieEnter = (_: any, index: any) => {
+  const onPieEnter = (_: React.MouseEvent, index: number) => {
     setActiveIndex(index);
   };
 
@@ -114,9 +106,9 @@ export function CategoryPieChart(props: {
               startAngle={360}
               endAngle={0}
             >
-              {props.data.map((entry, index) => (
+              {props.data.map((entry) => (
                 <Cell
-                  key={`cell-${index}`}
+                  key={`cell-${entry.name}`}
                   fill={entry.color}
                   style={style}
                   stroke={'rgb(var(--color-text-secondary))'}
@@ -134,7 +126,7 @@ export function CategoryPieChart(props: {
                 key={c.name}
                 className={`flex cursor-pointer justify-between p-2 text-xs ${activeIndex === index ? 'opacity-100' : activeIndex !== null ? 'opacity-50' : ''}`}
                 onMouseLeave={() => setActiveIndex(null)}
-                onMouseEnter={() => onPieEnter(null, index)}
+                onMouseEnter={(e) => onPieEnter(e, index)}
               >
                 <div className="flex">
                   <div
