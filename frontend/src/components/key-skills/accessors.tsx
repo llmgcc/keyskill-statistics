@@ -13,7 +13,6 @@ import { CountRenderer } from '../table/renderers/CountRenderer';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
 import { CategoryDescription } from '../ui/CategoryDescription';
-import SkillImage from '../ui/SkillImage';
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -263,6 +262,42 @@ export const chartAccessor = <T extends KeySkill>(config: {
   },
   size: 150,
   enableSorting: false,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const confidenceAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  header: string;
+  name: string;
+  categoryKey: 'categories' | 'technologies';
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: config.header,
+  cell: (info) => {
+    const confidence = info.row.original[config.categoryKey].find(
+      (c) => c.name === config.name,
+    )?.confidence;
+    return (
+      <>
+        {confidence ? (
+          <div className="text-sm">{(confidence * 100)?.toFixed(2)}%</div>
+        ) : null}
+      </>
+    );
+  },
+  sortingFn: (rowA, rowB) => {
+    const confidenceA =
+      rowA.original[config.categoryKey].find((c) => c.name === config.name)
+        ?.confidence || 0;
+    const confidenceB =
+      rowB.original[config.categoryKey].find((c) => c.name === config.name)
+        ?.confidence || 0;
+    return confidenceA - confidenceB;
+  },
+  size: 75,
+  enableSorting: true,
   meta: {
     alignRight: true,
   },
