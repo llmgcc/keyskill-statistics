@@ -17,9 +17,10 @@ interface Tabs {
 
 interface TabNavigationProps {
   tabs: Tabs[];
+  append?: JSX.Element;
 }
 
-export function TabNavigation({ tabs }: TabNavigationProps) {
+export function TabNavigation({ tabs, append }: TabNavigationProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -47,7 +48,7 @@ export function TabNavigation({ tabs }: TabNavigationProps) {
           navigate(selectedTab.path);
         }}
       >
-        <div className="flex items-center justify-between">
+        <div className="items-center lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-4">
           <Tabs.List>
             {tabs.map((tab) => (
               <Tabs.Trigger
@@ -59,6 +60,7 @@ export function TabNavigation({ tabs }: TabNavigationProps) {
               </Tabs.Trigger>
             ))}
           </Tabs.List>
+          <div>{append}</div>
         </div>
 
         <Routes>

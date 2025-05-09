@@ -1,24 +1,22 @@
 import { useState } from 'react';
 import { Category } from '@/interfaces';
-import {
-  ScrollArea,
-  Switch,
-  Text,
-  TextField,
-  Tooltip,
-} from '@radix-ui/themes';
+import { ScrollArea, Switch, Text, TextField, Tooltip } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 
 import { CategoriesStyle } from '@/config/categories';
 import { TechnologiesStyle } from '@/config/technologies';
-import {Select, SelectContent, SelectItem, SelectTrigger} from '@/components/ui/AppSelect'
-
+import { useScreenSize } from '@/hooks/useScreenSize';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from '@/components/ui/AppSelect';
 
 type CategoryFilterProps = {
   options: Category[];
-  defaultName: string;
   categoryKey: 'domains' | 'categories';
   onChange: (selected: Category | null, strict: boolean) => void;
   icon: JSX.Element;
@@ -26,7 +24,6 @@ type CategoryFilterProps = {
 
 function CategoryFilter({
   options: defaultOptions,
-  defaultName,
   categoryKey,
   icon,
   onChange,
@@ -38,6 +35,20 @@ function CategoryFilter({
   const [textFilter, setTextFilter] = useState<string | number | undefined>('');
   const [strictFilter, setStrictFilter] = useState(true);
   const { t } = useTranslation();
+  const { isMobile } = useScreenSize();
+  const defaultName = categoryKey == 'domains' ? 'allDomains' : 'allCategories';
+
+  function displayDefaultNameKey() {
+    if (categoryKey == 'domains') {
+      return isMobile ? 'all' : 'allDomains';
+    }
+    return isMobile ? 'all' : 'allCategories';
+  }
+
+  function displayDefaultName() {
+    const translationKey = displayDefaultNameKey();
+    return t(`categoryFilter.${translationKey}`);
+  }
 
   function getColor(c: Category | null) {
     const colorsList: {
@@ -74,7 +85,7 @@ function CategoryFilter({
           <div className="mx-1 max-w-56 truncate text-sm text-text">
             {category?.name
               ? t(`${categoryKey}.${category.name}`)
-              : defaultName}
+              : displayDefaultName()}
           </div>
         </div>
       </SelectItem>
@@ -82,7 +93,8 @@ function CategoryFilter({
   }
 
   function selectCategory(categoryName: string) {
-    const category = defaultOptions.find((c) => c.name === categoryName) ?? null;
+    const category =
+      defaultOptions.find((c) => c.name === categoryName) ?? null;
     setSelectedCategory(category);
     onChange(category, strictFilter);
   }
@@ -98,20 +110,33 @@ function CategoryFilter({
     );
   }
 
+  function triggerDisplayTitle() {
+    if (!selectedCategory) {
+      return displayDefaultName();
+    }
+    if (isMobile) {
+      const mobileCategoryKey =
+        categoryKey == 'domains' ? 'domainsShort' : 'categoriesShort';
+      return t(`${mobileCategoryKey}.${selectedCategory.name}`);
+    }
+    return t(`${categoryKey}.${selectedCategory.name}`);
+  }
+
   return (
-    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={selectCategory} defaultValue={defaultName}>
+    <Select
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      onValueChange={selectCategory}
+      defaultValue={defaultName}
+    >
       <SelectTrigger className="h-full">
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <div>{icon}</div>
-          <div className="ml-1 mr-2">
-            {selectedCategory?.name ?? defaultName}
-          </div>
+          <div className="ml-1 mr-2">{triggerDisplayTitle()}</div>
         </div>
       </SelectTrigger>
 
-      <SelectContent
-        side="bottom"
-      >
+      <SelectContent side="bottom">
         <div className="border-shadow-full z-40 p-2">
           <TextField.Root
             placeholder={t('categoryFilter.placeholder')}
@@ -151,7 +176,7 @@ function CategoryFilter({
           </div>
         </div>
         <ScrollArea
-          className="h-72 rounded"
+          className="h-72 max-h-fit rounded"
           scrollHideDelay={0}
           type="always"
           scrollbars="vertical"

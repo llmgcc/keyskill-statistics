@@ -8,7 +8,7 @@ import { ColumnDef, PaginationState } from '@tanstack/react-table';
 import { useSkills } from '@/hooks/useSkills';
 import { TanTable } from '@/components/table/TanTable';
 
-import { SkillsFilter, SkillsFilterState } from '../SkillsFilter/SkillsFilter';
+import { SkillsFilterState } from '../SkillsFilter/SkillsFilter';
 import {
   chartAccessor,
   countAccessor,
@@ -19,21 +19,25 @@ import {
   skillNameAccessor,
 } from './accessors';
 
-function KeySkills() {
+interface KeySkillsProps {
+  filterState: SkillsFilterState;
+}
+
+function KeySkills({ filterState }: KeySkillsProps) {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
 
-  const [filterState, setFilterState] = useState<SkillsFilterState>({
-    category: {
-      selected: null,
-      strict: true,
-    },
-    domain: {
-      selected: null,
-      strict: true,
-    },
-    skill: '',
-  });
+  // const [filterState, setFilterState] = useState<SkillsFilterState>({
+  //   category: {
+  //     selected: null,
+  //     strict: true,
+  //   },
+  //   domain: {
+  //     selected: null,
+  //     strict: true,
+  //   },
+  //   skill: '',
+  // });
 
   const pageSizeVariants = [25, 50, 100];
 
@@ -101,7 +105,7 @@ function KeySkills() {
 
   return (
     <div>
-      <SkillsFilter state={filterState} onChange={setFilterState} />
+      {/* <SkillsFilter state={filterState} onChange={setFilterState} /> */}
       <TanTable
         columns={columns}
         data={skillsData?.skills ?? fillData}

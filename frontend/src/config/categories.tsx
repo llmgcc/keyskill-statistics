@@ -39,6 +39,65 @@ export enum Categories {
   'Other' = 'Other',
 }
 
+export const DomainDescription: Record<Categories, string> = {
+  'Frontend development':
+    'Building interactive user interfaces and optimizing client-side.',
+  'Backend development':
+    'Implementing server logic, APIs, and data management.',
+  'DevOps & Infrastructure':
+    'Automating CI/CD, containerization, and server maintenance.',
+  'Data Science & Machine Learning':
+    'Data analysis, modeling, and deploying ML solutions.',
+  'Mobile development':
+    'Developing native and cross‑platform mobile applications.',
+  'Testing & Quality assurance':
+    'Planning and automating software testing processes.',
+  'Computer graphics & Game development':
+    '	2D/3D graphics, game engines, and rendering optimization.',
+  Blockchain: 'Smart contracts, protocols, and decentralized networks.',
+  Design: 'UI/UX design, prototyping, and visual identity.',
+  'System administration':
+    'Configuring, monitoring, and supporting server systems.',
+  'Website administration': 'Managing CMS, content, and website security.',
+  '1C Development':
+    '	Building and customizing business apps on the 1C platform.',
+  'Systems analytics':
+    '	Gathering requirements, processes, and technical documentation.',
+  'Systems programming':
+    'Low‑level software: drivers, embedded systems, kernels.',
+  Cybersecurity: 'Securing systems, penetration testing, and risk management.',
+  'HR management': 'Recruiting, onboarding, and retaining IT personnel.',
+  'Project management': 'Planning, coordinating, and overseeing IT projects.',
+  'Network administration':
+    'Designing, configuring, and monitoring computer networks.',
+  'Digital Marketing & SEO':
+    'Promotion, site optimization, and traffic analytics.',
+  Other: 'Non‑technical and supporting roles outside core IT domains.',
+};
+
+export const DomainShort: Record<Categories, string> = {
+  'Frontend development': 'Front',
+  'Backend development': 'Back',
+  'DevOps & Infrastructure': 'DevOps',
+  'Data Science & Machine Learning': 'DS&ML',
+  'Mobile development': 'Mobile',
+  'Testing & Quality assurance': 'QA',
+  'Computer graphics & Game development': 'CG/GD',
+  Blockchain: 'BC',
+  Design: 'Design',
+  'System administration': 'SysAdm',
+  'Website administration': 'WebAdm',
+  '1C Development': '1C',
+  'Systems analytics': 'Analytics',
+  'Systems programming': 'SysProg',
+  Cybersecurity: 'Security',
+  'HR management': 'HR',
+  'Project management': 'PM',
+  'Network administration': 'Network',
+  'Digital Marketing & SEO': 'Marketing',
+  Other: 'Other',
+};
+
 export const CategoriesStyle = {
   [Categories['Frontend development']]: {
     logo: <FaCode />,
@@ -120,29 +179,4 @@ export const CategoriesStyle = {
     logo: <FaQuestion />,
     color: colors.zinc[500],
   },
-};
-
-export const CategoryDescription = {
-  [Categories['Frontend development']]: 'Frontend development',
-  [Categories['Backend development']]: 'Backend development',
-  [Categories['DevOps & Infrastructure']]: 'DevOps & Infrastructure',
-  [Categories['Data Science & Machine Learning']]:
-    'Data Science & Machine Learning',
-  [Categories['Mobile development']]: 'Mobile development',
-  [Categories['Testing & Quality assurance']]: 'Testing & Quality assurance',
-  [Categories['Computer graphics & Game development']]:
-    'Computer graphics & Game development',
-  [Categories.Blockchain]: 'Blockchain',
-  [Categories.Design]: 'Design',
-  [Categories['System administration']]: 'System administration',
-  [Categories['Website administration']]: 'Website administration',
-  [Categories['1C Development']]: '1C Development',
-  [Categories['Systems analytics']]: 'Systems analytics',
-  [Categories['Systems programming']]: 'Systems programming',
-  [Categories.Cybersecurity]: 'Cybersecurity',
-  [Categories['HR management']]: 'HR management',
-  [Categories['Project management']]: 'Project management',
-  [Categories['Network administration']]: 'Network administration',
-  [Categories['Digital Marketing & SEO']]: 'Digital Marketing & SEO',
-  [Categories.Other]: 'Other',
 };

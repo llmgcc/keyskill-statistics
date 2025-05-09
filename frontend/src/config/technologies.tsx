@@ -57,6 +57,100 @@ export enum Technologies {
   'Code Quality Tools' = 'Code Quality Tools',
 }
 
+export const CategoryDescription: Record<Technologies, string> = {
+  Languages:
+    'Programming and markup languages for development and data processing.',
+  Databases: 'Systems for storing and querying structured data.',
+  'Frontend Libraries and Frameworks':
+    'Tools for dynamic interfaces and state management.',
+  'Backend Libraries and Frameworks':
+    '	Server frameworks for APIs, business logic, and database work.',
+  'Soft skills': 'Communication, teamwork, and interpersonal abilities.',
+  'Operating systems':
+    'OS for development, deployment, and system administration.',
+  'Containerization & Orchestration':
+    'Packaging in containers and managing scalable deployments.',
+  'Infrastructure Automation & Configuration':
+    '	Infrastructure-as-code: automated provisioning and configuration.',
+  'Code Collaboration & Integration':
+    'Version control and CI/CD tools for team development.',
+  'Graphic design':
+    'Creating visual elements, layouts, and digital illustrations.',
+  Monitoring: 'Collecting metrics and alerts to track system health.',
+  CMS: 'Content management platforms for website publishing and upkeep.',
+  'Network Protocols':
+    'Rules for data exchange between devices and applications.',
+  'Web Servers':
+    'Servers for handling HTTP/HTTPS requests and serving content.',
+  'Integrated Development Environments':
+    'IDEs with editor, debugger, and build tools.',
+  'Cloud platforms':
+    'Cloud services for compute, storage, and resource management.',
+  'Mobile Libraries and Frameworks':
+    'Frameworks for native and cross‑platform mobile development.',
+  'Message Brokers':
+    'Message brokers and queues for asynchronous communication.',
+  'Testing Tools':
+    'Automating functional, integration, and performance testing.',
+  'Machine Learning Libraries and Frameworks':
+    'Libraries for training, evaluating, and deploying ML/DL models.',
+  'Security tools and frameworks':
+    'Tools for penetration testing, security analysis, and protection.',
+  'API technologies and protocols':
+    'Protocols and standards for building and consuming web services.',
+  'Game engines':
+    'Frameworks for 2D/3D game development, rendering, and physics.',
+  'Project Management Tools':
+    'Tools for planning, tracking, and managing project tasks.',
+  'Blockchain platforms & tools':
+    'Platforms and utilities for decentralized application development.',
+  'Messaging & Queuing systems':
+    'Message brokers and queues for asynchronous communication.',
+  'Search & Indexing engines':
+    'Full‑text search systems and data indexing engines.',
+  'Data Visualization & BI tools':
+    'Dashboards and reports for data visualization and business analytics.',
+  'Graphics APIs & GPGPU': 'APIs for hardware rendering and GPGPU computation.',
+  'Documentation tools':
+    'Systems for writing, storing, and publishing technical docs.',
+  'Code Quality Tools':
+    'Analyzers and linters for code quality and compliance metrics.',
+};
+
+export const CategoryShort: Record<Technologies, string> = {
+  Languages: 'Langs',
+  Databases: 'DB',
+  'Frontend Libraries and Frameworks': 'FrontLibs',
+  'Backend Libraries and Frameworks': 'BackLibs',
+  'Soft skills': 'Soft',
+  'Operating systems': 'OS',
+  'Containerization & Orchestration': 'Containers',
+  'Infrastructure Automation & Configuration': 'IaC',
+  'Code Collaboration & Integration': 'CI/CD',
+  'Graphic design': 'Design',
+  Monitoring: 'Monitor',
+  CMS: 'CMS',
+  'Network Protocols': 'Net',
+  'Web Servers': 'WebServ',
+  'Integrated Development Environments': 'IDE',
+  'Cloud platforms': 'Cloud',
+  'Mobile Libraries and Frameworks': 'Mobile',
+  'Message Brokers': 'Brokers',
+  'Testing Tools': 'Testing',
+  'Machine Learning Libraries and Frameworks': 'ML',
+  'Security tools and frameworks': 'Security',
+  'API technologies and protocols': 'API',
+  'Game engines': 'Games',
+  'Project Management Tools': 'PM',
+  'Blockchain platforms & tools': 'Block',
+  'Messaging & Queuing systems': 'Queue',
+  'Search & Indexing engines': 'Search',
+  'Data Visualization & BI tools': 'BI',
+  'Graphics APIs & GPGPU': 'Graphics',
+  'Documentation tools': 'Docs',
+  'Code Quality Tools': 'CodeQ',
+};
+
 export const TechnologiesStyle = {
   [Technologies.Languages]: {
     logo: <PiBracketsCurlyBold />,
