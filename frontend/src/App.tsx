@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import './App.css';
 import '@/i18n/i18n';
 
 import i18n from '@/i18n/i18n';
-import { Tabs } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider } from 'react-i18next';
 import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 
@@ -17,9 +17,8 @@ import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from './components/Navigation/Navigation.tsx';
 import { Filters } from './components/ui/Filters.tsx';
-import SkillImage from './components/ui/SkillImage.tsx';
+import { TabNavigation } from './components/ui/TabNavigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
-import { Categories } from './config/categories.tsx';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
@@ -35,11 +34,11 @@ export const queryClient = new QueryClient({
 });
 
 export default function App() {
+  const navigate = useNavigate();
   const fetchCategories = useCategoriesStore((state) => state.fetchCategories);
   const fetchDomains = useDomainsStore((state) => state.fetchDomains);
   const fetchStats = useStatsStore((state) => state.fetchStats);
   const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
-  const [currentTab, setCurrentTab] = useState(0);
   const tabsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -48,6 +47,19 @@ export default function App() {
     fetchDomains();
     fetchStats();
   }, []);
+
+  const scrollToTabs = () => {
+    const offset = 100;
+    const element = tabsRef.current;
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   const tabs = [
     {
@@ -61,6 +73,7 @@ export default function App() {
       ),
       body: () => <KeySkills />,
       name: 'skills',
+      path: '/key-skills',
     },
     {
       title: (
@@ -77,6 +90,7 @@ export default function App() {
         </div>
       ),
       name: 'domains',
+      path: '/domains',
     },
     {
       title: (
@@ -93,22 +107,9 @@ export default function App() {
         </div>
       ),
       name: 'categories',
+      path: '/categories',
     },
   ];
-
-  function openNewTab(tabIndex: number) {
-    const offset = 100;
-    const element = tabsRef.current;
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth',
-      });
-    }
-    setCurrentTab(tabIndex);
-  }
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -116,60 +117,17 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
             <Navigation />
-            <TextSection onLinkClick={(tab) => openNewTab(tab)} />
+            <TextSection
+              onLinkClick={(tab) => {
+                navigate(tabs[tab].path);
+                scrollToTabs();
+              }}
+            />
             <Filters />
             <Highlights />
 
-            {/* {
-            Object.keys(Categories).map(c => {
-              return (
-                <div key={c} className='flex items-center p-2'>
-                  <div className='w-10 aspect-square'>
-                    <SkillImage category={c}/>
-                  </div>
-                  <div className='mx-2'>
-                    {c}
-                  </div>
-                </div>
-              )
-            })
-          } */}
-
-            <div className="app-container mt-4" ref={tabsRef}>
-              <Tabs.Root
-                value={tabs[currentTab].name}
-                onValueChange={(value) => {
-                  const newIndex = tabs.findIndex((tab) => tab.name === value);
-                  setCurrentTab(newIndex);
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <Tabs.List>
-                    {tabs.map((tab) => {
-                      return (
-                        <Tabs.Trigger
-                          value={tab.name}
-                          key={tab.name}
-                          className="cursor-pointer"
-                        >
-                          {tab.title}
-                        </Tabs.Trigger>
-                      );
-                    })}
-                  </Tabs.List>
-                </div>
-                {tabs.map((tab) => {
-                  return (
-                    <Tabs.Content
-                      value={tab.name}
-                      className="py-2"
-                      key={tab.name}
-                    >
-                      {tab.body()}
-                    </Tabs.Content>
-                  );
-                })}
-              </Tabs.Root>
+            <div ref={tabsRef}>
+              <TabNavigation tabs={tabs} />
             </div>
           </div>
         </QueryClientProvider>
