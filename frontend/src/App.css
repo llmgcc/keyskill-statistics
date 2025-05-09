@@ -15,6 +15,14 @@ body {
   background-color: var(--color-background-primary);
 }
 
+.rt-BaseTabListTrigger:where([data-state='active'], [data-active])::before {
+  background-color: rgb(var(--color-background-accent)) !important;
+}
+
+.rt-BaseTabListTrigger:where([data-state='active'], [data-active]) {
+  color: rgb(var(--color-background-accent)) !important;
+}
+
 html {
   scrollbar-gutter: stable;
   background-color: rgb(var(--color-background-primary)) !important;

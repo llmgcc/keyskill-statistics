@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/AppPopover';
 
-import { CategoryPieChart } from '../plot/CategoryPieChart';
+import { CategoryPieChart } from './CategoryPieChart';
 
 type SkillKey = 'categories' | 'technologies';
 interface CategoryPopoverProps {

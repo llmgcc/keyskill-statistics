@@ -52,22 +52,24 @@ export function HighlightsCardTab({
 
   return (
     <div>
-      {(data ?? defaultData).map((h: KeySkill) => {
-        return (
-          <div className="flex items-center justify-between p-2" key={h.name}>
-            <div className="">
+      {(isLoading || isFetching ? defaultData : (data ?? defaultData)).map(
+        (h: KeySkill) => {
+          return (
+            <div className="flex items-center justify-between p-2" key={h.name}>
+              <div className="">
+                <Skeleton loading={isLoading || isFetching}>
+                  <div>
+                    <SkillDescription {...h} />
+                  </div>
+                </Skeleton>
+              </div>
               <Skeleton loading={isLoading || isFetching}>
-                <div>
-                  <SkillDescription {...h} />
-                </div>
+                <div>{valueRenderer(h)}</div>
               </Skeleton>
             </div>
-            <Skeleton loading={isLoading || isFetching}>
-              <div>{valueRenderer(h)}</div>
-            </Skeleton>
-          </div>
-        );
-      })}
+          );
+        },
+      )}
     </div>
   );
 }
