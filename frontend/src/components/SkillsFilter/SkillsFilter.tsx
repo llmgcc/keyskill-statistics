@@ -49,7 +49,7 @@ export function SkillsFilter({ state, onChange }: SkillsFilterProps) {
           value={state.skill}
           onChange={updateTextFilter}
           placeholder={t('categoryFilter.placeholderForSkill')}
-          className="border-shadow-full h-7 bg-background-secondary/50 p-0 outline-background-secondary"
+          className="border-shadow-full bg-background-secondary/50 outline-background-secondary"
         >
           <TextField.Slot>
             <BiSearch />
