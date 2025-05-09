@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Select as SelectPrimitive } from 'radix-ui';
 import { BiChevronDown } from 'react-icons/bi';
 import { FaCheck } from 'react-icons/fa';
+import { Theme } from '@radix-ui/themes';
 
 export const Select = SelectPrimitive.Root;
 
@@ -29,9 +30,10 @@ export const SelectContent = React.forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <SelectPrimitive.Portal>
+      <Theme>
       <SelectPrimitive.Content
         position="popper"
-        className="SelectContent min-w-max rounded-md border-2 border-background-secondary bg-background-primary !p-2 text-text shadow-md shadow-background-gray focus:outline-background-secondary"
+        className="SelectContent min-w-max rounded-md border-2 border-background-secondary bg-background-primary text-text shadow-md shadow-background-gray focus:outline-background-secondary"
         sideOffset={5}
         align="end"
         ref={forwardedRef}
@@ -39,6 +41,7 @@ export const SelectContent = React.forwardRef<
       >
         <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
       </SelectPrimitive.Content>
+      </Theme>
     </SelectPrimitive.Portal>
   );
 });

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Category } from '@/interfaces';
 import {
-  Popover,
   ScrollArea,
   Switch,
   Text,
@@ -10,12 +9,12 @@ import {
 } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
-import { FaCheck } from 'react-icons/fa';
 import { IoInformationCircleOutline } from 'react-icons/io5';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 import { CategoriesStyle } from '@/config/categories';
 import { TechnologiesStyle } from '@/config/technologies';
+import {Select, SelectContent, SelectItem, SelectTrigger} from '@/components/ui/AppSelect'
+
 
 type CategoryFilterProps = {
   options: Category[];
@@ -50,7 +49,7 @@ function CategoryFilter({
     if (c?.name && c?.name in colorsList) {
       return colorsList[c.name].color;
     }
-    return 'rgb(var(--color-background-secondary))';
+    return 'rgb(var(--color-background-gray))';
   }
 
   function getFilteredOptions() {
@@ -61,16 +60,11 @@ function CategoryFilter({
   }
 
   function renderCategory(category: Category | null) {
-    function selectCategory(category: Category | null) {
-      setSelectedCategory(category);
-      onChange(category, strictFilter);
-    }
-
     return (
-      <div
+      <SelectItem
         className="flex cursor-pointer items-center justify-between bg-background-primary p-2 hover:bg-background-secondary"
         key={category?.name ?? defaultName}
-        onClick={() => selectCategory(category)}
+        value={category?.name ?? defaultName}
       >
         <div className="flex items-center">
           <div
@@ -83,11 +77,14 @@ function CategoryFilter({
               : defaultName}
           </div>
         </div>
-        <div className="mx-2">
-          {selectedCategory === category && <FaCheck size={10} />}
-        </div>
-      </div>
+      </SelectItem>
     );
+  }
+
+  function selectCategory(categoryName: string) {
+    const category = defaultOptions.find((c) => c.name === categoryName) ?? null;
+    setSelectedCategory(category);
+    onChange(category, strictFilter);
   }
 
   function categoriesList() {
@@ -102,23 +99,17 @@ function CategoryFilter({
   }
 
   return (
-    <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Popover.Trigger className="h-full">
-        <div className="border-shadow-full flex h-full cursor-pointer items-center rounded bg-background-primary px-2 py-1 text-sm text-text hover:bg-background-secondary">
+    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={selectCategory} defaultValue={defaultName}>
+      <SelectTrigger className="h-full">
+        <div className='flex items-center'>
           <div>{icon}</div>
           <div className="ml-1 mr-2">
             {selectedCategory?.name ?? defaultName}
           </div>
-          <div
-            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          >
-            <MdOutlineKeyboardArrowDown size={20} />
-          </div>
         </div>
-      </Popover.Trigger>
+      </SelectTrigger>
 
-      <Popover.Content
-        className="rounded border-[1px] border-background-secondary bg-background-primary p-0 shadow-background-secondary"
+      <SelectContent
         side="bottom"
       >
         <div className="border-shadow-full z-40 p-2">
@@ -160,7 +151,7 @@ function CategoryFilter({
           </div>
         </div>
         <ScrollArea
-          className="h-96 rounded"
+          className="h-72 rounded"
           scrollHideDelay={0}
           type="always"
           scrollbars="vertical"
@@ -169,8 +160,8 @@ function CategoryFilter({
             {categoriesList()}
           </div>
         </ScrollArea>
-      </Popover.Content>
-    </Popover.Root>
+      </SelectContent>
+    </Select>
   );
 }
 

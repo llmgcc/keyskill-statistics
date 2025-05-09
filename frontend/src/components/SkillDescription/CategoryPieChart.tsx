@@ -85,7 +85,7 @@ export function CategoryPieChart(props: {
   };
 
   return (
-    <div className="mx-4 flex flex-col items-center justify-center md:flex-row">
+    <div className="mx-4 flex flex-col md:flex-row justify-center items-center md:justify-start md:items-start">
       <div className="h-44 w-44 md:h-40 md:w-40">
         <ResponsiveContainer width="100%" height="100%" style={style}>
           <PieChart style={style}>
