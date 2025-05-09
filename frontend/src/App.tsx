@@ -17,7 +17,9 @@ import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from './components/Navigation/Navigation.tsx';
 import { Filters } from './components/ui/Filters.tsx';
+import SkillImage from './components/ui/SkillImage.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
+import { Categories } from './config/categories.tsx';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
 import { useCategoriesStore } from './store/categoriesStore.ts';
 import { useCurrencyStore } from './store/currencyStore.ts';
@@ -118,7 +120,22 @@ export default function App() {
             <Filters />
             <Highlights />
 
-            {/* <div className="app-container mt-4" ref={tabsRef}>
+            {/* {
+            Object.keys(Categories).map(c => {
+              return (
+                <div key={c} className='flex items-center p-2'>
+                  <div className='w-10 aspect-square'>
+                    <SkillImage category={c}/>
+                  </div>
+                  <div className='mx-2'>
+                    {c}
+                  </div>
+                </div>
+              )
+            })
+          } */}
+
+            <div className="app-container mt-4" ref={tabsRef}>
               <Tabs.Root
                 value={tabs[currentTab].name}
                 onValueChange={(value) => {
@@ -130,7 +147,11 @@ export default function App() {
                   <Tabs.List>
                     {tabs.map((tab) => {
                       return (
-                        <Tabs.Trigger value={tab.name} key={tab.name}>
+                        <Tabs.Trigger
+                          value={tab.name}
+                          key={tab.name}
+                          className="cursor-pointer"
+                        >
                           {tab.title}
                         </Tabs.Trigger>
                       );
@@ -149,7 +170,7 @@ export default function App() {
                   );
                 })}
               </Tabs.Root>
-            </div> */}
+            </div>
           </div>
         </QueryClientProvider>
       </ThemeProvider>

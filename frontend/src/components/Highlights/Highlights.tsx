@@ -7,8 +7,8 @@ import { MdArrowRightAlt } from 'react-icons/md';
 
 import { Highlights as HighlightsEnum } from '@/config/highlights';
 
-import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
+import { CurrencyDisplay } from '../ui/CurrencyDisplay';
 import { HighlightsCard, HiglightBase } from './HighlightsCard';
 
 export function Highlights() {
@@ -56,18 +56,7 @@ export function Highlights() {
     }
     return (
       <div className="text-xs text-text-primary">
-        <div className="w-28">
-          <SalaryRenderer
-            maxCount={10 ** 6}
-            isLoading={false}
-            selectedPeriod={7}
-            selectedExperience={undefined}
-            name={skill.name}
-            key={'skills_salary'}
-            count={skill.average_salary ?? 0}
-            source={API.salaryPlot}
-          />
-        </div>
+        <CurrencyDisplay valueInRUB={skill.average_salary} />
       </div>
     );
   };

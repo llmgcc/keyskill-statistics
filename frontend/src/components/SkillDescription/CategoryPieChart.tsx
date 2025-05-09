@@ -40,20 +40,19 @@ const renderActiveShape = (props: PieSectorDataItem) => {
           height={20}
         >
           <div className="flex h-full w-full items-center justify-center">
-            {payload.icon ? (
-              <payload.icon.type
-                {...payload.icon.props}
-                size={20}
-                className="text-xs text-text-secondary"
-                style={{ color: fill }}
-              />
-            ) : (
-              <FaQuestion
-                size={20}
-                className="text-xs text-text-secondary"
-                style={{ color: fill }}
-              />
-            )}
+            <div
+              className="aspect-square w-16 rounded-lg p-4"
+              style={{ backgroundColor: fill }}
+            >
+              {payload.icon ? (
+                <payload.icon.type
+                  {...payload.icon.props}
+                  className="text-xs text-white"
+                />
+              ) : (
+                <FaQuestion className="text-xs text-white" />
+              )}
+            </div>
           </div>
         </foreignObject>
       </g>
@@ -86,17 +85,17 @@ export function CategoryPieChart(props: {
   };
 
   return (
-    <div className="mx-4 flex !outline-none">
-      <div className="h-40 w-40">
+    <div className="mx-4 flex flex-col items-center justify-center md:flex-row">
+      <div className="h-44 w-44 md:h-40 md:w-40">
         <ResponsiveContainer width="100%" height="100%" style={style}>
           <PieChart style={style}>
             <Pie
               isAnimationActive={false}
-              activeIndex={activeIndex ?? undefined}
+              activeIndex={activeIndex ?? 0}
               activeShape={renderActiveShape}
               data={props.data}
-              innerRadius={50}
-              outerRadius={70}
+              innerRadius={45}
+              outerRadius={60}
               paddingAngle={3}
               dataKey="value"
               onMouseEnter={onPieEnter}
