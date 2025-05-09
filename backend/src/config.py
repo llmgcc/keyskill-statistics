@@ -1,8 +1,8 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import datetime
 
-MAX_DATE = datetime.datetime(2025, 4, 1)
-
+# MAX_DATE = datetime.datetime(2025, 4, 1)
+MAX_DATE = datetime.datetime.now()
 
 class Settings(BaseSettings):
     user: str
@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     max_date: datetime.datetime = MAX_DATE
     min_date: datetime.datetime = MAX_DATE - datetime.timedelta(days=60)
     skills_min_count: int = 5
+    max_salary : int = 10**6 # RUB
 
     model_config = SettingsConfigDict(env_file="./.env.example")
 

@@ -27,7 +27,7 @@ def get_base_skills(
     where=None,
     with_total_count=False,
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
@@ -105,8 +105,8 @@ def get_base_skills(
     skills = (
         select(*skills_base.c)
         .select_from(skills_base)
-        .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .where(where(skills_base) if where else True)
+        .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .offset(offset)
         .limit(limit)
     )
@@ -189,7 +189,7 @@ def get_base_skills(
         )
         .outerjoin(KeySkillTranslation, KeySkillTranslation.name == skills.c.name)
         .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
-        .order_by(skills.c.place.asc())
+        .order_by(order_by(skills) if order_by else skills.c.place.asc())
     )
 
     if with_total_count:

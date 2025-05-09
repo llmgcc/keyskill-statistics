@@ -11,6 +11,13 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* scrollbar-gutter: stable; */
+  background-color: var(--color-background-primary);
+}
+
+html {
+  scrollbar-gutter: stable;
+  background-color: rgb(var(--color-background-primary)) !important;
 }
 
 .app {
