@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Technologies, TechnologiesStyle } from '@/config/technologies';
 import { Category } from '@/config/types';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import {
   Popover,
   PopoverContent,
@@ -24,8 +25,12 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
   const [buttonKey, setButtonKey] = useState<SkillKey>(defaultKey);
   const { t, i18n } = useTranslation();
   const categories = skill[defaultKey] ?? [];
+  const { isMobile } = useScreenSize();
 
-  const getTranslationKey = (key: SkillKey) => {
+  const getTranslationKey = (key: SkillKey, truncate = false) => {
+    if (isMobile && truncate) {
+      return key == 'categories' ? 'domainsShort' : 'categoriesShort';
+    }
     return key == 'categories' ? 'domains' : 'categories';
   };
 
@@ -86,7 +91,7 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
           className="cursor-pointer select-none text-text-secondary hover:text-text-secondary/80"
           onClick={() => setButtonKey(defaultKey)}
         >
-          {t(`${getTranslationKey(defaultKey)}.${category?.name}`) ??
+          {t(`${getTranslationKey(defaultKey, true)}.${category?.name}`) ??
             t(`common.unknownCategory`)}
         </div>
       </PopoverTrigger>

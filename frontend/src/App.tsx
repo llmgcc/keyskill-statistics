@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './App.css';
 import '@/i18n/i18n';
@@ -16,6 +16,10 @@ import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from './components/Navigation/Navigation.tsx';
+import {
+  SkillsFilter,
+  SkillsFilterState,
+} from './components/SkillsFilter/SkillsFilter.tsx';
 import { Filters } from './components/ui/Filters.tsx';
 import { TabNavigation } from './components/ui/TabNavigation.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
@@ -40,6 +44,18 @@ export default function App() {
   const fetchStats = useStatsStore((state) => state.fetchStats);
   const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
   const tabsRef = useRef<HTMLDivElement | null>(null);
+
+  const [filterState, setFilterState] = useState<SkillsFilterState>({
+    category: {
+      selected: null,
+      strict: true,
+    },
+    domain: {
+      selected: null,
+      strict: true,
+    },
+    skill: '',
+  });
 
   useEffect(() => {
     fetchCurrencies();
@@ -71,7 +87,7 @@ export default function App() {
           <div className="ml-1">Key Skills</div>
         </div>
       ),
-      body: () => <KeySkills />,
+      body: () => <KeySkills filterState={filterState} />,
       name: 'skills',
       path: '/key-skills',
     },
@@ -127,7 +143,17 @@ export default function App() {
             <Highlights />
 
             <div ref={tabsRef}>
-              <TabNavigation tabs={tabs} />
+              <TabNavigation
+                tabs={tabs}
+                append={
+                  <div className="flex w-full items-end justify-end text-right">
+                    <SkillsFilter
+                      state={filterState}
+                      onChange={setFilterState}
+                    />
+                  </div>
+                }
+              />
             </div>
           </div>
         </QueryClientProvider>

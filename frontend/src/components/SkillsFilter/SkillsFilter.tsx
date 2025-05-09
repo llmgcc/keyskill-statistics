@@ -44,12 +44,12 @@ export function SkillsFilter({ state, onChange }: SkillsFilterProps) {
 
   return (
     <div className="my-2 flex items-center justify-end gap-2">
-      <div className="w-fit">
+      <div>
         <TextField.Root
           value={state.skill}
           onChange={updateTextFilter}
           placeholder={t('categoryFilter.placeholderForSkill')}
-          className="border-shadow-full bg-background-secondary/50 outline-background-secondary"
+          className="border-shadow-full h-9 bg-background-secondary/50 outline-background-secondary md:h-7"
         >
           <TextField.Slot>
             <BiSearch />
@@ -61,7 +61,6 @@ export function SkillsFilter({ state, onChange }: SkillsFilterProps) {
           <CategoryFilter
             icon={<MdOutlineCategory className="text-blue-400" />}
             options={domains}
-            defaultName={t('categoryFilter.allDomains')}
             categoryKey="domains"
             onChange={updateDomainFilter}
           />
@@ -70,7 +69,6 @@ export function SkillsFilter({ state, onChange }: SkillsFilterProps) {
           <CategoryFilter
             icon={<BiCategory className="text-yellow-400" />}
             options={categories}
-            defaultName={t('categoryFilter.allCategories')}
             categoryKey="categories"
             onChange={updateCategoryFilter}
           />
