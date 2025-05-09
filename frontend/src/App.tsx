@@ -10,12 +10,13 @@ import { I18nextProvider } from 'react-i18next';
 import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
 
+import { Highlights } from '@/components/Highlights/Highlights.tsx';
+
 import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
 import KeySkills from './components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from './components/Navigation/Navigation.tsx';
 import { Filters } from './components/ui/Filters.tsx';
-import { Highlights } from './components/ui/Highlights.tsx';
 import { TextSection } from './components/ui/TextSection.tsx';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
 import { useCategoriesStore } from './store/categoriesStore.ts';
@@ -117,7 +118,7 @@ export default function App() {
             <Filters />
             <Highlights />
 
-            <div className="app-container mt-4" ref={tabsRef}>
+            {/* <div className="app-container mt-4" ref={tabsRef}>
               <Tabs.Root
                 value={tabs[currentTab].name}
                 onValueChange={(value) => {
@@ -148,7 +149,7 @@ export default function App() {
                   );
                 })}
               </Tabs.Root>
-            </div>
+            </div> */}
           </div>
         </QueryClientProvider>
       </ThemeProvider>

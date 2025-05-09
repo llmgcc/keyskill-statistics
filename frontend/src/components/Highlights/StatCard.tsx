@@ -11,7 +11,7 @@ function StatCard({
   header,
   children,
 }: StatCardProps & { children?: React.ReactNode }) {
-  const findChildByType = (type: any) => {
+  const findChildByType = (type: string) => {
     const child = Array.isArray(children)
       ? children.find((child) => child?.type?.name === type)
       : children;

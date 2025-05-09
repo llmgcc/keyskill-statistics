@@ -12,7 +12,7 @@ import datetime
 from src.keyskills.service import create_salary_subquery, get_base_skills
 
 
-def categories_list(session: Session, days_period=30, experience = None):
+async def categories_list(session: Session, days_period=30, experience = None):
     current_to = func.now()
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -93,4 +93,4 @@ def categories_list(session: Session, days_period=30, experience = None):
         .order_by(desc("count"))
     )
 
-    return session.exec(categories).all()
+    return (await session.exec(categories)).all()

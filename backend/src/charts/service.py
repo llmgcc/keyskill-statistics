@@ -8,7 +8,7 @@ import sqlalchemy
 
 
 
-def skills_chart(
+async def skills_chart(
     skill_name,
     session: Session,
     days_period=15,
@@ -16,7 +16,7 @@ def skills_chart(
     for_all_skills=False,
     experience=None
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
@@ -71,10 +71,10 @@ def skills_chart(
                 func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
             ).label("chart"),
         ).group_by(grouped_bins.c.name)
-        return session.exec(count_chart).first()
+        return (await session.exec(count_chart)).first()
 
 
-def salary_chart(
+async def salary_chart(
     skill_name,
     session: Session,
     days_period=15,
@@ -82,9 +82,9 @@ def salary_chart(
     experience=None,
     for_all_skills=False,
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
-
+    
     average_salary_case = case(
         (
             and_(
@@ -131,14 +131,17 @@ def salary_chart(
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
+        .where(average_salary_case <= settings.max_salary)
     )
+    
 
     if experience is not None:
         vacancies = vacancies.where(Vacancy.experience == experience)
 
     # avg_salary = session.exec(select(func.avg(vacancies.c.average_salary))).all()[0]
+    # print(skill_name, avg_salary)
 
-    right = 10**6
+    right = settings.max_salary
     left = 0
 
     bin_size = (right - left) / number_of_bins
@@ -201,19 +204,19 @@ def salary_chart(
         ).subquery()
         return salary_chart_with_avg, right
     else:
-        return session.exec(salary_chart_with_avg).first(), right
+        return (await session.exec(salary_chart_with_avg)).first(), right
 
 
 
 
-def category_chart(
+async def category_chart(
     category,
     session: Session,
     days_period=15,
     number_of_bins=20,
     experience=None
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
@@ -262,17 +265,17 @@ def category_chart(
         ).label("chart"),
     ).group_by(grouped_bins.c.name)
 
-    return session.exec(count_chart).first()
+    return (await session.exec(count_chart)).first()
 
 
-def category_salary_chart(
+async def category_salary_chart(
     category,
     session: Session,
     days_period=15,
     number_of_bins=15,
     experience=None,
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
 
     average_salary_case = case(
@@ -384,17 +387,17 @@ def category_salary_chart(
         )
     )
 
-    return session.exec(salary_chart_with_avg).first(), right
+    return (await session.exec(salary_chart_with_avg)).first(), right
 
 
-def technologies_chart(
+async def technologies_chart(
     technology,
     session: Session,
     days_period=15,
     number_of_bins=20,
     experience=None
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
@@ -443,20 +446,20 @@ def technologies_chart(
         ).label("chart"),
     ).group_by(grouped_bins.c.name)
 
-    return session.exec(count_chart).first()
+    return (await session.exec(count_chart)).first()
 
 
 
 
 
-def technologies_salary_chart(
+async def technologies_salary_chart(
     technology,
     session: Session,
     days_period=15,
     number_of_bins=15,
     experience=None,
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
 
     average_salary_case = case(
@@ -569,4 +572,4 @@ def technologies_salary_chart(
         )
     )
 
-    return session.exec(salary_chart_with_avg).first(), right
+    return (await session.exec(salary_chart_with_avg)).first(), right
