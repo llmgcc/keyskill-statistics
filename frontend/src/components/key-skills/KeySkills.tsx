@@ -4,6 +4,7 @@ import { KeySkill } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { ColumnDef, PaginationState } from '@tanstack/react-table';
+import { useTranslation } from 'react-i18next';
 
 import { useSkills } from '@/hooks/useSkills';
 import { TanTable } from '@/components/table/TanTable';
@@ -11,6 +12,7 @@ import { TanTable } from '@/components/table/TanTable';
 import { SkillsFilterState } from '../SkillsFilter/SkillsFilter';
 import {
   chartAccessor,
+  confidenceAccessor,
   countAccessor,
   placeAccessor,
   prevCountAccessor,
@@ -26,19 +28,7 @@ interface KeySkillsProps {
 function KeySkills({ filterState }: KeySkillsProps) {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
-
-  // const [filterState, setFilterState] = useState<SkillsFilterState>({
-  //   category: {
-  //     selected: null,
-  //     strict: true,
-  //   },
-  //   domain: {
-  //     selected: null,
-  //     strict: true,
-  //   },
-  //   skill: '',
-  // });
-
+  const { t } = useTranslation();
   const pageSizeVariants = [25, 50, 100];
 
   const [pagination, setPagination] = useState<PaginationState>({
@@ -66,6 +56,28 @@ function KeySkills({ filterState }: KeySkillsProps) {
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
     skillNameAccessor({ accessorKey: 'name' }),
+    ...(filterState.domain?.selected
+      ? [
+          confidenceAccessor({
+            accessorKey: 'domain-confidence',
+            header: t(`domainsShort.${filterState.domain?.selected?.name}`),
+            name: filterState.domain?.selected?.name,
+            categoryKey: 'categories',
+          }),
+        ]
+      : []),
+    ...(filterState.category?.selected
+      ? [
+          confidenceAccessor({
+            accessorKey: 'categories-confidence',
+            header: t(
+              `categoriesShort.${filterState.category?.selected?.name}`,
+            ),
+            name: filterState.category?.selected?.name,
+            categoryKey: 'technologies',
+          }),
+        ]
+      : []),
     salaryAccessor({
       accessorKey: 'average_salary',
       isLoading: isLoading || isFetching,
