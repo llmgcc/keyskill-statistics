@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Filters } from '@/components/ui/Filters.tsx';
 import { TabNavigation } from '@/components/ui/TabNavigation.tsx';
-import { TextSection } from '@/components/ui/TextSection.tsx';
+import { TextSection } from '@/components/TextSection/TextSection';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { CategoriesTable } from '@/components/key-skills/CategoriesTable.tsx';
 import KeySkills from '@/components/key-skills/KeySkills.tsx';
@@ -132,7 +132,7 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
             <Navigation />
-            {/* <TextSection
+            <TextSection
               onLinkClick={(tab) => {
                 navigate(tabs[tab].path);
                 scrollToTabs();
@@ -153,7 +153,7 @@ export default function App() {
                   </div>
                 }
               />
-            </div> */}
+            </div>
           </div>
         </QueryClientProvider>
       </ThemeProvider>

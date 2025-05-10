@@ -54,7 +54,7 @@ export const SelectItem = React.forwardRef<
     <SelectPrimitive.Item
       {...props}
       ref={forwardedRef}
-      className="relative flex cursor-pointer select-none items-center justify-between rounded-md px-2 py-1.5 text-sm font-[400] outline-none focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
+      className="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm font-[400] outline-none focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
     >
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator>
