@@ -64,7 +64,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
   const { t } = useTranslation();
 
   const preferredDomains: Category[] = [
-    domains.find((c) => c.name === Categories.Backend) ?? null,
+    domains.find((c) => c.name === Categories['Backend development']) ?? null,
     domains.find(
       (c) => c.name === Categories['Data Science & Machine Learning'],
     ) ?? null,
