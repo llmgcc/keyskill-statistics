@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ScreenSize {
   isMobile: boolean;
@@ -9,8 +9,8 @@ interface ScreenSize {
 export const useScreenSize = (): ScreenSize => {
   const [screenSize, setScreenSize] = useState<ScreenSize>({
     isMobile: window.innerWidth < 768,
-    isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
-    isDesktop: window.innerWidth >= 1024,
+    isTablet: window.innerWidth >= 768 && window.innerWidth < 1024, 
+    isDesktop: window.innerWidth >= 1024
   });
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const useScreenSize = (): ScreenSize => {
       setScreenSize({
         isMobile: window.innerWidth < 768,
         isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
-        isDesktop: window.innerWidth >= 1024,
+        isDesktop: window.innerWidth >= 1024
       });
     };
     window.addEventListener('resize', checkScreenSize);
@@ -26,4 +26,4 @@ export const useScreenSize = (): ScreenSize => {
   }, []);
 
   return screenSize;
-};
+}
