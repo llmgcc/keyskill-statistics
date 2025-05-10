@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel
-from typing import List, Any
+from typing import List
 
 
 class ChartResponse(SQLModel):

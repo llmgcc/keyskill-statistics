@@ -1,33 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 
-import './App.css';
+import '@/App.css';
 import '@/i18n/i18n';
 
 import i18n from '@/i18n/i18n';
+import { ThemeProvider } from '@/providers/ThemeProvider.tsx';
+import { useCategoriesStore } from '@/store/categoriesStore.ts';
+import { useCurrencyStore } from '@/store/currencyStore.ts';
+import { useDomainsStore } from '@/store/domainsStore.ts';
+import { useStatsStore } from '@/store/statsStore.ts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider } from 'react-i18next';
 import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
+import { Filters } from '@/components/ui/Filters.tsx';
+import { TabNavigation } from '@/components/ui/TabNavigation.tsx';
+import { TextSection } from '@/components/ui/TextSection.tsx';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
-
-import { CategoriesTable } from './components/key-skills/CategoriesTable.tsx';
-import KeySkills from './components/key-skills/KeySkills.tsx';
-import { TechnologiesTable } from './components/key-skills/TechnologiesTable.tsx';
-import { Navigation } from './components/Navigation/Navigation.tsx';
+import { CategoriesTable } from '@/components/key-skills/CategoriesTable.tsx';
+import KeySkills from '@/components/key-skills/KeySkills.tsx';
+import { TechnologiesTable } from '@/components/key-skills/TechnologiesTable.tsx';
+import { Navigation } from '@/components/Navigation/Navigation.tsx';
 import {
   SkillsFilter,
   SkillsFilterState,
-} from './components/SkillsFilter/SkillsFilter.tsx';
-import { Filters } from './components/ui/Filters.tsx';
-import { TabNavigation } from './components/ui/TabNavigation.tsx';
-import { TextSection } from './components/ui/TextSection.tsx';
-import { ThemeProvider } from './providers/ThemeProvider.tsx';
-import { useCategoriesStore } from './store/categoriesStore.ts';
-import { useCurrencyStore } from './store/currencyStore.ts';
-import { useDomainsStore } from './store/domainsStore.ts';
-import { useStatsStore } from './store/statsStore.ts';
+} from '@/components/SkillsFilter/SkillsFilter.tsx';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -133,7 +132,7 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
             <Navigation />
-            <TextSection
+            {/* <TextSection
               onLinkClick={(tab) => {
                 navigate(tabs[tab].path);
                 scrollToTabs();
@@ -154,7 +153,7 @@ export default function App() {
                   </div>
                 }
               />
-            </div>
+            </div> */}
           </div>
         </QueryClientProvider>
       </ThemeProvider>

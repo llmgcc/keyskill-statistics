@@ -154,7 +154,7 @@ export const translations = {
         [Categories['Frontend development']]: 'Front',
         [Categories['Backend development']]: 'Back',
         [Categories['DevOps & Infrastructure']]: 'DevOps',
-        [Categories['Data Science & Machine Learning']]: 'АД&МО',
+        [Categories['Data Science & Machine Learning']]: 'АД/МО',
         [Categories['Mobile development']]: 'Моб',
         [Categories['Testing & Quality assurance']]: 'QA',
         [Categories['Computer graphics & Game development']]: 'Геймдев',

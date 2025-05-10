@@ -79,7 +79,7 @@ export const DomainShort: Record<Categories, string> = {
   'Frontend development': 'Front',
   'Backend development': 'Back',
   'DevOps & Infrastructure': 'DevOps',
-  'Data Science & Machine Learning': 'DS&ML',
+  'Data Science & Machine Learning': 'DS/ML',
   'Mobile development': 'Mobile',
   'Testing & Quality assurance': 'QA',
   'Computer graphics & Game development': 'CG/GD',
