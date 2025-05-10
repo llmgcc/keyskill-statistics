@@ -16,7 +16,7 @@ from src.charts.service import (
     technologies_chart,
     technologies_salary_chart,
 )
-from src.database import engine
+from src.database import engine, async_engine
 from sqlmodel import Session, select
 from src.keyskills.schemas import SkillsResponse
 from src.categories.schemas import CategoriesResponse
@@ -24,6 +24,7 @@ from src.technologies.schemas import TechnologiesResponse
 import json
 import asyncio
 from httpx import ASGITransport, AsyncClient
+from sqlmodel.ext.asyncio.session import AsyncSession
 
 FRONTEND_STATIC_API_PATH = (
     os.path.dirname(os.path.abspath(__file__ + "/../")) + "/frontend/public/static-api"
@@ -55,14 +56,36 @@ async def build_static(router):
                 f.write(response.text)
 
 
-async def build():
-    await build_static(main_router)
-    await build_static(categories_router)
-    await build_static(technologies_router)
+# async def build():
+#     await build_static(main_router)
+#     await build_static(categories_router)
+#     await build_static(technologies_router)
 
 
-asyncio.run(build())
+# asyncio.run(build())
 
+async def test():
+    async with AsyncSession(async_engine) as session:
+        for period in PERIOD:
+            print(period, len(PERIOD))
+            for experience in EXPERIENCE:
+                e = None if experience == "any" else experience
+                # SKILLS
+                skills = get_base_skills(
+                    period, limit=None, offset=0, experience=e, min_count=5
+                )
+
+                data = [
+                    SkillsResponse.model_validate(item).model_dump_json()
+                    for item in (await session.exec(skills)).all()
+                ]
+                file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
+                os.makedirs(os.path.dirname(file_name), exist_ok=True)
+                data = list(map(lambda x: json.loads(x), data))
+                with open(file_name, "w", encoding="utf-8") as f:
+                    json.dump(data, f)
+
+asyncio.run(test())
 
 # asyncio.run(build_static(categories_router))
 # asyncio.run(build_static(technologies_router))

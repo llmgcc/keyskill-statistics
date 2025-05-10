@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   ColumnDef,
   getCoreRowModel,
@@ -28,6 +28,8 @@ interface TanTableProps<T extends object> {
   isFetching: boolean;
   pageSizeVariants: number[];
   onPageSizeChange: (pageSize: number) => void;
+  sorting: SortingState;
+  setSorting: Dispatch<SetStateAction<SortingState>>;
 }
 
 export function TanTable<T extends object>({
@@ -41,8 +43,10 @@ export function TanTable<T extends object>({
   isFetching,
   pageSizeVariants,
   onPageSizeChange,
+  sorting,
+  setSorting,
 }: TanTableProps<T>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  // const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data: data ?? [],
@@ -61,6 +65,7 @@ export function TanTable<T extends object>({
     enableSortingRemoval: true,
     manualPagination: manualPagination,
     onPaginationChange: onPaginationChange,
+    manualSorting: true,
     enableColumnPinning: true,
     initialState: {
       columnPinning: {

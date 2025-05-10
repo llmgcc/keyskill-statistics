@@ -13,14 +13,14 @@ interface Tabs {
   body: () => JSX.Element;
   name: string;
   path: string;
+  append?: JSX.Element;
 }
 
 interface TabNavigationProps {
   tabs: Tabs[];
-  append?: JSX.Element;
 }
 
-export function TabNavigation({ tabs, append }: TabNavigationProps) {
+export function TabNavigation({ tabs }: TabNavigationProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -38,6 +38,11 @@ export function TabNavigation({ tabs, append }: TabNavigationProps) {
       navigate(tabs[0].path, { replace: true });
     }
   }, [location.pathname]);
+
+  const getCurrentTabIndex = () => {
+    const currentPath = location.pathname;
+    return tabs.findIndex((tab) => tab.path === currentPath) || 0;
+  };
 
   return (
     <div className="app-container mt-4" ref={tabsRef}>
@@ -60,7 +65,7 @@ export function TabNavigation({ tabs, append }: TabNavigationProps) {
               </Tabs.Trigger>
             ))}
           </Tabs.List>
-          <div>{append}</div>
+          <div>{tabs[getCurrentTabIndex()]?.append}</div>
         </div>
 
         <Routes>
