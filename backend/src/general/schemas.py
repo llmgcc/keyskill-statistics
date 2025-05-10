@@ -1,10 +1,12 @@
 from sqlmodel import SQLModel
 
+
 class CurrencyResponse(SQLModel):
     currency_code: str
     currency_abbr: str
     currency_name: str
     currency_rate: float
+
 
 class StatsResponse(SQLModel):
     last_update: str

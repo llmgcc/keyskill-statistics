@@ -3,9 +3,6 @@ from src.config import settings
 from src.models import *
 from sqlalchemy.dialects.postgresql import aggregate_order_by
 import datetime
-from src.keyskills.service import create_categories_subquery
-import sqlalchemy
-
 
 
 async def skills_chart(
@@ -14,7 +11,7 @@ async def skills_chart(
     days_period=15,
     number_of_bins=20,
     for_all_skills=False,
-    experience=None
+    experience=None,
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -43,7 +40,6 @@ async def skills_chart(
         .where(bin <= number_of_bins)
         .order_by(Vacancy.created_at.desc())
     ).subquery()
-
 
     grouped_bins_count = func.count().label("count")
     grouped_bins = (
@@ -84,7 +80,7 @@ async def salary_chart(
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
-    
+
     average_salary_case = case(
         (
             and_(
@@ -133,7 +129,6 @@ async def salary_chart(
         .where(KeySkill.name == skill_name if not for_all_skills else True)
         .where(average_salary_case <= settings.max_salary)
     )
-    
 
     if experience is not None:
         vacancies = vacancies.where(Vacancy.experience == experience)
@@ -188,11 +183,9 @@ async def salary_chart(
         ).group_by(grouped_bins.c.name)
     ).subquery()
 
-    salary_chart_with_avg = (
-        select(salary_chart.c.salary_chart).join(
-            average_salary_per_skill,
-            average_salary_per_skill.c.name == salary_chart.c.name,
-        )
+    salary_chart_with_avg = select(salary_chart.c.salary_chart).join(
+        average_salary_per_skill,
+        average_salary_per_skill.c.name == salary_chart.c.name,
     )
 
     if for_all_skills:
@@ -207,14 +200,8 @@ async def salary_chart(
         return (await session.exec(salary_chart_with_avg)).first(), right
 
 
-
-
 async def category_chart(
-    category,
-    session: Session,
-    days_period=15,
-    number_of_bins=20,
-    experience=None
+    category, session: Session, days_period=15, number_of_bins=20, experience=None
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -380,22 +367,16 @@ async def category_salary_chart(
         ).group_by(grouped_bins.c.name)
     ).subquery()
 
-    salary_chart_with_avg = (
-        select(salary_chart.c.salary_chart).join(
-            average_salary_per_skill,
-            average_salary_per_skill.c.name == salary_chart.c.name,
-        )
+    salary_chart_with_avg = select(salary_chart.c.salary_chart).join(
+        average_salary_per_skill,
+        average_salary_per_skill.c.name == salary_chart.c.name,
     )
 
     return (await session.exec(salary_chart_with_avg)).first(), right
 
 
 async def technologies_chart(
-    technology,
-    session: Session,
-    days_period=15,
-    number_of_bins=20,
-    experience=None
+    technology, session: Session, days_period=15, number_of_bins=20, experience=None
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -447,9 +428,6 @@ async def technologies_chart(
     ).group_by(grouped_bins.c.name)
 
     return (await session.exec(count_chart)).first()
-
-
-
 
 
 async def technologies_salary_chart(
@@ -565,11 +543,9 @@ async def technologies_salary_chart(
         ).group_by(grouped_bins.c.name)
     ).subquery()
 
-    salary_chart_with_avg = (
-        select(salary_chart.c.salary_chart).join(
-            average_salary_per_skill,
-            average_salary_per_skill.c.name == salary_chart.c.name,
-        )
+    salary_chart_with_avg = select(salary_chart.c.salary_chart).join(
+        average_salary_per_skill,
+        average_salary_per_skill.c.name == salary_chart.c.name,
     )
 
     return (await session.exec(salary_chart_with_avg)).first(), right

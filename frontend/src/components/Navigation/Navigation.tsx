@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub } from 'react-icons/bs';
 
 import { useStickyOffset } from '@/hooks/useStickyOffset';
-
-import { CurrencySwitch } from './CurrencySwitch';
-import { LanguageSwitch } from './LanguageSwitch';
-import { ThemeSwitch } from './ThemeSwitch';
+import { CurrencySwitch } from '@/components/Navigation/CurrencySwitch';
+import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
+import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 export function Navigation() {
   const stats = useStatsStore((state) => state.stats);
@@ -93,7 +92,7 @@ export function Navigation() {
               <Button
                 variant="soft"
                 className="ml-1 aspect-square size-fit !bg-transparent !p-0"
-                title="Github"
+                title="GitHub"
                 onClick={openRepo}
               >
                 <BsGithub className="cursor-pointer text-xl text-text transition-colors duration-150 hover:text-background-accent" />

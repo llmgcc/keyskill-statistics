@@ -1,4 +1,4 @@
-from sqlmodel import Session, String, select, func, and_, cast, Date, desc, extract, case
+from sqlmodel import Session, select, func, and_, cast, Date, desc, extract, case
 from src.models import (
     KeySkill,
     Vacancy,
@@ -12,9 +12,8 @@ from src.models import (
     KeySkillTranslation,
 )
 import datetime
-from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg, json
+from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg
 from src.config import settings
-import sqlalchemy
 
 
 def get_base_skills(
@@ -159,8 +158,6 @@ def get_base_skills(
             technologies_subquery.c.categories.label("technologies"),
             KeySkillImage.image,
             KeySkillTranslation.translation.label("translation"),
-
-            
             # sqlalchemy.func.json_extract_path(
             #     cast(
             #         categories_subquery.c.categories[1],
@@ -319,8 +316,6 @@ def get_base_skills(
     # )
 
     # return result
-
-
 
 
 def get_skills(date_from: datetime.date, date_to: datetime.date):

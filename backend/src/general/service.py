@@ -1,21 +1,24 @@
-from sqlalchemy import and_, case
 from sqlmodel import Session, select, func, cast, Date, distinct
 from src.models import *
 from src.config import settings
+from src.common import average_salary_case
 
 
 async def get_general_stats(session: Session):
     last_update = (
         select(
-        func.max(cast(Vacancy.created_at, Date)).label("last_update"),
-    ).select_from(Vacancy)
+            func.max(cast(Vacancy.created_at, Date)).label("last_update"),
+        )
+        .select_from(Vacancy)
         .where(Vacancy.created_at <= settings.max_date)
         .where(Vacancy.created_at >= settings.min_date)
     )
 
-    min_date = (select(
-        func.min(cast(Vacancy.created_at, Date)).label("date_from"),
-    ).select_from(Vacancy)
+    min_date = (
+        select(
+            func.min(cast(Vacancy.created_at, Date)).label("date_from"),
+        )
+        .select_from(Vacancy)
         .where(Vacancy.created_at <= settings.max_date)
         .where(Vacancy.created_at >= settings.min_date)
     )
@@ -35,41 +38,13 @@ async def get_general_stats(session: Session):
         .where(Vacancy.created_at >= settings.min_date)
     )
 
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-    
     avg_salary_query = (
-        select(func.avg(average_salary_case).label("max_salary"))
-            .select_from(Vacancy)
-            .where(Vacancy.created_at <= settings.max_date)
-            .where(Vacancy.created_at >= settings.min_date)
-            .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
-            .join(Currency, Currency.currency_code == VacancySalary.currency)
+        select(func.avg(average_salary_case()).label("max_salary"))
+        .select_from(Vacancy)
+        .where(Vacancy.created_at <= settings.max_date)
+        .where(Vacancy.created_at >= settings.min_date)
+        .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
+        .join(Currency, Currency.currency_code == VacancySalary.currency)
     )
 
     last_update_awaited = (await session.exec(last_update)).first()
@@ -79,7 +54,7 @@ async def get_general_stats(session: Session):
         "date_from": (await session.exec(min_date)).first().strftime("%d.%m.%Y"),
         "date_to": last_update_awaited.strftime("%d.%m.%Y"),
         "number_of_vacancies": (await session.exec(vacancies)).first(),
-        "max_salary": (await session.exec(avg_salary_query)).first()*8
+        "max_salary": (await session.exec(avg_salary_query)).first() * 8,
     }
 
 

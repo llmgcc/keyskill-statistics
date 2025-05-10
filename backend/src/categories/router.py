@@ -9,5 +9,7 @@ router = APIRouter(prefix="/categories", tags=["Categories"])
 
 
 @router.get(summary="Categories", path="/list", response_model=List[CategoriesResponse])
-async def get_categories_list(session: Session = Depends(get_async_session), experience=None, period : int = 30):
+async def get_categories_list(
+    session: Session = Depends(get_async_session), experience=None, period: int = 30
+):
     return await categories_list(session, experience=experience, days_period=period)
