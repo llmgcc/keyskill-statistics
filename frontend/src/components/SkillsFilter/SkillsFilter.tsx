@@ -1,4 +1,5 @@
 import { Category } from '@/interfaces';
+import { useSkillFilter } from '@/providers/SkillFilterProvider';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
 import { TextField } from '@radix-ui/themes';
@@ -20,26 +21,26 @@ export interface SkillsFilterState {
   skill: string;
 }
 
-interface SkillsFilterProps {
-  onChange: (state: SkillsFilterState) => void;
-  state: SkillsFilterState;
-}
-
-export function SkillsFilter({ state, onChange }: SkillsFilterProps) {
+export function SkillsFilter() {
   const { t } = useTranslation();
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
 
+  const { filterState: state, setFilterState } = useSkillFilter();
+
   function updateDomainFilter(domain: Category | null, strict: boolean) {
-    onChange({ ...state, domain: { selected: domain, strict: strict } });
+    setFilterState({ ...state, domain: { selected: domain, strict: strict } });
   }
 
   function updateCategoryFilter(category: Category | null, strict: boolean) {
-    onChange({ ...state, category: { selected: category, strict: strict } });
+    setFilterState({
+      ...state,
+      category: { selected: category, strict: strict },
+    });
   }
 
   function updateTextFilter(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange({ ...state, skill: event.target.value });
+    setFilterState({ ...state, skill: event.target.value });
   }
 
   return (

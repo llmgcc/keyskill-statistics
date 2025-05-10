@@ -15,7 +15,14 @@ async def get_skills(
     limit: int = 20,
     offset=0,
     experience=None,
+    category : str = None,
+    domain : str = None,
+    domainStrict : bool = True,
+    categoryStrict : bool = True,
+    skill_name : str = None
+
 ):
     return await skills_list(
-        session, limit=limit, offset=offset, days_period=period, experience=experience
+        session, limit=limit, offset=offset, days_period=period, experience=experience,
+        category=category, domain=domain, domainStrict=domainStrict, categoryStrict=categoryStrict, skill_name=skill_name
     )

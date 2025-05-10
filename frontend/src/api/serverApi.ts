@@ -144,6 +144,12 @@ export class ServerAPI implements API {
     offset: number,
     period: number,
     experience?: Experience,
+    domain?: string,
+    domainStrict?: boolean,
+    category?: string,
+    categoryStrict?: boolean,
+    skillName?: string,
+    // orderBy?: SkillsOrderBy
   ): Promise<KeySkillServer> {
     const response = await axios.get('/api/key-skills/list', {
       params: {
@@ -151,6 +157,11 @@ export class ServerAPI implements API {
         period,
         limit,
         offset,
+        domain,
+        domain_strict: domainStrict,
+        category,
+        categoryStrict,
+        skill_name: skillName || null,
       },
     });
     return response.data;

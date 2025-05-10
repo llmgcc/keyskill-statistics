@@ -1,4 +1,4 @@
-from sqlmodel import Session, select, func, and_, cast, Date, desc, extract, case
+from sqlmodel import Session, or_, select, func, and_, cast, Date, desc, extract, case
 from src.models import (
     KeySkill,
     Vacancy,
@@ -25,6 +25,7 @@ def get_base_skills(
     order_by=None,
     where=None,
     with_total_count=False,
+    skill_name = None
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -74,6 +75,7 @@ def get_base_skills(
     skills_base = (
         select(
             KeySkill.name.label("name"),
+            KeySkillTranslation.translation.label('translation'),
             count,
             prev_count,
             func.row_number().over(order_by=desc(count)).label("place"),
@@ -91,13 +93,21 @@ def get_base_skills(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
+        .where(
+            or_(
+                func.lower(KeySkill.name).contains(func.lower(skill_name)),
+                func.lower(KeySkillTranslation.translation).contains(func.lower(skill_name))
+            ) if skill_name else True
+        )
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .group_by(KeySkill.name)
+        .outerjoin(KeySkillTranslation, KeySkillTranslation.name == KeySkill.name)
+        .group_by(KeySkill.name, KeySkillTranslation.name)
     )
 
     if experience is not None:
         skills_base = skills_base.where(Vacancy.experience == experience)
+
 
     skills_base = skills_base.having(count >= min_count)
 
@@ -105,6 +115,7 @@ def get_base_skills(
         select(*skills_base.c)
         .select_from(skills_base)
         .where(where(skills_base) if where else True)
+        .where(skills_base.c.average_salary <= settings.max_salary)
         .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .offset(offset)
         .limit(limit)
@@ -157,7 +168,7 @@ def get_base_skills(
             categories_subquery.c.categories.label("categories"),
             technologies_subquery.c.categories.label("technologies"),
             KeySkillImage.image,
-            KeySkillTranslation.translation.label("translation"),
+            skills.c.translation.label("translation"),
             # sqlalchemy.func.json_extract_path(
             #     cast(
             #         categories_subquery.c.categories[1],
@@ -184,7 +195,6 @@ def get_base_skills(
             technologies_subquery.c.name == skills.c.name,
             isouter=True,
         )
-        .outerjoin(KeySkillTranslation, KeySkillTranslation.name == skills.c.name)
         .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
         .order_by(order_by(skills) if order_by else skills.c.place.asc())
     )
@@ -399,7 +409,7 @@ def create_technology_subquery():
 
 
 async def skills_list(
-    session: Session, days_period=30, limit=20, offset=0, experience=None, min_count=5
+    session: Session, category, domain, domainStrict, categoryStrict, skill_name=None, days_period=30, limit=20, offset=0, experience=None, min_count=5,
 ):
     skills, skills_base = get_base_skills(
         days_period=days_period,
@@ -408,6 +418,7 @@ async def skills_list(
         min_count=min_count,
         experience=experience,
         with_total_count=True,
+        skill_name=skill_name
     )
 
     current_to = func.now()

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import '@/App.css';
 import '@/i18n/i18n';
@@ -17,16 +17,15 @@ import { useNavigate } from 'react-router-dom';
 
 import { Filters } from '@/components/ui/Filters.tsx';
 import { TabNavigation } from '@/components/ui/TabNavigation.tsx';
-import { TextSection } from '@/components/TextSection/TextSection';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { CategoriesTable } from '@/components/key-skills/CategoriesTable.tsx';
 import KeySkills from '@/components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from '@/components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
-import {
-  SkillsFilter,
-  SkillsFilterState,
-} from '@/components/SkillsFilter/SkillsFilter.tsx';
+import { SkillsFilter } from '@/components/SkillsFilter/SkillsFilter.tsx';
+import { TextSection } from '@/components/TextSection/TextSection';
+
+import { SkillFilterProvider } from './providers/SkillFilterProvider';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,18 +42,6 @@ export default function App() {
   const fetchStats = useStatsStore((state) => state.fetchStats);
   const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
   const tabsRef = useRef<HTMLDivElement | null>(null);
-
-  const [filterState, setFilterState] = useState<SkillsFilterState>({
-    category: {
-      selected: null,
-      strict: true,
-    },
-    domain: {
-      selected: null,
-      strict: true,
-    },
-    skill: '',
-  });
 
   useEffect(() => {
     fetchCurrencies();
@@ -86,9 +73,14 @@ export default function App() {
           <div className="ml-1">Key Skills</div>
         </div>
       ),
-      body: () => <KeySkills filterState={filterState} />,
+      body: () => <KeySkills />,
       name: 'skills',
       path: '/key-skills',
+      append: (
+        <div className="flex w-full items-end justify-end text-right">
+          <SkillsFilter />
+        </div>
+      ),
     },
     {
       title: (
@@ -140,20 +132,11 @@ export default function App() {
             />
             <Filters />
             <Highlights />
-
-            <div ref={tabsRef}>
-              <TabNavigation
-                tabs={tabs}
-                append={
-                  <div className="flex w-full items-end justify-end text-right">
-                    <SkillsFilter
-                      state={filterState}
-                      onChange={setFilterState}
-                    />
-                  </div>
-                }
-              />
-            </div>
+            <SkillFilterProvider>
+              <div ref={tabsRef}>
+                <TabNavigation tabs={tabs} />
+              </div>
+            </SkillFilterProvider>
           </div>
         </QueryClientProvider>
       </ThemeProvider>

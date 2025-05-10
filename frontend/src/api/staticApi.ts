@@ -7,10 +7,10 @@ import {
   SalaryChart,
   Stats,
 } from '@/interfaces';
-import { API } from '@/interfaces/api';
+import { API, SkillsOrderBy } from '@/interfaces/api';
 import axios from 'axios';
-
 import { Experience } from '@/config/experience';
+import { filterSkills, sortSkills } from './utils';
 
 const HIGHLIGHTS_LIMIT = 5;
 
@@ -69,58 +69,15 @@ export class StaticAPI implements API {
     category?: string,
     categoryStrict?: boolean,
     skillName?: string,
+    orderBy?: SkillsOrderBy,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
-
-    const getCategoryConfidence = (
-      skill: KeySkill,
-      category: string,
-      key: 'categories' | 'technologies',
-    ) => {
-      const foundCategory = skill[key].find((c) => c.name == category);
-
-      const strictMode = key == 'categories' ? domainStrict : categoryStrict;
-      if (strictMode) {
-        const maxConfidence = skill[key].reduce(
-          (a, b) => Math.max(a, b.confidence),
-          0,
-        );
-        const maxConfidenceCategory = skill[key].find(
-          (c) => c.confidence == maxConfidence,
-        );
-        if (maxConfidenceCategory?.name !== category) {
-          return null;
-        }
-        return maxConfidenceCategory.confidence;
-      } else {
-        return foundCategory?.confidence ?? null;
-      }
-    };
-
-    let skillsData = skills;
-    if (domain) {
-      skillsData = skillsData.filter(
-        (c) => getCategoryConfidence(c, domain, 'categories') !== null,
-      );
-    }
-    if (category) {
-      skillsData = skillsData.filter(
-        (c) => getCategoryConfidence(c, category, 'technologies') !== null,
-      );
-    }
-
-    if (skillName) {
-      skillsData = skillsData.filter((c) =>
-        c.name.toLowerCase().includes(skillName.toLowerCase()),
-      );
-    }
+    const filteredSkills = filterSkills(skills, domain, domainStrict, category, categoryStrict, skillName)
+    const sortedSkills = orderBy ? sortSkills(filteredSkills, orderBy) : filteredSkills
 
     return {
-      skills: skillsData.slice(
-        offset ?? 0,
-        (offset ?? 0) + (limit ?? skills.length),
-      ),
-      rows: skillsData.length,
+      skills: sortedSkills.slice(offset ?? 0, (offset ?? 0) + (limit ?? skills.length)),
+      rows: sortedSkills.length,
     };
   }
 
