@@ -56,36 +56,39 @@ async def build_static(router):
                 f.write(response.text)
 
 
-# async def build():
-#     await build_static(main_router)
-#     await build_static(categories_router)
-#     await build_static(technologies_router)
+async def build_from_routes():
+    await build_static(main_router)
+    await build_static(categories_router)
+    await build_static(technologies_router)
 
 
-# asyncio.run(build())
+async def build():
+    await build_from_routes()
+    
+asyncio.run(build())
 
-async def test():
-    async with AsyncSession(async_engine) as session:
-        for period in PERIOD:
-            print(period, len(PERIOD))
-            for experience in EXPERIENCE:
-                e = None if experience == "any" else experience
-                # SKILLS
-                skills = get_base_skills(
-                    period, limit=None, offset=0, experience=e, min_count=5
-                )
+# async def test():
+#     async with AsyncSession(async_engine) as session:
+#         for period in PERIOD:
+#             print(period, len(PERIOD))
+#             for experience in EXPERIENCE:
+#                 e = None if experience == "any" else experience
+#                 # SKILLS
+#                 skills = get_base_skills(
+#                     period, limit=None, offset=0, experience=e, min_count=5
+#                 )
 
-                data = [
-                    SkillsResponse.model_validate(item).model_dump_json()
-                    for item in (await session.exec(skills)).all()
-                ]
-                file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
-                os.makedirs(os.path.dirname(file_name), exist_ok=True)
-                data = list(map(lambda x: json.loads(x), data))
-                with open(file_name, "w", encoding="utf-8") as f:
-                    json.dump(data, f)
+#                 data = [
+#                     SkillsResponse.model_validate(item).model_dump_json()
+#                     for item in (await session.exec(skills)).all()
+#                 ]
+#                 file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
+#                 os.makedirs(os.path.dirname(file_name), exist_ok=True)
+#                 data = list(map(lambda x: json.loads(x), data))
+#                 with open(file_name, "w", encoding="utf-8") as f:
+#                     json.dump(data, f)
 
-asyncio.run(test())
+# asyncio.run(test())
 
 # asyncio.run(build_static(categories_router))
 # asyncio.run(build_static(technologies_router))
