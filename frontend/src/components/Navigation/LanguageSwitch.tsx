@@ -3,7 +3,7 @@ import { IoLanguageOutline } from 'react-icons/io5';
 
 import { Language, LanguageTitle } from '@/config/languages';
 
-import { NavigationSelect } from './NavigationSelect';
+import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
 
 export function LanguageSwitch() {
   const { t, i18n } = useTranslation();
