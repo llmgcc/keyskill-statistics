@@ -4,7 +4,7 @@ import { useShallow } from 'zustand/shallow';
 
 import { CurrencyIcons } from '@/config/currencies';
 
-import { NavigationSelect } from './NavigationSelect';
+import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
 
 export function CurrencySwitch() {
   const { t } = useTranslation();
