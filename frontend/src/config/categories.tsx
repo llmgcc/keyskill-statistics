@@ -105,7 +105,7 @@ export const CategoriesStyle = {
   },
   [Categories['Backend development']]: {
     logo: <CiServer />,
-    color: colors.slate[600],
+    color: colors.cyan[500],
   },
   [Categories['DevOps & Infrastructure']]: {
     logo: <BsBoxes />,
@@ -117,7 +117,7 @@ export const CategoriesStyle = {
   },
   [Categories['Mobile development']]: {
     logo: <GiSmartphone />,
-    color: colors.indigo[500],
+    color: colors.fuchsia[500],
   },
   [Categories['Testing & Quality assurance']]: {
     logo: <BiBug />,

@@ -58,18 +58,18 @@ async def get_general_stats(session: Session):
     }
 
 
-def get_currency_list(session: Session):
+async def get_currency_list(session: Session):
     currency_query = select(
         Currency.currency_rate,
         Currency.currency_abbr,
         Currency.currency_name,
         Currency.currency_code,
     )
-    return session.exec(currency_query)
+    return await session.exec(currency_query)
 
 
-def get_experience_list(session: Session):
+async def get_experience_list(session: Session):
     experience_query = (
         select(Vacancy.experience).distinct().order_by(Vacancy.experience)
     )
-    return session.exec(experience_query)
+    return await session.exec(experience_query)
