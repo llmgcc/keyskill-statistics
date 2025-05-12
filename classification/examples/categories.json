@@ -1,0 +1,500 @@
+{
+    "Languages": {
+        "hint": "Programming languages encompassing general-purpose languages (like Python, Java, C++), query languages (SQL), markup languages (HTML, CSS), and domain-specific languages. These form the fundamental tools for software development, each with unique syntax, paradigms and use cases for building applications, processing data, and creating web content.",
+        "examples": [
+            "Python",
+            "JavaScript",
+            "^PHP(\\s)?(\\d)?",
+            "^Java(\\s)?(\\d)?", 
+            "^C\\+\\+",
+            "^C\\#",
+            "Golang",
+            "Kotlin",
+            "Rust",
+            "^SQL",
+            "^HTML",
+            "^CSS",
+            "1С программирование",
+            "Pascal",
+            "delphi",
+            "solidity",
+            "Scala",
+            "assembly",
+            "Objective-C",
+            "Fortran"
+        ]
+    },
+    "Databases": {
+        "hint": "Database management systems used for storing, retrieving and managing structured data. Understanding different database types (relational, NoSQL, in-memory) and their query languages is crucial for building data-driven applications.",
+        "examples": [
+            "Postgres",
+            "MySQL",
+            "Clickhouse",
+            "Oracle",
+            "MS SQL|MSSQL",
+            "Redis",
+            "Memcached", 
+            "MongoDB",
+            "Maria",
+            "SQLite",
+            "Firebase",
+            "СУБД|DBMS",
+            "Database",
+            "NoSQL",
+            "Cassandra",
+            "DynamoDB",
+            "influxdb",
+            "Couchbase",
+            "RavenDB",
+            "Neo4j"
+        ]
+    },
+    "Frontend Libraries and Frameworks": {
+        "hint": "Tools and frameworks used for building user interfaces and interactive web applications. These technologies help create responsive, dynamic front-end experiences and manage complex client-side application states and user interactions.",
+        "examples": [
+            "Sass",
+            "React",
+            "Vue",
+            "Angular",
+            "Svelte",
+            "Tailwind",
+            "Bootstrap",
+            "jQuery",
+            "Redux",
+            "Next.js",
+            "Frontend",
+            "nuxt",
+            "Nextjs"
+       ]
+    },
+    "Backend Libraries and Frameworks": {
+        "hint": "Server-side frameworks and libraries that handle business logic, data processing, and API development. These tools provide structured approaches to building scalable server applications, handling requests, and managing database interactions.",
+        "examples": [
+            "Flask",
+            "Django",
+            "FastAPI",
+            "Spring",
+            "Laravel",
+            "^Express",
+            "Symfony",
+            "Yii",
+            "Ruby on Rails",
+            "ASP\\.NET",
+            "Backend"
+        ]
+    },
+    "Soft skills": {
+        "hint": "Non-technical abilities that enhance professional effectiveness, including communication, teamwork, and problem-solving. These interpersonal and organizational skills are crucial for collaboration, project management, and career growth in software development.",
+        "examples": [
+            "Английский|English|Russian|Русский",
+            "работа в команде",
+            "мышление",
+            "Организаторские навыки",
+            "общение",
+            "коммуникация",
+            "переговор",
+            "Внимательность",
+            "коллектив",
+            "обучение"
+        ]
+    },
+    "Operating systems": {
+        "hint": "Computer operating systems that provide the fundamental platform for running applications and managing hardware resources. Knowledge of different OS environments is essential for development, deployment, and system administration tasks.",
+        "examples": [
+            "^Linux",
+            "^Windows",
+            "MacOS",
+            "^Android",
+            "^iOS",
+            "Ubuntu",
+            "Debian",
+            "Fedora",
+            "CentOS",
+            "RedHat"
+        ]
+    },
+    "Containerization & Orchestration": {
+        "hint": "Technologies used for packaging applications and their dependencies into containers, as well as tools for managing and orchestrating containerized applications at scale. Essential for modern cloud-native development and deployment.",
+        "examples": [
+            "Docker",
+            "k8s|kuber",
+            "Helm",
+            "OpenShift",
+            "Istio",
+            "Rancher",
+            "Nomad",
+            "ArgoCD",
+            "Podman",
+            "container|контейнер"
+        ]
+    },
+    "Infrastructure Automation & Configuration": {
+        "hint": "Tools and platforms for automating infrastructure provisioning, configuration management, and deployment processes. These enable Infrastructure as Code (IaC) practices and help maintain consistent, scalable environments.",
+        "examples": [
+            "Ansible",
+            "Terraform",
+            "Rundeck",
+            "AWX",
+            "VMware vCenter",
+            "Chef",
+            "SaltStack",
+            "Packer",
+            "CloudFormation",
+            "Deploy automation",
+            "iac|Infrastructure as code"
+        ]
+    },
+    "Code Collaboration & Integration": {
+        "hint": "Tools and platforms for version control, code review, and continuous integration/deployment. These systems enable team collaboration, track code changes, automate testing and deployment processes, and maintain code quality across development teams.",
+        "examples": [
+            "^Git",
+            "bitbucket",
+            "SVN",
+            "Gerrit",
+            "Perforce",
+            "Mercurial",
+            "версий|версиям|Version Control System|vcs",
+            "репозит|reposit",
+            "CodeCollab",
+            "ci/cd"
+        ]
+    },
+    "Graphic design": {
+        "hint": "Tools and software used for creating visual content, user interfaces, and digital artwork. These skills are essential for designing user-friendly interfaces, creating visual assets, and maintaining consistent brand identity in software applications.",
+        "examples": [
+            "Figma",
+            "Photoshop",
+            "Illustrator",
+            "Inkscape",
+            "GIMP",
+            "Blender",
+            "3DMax",
+            "Maya",
+            "ZBrush",
+            "Cinema4D"
+        ]
+    },
+    "Monitoring": {
+        "hint": "Tools and platforms for monitoring system performance, collecting metrics, and visualizing data. These solutions help track application health, infrastructure status, and enable proactive problem detection and resolution.",
+        "examples": [
+            "Zabbix",
+            "Grafana",
+            "Prometheus",
+            "Nagios",
+            "Kibana",
+            "Jaeger",
+            "Graphite",
+            "Telegraf",
+            "OpenTelemetry",
+            "Icinga"
+        ]
+    },
+    "CMS": {
+        "hint": "Content Management Systems that enable creation, management and modification of digital content. These platforms provide user-friendly interfaces for content publishing, website management, and digital experience delivery.",
+        "examples": [
+            "wordpress",
+            "drupal",
+            "joomla",
+            "Strapi",
+            "HubSpot",
+            "wix",
+            "shopify",
+            "modx",
+            "bitrix",
+            "cms"
+        ]
+    },
+    "Network Protocols": {
+        "hint": "Communication protocols that define rules for data transmission between devices and systems across networks. Understanding these protocols is essential for network programming, troubleshooting, and building networked applications.",
+        "examples": [
+            "TCP/IP",
+            "^HTTP",
+            "DHCP",
+            "SMTP",
+            "SSH",
+            "UDP",
+            "ICMP",
+            "Ethernet",
+            "DNS",
+            "OSPF"
+        ]
+    },
+    "Web Servers": {
+        "hint": "Software applications that serve web content to clients over HTTP/HTTPS protocols. These servers handle incoming requests, process them, and deliver appropriate responses while managing concurrent connections and security.",
+        "examples": [
+            "Nginx",
+            "Apache HTTP",
+            "tomcat",
+            "IIS",
+            "Unicorn",
+            "Jetty",
+            "JBoss",
+            "Caddy",
+            "Wildfly",
+            "lighttpd"
+        ]
+    },
+    "Integrated Development Environments": {
+        "hint":  "Software applications that provide comprehensive facilities for software development. IDEs typically include code editor, debugger, build automation tools, and intelligent code assistance to enhance developer productivity.",
+        "examples": [
+            "visual studio",
+            "xcode",
+            "android studio",
+            "IntelliJ",
+            "PyCharm",
+            "PhpStorm",
+            "NetBeans",
+            "WebStorm",
+            "Eclipse",
+            "VScode|VS Code",
+            "Jetbrains",
+            "Astra.IDE",
+            "IDE Keil"
+        ]
+    },  
+    "Cloud platforms": {
+        "hint":  "Cloud computing platforms and services that provide scalable infrastructure, storage, compute resources, and managed services. These platforms enable organizations to build, deploy, and manage applications in the cloud with flexible pricing and global reach.",
+        "examples": [
+            "aws",
+            "Google Cloud",
+            "Azure",
+            "Cloudflare",
+            "DigitalOcean",
+            "ec2",
+            "Heroku",
+            "Vmware Cloud",
+            "Yandex Cloud",
+            "Lambda"   
+        ]
+    },
+    "Mobile Libraries and Frameworks": {
+        "hint":  "Frameworks and tools specifically designed for mobile app development across different platforms. These technologies enable building native-like mobile applications using web technologies or platform-specific tools.",
+        "examples": [
+            "react native",
+            "flutter",
+            "xamarin",
+            "ionic",
+            "cordova",
+            "NativeScript",
+            "Multiplatform",
+            "Expo",
+            "Capacitor",
+            "Framework7"
+        ]
+    },
+    "Messaging & Queuing systems": {
+        "hint":  "Systems that enable asynchronous communication between application components through message passing and event queuing. These technologies support distributed system architectures, decoupling, and reliable message delivery.",
+        "examples": [
+            "RabbitMQ",
+            "MQ",
+            "kafka",
+            "ActiveMQ",
+            "ZeroMQ",
+            "MQTT",
+            "NATS",
+            "Celery",
+            "Pulsar",
+            "Pub/Sub"
+        ]
+    },
+    "Testing Tools": {
+        "hint":  "Software tools and frameworks for automated testing of applications across different layers. These solutions help ensure software quality through functional, integration, and end-to-end testing automation.",
+        "examples": [
+            "Selenium",
+            "playwright",
+            "cypress",
+            "Puppeteer",
+            "appium",
+            "RSpec",
+            "pytest",
+            "Mockito",
+            "Cucumber",
+            "xUnit",
+            "test case",
+            "junit",
+            "testrail",
+            "devtools",
+            "allure",
+            "selenide",
+            "autoqa",
+            "testng"
+        ]
+    },
+    "Machine Learning Libraries and Frameworks": {
+        "hint":  "Libraries and frameworks for implementing machine learning algorithms and deep learning models. These tools provide high-level APIs for data processing, model training, and deployment of AI applications.",
+        "examples": [
+            "TensorFlow",
+            "pytorch",
+            "keras",
+            "scikit|sklearn",
+            "LightGBM",
+            "XGBoost",
+            "Caffe",
+            "CatBoost",
+            "Streamlit",
+            "MLflow",
+            "Data Analysis",
+            "Big Data"
+        ]
+    },
+    "API technologies and protocols": {
+        "hint":  "Standards and protocols for building and consuming web services and APIs. These technologies define how different software applications can communicate and exchange data over networks.",
+        "examples": [
+            "SOAP",
+            "REST",
+            "grpc",
+            "GraphQL",
+            "OpenAPI",
+            "Insomnia",
+            "Retrofit",
+            "Swagger",
+            "Charles",
+            "Alamofire"
+        ]
+    },
+    "Security tools and frameworks": {
+        "hint":  "Tools, frameworks and standards for implementing security measures and conducting security assessments. These resources help identify vulnerabilities, implement security controls, and maintain secure development practices.",
+        "examples": [
+            "Nessus",
+            "Metasploit",
+            "Snort",
+            "антивирус|antivirus",
+            "Burp Suite",
+            "^OWASP",
+            "^NIST",
+            "^CWE",
+            "^SAST",
+            "^DAST"
+        ]
+    },
+    "Search & Indexing engines": {
+        "hint":  "Specialized search engines and indexing systems that provide fast and efficient full-text search capabilities. These tools enable advanced search functionality and text analysis for applications.",
+        "examples": [
+            "ElasticSearch",
+            "Solr",
+            "Sphinx",
+            "Lucene",
+            "OpenSearch",
+            "Manticore"            
+        ]
+    },
+    "Blockchain platforms & tools": {
+        "hint":  "Platforms and tools for developing and interacting with blockchain networks. These technologies enable creation of decentralized applications and smart contracts.",
+        "examples": [
+            "Ethereum",
+            "Blockchain",
+            "Solana",
+            "Decentralised|^dex",
+            "Truffle",
+            "Remix IDE",
+            "web3",
+            "Hardhat",
+            "OpenZeppelin",
+            "Cosmos"        
+        ]
+    },
+    "Game engines": {
+        "hint":  "Software frameworks for creating 2D and 3D games across different platforms. These engines provide tools for graphics rendering, physics simulation, audio, and other game development features.",
+        "examples": [
+            "Unity",
+            "Unreal",
+            "CryEngine",
+            "Godot",
+            "Cocos",
+            "PyGame",
+            "Phaser",
+            "libGDX",
+            "PlayCanvas",
+            "Construct"
+        ]
+    },
+    "Project Management Tools": {
+        "hint": "Applications used for planning, tracking, and managing software development projects. These tools help teams organize work, track progress, and collaborate effectively.",
+        "examples": [
+            "Jira",
+            "Trello",
+            "MS Project",
+            "Notion",
+            "YouTrack",
+            "Confluence",
+            "Asana",
+            "ClickUp",
+            "Redmine",
+            "OpenProject"
+        ]
+    },
+    "Graphics APIs & GPGPU": {
+        "hint": "Graphics programming interfaces and general-purpose GPU computing frameworks. These technologies enable hardware-accelerated graphics rendering and parallel computing on graphics processors for both visual and computational tasks.",
+        "examples": [
+            "OpenGL",
+            "DirectX",
+            "Vulkan",
+            "WebGL",
+            "WebGPU",
+            "Shader",
+            "OpenCL",
+            "CUDA",
+            "OpenMAX",
+            "^GPU"
+        ]
+    },
+    "Data Visualization & BI tools": {
+        "hint": "Tools and platforms for data visualization, reporting, and business analytics. These solutions help organizations transform raw data into actionable insights through interactive dashboards and reports.",
+        "examples": [
+            "Power BI",
+            "Tableau",
+            "Looker", 
+            "Qlik",
+            "zoho",
+            "Cognos",
+            "Business Intelligence",
+            "Metabase",
+            "Data Studio",
+            "alteryx",
+            "Superset",
+            "Redash",
+            "Plotly",
+            "Highcharts",
+            "Apache Echarts"            
+        ]
+    },
+    "Documentation tools": {
+        "hint": "Tools and platforms for creating, managing, and publishing technical documentation. These solutions help teams maintain up-to-date documentation for code, APIs, and software products.",
+        "examples": [
+            "Swagger",
+            "Confluence",
+            "Markdown",
+            "Sphinx",
+            "GitBook",
+            "Docusaurus",
+            "AsciiDoc",
+            "Doxygen",
+            "Hugo",
+            "Docz",
+            "документац|Documentation",
+            "Doczilla",
+            "DocFx",
+            "Docs as Code" 
+        ]
+    },
+    "Code Quality Tools": {
+        "hint": "Software tools and frameworks for assessing and improving code quality across different programming languages and frameworks. These solutions help maintain code consistency, readability, and adherence to coding standards.",
+        "examples": [
+            "SonarQube",
+            "ESLint",
+            "Pylint",
+            "ReSharper",
+            "Prettier",
+            "code sniffer",
+            "PHPStan",
+            "Gerrit",
+            "Veracode",
+            "Psalm",
+            "Code Review",
+            "Рефакторинг|refactoring",
+            "Чистый код|clean code",
+            "Collaborator",
+            "^ruff"        
+        ]
+    } 
+}    
