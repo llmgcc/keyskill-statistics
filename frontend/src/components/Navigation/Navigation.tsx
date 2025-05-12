@@ -27,27 +27,32 @@ export function Navigation() {
     window.open('https://github.com/llmgcc/keyskill-statistics', '_blank');
   }
 
+  const navbarStats = [
+    {
+      title: t('navigation.uniqueSkills'),
+      count: stats?.unique_skills ?? null,
+    },
+    {
+      title: t('navigation.lastUpdate'),
+      count: stats?.last_update ?? null,
+    },
+  ];
+
   return (
     <>
       <div>
         <div className="border-b-[1px] border-background-secondary">
           <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
-            <div className="flex">
-              <div className="text-xs sm:block md:flex">
-                <div>{t('navigation.uniqueSkills')}:</div>{' '}
-                <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
-                  {stats?.unique_skills ?? null}
+            {navbarStats.map((s) => (
+              <div key={s.title}>
+                <div className="text-xs sm:block md:flex">
+                  <div>{s.title}:</div>
+                  <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
+                    {s.count}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <div className="text-xs sm:block md:flex">
-                <div>{t('navigation.lastUpdate')}:</div>{' '}
-                <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
-                  {stats?.last_update ?? null}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

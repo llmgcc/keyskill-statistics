@@ -9,7 +9,9 @@ import {
 } from '@/interfaces';
 import { API, SkillsOrderBy } from '@/interfaces/api';
 import axios from 'axios';
+
 import { Experience } from '@/config/experience';
+
 import { filterSkills, sortSkills } from './utils';
 
 const HIGHLIGHTS_LIMIT = 5;
@@ -72,11 +74,23 @@ export class StaticAPI implements API {
     orderBy?: SkillsOrderBy,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
-    const filteredSkills = filterSkills(skills, domain, domainStrict, category, categoryStrict, skillName)
-    const sortedSkills = orderBy ? sortSkills(filteredSkills, orderBy) : filteredSkills
+    const filteredSkills = filterSkills(
+      skills,
+      domain,
+      domainStrict,
+      category,
+      categoryStrict,
+      skillName,
+    );
+    const sortedSkills = orderBy
+      ? sortSkills(filteredSkills, orderBy)
+      : filteredSkills;
 
     return {
-      skills: sortedSkills.slice(offset ?? 0, (offset ?? 0) + (limit ?? skills.length)),
+      skills: sortedSkills.slice(
+        offset ?? 0,
+        (offset ?? 0) + (limit ?? skills.length),
+      ),
       rows: sortedSkills.length,
     };
   }

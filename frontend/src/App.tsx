@@ -4,7 +4,6 @@ import '@/App.css';
 import '@/i18n/i18n';
 
 import i18n from '@/i18n/i18n';
-import { ThemeProvider } from '@/providers/ThemeProvider.tsx';
 import { useCategoriesStore } from '@/store/categoriesStore.ts';
 import { useCurrencyStore } from '@/store/currencyStore.ts';
 import { useDomainsStore } from '@/store/domainsStore.ts';
@@ -120,26 +119,24 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-            <Navigation />
-            <TextSection
-              onLinkClick={(tab) => {
-                navigate(tabs[tab].path);
-                scrollToTabs();
-              }}
-            />
-            <Filters />
-            <Highlights />
-            <SkillFilterProvider>
-              <div ref={tabsRef}>
-                <TabNavigation tabs={tabs} />
-              </div>
-            </SkillFilterProvider>
-          </div>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
+          <Navigation />
+          <TextSection
+            onLinkClick={(tab) => {
+              navigate(tabs[tab].path);
+              scrollToTabs();
+            }}
+          />
+          <Filters />
+          <Highlights />
+          <SkillFilterProvider>
+            <div ref={tabsRef}>
+              <TabNavigation tabs={tabs} />
+            </div>
+          </SkillFilterProvider>
+        </div>
+      </QueryClientProvider>
     </I18nextProvider>
   );
 }

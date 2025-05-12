@@ -6,8 +6,8 @@ function getCategoryConfidence(
   skill: KeySkill,
   category: string,
   key: 'categories' | 'technologies',
-  domainStrict : boolean,
-  categoryStrict : boolean,
+  domainStrict: boolean,
+  categoryStrict: boolean,
 ) {
   const foundCategory = skill[key].find((c) => c.name == category);
 
@@ -40,12 +40,26 @@ export function filterSkills(
   let skillsData = skills;
   if (domain) {
     skillsData = skillsData.filter(
-      (c) => getCategoryConfidence(c, domain, 'categories', domainStrict, categoryStrict) !== null,
+      (c) =>
+        getCategoryConfidence(
+          c,
+          domain,
+          'categories',
+          domainStrict,
+          categoryStrict,
+        ) !== null,
     );
   }
   if (category) {
     skillsData = skillsData.filter(
-      (c) => getCategoryConfidence(c, category, 'technologies', domainStrict, categoryStrict) !== null,
+      (c) =>
+        getCategoryConfidence(
+          c,
+          category,
+          'technologies',
+          domainStrict,
+          categoryStrict,
+        ) !== null,
     );
   }
 
