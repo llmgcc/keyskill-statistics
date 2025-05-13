@@ -1,58 +1,42 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Tabs } from '@radix-ui/themes';
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-interface Tabs {
+interface Tab {
   title: JSX.Element;
-  body: () => JSX.Element;
+  body: JSX.Element;
   name: string;
-  path: string;
   append?: JSX.Element;
 }
 
 interface TabNavigationProps {
-  tabs: Tabs[];
+  tabs: Tab[];
+  paramKey?: string;
 }
 
-export function TabNavigation({ tabs }: TabNavigationProps) {
+export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const searchParams = new URLSearchParams(location.search);
+  const currentTab = searchParams.get(paramKey) || tabs[0].name;
 
-  const getCurrentTabFromPath = () => {
-    const currentPath = location.pathname;
-    const foundTab = tabs.find((tab) => tab.path === currentPath);
-    return foundTab ? foundTab.name : tabs[0].name;
+  const handleTabChange = (value: string) => {
+    searchParams.set(paramKey, value);
+    navigate({ search: searchParams.toString() }, { replace: true });
   };
-
-  const validPaths = tabs.map((tab) => tab.path);
 
   useEffect(() => {
-    if (!validPaths.includes(location.pathname)) {
-      navigate(tabs[0].path, { replace: true });
+    if (!tabs.some((tab) => tab.name === currentTab)) {
+      navigate({ search: `?${paramKey}=${tabs[0].name}` }, { replace: true });
     }
-  }, [location.pathname]);
+  }, [currentTab]);
 
-  const getCurrentTabIndex = () => {
-    const currentPath = location.pathname;
-    return tabs.findIndex((tab) => tab.path === currentPath) || 0;
-  };
+  const currentTabConfig =
+    tabs.find((tab) => tab.name === currentTab) || tabs[0];
 
   return (
-    <div className="app-container mt-4" ref={tabsRef}>
-      <Tabs.Root
-        value={getCurrentTabFromPath()}
-        onValueChange={(value) => {
-          const selectedTab = tabs.find((tab) => tab.name === value) ?? tabs[0];
-          navigate(selectedTab.path);
-        }}
-      >
+    <div className="app-container mt-4">
+      <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
         <div className="items-center lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-4">
           <Tabs.List>
             {tabs.map((tab) => (
@@ -65,23 +49,14 @@ export function TabNavigation({ tabs }: TabNavigationProps) {
               </Tabs.Trigger>
             ))}
           </Tabs.List>
-          <div>{tabs[getCurrentTabIndex()]?.append}</div>
+          <div>{currentTabConfig.append}</div>
         </div>
 
-        <Routes>
-          {tabs.map((tab) => (
-            <Route
-              key={tab.path}
-              path={tab.path}
-              element={
-                <Tabs.Content value={tab.name} className="py-2">
-                  {tab.body()}
-                </Tabs.Content>
-              }
-            />
-          ))}
-          <Route path="/" element={<Navigate to={tabs[0].path} replace />} />
-        </Routes>
+        {tabs.map((tab) => (
+          <Tabs.Content key={tab.name} value={tab.name} className="py-2">
+            {tab.body}
+          </Tabs.Content>
+        ))}
       </Tabs.Root>
     </div>
   );

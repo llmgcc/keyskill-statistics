@@ -16,7 +16,7 @@ export default function SkillDescription(props: KeySkill) {
 
   return (
     <div className="flex items-center text-sm font-[500] leading-none">
-      <div className="mr-2 flex aspect-square h-7 w-7 items-center justify-center">
+      <div className="mr-2 flex aspect-square h-6 w-6 items-center justify-center md:h-7 md:w-7">
         <SkillImage
           domain={props.domains?.[0]?.name ?? null}
           category={props.categories?.[0]?.name ?? null}

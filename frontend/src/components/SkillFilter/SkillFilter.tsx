@@ -23,8 +23,8 @@ export interface SkillsFilterState {
 
 export function SkillFilter() {
   const { t } = useTranslation();
-  const categories = useCategoriesStore(state => state.categories);
-  const domains = useDomainsStore(state => state.domains);
+  const categories = useCategoriesStore((state) => state.categories);
+  const domains = useDomainsStore((state) => state.domains);
 
   const { filterState: state, setFilterState } = useSkillFilter();
 
@@ -43,10 +43,8 @@ export function SkillFilter() {
     setFilterState({ ...state, skill: event.target.value });
   }
 
-
-  
   return (
-    <div className="flex items-center justify-end gap-2 mt-2 md:mt-0">
+    <div className="mt-2 flex items-center justify-end gap-2 md:mt-0">
       <div>
         <TextField.Root
           value={state.skill}
