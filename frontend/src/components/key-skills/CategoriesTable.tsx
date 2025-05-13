@@ -30,7 +30,7 @@ export function CategoriesTable() {
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'category' }),
+    categoryNameAccessor({ accessorKey: 'name', category: 'domain' }),
     salaryAccessor({
       accessorKey: 'average_salary',
       isLoading: isLoading || isFetching,

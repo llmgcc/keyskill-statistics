@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/shallow';
 
 import { CurrencyIcons } from '@/config/currencies';
-
 import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
 
 export function CurrencySwitch() {

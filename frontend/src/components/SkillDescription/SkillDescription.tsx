@@ -18,8 +18,8 @@ export default function SkillDescription(props: KeySkill) {
     <div className="flex items-center text-sm font-[500] leading-none">
       <div className="mr-2 flex aspect-square w-6 items-center justify-center">
         <SkillImage
+          domain={props.domains?.[0]?.name ?? null}
           category={props.categories?.[0]?.name ?? null}
-          technology={props.technologies?.[0]?.name ?? null}
           path={props?.image}
         />
       </div>

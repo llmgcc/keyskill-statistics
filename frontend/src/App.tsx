@@ -122,13 +122,13 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
           <Navigation />
-          {/* <TextSection
+          <TextSection
             onLinkClick={(tab) => {
               navigate(tabs[tab].path);
               scrollToTabs();
             }}
           />
-          <Filters />
+          {/* <Filters />
           <Highlights />
           <SkillFilterProvider>
             <div ref={tabsRef}>

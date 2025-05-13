@@ -46,7 +46,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Category[]> {
     const response = await axios.get(
-      `/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`,
+      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
     );
     return response.data;
   }
@@ -56,7 +56,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Category[]> {
     const response = await axios.get(
-      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
+      `/static-api/domains/domains_${period}_${experience ?? 'any'}.json`,
     );
     return response.data;
   }

@@ -6,7 +6,7 @@ import { BiSearch } from 'react-icons/bi';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 
 import { CategoriesStyle } from '@/config/categories';
-import { TechnologiesStyle } from '@/config/technologies';
+import { DomainsStyle } from '@/config/domains';
 import { useScreenSize } from '@/hooks/useScreenSize';
 import {
   Select,
@@ -56,7 +56,7 @@ function CategoryFilter({
         color: string;
         logo: JSX.Element;
       };
-    } = categoryKey == 'domains' ? CategoriesStyle : TechnologiesStyle;
+    } = categoryKey == 'domains' ? DomainsStyle : CategoriesStyle;
     if (c?.name && c?.name in colorsList) {
       return colorsList[c.name].color;
     }

@@ -47,7 +47,7 @@ type KeySkill = {
   place: number;
   prev_place?: number;
   average_salary?: number;
+  domains: Category[];
   categories: Category[];
-  technologies: Category[];
   image?: string;
 };

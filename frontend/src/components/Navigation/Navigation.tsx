@@ -3,6 +3,7 @@ import { useStatsStore } from '@/store/statsStore';
 import { Button } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BsGithub } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 import { useStickyOffset } from '@/hooks/useStickyOffset';
 import { CurrencySwitch } from '@/components/Navigation/CurrencySwitch';
@@ -10,6 +11,7 @@ import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
 import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 export function Navigation() {
+  const navigate = useNavigate();
   const stats = useStatsStore((state) => state.stats);
   const { t } = useTranslation();
   const [scrollTop, setScrollTop] = useState(true);
@@ -78,7 +80,10 @@ export function Navigation() {
                   </div>
                 </div>
               </div>
-              <div className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent">
+              <div
+                onClick={() => navigate('/key-skills')}
+                className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
+              >
                 Keystats
               </div>
             </div>

@@ -21,8 +21,8 @@ class SkillsResponse(SQLModel):
     prev_place: int | None
     average_salary: float | None
     image: str | None
+    domains: List[CategoriesResponse] | None
     categories: List[CategoriesResponse] | None
-    technologies: List[CategoriesResponse] | None
 
 class KeySkillsResponse(SQLModel):
     skills: List[SkillsResponse]

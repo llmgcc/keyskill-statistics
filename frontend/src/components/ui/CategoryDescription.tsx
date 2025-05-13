@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { DomainDescription } from '@/config/categories';
-import { CategoryDescription as CategoryDescriptionEnum } from '@/config/technologies';
+import { CategoryDescription as CategoryDescriptionEnum } from '@/config/categories';
+import { DomainDescription } from '@/config/domains';
 
 import SkillImage from './SkillImage';
 
 interface CategoryDescriptionProps {
-  categoryKey: 'category' | 'technology';
+  categoryKey: 'domain' | 'category';
   categoryName: string;
 }
 
@@ -17,12 +17,12 @@ export function CategoryDescription({
   const { t } = useTranslation();
 
   function categoryDescription() {
-    if (categoryKey == 'category') {
+    if (categoryKey == 'domain') {
       if (Object.keys(DomainDescription).includes(categoryName)) {
         return t(`domainDescription.${categoryName}`);
       }
     }
-    if (categoryKey == 'technology') {
+    if (categoryKey == 'category') {
       if (Object.keys(CategoryDescriptionEnum).includes(categoryName)) {
         return t(`categoryDescription.${categoryName}`);
       }
@@ -30,7 +30,8 @@ export function CategoryDescription({
     return null;
   }
 
-  const key = categoryKey == 'category' ? 'domains' : 'categories';
+  const key = categoryKey == 'domain' ? 'domains' : 'categories';
+
   return (
     <div className="flex items-center">
       <div className="mr-2 flex aspect-square w-6 items-center justify-center">

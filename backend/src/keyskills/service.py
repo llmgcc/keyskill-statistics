@@ -6,9 +6,9 @@ from src.models import (
     VacancySalary,
     Currency,
     Category,
-    Technology,
+    Domain,
     KeySkillCategory,
-    KeySkillTechnology,
+    KeySkillDomain,
     KeySkillTranslation,
 )
 import datetime
@@ -123,38 +123,38 @@ def get_base_skills(
 
     def create_categories_subquery():
         json_object = func.json_build_object(
-            "name", Category.name, "confidence", KeySkillCategory.confidence
+            "name", Domain.name, "confidence", KeySkillDomain.confidence
         )
         categories_subquery = (
             select(
-                KeySkillCategory.name,
+                KeySkillDomain.name,
                 array_agg(
-                    aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
+                    aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
                 ).label("categories"),
             )
-            .select_from(KeySkillCategory)
-            .join(Category, Category.id == KeySkillCategory.category_id)
-            .group_by(KeySkillCategory.name)
+            .select_from(KeySkillDomain)
+            .join(Domain, Domain.id == KeySkillDomain.domain_id)
+            .group_by(KeySkillDomain.name)
         ).subquery()
 
         return categories_subquery
 
     def create_technology_subquery():
         json_object = func.json_build_object(
-            "name", Technology.name, "confidence", KeySkillTechnology.confidence
+            "name", Category.name, "confidence", KeySkillCategory.confidence
         )
         categories_subquery = (
             select(
-                KeySkillTechnology.name,
+                KeySkillCategory.name,
                 array_agg(
                     aggregate_order_by(
-                        json_object, KeySkillTechnology.confidence.desc()
+                        json_object, KeySkillCategory.confidence.desc()
                     )
                 ).label("categories"),
             )
-            .select_from(KeySkillTechnology)
-            .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-            .group_by(KeySkillTechnology.name)
+            .select_from(KeySkillCategory)
+            .join(Category, Category.id == KeySkillCategory.category_id)
+            .group_by(KeySkillCategory.name)
         ).subquery()
 
         return categories_subquery
@@ -165,8 +165,8 @@ def get_base_skills(
     result = (
         select(
             *skills.c,
-            categories_subquery.c.categories.label("categories"),
-            technologies_subquery.c.categories.label("technologies"),
+            categories_subquery.c.categories.label("domains"),
+            technologies_subquery.c.categories.label("categories"),
             KeySkillImage.image,
             skills.c.translation.label("translation"),
             # sqlalchemy.func.json_extract_path(
@@ -372,6 +372,25 @@ def create_salary_subquery(session, date_from, date_to, number_of_bins):
 
 def create_categories_subquery():
     json_object = func.json_build_object(
+        "name", Domain.name, "confidence", KeySkillDomain.confidence
+    )
+    categories_subquery = (
+        select(
+            KeySkillDomain.name,
+            func.array_agg(
+                aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
+            ).label("categories"),
+        )
+        .select_from(KeySkillDomain)
+        .join(Domain, Domain.id == KeySkillDomain.domain_id)
+        .group_by(KeySkillDomain.name)
+    ).subquery()
+
+    return categories_subquery
+
+
+def create_technology_subquery():
+    json_object = func.json_build_object(
         "name", Category.name, "confidence", KeySkillCategory.confidence
     )
     categories_subquery = (
@@ -384,25 +403,6 @@ def create_categories_subquery():
         .select_from(KeySkillCategory)
         .join(Category, Category.id == KeySkillCategory.category_id)
         .group_by(KeySkillCategory.name)
-    ).subquery()
-
-    return categories_subquery
-
-
-def create_technology_subquery():
-    json_object = func.json_build_object(
-        "name", Technology.name, "confidence", KeySkillTechnology.confidence
-    )
-    categories_subquery = (
-        select(
-            KeySkillTechnology.name,
-            func.array_agg(
-                aggregate_order_by(json_object, KeySkillTechnology.confidence.desc())
-            ).label("categories"),
-        )
-        .select_from(KeySkillTechnology)
-        .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-        .group_by(KeySkillTechnology.name)
     ).subquery()
 
     return categories_subquery
