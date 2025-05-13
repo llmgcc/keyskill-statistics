@@ -2,8 +2,10 @@ import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { useTranslation } from 'react-i18next';
 import { IoFilterSharp } from 'react-icons/io5';
+import { useShallow } from 'zustand/shallow';
 
 import { Experience } from '@/config/experience';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import { useStickyOffset } from '@/hooks/useStickyOffset';
 import {
   Select,
@@ -12,16 +14,43 @@ import {
   SelectTrigger,
 } from '@/components/ui/AppSelect';
 
-export function Filters() {
-  const { setExperience, selectedExperience, experienceList } =
-    useExperienceStore();
-  const { setPeriod, selectedPeriod, periodList } = usePeriodStore();
+export function Filter() {
+  const { isMobile } = useScreenSize();
+  const [setExperience, selectedExperience, experienceList] =
+    useExperienceStore(
+      useShallow((state) => [
+        state.setExperience,
+        state.selectedExperience,
+        state.experienceList,
+      ]),
+    );
+  const [setPeriod, selectedPeriod, periodList] = usePeriodStore(
+    useShallow((state) => [
+      state.setPeriod,
+      state.selectedPeriod,
+      state.periodList,
+    ]),
+  );
   const { t } = useTranslation();
   const { ref, offset } = useStickyOffset('filters');
 
+  function periodTitle() {
+    if (isMobile) {
+      return `${selectedPeriod}${t('common.days')[0]}`;
+    }
+    return `${selectedPeriod} ${t('common.days')}`;
+  }
+
+  function experienceTitle() {
+    if (isMobile) {
+      return t(`experienceShort.${selectedExperience}`);
+    }
+    return t(`experience.${selectedExperience}`);
+  }
+
   return (
     <div
-      className="app-container text sticky top-[48px] z-50 text-text"
+      className="app-container text sticky z-50 text-text"
       ref={ref}
       style={{ top: offset }}
     >
@@ -29,7 +58,7 @@ export function Filters() {
         className={`z-40 flex h-10 justify-between rounded border-[1px] border-background-secondary bg-background-primary p-2 !shadow-sm`}
       >
         <div className="flex items-center text-sm">
-          <div className="mx-1">
+          <div className="mx-1 text-background-accent">
             <IoFilterSharp />
           </div>
           <div className="ml-1 font-[600] text-text">{t('filters.title')}</div>
@@ -43,9 +72,9 @@ export function Filters() {
               <SelectTrigger>
                 <span className="text-text-primary sm:text-xs md:text-sm">
                   {t('common.experience')}
-                </span>{' '}
-                <span className="text-text-secondary sm:text-xs md:text-sm">
-                  {t(`experience.${selectedExperience}`)}
+                </span>
+                <span className="ml-1 text-text-secondary sm:text-xs md:text-sm">
+                  {experienceTitle()}
                 </span>
               </SelectTrigger>
               <SelectContent>
@@ -69,9 +98,9 @@ export function Filters() {
               <SelectTrigger>
                 <span className="text-text-primary sm:text-xs md:text-sm">
                   {t('common.period')}
-                </span>{' '}
-                <span className="text-text-secondary sm:text-xs md:text-sm">
-                  {selectedPeriod} {t('common.days')}
+                </span>
+                <span className="ml-1 text-text-secondary sm:text-xs md:text-sm">
+                  {periodTitle()}
                 </span>
               </SelectTrigger>
 

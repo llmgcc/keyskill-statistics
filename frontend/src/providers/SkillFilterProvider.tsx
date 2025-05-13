@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 
-import { SkillsFilterState } from '@/components/SkillsFilter/SkillsFilter.tsx';
+import { SkillsFilterState } from '@/components/SkillFilter/SkillFilter';
 
 const SkillFilterContext = createContext<{
   filterState: SkillsFilterState;

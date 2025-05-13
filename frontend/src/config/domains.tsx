@@ -88,13 +88,13 @@ export const DomainShort: Record<Domains, string> = {
   'System administration': 'SysAdm',
   'Website administration': 'WebAdm',
   '1C Development': '1C',
-  'Systems analytics': 'Analytics',
-  'Systems programming': 'SysProg',
-  Cybersecurity: 'Security',
+  'Systems analytics': 'SA',
+  'Systems programming': 'SP',
+  Cybersecurity: 'Sec',
   'HR management': 'HR',
   'Project management': 'PM',
-  'Network administration': 'Network',
-  'Digital Marketing & SEO': 'Marketing',
+  'Network administration': 'Net',
+  'Digital Marketing & SEO': 'DM/SEO',
   Other: 'Other',
 };
 
@@ -169,7 +169,7 @@ export const DomainsStyle = {
   },
   [Domains['Network administration']]: {
     logo: <FaNetworkWired />,
-    color: colors.blue[400],
+    color: colors.blue[800],
   },
   [Domains['Digital Marketing & SEO']]: {
     logo: <FiTrendingUp />,
