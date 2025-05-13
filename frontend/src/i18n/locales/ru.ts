@@ -48,8 +48,9 @@ export default {
       experience: 'Опыт работы',
       period: 'Период',
       unknownCategory: 'Неизвестно',
-      domains: 'Области',
+      domains: 'Направления',
       categories: 'Категории',
+      skills: 'Ключевые навыки',
     },
     domains: {
       [Domains['Frontend development']]: 'Frontend разработка',

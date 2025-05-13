@@ -34,7 +34,7 @@ export function CategoryDescription({
 
   return (
     <div className="flex items-center">
-      <div className="mr-2 flex aspect-square w-6 items-center justify-center">
+      <div className="mr-2 flex aspect-square w-7 h-7 items-center justify-center text-base">
         <SkillImage {...{ [categoryKey]: categoryName }} />
       </div>
       <div className="text-sm font-[600]">
