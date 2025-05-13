@@ -6,10 +6,12 @@ import { FaArrowTrendDown } from 'react-icons/fa6';
 import { MdArrowRightAlt } from 'react-icons/md';
 
 import { Highlights as HighlightsEnum } from '@/config/highlights';
-
-import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
-import { CurrencyDisplay } from '../ui/CurrencyDisplay';
-import { HighlightsCard, HiglightBase } from './HighlightsCard';
+import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
+import {
+  HighlightsCard,
+  HiglightBase,
+} from '@/components/Highlights/HighlightsCard';
+import { ValueChangeRenderer } from '@/components/table/renderers/ValueChangeRenderer';
 
 export function Highlights() {
   const skillValueRenderer = (skill: KeySkill) => {

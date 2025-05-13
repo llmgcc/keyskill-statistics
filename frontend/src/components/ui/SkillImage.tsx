@@ -1,3 +1,5 @@
+import { baseURL } from '@/api/api';
+
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Domains, DomainsStyle } from '@/config/domains';
 
@@ -10,10 +12,10 @@ type SkillImageProps = {
 function SkillImage({ path, domain, category }: SkillImageProps) {
   function imageLogo() {
     if (path) {
-      const url = `http://localhost:8000/static/${path}`;
+      const url = `${baseURL}/${path}`;
       return (
-        <div className="size-fit">
-          <img src={url} alt="" />
+        <div className="h-full w-full p-1">
+          <img src={url} alt="" className="h-full w-full object-contain" />
         </div>
       );
     }
@@ -50,10 +52,12 @@ function SkillImage({ path, domain, category }: SkillImageProps) {
 
   return (
     <div
-      className={`flex aspect-square w-full items-center justify-center rounded-md text-xs`}
+      className={`flex aspect-square h-full w-full items-center justify-center rounded-md text-xs shadow-sm shadow-background-gray`}
       style={style ?? undefined}
     >
-      <div className="text-white">{imageLogo()}</div>
+      <div className="flex aspect-square h-full w-full items-center justify-center text-white">
+        {imageLogo()}
+      </div>
     </div>
   );
 }

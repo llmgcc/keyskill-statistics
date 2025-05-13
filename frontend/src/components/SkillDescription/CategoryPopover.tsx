@@ -15,7 +15,7 @@ import {
 
 import { CategoryPieChart } from './CategoryPieChart';
 
-type SkillKey = 'categories' | 'technologies';
+type SkillKey = 'domains' | 'categories';
 interface CategoryPopoverProps {
   skill: KeySkill;
   defaultKey: SkillKey;
@@ -29,9 +29,9 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
 
   const getTranslationKey = (key: SkillKey, truncate = false) => {
     if (isMobile && truncate) {
-      return key == 'categories' ? 'domainsShort' : 'categoriesShort';
+      return key == 'domains' ? 'domainsShort' : 'categoriesShort';
     }
-    return key == 'categories' ? 'domains' : 'categories';
+    return key;
   };
 
   const getColor = (category: Category) => {
@@ -45,11 +45,11 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
   };
 
   const getIcon = (category: Category) => {
+    if (Object.values(Domains).includes(category.name as Domains)) {
+      return DomainsStyle[category.name as Domains].logo;
+    }
     if (Object.values(Categories).includes(category.name as Categories)) {
       return CategoriesStyle[category.name as Categories].logo;
-    }
-    if (Object.values(Technologies).includes(category.name as Technologies)) {
-      return TechnologiesStyle[category.name as Technologies].logo;
     }
     return null;
   };
@@ -111,13 +111,13 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
                 onValueChange={(value) => setButtonKey(value as SkillKey)}
               >
                 <SegmentedControl.Item
-                  value="categories"
+                  value="domains"
                   className="cursor-pointer"
                 >
                   {t('common.domains')}
                 </SegmentedControl.Item>
                 <SegmentedControl.Item
-                  value="technologies"
+                  value="categories"
                   className="cursor-pointer"
                 >
                   {t('common.categories')}
