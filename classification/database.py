@@ -27,11 +27,62 @@ class SkillDatabase:
                 self.skills_cache = json.load(f)
 
     def update_skills_cache(self):
+        self.update_translations()
         self.update_skills()
         self.update_cooccurrences()
         self.update_embeddings()
         self.update_category_similarities()
         self.update_technology_similarities()
+
+
+
+    def translate_skills(self, skills):
+        from transformers import pipeline
+        translator = pipeline("translation", model="Helsinki-NLP/opus-mt-ru-en")
+
+        BATCH_SIZE = 100
+        cyrillic_skills_batches = np.array_split(skills, np.arange(BATCH_SIZE,len(skills), BATCH_SIZE))
+        translations_dict = {}
+
+        for i, batch in enumerate(cyrillic_skills_batches):
+            print(f'Batch {i}/{len(cyrillic_skills_batches)}')
+            texts = [
+                f'Ключевые навыки на IT вакансию: JavaScript, Python and {skill}' for skill in batch
+            ]
+        
+            eng_translations = list(map(lambda x: x['translation_text'], translator(texts + [skill for skill in batch], batch_size=4)))
+            simple_translations = eng_translations[BATCH_SIZE:]
+            eng_translations = eng_translations[0:BATCH_SIZE]
+
+            for i, skill in enumerate(batch):
+                translation = re.search('and (.*)$', eng_translations[i])
+                if translation is not None:
+                    translation = translation.group(1).strip()
+                else:
+                    translation = simple_translations[i]
+                    print(f'\t undefined translation "{eng_translations[i]}" -- set "{simple_translations[i]}" -- {batch[i]}')
+                print(f'{i+1} {batch[i]} | {translation}')
+                translations_dict[skill] = translation
+        return translations_dict
+
+
+    def update_translations(self):
+        def has_cyrillic(text):
+            return bool(re.search('[а-яА-Я]', text))
+
+        skills = list(map(lambda x: x['name'] if has_cyrillic(x['name']) and x['translation'] is None else None, self.all_skills))
+        cyrillic_skills = list(filter(lambda x: x is not None, skills))
+        translations = self.translate_skills(cyrillic_skills)
+
+        db_connection = self.CONNECTION_URL
+        for k in translations:
+            db_connection.cursor().execute(
+                'INSERT INTO KeySkillTranslation (name, translation) VALUES(%s, %s) ON CONFLICT (name) DO UPDATE SET translation = %s',
+                (k, translations[k], translations[k])
+            )
+        db_connection.commit()
+
+
 
     def update_skills(self):
         for index, skill in enumerate(self.all_skills):
@@ -219,3 +270,4 @@ class SkillDatabase:
                 ORDER BY count DESC
             ''', con=self.CONNECTION_URL).to_dict('records')
         return dict(map(lambda x: (x['name'], x['count']), similar_skills))
+    
