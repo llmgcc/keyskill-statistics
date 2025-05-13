@@ -115,7 +115,9 @@ def get_base_skills(
         select(*skills_base.c)
         .select_from(skills_base)
         .where(where(skills_base) if where else True)
-        .where(skills_base.c.average_salary <= settings.max_salary)
+        .where(
+            or_(skills_base.c.average_salary <= settings.max_salary, skills_base.c.average_salary == None)
+        )
         .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .offset(offset)
         .limit(limit)

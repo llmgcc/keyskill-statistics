@@ -4,9 +4,8 @@ import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
 import { Experience } from '@/config/experience';
-
-import { HighlightsCardTab } from './HighlightsCardTab';
-import StatCard from './StatCard';
+import { HighlightsCardTab } from '@/components/Highlights/HighlightsCardTab';
+import StatCard from '@/components/Highlights/StatCard';
 
 export type HiglightBase = {
   icon: JSX.Element;

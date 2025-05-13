@@ -25,6 +25,8 @@ import json
 import asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlmodel.ext.asyncio.session import AsyncSession
+import shutil
+
 
 FRONTEND_STATIC_API_PATH = (
     os.path.dirname(os.path.abspath(__file__ + "/../")) + "/frontend/public/static-api"
@@ -40,6 +42,18 @@ client = TestClient(app)
 EXPERIENCE = ["any", "noExperience", "between1And3", "between3And6", "moreThan6"]
 PERIOD = [7, 14, 30]
 
+
+def copy_images_folder():
+    source_dir = os.path.dirname(os.path.abspath(__file__)) + "/src/static"
+    dest_dir = FRONTEND_STATIC_API_PATH + '/static'
+    os.makedirs(dest_dir, exist_ok=True)
+    if os.path.exists(source_dir):
+        shutil.copytree(source_dir, dest_dir, dirs_exist_ok=True)
+
+copy_images_folder()
+
+
+exit()
 
 async def build_static(router):
     async with AsyncClient(
@@ -88,29 +102,29 @@ async def test():
                 with open(file_name, "w", encoding="utf-8") as f:
                     json.dump(data, f)
 
-                #  CATEGORIES
-                categories = await categories_list(session, period, experience=e)
-                data = [
-                    CategoriesResponse.model_validate(item).model_dump_json()
-                    for item in categories
-                ]
-                file_name = f"{FRONTEND_STATIC_API_PATH + f'/categories/categories_{period}_{experience}'}.json"
-                os.makedirs(os.path.dirname(file_name), exist_ok=True)
-                data = list(map(lambda x: json.loads(x), data))
-                with open(file_name, "w", encoding="utf-8") as f:
-                    json.dump(data, f)
+                # #  CATEGORIES
+                # categories = await categories_list(session, period, experience=e)
+                # data = [
+                #     CategoriesResponse.model_validate(item).model_dump_json()
+                #     for item in categories
+                # ]
+                # file_name = f"{FRONTEND_STATIC_API_PATH + f'/categories/categories_{period}_{experience}'}.json"
+                # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+                # data = list(map(lambda x: json.loads(x), data))
+                # with open(file_name, "w", encoding="utf-8") as f:
+                #     json.dump(data, f)
 
-                #  DOMAINS
-                domains = await domains_list(session, period, experience=e)
-                data = [
-                    DomainsResponse.model_validate(item).model_dump_json()
-                    for item in domains
-                ]
-                file_name = f"{FRONTEND_STATIC_API_PATH + f'/domains/domains_{period}_{experience}'}.json"
-                os.makedirs(os.path.dirname(file_name), exist_ok=True)
-                data = list(map(lambda x: json.loads(x), data))
-                with open(file_name, "w", encoding="utf-8") as f:
-                    json.dump(data, f)
+                # #  DOMAINS
+                # domains = await domains_list(session, period, experience=e)
+                # data = [
+                #     DomainsResponse.model_validate(item).model_dump_json()
+                #     for item in domains
+                # ]
+                # file_name = f"{FRONTEND_STATIC_API_PATH + f'/domains/domains_{period}_{experience}'}.json"
+                # os.makedirs(os.path.dirname(file_name), exist_ok=True)
+                # data = list(map(lambda x: json.loads(x), data))
+                # with open(file_name, "w", encoding="utf-8") as f:
+                #     json.dump(data, f)
 
 asyncio.run(test())
 

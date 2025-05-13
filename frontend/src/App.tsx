@@ -72,7 +72,7 @@ export default function App() {
           <div className="ml-1">Key Skills</div>
         </div>
       ),
-      body: () => <KeySkills />,
+      body: () => <div>{/* <KeySkills /> */}</div>,
       name: 'skills',
       path: '/key-skills',
       append: (
@@ -90,11 +90,7 @@ export default function App() {
           <div className="ml-1">Domains</div>
         </div>
       ),
-      body: () => (
-        <div>
-          <CategoriesTable />
-        </div>
-      ),
+      body: () => <div>{/* <CategoriesTable /> */}</div>,
       name: 'domains',
       path: '/domains',
     },
@@ -107,11 +103,7 @@ export default function App() {
           <div className="ml-1">Categories</div>
         </div>
       ),
-      body: () => (
-        <div>
-          <TechnologiesTable />
-        </div>
-      ),
+      body: () => <div>{/* <TechnologiesTable /> */}</div>,
       name: 'categories',
       path: '/categories',
     },

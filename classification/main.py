@@ -1,6 +1,5 @@
-from database import SkillDatabase
+from domains_classifier import DomainsClassifier
 
-db = SkillDatabase()
-# db.update_embeddings()
-# db.update_category_similarities()
-# db.update_technology_similarities()
+clf = DomainsClassifier()
+
+clf.search(1).predict()

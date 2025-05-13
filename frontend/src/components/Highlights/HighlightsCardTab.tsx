@@ -5,8 +5,7 @@ import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { Experience } from '@/config/experience';
-
-import SkillDescription from '../SkillDescription/SkillDescription';
+import SkillDescription from '@/components/SkillDescription/SkillDescription';
 
 type HighlightsCardTabProps = {
   title: string;
@@ -19,8 +18,10 @@ export function HighlightsCardTab({
   source,
   valueRenderer,
 }: HighlightsCardTabProps) {
-  const { selectedExperience } = useExperienceStore();
-  const { selectedPeriod } = usePeriodStore();
+  const selectedExperience = useExperienceStore(
+    (state) => state.selectedExperience,
+  );
+  const selectedPeriod = usePeriodStore((state) => state.selectedPeriod);
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: [title, selectedExperience, selectedPeriod],
@@ -37,12 +38,12 @@ export function HighlightsCardTab({
     staleTime: Infinity,
   });
 
-  const defaultItem = {
+  const defaultItem: KeySkill = {
     name: '-'.repeat(50),
     count: 100,
     prev_count: 50,
+    domains: [],
     categories: [],
-    technologies: [],
     place: 20,
     prev_place: 10,
   };

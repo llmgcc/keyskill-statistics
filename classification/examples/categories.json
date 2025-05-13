@@ -12,16 +12,13 @@
             "Kotlin",
             "Rust",
             "^SQL",
-            "^HTML",
-            "^CSS",
             "1С программирование",
             "Pascal",
             "delphi",
             "solidity",
             "Scala",
             "assembly",
-            "Objective-C",
-            "Fortran"
+            "Objective-C"
         ]
     },
     "Databases": {

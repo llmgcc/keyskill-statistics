@@ -200,7 +200,7 @@ export class StaticAPI implements API {
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
-      .filter((s) => s.prev_count)
+      .filter((s) => s.prev_count && s.prev_count >= 5)
       .sort(
         (a, b) => change(b.count, b.prev_count) - change(a.count, a.prev_count),
       )
@@ -213,7 +213,7 @@ export class StaticAPI implements API {
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
-      .filter((s) => s.prev_count)
+      .filter((s) => s.prev_count && s.count >= 5)
       .sort(
         (a, b) => change(a.count, a.prev_count) - change(b.count, b.prev_count),
       )
