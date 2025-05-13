@@ -9,9 +9,10 @@ import { useCurrencyStore } from '@/store/currencyStore.ts';
 import { useDomainsStore } from '@/store/domainsStore.ts';
 import { useStatsStore } from '@/store/statsStore.ts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import { GrTechnology } from 'react-icons/gr';
-import { MdCategory, MdLeaderboard } from 'react-icons/md';
+import { MdCategory, MdLeaderboard, MdOutlineCategory } from 'react-icons/md';
+import { CgList } from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
 
 import { TabNavigation } from '@/components/ui/TabNavigation.tsx';
@@ -25,6 +26,7 @@ import { SkillFilter } from '@/components/SkillFilter/SkillFilter';
 import { TextSection } from '@/components/TextSection/TextSection';
 
 import { SkillFilterProvider } from './providers/SkillFilterProvider';
+import { BiCategory } from 'react-icons/bi';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,6 +43,7 @@ export default function App() {
   const fetchStats = useStatsStore((state) => state.fetchStats);
   const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
   const tabsRef = useRef<HTMLDivElement | null>(null);
+  const {t} = useTranslation()
 
   useEffect(() => {
     fetchCurrencies();
@@ -67,16 +70,16 @@ export default function App() {
       title: (
         <div className="flex items-center">
           <div>
-            <MdLeaderboard />
+            <CgList />
           </div>
-          <div className="ml-1">Key Skills</div>
+          <div className="ml-1">{t('common.skills')}</div>
         </div>
       ),
-      body: () => <div>{/* <KeySkills /> */}</div>,
+      body: () => <div><KeySkills /></div>,
       name: 'skills',
       path: '/key-skills',
       append: (
-        <div className="flex w-full items-end justify-end text-right">
+        <div className="flex w-full items-end justify-end text-right h-fit">
           <SkillFilter />
         </div>
       ),
@@ -85,12 +88,12 @@ export default function App() {
       title: (
         <div className="flex items-center">
           <div>
-            <MdCategory />
+            <MdOutlineCategory />
           </div>
-          <div className="ml-1">Domains</div>
+          <div className="ml-1">{t('common.domains')}</div>
         </div>
       ),
-      body: () => <div>{/* <CategoriesTable /> */}</div>,
+      body: () => <div><CategoriesTable /></div>,
       name: 'domains',
       path: '/domains',
     },
@@ -98,12 +101,12 @@ export default function App() {
       title: (
         <div className="flex items-center">
           <div>
-            <GrTechnology />
+            <BiCategory />
           </div>
-          <div className="ml-1">Categories</div>
+          <div className="ml-1">{t('common.categories')}</div>
         </div>
       ),
-      body: () => <div>{/* <TechnologiesTable /> */}</div>,
+      body: () => <div><TechnologiesTable /></div>,
       name: 'categories',
       path: '/categories',
     },

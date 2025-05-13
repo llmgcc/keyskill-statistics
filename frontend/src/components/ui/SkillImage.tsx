@@ -14,7 +14,7 @@ function SkillImage({ path, domain, category }: SkillImageProps) {
     if (path) {
       const url = `${baseURL}/${path}`;
       return (
-        <div className="h-full w-full p-1">
+        <div className="h-full w-full">
           <img src={url} alt="" className="h-full w-full object-contain" />
         </div>
       );
@@ -52,10 +52,10 @@ function SkillImage({ path, domain, category }: SkillImageProps) {
 
   return (
     <div
-      className={`flex aspect-square h-full w-full items-center justify-center rounded-md text-xs shadow-sm shadow-background-gray`}
+      className={`flex aspect-square h-full w-full items-center justify-center rounded-md text-xs`}
       style={style ?? undefined}
     >
-      <div className="flex aspect-square h-full w-full items-center justify-center text-white">
+      <div className="flex aspect-square h-full w-full items-center justify-center text-white p-0 text-base">
         {imageLogo()}
       </div>
     </div>

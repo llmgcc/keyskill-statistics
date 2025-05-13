@@ -54,6 +54,7 @@ export default {
       unknownCategory: 'Unknown',
       domains: 'Domains',
       categories: 'Categories',
+      skills: 'Key skills'
     },
     domains: Domains,
     domainsShort: DomainShort,
