@@ -142,8 +142,15 @@ function CategoryFilter({
             placeholder={t('categoryFilter.placeholder')}
             size="2"
             value={textFilter}
-            onChange={(e) => setTextFilter(e.target.value)}
+            onChange={(e) => {
+              e.stopPropagation();
+              setTextFilter(e.target.value);
+            }}
             className="border-shadow-full bg-background-secondary/50 outline-background-secondary"
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
           >
             <TextField.Slot>
               <BiSearch height="16" width="16" />

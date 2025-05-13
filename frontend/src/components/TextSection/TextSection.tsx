@@ -10,7 +10,7 @@ import { Domains } from '@/config/domains';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 interface TextSectionProps {
-  onLinkClick?: (tabIndex: number) => void;
+  onLinkClick?: (tabName: string) => void;
 }
 
 export function TextSection({ onLinkClick }: TextSectionProps) {
@@ -52,7 +52,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
       rel="noopener noreferrer"
       onClick={(e) => {
         e.preventDefault();
-        onLinkClick?.(2);
+        onLinkClick?.('categories');
       }}
       className="cursor-pointer"
       underline="always"
@@ -64,7 +64,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
       rel="noopener noreferrer"
       onClick={(e) => {
         e.preventDefault();
-        onLinkClick?.(1);
+        onLinkClick?.('domains');
       }}
       className="cursor-pointer"
       underline="always"

@@ -55,7 +55,7 @@ function SkillImage({ path, domain, category }: SkillImageProps) {
       className={`flex aspect-square h-full w-full items-center justify-center rounded-md text-xs`}
       style={style ?? undefined}
     >
-      <div className="flex aspect-square h-full w-full items-center justify-center text-white p-0 text-base">
+      <div className="flex aspect-square h-full w-full items-center justify-center p-0 text-base text-white">
         {imageLogo()}
       </div>
     </div>
