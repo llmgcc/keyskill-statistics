@@ -1,11 +1,11 @@
 from fastapi.testclient import TestClient
 from fastapi import FastAPI
 from src.general.router import router as main_router
+from src.domains.router import router as domains_router
 from src.categories.router import router as categories_router
-from src.technologies.router import router as technologies_router
 from src.highlights.router import router as highlights_router
 from src.categories.service import categories_list
-from src.technologies.service import technologies_list
+from src.domains.service import domains_list
 import os
 from src.keyskills.service import get_base_skills
 from src.charts.service import (
@@ -20,7 +20,7 @@ from src.database import engine, async_engine
 from sqlmodel import Session, select
 from src.keyskills.schemas import SkillsResponse
 from src.categories.schemas import CategoriesResponse
-from src.technologies.schemas import TechnologiesResponse
+from src.domains.schemas import DomainsResponse
 import json
 import asyncio
 from httpx import ASGITransport, AsyncClient
@@ -32,7 +32,7 @@ FRONTEND_STATIC_API_PATH = (
 app = FastAPI()
 app.include_router(main_router)
 app.include_router(categories_router)
-app.include_router(technologies_router)
+app.include_router(domains_router)
 app.include_router(highlights_router)
 
 client = TestClient(app)
@@ -59,7 +59,7 @@ async def build_static(router):
 async def build_from_routes():
     await build_static(main_router)
     await build_static(categories_router)
-    await build_static(technologies_router)
+    await build_static(domains_router)
 
 
 # async def build():
@@ -100,13 +100,13 @@ async def test():
                 with open(file_name, "w", encoding="utf-8") as f:
                     json.dump(data, f)
 
-                #  TECHNOLOGIES
-                categories = await technologies_list(session, period, experience=e)
+                #  DOMAINS
+                domains = await domains_list(session, period, experience=e)
                 data = [
-                    TechnologiesResponse.model_validate(item).model_dump_json()
-                    for item in categories
+                    DomainsResponse.model_validate(item).model_dump_json()
+                    for item in domains
                 ]
-                file_name = f"{FRONTEND_STATIC_API_PATH + f'/technologies/technologies_{period}_{experience}'}.json"
+                file_name = f"{FRONTEND_STATIC_API_PATH + f'/domains/domains_{period}_{experience}'}.json"
                 os.makedirs(os.path.dirname(file_name), exist_ok=True)
                 data = list(map(lambda x: json.loads(x), data))
                 with open(file_name, "w", encoding="utf-8") as f:

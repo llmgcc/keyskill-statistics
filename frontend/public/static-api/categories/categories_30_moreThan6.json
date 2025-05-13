@@ -1,1 +1,242 @@
-[{"name": "Backend development", "count": 1123, "prev_count": 797, "place": 1, "prev_place": 4, "average_salary": 304747.2741206702}, {"name": "Systems analytics", "count": 1025, "prev_count": 912, "place": 2, "prev_place": 2, "average_salary": 329523.9811813002}, {"name": "1C Development", "count": 946, "prev_count": 886, "place": 3, "prev_place": 3, "average_salary": 260540.29805386454}, {"name": "Digital Marketing & SEO", "count": 937, "prev_count": 927, "place": 4, "prev_place": 1, "average_salary": 309406.3843336076}, {"name": "HR management", "count": 614, "prev_count": 613, "place": 5, "prev_place": 5, "average_salary": 345097.4583768082}, {"name": "DevOps & Infrastructure", "count": 602, "prev_count": 415, "place": 6, "prev_place": 10, "average_salary": 332689.04600258614}, {"name": "Design", "count": 533, "prev_count": 502, "place": 7, "prev_place": 6, "average_salary": 363388.03217514884}, {"name": "System administration", "count": 532, "prev_count": 449, "place": 8, "prev_place": 8, "average_salary": 260164.50383397707}, {"name": "Project management", "count": 519, "prev_count": 474, "place": 9, "prev_place": 7, "average_salary": 354433.85549277195}, {"name": "Cybersecurity", "count": 480, "prev_count": 408, "place": 10, "prev_place": 11, "average_salary": 226197.26272578444}, {"name": "Frontend development", "count": 465, "prev_count": 310, "place": 11, "prev_place": 15, "average_salary": 328165.88205551385}, {"name": "Network administration", "count": 449, "prev_count": 347, "place": 12, "prev_place": 12, "average_salary": 272251.06016298506}, {"name": "Mobile development", "count": 440, "prev_count": 326, "place": 13, "prev_place": 13, "average_salary": 276667.4956847284}, {"name": "Testing & Quality assurance", "count": 423, "prev_count": 306, "place": 14, "prev_place": 16, "average_salary": 317122.0454922011}, {"name": "Other", "count": 395, "prev_count": 447, "place": 15, "prev_place": 9, "average_salary": 262084.31653696703}, {"name": "Computer graphics & Game development", "count": 358, "prev_count": 319, "place": 16, "prev_place": 14, "average_salary": 240872.46671641825}, {"name": "Systems programming", "count": 326, "prev_count": 265, "place": 17, "prev_place": 17, "average_salary": 268472.8920203782}, {"name": "Data Science & Machine Learning", "count": 216, "prev_count": 175, "place": 18, "prev_place": 18, "average_salary": 380710.39647234767}, {"name": "Website administration", "count": 172, "prev_count": 133, "place": 19, "prev_place": 19, "average_salary": 200876.4074196078}, {"name": "Blockchain", "count": 120, "prev_count": 114, "place": 20, "prev_place": 20, "average_salary": 255851.8049331483}]
+[
+  {
+    "name": "Languages",
+    "count": 1375,
+    "prev_count": 1107,
+    "place": 1,
+    "prev_place": 2,
+    "median_salary": 240000.0
+  },
+  {
+    "name": "Soft skills",
+    "count": 1325,
+    "prev_count": 1252,
+    "place": 2,
+    "prev_place": 1,
+    "median_salary": 200000.0
+  },
+  {
+    "name": "Databases",
+    "count": 1024,
+    "prev_count": 882,
+    "place": 3,
+    "prev_place": 4,
+    "median_salary": 235747.4924325055
+  },
+  {
+    "name": "Documentation tools",
+    "count": 902,
+    "prev_count": 896,
+    "place": 4,
+    "prev_place": 3,
+    "median_salary": 198588.52061438965
+  },
+  {
+    "name": "Game engines",
+    "count": 746,
+    "prev_count": 704,
+    "place": 5,
+    "prev_place": 5,
+    "median_salary": 200000.0
+  },
+  {
+    "name": "Operating systems",
+    "count": 523,
+    "prev_count": 439,
+    "place": 6,
+    "prev_place": 6,
+    "median_salary": 225000.0
+  },
+  {
+    "name": "Backend Libraries and Frameworks",
+    "count": 520,
+    "prev_count": 396,
+    "place": 7,
+    "prev_place": 7,
+    "median_salary": 287090.74373484234
+  },
+  {
+    "name": "API technologies and protocols",
+    "count": 494,
+    "prev_count": 382,
+    "place": 8,
+    "prev_place": 8,
+    "median_salary": 250000.0
+  },
+  {
+    "name": "Frontend Libraries and Frameworks",
+    "count": 485,
+    "prev_count": 339,
+    "place": 9,
+    "prev_place": 9,
+    "median_salary": 245000.0
+  },
+  {
+    "name": "Containerization & Orchestration",
+    "count": 358,
+    "prev_count": 269,
+    "place": 10,
+    "prev_place": 11,
+    "median_salary": 282942.6030719482
+  },
+  {
+    "name": "CMS",
+    "count": 338,
+    "prev_count": 278,
+    "place": 11,
+    "prev_place": 10,
+    "median_salary": 230000.0
+  },
+  {
+    "name": "Network Protocols",
+    "count": 326,
+    "prev_count": 261,
+    "place": 12,
+    "prev_place": 12,
+    "median_salary": 230000.0
+  },
+  {
+    "name": "Data Visualization & BI tools",
+    "count": 254,
+    "prev_count": 186,
+    "place": 13,
+    "prev_place": 16,
+    "median_salary": 250000.0
+  },
+  {
+    "name": "Testing Tools",
+    "count": 242,
+    "prev_count": 217,
+    "place": 14,
+    "prev_place": 14,
+    "median_salary": 300000.0
+  },
+  {
+    "name": "Project Management Tools",
+    "count": 235,
+    "prev_count": 247,
+    "place": 15,
+    "prev_place": 13,
+    "median_salary": 226354.0824575586
+  },
+  {
+    "name": "Messaging & Queuing systems",
+    "count": 199,
+    "prev_count": 155,
+    "place": 16,
+    "prev_place": 18,
+    "median_salary": 305840.7437348424
+  },
+  {
+    "name": "Graphic design",
+    "count": 195,
+    "prev_count": 193,
+    "place": 17,
+    "prev_place": 15,
+    "median_salary": 152000.0
+  },
+  {
+    "name": "Code Collaboration & Integration",
+    "count": 194,
+    "prev_count": 182,
+    "place": 18,
+    "prev_place": 17,
+    "median_salary": 255000.0
+  },
+  {
+    "name": "Security tools and frameworks",
+    "count": 130,
+    "prev_count": 92,
+    "place": 19,
+    "prev_place": 20,
+    "median_salary": 291471.30153597414
+  },
+  {
+    "name": "Machine Learning Libraries and Frameworks",
+    "count": 120,
+    "prev_count": 116,
+    "place": 20,
+    "prev_place": 19,
+    "median_salary": 315000.0
+  },
+  {
+    "name": "Monitoring",
+    "count": 94,
+    "prev_count": 66,
+    "place": 21,
+    "prev_place": 22,
+    "median_salary": 227500.0
+  },
+  {
+    "name": "Cloud platforms",
+    "count": 93,
+    "prev_count": 63,
+    "place": 22,
+    "prev_place": 23,
+    "median_salary": 363783.34680679056
+  },
+  {
+    "name": "Integrated Development Environments",
+    "count": 87,
+    "prev_count": 57,
+    "place": 23,
+    "prev_place": 26,
+    "median_salary": 250000.0
+  },
+  {
+    "name": "Web Servers",
+    "count": 81,
+    "prev_count": 53,
+    "place": 24,
+    "prev_place": 27,
+    "median_salary": 211875.0
+  },
+  {
+    "name": "Mobile Libraries and Frameworks",
+    "count": 67,
+    "prev_count": 61,
+    "place": 25,
+    "prev_place": 24,
+    "median_salary": 300000.0
+  },
+  {
+    "name": "Graphics APIs & GPGPU",
+    "count": 66,
+    "prev_count": 66,
+    "place": 26,
+    "prev_place": 21,
+    "median_salary": 152000.0
+  },
+  {
+    "name": "Infrastructure Automation & Configuration",
+    "count": 64,
+    "prev_count": 60,
+    "place": 27,
+    "prev_place": 25,
+    "median_salary": 323362.9749393694
+  },
+  {
+    "name": "Blockchain platforms & tools",
+    "count": 64,
+    "prev_count": 52,
+    "place": 28,
+    "prev_place": 28,
+    "median_salary": 300000.0
+  },
+  {
+    "name": "Code Quality Tools",
+    "count": 59,
+    "prev_count": 45,
+    "place": 29,
+    "prev_place": 29,
+    "median_salary": 250000.0
+  },
+  {
+    "name": "Search & Indexing engines",
+    "count": 15,
+    "prev_count": 9,
+    "place": 30,
+    "prev_place": 30,
+    "median_salary": 199000.0
+  }
+]

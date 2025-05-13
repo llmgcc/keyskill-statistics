@@ -1,182 +1,280 @@
-import { BiBug, BiCube, BiShield } from 'react-icons/bi';
-import { BsBoxes, BsCpu, BsGlobe } from 'react-icons/bs';
-import { CiServer } from 'react-icons/ci';
-import { FaCode, FaNetworkWired, FaQuestion } from 'react-icons/fa';
-import { FiTrendingUp } from 'react-icons/fi';
-import { GiSmartphone } from 'react-icons/gi';
-import { GrNodes } from 'react-icons/gr';
-import { HiServerStack } from 'react-icons/hi2';
-import { IoAnalytics } from 'react-icons/io5';
+import { BsPuzzle, BsShieldLock } from 'react-icons/bs';
+import { FaNetworkWired, FaRobot } from 'react-icons/fa';
 import {
-  MdAdminPanelSettings,
-  MdOutlineDesignServices,
-  MdScience,
-} from 'react-icons/md';
-import { PiUsersThree } from 'react-icons/pi';
-import { RiUserStarLine } from 'react-icons/ri';
+  FiBox,
+  FiCloud,
+  FiCodesandbox,
+  FiCommand,
+  FiMessageSquare,
+  FiSearch,
+} from 'react-icons/fi';
+import {
+  GiArtificialIntelligence,
+  GiBlockHouse,
+  GiSpiderWeb,
+} from 'react-icons/gi';
+import { GrNodes } from 'react-icons/gr';
+import { IoColorPaletteOutline, IoServerSharp } from 'react-icons/io5';
+import { MdApi, MdOutlineDataUsage } from 'react-icons/md';
+import { PiBracketsCurlyBold, PiEngine } from 'react-icons/pi';
+import { RiTestTubeLine } from 'react-icons/ri';
+import { SiApachekafka, SiElasticsearch } from 'react-icons/si';
+import { TbCloudLock } from 'react-icons/tb';
 import colors from 'tailwindcss/colors';
 
 export enum Categories {
-  'Frontend development' = 'Frontend development',
-  'Backend development' = 'Backend development',
-  'DevOps & Infrastructure' = 'DevOps & Infrastructure',
-  'Data Science & Machine Learning' = 'Data Science & Machine Learning',
-  'Mobile development' = 'Mobile development',
-  'Testing & Quality assurance' = 'Testing & Quality assurance',
-  'Computer graphics & Game development' = 'Computer graphics & Game development',
-  'Blockchain' = 'Blockchain',
-  'Design' = 'Design',
-  'System administration' = 'System administration',
-  'Website administration' = 'Website administration',
-  '1C Development' = '1C Development',
-  'Systems analytics' = 'Systems analytics',
-  'Systems programming' = 'Systems programming',
-  'Cybersecurity' = 'Cybersecurity',
-  'HR management' = 'HR management',
-  'Project management' = 'Project management',
-  'Network administration' = 'Network administration',
-  'Digital Marketing & SEO' = 'Digital Marketing & SEO',
-  'Other' = 'Other',
+  'Languages' = 'Languages',
+  'Databases' = 'Databases',
+  'Frontend Libraries and Frameworks' = 'Frontend Libraries and Frameworks',
+  'Backend Libraries and Frameworks' = 'Backend Libraries and Frameworks',
+  'Soft skills' = 'Soft skills',
+  'Operating systems' = 'Operating systems',
+  'Containerization & Orchestration' = 'Containerization & Orchestration',
+  'Infrastructure Automation & Configuration' = 'Infrastructure Automation & Configuration',
+  'Code Collaboration & Integration' = 'Code Collaboration & Integration',
+  'Graphic design' = 'Graphic design',
+  'Monitoring' = 'Monitoring',
+  'CMS' = 'CMS',
+  'Network Protocols' = 'Network Protocols',
+  'Web Servers' = 'Web Servers',
+  'Integrated Development Environments' = 'Integrated Development Environments',
+  'Cloud platforms' = 'Cloud platforms',
+  'Mobile Libraries and Frameworks' = 'Mobile Libraries and Frameworks',
+  'Message Brokers' = 'Message Brokers',
+  'Testing Tools' = 'Testing Tools',
+  'Machine Learning Libraries and Frameworks' = 'Machine Learning Libraries and Frameworks',
+  'Security tools and frameworks' = 'Security tools and frameworks',
+  'API technologies and protocols' = 'API technologies and protocols',
+  'Game engines' = 'Game engines',
+  'Project Management Tools' = 'Project Management Tools',
+  'Blockchain platforms & tools' = 'Blockchain platforms & tools',
+  'Messaging & Queuing systems' = 'Messaging & Queuing systems',
+  'Search & Indexing engines' = 'Search & Indexing engines',
+
+  'Data Visualization & BI tools' = 'Data Visualization & BI tools',
+  'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
+  'Documentation tools' = 'Documentation tools',
+  'Code Quality Tools' = 'Code Quality Tools',
 }
 
-export const DomainDescription: Record<Categories, string> = {
-  'Frontend development':
-    'Building interactive user interfaces and optimizing client-side.',
-  'Backend development':
-    'Implementing server logic, APIs, and data management.',
-  'DevOps & Infrastructure':
-    'Automating CI/CD, containerization, and server maintenance.',
-  'Data Science & Machine Learning':
-    'Data analysis, modeling, and deploying ML solutions.',
-  'Mobile development':
-    'Developing native and cross‑platform mobile applications.',
-  'Testing & Quality assurance':
-    'Planning and automating software testing processes.',
-  'Computer graphics & Game development':
-    '	2D/3D graphics, game engines, and rendering optimization.',
-  Blockchain: 'Smart contracts, protocols, and decentralized networks.',
-  Design: 'UI/UX design, prototyping, and visual identity.',
-  'System administration':
-    'Configuring, monitoring, and supporting server systems.',
-  'Website administration': 'Managing CMS, content, and website security.',
-  '1C Development':
-    '	Building and customizing business apps on the 1C platform.',
-  'Systems analytics':
-    '	Gathering requirements, processes, and technical documentation.',
-  'Systems programming':
-    'Low‑level software: drivers, embedded systems, kernels.',
-  Cybersecurity: 'Securing systems, penetration testing, and risk management.',
-  'HR management': 'Recruiting, onboarding, and retaining IT personnel.',
-  'Project management': 'Planning, coordinating, and overseeing IT projects.',
-  'Network administration':
-    'Designing, configuring, and monitoring computer networks.',
-  'Digital Marketing & SEO':
-    'Promotion, site optimization, and traffic analytics.',
-  Other: 'Non‑technical and supporting roles outside core IT domains.',
+export const CategoryDescription: Record<Categories, string> = {
+  Languages:
+    'Programming and markup languages for development and data processing.',
+  Databases: 'Systems for storing and querying structured data.',
+  'Frontend Libraries and Frameworks':
+    'Tools for dynamic interfaces and state management.',
+  'Backend Libraries and Frameworks':
+    '	Server frameworks for APIs, business logic, and database work.',
+  'Soft skills': 'Communication, teamwork, and interpersonal abilities.',
+  'Operating systems':
+    'OS for development, deployment, and system administration.',
+  'Containerization & Orchestration':
+    'Packaging in containers and managing scalable deployments.',
+  'Infrastructure Automation & Configuration':
+    '	Infrastructure-as-code: automated provisioning and configuration.',
+  'Code Collaboration & Integration':
+    'Version control and CI/CD tools for team development.',
+  'Graphic design':
+    'Creating visual elements, layouts, and digital illustrations.',
+  Monitoring: 'Collecting metrics and alerts to track system health.',
+  CMS: 'Content management platforms for website publishing and upkeep.',
+  'Network Protocols':
+    'Rules for data exchange between devices and applications.',
+  'Web Servers':
+    'Servers for handling HTTP/HTTPS requests and serving content.',
+  'Integrated Development Environments':
+    'IDEs with editor, debugger, and build tools.',
+  'Cloud platforms':
+    'Cloud services for compute, storage, and resource management.',
+  'Mobile Libraries and Frameworks':
+    'Frameworks for native and cross‑platform mobile development.',
+  'Message Brokers':
+    'Message brokers and queues for asynchronous communication.',
+  'Testing Tools':
+    'Automating functional, integration, and performance testing.',
+  'Machine Learning Libraries and Frameworks':
+    'Libraries for training, evaluating, and deploying ML/DL models.',
+  'Security tools and frameworks':
+    'Tools for penetration testing, security analysis, and protection.',
+  'API technologies and protocols':
+    'Protocols and standards for building and consuming web services.',
+  'Game engines':
+    'Frameworks for 2D/3D game development, rendering, and physics.',
+  'Project Management Tools':
+    'Tools for planning, tracking, and managing project tasks.',
+  'Blockchain platforms & tools':
+    'Platforms and utilities for decentralized application development.',
+  'Messaging & Queuing systems':
+    'Message brokers and queues for asynchronous communication.',
+  'Search & Indexing engines':
+    'Full‑text search systems and data indexing engines.',
+  'Data Visualization & BI tools':
+    'Dashboards and reports for data visualization and business analytics.',
+  'Graphics APIs & GPGPU': 'APIs for hardware rendering and GPGPU computation.',
+  'Documentation tools':
+    'Systems for writing, storing, and publishing technical docs.',
+  'Code Quality Tools':
+    'Analyzers and linters for code quality and compliance metrics.',
 };
 
-export const DomainShort: Record<Categories, string> = {
-  'Frontend development': 'Front',
-  'Backend development': 'Back',
-  'DevOps & Infrastructure': 'DevOps',
-  'Data Science & Machine Learning': 'DS/ML',
-  'Mobile development': 'Mobile',
-  'Testing & Quality assurance': 'QA',
-  'Computer graphics & Game development': 'CG/GD',
-  Blockchain: 'BC',
-  Design: 'Design',
-  'System administration': 'SysAdm',
-  'Website administration': 'WebAdm',
-  '1C Development': '1C',
-  'Systems analytics': 'Analytics',
-  'Systems programming': 'SysProg',
-  Cybersecurity: 'Security',
-  'HR management': 'HR',
-  'Project management': 'PM',
-  'Network administration': 'Network',
-  'Digital Marketing & SEO': 'Marketing',
-  Other: 'Other',
+export const CategoryShort: Record<Categories, string> = {
+  Languages: 'Langs',
+  Databases: 'DB',
+  'Frontend Libraries and Frameworks': 'FrontLibs',
+  'Backend Libraries and Frameworks': 'BackLibs',
+  'Soft skills': 'Soft',
+  'Operating systems': 'OS',
+  'Containerization & Orchestration': 'Containers',
+  'Infrastructure Automation & Configuration': 'IaC',
+  'Code Collaboration & Integration': 'CI/CD',
+  'Graphic design': 'Design',
+  Monitoring: 'Monitor',
+  CMS: 'CMS',
+  'Network Protocols': 'Net',
+  'Web Servers': 'WebServ',
+  'Integrated Development Environments': 'IDE',
+  'Cloud platforms': 'Cloud',
+  'Mobile Libraries and Frameworks': 'Mobile',
+  'Message Brokers': 'Brokers',
+  'Testing Tools': 'Testing',
+  'Machine Learning Libraries and Frameworks': 'ML',
+  'Security tools and frameworks': 'Security',
+  'API technologies and protocols': 'API',
+  'Game engines': 'Games',
+  'Project Management Tools': 'PM',
+  'Blockchain platforms & tools': 'Block',
+  'Messaging & Queuing systems': 'Queue',
+  'Search & Indexing engines': 'Search',
+  'Data Visualization & BI tools': 'BI',
+  'Graphics APIs & GPGPU': 'Graphics',
+  'Documentation tools': 'Docs',
+  'Code Quality Tools': 'CodeQ',
 };
 
 export const CategoriesStyle = {
-  [Categories['Frontend development']]: {
-    logo: <FaCode />,
-    color: colors.red[500],
+  [Categories.Languages]: {
+    logo: <PiBracketsCurlyBold />,
+    color: colors.indigo[600],
   },
-  [Categories['Backend development']]: {
-    logo: <CiServer />,
-    color: colors.cyan[500],
-  },
-  [Categories['DevOps & Infrastructure']]: {
-    logo: <BsBoxes />,
-    color: colors.blue[500],
-  },
-  [Categories['Data Science & Machine Learning']]: {
-    logo: <MdScience />,
-    color: colors.yellow[500],
-  },
-  [Categories['Mobile development']]: {
-    logo: <GiSmartphone />,
-    color: colors.fuchsia[500],
-  },
-  [Categories['Testing & Quality assurance']]: {
-    logo: <BiBug />,
-    color: colors.emerald[600],
-  },
-  [Categories['Computer graphics & Game development']]: {
-    logo: <BiCube />,
-    color: colors.red[500],
-  },
-  [Categories.Blockchain]: {
-    logo: <GrNodes />,
-    color: colors.gray[400],
-  },
-  [Categories.Design]: {
-    logo: <MdOutlineDesignServices />,
-    color: colors.rose[600],
-  },
-  [Categories['System administration']]: {
-    logo: <HiServerStack />,
-    color: colors.slate[700],
-  },
-  [Categories['Website administration']]: {
-    logo: <BsGlobe />,
-    color: colors.teal[500],
-  },
-  [Categories['1C Development']]: {
-    logo: <MdAdminPanelSettings />,
-    color: colors.cyan[600],
-  },
-  [Categories['Systems analytics']]: {
-    logo: <IoAnalytics />,
-    color: colors.purple[500],
-  },
-  [Categories['Systems programming']]: {
-    logo: <BsCpu />,
-    color: colors.amber[600],
-  },
-  [Categories.Cybersecurity]: {
-    logo: <BiShield />,
-    color: colors.stone[600],
-  },
-  [Categories['HR management']]: {
-    logo: <RiUserStarLine />,
+  [Categories.Databases]: {
+    logo: <MdOutlineDataUsage />,
     color: colors.sky[600],
   },
-  [Categories['Project management']]: {
-    logo: <PiUsersThree />,
-    color: colors.pink[500],
+  [Categories['Frontend Libraries and Frameworks']]: {
+    logo: <GiSpiderWeb />,
+    color: colors.violet[500],
   },
-  [Categories['Network administration']]: {
-    logo: <FaNetworkWired />,
+  [Categories['Backend Libraries and Frameworks']]: {
+    logo: <IoServerSharp />,
+    color: colors.amber[600],
+  },
+  [Categories['Soft skills']]: {
+    logo: <BsPuzzle />,
+    color: colors.fuchsia[500],
+  },
+  [Categories['Operating systems']]: {
+    logo: <FiCommand />,
+    color: colors.slate[600],
+  },
+  [Categories['Containerization & Orchestration']]: {
+    logo: <FiCodesandbox />,
     color: colors.blue[400],
   },
-  [Categories['Digital Marketing & SEO']]: {
-    logo: <FiTrendingUp />,
-    color: colors.yellow[600],
+  [Categories['Infrastructure Automation & Configuration']]: {
+    logo: <FaRobot />,
+    color: colors.orange[500],
   },
-  [Categories.Other]: {
-    logo: <FaQuestion />,
-    color: colors.zinc[500],
+  [Categories['Code Collaboration & Integration']]: {
+    logo: <GiBlockHouse />,
+    color: colors.teal[500],
+  },
+  [Categories['Graphic design']]: {
+    logo: <IoColorPaletteOutline />,
+    color: colors.rose[500],
+  },
+  [Categories.Monitoring]: {
+    logo: <FiSearch />,
+    color: colors.emerald[500],
+  },
+  [Categories.CMS]: {
+    logo: <FiBox />,
+    color: colors.purple[400],
+  },
+  [Categories['Network Protocols']]: {
+    logo: <FaNetworkWired />,
+    color: colors.cyan[500],
+  },
+  [Categories['Web Servers']]: {
+    logo: <GiArtificialIntelligence />,
+    color: colors.lime[500],
+  },
+  [Categories['Integrated Development Environments']]: {
+    logo: <FiCloud />,
+    color: colors.sky[400],
+  },
+  [Categories['Cloud platforms']]: {
+    logo: <TbCloudLock />,
+    color: colors.blue[300],
+  },
+  [Categories['Mobile Libraries and Frameworks']]: {
+    logo: <PiEngine />,
+    color: colors.pink[500],
+  },
+  [Categories['Message Brokers']]: {
+    logo: <SiApachekafka />,
+    color: colors.green[500],
+  },
+  [Categories['Testing Tools']]: {
+    logo: <RiTestTubeLine />,
+    color: colors.red[500],
+  },
+  [Categories['Machine Learning Libraries and Frameworks']]: {
+    logo: <FaRobot />,
+    color: colors.fuchsia[600],
+  },
+  [Categories['Security tools and frameworks']]: {
+    logo: <BsShieldLock />,
+    color: colors.yellow[500],
+  },
+  [Categories['API technologies and protocols']]: {
+    logo: <MdApi />,
+    color: colors.orange[400],
+  },
+  [Categories['Game engines']]: {
+    logo: <PiEngine />,
+    color: colors.purple[600],
+  },
+  [Categories['Project Management Tools']]: {
+    logo: <BsPuzzle />,
+    color: colors.cyan[400],
+  },
+  [Categories['Blockchain platforms & tools']]: {
+    logo: <GrNodes />,
+    color: colors.lime[600],
+  },
+  [Categories['Messaging & Queuing systems']]: {
+    logo: <FiMessageSquare />,
+    color: colors.blue[500],
+  },
+  [Categories['Search & Indexing engines']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+
+  [Categories['Data Visualization & BI tools']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Categories['Graphics APIs & GPGPU']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Categories['Documentation tools']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
+  },
+  [Categories['Code Quality Tools']]: {
+    logo: <SiElasticsearch />,
+    color: colors.red[400],
   },
 };

@@ -27,7 +27,7 @@ export class ServerAPI implements API {
     period: number = 10,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await axios.get('/api/technologies/list', {
+    const response = await axios.get('/api/categories/list', {
       params: {
         period,
         experience,
@@ -40,7 +40,7 @@ export class ServerAPI implements API {
     period: number = 10,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await axios.get('/api/categories/list', {
+    const response = await axios.get('/api/domains/list', {
       params: {
         period,
         experience,

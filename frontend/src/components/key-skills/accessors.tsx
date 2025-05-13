@@ -85,7 +85,7 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
   size?: number;
-  category: 'category' | 'technology';
+  category: 'domain' | 'category';
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div>Name</div>,
@@ -96,14 +96,6 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
         categoryKey={config.category}
         categoryName={info.row.original.name}
       />
-      // <div className="flex items-center">
-      //   <div className="mr-2 flex aspect-square w-6 items-center justify-center">
-      //     <SkillImage {...{ [config.category]: info.row.original.name }} />
-      //   </div>
-      //   <div className="text-sm font-[600] capitalize">
-      //     {info.row.original.name}
-      //   </div>
-      // </div>
     );
   },
   size: 0,

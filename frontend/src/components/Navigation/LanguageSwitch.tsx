@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { IoLanguageOutline } from 'react-icons/io5';
 
 import { Language, LanguageTitle } from '@/config/languages';
-
 import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
 
 export function LanguageSwitch() {

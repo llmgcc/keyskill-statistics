@@ -6,7 +6,7 @@ import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
 
 import { Categories } from '@/config/categories';
-import { Technologies } from '@/config/technologies';
+import { Domains } from '@/config/domains';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 interface TextSectionProps {
@@ -14,23 +14,23 @@ interface TextSectionProps {
 }
 
 export function TextSection({ onLinkClick }: TextSectionProps) {
-  const { stats } = useStatsStore();
-  const { categories } = useCategoriesStore();
-  const { domains } = useDomainsStore();
+  const stats = useStatsStore((state) => state.stats);
+  const categories = useCategoriesStore((state) => state.categories);
+  const domains = useDomainsStore((state) => state.domains);
   const { t } = useTranslation();
 
   const preferredDomains: Category[] = [
-    domains.find((c) => c.name === Categories['Backend development']) ?? null,
+    domains.find((c) => c.name === Domains['Backend development']) ?? null,
     domains.find(
-      (c) => c.name === Categories['Data Science & Machine Learning'],
+      (c) => c.name === Domains['Data Science & Machine Learning'],
     ) ?? null,
-    domains.find((c) => c.name === Categories['Project management']) ?? null,
+    domains.find((c) => c.name === Domains['Project management']) ?? null,
   ].filter((e) => e !== null);
 
   const preferredCategories: Category[] = [
-    categories.find((c) => c.name === Technologies['Soft skills']) ?? null,
-    categories.find((c) => c.name === Technologies.Languages) ?? null,
-    categories.find((c) => c.name === Technologies.Databases) ?? null,
+    categories.find((c) => c.name === Categories['Soft skills']) ?? null,
+    categories.find((c) => c.name === Categories.Languages) ?? null,
+    categories.find((c) => c.name === Categories.Databases) ?? null,
   ].filter((e) => e !== null);
 
   const badge = (

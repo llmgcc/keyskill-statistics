@@ -27,7 +27,9 @@
 			"RTK",
 			"axios",
 			"vuex",
-			"ngrx"
+			"ngrx",
+			"TanStack",
+			"ShadCN"
 		]
 	},
 	"Backend development": {
@@ -79,7 +81,8 @@
 			"AgroCD",
 			"Mosquitto",
 			"Kustomize",
-			"Digitaloc"
+			"Digitaloc",
+			"Cloudflare"
 		]
 	},
 	"Data Science & Machine Learning": {
@@ -141,7 +144,9 @@
 			"Cicerone",
 			"Kaspresso",
 			"Timber",
-			"Multiplatform"
+			"Multiplatform",
+			"SciCharts",
+			"SafetyNet"
 		]
 	},
 	"Testing & Quality assurance": {
@@ -204,7 +209,8 @@
 			"gamefi",
 			"VR/AR",
 			"ARCore",
-			"GDevelop"
+			"GDevelop",
+			"Marmoset"
 		]
 	},
 	"Blockchain": {
@@ -390,7 +396,8 @@
 			"радиотехника",
 			"печатных плат",
 			"bare metal",
-			"FPGA"
+			"FPGA",
+			"Verilog"
 		]
 	},
 	"Cybersecurity": {
@@ -470,7 +477,10 @@
 			"Notion",
 			"Redmine",
 			"YouTrack",
-			"Miro"
+			"Miro",
+			"Planning",
+			"SMARTER",
+			"Tasks Tracking"
 		]
 	},
 	"Network administration": {
@@ -535,7 +545,9 @@
 			"Самокат",
 			"Работа рядом",
 			"(Приём|сбор) заказ",
-			"Упаковка тов"
+			"Упаковка тов",
+			"Без штрафов",
+			"ходьба"
 		]
 	}
 }

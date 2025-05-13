@@ -31,7 +31,7 @@ export function TechnologiesTable() {
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'technology' }),
+    categoryNameAccessor({ accessorKey: 'name', category: 'category' }),
 
     salaryAccessor({
       accessorKey: 'average_salary',

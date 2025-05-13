@@ -4,7 +4,7 @@ import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
-import { Technologies, TechnologiesStyle } from '@/config/technologies';
+import { Domains, DomainsStyle } from '@/config/domains';
 import { Category } from '@/config/types';
 import { useScreenSize } from '@/hooks/useScreenSize';
 import {
@@ -35,11 +35,11 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
   };
 
   const getColor = (category: Category) => {
+    if (Object.values(Domains).includes(category.name as Domains)) {
+      return DomainsStyle[category.name as Domains].color;
+    }
     if (Object.values(Categories).includes(category.name as Categories)) {
       return CategoriesStyle[category.name as Categories].color;
-    }
-    if (Object.values(Technologies).includes(category.name as Technologies)) {
-      return TechnologiesStyle[category.name as Technologies].color;
     }
     return '#000000';
   };

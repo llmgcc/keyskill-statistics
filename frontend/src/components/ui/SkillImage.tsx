@@ -1,13 +1,13 @@
 import { Categories, CategoriesStyle } from '@/config/categories';
-import { Technologies, TechnologiesStyle } from '@/config/technologies';
+import { Domains, DomainsStyle } from '@/config/domains';
 
 type SkillImageProps = {
   path?: string;
+  domain?: Domains | string;
   category?: Categories | string;
-  technology?: Technologies | string;
 };
 
-function SkillImage({ path, category, technology }: SkillImageProps) {
+function SkillImage({ path, domain, category }: SkillImageProps) {
   function imageLogo() {
     if (path) {
       const url = `http://localhost:8000/static/${path}`;
@@ -17,17 +17,14 @@ function SkillImage({ path, category, technology }: SkillImageProps) {
         </div>
       );
     }
+    if (domain && Object.values(Domains).includes(domain as Domains)) {
+      return DomainsStyle[domain as Domains].logo;
+    }
     if (
       category &&
       Object.values(Categories).includes(category as Categories)
     ) {
       return CategoriesStyle[category as Categories].logo;
-    }
-    if (
-      technology &&
-      Object.values(Technologies).includes(technology as Technologies)
-    ) {
-      return TechnologiesStyle[technology as Technologies].logo;
     }
     return null;
   }
@@ -36,17 +33,14 @@ function SkillImage({ path, category, technology }: SkillImageProps) {
     if (path) {
       return null;
     }
+    if (domain && Object.values(Domains).includes(domain as Domains)) {
+      return DomainsStyle[domain as Domains].color;
+    }
     if (
       category &&
       Object.values(Categories).includes(category as Categories)
     ) {
       return `${CategoriesStyle[category as Categories].color}`;
-    }
-    if (
-      technology &&
-      Object.values(Technologies).includes(technology as Technologies)
-    ) {
-      return TechnologiesStyle[technology as Technologies].color;
     }
     return null;
   }
