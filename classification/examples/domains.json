@@ -115,7 +115,11 @@
 			"regression",
 			"data mining",
 			"OpenAI",
-			"CycleGAN"]
+			"CycleGAN",
+			"tree-based",
+			"Optuna",
+			"R-CNN"
+		]
 	},
 	"Mobile development": {
 		"hint": "Mobile development focuses on creating native and cross-platform applications for smartphones and tablets. Essential aspects include: implementing platform-specific UI guidelines, managing app lifecycle and state, optimizing mobile performance and battery usage, handling offline data synchronization, implementing secure data storage, integrating device features and sensors, managing push notifications, and ensuring smooth app distribution through various app stores. Mobile developers must balance user experience with technical constraints.",
@@ -179,7 +183,10 @@
 			"Jest",
 			"Jasmine",
 			"Karma",
-			"LoadRunner"
+			"LoadRunner",
+			"TestOps",
+			"Proxyman",
+			"BrowserStack"
 		]
 	},
 	"Computer graphics & Game development": {
@@ -237,7 +244,12 @@
 			"Foundry",
 			"Raydium",
 			"Bitcoin",
-			"криптов|cryptocu"
+			"криптов|cryptocu",
+			"^SOL",
+			"Binance",
+			"off-chain",
+			"ByBit",
+			"Play-to-Earn"
 		]
 	},
 	"Design": {
@@ -319,7 +331,10 @@
 			"PrestaShop",
 			"Shopify",
 			"Контент-менеджмент",
-			"Plesk"
+			"Plesk",
+			"хостинг",
+			"интеграция с 1С",
+			"управление сайтом"
 		]
 	},
 	"1C Development": {
