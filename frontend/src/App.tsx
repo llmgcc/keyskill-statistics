@@ -14,14 +14,14 @@ import { GrTechnology } from 'react-icons/gr';
 import { MdCategory, MdLeaderboard } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
-import { Filters } from '@/components/ui/Filters.tsx';
 import { TabNavigation } from '@/components/ui/TabNavigation.tsx';
+import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { CategoriesTable } from '@/components/key-skills/CategoriesTable.tsx';
 import KeySkills from '@/components/key-skills/KeySkills.tsx';
 import { TechnologiesTable } from '@/components/key-skills/TechnologiesTable.tsx';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
-import { SkillsFilter } from '@/components/SkillsFilter/SkillsFilter.tsx';
+import { SkillFilter } from '@/components/SkillFilter/SkillFilter';
 import { TextSection } from '@/components/TextSection/TextSection';
 
 import { SkillFilterProvider } from './providers/SkillFilterProvider';
@@ -77,7 +77,7 @@ export default function App() {
       path: '/key-skills',
       append: (
         <div className="flex w-full items-end justify-end text-right">
-          <SkillsFilter />
+          <SkillFilter />
         </div>
       ),
     },
@@ -128,13 +128,13 @@ export default function App() {
               scrollToTabs();
             }}
           />
-          {/* <Filters />
+          <Filter />
           <Highlights />
           <SkillFilterProvider>
             <div ref={tabsRef}>
               <TabNavigation tabs={tabs} />
             </div>
-          </SkillFilterProvider> */}
+          </SkillFilterProvider>
         </div>
       </QueryClientProvider>
     </I18nextProvider>

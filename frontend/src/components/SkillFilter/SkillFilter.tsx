@@ -21,7 +21,7 @@ export interface SkillsFilterState {
   skill: string;
 }
 
-export function SkillsFilter() {
+export function SkillFilter() {
   const { t } = useTranslation();
   const { categories } = useCategoriesStore();
   const { domains } = useDomainsStore();
