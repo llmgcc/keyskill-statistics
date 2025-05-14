@@ -53,7 +53,7 @@ def copy_images_folder():
 copy_images_folder()
 
 
-exit()
+# exit()
 
 async def build_static(router):
     async with AsyncClient(
