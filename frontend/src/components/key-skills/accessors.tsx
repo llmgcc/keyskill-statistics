@@ -112,10 +112,9 @@ export const countAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   cell: (info) => {
-    const max = Math.max(
-      ...info.table.getCenterRows().map((r) => r.original.count),
-    );
-    return <CountRenderer count={info.getValue() as number} maxCount={max} />;
+
+    console.log(info.getValue(), info.row.original.ratio, info.getValue()/info.row.original.ratio)
+    return <CountRenderer count={info.getValue() as number} maxCount={(info.getValue() as number)/info.row.original.ratio} />;
   },
   header: () => (
     <div className="flex items-center">

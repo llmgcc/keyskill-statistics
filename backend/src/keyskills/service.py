@@ -164,7 +164,8 @@ def get_base_skills(
 
     categories_subquery = create_categories_subquery()
     technologies_subquery = create_technology_subquery()
-
+    
+    
     result = (
         select(
             *skills.c,
@@ -172,6 +173,7 @@ def get_base_skills(
             technologies_subquery.c.categories.label("categories"),
             KeySkillImage.image,
             skills.c.translation.label("translation"),
+             (skills.c.count / func.max(skills_base.c.count).select()).label('ratio')  
             # sqlalchemy.func.json_extract_path(
             #     cast(
             #         categories_subquery.c.categories[1],

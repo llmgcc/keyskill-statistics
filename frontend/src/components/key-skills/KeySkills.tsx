@@ -34,7 +34,7 @@ function KeySkills() {
   const pageSizeVariants = [25, 50, 100];
 
   const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 18,
+    pageIndex: 0,
     pageSize: pageSizeVariants[0],
   });
 
@@ -42,12 +42,12 @@ function KeySkills() {
   const { filterState } = useSkillFilter();
   const debouncedFilterState = useDebounce(filterState, 500);
 
-  // useEffect(() => {
-  //   setPagination((prev) => ({
-  //     ...prev,
-  //     pageIndex: 0,
-  //   }));
-  // }, [selectedPeriod, selectedExperience, debouncedFilterState, sorting]);
+  useEffect(() => {
+    setPagination((prev) => ({
+      ...prev,
+      pageIndex: 0,
+    }));
+  }, [selectedPeriod, selectedExperience, debouncedFilterState, sorting]);
 
   const orderBy: SkillsOrderBy = {
     column: '',

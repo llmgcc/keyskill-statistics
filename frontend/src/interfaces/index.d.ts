@@ -50,4 +50,5 @@ type KeySkill = {
   domains: Category[];
   categories: Category[];
   image?: string;
+  ratio: number
 };
