@@ -74,6 +74,7 @@ export class StaticAPI implements API {
     orderBy?: SkillsOrderBy,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
+
     const filteredSkills = filterSkills(
       skills,
       domain,
@@ -82,6 +83,7 @@ export class StaticAPI implements API {
       categoryStrict,
       skillName,
     );
+
     const sortedSkills = orderBy
       ? sortSkills(filteredSkills, orderBy)
       : filteredSkills;

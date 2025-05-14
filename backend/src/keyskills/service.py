@@ -81,8 +81,8 @@ def get_base_skills(
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
             func.percentile_cont(0.5)
-            .within_group(average_salary_case)
-            .filter(Vacancy.created_at.between(current_from, current_to))
+                .within_group(average_salary_case)
+                .filter(Vacancy.created_at.between(current_from, current_to))
             .label("average_salary"),
         )
         .select_from(KeySkill)
@@ -104,6 +104,7 @@ def get_base_skills(
         .outerjoin(KeySkillTranslation, KeySkillTranslation.name == KeySkill.name)
         .group_by(KeySkill.name, KeySkillTranslation.name)
     )
+
 
     if experience is not None:
         skills_base = skills_base.where(Vacancy.experience == experience)
@@ -431,6 +432,10 @@ async def skills_list(
     total_count = (await session.exec(
         select(func.count(func.distinct(skills_base.c.name))).select_from(skills_base)
     )).one()
+
+    print('\n\n')
+    for p in ((await session.exec(skills)).all()):
+        print(p)
 
     return {
         "skills": (await session.exec(skills)).all(),

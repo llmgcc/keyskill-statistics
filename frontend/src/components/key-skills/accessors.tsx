@@ -75,7 +75,11 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   header: () => <div>Name</div>,
   sortingFn: sortingFns.alphanumeric,
   cell: (info) => {
-    return <SkillDescription {...info.row.original} />;
+    return (
+      <div className="max-w-96">
+        <SkillDescription {...info.row.original} />
+      </div>
+    );
   },
   size: 0,
   enablePinning: true,
@@ -263,7 +267,7 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header: string;
   name: string;
-  categoryKey: 'categories' | 'technologies';
+  categoryKey: 'domains' | 'categories';
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: config.header,

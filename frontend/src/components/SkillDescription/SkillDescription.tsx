@@ -15,7 +15,7 @@ export default function SkillDescription(props: KeySkill) {
       : (props.translation ?? props.name);
 
   return (
-    <div className="flex items-center text-sm font-[500] leading-none">
+    <div className="flex items-center truncate text-sm font-[500] leading-none">
       <div className="mr-2 flex aspect-square h-6 w-6 items-center justify-center md:h-7 md:w-7">
         <SkillImage
           domain={props.domains?.[0]?.name ?? null}
@@ -24,8 +24,10 @@ export default function SkillDescription(props: KeySkill) {
         />
       </div>
       <div className="mx-[4px]">
-        <div className="text-sm font-[600]">{skillName}</div>
-        <div className="flex items-center text-[0.8em] leading-3 text-text-secondary">
+        <div className="overflow-hidden truncate text-ellipsis text-sm font-[600]">
+          {skillName}
+        </div>
+        <div className="flex items-center truncate text-ellipsis text-[0.8em] leading-3 text-text-secondary">
           <div className="">
             <CategoryPopover skill={props} defaultKey="domains" />
           </div>

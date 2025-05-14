@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
@@ -14,8 +14,8 @@ import { useTranslation } from 'react-i18next';
 
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
-import { TanTable } from '@/components/table/TanTable';
 
+import { DataTable } from '../table/DataTable';
 import {
   chartAccessor,
   confidenceAccessor,
@@ -34,13 +34,20 @@ function KeySkills() {
   const pageSizeVariants = [25, 50, 100];
 
   const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
+    pageIndex: 18,
     pageSize: pageSizeVariants[0],
   });
 
   const [sorting, setSorting] = useState<SortingState>([]);
   const { filterState } = useSkillFilter();
   const debouncedFilterState = useDebounce(filterState, 500);
+
+  // useEffect(() => {
+  //   setPagination((prev) => ({
+  //     ...prev,
+  //     pageIndex: 0,
+  //   }));
+  // }, [selectedPeriod, selectedExperience, debouncedFilterState, sorting]);
 
   const orderBy: SkillsOrderBy = {
     column: '',
@@ -95,7 +102,7 @@ function KeySkills() {
                 accessorKey: 'domain-confidence',
                 header: t(`domainsShort.${filterState.domain?.selected?.name}`),
                 name: filterState.domain?.selected?.name,
-                categoryKey: 'categories',
+                categoryKey: 'domains',
               }),
             ]
           : []),
@@ -107,7 +114,7 @@ function KeySkills() {
                   `categoriesShort.${filterState.category?.selected?.name}`,
                 ),
                 name: filterState.category?.selected?.name,
-                categoryKey: 'technologies',
+                categoryKey: 'categories',
               }),
             ]
           : []),
@@ -137,6 +144,7 @@ function KeySkills() {
       selectedExperience,
       isLoading,
       isFetching,
+      pagination,
     ],
   );
 
@@ -149,34 +157,39 @@ function KeySkills() {
     prev_count: 200,
     prev_place: 200,
     average_salary: 100,
+    domains: [],
     categories: [],
-    technologies: [],
   };
   const fillData = [];
   for (let i = 0; i < pagination.pageSize; i++) {
     fillData.push(empty);
   }
 
+  const paginationState = {
+    totalRows,
+    pageSize: pagination.pageSize,
+    pageIndex: pagination.pageIndex,
+    onPageChange: (page: number, pageSize: number) =>
+      setPagination({
+        pageIndex: page,
+        pageSize: pageSize,
+      }),
+    pages: pageSizeVariants,
+  };
+
+  const sortingState = {
+    sorting,
+    setSorting,
+  };
+
   return (
     <div>
-      <TanTable
+      <DataTable
         columns={columns}
         data={skillsData?.skills ?? fillData}
-        onPaginationChange={setPagination}
-        manualPagination={true}
-        totalPages={totalRows}
-        pagination={pagination}
         isLoading={isLoading || isFetching}
-        isFetching={isFetching}
-        pageSizeVariants={pageSizeVariants}
-        sorting={sorting}
-        setSorting={setSorting}
-        onPageSizeChange={(pageSize) => {
-          setPagination((prev) => ({
-            ...prev,
-            pageSize: pageSize,
-          }));
-        }}
+        pagination={paginationState}
+        sorting={sortingState}
       />
     </div>
   );

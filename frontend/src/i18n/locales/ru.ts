@@ -311,5 +311,9 @@ export default {
       [Highlights['Skills with Undisclosed Salaries']]:
         'Навыки с неизвестной зарплатой',
     },
+    pagination: {
+      text: 'Показано {{currentPage}} - {{totalPages}} из {{totalRows}} результатов',
+      show: 'Показывать',
+    },
   },
 };

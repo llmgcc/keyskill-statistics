@@ -84,7 +84,7 @@ export function Navigation() {
                 onClick={() => navigate('/key-skills')}
                 className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
               >
-                Keystats
+                KEYSKILLS
               </div>
             </div>
           </div>

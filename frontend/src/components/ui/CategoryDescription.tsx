@@ -40,7 +40,7 @@ export function CategoryDescription({
       <div className="text-sm font-[600]">
         <div>{t(`${key}.${categoryName}`)}</div>
         <div className="flex items-center text-[0.8em] font-[500] leading-3 text-text-secondary">
-          <span className="hidden md:block">{categoryDescription()}</span>
+          <span className="truncate">{categoryDescription()}</span>
         </div>
       </div>
     </div>

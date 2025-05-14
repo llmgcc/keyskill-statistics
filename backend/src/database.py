@@ -5,4 +5,4 @@ from sqlalchemy.ext.asyncio import create_async_engine
 DATABASE_URL = f"postgresql+asyncpg://{settings.user}:{settings.password}@{settings.host}/{settings.database}"
 engine = create_engine(DATABASE_URL)
 
-async_engine = create_async_engine(DATABASE_URL, echo=True, future=True)
+async_engine = create_async_engine(DATABASE_URL, echo=False, future=True)

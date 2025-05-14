@@ -1,5 +1,5 @@
 import { Skeleton } from '@radix-ui/themes';
-import { flexRender, Table } from '@tanstack/react-table';
+import { Cell, flexRender, Table } from '@tanstack/react-table';
 
 import { alignRight } from './common';
 
@@ -12,7 +12,7 @@ export function DataTableBody<T extends object>({
   table,
   isLoading,
 }: DataTableBodyProps<T>) {
-  function data(cell: any) {
+  function data(cell: Cell<T, unknown>) {
     return (
       <div className="size-full">
         {flexRender(cell.column.columnDef.cell, cell.getContext())}
