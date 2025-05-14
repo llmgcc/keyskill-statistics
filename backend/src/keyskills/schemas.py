@@ -15,6 +15,7 @@ class CategoriesResponse(SQLModel):
 class SkillsResponse(SQLModel):
     place: int
     name: str
+    ratio: float
     translation: str | None
     count: int
     prev_count: int | None
