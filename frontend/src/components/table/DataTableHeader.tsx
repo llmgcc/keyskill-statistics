@@ -1,6 +1,9 @@
 import { flexRender, Header, Table } from '@tanstack/react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+import { useStickyOffset } from '@/hooks/useStickyOffset';
+
 import { alignRight } from './common';
 
 interface DataTableHeaderProps<T extends object> {
@@ -10,6 +13,9 @@ interface DataTableHeaderProps<T extends object> {
 export function DataTableHeader<T extends object>({
   table,
 }: DataTableHeaderProps<T>) {
+  const { isTablet, isMobile } = useScreenSize();
+  const { ref, offset } = useStickyOffset('tableHeader');
+
   function sortingIcon(header: Header<T, unknown>) {
     function sortingDirection() {
       const sortDirection = header.column.getIsSorted();
@@ -27,7 +33,11 @@ export function DataTableHeader<T extends object>({
   }
 
   return (
-    <thead className="sticky top-[87px] z-50 h-10 border-spacing-0 bg-background-primary text-xs shadow-background-secondary">
+    <thead
+      className={`sticky z-[45] h-10 border-spacing-0 bg-background-primary text-xs shadow-background-secondary`}
+      ref={ref}
+      style={{ top: isTablet || isMobile ? 0 : offset }}
+    >
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header) => (

@@ -179,7 +179,7 @@ export function SkillHist({
   return (
     <div className="relative z-10 size-full">
       <div className="absolute bottom-[-6px] -z-10 h-10 w-full">
-        <div style={{ height: '40px' }}>
+        <div className="size-full">
           <div className="size-full">
             <Skeleton loading={isLoading || isFetching} className="size-full">
               {!!chartData?.length && (

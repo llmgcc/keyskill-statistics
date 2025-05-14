@@ -5,13 +5,14 @@ import { getPercentDifference } from '@/utils/common';
 function getCategoryConfidence(
   skill: KeySkill,
   category: string,
-  key: 'categories' | 'technologies',
+  key: 'domains' | 'categories',
   domainStrict: boolean,
   categoryStrict: boolean,
 ) {
-  const foundCategory = skill[key].find((c) => c.name == category);
+  if (!skill?.[key]?.length) return null;
+  const foundCategory = skill?.[key].find((c) => c?.name == category);
+  const strictMode = key == 'domains' ? domainStrict : categoryStrict;
 
-  const strictMode = key == 'categories' ? domainStrict : categoryStrict;
   if (strictMode) {
     const maxConfidence = skill[key].reduce(
       (a, b) => Math.max(a, b.confidence),
@@ -44,7 +45,7 @@ export function filterSkills(
         getCategoryConfidence(
           c,
           domain,
-          'categories',
+          'domains',
           domainStrict,
           categoryStrict,
         ) !== null,
@@ -56,7 +57,7 @@ export function filterSkills(
         getCategoryConfidence(
           c,
           category,
-          'technologies',
+          'categories',
           domainStrict,
           categoryStrict,
         ) !== null,
@@ -129,10 +130,10 @@ export function sortSkills(skills: KeySkill[], orderBy: SkillsOrderBy) {
     if (orderBy.type === 'category-confidence') {
       data = data.sort((a, b) => {
         const valueA =
-          a.technologies.find((c) => c.name === orderBy.category)?.confidence ??
+          a.categories.find((c) => c.name === orderBy.category)?.confidence ??
           0;
         const valueB =
-          b.technologies.find((c) => c.name === orderBy.category)?.confidence ??
+          b.categories.find((c) => c.name === orderBy.category)?.confidence ??
           0;
 
         const asc = orderBy.asc;
@@ -148,9 +149,9 @@ export function sortSkills(skills: KeySkill[], orderBy: SkillsOrderBy) {
     if (orderBy.type === 'domain-confidence') {
       data = data.sort((a, b) => {
         const valueA =
-          a.categories.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
+          a.domains.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
         const valueB =
-          b.categories.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
+          b.domains.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
 
         const asc = orderBy.asc;
         if (valueA < valueB) {

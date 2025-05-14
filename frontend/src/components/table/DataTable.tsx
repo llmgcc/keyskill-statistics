@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   ColumnDef,
   getCoreRowModel,
@@ -7,30 +7,51 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
+import { Pagination } from './Pagination';
+
+interface PaginationState {
+  totalRows: number;
+  pageSize: number;
+  pageIndex: number;
+  onPageChange: (page: number) => void;
+  pages: number[];
+}
+
+interface DataTableSortingState {
+  sorting: SortingState;
+  setSorting: Dispatch<SetStateAction<SortingState>>;
+}
 
 interface DataTableProps<T extends object> {
   data: T[];
   columns: ColumnDef<T>[];
   isLoading?: boolean;
+  pagination?: PaginationState;
+  sorting?: DataTableSortingState;
 }
 
 export function DataTable<T extends object>({
   data,
   columns,
   isLoading = false,
+  pagination,
+  sorting: manualSortingState,
 }: DataTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const { isTablet, isMobile } = useScreenSize();
 
   const table = useReactTable({
     data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
-    onSortingChange: setSorting,
+    onSortingChange: manualSortingState?.setSorting ?? setSorting,
     getSortedRowModel: getSortedRowModel(),
     state: {
-      sorting,
+      sorting: manualSortingState?.sorting ?? sorting,
     },
     defaultColumn: {
       minSize: 0,
@@ -38,16 +59,29 @@ export function DataTable<T extends object>({
       maxSize: Number.MAX_SAFE_INTEGER,
     },
     enableSortingRemoval: true,
+    manualSorting: !!manualSortingState,
   });
 
   return (
     <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500] leading-none">
-      <div className="max-w-full overflow-x-clip">
+      <div
+        className={`max-w-full ${isTablet || isMobile ? 'overflow-x-scroll' : 'overflow-x-clip'}`}
+      >
         <table className="border-shadow w-full bg-background-primary text-text-primary">
           <DataTableHeader table={table} />
           <DataTableBody table={table} isLoading={isLoading} />
         </table>
       </div>
+
+      {!!pagination && (
+        <Pagination
+          totalRows={pagination.totalRows}
+          pageIndex={pagination.pageIndex}
+          pageSize={pagination.pageSize}
+          onPageChange={pagination.onPageChange}
+          pages={pagination.pages}
+        />
+      )}
     </div>
   );
 }

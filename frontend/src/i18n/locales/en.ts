@@ -77,5 +77,9 @@ export default {
       [Experience.moreThan6]: '>6',
     },
     highlights: Highlights,
+    pagination: {
+      text: 'Showing {{currentPage}} - {{totalPages}} of {{totalRows}} results',
+      show: 'Show',
+    },
   },
 };
