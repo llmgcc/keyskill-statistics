@@ -16,11 +16,12 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from './accessors';
+import { useTranslation } from 'react-i18next';
 
 export function CategoriesTable() {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
-
+  const {t} = useTranslation()
   const {
     data: domains,
     isLoading,
@@ -30,7 +31,7 @@ export function CategoriesTable() {
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'domain' }),
+    categoryNameAccessor({ accessorKey: 'name', category: 'domain', header: t('columns.name') }),
     salaryAccessor({
       accessorKey: 'average_salary',
       isLoading: isLoading || isFetching,
@@ -38,8 +39,9 @@ export function CategoriesTable() {
       selectedExperience: selectedExperience,
       key: 'categories_salary',
       source: API.categorySalaryPlot,
+      header: t('columns.salary')
     }),
-    countAccessor({ accessorKey: 'count', header: 'Unique skills' }),
+    countAccessor({ accessorKey: 'count', header: t('columns.skills') }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
     chartAccessor({
       accessorKey: 'chart',
@@ -48,6 +50,7 @@ export function CategoriesTable() {
       selectedExperience: selectedExperience ?? undefined,
       key: 'domains_plot',
       source: API.domainPlot,
+      header: t('columns.trend')
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 
