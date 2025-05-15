@@ -315,5 +315,12 @@ export default {
       text: 'Показано {{currentPage}} - {{totalPages}} из {{totalRows}} результатов',
       show: 'Показывать',
     },
+    columns: {
+      name: 'Название',
+      salary: 'Зарплата',
+      mentions: 'Упоминаний',
+      trend: 'Тренд',
+      skills: 'Навыков'
+    }
   },
 };

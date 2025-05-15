@@ -81,5 +81,12 @@ export default {
       text: 'Showing {{currentPage}} - {{totalPages}} of {{totalRows}} results',
       show: 'Show',
     },
+    columns: {
+      name: 'Name',
+      salary: 'Salary',
+      mentions: 'Mentions',
+      trend: 'Trend',
+      skills: 'Skills'
+    }
   },
 };

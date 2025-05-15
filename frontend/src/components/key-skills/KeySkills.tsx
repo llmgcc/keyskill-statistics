@@ -95,7 +95,7 @@ function KeySkills() {
       [
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
-        skillNameAccessor({ accessorKey: 'name' }),
+        skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
         ...(filterState.domain?.selected
           ? [
               confidenceAccessor({
@@ -125,8 +125,9 @@ function KeySkills() {
           selectedExperience: selectedExperience,
           key: 'skills_salary',
           source: API.salaryPlot,
+          header: t('columns.salary')
         }),
-        countAccessor({ accessorKey: 'count' }),
+        countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
         prevCountAccessor({ accessorKey: 'prev_count' }),
         chartAccessor({
           accessorKey: 'chart',
@@ -135,6 +136,7 @@ function KeySkills() {
           selectedExperience: selectedExperience ?? undefined,
           key: 'skills_plot',
           source: API.skillPlot,
+          header: t('columns.trend')
         }),
       ] as Array<ColumnDef<KeySkill, unknown>>,
     [

@@ -1,28 +1,19 @@
 import { BiJoystick } from 'react-icons/bi';
-import { BsPuzzle, BsShieldLock } from 'react-icons/bs';
+import { BsShieldLock } from 'react-icons/bs';
 import { FaBox, FaBoxes, FaBug, FaCheck, FaCodeBranch, FaDatabase, FaLaptopCode, FaNetworkWired, FaRobot } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
 import {
   FiBox,
-  FiCloud,
-  FiCodesandbox,
-  FiCommand,
   FiMessageSquare,
   FiSearch,
 } from 'react-icons/fi';
-import {
-  GiArtificialIntelligence,
-  GiBlockHouse,
-  GiSpiderWeb,
-} from 'react-icons/gi';
 import { AiOutlineApi } from "react-icons/ai";
 import { GrClearOption, GrNodes } from 'react-icons/gr';
 import { HiCommandLine, HiServer } from 'react-icons/hi2';
-import { IoCodeOutline, IoColorPaletteOutline, IoDocument, IoPhonePortrait, IoServerSharp } from 'react-icons/io5';
-import { MdApi, MdBarChart, MdOutlineDataUsage, MdOutlinePieChart } from 'react-icons/md';
-import { PiBracketsCurlyBold, PiEngine } from 'react-icons/pi';
-import { RiTestTubeLine } from 'react-icons/ri';
-import { SiApachekafka, SiElasticsearch } from 'react-icons/si';
+import { IoCodeOutline, IoColorPaletteOutline, IoDocument, IoPhonePortrait } from 'react-icons/io5';
+import { MdBarChart } from 'react-icons/md';
+import { PiBracketsCurlyBold } from 'react-icons/pi';
+import { SiApachekafka } from 'react-icons/si';
 import { TbCloudLock, TbDevicesSearch } from 'react-icons/tb';
 import colors from 'tailwindcss/colors';
 import { CiServer } from 'react-icons/ci';

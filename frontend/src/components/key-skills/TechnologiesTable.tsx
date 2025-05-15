@@ -17,6 +17,7 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from './accessors';
+import { useTranslation } from 'react-i18next';
 
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();
@@ -27,11 +28,11 @@ export function TechnologiesTable() {
     isLoading,
     isFetching,
   } = useCategories({ selectedPeriod, selectedExperience });
-
+  const {t} = useTranslation()
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'category' }),
+    categoryNameAccessor({ accessorKey: 'name', category: 'category', header: t('columns.name') }),
 
     salaryAccessor({
       accessorKey: 'average_salary',
@@ -40,8 +41,9 @@ export function TechnologiesTable() {
       selectedExperience: selectedExperience,
       key: 'technologies_salary',
       source: API.technologySalaryPlot,
+      header: t('columns.salary')
     }),
-    countAccessor({ accessorKey: 'count', header: 'Unique skills' }),
+    countAccessor({ accessorKey: 'count', header: t('columns.skills') }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
     chartAccessor({
       accessorKey: 'chart',
@@ -50,6 +52,7 @@ export function TechnologiesTable() {
       selectedExperience: selectedExperience ?? undefined,
       key: 'categories_plot',
       source: API.technologyPlot,
+      header: t('columns.trend')
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 

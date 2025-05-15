@@ -72,7 +72,7 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   size?: number;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
-  header: () => <div>Name</div>,
+  header: () => <div>{config.header}</div>,
   sortingFn: sortingFns.alphanumeric,
   cell: (info) => {
     return (
@@ -92,7 +92,7 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
   category: 'domain' | 'category';
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
-  header: () => <div>Name</div>,
+  header: () => <div>{config.header}</div>,
   sortingFn: sortingFns.alphanumeric,
   cell: (info) => {
     return (
@@ -112,10 +112,23 @@ export const countAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   cell: (info) => {
+
+    function getMax() {
+      const ratio = info.row.original.ratio
+      if(ratio) {
+        return (info.getValue() as number) / info.row.original.ratio
+      }
+      const allValues = info.table.getFilteredRowModel().rows.map(row => 
+        row.getValue('count') as number
+      );
+      const maxValue = Math.max(...allValues);
+      return maxValue
+    }
+  
     return (
       <CountRenderer
         count={info.getValue() as number}
-        maxCount={(info.getValue() as number) / info.row.original.ratio}
+        maxCount={getMax()}
       />
     );
   },
@@ -147,7 +160,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
   accessorKey: config.accessorKey as string,
   header: () => (
     <div className="flex items-center">
-      <div className="mr-1">Salary</div>
+      <div>{config.header}</div>
     </div>
   ),
   cell: (info) => {
@@ -231,7 +244,7 @@ export const chartAccessor = <T extends KeySkill>(config: {
   ): Promise<Chart[]>;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
-  header: 'Trend',
+  header: () => <div>{config.header}</div>,
   cell: (info) => {
     const color =
       info.row.original.prev_count &&
