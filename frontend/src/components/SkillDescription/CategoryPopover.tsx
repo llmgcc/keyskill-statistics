@@ -85,7 +85,7 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
   const category = categories?.[0] ?? null;
 
   return (
-    <Popover>
+    <Popover modal={true}>
       <PopoverTrigger asChild>
         <div
           className="cursor-pointer select-none text-text-secondary hover:text-text-secondary/80"
@@ -97,6 +97,7 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
       </PopoverTrigger>
 
       <PopoverContent>
+            
         <div className="flex items-center justify-between border-b-[1px] border-background-secondary px-2 py-2 text-sm">
           <div className="flex items-center">
             <div className="text-sm font-[500]">
@@ -127,7 +128,7 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
           </div>
         </div>
 
-        <div className="flex min-w-max px-2 py-4">
+        <div className="flex min-w-fit px-2 py-4 items-center justify-center">
           <div className="min-w-fit">
             <CategoryPieChart data={popoverContent} />
           </div>

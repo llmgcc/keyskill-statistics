@@ -41,7 +41,7 @@ export function TechnologiesTable() {
       key: 'technologies_salary',
       source: API.technologySalaryPlot,
     }),
-    countAccessor({ accessorKey: 'count' }),
+    countAccessor({ accessorKey: 'count', header: 'Unique skills' }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
     chartAccessor({
       accessorKey: 'chart',

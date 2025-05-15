@@ -18,6 +18,8 @@ async def domains_list(session: Session, days_period=30, experience=None):
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
 
+
+
     skills = (
         select(
             KeySkill.name,
@@ -36,16 +38,18 @@ async def domains_list(session: Session, days_period=30, experience=None):
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
         .order_by(desc("count"))
+        .having(func.count(KeySkill.name) >= 5)
     ).cte("skills")
 
     prev_skills = (
-        select(KeySkill.name)
+        select(KeySkill.name, func.count(KeySkill.name).label("count"))
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(Vacancy.created_at.between(prev_from, prev_to))
         .where(Vacancy.experience == experience if experience else True)
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
+        .having(func.count(KeySkill.name)>= 5)
     ).cte("prev_skills")
 
     count = func.count(skills.c.name).label("count")
@@ -60,7 +64,7 @@ async def domains_list(session: Session, days_period=30, experience=None):
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
             func.percentile_cont(0.5)
                 .within_group(skills.c.median_salary)
-                .label("median_salary"),
+                .label("average_salary"),
         )
         .select_from(KeySkillDomain)
         .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)

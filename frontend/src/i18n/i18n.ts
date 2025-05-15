@@ -9,6 +9,7 @@ i18n
   .use(new LanguageDetector(null, { lookupLocalStorage: LOCAL_STORAGE_KEY }))
   .use(initReactI18next)
   .init({
+    lng: localStorage.getItem(LOCAL_STORAGE_KEY) || 'en',
     fallbackLng: 'en',
     debug: false,
     interpolation: {
