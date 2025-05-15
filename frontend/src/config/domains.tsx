@@ -41,38 +41,38 @@ export enum Domains {
 
 export const DomainDescription: Record<Domains, string> = {
   'Frontend development':
-    'Building interactive user interfaces and optimizing client-side.',
+    'Building interactive user interfaces and optimizing client-side',
   'Backend development':
-    'Implementing server logic, APIs, and data management.',
+    'Implementing server logic, APIs, and data management',
   'DevOps & Infrastructure':
-    'Automating CI/CD, containerization, and server maintenance.',
+    'Automating CI/CD, containerization, and server maintenance',
   'Data Science & Machine Learning':
-    'Data analysis, modeling, and deploying ML solutions.',
+    'Data analysis, modeling, and deploying ML solutions',
   'Mobile development':
-    'Developing native and cross‑platform mobile applications.',
+    'Developing native and cross‑platform mobile applications',
   'Testing & Quality assurance':
-    'Planning and automating software testing processes.',
+    'Planning and automating software testing processes',
   'Computer graphics & Game development':
-    '	2D/3D graphics, game engines, and rendering optimization.',
-  Blockchain: 'Smart contracts, protocols, and decentralized networks.',
-  Design: 'UI/UX design, prototyping, and visual identity.',
+    '	2D/3D graphics, game engines, and rendering optimization',
+  Blockchain: 'Smart contracts, protocols, and decentralized networks',
+  Design: 'UI/UX design, prototyping, and visual identity',
   'System administration':
-    'Configuring, monitoring, and supporting server systems.',
-  'Website administration': 'Managing CMS, content, and website security.',
+    'Configuring, monitoring, and supporting server systems',
+  'Website administration': 'Managing CMS, content, and website security',
   '1C Development':
-    'Building and customizing business apps on the 1C platform.',
+    'Building and customizing business apps on the 1C platform',
   'Systems analytics':
-    'Gathering requirements, processes, and technical documentation.',
+    'Gathering requirements, processes, and technical documentation',
   'Systems programming':
-    'Low‑level software: drivers, embedded systems, kernels.',
-  Cybersecurity: 'Securing systems, penetration testing, and risk management.',
-  'HR management': 'Recruiting, onboarding, and retaining IT personnel.',
-  'Project management': 'Planning, coordinating, and overseeing IT projects.',
+    'Low‑level software: drivers, embedded systems, IoT',
+  Cybersecurity: 'Securing systems, penetration testing, and risk management',
+  'HR management': 'Recruiting, onboarding, and retaining IT personnel',
+  'Project management': 'Planning, coordinating, and overseeing IT projects',
   'Network administration':
-    'Designing, configuring, and monitoring computer networks.',
+    'Designing, configuring, and monitoring computer networks',
   'Digital Marketing & SEO':
-    'Promotion, site optimization, and traffic analytics.',
-  Other: 'Non‑technical and supporting roles outside core IT domains.',
+    'Promotion, site optimization, and traffic analytics',
+  Other: 'Non‑technical and supporting roles outside core IT domains',
 };
 
 export const DomainShort: Record<Domains, string> = {
