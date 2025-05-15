@@ -26,7 +26,7 @@ import asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlmodel.ext.asyncio.session import AsyncSession
 import shutil
-
+from sqlalchemy.orm import aliased
 
 FRONTEND_STATIC_API_PATH = (
     os.path.dirname(os.path.abspath(__file__ + "/../")) + "/frontend/public/static-api"
@@ -50,228 +50,142 @@ def copy_images_folder():
     if os.path.exists(source_dir):
         shutil.copytree(source_dir, dest_dir, dirs_exist_ok=True)
 
-copy_images_folder()
 
+def write(path, data, is_json=False):
+    file_name = f"{FRONTEND_STATIC_API_PATH + path}.json"
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
+    with open(file_name, "w", encoding="utf-8") as f:
+        if not is_json:
+            f.write(data)
+        else:
+            json.dump(data, f)
 
-# exit()
-
-async def build_static(router):
+async def build_static_from_route(router):
     async with AsyncClient(
         transport=ASGITransport(app=app), base_url="http://localhost:8000"
     ) as client:
         for route in router.routes:
             response = await client.get(route.path)
-            print(response)
-            print("\n\n\n\n")
             path = route.path
-            file_name = f"{FRONTEND_STATIC_API_PATH + path}.json"
-            os.makedirs(os.path.dirname(file_name), exist_ok=True)
-            with open(file_name, "w", encoding="utf-8") as f:
-                f.write(response.text)
+            write(path, response.text)
 
 
-async def build_from_routes():
-    await build_static(main_router)
-    await build_static(categories_router)
-    await build_static(domains_router)
-
-
-# async def build():
-#     await build_from_routes()
-    
-# asyncio.run(build())
-
-async def test():
+async def build_skills():
     async with AsyncSession(async_engine) as session:
         for period in PERIOD:
-            print(period, len(PERIOD))
             for experience in EXPERIENCE:
+                print(period, experience)
                 e = None if experience == "any" else experience
-                # SKILLS
+                # # SKILLS
                 skills = get_base_skills(
                     period, limit=None, offset=0, experience=e, min_count=5
                 )
-
                 data = [
                     SkillsResponse.model_validate(item).model_dump_json()
                     for item in (await session.exec(skills)).all()
                 ]
-                file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
-                os.makedirs(os.path.dirname(file_name), exist_ok=True)
+                write(f'/skills/skills_{period}_{experience}', list(map(lambda x: json.loads(x), data)), is_json=True)
+
+                # # CHARTS
+                charts_subquery = await skills_chart(
+                    None, session, period, for_all_skills=True, experience=e
+                )
+                charts = (await session.exec(select(*charts_subquery.c))).all()
+                data = {}
+                for item in charts:
+                    data[item[0]] = item[1]
+                write(f'/charts/skills_{period}_{experience}', data, is_json=True)
+
+                # SALARY
+                salary_charts_subquery, max_salary = await salary_chart(
+                    None, session, period, for_all_skills=True, experience=e
+                )
+                charts = (await session.exec(select(*salary_charts_subquery.c))).all()
+                data = {}
+                for item in charts:
+                    data[item[0]] = item[1]
+                write(f'/charts/salary_{period}_{experience}', data, is_json=True)
+
+
+async def build_domains():
+    async with AsyncSession(async_engine) as session:
+        for period in PERIOD:
+            for experience in EXPERIENCE:
+                print(period, experience)
+                e = None if experience == "any" else experience
+                #  DOMAINS
+                domains = await domains_list(session, period, experience=e)
+                data = [
+                    DomainsResponse.model_validate(item).model_dump_json()
+                    for item in domains
+                ]
                 data = list(map(lambda x: json.loads(x), data))
-                with open(file_name, "w", encoding="utf-8") as f:
-                    json.dump(data, f)
+                write(f'/domains/domains_{period}_{experience}', data, is_json=True)
 
-                # #  CATEGORIES
-                # categories = await categories_list(session, period, experience=e)
-                # data = [
-                #     CategoriesResponse.model_validate(item).model_dump_json()
-                #     for item in categories
-                # ]
-                # file_name = f"{FRONTEND_STATIC_API_PATH + f'/categories/categories_{period}_{experience}'}.json"
-                # os.makedirs(os.path.dirname(file_name), exist_ok=True)
-                # data = list(map(lambda x: json.loads(x), data))
-                # with open(file_name, "w", encoding="utf-8") as f:
-                #     json.dump(data, f)
+                # DOMAINS CHART
+                domains = {}
+                requests = []
+                for category in data:
+                    requests.append(category_chart(category["name"], session, period, experience=e))
+                charts = await asyncio.gather(*requests)
+                for i, category in enumerate(data):
+                    domains[category["name"]] = charts[i]
+                write(f'/charts/domains_{period}_{experience}', domains, is_json=True)
 
-                # #  DOMAINS
-                # domains = await domains_list(session, period, experience=e)
-                # data = [
-                #     DomainsResponse.model_validate(item).model_dump_json()
-                #     for item in domains
-                # ]
-                # file_name = f"{FRONTEND_STATIC_API_PATH + f'/domains/domains_{period}_{experience}'}.json"
-                # os.makedirs(os.path.dirname(file_name), exist_ok=True)
-                # data = list(map(lambda x: json.loads(x), data))
-                # with open(file_name, "w", encoding="utf-8") as f:
-                #     json.dump(data, f)
+                # DOMAINS SALARY
+                domains = {}
+                requests = []
+                for category in data:
+                    requests.append(category_salary_chart(category["name"], session, period, experience=e))
+                charts = await asyncio.gather(*requests)
+                for i, category in enumerate(data):
+                    domains[category["name"]] = charts[i]
+                write(f'/charts/domains_salary_{period}_{experience}', domains, is_json=True)
 
-asyncio.run(test())
 
-# asyncio.run(build_static(categories_router))
-# asyncio.run(build_static(technologies_router))
-# build_static(categories_router)
-# build_static(technologies_router)
+async def build_categories():
+    async with AsyncSession(async_engine) as session:
+        for period in PERIOD:
+            for experience in EXPERIENCE:
+                print(period, experience)
+                e = None if experience == "any" else experience
+                #  CATEGORIES
+                categories = await categories_list(session, period, experience=e)
+                data = [
+                    CategoriesResponse.model_validate(item).model_dump_json()
+                    for item in categories
+                ]
+                data = list(map(lambda x: json.loads(x), data))
+                write(f'/categories/categories_{period}_{experience}', data, is_json=True)
 
-# exit()
+                # CATEGORIES CHART
+                categories = {}
+                requests = []
+                for category in data:
+                    requests.append(technologies_chart(category["name"], session, period, experience=e))
+                charts = await asyncio.gather(*requests)
+                for i, category in enumerate(data):
+                    categories[category["name"]] = charts[i]
+                write(f'/charts/categories_{period}_{experience}', categories, is_json=True)
 
-# build_static(categories_router)
-# build_static(technologies_router)
-# exit()
-# with Session(engine) as session:
-#     for period in PERIOD:
-#         print(period, len(PERIOD))
-#         for experience in EXPERIENCE:
-#             print("\t", experience, len(EXPERIENCE))
-#             e = None if experience == "any" else experience
+                # CATEGORIES SALARY
+                categories = {}
+                requests = []
+                for category in data:
+                    requests.append(technologies_salary_chart(category["name"], session, period, experience=e))
+                charts = await asyncio.gather(*requests)
+                for i, category in enumerate(data):
+                    categories[category["name"]] = charts[i]
+                write(f'/charts/categories_salary_{period}_{experience}', categories, is_json=True)
 
-#             print("categories")
-#             #  CATEGORIES
-#             categories = categories_list(session, period, experience=e)
-#             data = [
-#                 CategoriesResponse.model_validate(item).model_dump_json()
-#                 for item in categories
-#             ]
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/categories/categories_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             data = list(map(lambda x: json.loads(x), data))
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(data, f)
 
-#             # CATEGORIES CHART
-#             categories = {}
-#             for category in data:
-#                 print("categories chart")
-#                 chart = category_chart(category["name"], session, period, experience=e)
-#                 categories[category["name"]] = chart
-
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/categories_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(categories, f)
-
-#             # CATEGORIES SALARY
-#             categories = {}
-#             for category in data:
-#                 print("categories salary")
-#                 chart = category_salary_chart(
-#                     category["name"], session, period, experience=e
-#                 )
-#                 categories[category["name"]] = chart
-
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/categories_salary_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(categories, f)
-
-#             #  TECHNOLOGIES
-#             categories = technologies_list(session, period, experience=e)
-#             data = [
-#                 TechnologiesResponse.model_validate(item).model_dump_json()
-#                 for item in categories
-#             ]
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/technologies/technologies_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             data = list(map(lambda x: json.loads(x), data))
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(data, f)
-
-#             # TECHNOLOGIES CHART
-#             categories = {}
-#             for category in data:
-#                 chart = technologies_chart(
-#                     category["name"], session, period, experience=e
-#                 )
-#                 categories[category["name"]] = chart
-
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/technologies_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(categories, f)
-
-#             # TECHNOLOGIES SALARY
-#             categories = {}
-#             for category in data:
-#                 chart = technologies_salary_chart(
-#                     category["name"], session, period, experience=e
-#                 )
-#                 categories[category["name"]] = chart
-
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/technologies_salary_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(categories, f)
-
-#             # SKILLS
-#             skills = get_base_skills(
-#                 period, limit=None, offset=0, experience=e, min_count=5
-#             )
-
-#             data = [
-#                 SkillsResponse.model_validate(item).model_dump_json()
-#                 for item in session.exec(skills).all()
-#             ]
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/skills/skills_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             data = list(map(lambda x: json.loads(x), data))
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(data, f)
-
-#             # SKILLS CHARTS
-#             charts_subquery = skills_chart(
-#                 None, session, period, for_all_skills=True, experience=e
-#             )
-#             result = (
-#                 select(skills.c.name, charts_subquery.c.chart)
-#                 .select_from(skills)
-#                 .outerjoin(charts_subquery, skills.c.name == charts_subquery.c.name)
-#             )
-#             charts = session.exec(result).all()
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/skills_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             data = {}
-#             for item in charts:
-#                 data[item[0]] = item[1]
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(data, f)
-
-#             # SKILLS SALARY CHARTS
-#             salary_charts_subquery, max_salary = salary_chart(
-#                 None, session, period, for_all_skills=True, experience=e
-#             )
-#             result = (
-#                 select(skills.c.name, salary_charts_subquery.c.salary_chart)
-#                 .select_from(skills)
-#                 .outerjoin(
-#                     salary_charts_subquery,
-#                     skills.c.name == salary_charts_subquery.c.name,
-#                 )
-#             )
-#             charts = session.exec(result).all()
-#             file_name = f"{FRONTEND_STATIC_API_PATH + f'/charts/salary_{period}_{experience}'}.json"
-#             os.makedirs(os.path.dirname(file_name), exist_ok=True)
-#             data = {}
-#             for item in charts:
-#                 data[item[0]] = item[1]
-#             with open(file_name, "w", encoding="utf-8") as f:
-#                 json.dump(data, f)
+async def build():
+    copy_images_folder()
+    await build_static_from_route(main_router)
+    await build_static_from_route(categories_router)
+    await build_static_from_route(domains_router)
+    await build_skills()
+    await build_domains()
+    await build_categories()
+    
+asyncio.run(build())

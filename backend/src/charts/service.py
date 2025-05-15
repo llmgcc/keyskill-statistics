@@ -215,19 +215,18 @@ async def category_chart(
     bin = func.ceil(((vacancy_date - left) / bin_size)).label("bin")
 
     bins = (
-        select(Vacancy.id, Vacancy.created_at, bin, Category.name)
+        select(Vacancy.id, Vacancy.created_at, bin, Domain.name)
         .select_from(Vacancy)
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
-        .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
-        .join(Category, Category.id == KeySkillCategory.category_id)
+        .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
+        .join(Domain, Domain.id == KeySkillDomain.domain_id)
         .where(
             and_(
                 Vacancy.created_at.between(prev_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Category.name == category)
-        .where(KeySkillCategory.confidence >= 0.25)
+        .where(Domain.name == category)
         .where(Vacancy.experience == experience if experience is not None else True)
         .where(bin >= 1)
         .where(bin <= number_of_bins)
@@ -295,7 +294,7 @@ async def category_salary_chart(
 
     vacancies = (
         select(
-            Category.name.label("name"),
+            Domain.name.label("name"),
             Vacancy.created_at,
             average_salary_case.label("average_salary"),
             Currency.currency_code,
@@ -304,16 +303,16 @@ async def category_salary_chart(
         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
         .join(Currency, Currency.currency_code == VacancySalary.currency)
-        .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
-        .join(Category, Category.id == KeySkillCategory.category_id)
-        .where(KeySkillCategory.confidence >= 0.25)
+        .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
+        .join(Domain, Domain.id == KeySkillDomain.domain_id)
+        .where(KeySkillDomain.confidence >= 0.25)
         .where(
             and_(
                 Vacancy.created_at.between(current_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Category.name == category)
+        .where(Domain.name == category)
     )
 
     if experience is not None:
@@ -390,19 +389,19 @@ async def technologies_chart(
     bin = func.ceil(((vacancy_date - left) / bin_size)).label("bin")
 
     bins = (
-        select(Vacancy.id, Vacancy.created_at, bin, Technology.name)
+        select(Vacancy.id, Vacancy.created_at, bin, Category.name)
         .select_from(Vacancy)
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
-        .join(KeySkillTechnology, KeySkillTechnology.name == KeySkill.name)
-        .join(Technology, Technology.id == KeySkillTechnology.technology_id)
+        .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
+        .join(Category, Category.id == KeySkillCategory.category_id)
         .where(
             and_(
                 Vacancy.created_at.between(prev_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Technology.name == technology)
-        .where(KeySkillTechnology.confidence >= 0.25)
+        .where(Category.name == technology)
+        .where(KeySkillCategory.confidence >= 0.25)
         .where(Vacancy.experience == experience if experience is not None else True)
         .where(bin >= 1)
         .where(bin <= number_of_bins)
@@ -470,7 +469,7 @@ async def technologies_salary_chart(
 
     vacancies = (
         select(
-            Technology.name.label("name"),
+            Category.name.label("name"),
             Vacancy.created_at,
             average_salary_case.label("average_salary"),
             Currency.currency_code,
@@ -479,16 +478,16 @@ async def technologies_salary_chart(
         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
         .join(Currency, Currency.currency_code == VacancySalary.currency)
-        .join(KeySkillTechnology, KeySkillTechnology.name == KeySkill.name)
-        .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-        .where(KeySkillTechnology.confidence >= 0.25)
+        .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
+        .join(Category, Category.id == KeySkillCategory.category_id)
+        .where(KeySkillCategory.confidence >= 0.25)
         .where(
             and_(
                 Vacancy.created_at.between(current_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Technology.name == technology)
+        .where(Category.name == technology)
     )
 
     if experience is not None:

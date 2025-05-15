@@ -39,7 +39,7 @@ export function CategoriesTable() {
       key: 'categories_salary',
       source: API.categorySalaryPlot,
     }),
-    countAccessor({ accessorKey: 'count' }),
+    countAccessor({ accessorKey: 'count', header: 'Unique skills' }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
     chartAccessor({
       accessorKey: 'chart',

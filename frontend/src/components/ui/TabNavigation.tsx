@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Tabs } from '@radix-ui/themes';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useScreenSize } from '@/hooks/useScreenSize';
 
 interface Tab {
   title: JSX.Element;
@@ -19,7 +20,7 @@ export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentTab = searchParams.get(paramKey) || tabs[0].name;
-
+  const {isMobile} = useScreenSize()
   const handleTabChange = (value: string) => {
     searchParams.set(paramKey, value);
     navigate({ search: searchParams.toString() }, { replace: true });
@@ -38,7 +39,7 @@ export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
     <div className="app-container mt-4">
       <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
         <div className="items-center lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-4">
-          <Tabs.List>
+          <Tabs.List size={isMobile ? '1' : '2'}>
             {tabs.map((tab) => (
               <Tabs.Trigger
                 value={tab.name}

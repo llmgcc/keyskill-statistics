@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
@@ -76,6 +77,7 @@ export default function App() {
           />
           <Filter />
           <Highlights />
+          <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
           <SkillFilterProvider>
             <div ref={tabsRef}>
               <Tabs />

@@ -33,10 +33,10 @@ function KeySkills() {
   const { t } = useTranslation();
   const pageSizeVariants = [25, 50, 100];
 
-  const [pagination, setPagination] = useState<PaginationState>({
+  const [pagination, setPagination] = useState<PaginationState>(() => ({
     pageIndex: 0,
     pageSize: pageSizeVariants[0],
-  });
+  }));
 
   const [sorting, setSorting] = useState<SortingState>([]);
   const { filterState } = useSkillFilter();

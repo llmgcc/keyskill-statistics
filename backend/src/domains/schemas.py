@@ -7,4 +7,4 @@ class DomainsResponse(SQLModel):
     prev_count: int | None
     place: int
     prev_place: int | None
-    median_salary: float | None
+    average_salary: float | None

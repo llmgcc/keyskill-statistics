@@ -114,7 +114,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Chart[]> {
     const response = await axios.get(
-      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/domains_${period}_${experience ?? 'any'}.json`,
     );
     return response.data[name] as Chart[];
   }
@@ -125,7 +125,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Chart[]> {
     const response = await axios.get(
-      `/static-api/charts/technologies_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
     );
     return response.data[name] as Chart[];
   }
@@ -136,7 +136,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<SalaryChart> {
     const response = await axios.get(
-      `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
     );
     return { max_salary: 1, chart: response.data[name][0] };
   }
@@ -147,7 +147,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<SalaryChart> {
     const response = await axios.get(
-      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/domains_salary_${period}_${experience ?? 'any'}.json`,
     );
     return { max_salary: 1, chart: response.data[name][0] };
   }

@@ -76,7 +76,7 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   sortingFn: sortingFns.alphanumeric,
   cell: (info) => {
     return (
-      <div className="max-w-96">
+      <div>
         <SkillDescription {...info.row.original} />
       </div>
     );
@@ -112,9 +112,12 @@ export const countAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   cell: (info) => {
-
-    console.log(info.getValue(), info.row.original.ratio, info.getValue()/info.row.original.ratio)
-    return <CountRenderer count={info.getValue() as number} maxCount={(info.getValue() as number)/info.row.original.ratio} />;
+    return (
+      <CountRenderer
+        count={info.getValue() as number}
+        maxCount={(info.getValue() as number) / info.row.original.ratio}
+      />
+    );
   },
   header: () => (
     <div className="flex items-center">
@@ -291,7 +294,7 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
         ?.confidence || 0;
     return confidenceA - confidenceB;
   },
-  size: 75,
+  size: 100,
   enableSorting: true,
   meta: {
     alignRight: true,
