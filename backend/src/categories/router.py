@@ -8,9 +8,7 @@ from src.categories.schemas import CategoriesResponse
 router = APIRouter(prefix="/categories", tags=["Categories"])
 
 
-@router.get(
-    summary="Categories", path="/list", response_model=List[CategoriesResponse]
-)
+@router.get(summary="Categories", path="/list", response_model=List[CategoriesResponse])
 async def get_categories_list(
     session: Session = Depends(get_async_session), experience=None, period: int = 30
 ):

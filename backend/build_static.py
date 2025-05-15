@@ -16,8 +16,8 @@ from src.charts.service import (
     technologies_chart,
     technologies_salary_chart,
 )
-from src.database import engine, async_engine
-from sqlmodel import Session, select
+from src.database import async_engine
+from sqlmodel import select
 from src.keyskills.schemas import SkillsResponse
 from src.categories.schemas import CategoriesResponse
 from src.domains.schemas import DomainsResponse
@@ -26,7 +26,6 @@ import asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlmodel.ext.asyncio.session import AsyncSession
 import shutil
-from sqlalchemy.orm import aliased
 
 FRONTEND_STATIC_API_PATH = (
     os.path.dirname(os.path.abspath(__file__ + "/../")) + "/frontend/public/static-api"
@@ -45,7 +44,7 @@ PERIOD = [7, 14, 30]
 
 def copy_images_folder():
     source_dir = os.path.dirname(os.path.abspath(__file__)) + "/src/static"
-    dest_dir = FRONTEND_STATIC_API_PATH + '/static'
+    dest_dir = FRONTEND_STATIC_API_PATH + "/static"
     os.makedirs(dest_dir, exist_ok=True)
     if os.path.exists(source_dir):
         shutil.copytree(source_dir, dest_dir, dirs_exist_ok=True)
@@ -59,6 +58,7 @@ def write(path, data, is_json=False):
             f.write(data)
         else:
             json.dump(data, f)
+
 
 async def build_static_from_route(router):
     async with AsyncClient(
@@ -84,7 +84,11 @@ async def build_skills():
                     SkillsResponse.model_validate(item).model_dump_json()
                     for item in (await session.exec(skills)).all()
                 ]
-                write(f'/skills/skills_{period}_{experience}', list(map(lambda x: json.loads(x), data)), is_json=True)
+                write(
+                    f"/skills/skills_{period}_{experience}",
+                    list(map(lambda x: json.loads(x), data)),
+                    is_json=True,
+                )
 
                 # # CHARTS
                 charts_subquery = await skills_chart(
@@ -94,7 +98,7 @@ async def build_skills():
                 data = {}
                 for item in charts:
                     data[item[0]] = item[1]
-                write(f'/charts/skills_{period}_{experience}', data, is_json=True)
+                write(f"/charts/skills_{period}_{experience}", data, is_json=True)
 
                 # SALARY
                 salary_charts_subquery, max_salary = await salary_chart(
@@ -104,7 +108,7 @@ async def build_skills():
                 data = {}
                 for item in charts:
                     data[item[0]] = item[1]
-                write(f'/charts/salary_{period}_{experience}', data, is_json=True)
+                write(f"/charts/salary_{period}_{experience}", data, is_json=True)
 
 
 async def build_domains():
@@ -120,27 +124,37 @@ async def build_domains():
                     for item in domains
                 ]
                 data = list(map(lambda x: json.loads(x), data))
-                write(f'/domains/domains_{period}_{experience}', data, is_json=True)
+                write(f"/domains/domains_{period}_{experience}", data, is_json=True)
 
                 # DOMAINS CHART
                 domains = {}
                 requests = []
                 for category in data:
-                    requests.append(category_chart(category["name"], session, period, experience=e))
+                    requests.append(
+                        category_chart(category["name"], session, period, experience=e)
+                    )
                 charts = await asyncio.gather(*requests)
                 for i, category in enumerate(data):
                     domains[category["name"]] = charts[i]
-                write(f'/charts/domains_{period}_{experience}', domains, is_json=True)
+                write(f"/charts/domains_{period}_{experience}", domains, is_json=True)
 
                 # DOMAINS SALARY
                 domains = {}
                 requests = []
                 for category in data:
-                    requests.append(category_salary_chart(category["name"], session, period, experience=e))
+                    requests.append(
+                        category_salary_chart(
+                            category["name"], session, period, experience=e
+                        )
+                    )
                 charts = await asyncio.gather(*requests)
                 for i, category in enumerate(data):
                     domains[category["name"]] = charts[i]
-                write(f'/charts/domains_salary_{period}_{experience}', domains, is_json=True)
+                write(
+                    f"/charts/domains_salary_{period}_{experience}",
+                    domains,
+                    is_json=True,
+                )
 
 
 async def build_categories():
@@ -156,27 +170,45 @@ async def build_categories():
                     for item in categories
                 ]
                 data = list(map(lambda x: json.loads(x), data))
-                write(f'/categories/categories_{period}_{experience}', data, is_json=True)
+                write(
+                    f"/categories/categories_{period}_{experience}", data, is_json=True
+                )
 
                 # CATEGORIES CHART
                 categories = {}
                 requests = []
                 for category in data:
-                    requests.append(technologies_chart(category["name"], session, period, experience=e))
+                    requests.append(
+                        technologies_chart(
+                            category["name"], session, period, experience=e
+                        )
+                    )
                 charts = await asyncio.gather(*requests)
                 for i, category in enumerate(data):
                     categories[category["name"]] = charts[i]
-                write(f'/charts/categories_{period}_{experience}', categories, is_json=True)
+                write(
+                    f"/charts/categories_{period}_{experience}",
+                    categories,
+                    is_json=True,
+                )
 
                 # CATEGORIES SALARY
                 categories = {}
                 requests = []
                 for category in data:
-                    requests.append(technologies_salary_chart(category["name"], session, period, experience=e))
+                    requests.append(
+                        technologies_salary_chart(
+                            category["name"], session, period, experience=e
+                        )
+                    )
                 charts = await asyncio.gather(*requests)
                 for i, category in enumerate(data):
                     categories[category["name"]] = charts[i]
-                write(f'/charts/categories_salary_{period}_{experience}', categories, is_json=True)
+                write(
+                    f"/charts/categories_salary_{period}_{experience}",
+                    categories,
+                    is_json=True,
+                )
 
 
 async def build():
@@ -187,5 +219,6 @@ async def build():
     await build_skills()
     await build_domains()
     await build_categories()
-    
+
+
 asyncio.run(build())

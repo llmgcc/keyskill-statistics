@@ -1,4 +1,3 @@
-from sqlalchemy import and_, case
 from sqlmodel import Session, select, func, desc
 from src.models import (
     Currency,
@@ -12,13 +11,12 @@ import datetime
 from src.common import average_salary_case
 from src.config import settings
 
+
 async def domains_list(session: Session, days_period=30, experience=None):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
-
-
 
     skills = (
         select(
@@ -49,7 +47,7 @@ async def domains_list(session: Session, days_period=30, experience=None):
         .where(Vacancy.experience == experience if experience else True)
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
-        .having(func.count(KeySkill.name)>= 5)
+        .having(func.count(KeySkill.name) >= 5)
     ).cte("prev_skills")
 
     count = func.count(skills.c.name).label("count")
@@ -63,8 +61,8 @@ async def domains_list(session: Session, days_period=30, experience=None):
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
             func.percentile_cont(0.5)
-                .within_group(skills.c.median_salary)
-                .label("average_salary"),
+            .within_group(skills.c.median_salary)
+            .label("average_salary"),
         )
         .select_from(KeySkillDomain)
         .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)

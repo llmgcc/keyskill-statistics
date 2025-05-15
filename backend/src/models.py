@@ -37,7 +37,9 @@ class VacancySalary(SQLModel, table=True):
     )
     salary_from: Optional[int] = Field(default=None)
     salary_to: Optional[int] = Field(default=None)
-    currency: Optional[str] = Field(default=None, foreign_key="currency.currency_code", index=True)
+    currency: Optional[str] = Field(
+        default=None, foreign_key="currency.currency_code", index=True
+    )
 
 
 class Currency(SQLModel, table=True):
@@ -83,5 +85,3 @@ class KeySkillCategory(SQLModel, table=True):
     )
     name: str = Field(default=None, primary_key=True)
     confidence: float = Field()
-
-
