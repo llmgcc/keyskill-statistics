@@ -25,6 +25,7 @@ class SkillsResponse(SQLModel):
     domains: List[CategoriesResponse] | None
     categories: List[CategoriesResponse] | None
 
+
 class KeySkillsResponse(SQLModel):
     skills: List[SkillsResponse]
     count_bins: int

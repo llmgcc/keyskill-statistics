@@ -1,4 +1,3 @@
-from sqlalchemy import and_, case
 from sqlmodel import Session, select, func, desc
 from src.models import (
     Currency,
@@ -11,6 +10,7 @@ from src.models import (
 import datetime
 from src.common import average_salary_case
 from src.config import settings
+
 
 async def categories_list(session: Session, days_period=30, experience=None):
     current_to = settings.max_date
@@ -48,10 +48,8 @@ async def categories_list(session: Session, days_period=30, experience=None):
         .group_by(KeySkill.name)
     ).cte("prev_skills")
 
-    
     count = func.count(func.distinct(skills.c.name)).label("count")
     prev_count = func.count(func.distinct(prev_skills.c.name)).label("prev_count")
-
 
     categories = (
         select(
@@ -61,8 +59,8 @@ async def categories_list(session: Session, days_period=30, experience=None):
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
             func.percentile_cont(0.5)
-                .within_group(skills.c.median_salary)
-                .label("average_salary"),
+            .within_group(skills.c.median_salary)
+            .label("average_salary"),
         )
         .select_from(KeySkillCategory)
         .outerjoin(Category, Category.id == KeySkillCategory.category_id)
