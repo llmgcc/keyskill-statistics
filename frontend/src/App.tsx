@@ -69,14 +69,14 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
           <Navigation />
-          {/* <TextSection
+          <TextSection
             onLinkClick={(tabName) => {
               navigate({ search: `?tab=${tabName}` }, { replace: true });
               scrollToTabs();
             }}
           />
           <Filter />
-          <Highlights />
+          {/* <Highlights />
           <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
           <SkillFilterProvider>
             <div ref={tabsRef}>
