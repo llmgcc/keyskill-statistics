@@ -81,6 +81,7 @@ export function Pagination({
             disabled={pageIndex === 0}
             onClick={() => handlePageChange(pageIndex - 1)}
             className={`m-0 px-2 py-2 ${pageIndex === 0 ? '' : 'cursor-pointer text-text-primary hover:bg-background-accent hover:text-white'}`}
+            size={isMobile ? '1' : '2'}
           >
             <BiChevronLeft size={20} />
           </Button>
@@ -97,6 +98,7 @@ export function Pagination({
                 variant="ghost"
                 onClick={() => handlePageChange(pageNum)}
                 className={`m-0 cursor-pointer px-4 py-2 ${pageIndex === pageNum ? 'bg-background-accent text-white' : 'bg-background-primary text-text-primary hover:bg-background-accent hover:text-white'}`}
+                size={isMobile ? '1' : '2'}
               >
                 {pageNum + 1}
               </Button>
@@ -110,6 +112,7 @@ export function Pagination({
             disabled={pageIndex === totalPages - 1}
             onClick={() => handlePageChange(pageIndex + 1)}
             className={`m-0 px-2 py-2 ${pageIndex === totalPages - 1 ? '' : 'cursor-pointer text-text-primary hover:bg-background-accent hover:text-white'}`}
+            size={isMobile ? '1' : '2'}
           >
             <BiChevronRight size={20} />
           </Button>

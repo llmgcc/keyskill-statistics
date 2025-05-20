@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-/* eslint-disable */
-// const { blackA, mauve, violet } = require('@radix-ui/colors');
 
 export default {
   darkMode: 'class',

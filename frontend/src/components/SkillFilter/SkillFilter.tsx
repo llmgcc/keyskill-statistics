@@ -52,7 +52,7 @@ export function SkillFilter({
   }
 
   return (
-    <div className="mt-2 flex items-center justify-end gap-2 md:mt-0">
+    <div className="mt-2 flex items-center justify-end gap-2 lg:mt-0">
       <div className="flex items-center">
         <Button
           color="ruby"

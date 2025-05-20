@@ -15,10 +15,23 @@ export const useScreenSize = (): ScreenSize => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setScreenSize({
-        isMobile: window.innerWidth < 768,
-        isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
-        isDesktop: window.innerWidth >= 1024,
+      setScreenSize((prev) => {
+        const newIsMobile = window.innerWidth < 768;
+        const newIsTablet =
+          window.innerWidth >= 768 && window.innerWidth < 1024;
+        const newIsDesktop = window.innerWidth >= 1024;
+        if (
+          newIsMobile !== prev.isMobile ||
+          newIsTablet !== prev.isTablet ||
+          newIsDesktop !== prev.isDesktop
+        ) {
+          return {
+            isMobile: newIsMobile,
+            isTablet: newIsTablet,
+            isDesktop: newIsDesktop,
+          };
+        }
+        return prev;
       });
     };
     window.addEventListener('resize', checkScreenSize);
