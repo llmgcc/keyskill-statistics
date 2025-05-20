@@ -18,7 +18,7 @@ async def categories_list(session: Session, days_period=30, experience=None):
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
 
-    skills = (
+    current_skills = (
         select(
             KeySkill.name,
             func.count(KeySkill.name).label("count"),
@@ -33,10 +33,9 @@ async def categories_list(session: Session, days_period=30, experience=None):
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
         .where(Vacancy.experience == experience if experience else True)
-        # .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
         .order_by(desc("count"))
-    ).cte("skills")
+    ).cte("current_skills")
 
     prev_skills = (
         select(KeySkill.name)
@@ -44,11 +43,10 @@ async def categories_list(session: Session, days_period=30, experience=None):
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(Vacancy.created_at.between(prev_from, prev_to))
         .where(Vacancy.experience == experience if experience else True)
-        # .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
     ).cte("prev_skills")
 
-    count = func.count(func.distinct(skills.c.name)).label("count")
+    count = func.count(func.distinct(current_skills.c.name)).label("count")
     prev_count = func.count(func.distinct(prev_skills.c.name)).label("prev_count")
 
     categories = (
@@ -59,12 +57,12 @@ async def categories_list(session: Session, days_period=30, experience=None):
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
             func.percentile_cont(0.5)
-            .within_group(skills.c.median_salary)
+            .within_group(current_skills.c.median_salary)
             .label("average_salary"),
         )
         .select_from(KeySkillCategory)
         .outerjoin(Category, Category.id == KeySkillCategory.category_id)
-        .outerjoin(skills, skills.c.name == KeySkillCategory.name)
+        .outerjoin(current_skills, current_skills.c.name == KeySkillCategory.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillCategory.name)
         .group_by(Category.name)
         .order_by(desc("count"))
