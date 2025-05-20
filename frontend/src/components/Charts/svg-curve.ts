@@ -3,6 +3,35 @@ type Point = {
   y: number;
 };
 
+export function mapRange(
+  value: number,
+  inMin: number,
+  inMax: number,
+  outMin: number,
+  outMax: number,
+) {
+  return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
+}
+
+export function normalizeData(
+  data: number[],
+  width: number,
+  height: number,
+  xoffset: number,
+  yoffset: number,
+) {
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const points: number[][] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const x = mapRange(i, 0, data.length - 1, xoffset, width - xoffset);
+    const y = height - mapRange(data[i], min, max, yoffset, height - yoffset);
+    points.push([x, y]);
+  }
+  return points;
+}
+
 function getControlPoints(data: number[][]) {
   const curvature = 0.15;
   const points: Point[][] = [];
@@ -27,7 +56,7 @@ function getControlPoints(data: number[][]) {
   return points;
 }
 
-function curveToString(data: number[][], width: number, height: number) {
+function curveToString(data: number[][], height: number) {
   if (data.length < 3) return '';
 
   const pc = getControlPoints(data);
@@ -51,10 +80,6 @@ function curveToString(data: number[][], width: number, height: number) {
   return [d, connection];
 }
 
-export function svgCurveFromPoints(
-  data: number[][],
-  width: number,
-  height: number,
-) {
-  return curveToString(data, width, height);
+export function svgCurveFromPoints(data: number[][], height: number) {
+  return curveToString(data, height);
 }

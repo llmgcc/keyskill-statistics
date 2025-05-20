@@ -3,6 +3,7 @@ from src.config import settings
 from src.models import *
 from sqlalchemy.dialects.postgresql import aggregate_order_by
 import datetime
+from src.common import average_salary_case
 
 
 async def skills_chart(
@@ -80,40 +81,12 @@ async def salary_chart(
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
-
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-
+    
     vacancies = (
         select(
             KeySkill.name.label("name"),
             Vacancy.created_at,
-            average_salary_case.label("average_salary"),
+            average_salary_case().label("average_salary"),
             Currency.currency_code,
         )
         .select_from(Vacancy)
@@ -127,14 +100,11 @@ async def salary_chart(
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
-        .where(average_salary_case <= settings.max_salary)
+        .where(average_salary_case() <= settings.max_salary)
     )
 
     if experience is not None:
         vacancies = vacancies.where(Vacancy.experience == experience)
-
-    # avg_salary = session.exec(select(func.avg(vacancies.c.average_salary))).all()[0]
-    # print(skill_name, avg_salary)
 
     right = settings.max_salary
     left = 0
@@ -154,7 +124,6 @@ async def salary_chart(
     average_salary_per_skill = (
         select(
             bins.c.name,
-            # sqlalchemy.func.median(bins.c.average_salary).label('average_salary')
             func.percentile_cont(0.5)
             .within_group(bins.c.average_salary)
             .label("average_salary"),
@@ -263,40 +232,11 @@ async def category_salary_chart(
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
-
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-
     vacancies = (
         select(
             Domain.name.label("name"),
             Vacancy.created_at,
-            average_salary_case.label("average_salary"),
+            average_salary_case().label("average_salary"),
             Currency.currency_code,
         )
         .select_from(Vacancy)
@@ -317,8 +257,6 @@ async def category_salary_chart(
 
     if experience is not None:
         vacancies = vacancies.where(Vacancy.experience == experience)
-
-    # avg_salary = session.exec(select(func.avg(vacancies.c.average_salary))).all()[0]
 
     right = 10**6
     left = 0
@@ -439,39 +377,11 @@ async def technologies_salary_chart(
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
 
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-
     vacancies = (
         select(
             Category.name.label("name"),
             Vacancy.created_at,
-            average_salary_case.label("average_salary"),
+            average_salary_case().label("average_salary"),
             Currency.currency_code,
         )
         .select_from(Vacancy)
@@ -493,8 +403,6 @@ async def technologies_salary_chart(
     if experience is not None:
         vacancies = vacancies.where(Vacancy.experience == experience)
 
-    # avg_salary = session.exec(select(func.avg(vacancies.c.average_salary))).all()[0]
-
     right = 10**6
     left = 0
 
@@ -513,7 +421,6 @@ async def technologies_salary_chart(
     average_salary_per_skill = (
         select(
             bins.c.name,
-            # sqlalchemy.func.median(bins.c.average_salary).label('average_salary')
             func.percentile_cont(0.5)
             .within_group(bins.c.average_salary)
             .label("average_salary"),

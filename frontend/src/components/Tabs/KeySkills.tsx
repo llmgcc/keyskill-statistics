@@ -39,14 +39,14 @@ function KeySkills({ filter: filterState }: KeySkillsProps) {
 
   const [pagination, setPagination] = useState<PaginationState>(() => ({
     pageIndex: 0,
-    pageSize: pageSizeVariants[0]
+    pageSize: pageSizeVariants[0],
   }));
 
   const [sorting, setSorting] = useState<SortingState>([]);
   const debouncedFilterState = useDebounce(filterState, 500);
 
   useMemo(() => {
-    setPagination(prev => ({
+    setPagination((prev) => ({
       ...prev,
       pageIndex: 0,
     }));

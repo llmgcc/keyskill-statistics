@@ -208,5 +208,5 @@ def update():
                     REQ_STAT["cached"] += 1
 
 
-for i in range(10):
+for i in range(20):
     update()
