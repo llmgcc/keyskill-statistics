@@ -7,11 +7,11 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Experience } from '@/config/experience';
 import SkillDescription from '@/components/SkillDescription/SkillDescription';
 
-type HighlightsCardTabProps = {
+interface HighlightsCardTabProps {
   title: string;
   source: (period: number, experience?: Experience) => Promise<KeySkill[]>;
   valueRenderer: (skill: KeySkill) => JSX.Element | null;
-};
+}
 
 export function HighlightsCardTab({
   title,
@@ -46,6 +46,7 @@ export function HighlightsCardTab({
     categories: [],
     place: 20,
     prev_place: 10,
+    ratio: 1,
   };
   const defaultData = new Array(5)
     .fill(defaultItem)

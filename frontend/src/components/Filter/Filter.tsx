@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { IoFilterSharp } from 'react-icons/io5';
+
 import { useStickyOffset } from '@/hooks/useStickyOffset';
+
 import { ExperienceSelect } from './ExperienceSelect';
 import { PeriodSelect } from './PeriodSelect';
 

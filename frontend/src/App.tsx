@@ -76,8 +76,8 @@ export default function App() {
             }}
           />
           <Filter />
-          {/* <Highlights />
-          <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
+          <Highlights />
+          {/* <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
           <SkillFilterProvider>
             <div ref={tabsRef}>
               <Tabs />
