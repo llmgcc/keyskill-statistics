@@ -7,7 +7,7 @@ import colors from 'tailwindcss/colors';
 
 import { Experience } from '@/config/experience';
 
-import { SkillPlot } from '../plot/Plot';
+import { SkillPlot } from '../Charts/SkillPlot';
 import SkillDescription from '../SkillDescription/SkillDescription';
 import { CountRenderer } from '../table/renderers/CountRenderer';
 import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
@@ -167,7 +167,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
         selectedPeriod={config.selectedPeriod}
         selectedExperience={config.selectedExperience ?? undefined}
         name={info.row.original.name}
-        key={config.key}
+        plotKey={config.key}
         count={(info.getValue() as number) ?? 0}
         source={config.source}
       />
@@ -251,17 +251,15 @@ export const chartAccessor = <T extends KeySkill>(config: {
       <div style={{ height: '40px' }} className="w-40">
         <div className="size-full">
           <Skeleton loading={config.isLoading} className="size-full">
-            {!config.isLoading && (
-              <SkillPlot
-                name={info.row.original.name}
-                key={config.key}
-                source={config.source}
-                period={config.selectedPeriod}
-                color={color}
-                strokeWidth={2}
-                experience={config.selectedExperience}
-              />
-            )}
+            <SkillPlot
+              name={info.row.original.name}
+              plotKey={config.key}
+              source={config.source}
+              period={config.selectedPeriod}
+              color={color}
+              strokeWidth={2}
+              experience={config.selectedExperience}
+            />
           </Skeleton>
         </div>
       </div>

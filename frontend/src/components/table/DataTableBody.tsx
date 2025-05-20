@@ -39,7 +39,9 @@ export function DataTableBody<T extends object>({
               >
                 <div className="size-full">
                   {isLoading ? (
-                    <Skeleton className="min-w-5">{data(cell)}</Skeleton>
+                    <Skeleton className="min-h-10 min-w-10">
+                      {data(cell)}
+                    </Skeleton>
                   ) : (
                     <div>{data(cell)}</div>
                   )}

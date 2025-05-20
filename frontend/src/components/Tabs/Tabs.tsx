@@ -4,11 +4,11 @@ import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
 import { MdOutlineCategory } from 'react-icons/md';
 
+import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
+import { TabNavigation } from '../ui/TabNavigation';
 import { CategoriesTable } from './CategoriesTable';
 import KeySkills from './KeySkills';
 import { TechnologiesTable } from './TechnologiesTable';
-import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
-import { TabNavigation } from '../ui/TabNavigation';
 
 export function Tabs() {
   const { t } = useTranslation();

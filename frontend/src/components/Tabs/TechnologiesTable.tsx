@@ -7,8 +7,6 @@ import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import { useCategories } from '@/hooks/useCategories';
-
-import { DataTable } from '../table/DataTable';
 import {
   categoryNameAccessor,
   chartAccessor,
@@ -18,6 +16,8 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from '@/components/Tabs/accessors';
+
+import { DataTable } from '../table/DataTable';
 
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();

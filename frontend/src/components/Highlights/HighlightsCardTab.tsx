@@ -52,26 +52,26 @@ export function HighlightsCardTab({
     .fill(defaultItem)
     .map((s, index) => ({ ...s, name: `${s.name}_${index}` }));
 
+  const loading = isLoading || isFetching;
+
   return (
     <div>
-      {(isLoading || isFetching ? defaultData : (data ?? defaultData)).map(
-        (h: KeySkill) => {
-          return (
-            <div className="flex items-center justify-between p-2" key={h.name}>
-              <div className="">
-                <Skeleton loading={isLoading || isFetching}>
-                  <div>
-                    <SkillDescription {...h} />
-                  </div>
-                </Skeleton>
-              </div>
-              <Skeleton loading={isLoading || isFetching}>
-                <div>{valueRenderer(h)}</div>
+      {(loading ? defaultData : (data ?? defaultData)).map((h: KeySkill) => {
+        return (
+          <div className="flex items-center justify-between p-2" key={h.name}>
+            <div className="">
+              <Skeleton loading={loading}>
+                <div>
+                  <SkillDescription {...h} />
+                </div>
               </Skeleton>
             </div>
-          );
-        },
-      )}
+            <Skeleton loading={loading} className="min-h-7 min-w-16">
+              <div>{valueRenderer(h)}</div>
+            </Skeleton>
+          </div>
+        );
+      })}
     </div>
   );
 }
