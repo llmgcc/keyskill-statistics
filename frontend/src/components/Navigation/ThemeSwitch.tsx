@@ -8,26 +8,24 @@ export enum Theme {
   Dark = 'dark',
 }
 
+function getSystemTheme() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return prefersDark ? Theme.Dark : Theme.Light;
+}
+
+function updateTheme(newTheme: Theme) {
+  const root = window.document.documentElement;
+  root.classList.remove(Theme.Light, Theme.Dark);
+  root.classList.add(newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
 export function ThemeSwitch() {
   const [theme, setTheme] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     return savedTheme || getSystemTheme();
   });
   const { t } = useTranslation();
-
-  function getSystemTheme() {
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches;
-    return prefersDark ? Theme.Dark : Theme.Light;
-  }
-
-  function updateTheme(newTheme: Theme) {
-    const root = window.document.documentElement;
-    root.classList.remove(Theme.Light, Theme.Dark);
-    root.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
-  }
 
   useEffect(() => {
     updateTheme(theme);

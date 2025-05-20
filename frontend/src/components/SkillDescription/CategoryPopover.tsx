@@ -97,7 +97,6 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
       </PopoverTrigger>
 
       <PopoverContent>
-            
         <div className="flex items-center justify-between border-b-[1px] border-background-secondary px-2 py-2 text-sm">
           <div className="flex items-center">
             <div className="text-sm font-[500]">
@@ -128,7 +127,7 @@ export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
           </div>
         </div>
 
-        <div className="flex min-w-fit px-2 py-4 items-center justify-center">
+        <div className="flex min-w-fit items-center justify-center px-2 py-4">
           <div className="min-w-fit">
             <CategoryPieChart data={popoverContent} />
           </div>

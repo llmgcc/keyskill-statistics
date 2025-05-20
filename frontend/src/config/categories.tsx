@@ -1,24 +1,34 @@
+import { AiOutlineApi } from 'react-icons/ai';
 import { BiJoystick } from 'react-icons/bi';
 import { BsShieldLock } from 'react-icons/bs';
-import { FaBox, FaBoxes, FaBug, FaCheck, FaCodeBranch, FaDatabase, FaLaptopCode, FaNetworkWired, FaRobot } from 'react-icons/fa';
-import { FaPeopleGroup } from 'react-icons/fa6';
+import { CiServer } from 'react-icons/ci';
 import {
-  FiBox,
-  FiMessageSquare,
-  FiSearch,
-} from 'react-icons/fi';
-import { AiOutlineApi } from "react-icons/ai";
+  FaBox,
+  FaBoxes,
+  FaBug,
+  FaCheck,
+  FaCodeBranch,
+  FaDatabase,
+  FaLaptopCode,
+  FaNetworkWired,
+  FaRobot,
+} from 'react-icons/fa';
+import { FaPeopleGroup } from 'react-icons/fa6';
+import { FiBox, FiMessageSquare, FiSearch } from 'react-icons/fi';
 import { GrClearOption, GrNodes } from 'react-icons/gr';
 import { HiCommandLine, HiServer } from 'react-icons/hi2';
-import { IoCodeOutline, IoColorPaletteOutline, IoDocument, IoPhonePortrait } from 'react-icons/io5';
+import {
+  IoCodeOutline,
+  IoColorPaletteOutline,
+  IoDocument,
+  IoPhonePortrait,
+} from 'react-icons/io5';
+import { LuScale3D } from 'react-icons/lu';
 import { MdBarChart } from 'react-icons/md';
 import { PiBracketsCurlyBold } from 'react-icons/pi';
 import { SiApachekafka } from 'react-icons/si';
 import { TbCloudLock, TbDevicesSearch } from 'react-icons/tb';
 import colors from 'tailwindcss/colors';
-import { CiServer } from 'react-icons/ci';
-import { LuScale3D } from "react-icons/lu";
-
 
 export enum Categories {
   'Languages' = 'Languages',
@@ -77,8 +87,7 @@ export const CategoryDescription: Record<Categories, string> = {
   CMS: 'Content management platforms for website publishing and upkeep',
   'Network Protocols':
     'Rules for data exchange between devices and applications',
-  'Web Servers':
-    'Servers for handling HTTP/HTTPS requests and serving content',
+  'Web Servers': 'Servers for handling HTTP/HTTPS requests and serving content',
   'Integrated Development Environments':
     'IDEs with editor, debugger, and build tools',
   'Cloud platforms':

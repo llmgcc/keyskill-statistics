@@ -35,17 +35,16 @@
     --color-background-accent: 200 100 50;
     --color-background-primary: 246 244 242;
     --color-background-secondary: 230 233 236;
-    --color-background-gray: 223 223 223;
+    --color-background-gray: 203 203 203;
     --color-text: 15 16 26;
     --color-text-primary: 15 16 26;
     --color-text-secondary: 71 85 105;
   }
 
   :root[class~='dark'] {
-    --color-background-accent: 200 100 50;
     --color-background-primary: 23 25 36;
     --color-background-secondary: 35 37 48;
-    --color-background-gray: 35 38 45;
+    --color-background-gray: 65 68 75;
     --color-text: 251 235 249;
     --color-text-primary: 251 235 249;
     --color-text-secondary: 134 165 168;

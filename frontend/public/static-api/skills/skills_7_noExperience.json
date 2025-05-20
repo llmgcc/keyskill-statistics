@@ -1,1 +1,813 @@
-[{"place": 1, "name": "Git", "ratio": 1.0, "translation": null, "count": 22, "prev_count": 29, "prev_place": 7, "average_salary": 75000.0, "image": "235c7e45f162c94a.webp", "domains": [{"name": "Backend development", "confidence": 0.40735004954238213}, {"name": "Frontend development", "confidence": 0.189106879217616}, {"name": "DevOps & Infrastructure", "confidence": 0.0890687193088619}, {"name": "Testing & Quality assurance", "confidence": 0.0767151537364769}, {"name": "Mobile development", "confidence": 0.052938268801107316}], "categories": [{"name": "Code Collaboration & Integration", "confidence": 0.7040685996947993}, {"name": "Languages", "confidence": 0.07139016742909816}, {"name": "Integrated Development Environments", "confidence": 0.025284220141913467}, {"name": "Code Quality Tools", "confidence": 0.017562583993478598}, {"name": "Documentation tools", "confidence": 0.016305700838235043}]}, {"place": 2, "name": "Python", "ratio": 0.9090909090909091, "translation": null, "count": 20, "prev_count": 45, "prev_place": 2, "average_salary": 75000.0, "image": "36420f89c463e610.webp", "domains": [{"name": "Data Science & Machine Learning", "confidence": 0.3214213756933228}, {"name": "Backend development", "confidence": 0.22210498362905545}, {"name": "DevOps & Infrastructure", "confidence": 0.0895823340571524}, {"name": "Testing & Quality assurance", "confidence": 0.0869875426518478}, {"name": "Systems programming", "confidence": 0.053562020924507514}], "categories": [{"name": "Languages", "confidence": 0.7383414596546365}, {"name": "Machine Learning Libraries and Frameworks", "confidence": 0.047961743106063305}, {"name": "Soft skills", "confidence": 0.027453640679473524}, {"name": "Testing Tools", "confidence": 0.017445057507229706}, {"name": "Data Visualization & BI tools", "confidence": 0.01722531343680376}]}, {"place": 3, "name": "SQL", "ratio": 0.8636363636363636, "translation": null, "count": 19, "prev_count": 46, "prev_place": 1, "average_salary": 72500.0, "image": null, "domains": [{"name": "Backend development", "confidence": 0.40080470541392593}, {"name": "Systems analytics", "confidence": 0.19935856293674595}, {"name": "Testing & Quality assurance", "confidence": 0.11518777103807264}, {"name": "Data Science & Machine Learning", "confidence": 0.05688044564610694}, {"name": "Project management", "confidence": 0.0519712026073912}], "categories": [{"name": "Databases", "confidence": 0.4889861715009777}, {"name": "Languages", "confidence": 0.34520246605403687}, {"name": "Data Visualization & BI tools", "confidence": 0.021788336979963584}, {"name": "Backend Libraries and Frameworks", "confidence": 0.01365377141477583}, {"name": "Soft skills", "confidence": 0.013528347557474774}]}, {"place": 4, "name": "Linux", "ratio": 0.7272727272727273, "translation": null, "count": 16, "prev_count": 24, "prev_place": 8, "average_salary": 75000.0, "image": "c8d4850fb0ba34fb.webp", "domains": [{"name": "DevOps & Infrastructure", "confidence": 0.24636431117335217}, {"name": "Systems programming", "confidence": 0.19709718733146864}, {"name": "Network administration", "confidence": 0.13285799934822284}, {"name": "Backend development", "confidence": 0.10916881015329422}, {"name": "System administration", "confidence": 0.10710929113421143}], "categories": [{"name": "Operating systems", "confidence": 0.7645729577704362}, {"name": "Databases", "confidence": 0.029360876601570014}, {"name": "Languages", "confidence": 0.02570991507132284}, {"name": "Containerization & Orchestration", "confidence": 0.02080314569394757}, {"name": "Network Protocols", "confidence": 0.02075610018540904}]}, {"place": 5, "name": "Java", "ratio": 0.6363636363636364, "translation": null, "count": 14, "prev_count": 17, "prev_place": 12, "average_salary": 75000.0, "image": "1fe7f8eaad41d221.webp", "domains": [{"name": "Backend development", "confidence": 0.4798352761461714}, {"name": "Testing & Quality assurance", "confidence": 0.21157848540331015}, {"name": "DevOps & Infrastructure", "confidence": 0.05710610695342162}, {"name": "Mobile development", "confidence": 0.05643780452718663}, {"name": "Systems analytics", "confidence": 0.02439387984072714}], "categories": [{"name": "Languages", "confidence": 0.7508349982592205}, {"name": "Integrated Development Environments", "confidence": 0.051771975488041334}, {"name": "Testing Tools", "confidence": 0.027097231003603974}, {"name": "Operating systems", "confidence": 0.01646265397344178}, {"name": "Project Management Tools", "confidence": 0.01352823941960676}]}, {"place": 6, "name": "PostgreSQL", "ratio": 0.45454545454545453, "translation": null, "count": 10, "prev_count": 15, "prev_place": 13, "average_salary": 75000.0, "image": "f4fa3056c5688f9e.webp", "domains": [{"name": "Backend development", "confidence": 0.5899597491881429}, {"name": "DevOps & Infrastructure", "confidence": 0.22072044890851228}, {"name": "Testing & Quality assurance", "confidence": 0.038528387911251204}, {"name": "Data Science & Machine Learning", "confidence": 0.02959642142345102}, {"name": "Frontend development", "confidence": 0.01787503405984442}], "categories": [{"name": "Databases", "confidence": 0.7116659900003044}, {"name": "Languages", "confidence": 0.08872239665223478}, {"name": "Backend Libraries and Frameworks", "confidence": 0.03449217337916038}, {"name": "API technologies and protocols", "confidence": 0.02783443274483071}, {"name": "Messaging & Queuing systems", "confidence": 0.023927530164534253}]}, {"place": 7, "name": "\u041e\u041e\u041f", "ratio": 0.4090909090909091, "translation": "PLO", "count": 9, "prev_count": 12, "prev_place": 17, "average_salary": 75000.0, "image": null, "domains": [{"name": "Backend development", "confidence": 0.45348632231618397}, {"name": "Frontend development", "confidence": 0.10052284978964952}, {"name": "Testing & Quality assurance", "confidence": 0.06513841269917103}, {"name": "Mobile development", "confidence": 0.0626578699610151}, {"name": "Website administration", "confidence": 0.040606283023322094}], "categories": [{"name": "Languages", "confidence": 0.20856461427525178}, {"name": "API technologies and protocols", "confidence": 0.0652466458327257}, {"name": "Testing Tools", "confidence": 0.058731713054231735}, {"name": "Backend Libraries and Frameworks", "confidence": 0.047022971838507}, {"name": "Data Visualization & BI tools", "confidence": 0.04606118136088534}]}, {"place": 8, "name": "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u041f\u041a", "ratio": 0.36363636363636365, "translation": "PC user", "count": 8, "prev_count": 29, "prev_place": 6, "average_salary": 67500.0, "image": null, "domains": [{"name": "Other", "confidence": 0.2359270706734277}, {"name": "HR management", "confidence": 0.13191148734308417}, {"name": "1C Development", "confidence": 0.09411981405391827}, {"name": "Digital Marketing & SEO", "confidence": 0.06798886191724163}, {"name": "System administration", "confidence": 0.06103784577941807}], "categories": [{"name": "Operating systems", "confidence": 0.48323436796560926}, {"name": "Soft skills", "confidence": 0.18281772595622894}, {"name": "Databases", "confidence": 0.04322927814242325}, {"name": "CMS", "confidence": 0.025368559621851063}, {"name": "Game engines", "confidence": 0.02468042868774128}]}, {"place": 9, "name": "HTML", "ratio": 0.36363636363636365, "translation": null, "count": 8, "prev_count": 38, "prev_place": 4, "average_salary": 65000.0, "image": "30a915e5b4d65cc6.webp", "domains": [{"name": "Frontend development", "confidence": 0.4584795424200405}, {"name": "Website administration", "confidence": 0.3350118457737942}, {"name": "Backend development", "confidence": 0.06763293163139586}, {"name": "Design", "confidence": 0.02084368478253169}, {"name": "Computer graphics & Game development", "confidence": 0.014180953279017727}], "categories": [{"name": "Languages", "confidence": 0.5709267865618314}, {"name": "Frontend Libraries and Frameworks", "confidence": 0.1082642018172307}, {"name": "CMS", "confidence": 0.10797531103868009}, {"name": "Soft skills", "confidence": 0.022521950863154158}, {"name": "Documentation tools", "confidence": 0.021932089814659605}]}, {"place": 10, "name": "JavaScript", "ratio": 0.36363636363636365, "translation": null, "count": 8, "prev_count": 41, "prev_place": 3, "average_salary": 75000.0, "image": "3985200b4e22ada5.webp", "domains": [{"name": "Frontend development", "confidence": 0.6289648352307949}, {"name": "Backend development", "confidence": 0.1524946068550227}, {"name": "Website administration", "confidence": 0.07367193510789655}, {"name": "Testing & Quality assurance", "confidence": 0.028760942806477546}, {"name": "Mobile development", "confidence": 0.015474170384938816}], "categories": [{"name": "Languages", "confidence": 0.6258404067632991}, {"name": "Frontend Libraries and Frameworks", "confidence": 0.17712426452762534}, {"name": "Blockchain platforms & tools", "confidence": 0.021765776196943136}, {"name": "CMS", "confidence": 0.020956792430354095}, {"name": "Backend Libraries and Frameworks", "confidence": 0.01603235036760659}]}, {"place": 11, "name": "MySQL", "ratio": 0.36363636363636365, "translation": null, "count": 8, "prev_count": 14, "prev_place": 15, "average_salary": 75000.0, "image": "b0a3e7d6863662b5.webp", "domains": [{"name": "Backend development", "confidence": 0.4090206194709479}, {"name": "Website administration", "confidence": 0.2723355441591826}, {"name": "Frontend development", "confidence": 0.07931450943153524}, {"name": "DevOps & Infrastructure", "confidence": 0.05872297806748}, {"name": "Testing & Quality assurance", "confidence": 0.0239749612136636}], "categories": [{"name": "Databases", "confidence": 0.5778231871561954}, {"name": "Languages", "confidence": 0.23001217901226928}, {"name": "Backend Libraries and Frameworks", "confidence": 0.022582669256668544}, {"name": "Operating systems", "confidence": 0.021292723463021048}, {"name": "CMS", "confidence": 0.020113085085602573}]}, {"place": 12, "name": "MS Excel", "ratio": 0.36363636363636365, "translation": null, "count": 8, "prev_count": 12, "prev_place": 16, "average_salary": 75000.0, "image": "c50acc69c4c8f5e7.webp", "domains": [{"name": "Systems analytics", "confidence": 0.5112949674715683}, {"name": "1C Development", "confidence": 0.08087210283352196}, {"name": "Digital Marketing & SEO", "confidence": 0.06922234680542338}, {"name": "Project management", "confidence": 0.059172494258585034}, {"name": "HR management", "confidence": 0.033601840004671}], "categories": [{"name": "Languages", "confidence": 0.3086200322623601}, {"name": "Data Visualization & BI tools", "confidence": 0.14851373336483487}, {"name": "Databases", "confidence": 0.14098247248486342}, {"name": "Documentation tools", "confidence": 0.08117970908958194}, {"name": "Soft skills", "confidence": 0.041179142236780986}]}, {"place": 13, "name": "Figma", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 8, "prev_place": 21, "average_salary": 49865.229110512126, "image": "2932ac6bfc954ff5.webp", "domains": [{"name": "Design", "confidence": 0.6788927289257558}, {"name": "Frontend development", "confidence": 0.07808070563192028}, {"name": "Computer graphics & Game development", "confidence": 0.05467552698127131}, {"name": "Digital Marketing & SEO", "confidence": 0.026014814833150216}, {"name": "Mobile development", "confidence": 0.025806339211174353}], "categories": [{"name": "Graphic design", "confidence": 0.6582122667317541}, {"name": "Soft skills", "confidence": 0.02838221632411345}, {"name": "Data Visualization & BI tools", "confidence": 0.027055716767147273}, {"name": "CMS", "confidence": 0.02689013664835042}, {"name": "Monitoring", "confidence": 0.02280626143835255}]}, {"place": 14, "name": "C++", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 15, "prev_place": 14, "average_salary": 75000.0, "image": "050777f76a22dc15.webp", "domains": [{"name": "Systems programming", "confidence": 0.5588124473086038}, {"name": "Computer graphics & Game development", "confidence": 0.1570512431276015}, {"name": "Backend development", "confidence": 0.03766712580232188}, {"name": "Network administration", "confidence": 0.034040667632974135}, {"name": "Mobile development", "confidence": 0.030213737459947463}], "categories": [{"name": "Languages", "confidence": 0.6786775634239498}, {"name": "Operating systems", "confidence": 0.053209601342124914}, {"name": "Graphics APIs & GPGPU", "confidence": 0.03431702618787722}, {"name": "Game engines", "confidence": 0.0338188503083987}, {"name": "Integrated Development Environments", "confidence": 0.025317014947613854}]}, {"place": 15, "name": "C#", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 22, "prev_place": 10, "average_salary": 75000.0, "image": "97519bdd63d361f8.webp", "domains": [{"name": "Backend development", "confidence": 0.43509456718518363}, {"name": "Computer graphics & Game development", "confidence": 0.12128706406293303}, {"name": "Frontend development", "confidence": 0.06750186929866184}, {"name": "Mobile development", "confidence": 0.05143169359852398}, {"name": "Systems programming", "confidence": 0.04729480583041895}], "categories": [{"name": "Languages", "confidence": 0.6651429139343346}, {"name": "Integrated Development Environments", "confidence": 0.0657590075097489}, {"name": "Game engines", "confidence": 0.03856968212891882}, {"name": "Operating systems", "confidence": 0.03407147324257144}, {"name": "Network Protocols", "confidence": 0.02270962534363898}]}, {"place": 16, "name": "PHP", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 20, "prev_place": 11, "average_salary": 75000.0, "image": "5582fff1f8c21188.webp", "domains": [{"name": "Website administration", "confidence": 0.45186258471512747}, {"name": "Backend development", "confidence": 0.28333760112733586}, {"name": "Frontend development", "confidence": 0.10270381805258241}, {"name": "1C Development", "confidence": 0.020546358217045403}, {"name": "DevOps & Infrastructure", "confidence": 0.019818153976289252}], "categories": [{"name": "Languages", "confidence": 0.7467275191735387}, {"name": "CMS", "confidence": 0.0568156637063769}, {"name": "Backend Libraries and Frameworks", "confidence": 0.034935744156482824}, {"name": "Databases", "confidence": 0.022244372966793186}, {"name": "Web Servers", "confidence": 0.014628858790449525}]}, {"place": 17, "name": "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435", "ratio": 0.2727272727272727, "translation": "Team Work", "count": 6, "prev_count": 29, "prev_place": 5, "average_salary": 80000.0, "image": null, "domains": [{"name": "Other", "confidence": 0.34151920531077123}, {"name": "HR management", "confidence": 0.1493291969659085}, {"name": "Digital Marketing & SEO", "confidence": 0.07746368544009793}, {"name": "Project management", "confidence": 0.047917702400601045}, {"name": "Computer graphics & Game development", "confidence": 0.04421026839753843}], "categories": [{"name": "Soft skills", "confidence": 0.6932555459764314}, {"name": "Game engines", "confidence": 0.039978782185327195}, {"name": "Project Management Tools", "confidence": 0.03612175708084987}, {"name": "Documentation tools", "confidence": 0.03260582662808454}, {"name": "Code Collaboration & Integration", "confidence": 0.021273352144093934}]}, {"place": 18, "name": "Adobe Photoshop", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 11, "prev_place": 18, "average_salary": 72500.0, "image": "e424fbc0209d7e47.webp", "domains": [{"name": "Design", "confidence": 0.5745150457570634}, {"name": "Computer graphics & Game development", "confidence": 0.16629088879125922}, {"name": "Frontend development", "confidence": 0.07797495026138145}, {"name": "Digital Marketing & SEO", "confidence": 0.0344644647518652}, {"name": "Website administration", "confidence": 0.022293187762733358}], "categories": [{"name": "Graphic design", "confidence": 0.607262113880406}, {"name": "Languages", "confidence": 0.05638910427602621}, {"name": "Game engines", "confidence": 0.04588963615570398}, {"name": "Operating systems", "confidence": 0.03144534203430863}, {"name": "Integrated Development Environments", "confidence": 0.022804062677773056}]}, {"place": 19, "name": "API", "ratio": 0.2727272727272727, "translation": null, "count": 6, "prev_count": 9, "prev_place": 19, "average_salary": 67500.0, "image": null, "domains": [{"name": "Backend development", "confidence": 0.4558946813882832}, {"name": "Testing & Quality assurance", "confidence": 0.16904805624808844}, {"name": "Systems analytics", "confidence": 0.0824376476480561}, {"name": "Project management", "confidence": 0.054489069202086966}, {"name": "Frontend development", "confidence": 0.035190927317934016}], "categories": [{"name": "API technologies and protocols", "confidence": 0.5666774435080988}, {"name": "Languages", "confidence": 0.14335266160735416}, {"name": "Backend Libraries and Frameworks", "confidence": 0.05464778821298912}, {"name": "Documentation tools", "confidence": 0.018721982912540604}, {"name": "Network Protocols", "confidence": 0.018645761340764913}]}, {"place": 20, "name": "\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445", "ratio": 0.2727272727272727, "translation": "Databases", "count": 6, "prev_count": 9, "prev_place": 20, "average_salary": 75000.0, "image": null, "domains": [{"name": "Backend development", "confidence": 0.3738853239802771}, {"name": "Systems analytics", "confidence": 0.1535582104739295}, {"name": "Testing & Quality assurance", "confidence": 0.0716447886142382}, {"name": "Data Science & Machine Learning", "confidence": 0.05750518242435745}, {"name": "Project management", "confidence": 0.046541810237630425}], "categories": [{"name": "Databases", "confidence": 0.706627220025524}, {"name": "Languages", "confidence": 0.0922836413880326}, {"name": "Data Visualization & BI tools", "confidence": 0.02885849396305908}, {"name": "Documentation tools", "confidence": 0.02301764824884451}, {"name": "Soft skills", "confidence": 0.014848746743990286}]}, {"place": 21, "name": "CI/CD", "ratio": 0.22727272727272727, "translation": null, "count": 5, "prev_count": 7, "prev_place": 22, "average_salary": null, "image": null, "domains": [{"name": "DevOps & Infrastructure", "confidence": 0.6019994469945861}, {"name": "Backend development", "confidence": 0.14069734452183075}, {"name": "Testing & Quality assurance", "confidence": 0.03558786958038327}, {"name": "Cybersecurity", "confidence": 0.0340801237956163}, {"name": "Frontend development", "confidence": 0.03059799665311264}], "categories": [{"name": "Code Collaboration & Integration", "confidence": 0.651371787742024}, {"name": "Containerization & Orchestration", "confidence": 0.052541755025431396}, {"name": "Operating systems", "confidence": 0.03536786008993789}, {"name": "Infrastructure Automation & Configuration", "confidence": 0.02901187330420982}, {"name": "Game engines", "confidence": 0.020366111570727662}]}, {"place": 22, "name": "Kubernetes", "ratio": 0.22727272727272727, "translation": null, "count": 5, "prev_count": 2, "prev_place": 24, "average_salary": 75000.0, "image": "71c49b0636077b12.webp", "domains": [{"name": "DevOps & Infrastructure", "confidence": 0.5280515734605427}, {"name": "Backend development", "confidence": 0.2481831049832967}, {"name": "Data Science & Machine Learning", "confidence": 0.033629615283804426}, {"name": "Cybersecurity", "confidence": 0.03352215547982864}, {"name": "System administration", "confidence": 0.022007988802557988}], "categories": [{"name": "Containerization & Orchestration", "confidence": 0.706185742587473}, {"name": "Cloud platforms", "confidence": 0.04175834287406353}, {"name": "Infrastructure Automation & Configuration", "confidence": 0.03823047024650531}, {"name": "Monitoring", "confidence": 0.02424731665355011}, {"name": "Messaging & Queuing systems", "confidence": 0.019156534592076686}]}, {"place": 23, "name": "Kotlin", "ratio": 0.22727272727272727, "translation": null, "count": 5, "prev_count": 1, "prev_place": 25, "average_salary": 75000.0, "image": "7a22567f0288ed84.webp", "domains": [{"name": "Mobile development", "confidence": 0.5241733791491854}, {"name": "Backend development", "confidence": 0.21635461979568596}, {"name": "Testing & Quality assurance", "confidence": 0.06754427038285647}, {"name": "DevOps & Infrastructure", "confidence": 0.02621260197482315}, {"name": "Design", "confidence": 0.016794250610179928}], "categories": [{"name": "Languages", "confidence": 0.6117104436726102}, {"name": "Mobile Libraries and Frameworks", "confidence": 0.06584052084385922}, {"name": "Testing Tools", "confidence": 0.06347545027268663}, {"name": "Operating systems", "confidence": 0.04077284361670187}, {"name": "Integrated Development Environments", "confidence": 0.02346427305980309}]}, {"place": 24, "name": "\u041e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u044c", "ratio": 0.22727272727272727, "translation": "Responsibility", "count": 5, "prev_count": 23, "prev_place": 9, "average_salary": 75000.0, "image": null, "domains": [{"name": "Other", "confidence": 0.4833032247881488}, {"name": "HR management", "confidence": 0.09603947265691992}, {"name": "Digital Marketing & SEO", "confidence": 0.07191597502587938}, {"name": "1C Development", "confidence": 0.05777818310306312}, {"name": "Project management", "confidence": 0.03528129090450973}], "categories": [{"name": "Soft skills", "confidence": 0.6932190407374746}, {"name": "Game engines", "confidence": 0.04051268656572506}, {"name": "Documentation tools", "confidence": 0.031701586570688806}, {"name": "Languages", "confidence": 0.028007474390882175}, {"name": "Operating systems", "confidence": 0.01799974257922047}]}, {"place": 25, "name": "\u041e\u0440\u0438\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043d\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442", "ratio": 0.22727272727272727, "translation": "Results orientation", "count": 5, "prev_count": 3, "prev_place": 23, "average_salary": 100000.0, "image": null, "domains": [{"name": "HR management", "confidence": 0.31917046240085833}, {"name": "Digital Marketing & SEO", "confidence": 0.12121845806871191}, {"name": "Other", "confidence": 0.11280186846276849}, {"name": "1C Development", "confidence": 0.06764450625192354}, {"name": "Project management", "confidence": 0.05840286568168666}], "categories": [{"name": "Soft skills", "confidence": 0.2767025708766363}, {"name": "Documentation tools", "confidence": 0.10332291903992011}, {"name": "Data Visualization & BI tools", "confidence": 0.061053173113299365}, {"name": "Databases", "confidence": 0.060118282472465895}, {"name": "API technologies and protocols", "confidence": 0.053102451766869854}]}]
+[
+  {
+    "place": 1,
+    "name": "Git",
+    "ratio": 1.0,
+    "translation": null,
+    "count": 22,
+    "prev_count": 29,
+    "prev_place": 7,
+    "average_salary": 75000.0,
+    "image": "235c7e45f162c94a.webp",
+    "domains": [
+      { "name": "Backend development", "confidence": 0.40735004954238213 },
+      { "name": "Frontend development", "confidence": 0.189106879217616 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.0890687193088619 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.0767151537364769
+      },
+      { "name": "Mobile development", "confidence": 0.052938268801107316 }
+    ],
+    "categories": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.7040685996947993
+      },
+      { "name": "Languages", "confidence": 0.07139016742909816 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.025284220141913467
+      },
+      { "name": "Code Quality Tools", "confidence": 0.017562583993478598 },
+      { "name": "Documentation tools", "confidence": 0.016305700838235043 }
+    ]
+  },
+  {
+    "place": 2,
+    "name": "Python",
+    "ratio": 0.9090909090909091,
+    "translation": null,
+    "count": 20,
+    "prev_count": 45,
+    "prev_place": 2,
+    "average_salary": 75000.0,
+    "image": "36420f89c463e610.webp",
+    "domains": [
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.3214213756933228
+      },
+      { "name": "Backend development", "confidence": 0.22210498362905545 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.0895823340571524 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.0869875426518478
+      },
+      { "name": "Systems programming", "confidence": 0.053562020924507514 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.7383414596546365 },
+      {
+        "name": "Machine Learning Libraries and Frameworks",
+        "confidence": 0.047961743106063305
+      },
+      { "name": "Soft skills", "confidence": 0.027453640679473524 },
+      { "name": "Testing Tools", "confidence": 0.017445057507229706 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.01722531343680376
+      }
+    ]
+  },
+  {
+    "place": 3,
+    "name": "SQL",
+    "ratio": 0.8636363636363636,
+    "translation": null,
+    "count": 19,
+    "prev_count": 46,
+    "prev_place": 1,
+    "average_salary": 72500.0,
+    "image": null,
+    "domains": [
+      { "name": "Backend development", "confidence": 0.40080470541392593 },
+      { "name": "Systems analytics", "confidence": 0.19935856293674595 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.11518777103807264
+      },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.05688044564610694
+      },
+      { "name": "Project management", "confidence": 0.0519712026073912 }
+    ],
+    "categories": [
+      { "name": "Databases", "confidence": 0.4889861715009777 },
+      { "name": "Languages", "confidence": 0.34520246605403687 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.021788336979963584
+      },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.01365377141477583
+      },
+      { "name": "Soft skills", "confidence": 0.013528347557474774 }
+    ]
+  },
+  {
+    "place": 4,
+    "name": "Linux",
+    "ratio": 0.7272727272727273,
+    "translation": null,
+    "count": 16,
+    "prev_count": 24,
+    "prev_place": 8,
+    "average_salary": 75000.0,
+    "image": "c8d4850fb0ba34fb.webp",
+    "domains": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.24636431117335217 },
+      { "name": "Systems programming", "confidence": 0.19709718733146864 },
+      { "name": "Network administration", "confidence": 0.13285799934822284 },
+      { "name": "Backend development", "confidence": 0.10916881015329422 },
+      { "name": "System administration", "confidence": 0.10710929113421143 }
+    ],
+    "categories": [
+      { "name": "Operating systems", "confidence": 0.7645729577704362 },
+      { "name": "Databases", "confidence": 0.029360876601570014 },
+      { "name": "Languages", "confidence": 0.02570991507132284 },
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.02080314569394757
+      },
+      { "name": "Network Protocols", "confidence": 0.02075610018540904 }
+    ]
+  },
+  {
+    "place": 5,
+    "name": "Java",
+    "ratio": 0.6363636363636364,
+    "translation": null,
+    "count": 14,
+    "prev_count": 17,
+    "prev_place": 12,
+    "average_salary": 75000.0,
+    "image": "1fe7f8eaad41d221.webp",
+    "domains": [
+      { "name": "Backend development", "confidence": 0.4798352761461714 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.21157848540331015
+      },
+      { "name": "DevOps & Infrastructure", "confidence": 0.05710610695342162 },
+      { "name": "Mobile development", "confidence": 0.05643780452718663 },
+      { "name": "Systems analytics", "confidence": 0.02439387984072714 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.7508349982592205 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.051771975488041334
+      },
+      { "name": "Testing Tools", "confidence": 0.027097231003603974 },
+      { "name": "Operating systems", "confidence": 0.01646265397344178 },
+      { "name": "Project Management Tools", "confidence": 0.01352823941960676 }
+    ]
+  },
+  {
+    "place": 6,
+    "name": "PostgreSQL",
+    "ratio": 0.45454545454545453,
+    "translation": null,
+    "count": 10,
+    "prev_count": 15,
+    "prev_place": 13,
+    "average_salary": 75000.0,
+    "image": "f4fa3056c5688f9e.webp",
+    "domains": [
+      { "name": "Backend development", "confidence": 0.5899597491881429 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.22072044890851228 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.038528387911251204
+      },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.02959642142345102
+      },
+      { "name": "Frontend development", "confidence": 0.01787503405984442 }
+    ],
+    "categories": [
+      { "name": "Databases", "confidence": 0.7116659900003044 },
+      { "name": "Languages", "confidence": 0.08872239665223478 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.03449217337916038
+      },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.02783443274483071
+      },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.023927530164534253
+      }
+    ]
+  },
+  {
+    "place": 7,
+    "name": "\u041e\u041e\u041f",
+    "ratio": 0.4090909090909091,
+    "translation": "PLO",
+    "count": 9,
+    "prev_count": 12,
+    "prev_place": 17,
+    "average_salary": 75000.0,
+    "image": null,
+    "domains": [
+      { "name": "Backend development", "confidence": 0.45348632231618397 },
+      { "name": "Frontend development", "confidence": 0.10052284978964952 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.06513841269917103
+      },
+      { "name": "Mobile development", "confidence": 0.0626578699610151 },
+      { "name": "Website administration", "confidence": 0.040606283023322094 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.20856461427525178 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.0652466458327257
+      },
+      { "name": "Testing Tools", "confidence": 0.058731713054231735 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.047022971838507
+      },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.04606118136088534
+      }
+    ]
+  },
+  {
+    "place": 8,
+    "name": "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u041f\u041a",
+    "ratio": 0.36363636363636365,
+    "translation": "PC user",
+    "count": 8,
+    "prev_count": 29,
+    "prev_place": 6,
+    "average_salary": 67500.0,
+    "image": null,
+    "domains": [
+      { "name": "Other", "confidence": 0.2359270706734277 },
+      { "name": "HR management", "confidence": 0.13191148734308417 },
+      { "name": "1C Development", "confidence": 0.09411981405391827 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06798886191724163 },
+      { "name": "System administration", "confidence": 0.06103784577941807 }
+    ],
+    "categories": [
+      { "name": "Operating systems", "confidence": 0.48323436796560926 },
+      { "name": "Soft skills", "confidence": 0.18281772595622894 },
+      { "name": "Databases", "confidence": 0.04322927814242325 },
+      { "name": "CMS", "confidence": 0.025368559621851063 },
+      { "name": "Game engines", "confidence": 0.02468042868774128 }
+    ]
+  },
+  {
+    "place": 9,
+    "name": "HTML",
+    "ratio": 0.36363636363636365,
+    "translation": null,
+    "count": 8,
+    "prev_count": 38,
+    "prev_place": 4,
+    "average_salary": 65000.0,
+    "image": "30a915e5b4d65cc6.webp",
+    "domains": [
+      { "name": "Frontend development", "confidence": 0.4584795424200405 },
+      { "name": "Website administration", "confidence": 0.3350118457737942 },
+      { "name": "Backend development", "confidence": 0.06763293163139586 },
+      { "name": "Design", "confidence": 0.02084368478253169 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.014180953279017727
+      }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.5709267865618314 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.1082642018172307
+      },
+      { "name": "CMS", "confidence": 0.10797531103868009 },
+      { "name": "Soft skills", "confidence": 0.022521950863154158 },
+      { "name": "Documentation tools", "confidence": 0.021932089814659605 }
+    ]
+  },
+  {
+    "place": 10,
+    "name": "JavaScript",
+    "ratio": 0.36363636363636365,
+    "translation": null,
+    "count": 8,
+    "prev_count": 41,
+    "prev_place": 3,
+    "average_salary": 75000.0,
+    "image": "3985200b4e22ada5.webp",
+    "domains": [
+      { "name": "Frontend development", "confidence": 0.6289648352307949 },
+      { "name": "Backend development", "confidence": 0.1524946068550227 },
+      { "name": "Website administration", "confidence": 0.07367193510789655 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.028760942806477546
+      },
+      { "name": "Mobile development", "confidence": 0.015474170384938816 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.6258404067632991 },
+      {
+        "name": "Frontend Libraries and Frameworks",
+        "confidence": 0.17712426452762534
+      },
+      {
+        "name": "Blockchain platforms & tools",
+        "confidence": 0.021765776196943136
+      },
+      { "name": "CMS", "confidence": 0.020956792430354095 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.01603235036760659
+      }
+    ]
+  },
+  {
+    "place": 11,
+    "name": "MySQL",
+    "ratio": 0.36363636363636365,
+    "translation": null,
+    "count": 8,
+    "prev_count": 14,
+    "prev_place": 15,
+    "average_salary": 75000.0,
+    "image": "b0a3e7d6863662b5.webp",
+    "domains": [
+      { "name": "Backend development", "confidence": 0.4090206194709479 },
+      { "name": "Website administration", "confidence": 0.2723355441591826 },
+      { "name": "Frontend development", "confidence": 0.07931450943153524 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.05872297806748 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.0239749612136636
+      }
+    ],
+    "categories": [
+      { "name": "Databases", "confidence": 0.5778231871561954 },
+      { "name": "Languages", "confidence": 0.23001217901226928 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.022582669256668544
+      },
+      { "name": "Operating systems", "confidence": 0.021292723463021048 },
+      { "name": "CMS", "confidence": 0.020113085085602573 }
+    ]
+  },
+  {
+    "place": 12,
+    "name": "MS Excel",
+    "ratio": 0.36363636363636365,
+    "translation": null,
+    "count": 8,
+    "prev_count": 12,
+    "prev_place": 16,
+    "average_salary": 75000.0,
+    "image": "c50acc69c4c8f5e7.webp",
+    "domains": [
+      { "name": "Systems analytics", "confidence": 0.5112949674715683 },
+      { "name": "1C Development", "confidence": 0.08087210283352196 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.06922234680542338 },
+      { "name": "Project management", "confidence": 0.059172494258585034 },
+      { "name": "HR management", "confidence": 0.033601840004671 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.3086200322623601 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.14851373336483487
+      },
+      { "name": "Databases", "confidence": 0.14098247248486342 },
+      { "name": "Documentation tools", "confidence": 0.08117970908958194 },
+      { "name": "Soft skills", "confidence": 0.041179142236780986 }
+    ]
+  },
+  {
+    "place": 13,
+    "name": "Figma",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 8,
+    "prev_place": 21,
+    "average_salary": 49865.229110512126,
+    "image": "2932ac6bfc954ff5.webp",
+    "domains": [
+      { "name": "Design", "confidence": 0.6788927289257558 },
+      { "name": "Frontend development", "confidence": 0.07808070563192028 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.05467552698127131
+      },
+      { "name": "Digital Marketing & SEO", "confidence": 0.026014814833150216 },
+      { "name": "Mobile development", "confidence": 0.025806339211174353 }
+    ],
+    "categories": [
+      { "name": "Graphic design", "confidence": 0.6582122667317541 },
+      { "name": "Soft skills", "confidence": 0.02838221632411345 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.027055716767147273
+      },
+      { "name": "CMS", "confidence": 0.02689013664835042 },
+      { "name": "Monitoring", "confidence": 0.02280626143835255 }
+    ]
+  },
+  {
+    "place": 14,
+    "name": "C++",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 15,
+    "prev_place": 14,
+    "average_salary": 75000.0,
+    "image": "050777f76a22dc15.webp",
+    "domains": [
+      { "name": "Systems programming", "confidence": 0.5588124473086038 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.1570512431276015
+      },
+      { "name": "Backend development", "confidence": 0.03766712580232188 },
+      { "name": "Network administration", "confidence": 0.034040667632974135 },
+      { "name": "Mobile development", "confidence": 0.030213737459947463 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.6786775634239498 },
+      { "name": "Operating systems", "confidence": 0.053209601342124914 },
+      { "name": "Graphics APIs & GPGPU", "confidence": 0.03431702618787722 },
+      { "name": "Game engines", "confidence": 0.0338188503083987 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.025317014947613854
+      }
+    ]
+  },
+  {
+    "place": 15,
+    "name": "C#",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 22,
+    "prev_place": 10,
+    "average_salary": 75000.0,
+    "image": "97519bdd63d361f8.webp",
+    "domains": [
+      { "name": "Backend development", "confidence": 0.43509456718518363 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.12128706406293303
+      },
+      { "name": "Frontend development", "confidence": 0.06750186929866184 },
+      { "name": "Mobile development", "confidence": 0.05143169359852398 },
+      { "name": "Systems programming", "confidence": 0.04729480583041895 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.6651429139343346 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.0657590075097489
+      },
+      { "name": "Game engines", "confidence": 0.03856968212891882 },
+      { "name": "Operating systems", "confidence": 0.03407147324257144 },
+      { "name": "Network Protocols", "confidence": 0.02270962534363898 }
+    ]
+  },
+  {
+    "place": 16,
+    "name": "PHP",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 20,
+    "prev_place": 11,
+    "average_salary": 75000.0,
+    "image": "5582fff1f8c21188.webp",
+    "domains": [
+      { "name": "Website administration", "confidence": 0.45186258471512747 },
+      { "name": "Backend development", "confidence": 0.28333760112733586 },
+      { "name": "Frontend development", "confidence": 0.10270381805258241 },
+      { "name": "1C Development", "confidence": 0.020546358217045403 },
+      { "name": "DevOps & Infrastructure", "confidence": 0.019818153976289252 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.7467275191735387 },
+      { "name": "CMS", "confidence": 0.0568156637063769 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.034935744156482824
+      },
+      { "name": "Databases", "confidence": 0.022244372966793186 },
+      { "name": "Web Servers", "confidence": 0.014628858790449525 }
+    ]
+  },
+  {
+    "place": 17,
+    "name": "\u0420\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0435",
+    "ratio": 0.2727272727272727,
+    "translation": "Team Work",
+    "count": 6,
+    "prev_count": 29,
+    "prev_place": 5,
+    "average_salary": 80000.0,
+    "image": null,
+    "domains": [
+      { "name": "Other", "confidence": 0.34151920531077123 },
+      { "name": "HR management", "confidence": 0.1493291969659085 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.07746368544009793 },
+      { "name": "Project management", "confidence": 0.047917702400601045 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.04421026839753843
+      }
+    ],
+    "categories": [
+      { "name": "Soft skills", "confidence": 0.6932555459764314 },
+      { "name": "Game engines", "confidence": 0.039978782185327195 },
+      { "name": "Project Management Tools", "confidence": 0.03612175708084987 },
+      { "name": "Documentation tools", "confidence": 0.03260582662808454 },
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.021273352144093934
+      }
+    ]
+  },
+  {
+    "place": 18,
+    "name": "Adobe Photoshop",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 11,
+    "prev_place": 18,
+    "average_salary": 72500.0,
+    "image": "e424fbc0209d7e47.webp",
+    "domains": [
+      { "name": "Design", "confidence": 0.5745150457570634 },
+      {
+        "name": "Computer graphics & Game development",
+        "confidence": 0.16629088879125922
+      },
+      { "name": "Frontend development", "confidence": 0.07797495026138145 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.0344644647518652 },
+      { "name": "Website administration", "confidence": 0.022293187762733358 }
+    ],
+    "categories": [
+      { "name": "Graphic design", "confidence": 0.607262113880406 },
+      { "name": "Languages", "confidence": 0.05638910427602621 },
+      { "name": "Game engines", "confidence": 0.04588963615570398 },
+      { "name": "Operating systems", "confidence": 0.03144534203430863 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.022804062677773056
+      }
+    ]
+  },
+  {
+    "place": 19,
+    "name": "API",
+    "ratio": 0.2727272727272727,
+    "translation": null,
+    "count": 6,
+    "prev_count": 9,
+    "prev_place": 19,
+    "average_salary": 67500.0,
+    "image": null,
+    "domains": [
+      { "name": "Backend development", "confidence": 0.4558946813882832 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.16904805624808844
+      },
+      { "name": "Systems analytics", "confidence": 0.0824376476480561 },
+      { "name": "Project management", "confidence": 0.054489069202086966 },
+      { "name": "Frontend development", "confidence": 0.035190927317934016 }
+    ],
+    "categories": [
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.5666774435080988
+      },
+      { "name": "Languages", "confidence": 0.14335266160735416 },
+      {
+        "name": "Backend Libraries and Frameworks",
+        "confidence": 0.05464778821298912
+      },
+      { "name": "Documentation tools", "confidence": 0.018721982912540604 },
+      { "name": "Network Protocols", "confidence": 0.018645761340764913 }
+    ]
+  },
+  {
+    "place": 20,
+    "name": "\u0411\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445",
+    "ratio": 0.2727272727272727,
+    "translation": "Databases",
+    "count": 6,
+    "prev_count": 9,
+    "prev_place": 20,
+    "average_salary": 75000.0,
+    "image": null,
+    "domains": [
+      { "name": "Backend development", "confidence": 0.3738853239802771 },
+      { "name": "Systems analytics", "confidence": 0.1535582104739295 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.0716447886142382
+      },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.05750518242435745
+      },
+      { "name": "Project management", "confidence": 0.046541810237630425 }
+    ],
+    "categories": [
+      { "name": "Databases", "confidence": 0.706627220025524 },
+      { "name": "Languages", "confidence": 0.0922836413880326 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.02885849396305908
+      },
+      { "name": "Documentation tools", "confidence": 0.02301764824884451 },
+      { "name": "Soft skills", "confidence": 0.014848746743990286 }
+    ]
+  },
+  {
+    "place": 21,
+    "name": "CI/CD",
+    "ratio": 0.22727272727272727,
+    "translation": null,
+    "count": 5,
+    "prev_count": 7,
+    "prev_place": 22,
+    "average_salary": null,
+    "image": null,
+    "domains": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.6019994469945861 },
+      { "name": "Backend development", "confidence": 0.14069734452183075 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.03558786958038327
+      },
+      { "name": "Cybersecurity", "confidence": 0.0340801237956163 },
+      { "name": "Frontend development", "confidence": 0.03059799665311264 }
+    ],
+    "categories": [
+      {
+        "name": "Code Collaboration & Integration",
+        "confidence": 0.651371787742024
+      },
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.052541755025431396
+      },
+      { "name": "Operating systems", "confidence": 0.03536786008993789 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.02901187330420982
+      },
+      { "name": "Game engines", "confidence": 0.020366111570727662 }
+    ]
+  },
+  {
+    "place": 22,
+    "name": "Kubernetes",
+    "ratio": 0.22727272727272727,
+    "translation": null,
+    "count": 5,
+    "prev_count": 2,
+    "prev_place": 24,
+    "average_salary": 75000.0,
+    "image": "71c49b0636077b12.webp",
+    "domains": [
+      { "name": "DevOps & Infrastructure", "confidence": 0.5280515734605427 },
+      { "name": "Backend development", "confidence": 0.2481831049832967 },
+      {
+        "name": "Data Science & Machine Learning",
+        "confidence": 0.033629615283804426
+      },
+      { "name": "Cybersecurity", "confidence": 0.03352215547982864 },
+      { "name": "System administration", "confidence": 0.022007988802557988 }
+    ],
+    "categories": [
+      {
+        "name": "Containerization & Orchestration",
+        "confidence": 0.706185742587473
+      },
+      { "name": "Cloud platforms", "confidence": 0.04175834287406353 },
+      {
+        "name": "Infrastructure Automation & Configuration",
+        "confidence": 0.03823047024650531
+      },
+      { "name": "Monitoring", "confidence": 0.02424731665355011 },
+      {
+        "name": "Messaging & Queuing systems",
+        "confidence": 0.019156534592076686
+      }
+    ]
+  },
+  {
+    "place": 23,
+    "name": "Kotlin",
+    "ratio": 0.22727272727272727,
+    "translation": null,
+    "count": 5,
+    "prev_count": 1,
+    "prev_place": 25,
+    "average_salary": 75000.0,
+    "image": "7a22567f0288ed84.webp",
+    "domains": [
+      { "name": "Mobile development", "confidence": 0.5241733791491854 },
+      { "name": "Backend development", "confidence": 0.21635461979568596 },
+      {
+        "name": "Testing & Quality assurance",
+        "confidence": 0.06754427038285647
+      },
+      { "name": "DevOps & Infrastructure", "confidence": 0.02621260197482315 },
+      { "name": "Design", "confidence": 0.016794250610179928 }
+    ],
+    "categories": [
+      { "name": "Languages", "confidence": 0.6117104436726102 },
+      {
+        "name": "Mobile Libraries and Frameworks",
+        "confidence": 0.06584052084385922
+      },
+      { "name": "Testing Tools", "confidence": 0.06347545027268663 },
+      { "name": "Operating systems", "confidence": 0.04077284361670187 },
+      {
+        "name": "Integrated Development Environments",
+        "confidence": 0.02346427305980309
+      }
+    ]
+  },
+  {
+    "place": 24,
+    "name": "\u041e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u044c",
+    "ratio": 0.22727272727272727,
+    "translation": "Responsibility",
+    "count": 5,
+    "prev_count": 23,
+    "prev_place": 9,
+    "average_salary": 75000.0,
+    "image": null,
+    "domains": [
+      { "name": "Other", "confidence": 0.4833032247881488 },
+      { "name": "HR management", "confidence": 0.09603947265691992 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.07191597502587938 },
+      { "name": "1C Development", "confidence": 0.05777818310306312 },
+      { "name": "Project management", "confidence": 0.03528129090450973 }
+    ],
+    "categories": [
+      { "name": "Soft skills", "confidence": 0.6932190407374746 },
+      { "name": "Game engines", "confidence": 0.04051268656572506 },
+      { "name": "Documentation tools", "confidence": 0.031701586570688806 },
+      { "name": "Languages", "confidence": 0.028007474390882175 },
+      { "name": "Operating systems", "confidence": 0.01799974257922047 }
+    ]
+  },
+  {
+    "place": 25,
+    "name": "\u041e\u0440\u0438\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043d\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442",
+    "ratio": 0.22727272727272727,
+    "translation": "Results orientation",
+    "count": 5,
+    "prev_count": 3,
+    "prev_place": 23,
+    "average_salary": 100000.0,
+    "image": null,
+    "domains": [
+      { "name": "HR management", "confidence": 0.31917046240085833 },
+      { "name": "Digital Marketing & SEO", "confidence": 0.12121845806871191 },
+      { "name": "Other", "confidence": 0.11280186846276849 },
+      { "name": "1C Development", "confidence": 0.06764450625192354 },
+      { "name": "Project management", "confidence": 0.05840286568168666 }
+    ],
+    "categories": [
+      { "name": "Soft skills", "confidence": 0.2767025708766363 },
+      { "name": "Documentation tools", "confidence": 0.10332291903992011 },
+      {
+        "name": "Data Visualization & BI tools",
+        "confidence": 0.061053173113299365
+      },
+      { "name": "Databases", "confidence": 0.060118282472465895 },
+      {
+        "name": "API technologies and protocols",
+        "confidence": 0.053102451766869854
+      }
+    ]
+  }
+]

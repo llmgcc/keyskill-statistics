@@ -125,7 +125,7 @@ function KeySkills() {
           selectedExperience: selectedExperience,
           key: 'skills_salary',
           source: API.salaryPlot,
-          header: t('columns.salary')
+          header: t('columns.salary'),
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
         prevCountAccessor({ accessorKey: 'prev_count' }),
@@ -136,7 +136,7 @@ function KeySkills() {
           selectedExperience: selectedExperience ?? undefined,
           key: 'skills_plot',
           source: API.skillPlot,
-          header: t('columns.trend')
+          header: t('columns.trend'),
         }),
       ] as Array<ColumnDef<KeySkill, unknown>>,
     [

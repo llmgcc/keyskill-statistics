@@ -112,24 +112,20 @@ export const countAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   cell: (info) => {
-
     function getMax() {
-      const ratio = info.row.original.ratio
-      if(ratio) {
-        return (info.getValue() as number) / info.row.original.ratio
+      const ratio = info.row.original.ratio;
+      if (ratio) {
+        return (info.getValue() as number) / info.row.original.ratio;
       }
-      const allValues = info.table.getFilteredRowModel().rows.map(row => 
-        row.getValue('count') as number
-      );
+      const allValues = info.table
+        .getFilteredRowModel()
+        .rows.map((row) => row.getValue('count') as number);
       const maxValue = Math.max(...allValues);
-      return maxValue
+      return maxValue;
     }
-  
+
     return (
-      <CountRenderer
-        count={info.getValue() as number}
-        maxCount={getMax()}
-      />
+      <CountRenderer count={info.getValue() as number} maxCount={getMax()} />
     );
   },
   header: () => (
@@ -293,7 +289,31 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
     return (
       <>
         {confidence ? (
-          <div className="text-sm">{(confidence * 100)?.toFixed(2)}%</div>
+          <div className="relative flex items-center">
+            <svg className="h-5 w-5" viewBox="0 0 36 36">
+              <path
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="rgb(var(--color-background-secondary))"
+                strokeWidth="5"
+              />
+              <path
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="rgb(var(--color-background-gray))"
+                strokeWidth="5"
+                strokeDasharray={`${confidence * 100}, 100`}
+              />
+            </svg>
+            <div className="ml-1 text-sm">
+              {' '}
+              {(confidence * 100).toFixed(0)}%
+            </div>
+          </div>
         ) : null}
       </>
     );

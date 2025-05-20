@@ -40,18 +40,20 @@ const renderActiveShape = (props: PieSectorDataItem) => {
           height={20}
         >
           <div className="flex h-full w-full items-center justify-center">
-            <div
-              className="aspect-square w-16 rounded-lg p-4"
-            >
+            <div className="aspect-square w-16 rounded-lg p-4">
               {payload.icon ? (
                 <payload.icon.type
                   {...payload.icon.props}
-                  className="text-xs "
+                  className="text-xs"
                   style={{ color: fill }}
                   size={20}
                 />
               ) : (
-                <FaQuestion className="text-xs text-white" style={{ color: fill }} size={20}/>
+                <FaQuestion
+                  className="text-xs text-white"
+                  style={{ color: fill }}
+                  size={20}
+                />
               )}
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useCategoriesStore } from '@/store/categoriesStore';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { ColumnDef } from '@tanstack/react-table';
+import { useTranslation } from 'react-i18next';
 
 import { useCategories } from '@/hooks/useCategories';
 
@@ -17,7 +18,6 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from './accessors';
-import { useTranslation } from 'react-i18next';
 
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();
@@ -28,11 +28,15 @@ export function TechnologiesTable() {
     isLoading,
     isFetching,
   } = useCategories({ selectedPeriod, selectedExperience });
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'category', header: t('columns.name') }),
+    categoryNameAccessor({
+      accessorKey: 'name',
+      category: 'category',
+      header: t('columns.name'),
+    }),
 
     salaryAccessor({
       accessorKey: 'average_salary',
@@ -41,7 +45,7 @@ export function TechnologiesTable() {
       selectedExperience: selectedExperience,
       key: 'technologies_salary',
       source: API.technologySalaryPlot,
-      header: t('columns.salary')
+      header: t('columns.salary'),
     }),
     countAccessor({ accessorKey: 'count', header: t('columns.skills') }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
@@ -52,7 +56,7 @@ export function TechnologiesTable() {
       selectedExperience: selectedExperience ?? undefined,
       key: 'categories_plot',
       source: API.technologyPlot,
-      header: t('columns.trend')
+      header: t('columns.trend'),
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 

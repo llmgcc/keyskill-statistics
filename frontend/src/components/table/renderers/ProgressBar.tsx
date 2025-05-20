@@ -13,7 +13,7 @@ export function ProgressBar({ count, maxCount, offset }: ProgressBarProps) {
       style={{ bottom: offset }}
     >
       <div
-        className={`z-20 rounded bg-text-secondary/40`}
+        className={`z-20 rounded bg-background-gray`}
         style={{ width: `${Math.min(Math.max(5, width), 100)}%` }}
       ></div>
     </div>
