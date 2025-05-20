@@ -42,7 +42,7 @@ export function CategoryFilterTrigger({
   const { shortName, name } = triggerText();
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center text-xs md:text-sm">
       <div>{icon}</div>
       <div className="ml-1 mr-2">{isMobile ? shortName : name}</div>
     </div>
