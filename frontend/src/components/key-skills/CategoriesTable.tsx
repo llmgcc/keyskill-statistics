@@ -3,6 +3,7 @@ import { Category } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { ColumnDef } from '@tanstack/react-table';
+import { useTranslation } from 'react-i18next';
 
 import { useDomains } from '@/hooks/useDomains';
 
@@ -16,12 +17,11 @@ import {
   prevPlaceAccessor,
   salaryAccessor,
 } from './accessors';
-import { useTranslation } from 'react-i18next';
 
 export function CategoriesTable() {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const {
     data: domains,
     isLoading,
@@ -31,7 +31,11 @@ export function CategoriesTable() {
   const columns = [
     placeAccessor({ accessorKey: 'place' }),
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
-    categoryNameAccessor({ accessorKey: 'name', category: 'domain', header: t('columns.name') }),
+    categoryNameAccessor({
+      accessorKey: 'name',
+      category: 'domain',
+      header: t('columns.name'),
+    }),
     salaryAccessor({
       accessorKey: 'average_salary',
       isLoading: isLoading || isFetching,
@@ -39,7 +43,7 @@ export function CategoriesTable() {
       selectedExperience: selectedExperience,
       key: 'categories_salary',
       source: API.categorySalaryPlot,
-      header: t('columns.salary')
+      header: t('columns.salary'),
     }),
     countAccessor({ accessorKey: 'count', header: t('columns.skills') }),
     prevCountAccessor({ accessorKey: 'prev_count' }),
@@ -50,7 +54,7 @@ export function CategoriesTable() {
       selectedExperience: selectedExperience ?? undefined,
       key: 'domains_plot',
       source: API.domainPlot,
-      header: t('columns.trend')
+      header: t('columns.trend'),
     }),
   ] as Array<ColumnDef<Category, unknown>>;
 

@@ -42,8 +42,7 @@ export enum Domains {
 export const DomainDescription: Record<Domains, string> = {
   'Frontend development':
     'Building interactive user interfaces and optimizing client-side',
-  'Backend development':
-    'Implementing server logic, APIs, and data management',
+  'Backend development': 'Implementing server logic, APIs, and data management',
   'DevOps & Infrastructure':
     'Automating CI/CD, containerization, and server maintenance',
   'Data Science & Machine Learning':
@@ -59,12 +58,10 @@ export const DomainDescription: Record<Domains, string> = {
   'System administration':
     'Configuring, monitoring, and supporting server systems',
   'Website administration': 'Managing CMS, content, and website security',
-  '1C Development':
-    'Building and customizing business apps on the 1C platform',
+  '1C Development': 'Building and customizing business apps on the 1C platform',
   'Systems analytics':
     'Gathering requirements, processes, and technical documentation',
-  'Systems programming':
-    'Low‑level software: drivers, embedded systems, IoT',
+  'Systems programming': 'Low‑level software: drivers, embedded systems, IoT',
   Cybersecurity: 'Securing systems, penetration testing, and risk management',
   'HR management': 'Recruiting, onboarding, and retaining IT personnel',
   'Project management': 'Planning, coordinating, and overseeing IT projects',

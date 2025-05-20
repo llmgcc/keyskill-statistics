@@ -14,7 +14,7 @@ export const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
       ref={forwardedRef}
       {...props}
-      className="border-shadow-full flex cursor-pointer items-center rounded bg-background-secondary px-2 py-1 text-sm outline-background-secondary hover:bg-background-gray hover:shadow-none hover:outline-background-gray focus:shadow-background-gray focus:outline-background-gray"
+      className="border-shadow-full flex cursor-pointer items-center rounded bg-background-secondary px-2 py-1 outline-background-secondary hover:bg-background-gray hover:shadow-none hover:outline-background-gray focus:shadow-background-gray focus:outline-background-gray sm:text-xs md:text-sm"
     >
       <SelectPrimitive.Value>{children}</SelectPrimitive.Value>
       <SelectPrimitive.Icon className="text-text">

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Tabs } from '@radix-ui/themes';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import { useScreenSize } from '@/hooks/useScreenSize';
 
 interface Tab {
@@ -20,7 +21,7 @@ export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentTab = searchParams.get(paramKey) || tabs[0].name;
-  const {isMobile} = useScreenSize()
+  const { isMobile } = useScreenSize();
   const handleTabChange = (value: string) => {
     searchParams.set(paramKey, value);
     navigate({ search: searchParams.toString() }, { replace: true });

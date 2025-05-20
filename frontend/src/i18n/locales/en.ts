@@ -86,7 +86,7 @@ export default {
       salary: 'Salary',
       mentions: 'Mentions',
       trend: 'Trend',
-      skills: 'Skills'
-    }
+      skills: 'Skills',
+    },
   },
 };
