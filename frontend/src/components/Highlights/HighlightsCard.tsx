@@ -7,15 +7,15 @@ import { Experience } from '@/config/experience';
 import { HighlightsCardTab } from '@/components/Highlights/HighlightsCardTab';
 import StatCard from '@/components/Highlights/StatCard';
 
-export type HiglightBase = {
+export interface HiglightBase {
   icon: JSX.Element;
   source: (period: number, experience?: Experience) => Promise<KeySkill[]>;
   valueRenderer: (skill: KeySkill) => JSX.Element | null;
-};
+}
 
-type HighlightsCardProps = {
+interface HighlightsCardProps {
   highlights: Record<string, HiglightBase>;
-};
+}
 
 export function HighlightsCard({ highlights }: HighlightsCardProps) {
   const [currentTab, setCurrentTab] = useState<string>(

@@ -22,7 +22,7 @@ export function ExperienceSelect() {
         state.experienceList,
       ]),
     );
-    
+
   function experienceTitle() {
     if (isMobile) {
       return t(`experienceShort.${selectedExperience}`);

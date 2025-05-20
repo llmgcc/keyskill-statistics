@@ -27,7 +27,7 @@ export function PeriodSelect() {
     }
     return `${selectedPeriod} ${t('common.days')}`;
   }
-  
+
   return (
     <Select
       defaultValue={String(selectedPeriod)}
