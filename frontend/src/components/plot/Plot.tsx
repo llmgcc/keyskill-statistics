@@ -179,7 +179,7 @@ export function SkillPlot({
 
   return (
     <div className="size-full">
-      <Skeleton loading={isLoading || isFetching} className="size-full">
+      <Skeleton loading={isLoading || isFetching || !chartData.length} className="size-full bg-red-400">
         {chartData.length && (
           <Plot data={chartData} color={color} strokeWidth={2} />
         )}

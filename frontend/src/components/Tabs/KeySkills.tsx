@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
@@ -39,15 +39,14 @@ function KeySkills({ filter: filterState }: KeySkillsProps) {
 
   const [pagination, setPagination] = useState<PaginationState>(() => ({
     pageIndex: 0,
-    pageSize: pageSizeVariants[0],
+    pageSize: pageSizeVariants[0]
   }));
 
   const [sorting, setSorting] = useState<SortingState>([]);
   const debouncedFilterState = useDebounce(filterState, 500);
 
-  useEffect(() => {
-    console.log('setting state');
-    setPagination((prev) => ({
+  useMemo(() => {
+    setPagination(prev => ({
       ...prev,
       pageIndex: 0,
     }));

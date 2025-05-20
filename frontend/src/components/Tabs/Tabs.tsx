@@ -4,9 +4,9 @@ import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
 import { MdOutlineCategory } from 'react-icons/md';
 
-import { CategoriesTable } from '../key-skills/CategoriesTable';
-import KeySkills from '../key-skills/KeySkills';
-import { TechnologiesTable } from '../key-skills/TechnologiesTable';
+import { CategoriesTable } from './CategoriesTable';
+import KeySkills from './KeySkills';
+import { TechnologiesTable } from './TechnologiesTable';
 import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { TabNavigation } from '../ui/TabNavigation';
 
