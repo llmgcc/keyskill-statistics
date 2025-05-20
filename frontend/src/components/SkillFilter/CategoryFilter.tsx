@@ -5,15 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 
-import { CategoriesStyle } from '@/config/categories';
-import { DomainsStyle } from '@/config/domains';
-import { useScreenSize } from '@/hooks/useScreenSize';
 import {
   Select,
   SelectContent,
-  SelectItem,
   SelectTrigger,
 } from '@/components/ui/AppSelect';
+
+import { CategoryFilterItem } from './CategoryFilter/CategoryFilterItem';
+import { CategoryFilterTrigger } from './CategoryFilter/CategoryFilterTrigger';
 
 type CategoryFilterProps = {
   options: Category[];
@@ -28,67 +27,18 @@ function CategoryFilter({
   icon,
   onChange,
 }: CategoryFilterProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null,
   );
   const [textFilter, setTextFilter] = useState<string | number | undefined>('');
   const [strictFilter, setStrictFilter] = useState(true);
   const { t } = useTranslation();
-  const { isMobile } = useScreenSize();
   const defaultName = categoryKey == 'domains' ? 'allDomains' : 'allCategories';
-
-  function displayDefaultNameKey() {
-    if (categoryKey == 'domains') {
-      return isMobile ? 'all' : 'allDomains';
-    }
-    return isMobile ? 'all' : 'allCategories';
-  }
-
-  function displayDefaultName() {
-    const translationKey = displayDefaultNameKey();
-    return t(`categoryFilter.${translationKey}`);
-  }
-
-  function getColor(c: Category | null) {
-    const colorsList: {
-      [key: string]: {
-        color: string;
-        logo: JSX.Element;
-      };
-    } = categoryKey == 'domains' ? DomainsStyle : CategoriesStyle;
-    if (c?.name && c?.name in colorsList) {
-      return colorsList[c.name].color;
-    }
-    return 'rgb(var(--color-background-gray))';
-  }
 
   function getFilteredOptions() {
     if (!textFilter) return defaultOptions;
     return defaultOptions.filter((option) =>
       option.name.toLowerCase().includes(String(textFilter).toLowerCase()),
-    );
-  }
-
-  function renderCategory(category: Category | null) {
-    return (
-      <SelectItem
-        className="flex cursor-pointer items-center justify-between bg-background-primary p-2 hover:bg-background-secondary"
-        key={category?.name ?? defaultName}
-        value={category?.name ?? defaultName}
-      >
-        <div className="flex items-center">
-          <div
-            className="aspect-square h-4 w-4 rounded"
-            style={{ backgroundColor: getColor(category) }}
-          ></div>
-          <div className="mx-1 max-w-56 truncate text-sm text-text">
-            {category?.name
-              ? t(`${categoryKey}.${category.name}`)
-              : displayDefaultName()}
-          </div>
-        </div>
-      </SelectItem>
     );
   }
 
@@ -102,38 +52,30 @@ function CategoryFilter({
   function categoriesList() {
     return (
       <div>
-        <div>{renderCategory(null)}</div>
+        <div>
+          {<CategoryFilterItem category={null} categoryKey={categoryKey} />}
+        </div>
         {getFilteredOptions()
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((c: Category) => renderCategory(c))}
+          .map((c: Category) => (
+            <CategoryFilterItem
+              key={c.name}
+              category={c}
+              categoryKey={categoryKey}
+            />
+          ))}
       </div>
     );
   }
 
-  function triggerDisplayTitle() {
-    if (!selectedCategory) {
-      return displayDefaultName();
-    }
-    if (isMobile) {
-      const mobileCategoryKey =
-        categoryKey == 'domains' ? 'domainsShort' : 'categoriesShort';
-      return t(`${mobileCategoryKey}.${selectedCategory.name}`);
-    }
-    return t(`${categoryKey}.${selectedCategory.name}`);
-  }
-
   return (
-    <Select
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      onValueChange={selectCategory}
-      defaultValue={defaultName}
-    >
+    <Select onValueChange={selectCategory} defaultValue={defaultName}>
       <SelectTrigger className="h-full">
-        <div className="flex items-center">
-          <div>{icon}</div>
-          <div className="ml-1 mr-2">{triggerDisplayTitle()}</div>
-        </div>
+        <CategoryFilterTrigger
+          icon={icon}
+          category={selectedCategory}
+          categoryKey={categoryKey}
+        />
       </SelectTrigger>
 
       <SelectContent side="bottom">
@@ -157,29 +99,36 @@ function CategoryFilter({
             </TextField.Slot>
           </TextField.Root>
 
-          <div className="mt-2 flex items-center">
-            <Text as="label" size="2" className="flex">
-              <Switch
-                size="1"
-                checked={strictFilter}
-                onCheckedChange={(v) => {
-                  setStrictFilter(v);
-                  onChange(selectedCategory, v);
-                }}
-              />
-              <span className="ml-1">{t('categoryFilter.strictMatch')}</span>
-              <Tooltip
-                content={t('categoryFilter.strictModeTooltipCategory')}
-                className=""
-              >
-                <div>
-                  <IoInformationCircleOutline
-                    className="ml-1 inline cursor-help text-text-secondary"
-                    size={14}
+          <div className="flex items-end justify-between">
+            <div>
+              <div className="mt-2 flex items-center">
+                <Text as="label" size="2" className="flex">
+                  <Switch
+                    size="1"
+                    checked={strictFilter}
+                    onCheckedChange={(v) => {
+                      setStrictFilter(v);
+                      onChange(selectedCategory, v);
+                    }}
+                    color="ruby"
                   />
-                </div>
-              </Tooltip>
-            </Text>
+                  <span className="ml-1">
+                    {t('categoryFilter.strictMatch')}
+                  </span>
+                </Text>
+                <Tooltip
+                  content={t('categoryFilter.strictModeTooltipCategory')}
+                  className=""
+                >
+                  <div>
+                    <IoInformationCircleOutline
+                      className="ml-1 inline cursor-help text-text-secondary"
+                      size={14}
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            </div>
           </div>
         </div>
         <ScrollArea

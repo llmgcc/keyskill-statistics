@@ -19,7 +19,6 @@ import { Navigation } from '@/components/Navigation/Navigation.tsx';
 import { TextSection } from '@/components/TextSection/TextSection';
 
 import { Tabs } from './components/Tabs/Tabs';
-import { SkillFilterProvider } from './providers/SkillFilterProvider';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -77,12 +76,10 @@ export default function App() {
           />
           <Filter />
           <Highlights />
-          {/* <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
-          <SkillFilterProvider>
-            <div ref={tabsRef}>
-              <Tabs />
-            </div>
-          </SkillFilterProvider> */}
+          <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
+          <div ref={tabsRef}>
+            <Tabs />
+          </div>
         </div>
       </QueryClientProvider>
     </I18nextProvider>
