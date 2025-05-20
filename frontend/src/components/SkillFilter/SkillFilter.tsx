@@ -1,13 +1,11 @@
 import { Category } from '@/interfaces';
-import { useSkillFilter } from '@/providers/SkillFilterProvider';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
-import { TextField } from '@radix-ui/themes';
-import { useTranslation } from 'react-i18next';
-import { BiCategory, BiSearch } from 'react-icons/bi';
+import { BiCategory } from 'react-icons/bi';
 import { MdOutlineCategory } from 'react-icons/md';
 
 import CategoryFilter from './CategoryFilter';
+import { SkillNameFilter } from './SkillNameFilter';
 
 export interface SkillsFilterState {
   category: {
@@ -21,41 +19,43 @@ export interface SkillsFilterState {
   skill: string;
 }
 
-export function SkillFilter() {
-  const { t } = useTranslation();
+interface SkillFilterProps {
+  filter: SkillsFilterState;
+  onFilterChanged: (filter: SkillsFilterState) => void;
+}
+
+export function SkillFilter({
+  filter: filterState,
+  onFilterChanged,
+}: SkillFilterProps) {
   const categories = useCategoriesStore((state) => state.categories);
   const domains = useDomainsStore((state) => state.domains);
 
-  const { filterState: state, setFilterState } = useSkillFilter();
-
   function updateDomainFilter(domain: Category | null, strict: boolean) {
-    setFilterState({ ...state, domain: { selected: domain, strict: strict } });
+    onFilterChanged({
+      ...filterState,
+      domain: { selected: domain, strict: strict },
+    });
   }
 
   function updateCategoryFilter(category: Category | null, strict: boolean) {
-    setFilterState({
-      ...state,
+    onFilterChanged({
+      ...filterState,
       category: { selected: category, strict: strict },
     });
   }
 
-  function updateTextFilter(event: React.ChangeEvent<HTMLInputElement>) {
-    setFilterState({ ...state, skill: event.target.value });
+  function updateTextFilter(skill: string) {
+    onFilterChanged({ ...filterState, skill });
   }
 
   return (
     <div className="mt-2 flex items-center justify-end gap-2 md:mt-0">
       <div>
-        <TextField.Root
-          value={state.skill}
+        <SkillNameFilter
+          skill={filterState.skill}
           onChange={updateTextFilter}
-          placeholder={t('categoryFilter.placeholderForSkill')}
-          className="border-shadow-full h-9 bg-background-secondary/50 outline-background-secondary md:h-7"
-        >
-          <TextField.Slot>
-            <BiSearch />
-          </TextField.Slot>
-        </TextField.Root>
+        />
       </div>
       <div className="flex h-full items-center gap-2">
         <div className="">

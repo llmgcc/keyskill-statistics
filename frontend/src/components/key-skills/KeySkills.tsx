@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
-import { useSkillFilter } from '@/providers/SkillFilterProvider';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import {
@@ -15,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
 
+import { SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { DataTable } from '../table/DataTable';
 import {
   chartAccessor,
@@ -27,7 +27,11 @@ import {
   skillNameAccessor,
 } from './accessors';
 
-function KeySkills() {
+interface KeySkillsProps {
+  filter: SkillsFilterState;
+}
+
+function KeySkills({ filter: filterState }: KeySkillsProps) {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
   const { t } = useTranslation();
@@ -39,10 +43,10 @@ function KeySkills() {
   }));
 
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { filterState } = useSkillFilter();
   const debouncedFilterState = useDebounce(filterState, 500);
 
   useEffect(() => {
+    console.log('setting state');
     setPagination((prev) => ({
       ...prev,
       pageIndex: 0,
@@ -161,6 +165,7 @@ function KeySkills() {
     average_salary: 100,
     domains: [],
     categories: [],
+    ratio: 1,
   };
   const fillData = [];
   for (let i = 0; i < pagination.pageSize; i++) {

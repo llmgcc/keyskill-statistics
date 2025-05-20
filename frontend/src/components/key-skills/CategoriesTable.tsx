@@ -75,7 +75,7 @@ export function CategoriesTable() {
   return (
     <div>
       <DataTable
-        columns={columns as any}
+        columns={columns}
         data={domains ?? fillData}
         isLoading={isLoading || isFetching}
       />

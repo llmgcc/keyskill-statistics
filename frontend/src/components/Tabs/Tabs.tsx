@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
@@ -6,11 +7,17 @@ import { MdOutlineCategory } from 'react-icons/md';
 import { CategoriesTable } from '../key-skills/CategoriesTable';
 import KeySkills from '../key-skills/KeySkills';
 import { TechnologiesTable } from '../key-skills/TechnologiesTable';
-import { SkillFilter } from '../SkillFilter/SkillFilter';
+import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { TabNavigation } from '../ui/TabNavigation';
 
 export function Tabs() {
   const { t } = useTranslation();
+
+  const [filterState, setFilterState] = useState<SkillsFilterState>({
+    category: { selected: null, strict: true },
+    domain: { selected: null, strict: true },
+    skill: '',
+  });
 
   const tabs = [
     {
@@ -22,11 +29,11 @@ export function Tabs() {
           <div className="ml-1">{t('common.skills')}</div>
         </div>
       ),
-      body: <KeySkills />,
+      body: <KeySkills filter={filterState} />,
       name: 'key-skills',
       append: (
         <div className="flex h-fit w-full items-end justify-end text-right">
-          <SkillFilter />
+          <SkillFilter filter={filterState} onFilterChanged={setFilterState} />
         </div>
       ),
     },
