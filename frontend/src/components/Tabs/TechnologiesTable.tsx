@@ -17,7 +17,7 @@ import {
   prevCountAccessor,
   prevPlaceAccessor,
   salaryAccessor,
-} from './accessors';
+} from '@/components/Tabs/accessors';
 
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();

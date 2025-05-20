@@ -17,7 +17,7 @@ interface PaginationState {
   totalRows: number;
   pageSize: number;
   pageIndex: number;
-  onPageChange: (page: number) => void;
+  onPageChange: (page: number, pageSize: number) => void;
   pages: number[];
 }
 
