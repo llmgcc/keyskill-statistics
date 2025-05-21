@@ -15,19 +15,25 @@ function getScreenSize() {
 }
 
 export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreenSize] = useState<ScreenSize>(() =>
-    getScreenSize(),
-  );
+  const [screenSize, setScreenSize] = useState<ScreenSize>(() => getScreenSize());
 
   useEffect(() => {
     function handleResize() {
-      setScreenSize(getScreenSize());
+      const newSize = getScreenSize();
+      setScreenSize(prev => {
+        if (
+          prev.isMobile === newSize.isMobile &&
+          prev.isTablet === newSize.isTablet &&
+          prev.isDesktop === newSize.isDesktop
+        ) {
+          return prev;
+        }
+        return newSize;
+      });
     }
 
     window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return screenSize;
