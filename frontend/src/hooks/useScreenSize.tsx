@@ -6,36 +6,27 @@ interface ScreenSize {
   isDesktop: boolean;
 }
 
-export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreenSize] = useState<ScreenSize>({
+
+function getScreenSize() {
+  return {
     isMobile: window.innerWidth < 768,
     isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
     isDesktop: window.innerWidth >= 1024,
-  });
+  }
+}
+
+export const useScreenSize = (): ScreenSize => {
+  const [screenSize, setScreenSize] = useState<ScreenSize>(() => getScreenSize());
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      setScreenSize((prev) => {
-        const newIsMobile = window.innerWidth < 768;
-        const newIsTablet =
-          window.innerWidth >= 768 && window.innerWidth < 1024;
-        const newIsDesktop = window.innerWidth >= 1024;
-        if (
-          newIsMobile !== prev.isMobile ||
-          newIsTablet !== prev.isTablet ||
-          newIsDesktop !== prev.isDesktop
-        ) {
-          return {
-            isMobile: newIsMobile,
-            isTablet: newIsTablet,
-            isDesktop: newIsDesktop,
-          };
-        }
-        return prev;
-      });
-    };
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+      function handleResize() {
+        setScreenSize(getScreenSize())
+      }
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, []);
 
   return screenSize;

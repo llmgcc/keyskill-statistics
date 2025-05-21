@@ -15,16 +15,16 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
       selectedCurrency?.currency_abbr &&
       prevCurrencyAbbr.current !== selectedCurrency.currency_abbr
     ) {
-      const textColorClass = 'text-[rgb(var(--color-background-accent))]';
-      divRef.current?.classList.add(textColorClass);
+      const textColorClass = ['text-[rgb(var(--color-background-accent))]', 'font-[600]'];
+      divRef.current?.classList.add(...textColorClass);
       const timer = setTimeout(() => {
-        divRef.current?.classList.remove(textColorClass);
+        divRef.current?.classList.remove(...textColorClass);
       }, 500);
 
       prevCurrencyAbbr.current = selectedCurrency.currency_abbr;
       return () => {
         clearTimeout(timer);
-        divRef.current?.classList.remove(textColorClass);
+        divRef.current?.classList.remove(...textColorClass);
       };
     }
   }, [selectedCurrency?.currency_abbr]);
@@ -36,7 +36,7 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
   return (
     <div
       style={{
-        transition: 'color 0.5s ease',
+        transition: 'color 0.5s ease font-weight 0.5s easy',
       }}
       className="z-40"
       ref={divRef}
