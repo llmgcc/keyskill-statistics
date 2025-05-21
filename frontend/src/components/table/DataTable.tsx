@@ -34,7 +34,7 @@ interface DataTableProps<T extends object> {
   sorting?: DataTableSortingState;
 }
 
-function _DataTable<T extends object>({
+export function DataTable<T extends object>({
   data,
   columns,
   isLoading = false,
@@ -85,5 +85,3 @@ function _DataTable<T extends object>({
     </div>
   );
 }
-
-export const DataTable = memo(_DataTable);
