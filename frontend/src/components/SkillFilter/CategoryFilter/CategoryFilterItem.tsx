@@ -1,10 +1,10 @@
 import { Category } from '@/interfaces';
-import { SelectItem } from '@radix-ui/react-select';
 import { useTranslation } from 'react-i18next';
 
 import { CategoriesStyle } from '@/config/categories';
 import { DomainsStyle } from '@/config/domains';
 import { useScreenSize } from '@/hooks/useScreenSize';
+import { SelectItem } from '@/components/ui/AppSelect';
 
 interface CategoryFilterItemProps {
   category: Category | null;

@@ -19,6 +19,7 @@ type CategoryFilterProps = {
   categoryKey: 'domains' | 'categories';
   onChange: (selected: Category | null, strict: boolean) => void;
   icon: JSX.Element;
+  selected: Category | null;
 };
 
 function CategoryFilter({
@@ -26,10 +27,8 @@ function CategoryFilter({
   categoryKey,
   icon,
   onChange,
+  selected,
 }: CategoryFilterProps) {
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null,
-  );
   const [textFilter, setTextFilter] = useState<string | number | undefined>('');
   const [strictFilter, setStrictFilter] = useState(true);
   const { t } = useTranslation();
@@ -45,7 +44,6 @@ function CategoryFilter({
   function selectCategory(categoryName: string) {
     const category =
       defaultOptions.find((c) => c.name === categoryName) ?? null;
-    setSelectedCategory(category);
     onChange(category, strictFilter);
   }
 
@@ -73,7 +71,7 @@ function CategoryFilter({
       <SelectTrigger className="h-full">
         <CategoryFilterTrigger
           icon={icon}
-          category={selectedCategory}
+          category={selected}
           categoryKey={categoryKey}
         />
       </SelectTrigger>
@@ -108,7 +106,7 @@ function CategoryFilter({
                     checked={strictFilter}
                     onCheckedChange={(v) => {
                       setStrictFilter(v);
-                      onChange(selectedCategory, v);
+                      onChange(selected, v);
                     }}
                     color="ruby"
                   />
