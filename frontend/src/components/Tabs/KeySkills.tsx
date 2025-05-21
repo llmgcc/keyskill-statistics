@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { API } from '@/api/api';
 import { KeySkill } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
@@ -15,7 +15,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
 
 import { SkillsFilterState } from '../SkillFilter/SkillFilter';
-import { DataTable } from '../table/DataTable';
+import { DataTable } from '../Table/DataTable';
 import {
   chartAccessor,
   confidenceAccessor,
@@ -31,7 +31,7 @@ interface KeySkillsProps {
   filter: SkillsFilterState;
 }
 
-function KeySkills({ filter: filterState }: KeySkillsProps) {
+function _KeySkills({ filter: filterState }: KeySkillsProps) {
   const { selectedPeriod } = usePeriodStore();
   const { selectedExperience } = useExperienceStore();
   const { t } = useTranslation();
@@ -201,4 +201,4 @@ function KeySkills({ filter: filterState }: KeySkillsProps) {
   );
 }
 
-export default KeySkills;
+export const KeySkills = memo(_KeySkills);

@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
+@import './styles/common.css';
+@import './styles/piechart.css';
+@import './styles/radix.css';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   font-size: 0.75rem;
@@ -11,16 +20,7 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* scrollbar-gutter: stable; */
   background-color: var(--color-background-primary);
-}
-
-.rt-BaseTabListTrigger:where([data-state='active'], [data-active])::before {
-  background-color: rgb(var(--color-background-accent)) !important;
-}
-
-.rt-BaseTabListTrigger:where([data-state='active'], [data-active]) {
-  color: rgb(var(--color-background-accent)) !important;
 }
 
 html {
@@ -44,6 +44,12 @@ html {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 75%;
+  }
 }
 
 @media (min-width: 1600px) {

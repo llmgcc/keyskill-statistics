@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
@@ -7,10 +7,10 @@ import { MdOutlineCategory } from 'react-icons/md';
 import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { TabNavigation } from '../ui/TabNavigation';
 import { CategoriesTable } from './CategoriesTable';
-import KeySkills from './KeySkills';
+import { KeySkills } from './KeySkills';
 import { TechnologiesTable } from './TechnologiesTable';
 
-export function Tabs() {
+function _Tabs() {
   const { t } = useTranslation();
 
   const [filterState, setFilterState] = useState<SkillsFilterState>({
@@ -65,3 +65,5 @@ export function Tabs() {
 
   return <TabNavigation tabs={tabs} />;
 }
+
+export const Tabs = memo(_Tabs);

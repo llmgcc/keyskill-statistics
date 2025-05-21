@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Chart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
@@ -20,7 +21,7 @@ interface SkillPlotProps {
   experience?: Experience;
 }
 
-export function SkillPlot({
+export function _SkillPlot({
   name,
   source,
   plotKey,
@@ -66,3 +67,5 @@ export function SkillPlot({
     </div>
   );
 }
+
+export const SkillPlot = memo(_SkillPlot);

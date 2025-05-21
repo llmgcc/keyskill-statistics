@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useDomains } from '@/hooks/useDomains';
 
-import { DataTable } from '../table/DataTable';
+import { DataTable } from '../Table/DataTable';
 import {
   categoryNameAccessor,
   chartAccessor,

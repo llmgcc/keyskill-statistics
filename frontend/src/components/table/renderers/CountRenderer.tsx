@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { ProgressBar } from './ProgressBar';
 
 interface CountRendererProps {
@@ -5,7 +7,7 @@ interface CountRendererProps {
   maxCount: number;
 }
 
-export function CountRenderer({ count, maxCount }: CountRendererProps) {
+export function _CountRenderer({ count, maxCount }: CountRendererProps) {
   return (
     <div className="relative w-full">
       <div className="flex w-full items-end justify-end font-[500]">
@@ -15,3 +17,5 @@ export function CountRenderer({ count, maxCount }: CountRendererProps) {
     </div>
   );
 }
+
+export const CountRenderer = memo(_CountRenderer);

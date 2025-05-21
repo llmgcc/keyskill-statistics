@@ -17,7 +17,7 @@ import {
   salaryAccessor,
 } from '@/components/Tabs/accessors';
 
-import { DataTable } from '../table/DataTable';
+import { DataTable } from '../Table/DataTable';
 
 export function TechnologiesTable() {
   const { selectedPeriod } = usePeriodStore();

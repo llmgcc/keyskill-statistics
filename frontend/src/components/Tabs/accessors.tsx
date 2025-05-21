@@ -6,12 +6,12 @@ import { GoDiff } from 'react-icons/go';
 import colors from 'tailwindcss/colors';
 
 import { Experience } from '@/config/experience';
+import { CountRenderer } from '@/components/Table/renderers/CountRenderer';
+import { SalaryRenderer } from '@/components/Table/renderers/SalaryRenderer';
+import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
 
 import { SkillPlot } from '../Charts/SkillPlot';
-import SkillDescription from '../SkillDescription/SkillDescription';
-import { CountRenderer } from '../table/renderers/CountRenderer';
-import { SalaryRenderer } from '../table/renderers/SalaryRenderer';
-import { ValueChangeRenderer } from '../table/renderers/ValueChangeRenderer';
+import { SkillDescription } from '../SkillDescription/SkillDescription';
 import { CategoryDescription } from '../ui/CategoryDescription';
 
 export const placeAccessor = <T extends KeySkill>(config: {

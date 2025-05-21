@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Skeleton } from '@radix-ui/themes';
 import { Cell, flexRender, Table } from '@tanstack/react-table';
 
@@ -8,7 +9,7 @@ interface DataTableBodyProps<T extends object> {
   isLoading?: boolean;
 }
 
-export function DataTableBody<T extends object>({
+export function _DataTableBody<T extends object>({
   table,
   isLoading,
 }: DataTableBodyProps<T>) {
@@ -54,3 +55,5 @@ export function DataTableBody<T extends object>({
     </tbody>
   );
 }
+
+export const DataTableBody = memo(_DataTableBody);

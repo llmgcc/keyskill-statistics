@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { KeySkill } from '@/interfaces';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
@@ -5,7 +6,7 @@ import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { Experience } from '@/config/experience';
-import SkillDescription from '@/components/SkillDescription/SkillDescription';
+import { SkillDescription } from '@/components/SkillDescription/SkillDescription';
 
 interface HighlightsCardTabProps {
   title: string;
@@ -13,7 +14,7 @@ interface HighlightsCardTabProps {
   valueRenderer: (skill: KeySkill) => JSX.Element | null;
 }
 
-export function HighlightsCardTab({
+export function _HighlightsCardTab({
   title,
   source,
   valueRenderer,
@@ -75,3 +76,5 @@ export function HighlightsCardTab({
     </div>
   );
 }
+
+export const HighlightsCardTab = memo(_HighlightsCardTab);

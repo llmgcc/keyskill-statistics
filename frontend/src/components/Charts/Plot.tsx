@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { memo, useLayoutEffect, useRef, useState } from 'react';
 
 import { SvgPlot } from './SvgPlot';
 
@@ -7,7 +7,7 @@ interface PlotProps {
   color: string;
 }
 
-export function Plot({ data, color }: PlotProps) {
+function _Plot({ data, color }: PlotProps) {
   const svgWrapper = useRef<HTMLDivElement>(null);
 
   const [size, setSize] = useState<{ width: number; height: number }>({
@@ -43,3 +43,5 @@ export function Plot({ data, color }: PlotProps) {
     </div>
   );
 }
+
+export const Plot = memo(_Plot);

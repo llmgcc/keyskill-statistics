@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { memo, useLayoutEffect, useRef, useState } from 'react';
 
 import { SvgHist } from './SvgHist';
 
@@ -7,7 +7,7 @@ interface HistProps {
   color: string;
 }
 
-export function Hist({ data, color }: HistProps) {
+function _Hist({ data, color }: HistProps) {
   const svgWrapper = useRef<HTMLDivElement>(null);
 
   const [size, setSize] = useState<{ width: number; height: number }>({
@@ -43,3 +43,5 @@ export function Hist({ data, color }: HistProps) {
     </div>
   );
 }
+
+export const Hist = memo(_Hist);
