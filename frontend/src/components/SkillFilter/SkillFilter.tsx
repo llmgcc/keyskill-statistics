@@ -51,6 +51,14 @@ export function SkillFilter({
     onFilterChanged({ ...filterState, skill });
   }
 
+  function resetFilters() {
+    onFilterChanged({
+      category: { selected: null, strict: false },
+      domain: { selected: null, strict: false },
+      skill: '',
+    });
+  }
+
   return (
     <div className="mt-2 flex items-center justify-end gap-2 lg:mt-0">
       <div className="flex items-center">
@@ -58,6 +66,7 @@ export function SkillFilter({
           color="ruby"
           size="2"
           className="h-9 cursor-pointer px-2 md:h-7"
+          onClick={resetFilters}
         >
           <RiResetLeftFill />
         </Button>
@@ -75,6 +84,7 @@ export function SkillFilter({
             options={domains}
             categoryKey="domains"
             onChange={updateDomainFilter}
+            selected={filterState.domain.selected}
           />
         </div>
         <div>
@@ -83,6 +93,7 @@ export function SkillFilter({
             options={categories}
             categoryKey="categories"
             onChange={updateCategoryFilter}
+            selected={filterState.category.selected}
           />
         </div>
       </div>
