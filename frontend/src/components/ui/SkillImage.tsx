@@ -1,15 +1,16 @@
+import { memo } from 'react';
 import { baseURL } from '@/api/api';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Domains, DomainsStyle } from '@/config/domains';
 
-type SkillImageProps = {
+interface SkillImageProps {
   path?: string;
   domain?: Domains | string;
   category?: Categories | string;
-};
+}
 
-function SkillImage({ path, domain, category }: SkillImageProps) {
+function _SkillImage({ path, domain, category }: SkillImageProps) {
   function imageLogo() {
     if (path) {
       const url = `${baseURL}/${path}`;
@@ -62,4 +63,4 @@ function SkillImage({ path, domain, category }: SkillImageProps) {
   );
 }
 
-export default SkillImage;
+export const SkillImage = memo(_SkillImage);

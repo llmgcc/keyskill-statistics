@@ -15,7 +15,10 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
       selectedCurrency?.currency_abbr &&
       prevCurrencyAbbr.current !== selectedCurrency.currency_abbr
     ) {
-      const textColorClass = ['text-[rgb(var(--color-background-accent))]', 'font-[600]'];
+      const textColorClass = [
+        'text-[rgb(var(--color-background-accent))]',
+        'font-[600]',
+      ];
       divRef.current?.classList.add(...textColorClass);
       const timer = setTimeout(() => {
         divRef.current?.classList.remove(...textColorClass);

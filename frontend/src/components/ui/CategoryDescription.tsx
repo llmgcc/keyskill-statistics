@@ -1,16 +1,17 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CategoryDescription as CategoryDescriptionEnum } from '@/config/categories';
 import { DomainDescription } from '@/config/domains';
 
-import SkillImage from './SkillImage';
+import { SkillImage } from './SkillImage';
 
 interface CategoryDescriptionProps {
   categoryKey: 'domain' | 'category';
   categoryName: string;
 }
 
-export function CategoryDescription({
+function _CategoryDescription({
   categoryKey,
   categoryName,
 }: CategoryDescriptionProps) {
@@ -46,3 +47,5 @@ export function CategoryDescription({
     </div>
   );
 }
+
+export const CategoryDescription = memo(_CategoryDescription);

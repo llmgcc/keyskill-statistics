@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { SalaryChart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
@@ -21,7 +22,7 @@ interface SkillHistProps {
   height?: number;
 }
 
-export function SkillHist({
+export function _SkillHist({
   name,
   source,
   plotKey,
@@ -70,3 +71,5 @@ export function SkillHist({
     </div>
   );
 }
+
+export const SkillHist = memo(_SkillHist);

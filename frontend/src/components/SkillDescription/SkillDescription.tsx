@@ -1,12 +1,13 @@
+import { memo } from 'react';
 import { KeySkill } from '@/interfaces';
 import { useTranslation } from 'react-i18next';
 
 import { Language } from '@/config/languages';
-import SkillImage from '@/components/ui/SkillImage';
+import { SkillImage } from '@/components/ui/SkillImage';
 
 import { CategoryPopover } from './CategoryPopover';
 
-export default function SkillDescription(props: KeySkill) {
+export function _SkillDescription(props: KeySkill) {
   const { i18n } = useTranslation();
 
   const skillName =
@@ -40,3 +41,5 @@ export default function SkillDescription(props: KeySkill) {
     </div>
   );
 }
+
+export const SkillDescription = memo(_SkillDescription);

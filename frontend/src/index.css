@@ -2,34 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (max-width: 768px) {
-  html {
-    font-size: 75%;
-  }
-}
-
-.border-shadow {
-  box-shadow:
-    inset 0 1px 0 rgb(var(--color-background-secondary)),
-    inset 0 -1px 0 rgb(var(--color-background-secondary));
-}
-
-.border-shadow-full {
-  box-shadow:
-    inset 1px 1px rgb(var(--color-background-secondary)),
-    inset -1px -1px rgb(var(--color-background-secondary));
-}
-
-.recharts-pie * {
-  outline: none !important;
-  border: none !important;
-}
-
-.SelectContent {
-  min-width: var(--radix-select-trigger-width);
-  max-height: var(--radix-select-content-available-height);
-}
-
 @layer base {
   :root {
     --color-background-accent: 229 70 102;
@@ -49,10 +21,4 @@
     --color-text-primary: 251 235 249;
     --color-text-secondary: 134 165 168;
   }
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
 }

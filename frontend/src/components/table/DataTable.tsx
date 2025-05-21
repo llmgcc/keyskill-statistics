@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, memo, SetStateAction, useState } from 'react';
 import {
   ColumnDef,
   getCoreRowModel,
@@ -34,7 +34,7 @@ interface DataTableProps<T extends object> {
   sorting?: DataTableSortingState;
 }
 
-export function DataTable<T extends object>({
+function _DataTable<T extends object>({
   data,
   columns,
   isLoading = false,
@@ -85,3 +85,5 @@ export function DataTable<T extends object>({
     </div>
   );
 }
+
+export const DataTable = memo(_DataTable);

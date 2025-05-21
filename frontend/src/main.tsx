@@ -15,7 +15,6 @@ createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
-      {/* <ThemePanel/> */}
     </Theme>
   </StrictMode>,
 );

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Tabs } from '@radix-ui/themes';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ interface TabNavigationProps {
   paramKey?: string;
 }
 
-export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
+function _TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -63,3 +63,5 @@ export function TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
     </div>
   );
 }
+
+export const TabNavigation = memo(_TabNavigation);

@@ -1,10 +1,12 @@
+import { memo } from 'react';
+
 interface ProgressBarProps {
   count: number;
   maxCount: number;
   offset: number;
 }
 
-export function ProgressBar({ count, maxCount, offset }: ProgressBarProps) {
+function _ProgressBar({ count, maxCount, offset }: ProgressBarProps) {
   const width = (count / maxCount) * 100;
 
   return (
@@ -19,3 +21,5 @@ export function ProgressBar({ count, maxCount, offset }: ProgressBarProps) {
     </div>
   );
 }
+
+export const ProgressBar = memo(_ProgressBar);

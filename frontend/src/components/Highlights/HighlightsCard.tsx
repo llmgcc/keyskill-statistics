@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { KeySkill } from '@/interfaces';
 import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +17,7 @@ interface HighlightsCardProps {
   highlights: Record<string, HiglightBase>;
 }
 
-export function HighlightsCard({ highlights }: HighlightsCardProps) {
+function _HighlightsCard({ highlights }: HighlightsCardProps) {
   const [currentTab, setCurrentTab] = useState<string>(
     Object.keys(highlights)?.[0],
   );
@@ -59,3 +59,5 @@ export function HighlightsCard({ highlights }: HighlightsCardProps) {
     </StatCard>
   );
 }
+
+export const HighlightsCard = memo(_HighlightsCard);

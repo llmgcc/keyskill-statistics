@@ -6,27 +6,28 @@ interface ScreenSize {
   isDesktop: boolean;
 }
 
-
 function getScreenSize() {
   return {
     isMobile: window.innerWidth < 768,
     isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
     isDesktop: window.innerWidth >= 1024,
-  }
+  };
 }
 
 export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreenSize] = useState<ScreenSize>(() => getScreenSize());
+  const [screenSize, setScreenSize] = useState<ScreenSize>(() =>
+    getScreenSize(),
+  );
 
   useEffect(() => {
-      function handleResize() {
-        setScreenSize(getScreenSize())
-      }
-    
+    function handleResize() {
+      setScreenSize(getScreenSize());
+    }
+
     window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return screenSize;
