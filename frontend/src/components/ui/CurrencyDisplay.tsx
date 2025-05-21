@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useCurrencyStore } from '@/store/currencyStore';
 
 type CurrencyDisplayProps = {
@@ -7,21 +7,27 @@ type CurrencyDisplayProps = {
 
 export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
   const { selectedCurrency } = useCurrencyStore();
-  const [animate, setAnimate] = useState(false);
-  const prevCurrencyRef = useRef(selectedCurrency);
+  const prevCurrencyAbbr = useRef(selectedCurrency?.currency_abbr);
+  const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (
-      selectedCurrency &&
-      prevCurrencyRef.current?.currency_abbr !== selectedCurrency?.currency_abbr
+      selectedCurrency?.currency_abbr &&
+      prevCurrencyAbbr.current !== selectedCurrency.currency_abbr
     ) {
-      setAnimate(true);
-      const timer = setTimeout(() => setAnimate(false), 300);
-      prevCurrencyRef.current = selectedCurrency;
-      return () => clearTimeout(timer);
+      const textColorClass = 'text-[rgb(var(--color-background-accent))]';
+      divRef.current?.classList.add(textColorClass);
+      const timer = setTimeout(() => {
+        divRef.current?.classList.remove(textColorClass);
+      }, 500);
+
+      prevCurrencyAbbr.current = selectedCurrency.currency_abbr;
+      return () => {
+        clearTimeout(timer);
+        divRef.current?.classList.remove(textColorClass);
+      };
     }
-    prevCurrencyRef.current = selectedCurrency;
-  }, [selectedCurrency]);
+  }, [selectedCurrency?.currency_abbr]);
 
   if (!valueInRUB || !selectedCurrency?.currency_rate) {
     return <div>N/A</div>;
@@ -31,9 +37,9 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
     <div
       style={{
         transition: 'color 0.5s ease',
-        color: animate ? 'rgb(var(--color-background-secondary))' : 'inherit',
       }}
       className="z-40"
+      ref={divRef}
     >
       {selectedCurrency?.currency_abbr}
       {(valueInRUB * selectedCurrency.currency_rate).toLocaleString(undefined, {
