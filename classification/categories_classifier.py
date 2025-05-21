@@ -11,15 +11,15 @@ import pickle
 from utils import make_dataset, write_results, get_vectors, cross_entropy
 
 
-class DomainsClassifier:
+class CategoriesClassifier:
     def __init__(self):
         with open(
-            os.path.dirname(os.path.abspath(__file__)) + "/examples/domains.json",
+            os.path.dirname(os.path.abspath(__file__)) + "/examples/categories.json",
             encoding="utf-8",
         ) as f:
             self.categories = json.load(f)
         with open(
-            os.path.dirname(os.path.abspath(__file__)) + "/best_params/domains.json",
+            os.path.dirname(os.path.abspath(__file__)) + "/best_params/categories.json",
             encoding="utf-8",
         ) as f:
             self.best_params = json.load(f)
@@ -52,18 +52,18 @@ class DomainsClassifier:
         clf = sklearn.linear_model.LogisticRegression(**classifier_params).fit(X, Y)
 
         with open(
-            f"{os.path.dirname(os.path.abspath(__file__))}/models/domains.pkl", "wb"
+            f"{os.path.dirname(os.path.abspath(__file__))}/models/categories.pkl", "wb"
         ) as f:
             pickle.dump(clf, f)
 
-        write_results("domains", clf, KEYS, self.skills_db, weights)
+        write_results("categories", clf, KEYS, self.skills_db, weights)
 
     def search(self, trials, NUM_SKILLS_TO_TRAIN=1000):
-        cluster_skills = {}
-        for c in self.categories.keys():
-            cluster_skills[c] = self.skills_db.get_cluster_skills(
-                self.categories[c]["examples"]
-            )
+        estimations = []
+        for i in range(len(self.y)):
+            z = np.zeros(len(list(self.categories.keys())))
+            z[self.y[i]] = 1
+            estimations.append(z)
 
         DIRECTION = optuna.study.StudyDirection.MINIMIZE
 
@@ -108,18 +108,10 @@ class DomainsClassifier:
                 X.append(vector)
                 Y.append(category)
 
+            print("start", len(X), len(Y))
             classifier_obj.fit(X, Y)
 
-            SKILLS_TO_TRAIN = self.skills_db.get_all_skills()[:NUM_SKILLS_TO_TRAIN]
-            estimations = []
-            for s in SKILLS_TO_TRAIN:
-                estimations.append(
-                    self.skills_db.get_skill_probability_estimation(s, cluster_skills)
-                )
-            estimations = np.array(estimations)
-            vectors = [self.skills_db.get_vector(s, weights) for s in SKILLS_TO_TRAIN]
-
-            predictions = classifier_obj.predict_proba(vectors)
+            predictions = classifier_obj.predict_proba(X)
 
             loss = 0
             for i in range(len(predictions)):
@@ -132,7 +124,7 @@ class DomainsClassifier:
         optuna.logging.get_logger("optuna").addHandler(
             logging.StreamHandler(sys.stdout)
         )
-        study_name = "optuna_lr_study_default"
+        study_name = "optuna_lr_study_tech"
         storage_name = (
             "postgresql://postgres:localdbpass@localhost:5432/optuna_lr_study_tech"
         )
@@ -146,7 +138,7 @@ class DomainsClassifier:
 
         self.best_params = study.best_params
         with open(
-            f"{os.path.dirname(os.path.abspath(__file__))}/best_params/domains.json",
+            f"{os.path.dirname(os.path.abspath(__file__))}/best_params/categories.json",
             "w",
             encoding="utf-8",
         ) as file:
@@ -155,11 +147,11 @@ class DomainsClassifier:
 
     def fill_db(self):
         with open(
-            f"{os.path.dirname(os.path.abspath(__file__))}/models/domains.pkl", "rb"
+            f"{os.path.dirname(os.path.abspath(__file__))}/models/categories.pkl", "rb"
         ) as f:
             clf = pickle.load(f)
         with open(
-            f"{os.path.dirname(os.path.abspath(__file__))}/best_params/domains.json",
+            f"{os.path.dirname(os.path.abspath(__file__))}/best_params/categories.json",
             "rb",
         ) as f:
             best_params = json.load(f)
@@ -173,4 +165,4 @@ class DomainsClassifier:
         vectors = [self.skills_db.get_vector(s, weights) for s in skills]
         predictions = clf.predict_proba(vectors)
 
-        self.skills_db.update_domains(skills, self.categories, predictions)
+        self.skills_db.update_categories(skills, self.categories, predictions)

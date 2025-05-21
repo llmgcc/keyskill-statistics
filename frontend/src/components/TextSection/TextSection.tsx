@@ -43,6 +43,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
       target="_blank"
       rel="noopener noreferrer"
       underline="always"
+      color='ruby'
     />
   );
 
@@ -56,6 +57,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
       }}
       className="cursor-pointer"
       underline="always"
+      color='ruby'
     />
   );
   const linkToDomain = (
@@ -68,6 +70,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
       }}
       className="cursor-pointer"
       underline="always"
+      color='ruby'
     />
   );
 

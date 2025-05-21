@@ -9,7 +9,10 @@ import os
 from dotenv import load_dotenv
 
 
-load_dotenv(os.path.dirname(os.path.abspath(__file__ + '/../')) + "/backend/.env.example")
+load_dotenv(
+    os.path.dirname(os.path.abspath(__file__ + "/../")) + "/backend/.env.example"
+)
+
 
 class SkillDatabase:
     CONNECTION_URL = pg.connect(
@@ -332,3 +335,74 @@ class SkillDatabase:
             con=self.CONNECTION_URL,
         ).to_dict("records")
         return dict(map(lambda x: (x["name"], x["count"]), similar_skills))
+
+    def get_all_skills(self):
+        return list(map(lambda x: x["name"], self.all_skills))
+
+    def update_domains(self, skills, categories, predictions):
+        cursor = self.CONNECTION_URL.cursor()
+        cursor.execute("TRUNCATE KeySkillDomain CASCADE")
+        cursor.execute("TRUNCATE Domain CASCADE")
+
+        for category in categories.keys():
+            print(category)
+            cursor.execute("INSERT INTO Domain (name) VALUES(%s)", (category,))
+
+        cursor.execute("SELECT * FROM Domain")
+        db_categories = cursor.fetchall()
+        category_id = {}
+        for c in db_categories:
+            category_id[c[1]] = c[0]
+
+        KEYS = list(categories.keys())
+        for i, skill in enumerate(skills):
+            print(f"{i}/{len(skills)}")
+
+            predictions_with_labels = sorted(
+                zip(KEYS, predictions[i]), key=lambda x: x[1], reverse=True
+            )
+
+            inserted = 0
+            MIN_INSERTED = 5
+            for category, confidence in predictions_with_labels:
+                if confidence * 100 >= 10 or inserted < MIN_INSERTED:
+                    cursor.execute(
+                        "INSERT INTO KeySkillDomain (domain_id, name, confidence) VALUES(%s, %s, %s)",
+                        (category_id[category], skill, confidence),
+                    )
+                    inserted += 1
+        self.CONNECTION_URL.commit()
+
+    def update_categories(self, skills, categories, predictions):
+        cursor = self.CONNECTION_URL.cursor()
+        cursor.execute("TRUNCATE KeySkillCategory CASCADE")
+        cursor.execute("TRUNCATE Category CASCADE")
+
+        for category in categories.keys():
+            print(category)
+            cursor.execute("INSERT INTO Category (name) VALUES(%s)", (category,))
+
+        cursor.execute("SELECT * FROM Category")
+        db_categories = cursor.fetchall()
+        category_id = {}
+        for c in db_categories:
+            category_id[c[1]] = c[0]
+
+        KEYS = list(categories.keys())
+        for i, skill in enumerate(skills):
+            print(f"{i}/{len(skills)}")
+
+            predictions_with_labels = sorted(
+                zip(KEYS, predictions[i]), key=lambda x: x[1], reverse=True
+            )
+
+            inserted = 0
+            MIN_INSERTED = 5
+            for category, confidence in predictions_with_labels:
+                if confidence * 100 >= 10 or inserted < MIN_INSERTED:
+                    cursor.execute(
+                        "INSERT INTO KeySkillCategory (category_id, name, confidence) VALUES(%s, %s, %s)",
+                        (category_id[category], skill, confidence),
+                    )
+                    inserted += 1
+        self.CONNECTION_URL.commit()
