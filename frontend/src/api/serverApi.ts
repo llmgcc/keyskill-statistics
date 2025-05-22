@@ -8,9 +8,10 @@ import {
   Stats,
 } from '@/interfaces';
 import { API } from '@/interfaces/api';
-import { axiosHTTP as axios } from './axiosHttp';
 
 import { Experience } from '@/config/experience';
+
+import { axiosHTTP as axios } from './axiosHttp';
 
 export class ServerAPI implements API {
   async mainStats(): Promise<Stats> {
