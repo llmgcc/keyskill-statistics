@@ -10,9 +10,7 @@ import {
 import { API, SkillsOrderBy } from '@/interfaces/api';
 import { Experience } from '@/config/experience';
 import { filterSkills, sortSkills } from './utils';
-import axios from 'axios';
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
-
+import { axiosHTTP as axios } from './axiosHttp';
 
 
 const HIGHLIGHTS_LIMIT = 5;
