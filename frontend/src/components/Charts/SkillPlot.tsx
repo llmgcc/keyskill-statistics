@@ -45,7 +45,7 @@ export function _SkillPlot({
 
   const chartData = [];
   if (data) {
-    const COUNT_BINS = 15;
+    const COUNT_BINS = 20;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
       const index = data.findIndex((p) => p.bin == i);
       if (index !== -1) {
@@ -55,7 +55,7 @@ export function _SkillPlot({
       }
     }
   }
-
+  
   return (
     <div className="size-full">
       <Skeleton

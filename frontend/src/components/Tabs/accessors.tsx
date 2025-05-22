@@ -243,7 +243,7 @@ export const chartAccessor = <T extends KeySkill>(config: {
   header: () => <div>{config.header}</div>,
   cell: (info) => {
     const color =
-      info.row.original.prev_count &&
+      !info.row.original.prev_count ||
       info.row.original.count >= info.row.original.prev_count
         ? colors.green[400]
         : colors.red[500];
