@@ -67,7 +67,7 @@ export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
     const maxValue = Math.max(...content.map((c) => c.value));
 
     const filteredContent: { name: string; color: string; value: number }[] =
-      content.filter((c) => c.value / maxValue >= 5 / 100);
+      content.filter((c) => c.value / maxValue >= 0 / 100);
     const confidenceSum = filteredContent
       .map((c) => c.value)
       .reduce((a, b) => a + b, 0);

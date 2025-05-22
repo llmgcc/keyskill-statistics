@@ -71,7 +71,10 @@ def get_base_skills(
             VacancySalary.salary_from / Currency.currency_rate,
         ),
     )
-
+    salary = (func.percentile_cont(0.5)
+            .within_group(average_salary_case)
+            .filter(Vacancy.created_at.between(current_from, current_to))
+            .label("average_salary"))
     skills_base = (
         select(
             KeySkill.name.label("name"),
@@ -80,10 +83,7 @@ def get_base_skills(
             prev_count,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case)
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("average_salary"),
+            salary,
         )
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
@@ -103,14 +103,18 @@ def get_base_skills(
             if skill_name
             else True
         )
+        .where(Vacancy.experience == experience if experience is not None else True)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .outerjoin(KeySkillTranslation, KeySkillTranslation.name == KeySkill.name)
         .group_by(KeySkill.name, KeySkillTranslation.name)
+        .having(
+            or_(
+                salary <= settings.max_salary,
+                salary == None,
+            )
+        )
     )
-
-    if experience is not None:
-        skills_base = skills_base.where(Vacancy.experience == experience)
 
     skills_base = skills_base.having(count >= min_count)
 
@@ -118,12 +122,6 @@ def get_base_skills(
         select(*skills_base.c)
         .select_from(skills_base)
         .where(where(skills_base) if where else True)
-        .where(
-            or_(
-                skills_base.c.average_salary <= settings.max_salary,
-                skills_base.c.average_salary == None,
-            )
-        )
         .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .offset(offset)
         .limit(limit)
@@ -176,20 +174,6 @@ def get_base_skills(
             KeySkillImage.image,
             skills.c.translation.label("translation"),
             (skills.c.count / func.max(skills_base.c.count).select()).label("ratio"),
-            # sqlalchemy.func.json_extract_path(
-            #     cast(
-            #         categories_subquery.c.categories[1],
-            #         sqlalchemy.JSON
-            #     ),
-            #     'name'
-            # ).label("category"),
-            #     sqlalchemy.func.json_extract_path(
-            #         cast(
-            #             categories_subquery.c.categories[1],
-            #             sqlalchemy.JSON
-            #         ),
-            #         'name'
-            #     ).label("technology")
         )
         .select_from(skills)
         .join(

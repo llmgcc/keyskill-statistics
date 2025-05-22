@@ -14,7 +14,6 @@ export function SvgHist({ data, width, height, color }: SvgHistProps) {
   const normalized = normalizeData(data, width, height, 0, 0);
 
   const binWidth = Math.abs(normalized[1][0] - normalized[0][0]) * 0.8;
-
   return (
     <div style={{ height: 'inherit' }}>
       <svg
