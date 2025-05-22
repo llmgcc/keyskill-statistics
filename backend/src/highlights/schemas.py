@@ -9,8 +9,7 @@ class HighlightsDefaultResponse(SQLModel):
     prev_count: int | None
     place: int
     prev_place: int | None
+    domains: List[CategoriesResponse] | None
     categories: List[CategoriesResponse] | None
-    technologies: List[CategoriesResponse] | None
     average_salary: float | None
     translation: str | None
-    # chart: List[ChartResponse]

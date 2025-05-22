@@ -7,10 +7,12 @@ import {
   SalaryChart,
   Stats,
 } from '@/interfaces';
-import { API } from '@/interfaces/api';
+import { API, SkillsOrderBy } from '@/interfaces/api';
 import axios from 'axios';
 
 import { Experience } from '@/config/experience';
+
+import { filterSkills, sortSkills } from './utils';
 
 const HIGHLIGHTS_LIMIT = 5;
 
@@ -44,7 +46,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Category[]> {
     const response = await axios.get(
-      `/static-api/technologies/technologies_${period}_${experience ?? 'any'}.json`,
+      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
     );
     return response.data;
   }
@@ -54,7 +56,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Category[]> {
     const response = await axios.get(
-      `/static-api/categories/categories_${period}_${experience ?? 'any'}.json`,
+      `/static-api/domains/domains_${period}_${experience ?? 'any'}.json`,
     );
     return response.data;
   }
@@ -69,59 +71,29 @@ export class StaticAPI implements API {
     category?: string,
     categoryStrict?: boolean,
     skillName?: string,
+    orderBy?: SkillsOrderBy,
   ): Promise<KeySkillServer> {
     const skills = await getSkills(experience, period);
 
-    const getCategoryConfidence = (
-      skill: KeySkill,
-      category: string,
-      key: 'categories' | 'technologies',
-    ) => {
-      const foundCategory = skill[key].find((c) => c.name == category);
+    const filteredSkills = filterSkills(
+      skills,
+      domain,
+      domainStrict,
+      category,
+      categoryStrict,
+      skillName,
+    );
 
-      const strictMode = key == 'categories' ? domainStrict : categoryStrict;
-      if (strictMode) {
-        const maxConfidence = skill[key].reduce(
-          (a, b) => Math.max(a, b.confidence),
-          0,
-        );
-        const maxConfidenceCategory = skill[key].find(
-          (c) => c.confidence == maxConfidence,
-        );
-        if (maxConfidenceCategory?.name !== category) {
-          return null;
-        }
-        return maxConfidenceCategory.confidence;
-      } else {
-        return foundCategory?.confidence ?? null;
-      }
-    };
-
-    let skillsData = skills;
-    if (domain) {
-      skillsData = skillsData.filter(
-        (c) => getCategoryConfidence(c, domain, 'categories') !== null,
-      );
-    }
-    if (category) {
-      skillsData = skillsData.filter(
-        (c) => getCategoryConfidence(c, category, 'technologies') !== null,
-      );
-    }
-
-    console.log(skillName);
-    if (skillName) {
-      skillsData = skillsData.filter((c) =>
-        c.name.toLowerCase().includes(skillName.toLowerCase()),
-      );
-    }
+    const sortedSkills = orderBy
+      ? sortSkills(filteredSkills, orderBy)
+      : filteredSkills;
 
     return {
-      skills: skillsData.slice(
+      skills: sortedSkills.slice(
         offset ?? 0,
         (offset ?? 0) + (limit ?? skills.length),
       ),
-      rows: skillsData.length,
+      rows: sortedSkills.length,
     };
   }
 
@@ -142,7 +114,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Chart[]> {
     const response = await axios.get(
-      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/domains_${period}_${experience ?? 'any'}.json`,
     );
     return response.data[name] as Chart[];
   }
@@ -153,7 +125,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<Chart[]> {
     const response = await axios.get(
-      `/static-api/charts/technologies_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/categories_${period}_${experience ?? 'any'}.json`,
     );
     return response.data[name] as Chart[];
   }
@@ -164,7 +136,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<SalaryChart> {
     const response = await axios.get(
-      `/static-api/charts/technologies_salary_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
     );
     return { max_salary: 1, chart: response.data[name][0] };
   }
@@ -175,7 +147,7 @@ export class StaticAPI implements API {
     experience?: Experience,
   ): Promise<SalaryChart> {
     const response = await axios.get(
-      `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
+      `/static-api/charts/domains_salary_${period}_${experience ?? 'any'}.json`,
     );
     return { max_salary: 1, chart: response.data[name][0] };
   }
@@ -230,7 +202,7 @@ export class StaticAPI implements API {
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
-      .filter((s) => s.prev_count)
+      .filter((s) => s.prev_count && s.prev_count >= 5)
       .sort(
         (a, b) => change(b.count, b.prev_count) - change(a.count, a.prev_count),
       )
@@ -243,7 +215,7 @@ export class StaticAPI implements API {
   ): Promise<KeySkill[]> {
     const skills = await getSkills(experience, period);
     return skills
-      .filter((s) => s.prev_count)
+      .filter((s) => s.prev_count && s.count >= 5)
       .sort(
         (a, b) => change(a.count, a.prev_count) - change(b.count, b.prev_count),
       )

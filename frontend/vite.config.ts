@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
@@ -18,5 +19,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    outDir: path.resolve(__dirname, '../dist'),
   },
 });

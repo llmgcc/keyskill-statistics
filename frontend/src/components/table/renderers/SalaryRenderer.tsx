@@ -4,7 +4,7 @@ import { Skeleton } from '@radix-ui/themes';
 
 import { Experience } from '@/config/experience';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
-import { SkillHist } from '@/components/plot/Hist';
+import { SkillHist } from '@/components/Charts/SkillHist';
 
 import { ProgressBar } from './ProgressBar';
 
@@ -15,7 +15,7 @@ interface SalaryRendererProps {
   selectedPeriod: number;
   selectedExperience?: Experience;
   name: string;
-  key: string;
+  plotKey: string;
   source(
     name: string,
     period: number,
@@ -29,7 +29,7 @@ export function SalaryRenderer({
   selectedPeriod,
   selectedExperience,
   name,
-  key,
+  plotKey,
   source,
 }: SalaryRendererProps) {
   const { stats } = useStatsStore();
@@ -50,10 +50,10 @@ export function SalaryRenderer({
       )}
 
       <Skeleton loading={isLoading} className="size-full">
-        {!isLoading && (
+        {!isLoading && !!salary && salary > 0 && (
           <SkillHist
             name={name}
-            key={key}
+            plotKey={plotKey}
             source={source}
             period={selectedPeriod}
             color={color}

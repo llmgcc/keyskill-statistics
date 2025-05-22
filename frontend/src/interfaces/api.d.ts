@@ -9,6 +9,14 @@ import {
   Stats,
 } from './index';
 
+export interface SkillsOrderBy {
+  column: string;
+  type?: 'default' | 'domain-confidence' | 'category-confidence';
+  asc: boolean;
+  category?: string;
+  domain?: string;
+}
+
 export interface API {
   mainStats: () => Promise<Stats>;
   currencyList: () => Promise<Currency[]>;
@@ -27,6 +35,8 @@ export interface API {
     domainStrict?: boolean,
     category?: string,
     categoryStrict?: boolean,
+    skillName?: string,
+    orderBy?: SkillsOrderBy,
   ) => Promise<KeySkillServer>;
 
   skillPlot: (

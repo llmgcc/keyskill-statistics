@@ -29,7 +29,7 @@ export function ValueChangeRenderer({
         {isValid ? (
           <div>
             {percent
-              ? `${getPercentDifference(current, prev).toFixed(2)}%`
+              ? `${getPercentDifference(current, prev).toFixed(1)}%`
               : difference}
           </div>
         ) : (

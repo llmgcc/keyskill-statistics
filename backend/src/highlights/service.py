@@ -2,12 +2,12 @@ from sqlmodel import Session
 from src.keyskills.service import get_base_skills
 from src.models import *
 from sqlalchemy.sql.expression import nulls_last
-
+from src.config import settings
 
 HIGHLIGHTS_LIMIT = 5
 
 
-def gainers(
+async def gainers(
     session: Session,
     days_period=15,
     min_count=5,
@@ -26,12 +26,12 @@ def gainers(
         experience=experience,
         min_count=min_count,
         order_by=change,
-        where=lambda skills: skills.c.prev_count != 0,
+        where=lambda skills: skills.c.prev_count >= settings.skills_min_count,
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()
 
 
-def decliners(
+async def decliners(
     session: Session,
     days_period=15,
     min_count=5,
@@ -50,12 +50,12 @@ def decliners(
         experience=experience,
         min_count=min_count,
         order_by=change,
-        where=lambda skills: skills.c.prev_count != 0,
+        where=lambda skills: skills.c.prev_count >= settings.skills_min_count,
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()
 
 
-def new_skills(
+async def new_skills(
     session: Session,
     days_period=15,
     min_count=5,
@@ -68,13 +68,13 @@ def new_skills(
         offset=0,
         experience=experience,
         min_count=min_count,
-        order_by=lambda skills: skills.c.place.desc(),
+        order_by=lambda skills: (skills.c.count).desc(),
         where=lambda skills: skills.c.prev_count == 0,
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()
 
 
-def top_salary(
+async def top_salary(
     session: Session,
     days_period=15,
     min_count=5,
@@ -88,11 +88,12 @@ def top_salary(
         experience=experience,
         min_count=min_count,
         order_by=lambda skills: nulls_last(skills.c.average_salary.desc()),
+        where=lambda skills: skills.c.average_salary <= settings.max_salary,
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()
 
 
-def lowest_salary(
+async def lowest_salary(
     session: Session,
     days_period=15,
     min_count=5,
@@ -107,10 +108,10 @@ def lowest_salary(
         min_count=min_count,
         order_by=lambda skills: nulls_last(skills.c.average_salary.asc()),
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()
 
 
-def undefined_salary(
+async def undefined_salary(
     session: Session,
     days_period=15,
     min_count=5,
@@ -126,4 +127,4 @@ def undefined_salary(
         order_by=lambda skills: skills.c.place.asc(),
         where=lambda skills: skills.c.average_salary == None,
     )
-    return session.exec(skills).all()
+    return (await session.exec(skills)).all()

@@ -27,7 +27,7 @@ export class ServerAPI implements API {
     period: number = 10,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await axios.get('/api/technologies/list', {
+    const response = await axios.get('/api/categories/list', {
       params: {
         period,
         experience,
@@ -40,7 +40,7 @@ export class ServerAPI implements API {
     period: number = 10,
     experience?: Experience,
   ): Promise<Category[]> {
-    const response = await axios.get('/api/categories/list', {
+    const response = await axios.get('/api/domains/list', {
       params: {
         period,
         experience,
@@ -144,6 +144,12 @@ export class ServerAPI implements API {
     offset: number,
     period: number,
     experience?: Experience,
+    domain?: string,
+    domainStrict?: boolean,
+    category?: string,
+    categoryStrict?: boolean,
+    skillName?: string,
+    // orderBy?: SkillsOrderBy
   ): Promise<KeySkillServer> {
     const response = await axios.get('/api/key-skills/list', {
       params: {
@@ -151,6 +157,11 @@ export class ServerAPI implements API {
         period,
         limit,
         offset,
+        domain,
+        domain_strict: domainStrict,
+        category,
+        categoryStrict,
+        skill_name: skillName || null,
       },
     });
     return response.data;
