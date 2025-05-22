@@ -17,7 +17,6 @@ interface HighlightsCardProps {
 }
 
 function _HighlightsCard({ highlights }: HighlightsCardProps) {
-  console.log(highlights)
   const [currentTab, setCurrentTab] = useState<string>(
     Object.keys(highlights)?.[0],
   );
