@@ -41,11 +41,14 @@ type KeySkillServer = {
 
 type KeySkill = {
   name: string;
+  translation?: string;
   count: number;
   prev_count?: number;
   place: number;
   prev_place?: number;
   average_salary?: number;
+  domains: Category[];
   categories: Category[];
-  technologies: Category[];
+  image?: string;
+  ratio: number;
 };

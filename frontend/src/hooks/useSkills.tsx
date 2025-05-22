@@ -1,4 +1,5 @@
 import { API } from '@/api/api';
+import { SkillsOrderBy } from '@/interfaces/api';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { Experience } from '@/config/experience';
@@ -13,6 +14,7 @@ interface UseSkillsOptions {
   categoryStrict?: boolean;
   domainStrict?: boolean;
   skillName?: string;
+  orderBy: SkillsOrderBy;
 }
 
 export function useSkills({
@@ -25,6 +27,7 @@ export function useSkills({
   categoryStrict,
   domainStrict,
   skillName,
+  orderBy,
 }: UseSkillsOptions) {
   return useQuery({
     queryKey: [
@@ -38,6 +41,7 @@ export function useSkills({
       categoryStrict,
       domainStrict,
       skillName,
+      orderBy,
     ],
     queryFn: async () => {
       const data = await API.skillsList(
@@ -50,6 +54,7 @@ export function useSkills({
         category,
         categoryStrict,
         skillName,
+        orderBy,
       );
 
       return {

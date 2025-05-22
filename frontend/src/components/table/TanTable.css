@@ -1,5 +1,0 @@
-.border-shadow {
-  box-shadow:
-    inset 0 1px 0 rgb(var(--color-background-secondary)),
-    inset 0 -1px 0 rgb(var(--color-background-secondary));
-}

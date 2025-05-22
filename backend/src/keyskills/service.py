@@ -1,4 +1,4 @@
-from sqlmodel import Session, String, select, func, and_, cast, Date, desc, extract, case
+from sqlmodel import Session, or_, select, func, and_, cast, Date, desc, extract, case
 from src.models import (
     KeySkill,
     Vacancy,
@@ -6,15 +6,14 @@ from src.models import (
     VacancySalary,
     Currency,
     Category,
-    Technology,
+    Domain,
     KeySkillCategory,
-    KeySkillTechnology,
+    KeySkillDomain,
     KeySkillTranslation,
 )
 import datetime
-from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg, json
+from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg
 from src.config import settings
-import sqlalchemy
 
 
 def get_base_skills(
@@ -26,8 +25,9 @@ def get_base_skills(
     order_by=None,
     where=None,
     with_total_count=False,
+    skill_name=None,
 ):
-    current_to = func.now()
+    current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
@@ -71,18 +71,19 @@ def get_base_skills(
             VacancySalary.salary_from / Currency.currency_rate,
         ),
     )
-
+    salary = (func.percentile_cont(0.5)
+            .within_group(average_salary_case)
+            .filter(Vacancy.created_at.between(current_from, current_to))
+            .label("average_salary"))
     skills_base = (
         select(
             KeySkill.name.label("name"),
+            KeySkillTranslation.translation.label("translation"),
             count,
             prev_count,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case)
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("average_salary"),
+            salary,
         )
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
@@ -92,26 +93,59 @@ def get_base_skills(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
+        .where(
+            or_(
+                func.lower(KeySkill.name).contains(func.lower(skill_name)),
+                func.lower(KeySkillTranslation.translation).contains(
+                    func.lower(skill_name)
+                ),
+            )
+            if skill_name
+            else True
+        )
+        .where(Vacancy.experience == experience if experience is not None else True)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .group_by(KeySkill.name)
+        .outerjoin(KeySkillTranslation, KeySkillTranslation.name == KeySkill.name)
+        .group_by(KeySkill.name, KeySkillTranslation.name)
+        .having(
+            or_(
+                salary <= settings.max_salary,
+                salary == None,
+            )
+        )
     )
-
-    if experience is not None:
-        skills_base = skills_base.where(Vacancy.experience == experience)
 
     skills_base = skills_base.having(count >= min_count)
 
     skills = (
         select(*skills_base.c)
         .select_from(skills_base)
-        .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .where(where(skills_base) if where else True)
+        .order_by(order_by(skills_base) if order_by else skills_base.c.place.asc())
         .offset(offset)
         .limit(limit)
     )
 
     def create_categories_subquery():
+        json_object = func.json_build_object(
+            "name", Domain.name, "confidence", KeySkillDomain.confidence
+        )
+        categories_subquery = (
+            select(
+                KeySkillDomain.name,
+                array_agg(
+                    aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
+                ).label("categories"),
+            )
+            .select_from(KeySkillDomain)
+            .join(Domain, Domain.id == KeySkillDomain.domain_id)
+            .group_by(KeySkillDomain.name)
+        ).subquery()
+
+        return categories_subquery
+
+    def create_technology_subquery():
         json_object = func.json_build_object(
             "name", Category.name, "confidence", KeySkillCategory.confidence
         )
@@ -129,52 +163,17 @@ def get_base_skills(
 
         return categories_subquery
 
-    def create_technology_subquery():
-        json_object = func.json_build_object(
-            "name", Technology.name, "confidence", KeySkillTechnology.confidence
-        )
-        categories_subquery = (
-            select(
-                KeySkillTechnology.name,
-                array_agg(
-                    aggregate_order_by(
-                        json_object, KeySkillTechnology.confidence.desc()
-                    )
-                ).label("categories"),
-            )
-            .select_from(KeySkillTechnology)
-            .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-            .group_by(KeySkillTechnology.name)
-        ).subquery()
-
-        return categories_subquery
-
     categories_subquery = create_categories_subquery()
     technologies_subquery = create_technology_subquery()
 
     result = (
         select(
             *skills.c,
-            categories_subquery.c.categories.label("categories"),
-            technologies_subquery.c.categories.label("technologies"),
+            categories_subquery.c.categories.label("domains"),
+            technologies_subquery.c.categories.label("categories"),
             KeySkillImage.image,
-            KeySkillTranslation.translation.label("translation"),
-
-            
-            # sqlalchemy.func.json_extract_path(
-            #     cast(
-            #         categories_subquery.c.categories[1],
-            #         sqlalchemy.JSON
-            #     ),
-            #     'name'
-            # ).label("category"),
-            #     sqlalchemy.func.json_extract_path(
-            #         cast(
-            #             categories_subquery.c.categories[1],
-            #             sqlalchemy.JSON
-            #         ),
-            #         'name'
-            #     ).label("technology")
+            skills.c.translation.label("translation"),
+            (skills.c.count / func.max(skills_base.c.count).select()).label("ratio"),
         )
         .select_from(skills)
         .join(
@@ -187,140 +186,13 @@ def get_base_skills(
             technologies_subquery.c.name == skills.c.name,
             isouter=True,
         )
-        .outerjoin(KeySkillTranslation, KeySkillTranslation.name == skills.c.name)
         .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
-        .order_by(skills.c.place.asc())
+        .order_by(order_by(skills) if order_by else skills.c.place.asc())
     )
 
     if with_total_count:
         return result, skills_base
     return result
-    # count = func.count().filter(
-    #             Vacancy.created_at.between(current_from, current_to)
-    #         ).label('count')
-
-    # prev_count = func.count().filter(
-    #             Vacancy.created_at.between(prev_from, prev_to)
-    #         ).label('prev_count')
-
-    # average_salary_case = case(
-    #     (
-    #         and_(
-    #             VacancySalary.salary_from.is_not(None),
-    #             VacancySalary.salary_to.is_not(None),
-    #         ),
-    #         (
-    #             VacancySalary.salary_from / Currency.currency_rate
-    #             + VacancySalary.salary_to / Currency.currency_rate
-    #         )
-    #         / 2,
-    #     ),
-    #     (
-    #         and_(
-    #             VacancySalary.salary_from.is_(None),
-    #             VacancySalary.salary_to.is_not(None),
-    #         ),
-    #         VacancySalary.salary_to / Currency.currency_rate,
-    #     ),
-    #     (
-    #         and_(
-    #             VacancySalary.salary_from.is_not(None),
-    #             VacancySalary.salary_to.is_(None),
-    #         ),
-    #         VacancySalary.salary_from / Currency.currency_rate,
-    #     ),
-    # )
-
-    # skills_base = (
-    #     select(
-    #         KeySkill.name.label('name'),
-    #         count,
-    #         prev_count,
-    #         func.row_number().over(
-    #             order_by=desc(count)
-    #         ).label('place'),
-    #         func.row_number().over(
-    #             order_by=desc(prev_count)
-    #         ).label('prev_place'),
-    #         func.percentile_cont(0.5)
-    #             .within_group(average_salary_case).filter(
-    #             Vacancy.created_at.between(current_from, current_to)
-    #         ).label('average_salary')
-    #     )
-    #     .select_from(KeySkill)
-    #     .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-    #     .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-    #     .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-    #     .group_by(KeySkill.name)
-    # )
-
-    # if experience is not None:
-    #     skills_base = skills_base.where(Vacancy.experience == experience)
-
-    # skills_base = skills_base.having(count >= 5)
-
-    # skills = (
-    #     select(*skills_base.c)
-    #         .select_from(skills_base)
-    #         .order_by(skills_base.c.place.asc())
-    #         .offset(offset)
-    #         .limit(limit)
-    # )
-
-    # def create_categories_subquery():
-    #     json_object = func.json_build_object(
-    #         "name", Category.name, "confidence", KeySkillCategory.confidence
-    #     )
-    #     categories_subquery = (
-    #         select(
-    #             KeySkillCategory.name,
-    #             func.array_agg(
-    #                 aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
-    #             ).label("categories"),
-    #         )
-    #         .select_from(skills_base)
-    #         .join(KeySkillCategory, KeySkillCategory.name == skills_base.c.name)
-    #         .join(Category, Category.id == KeySkillCategory.category_id)
-    #         .group_by(KeySkillCategory.name)
-    #     ).subquery()
-
-    #     return categories_subquery
-
-    # def create_technology_subquery():
-    #     json_object = func.json_build_object(
-    #         "name", Technology.name, "confidence", KeySkillTechnology.confidence
-    #     )
-    #     categories_subquery = (
-    #         select(
-    #             KeySkillTechnology.name,
-    #             func.array_agg(
-    #                 aggregate_order_by(json_object, KeySkillTechnology.confidence.desc())
-    #             ).label("categories"),
-    #         )
-    #         .select_from(skills_base)
-    #         .join(KeySkillTechnology, KeySkillTechnology.name == skills_base.c.name)
-    #         .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-    #         .group_by(KeySkillTechnology.name)
-    #     ).subquery()
-
-    #     return categories_subquery
-
-    # categories_subquery = create_categories_subquery()
-    # technologies_subquery = create_technology_subquery()
-
-    # result = (
-    #     select(*skills.c, categories_subquery.c.categories.label("categories"), technologies_subquery.c.categories.label("technologies"), KeySkillImage.image, KeySkillTranslation.translation.label('translation'))
-    #         .select_from(skills)
-    #         .join(categories_subquery, categories_subquery.c.name == skills.c.name, isouter=True)
-    #         .join(technologies_subquery, technologies_subquery.c.name == skills.c.name, isouter=True)
-    #         .outerjoin(KeySkillTranslation, KeySkillTranslation.name == skills.c.name)
-    #         .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
-    #         .order_by(skills.c.place.asc())
-    # )
-
-    # return result
-
-
 
 
 def get_skills(date_from: datetime.date, date_to: datetime.date):
@@ -492,6 +364,25 @@ def create_salary_subquery(session, date_from, date_to, number_of_bins):
 
 def create_categories_subquery():
     json_object = func.json_build_object(
+        "name", Domain.name, "confidence", KeySkillDomain.confidence
+    )
+    categories_subquery = (
+        select(
+            KeySkillDomain.name,
+            func.array_agg(
+                aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
+            ).label("categories"),
+        )
+        .select_from(KeySkillDomain)
+        .join(Domain, Domain.id == KeySkillDomain.domain_id)
+        .group_by(KeySkillDomain.name)
+    ).subquery()
+
+    return categories_subquery
+
+
+def create_technology_subquery():
+    json_object = func.json_build_object(
         "name", Category.name, "confidence", KeySkillCategory.confidence
     )
     categories_subquery = (
@@ -509,27 +400,18 @@ def create_categories_subquery():
     return categories_subquery
 
 
-def create_technology_subquery():
-    json_object = func.json_build_object(
-        "name", Technology.name, "confidence", KeySkillTechnology.confidence
-    )
-    categories_subquery = (
-        select(
-            KeySkillTechnology.name,
-            func.array_agg(
-                aggregate_order_by(json_object, KeySkillTechnology.confidence.desc())
-            ).label("categories"),
-        )
-        .select_from(KeySkillTechnology)
-        .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-        .group_by(KeySkillTechnology.name)
-    ).subquery()
-
-    return categories_subquery
-
-
-def skills_list(
-    session: Session, days_period=30, limit=20, offset=0, experience=None, min_count=5
+async def skills_list(
+    session: Session,
+    category,
+    domain,
+    domainStrict,
+    categoryStrict,
+    skill_name=None,
+    days_period=30,
+    limit=20,
+    offset=0,
+    experience=None,
+    min_count=5,
 ):
     skills, skills_base = get_base_skills(
         days_period=days_period,
@@ -538,6 +420,7 @@ def skills_list(
         min_count=min_count,
         experience=experience,
         with_total_count=True,
+        skill_name=skill_name,
     )
 
     current_to = func.now()
@@ -545,615 +428,18 @@ def skills_list(
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=days_period)
 
-    total_count = session.exec(
-        select(func.count(func.distinct(skills_base.c.name))).select_from(skills_base)
+    total_count = (
+        await session.exec(
+            select(func.count(func.distinct(skills_base.c.name))).select_from(
+                skills_base
+            )
+        )
     ).one()
 
     return {
-        "skills": session.exec(skills).all(),
+        "skills": (await session.exec(skills)).all(),
         "count_bins": 1,
         "salary_bins": 1,
         "max_salary": 1,
         "rows": total_count,
     }
-
-    current_to = func.now()
-    current_from = current_to - datetime.timedelta(days=days_period)
-    prev_to = current_from
-    prev_from = prev_to - datetime.timedelta(days=days_period)
-
-    count = (
-        func.count()
-        .filter(Vacancy.created_at.between(current_from, current_to))
-        .label("count")
-    )
-
-    prev_count = (
-        func.count()
-        .filter(Vacancy.created_at.between(prev_from, prev_to))
-        .label("prev_count")
-    )
-
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-
-    skills_base = (
-        select(
-            KeySkill.name.label("name"),
-            count,
-            prev_count,
-            func.row_number().over(order_by=desc(count)).label("place"),
-            func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case)
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("average_salary"),
-        )
-        .select_from(KeySkill)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .group_by(KeySkill.name)
-        .having(count >= 5)
-    )
-
-    skills = (
-        select(*skills_base.c)
-        .select_from(skills_base)
-        .order_by(skills_base.c.place.asc())
-        .offset(offset)
-        .limit(limit)
-    )
-
-    def create_categories_subquery():
-        json_object = func.json_build_object(
-            "name", Category.name, "confidence", KeySkillCategory.confidence
-        )
-        categories_subquery = (
-            select(
-                KeySkillCategory.name,
-                func.array_agg(
-                    aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
-                ).label("categories"),
-            )
-            .select_from(skills_base)
-            .join(KeySkillCategory, KeySkillCategory.name == skills_base.c.name)
-            .join(Category, Category.id == KeySkillCategory.category_id)
-            .group_by(KeySkillCategory.name)
-        ).subquery()
-
-        return categories_subquery
-
-    def create_technology_subquery():
-        json_object = func.json_build_object(
-            "name", Technology.name, "confidence", KeySkillTechnology.confidence
-        )
-        categories_subquery = (
-            select(
-                KeySkillTechnology.name,
-                func.array_agg(
-                    aggregate_order_by(
-                        json_object, KeySkillTechnology.confidence.desc()
-                    )
-                ).label("categories"),
-            )
-            .select_from(skills_base)
-            .join(KeySkillTechnology, KeySkillTechnology.name == skills_base.c.name)
-            .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-            .group_by(KeySkillTechnology.name)
-        ).subquery()
-
-        return categories_subquery
-
-    categories_subquery = create_categories_subquery()
-    technologies_subquery = create_technology_subquery()
-
-    result = (
-        select(
-            *skills.c,
-            categories_subquery.c.categories.label("categories"),
-            technologies_subquery.c.categories.label("technologies"),
-            KeySkillImage.image,
-        )
-        .select_from(skills)
-        .join(
-            categories_subquery,
-            categories_subquery.c.name == skills.c.name,
-            isouter=True,
-        )
-        .join(
-            technologies_subquery,
-            technologies_subquery.c.name == skills.c.name,
-            isouter=True,
-        )
-        .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
-        .order_by(skills.c.place.asc())
-    )
-
-    total_count = session.exec(
-        select(func.count(func.distinct(skills_base.c.name))).select_from(skills_base)
-    ).one()
-
-    return {
-        "skills": session.exec(result).all(),
-        "count_bins": 1,
-        "salary_bins": 1,
-        "max_salary": 1,
-        "rows": total_count,
-    }
-
-    salary_calc = (
-        select(
-            VacancySalary.vacancy_id,
-            case(
-                (
-                    and_(
-                        VacancySalary.salary_from.is_not(None),
-                        VacancySalary.salary_to.is_not(None),
-                    ),
-                    (
-                        VacancySalary.salary_from / Currency.currency_rate
-                        + VacancySalary.salary_to / Currency.currency_rate
-                    )
-                    / 2,
-                ),
-                (
-                    and_(
-                        VacancySalary.salary_from.is_(None),
-                        VacancySalary.salary_to.is_not(None),
-                    ),
-                    VacancySalary.salary_to / Currency.currency_rate,
-                ),
-                (
-                    and_(
-                        VacancySalary.salary_from.is_not(None),
-                        VacancySalary.salary_to.is_(None),
-                    ),
-                    VacancySalary.salary_from / Currency.currency_rate,
-                ),
-            ).label("normalized_salary"),
-        )
-        .join(Currency, Currency.currency_code == VacancySalary.currency)
-        .cte("salary_calc")
-    )
-
-    final_query = (
-        select(
-            skills_base.c.name,
-            skills_base.c.count,
-            skills_base.c.prev_count,
-            # func.row_number().over(
-            #     order_by=desc(skills_base.c.count)
-            # ).label('place'),
-            # func.row_number().over(
-            #     order_by=desc(skills_base.c.prev_count)
-            # ).label('prev_place'),
-            func.percentile_cont(0.5)
-            .within_group(salary_calc.c.normalized_salary)
-            .label("average_salary"),
-        )
-        .select_from(skills_base)
-        .join(KeySkill, KeySkill.name == skills_base.c.name)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id, isouter=True)
-        .join(
-            salary_calc,
-            salary_calc.c.vacancy_id == VacancySalary.vacancy_id,
-            isouter=True,
-        )
-        .group_by(
-            skills_base.c.name,
-            skills_base.c.count,
-            skills_base.c.prev_count,
-        )
-    )
-
-    return session.exec(final_query).all()
-
-    average_salary_case = case(
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            (
-                VacancySalary.salary_from / Currency.currency_rate
-                + VacancySalary.salary_to / Currency.currency_rate
-            )
-            / 2,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_(None),
-                VacancySalary.salary_to.is_not(None),
-            ),
-            VacancySalary.salary_to / Currency.currency_rate,
-        ),
-        (
-            and_(
-                VacancySalary.salary_from.is_not(None),
-                VacancySalary.salary_to.is_(None),
-            ),
-            VacancySalary.salary_from / Currency.currency_rate,
-        ),
-    )
-
-    skills = (
-        select(
-            KeySkill.name,
-            func.count()
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("count"),
-            func.count()
-            .filter(Vacancy.created_at.between(prev_from, prev_to))
-            .label("prev_count"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case)
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("average_salary"),
-        )
-        .select_from(KeySkill)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .group_by(KeySkill.name)
-    )
-
-    skills_with_place = (
-        select(
-            skills.c.name,
-            skills.c.count,
-            skills.c.prev_count,
-            func.row_number().over(order_by=desc(skills.c.count)).label("place"),
-            func.row_number()
-            .over(order_by=desc(skills.c.prev_count))
-            .label("prev_place"),
-            skills.c.average_salary,
-        )
-        .join(KeySkillImage, KeySkillImage.name == skills.c.name, isouter=True)
-        .select_from(skills)
-        .order_by(desc(skills.c.count))
-        .limit(20)
-    )
-
-    return session.exec(skills_with_place).all()
-
-    # total_count = session.exec(
-    #     select(func.count(func.distinct(KeySkill.name)))
-    #     .select_from(KeySkill)
-    #     .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-    #     .where(Vacancy.created_at.between(current_from, current_to))
-    # ).one()
-
-    # skills = (
-    #     select(
-    #         KeySkill.name,
-    #         func.count().filter(
-    #             Vacancy.created_at.between(current_from, current_to)
-    #         ).label('count'),
-    #         func.count().filter(
-    #             Vacancy.created_at.between(prev_from, prev_to)
-    #         ).label('prev_count'),
-    #         func.percentile_cont(0.5)
-    #             .within_group(average_salary_case).filter(
-    #             Vacancy.created_at.between(current_from, current_to)
-    #         )
-    #             .label("average_salary"),
-    #     )
-    #     .select_from(KeySkill)
-    #     .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-    #     .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-    #     .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-    #     .group_by(KeySkill.name)
-    #     .order_by(desc('count'))
-    #     .offset(offset)
-    #     .limit(limit)
-    # ).cte("skills")
-
-    # COUNT_BINS = 15
-    # # count_chart = create_chart_subquery(
-    # #     current_to - datetime.timedelta(days=days_period * 2), current_to, COUNT_BINS
-    # # )
-
-    # SALARY_BINS = 20
-    # # salary_chart, max_salary = create_salary_subquery(
-    # #     session, current_to - datetime.timedelta(days=days_period), current_to, SALARY_BINS
-    # # )
-    # categories_subquery = create_categories_subquery()
-    # technologies_subquery = create_technology_subquery()
-
-    # skills_with_place = (
-    #     select(
-    #         skills.c.name,
-    #         skills.c.count,
-    #         skills.c.prev_count,
-    #         func.row_number().over(
-    #             order_by=desc(skills.c.count)
-    #         ).label('place'),
-    #         func.row_number().over(
-    #             order_by=desc(skills.c.prev_count)
-    #         ).label('prev_place'),
-    #         skills.c.average_salary,
-    #         KeySkillImage.image,
-    #         # count_chart.c.chart,
-    #         categories_subquery.c.categories.label("categories"),
-    #         technologies_subquery.c.categories.label("technologies"),
-    #         # salary_chart.c.salary_chart,
-    #     )
-    #     .select_from(skills)
-    #     .outerjoin(KeySkillImage, KeySkillImage.name == skills.c.name)
-    #     # .outerjoin(count_chart, count_chart.c.name == skills.c.name)
-    #     .outerjoin(
-    #         categories_subquery,
-    #         skills.c.name == categories_subquery.c.name,
-    #     )
-    #     .outerjoin(
-    #         technologies_subquery,
-    #         skills.c.name == technologies_subquery.c.name,
-    #     )
-    #     # .outerjoin(
-    #     #     salary_chart,
-    #     #     skills.c.name == salary_chart.c.name,
-    #     # )
-    #     .order_by(desc(skills.c.count))
-    # )
-
-    # return {
-    #     'skills': session.exec(skills_with_place).all(),
-    #     'count_bins': COUNT_BINS,
-    #     'salary_bins': SALARY_BINS,
-    #     'max_salary': 1,
-    #     'rows': total_count
-    # }
-
-    # # def create_chart_subquery(date_from, date_to, number_of_bins):
-    # #     right = extract("epoch", date_to)
-    # #     left = extract("epoch", date_from)
-    # #     bin_size = (right - left) / number_of_bins
-    # #     vacancy_date = extract("epoch", cast(Vacancy.created_at, Date))
-    # #     bin = func.ceil(((vacancy_date - left) / bin_size)).label("bin")
-
-    # #     count_chart = (
-    # #         select(
-    # #             KeySkill.name,
-    # #             bin,
-    # #             func.count().label("count")
-    # #         )
-    # #         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-    # #         .where((cast(Vacancy.created_at, Date) > date_from))
-    # #         .group_by(KeySkill.name, "bin")
-    # #         .subquery()
-    # #     )
-    # #     chart_agg = (
-    # #         select(
-    # #             count_chart.c.name,
-    # #             func.json_agg(
-    # #                 func.json_build_object("bin", count_chart.c.bin, "count", count_chart.c.count)
-    # #             ).label("chart")
-    # #         )
-    # #         .group_by(count_chart.c.name)
-    # #         .subquery()
-    # #     )
-    # #     return chart_agg
-
-    # # def create_categories_subquery():
-    # #     json_object = func.json_build_object(
-    # #         "name", Category.name, "confidence", KeySkillCategory.confidence
-    # #     )
-    # #     categories_subquery = (
-    # #         select(
-    # #             KeySkillCategory.name,
-    # #             func.array_agg(
-    # #                 aggregate_order_by(json_object, KeySkillCategory.confidence.desc())
-    # #             ).label("categories"),
-    # #         )
-    # #         .select_from(skills)
-    # #         .join(KeySkillCategory, KeySkillCategory.name == skills.c.name)
-    # #         .join(Category, Category.id == KeySkillCategory.category_id)
-    # #         .group_by(KeySkillCategory.name)
-    # #     ).subquery()
-
-    # #     return categories_subquery
-
-    # # def create_technology_subquery():
-    # #     json_object = func.json_build_object(
-    # #         "name", Technology.name, "confidence", KeySkillTechnology.confidence
-    # #     )
-    # #     categories_subquery = (
-    # #         select(
-    # #             KeySkillTechnology.name,
-    # #             func.array_agg(
-    # #                 aggregate_order_by(json_object, KeySkillTechnology.confidence.desc())
-    # #             ).label("categories"),
-    # #         )
-    # #         .select_from(skills)
-    # #         .join(KeySkillTechnology, KeySkillTechnology.name == skills.c.name)
-    # #         .join(Technology, Technology.id == KeySkillTechnology.technology_id)
-    # #         .group_by(KeySkillTechnology.name)
-    # #     ).subquery()
-
-    # #     return categories_subquery
-
-    # # def create_salary_subquery(session, date_from, date_to, number_of_bins):
-    # #     average_salary_case = case(
-    # #         (
-    # #             and_(
-    # #                 VacancySalary.salary_from.is_not(None),
-    # #                 VacancySalary.salary_to.is_not(None),
-    # #             ),
-    # #             (
-    # #                 VacancySalary.salary_from / Currency.currency_rate
-    # #                 + VacancySalary.salary_to / Currency.currency_rate
-    # #             )
-    # #             / 2,
-    # #         ),
-    # #         (
-    # #             and_(
-    # #                 VacancySalary.salary_from.is_(None),
-    # #                 VacancySalary.salary_to.is_not(None),
-    # #             ),
-    # #             VacancySalary.salary_to / Currency.currency_rate,
-    # #         ),
-    # #         (
-    # #             and_(
-    # #                 VacancySalary.salary_from.is_not(None),
-    # #                 VacancySalary.salary_to.is_(None),
-    # #             ),
-    # #             VacancySalary.salary_from / Currency.currency_rate,
-    # #         ),
-    # #     )
-
-    # #     vacancies = (
-    # #         select(
-    # #             KeySkill.name.label("name"),
-    # #             Vacancy.created_at,
-    # #             average_salary_case.label("average_salary"),
-    # #             Currency.currency_code,
-    # #         )
-    # #         .select_from(Vacancy)
-    # #         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
-    # #         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
-    # #         .join(Currency, Currency.currency_code == VacancySalary.currency)
-    # #         .where((cast(Vacancy.created_at, Date) > date_from))
-    # #     )
-
-    # #     avg_salary = session.exec(select(func.avg(vacancies.c.average_salary))).all()[0]
-
-    # #     right = avg_salary * 5
-    # #     left = 0
-
-    # #     bin_size = (right - left) / number_of_bins
-    # #     vacancy_average_salary = vacancies.c.average_salary.label("average_salary")
-    # #     bin = func.ceil(((vacancy_average_salary - left) / bin_size)).label("bin")
-    # #     bins = (
-    # #         select(vacancies.c.name, bin, vacancy_average_salary)
-    # #         .select_from(vacancies)
-    # #         .where((cast(vacancies.c.created_at, Date) > date_from))
-    # #         .where(bin >= 1)
-    # #         .where(bin <= number_of_bins)
-    # #         .order_by(vacancies.c.name.desc())
-    # #     ).subquery()
-
-    # #     average_salary_per_skill = (
-    # #         select(
-    # #             bins.c.name,
-    # #             # sqlalchemy.func.median(bins.c.average_salary).label('average_salary')
-    # #             func.percentile_cont(0.5)
-    # #             .within_group(bins.c.average_salary)
-    # #             .label("average_salary"),
-    # #         )
-    # #         .select_from(bins)
-    # #         .group_by(bins.c.name)
-    # #     ).subquery()
-
-    # #     grouped_bins_count = func.count().label("count")
-    # #     grouped_bins = (
-    # #         select(bins.c.name, bins.c.bin, grouped_bins_count)
-    # #         .group_by(bins.c.name, bins.c.bin)
-    # #         .order_by(grouped_bins_count.desc())
-    # #     ).subquery()
-
-    # #     bin_label = grouped_bins.c.bin.label("bin")
-    # #     json_object = func.json_build_object(
-    # #         "bin", bin_label, "count", grouped_bins.c.count
-    # #     )
-    # #     salary_chart = (
-    # #         select(
-    # #             grouped_bins.c.name,
-    # #             func.to_json(
-    # #                 func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
-    # #             ).label("salary_chart"),
-    # #         ).group_by(grouped_bins.c.name)
-    # #     ).subquery()
-
-    # #     salary_chart_with_avg = (
-    # #         select(
-    # #             salary_chart.c.name,
-    # #             salary_chart.c.salary_chart,
-    # #             average_salary_per_skill.c.average_salary,
-    # #         ).join(
-    # #             average_salary_per_skill,
-    # #             average_salary_per_skill.c.name == salary_chart.c.name,
-    # #         )
-    # #     ).subquery()
-
-    # #     return salary_chart_with_avg
-
-    # # COUNT_BINS = 15
-    # # count_chart = create_chart_subquery(
-    # #     current_to - datetime.timedelta(days=days_period * 2), current_to, COUNT_BINS
-    # # )
-
-    # # SALARY_BINS = 20
-    # # salary_chart = create_salary_subquery(
-    # #     session, current_to - datetime.timedelta(days=days_period), current_to, SALARY_BINS
-    # # )
-    # # categories_subquery = create_categories_subquery()
-    # # technologies_subquery = create_technology_subquery()
-
-    # # skills_with_place = (
-    # #     select(
-    # #         skills.c.name,
-    # #         skills.c.count,
-    # #         skills.c.prev_count,
-    # #         func.row_number().over(
-    # #             order_by=desc(skills.c.count)
-    # #         ).label('place'),
-    # #         func.row_number().over(
-    # #             order_by=desc(skills.c.prev_count)
-    # #         ).label('prev_place'),
-    # #         count_chart.c.chart,
-    # #         KeySkillImage.image,
-    # #         categories_subquery.c.categories.label("categories"),
-    # #         technologies_subquery.c.categories.label("technologies"),
-    # #         salary_chart.c.salary_chart,
-    # #         salary_chart.c.average_salary
-    # #     )
-    # #     .select_from(skills)
-    # #     .outerjoin(count_chart, count_chart.c.name == skills.c.name)
-    # #     .outerjoin(KeySkillImage, skills.c.name == KeySkillImage.name)
-    # #     .outerjoin(
-    # #         categories_subquery,
-    # #         skills.c.name == categories_subquery.c.name,
-    # #     )
-    # #     .outerjoin(
-    # #         technologies_subquery,
-    # #         skills.c.name == technologies_subquery.c.name,
-    # #     )
-    # #     .outerjoin(
-    # #         salary_chart,
-    # #         skills.c.name == salary_chart.c.name,
-    # #     )
-    # #     .order_by(desc(skills.c.count))
-    # # )
-
-    # # return {
-    # #     'skills': session.exec(skills_with_place).all(),
-    # #     'count_bins': COUNT_BINS,
-    # #     'salary_bins': SALARY_BINS
-    # # }
