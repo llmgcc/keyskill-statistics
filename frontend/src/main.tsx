@@ -12,7 +12,11 @@ import { Theme } from '@radix-ui/themes';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Theme>
-      <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'}>
+      <BrowserRouter
+        basename={
+          process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
+        }
+      >
         <App />
       </BrowserRouter>
     </Theme>

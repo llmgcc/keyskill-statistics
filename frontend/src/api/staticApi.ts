@@ -8,10 +8,11 @@ import {
   Stats,
 } from '@/interfaces';
 import { API, SkillsOrderBy } from '@/interfaces/api';
-import { Experience } from '@/config/experience';
-import { filterSkills, sortSkills } from './utils';
-import { axiosHTTP as axios } from './axiosHttp';
 
+import { Experience } from '@/config/experience';
+
+import { axiosHTTP as axios } from './axiosHttp';
+import { filterSkills, sortSkills } from './utils';
 
 const HIGHLIGHTS_LIMIT = 5;
 
