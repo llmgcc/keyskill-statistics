@@ -5,8 +5,9 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/keyskill-statistics/',
   server: {
-    host: true,
+    // host: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
@@ -21,7 +22,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, '../docs'),
+    outDir: path.resolve(__dirname, '../dist'),
     
   },
 });
