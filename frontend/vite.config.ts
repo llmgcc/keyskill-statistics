@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/keyskill-statistics/',
+  base: process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/',
   server: {
     // host: true,
     proxy: {
