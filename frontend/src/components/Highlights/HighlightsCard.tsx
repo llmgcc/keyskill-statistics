@@ -17,6 +17,7 @@ interface HighlightsCardProps {
 }
 
 function _HighlightsCard({ highlights }: HighlightsCardProps) {
+  console.log(highlights)
   const [currentTab, setCurrentTab] = useState<string>(
     Object.keys(highlights)?.[0],
   );
@@ -53,7 +54,7 @@ function _HighlightsCard({ highlights }: HighlightsCardProps) {
       </div>
       <div className="p-2">
         <div>
-          {currentTab && (
+          {!!currentTab && (
             <HighlightsCardTab
               title={currentTab}
               source={highlights[currentTab].source}
