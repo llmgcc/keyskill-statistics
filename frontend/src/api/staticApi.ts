@@ -8,11 +8,12 @@ import {
   Stats,
 } from '@/interfaces';
 import { API, SkillsOrderBy } from '@/interfaces/api';
-import axios from 'axios';
-
 import { Experience } from '@/config/experience';
-
 import { filterSkills, sortSkills } from './utils';
+import axios from 'axios';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
+
+
 
 const HIGHLIGHTS_LIMIT = 5;
 
