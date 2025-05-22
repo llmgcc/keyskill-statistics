@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Skeleton } from '@radix-ui/themes';
 import { Cell, flexRender, Table } from '@tanstack/react-table';
 

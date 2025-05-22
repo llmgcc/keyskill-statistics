@@ -14,7 +14,7 @@ export function Navigation() {
   const stats = useStatsStore((state) => state.stats);
   const { t } = useTranslation();
 
-  const { ref, offset } = useStickyOffset('navigation');
+  const { ref, offset } = useStickyOffset<HTMLDivElement>('navigation');
 
   const navbarStats = [
     {

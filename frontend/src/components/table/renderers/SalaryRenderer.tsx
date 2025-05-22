@@ -49,7 +49,6 @@ export function SalaryRenderer({
         />
       )}
 
-
       <Skeleton loading={isLoading} className="size-full">
         {!isLoading && !!salary && salary > 0 && (
           <SkillHist
