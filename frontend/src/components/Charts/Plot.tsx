@@ -17,7 +17,7 @@ function _Plot({ data, color }: PlotProps) {
 
   useLayoutEffect(() => {
     if (!svgWrapper.current) return;
-    
+
     setSize({
       width: svgWrapper.current.clientWidth,
       height: svgWrapper.current.clientHeight,

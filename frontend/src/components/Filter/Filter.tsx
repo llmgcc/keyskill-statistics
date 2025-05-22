@@ -8,7 +8,7 @@ import { PeriodSelect } from './PeriodSelect';
 
 export function Filter() {
   const { t } = useTranslation();
-  const { ref, offset } = useStickyOffset('filters');
+  const { ref, offset } = useStickyOffset<HTMLDivElement>('filters');
 
   return (
     <div

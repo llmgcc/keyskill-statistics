@@ -55,7 +55,7 @@ export function _SkillPlot({
       }
     }
   }
-  
+
   return (
     <div className="size-full">
       <Skeleton

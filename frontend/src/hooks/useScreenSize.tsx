@@ -15,12 +15,14 @@ function getScreenSize() {
 }
 
 export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreenSize] = useState<ScreenSize>(() => getScreenSize());
+  const [screenSize, setScreenSize] = useState<ScreenSize>(() =>
+    getScreenSize(),
+  );
 
   useEffect(() => {
     function handleResize() {
       const newSize = getScreenSize();
-      setScreenSize(prev => {
+      setScreenSize((prev) => {
         if (
           prev.isMobile === newSize.isMobile &&
           prev.isTablet === newSize.isTablet &&

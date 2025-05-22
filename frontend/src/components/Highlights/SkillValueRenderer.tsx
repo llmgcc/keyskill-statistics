@@ -1,7 +1,7 @@
 import { KeySkill } from '@/interfaces';
 import { MdArrowRightAlt } from 'react-icons/md';
 
-import { ValueChangeRenderer } from '@/components/table/renderers/ValueChangeRenderer';
+import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
 
 interface SkillValueRendererProps {
   skill: KeySkill;

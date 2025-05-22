@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useStickyHeights } from '@/store/stickyHeightsStore';
 
-export const useStickyOffset = (id: string) => {
-  const ref = useRef<HTMLDivElement | HTMLTableSectionElement>(null);
+export const useStickyOffset = <T extends HTMLElement>(id: string) => {
+  const ref = useRef<T | null>(null);
   const { setHeight, getOffset } = useStickyHeights();
 
   useEffect(() => {

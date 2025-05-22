@@ -14,7 +14,8 @@ export function DataTableHeader<T extends object>({
   table,
 }: DataTableHeaderProps<T>) {
   const { isTablet, isMobile } = useScreenSize();
-  const { ref, offset } = useStickyOffset('tableHeader');
+  const { ref, offset } =
+    useStickyOffset<HTMLTableSectionElement>('tableHeader');
 
   function sortingIcon(header: Header<T, unknown>) {
     function sortingDirection() {

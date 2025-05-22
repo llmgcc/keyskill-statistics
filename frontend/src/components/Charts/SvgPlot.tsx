@@ -18,7 +18,7 @@ export function SvgPlot({
   const normalized = normalizeData(data, width, height, 5, 5);
 
   const [curve, connection] = svgCurveFromPoints(normalized, height);
-  
+
   return (
     <div style={{ height: 'inherit' }}>
       <svg

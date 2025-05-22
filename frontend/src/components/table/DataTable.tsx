@@ -1,4 +1,4 @@
-import { Dispatch, memo, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   ColumnDef,
   getCoreRowModel,
