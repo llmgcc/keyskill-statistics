@@ -8,8 +8,7 @@ import {
   Stats,
 } from '@/interfaces';
 import { API } from '@/interfaces/api';
-import axios from 'axios';
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
+import { axiosHTTP as axios } from './axiosHttp';
 
 import { Experience } from '@/config/experience';
 
