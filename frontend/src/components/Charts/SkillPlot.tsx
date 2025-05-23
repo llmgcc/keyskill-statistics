@@ -44,7 +44,7 @@ export function _SkillPlot({
   });
 
   const chartData = [];
-  if (data) {
+  if (data?.length) {
     const COUNT_BINS = 20;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
       const index = data.findIndex((p) => p.bin == i);
@@ -62,7 +62,7 @@ export function _SkillPlot({
         loading={isLoading || isFetching || !chartData.length}
         className="size-full"
       >
-        {!!chartData.length && <Plot data={chartData} color={color} />}
+        {!!chartData?.length && <Plot data={chartData} color={color} />}
       </Skeleton>
     </div>
   );

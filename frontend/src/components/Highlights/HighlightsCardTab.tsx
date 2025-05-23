@@ -40,7 +40,7 @@ export function _HighlightsCardTab({
   });
 
   const defaultItem: KeySkill = {
-    name: '-'.repeat(50),
+    name: '-'.repeat(10),
     count: 100,
     prev_count: 50,
     domains: [],
