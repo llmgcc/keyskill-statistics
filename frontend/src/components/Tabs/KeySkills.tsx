@@ -18,6 +18,7 @@ import { SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { DataTable } from '../Table/DataTable';
 import {
   chartAccessor,
+  complexityAccessor,
   confidenceAccessor,
   countAccessor,
   placeAccessor,
@@ -121,6 +122,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
               }),
             ]
           : []),
+        complexityAccessor({accessorKey: 'complexity'}),
         salaryAccessor({
           accessorKey: 'average_salary',
           isLoading: isLoading || isFetching,

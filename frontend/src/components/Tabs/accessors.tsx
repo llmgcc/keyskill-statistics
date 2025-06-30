@@ -13,6 +13,9 @@ import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRen
 import { SkillPlot } from '../Charts/SkillPlot';
 import { SkillDescription } from '../SkillDescription/SkillDescription';
 import { CategoryDescription } from '../ui/CategoryDescription';
+import { Badge } from "@chakra-ui/react"
+import { ProgressBar } from '../Table/renderers/ProgressBar';
+import { ProgressCircle } from "@chakra-ui/react"
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -24,6 +27,31 @@ export const placeAccessor = <T extends KeySkill>(config: {
   size: config.size || 50,
   cell: ({ getValue }) => (
     <div className="text-text-secondary">{getValue() as number}</div>
+  ),
+  meta: {
+    alignRight: true,
+  },
+});
+
+
+export const complexityAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  header?: string;
+  size?: number;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: config.header ?? 'Complexity',
+  size: config.size || 150,
+  cell: ({ getValue }) => (
+    <div className='relative flex items-center justify-end'>
+    <ProgressCircle.Root value={75} size={'xs'}>
+      <ProgressCircle.Circle color={'red'}>
+        <ProgressCircle.Track />
+        <ProgressCircle.Range strokeLinecap="round" />
+      </ProgressCircle.Circle>
+    </ProgressCircle.Root>
+          <div className='ml-1'>46.25%</div>
+    </div>
   ),
   meta: {
     alignRight: true,

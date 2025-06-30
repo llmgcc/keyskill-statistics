@@ -8,6 +8,8 @@ import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
 import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 import { GithubRepo } from './GithubRepo';
+import { IoSearch } from 'react-icons/io5';
+import { NavigationSearch } from './NavigationSearch';
 
 export function Navigation() {
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ export function Navigation() {
         <div
           className={`app-container flex h-12 w-full items-center justify-between py-4`}
         >
-          <div className="flex items-center justify-center text-sm">
+          <div className="flex items-center justify-center text-sm gap-6">
             <div className="flex items-center text-text">
               <div className="flex size-5 items-center justify-center rounded">
                 <div>
@@ -74,8 +76,18 @@ export function Navigation() {
                 KEYSKILLS
               </div>
             </div>
+
+            <div className='flex text-sm gap-6 text-text-primary font-[600]'>
+              <div className='hover:text-background-accent cursor-pointer'>Skills</div>
+              <div className='hover:text-background-accent cursor-pointer'>Domains</div>
+              <div className='hover:text-background-accent cursor-pointer'>Categories</div>
+            </div>
           </div>
+          <div></div>
           <div className="flex items-center">
+            <div className="mx-2 flex items-center">
+              <NavigationSearch />
+            </div>
             <div className="mx-2 flex items-center">
               <ThemeSwitch />
             </div>

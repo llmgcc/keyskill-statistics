@@ -17,7 +17,7 @@ import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 import { TextSection } from '@/components/TextSection/TextSection';
-
+import { Provider } from "@/components/ui/provider"
 import { Tabs } from './components/Tabs/Tabs';
 
 export const queryClient = new QueryClient({
@@ -64,6 +64,7 @@ export default function App() {
   }, [location.search]);
 
   return (
+    <Provider>
     <I18nextProvider i18n={i18n}>
       <QueryClientProvider client={queryClient}>
         <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
@@ -83,5 +84,6 @@ export default function App() {
         </div>
       </QueryClientProvider>
     </I18nextProvider>
+    </Provider>
   );
 }

@@ -8,7 +8,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
-
+import { Grid } from './Grid';
 interface TextSectionProps {
   onLinkClick?: (tabName: string) => void;
 }
@@ -75,7 +75,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
   );
 
   return (
-    <div className="app-container">
+    <div className="app-container relative">
       <div className="flex justify-between py-12">
         <div className="flex-col items-center justify-center">
           <h1 className="text-4xl font-bold leading-[130%] text-text">
@@ -126,6 +126,8 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
           </div>
         </div>
       </div>
+
+      {/* <Grid></Grid> */}
     </div>
   );
 }
