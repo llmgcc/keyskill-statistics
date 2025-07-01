@@ -8,7 +8,9 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
+
 import { Grid } from './Grid';
+
 interface TextSectionProps {
   onLinkClick?: (tabName: string) => void;
 }

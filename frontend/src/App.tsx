@@ -12,12 +12,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import { Provider } from '@/components/ui/provider';
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 import { TextSection } from '@/components/TextSection/TextSection';
-import { Provider } from "@/components/ui/provider"
+
 import { Tabs } from './components/Tabs/Tabs';
 
 export const queryClient = new QueryClient({
@@ -65,25 +66,25 @@ export default function App() {
 
   return (
     <Provider>
-    <I18nextProvider i18n={i18n}>
-      <QueryClientProvider client={queryClient}>
-        <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
-          <Navigation />
-          <TextSection
-            onLinkClick={(tabName) => {
-              navigate({ search: `?tab=${tabName}` }, { replace: true });
-              scrollToTabs();
-            }}
-          />
-          <Filter />
-          <Highlights />
-          <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
-          <div ref={tabsRef}>
-            <Tabs />
+      <I18nextProvider i18n={i18n}>
+        <QueryClientProvider client={queryClient}>
+          <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
+            <Navigation />
+            <TextSection
+              onLinkClick={(tabName) => {
+                navigate({ search: `?tab=${tabName}` }, { replace: true });
+                scrollToTabs();
+              }}
+            />
+            <Filter />
+            <Highlights />
+            <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
+            <div ref={tabsRef}>
+              <Tabs />
+            </div>
           </div>
-        </div>
-      </QueryClientProvider>
-    </I18nextProvider>
+        </QueryClientProvider>
+      </I18nextProvider>
     </Provider>
   );
 }

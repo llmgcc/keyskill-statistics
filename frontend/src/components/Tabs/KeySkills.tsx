@@ -122,7 +122,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
               }),
             ]
           : []),
-        complexityAccessor({accessorKey: 'complexity'}),
+        complexityAccessor({ accessorKey: 'complexity' }),
         salaryAccessor({
           accessorKey: 'average_salary',
           isLoading: isLoading || isFetching,

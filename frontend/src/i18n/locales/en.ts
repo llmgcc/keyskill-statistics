@@ -55,6 +55,10 @@ export default {
       domains: 'Domains',
       categories: 'Categories',
       skills: 'Key skills',
+      search: 'Search',
+      all: 'All',
+      navigate: 'Navigate',
+      close: 'Close'
     },
     domains: Domains,
     domainsShort: DomainShort,

@@ -22,7 +22,7 @@ body {
 }
 
 html {
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable !important;
   background-color: rgb(var(--color-background-primary)) !important;
 }
 

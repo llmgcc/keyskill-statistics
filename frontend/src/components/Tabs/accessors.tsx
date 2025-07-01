@@ -1,5 +1,6 @@
 import { Chart, KeySkill, SalaryChart } from '@/interfaces';
 import { getPercentDifference } from '@/utils/common';
+import { Badge, ProgressCircle } from '@chakra-ui/react';
 import { Skeleton } from '@radix-ui/themes';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
 import { GoDiff } from 'react-icons/go';
@@ -12,10 +13,8 @@ import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRen
 
 import { SkillPlot } from '../Charts/SkillPlot';
 import { SkillDescription } from '../SkillDescription/SkillDescription';
-import { CategoryDescription } from '../ui/CategoryDescription';
-import { Badge } from "@chakra-ui/react"
 import { ProgressBar } from '../Table/renderers/ProgressBar';
-import { ProgressCircle } from "@chakra-ui/react"
+import { CategoryDescription } from '../ui/CategoryDescription';
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -33,7 +32,6 @@ export const placeAccessor = <T extends KeySkill>(config: {
   },
 });
 
-
 export const complexityAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
@@ -43,14 +41,14 @@ export const complexityAccessor = <T extends KeySkill>(config: {
   header: config.header ?? 'Complexity',
   size: config.size || 150,
   cell: ({ getValue }) => (
-    <div className='relative flex items-center justify-end'>
-    <ProgressCircle.Root value={75} size={'xs'}>
-      <ProgressCircle.Circle color={'red'}>
-        <ProgressCircle.Track />
-        <ProgressCircle.Range strokeLinecap="round" />
-      </ProgressCircle.Circle>
-    </ProgressCircle.Root>
-          <div className='ml-1'>46.25%</div>
+    <div className="relative flex items-center justify-end">
+      <ProgressCircle.Root value={75} size={'xs'}>
+        <ProgressCircle.Circle color={'red'}>
+          <ProgressCircle.Track />
+          <ProgressCircle.Range strokeLinecap="round" />
+        </ProgressCircle.Circle>
+      </ProgressCircle.Root>
+      <div className="ml-1">46.25%</div>
     </div>
   ),
   meta: {

@@ -51,6 +51,10 @@ export default {
       domains: 'Направления',
       categories: 'Категории',
       skills: 'Ключевые навыки',
+      search: 'Поиск',
+      all: 'Все',
+      navigate: 'Навигация',
+      close: 'Закрыть'
     },
     domains: {
       [Domains['Frontend development']]: 'Frontend разработка',

@@ -1,5 +1,6 @@
 import { useStatsStore } from '@/store/statsStore';
 import { useTranslation } from 'react-i18next';
+import { IoSearch } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 import { useStickyOffset } from '@/hooks/useStickyOffset';
@@ -8,7 +9,6 @@ import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
 import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 import { GithubRepo } from './GithubRepo';
-import { IoSearch } from 'react-icons/io5';
 import { NavigationSearch } from './NavigationSearch';
 
 export function Navigation() {
@@ -55,7 +55,7 @@ export function Navigation() {
         <div
           className={`app-container flex h-12 w-full items-center justify-between py-4`}
         >
-          <div className="flex items-center justify-center text-sm gap-6">
+          <div className="flex items-center justify-center gap-6 text-sm">
             <div className="flex items-center text-text">
               <div className="flex size-5 items-center justify-center rounded">
                 <div>
@@ -77,10 +77,16 @@ export function Navigation() {
               </div>
             </div>
 
-            <div className='flex text-sm gap-6 text-text-primary font-[600]'>
-              <div className='hover:text-background-accent cursor-pointer'>Skills</div>
-              <div className='hover:text-background-accent cursor-pointer'>Domains</div>
-              <div className='hover:text-background-accent cursor-pointer'>Categories</div>
+            <div className="flex gap-6 text-sm font-[600] text-text-primary">
+              <div className="cursor-pointer hover:text-background-accent">
+                Skills
+              </div>
+              <div className="cursor-pointer hover:text-background-accent">
+                Domains
+              </div>
+              <div className="cursor-pointer hover:text-background-accent">
+                Categories
+              </div>
             </div>
           </div>
           <div></div>
