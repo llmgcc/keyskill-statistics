@@ -58,7 +58,7 @@ export default {
       search: 'Search',
       all: 'All',
       navigate: 'Navigate',
-      close: 'Close'
+      close: 'Close',
     },
     domains: Domains,
     domainsShort: DomainShort,

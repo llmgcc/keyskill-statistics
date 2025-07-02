@@ -1,6 +1,5 @@
 import { useStatsStore } from '@/store/statsStore';
 import { useTranslation } from 'react-i18next';
-import { IoSearch } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 import { useStickyOffset } from '@/hooks/useStickyOffset';

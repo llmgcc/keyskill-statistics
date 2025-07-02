@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/',
   server: {
-    // host: true,
+    host: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8000',

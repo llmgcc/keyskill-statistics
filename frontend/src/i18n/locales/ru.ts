@@ -54,7 +54,7 @@ export default {
       search: 'Поиск',
       all: 'Все',
       navigate: 'Навигация',
-      close: 'Закрыть'
+      close: 'Закрыть',
     },
     domains: {
       [Domains['Frontend development']]: 'Frontend разработка',

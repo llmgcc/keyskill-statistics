@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { IoCloseCircleSharp, IoSearch } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
@@ -22,7 +23,11 @@ import { useSkills } from '@/hooks/useSkills';
 import { SkillDescription } from '../SkillDescription/SkillDescription';
 import { CategoryDescription } from '../ui/CategoryDescription';
 
-interface NavigationSearchRowProps<T extends { name: string }> {
+interface CategoryBase {
+  name: string;
+}
+
+interface NavigationSearchRowProps<T extends CategoryBase> {
   title: string;
   data: T[];
   valueRenderer: (data: T) => JSX.Element;
@@ -30,9 +35,10 @@ interface NavigationSearchRowProps<T extends { name: string }> {
   startingIndex: number;
   hoveredIndex: number | undefined;
   isLoading: boolean;
+  onClick: (value: string) => void;
 }
 
-function NavigationSearchRow<T extends { name: string }>({
+function NavigationSearchRow<T extends CategoryBase>({
   title,
   data,
   valueRenderer,
@@ -40,6 +46,7 @@ function NavigationSearchRow<T extends { name: string }>({
   startingIndex,
   hoveredIndex,
   isLoading,
+  onClick,
 }: NavigationSearchRowProps<T>) {
   if (!data.length) {
     return null;
@@ -60,6 +67,26 @@ function NavigationSearchRow<T extends { name: string }>({
       });
     }
   }, [hoveredIndex]);
+
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (
+        event.key === 'Enter' &&
+        hoveredIndex !== undefined &&
+        hoveredIndex >= 0
+      ) {
+        event.preventDefault();
+        const localIndex = hoveredIndex - startingIndex;
+        if (localIndex >= 0 && localIndex < data.length) {
+          onClick(data[localIndex].name);
+        }
+      }
+    };
+    document.addEventListener('keydown', keyDownHandler);
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, [hoveredIndex, startingIndex, data, onClick]);
 
   if (!data.length) {
     return null;
@@ -87,6 +114,7 @@ function NavigationSearchRow<T extends { name: string }>({
             }
             className={`cursor-pointer p-1 ${hoveredIndex === index + startingIndex ? 'rounded-md bg-background-secondary' : ''}`}
             ref={(el) => (itemRefs.current[index] = el)}
+            onClick={() => onClick(skill.name)}
           >
             <Skeleton
               className={isLoading ? 'bg-background-secondary' : ''}
@@ -107,6 +135,7 @@ export function NavigationSearch() {
   const { t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(0);
   const debouncedQuery = useDebounce(searchQuery, 500);
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState<
     'Categories' | 'Domains' | 'All'
   >('All');
@@ -198,38 +227,55 @@ export function NavigationSearch() {
     selectedTab,
   ]);
 
-  useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent) => {
-      if (
-        event.key === 'Enter' &&
-        hoveredIndex !== undefined &&
-        hoveredIndex >= 0
-      ) {
-        event.preventDefault();
-        console.log(hoveredIndex);
-      }
-    };
-    document.addEventListener('keydown', keyDownHandler);
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  });
+  // useEffect(() => {
+  //   const keyDownHandler = (event: KeyboardEvent) => {
+  //     if (event.key === 'Enter' && hoveredIndex !== undefined && hoveredIndex >= 0) {
+  //       event.preventDefault();
+
+  //       if (selectedTab === 'Categories' ||
+  //         (selectedTab === 'All' && hoveredIndex >= (skillsData?.skills?.length ?? 0) + domains.length)) {
+  //         const categoryIndex = selectedTab === 'Categories' ? hoveredIndex : hoveredIndex - (skillsData?.skills?.length ?? 0) - domains.length;
+  //         const category = categories[categoryIndex];
+  //         if (category) {
+  //           window.location.href = `/categories/${category.name}`;
+  //         }
+  //       } else if (selectedTab === 'Domains' ||
+  //                 (selectedTab === 'All' && hoveredIndex >= (skillsData?.skills?.length ?? 0))) {
+  //         const domainIndex = selectedTab === 'Domains' ? hoveredIndex : hoveredIndex - (skillsData?.skills?.length ?? 0);
+  //         const domain = domains[domainIndex];
+  //         if (domain) {
+  //           window.location.href = `/domains/${domain.name}`;
+  //         }
+  //       } else {
+  //         const skill = skillsData?.skills[hoveredIndex];
+  //         if (skill) {
+  //           window.location.href = `/skills/${skill.name}`;
+  //         }
+  //       }
+  //       setOpen(false);
+  //     }
+  //   };
+  //   document.addEventListener('keydown', keyDownHandler);
+  //   return () => {
+  //     document.removeEventListener('keydown', keyDownHandler);
+  //   };
+  // });
 
   const tabs = [
     {
       name: 'All',
       onClick: () => setSelectedTab('All'),
-      title: t('common.all')
+      title: t('common.all'),
     },
     {
       name: 'Domains',
       onClick: () => setSelectedTab('Domains'),
-      title: t('common.domains')
+      title: t('common.domains'),
     },
     {
       name: 'Categories',
       onClick: () => setSelectedTab('Categories'),
-      title: t('common.categories')
+      title: t('common.categories'),
     },
   ];
 
@@ -259,7 +305,7 @@ export function NavigationSearch() {
             setOpen(isOpen.open);
           }}
           size={'xl'}
-          placement={'bottom'}
+          placement={'center'}
         >
           <Portal>
             <Dialog.Backdrop className="bg-black/30 backdrop-blur-sm" />
@@ -343,6 +389,10 @@ export function NavigationSearch() {
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={isLoading || isFetching}
+                          onClick={(value) => {
+                            navigate(`/skill/${value}`);
+                            setOpen(false);
+                          }}
                         />
                       )}
                       {(selectedTab === 'All' || selectedTab === 'Domains') && (
@@ -363,6 +413,10 @@ export function NavigationSearch() {
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={!domains.length}
+                          onClick={(value) => {
+                            navigate(`/domain/${value}`);
+                            setOpen(false);
+                          }}
                         />
                       )}
                       {(selectedTab === 'All' ||
@@ -385,6 +439,10 @@ export function NavigationSearch() {
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={!categories.length}
+                          onClick={(value) => {
+                            navigate(`/category/${value}`);
+                            setOpen(false);
+                          }}
                         />
                       )}
                     </div>
