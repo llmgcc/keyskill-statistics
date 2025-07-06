@@ -30,7 +30,8 @@ type Chart = {
 };
 
 type SalaryChart = {
-  max_salary: number;
+  salary_from: number;
+  salary_to: number;
   chart: Chart[];
 };
 

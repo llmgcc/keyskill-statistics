@@ -156,6 +156,7 @@ export class StaticAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
+    numberOfBins: number,
   ): Promise<SalaryChart> {
     const response = await axios.get(
       `/static-api/charts/salary_${period}_${experience ?? 'any'}.json`,

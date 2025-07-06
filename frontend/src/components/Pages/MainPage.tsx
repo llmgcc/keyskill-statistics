@@ -32,7 +32,9 @@ export function MainPage() {
           scrollToTabs();
         }}
       />
-      <Filter />
+      <div className="app-container">
+        <Filter />
+      </div>
       <Highlights />
       <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
       <div ref={tabsRef}>

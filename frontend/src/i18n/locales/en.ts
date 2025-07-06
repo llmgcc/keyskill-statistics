@@ -92,5 +92,9 @@ export default {
       trend: 'Trend',
       skills: 'Skills',
     },
+    charts: {
+      salaryDistribution: 'Salary Distribution',
+      salarySubtitle: 'Expected median salary per month',
+    },
   },
 };

@@ -326,5 +326,9 @@ export default {
       trend: 'Тренд',
       skills: 'Навыков',
     },
+    charts: {
+      salaryDistribution: 'Распределение зарплат',
+      salarySubtitle: 'Ожидаемая медианная зарплата в месяц',
+    },
   },
 };

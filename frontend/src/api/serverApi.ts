@@ -19,6 +19,48 @@ export class ServerAPI implements API {
     return response.data;
   }
 
+  async skill(
+    skillName: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<KeySkillServer> {
+    const response = await axios.get(`/api/key-skills/skill/${skillName}`, {
+      params: {
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+  async domain(
+    domain: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Category> {
+    const response = await axios.get(`/api/domains/${domain}`, {
+      params: {
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
+  async category(
+    category: string,
+    period: number,
+    experience?: Experience,
+  ): Promise<Category> {
+    const response = await axios.get(`/api/categories/${category}`, {
+      params: {
+        period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
   async currencyList(): Promise<Currency[]> {
     const response = await axios.get('/api/general/currency');
     return response.data;
@@ -99,12 +141,14 @@ export class ServerAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
+    numberOfBins: number,
   ): Promise<SalaryChart> {
     const response = await axios.get('/api/charts/salary', {
       params: {
         skill_name: name,
         period,
         experience,
+        number_of_bins: numberOfBins,
       },
     });
     return response.data;

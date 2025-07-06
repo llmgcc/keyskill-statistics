@@ -26,6 +26,8 @@ export interface API {
   ) => Promise<Category[]>;
   domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
 
+  skill: (skillName: string) => Promise<KeySkillServer>;
+
   skillsList: (
     limit: number,
     offset: number,
@@ -67,6 +69,7 @@ export interface API {
     name: string,
     period: number,
     experience?: Experience,
+    numberOfBins: number,
   ) => Promise<SalaryChart>;
 
   categorySalaryPlot: (

@@ -12,7 +12,7 @@ export function Filter() {
 
   return (
     <div
-      className="app-container text sticky z-50 text-text"
+      className="text sticky z-50 text-text"
       ref={ref}
       style={{ top: offset }}
     >
