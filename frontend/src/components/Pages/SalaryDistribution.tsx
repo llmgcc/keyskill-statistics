@@ -57,7 +57,7 @@ export function SalaryDistribution({
           </div>
         </div>
       </div>
-      <div className="text-xs text-text-secondary">
+      <div className="mb-2 text-xs text-text-secondary">
         {t('charts.salarySubtitle')}
       </div>
 

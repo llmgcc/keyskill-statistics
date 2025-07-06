@@ -329,6 +329,8 @@ export default {
     charts: {
       salaryDistribution: 'Распределение зарплат',
       salarySubtitle: 'Ожидаемая медианная зарплата в месяц',
+      demandTrend: 'Тренд спроса',
+      trendSubtitle: 'Упоминаний за последние <text>{{days}}</text> дней',
     },
   },
 };

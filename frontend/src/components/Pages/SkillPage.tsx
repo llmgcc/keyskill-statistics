@@ -18,10 +18,12 @@ import {
 import colors from 'tailwindcss/colors';
 
 import { Experience } from '@/config/experience';
+import { useSkillDetails } from '@/hooks/data/useSkillDetails';
 import { useFilters } from '@/hooks/useFilters';
 
 import { Filter } from '../Filter/Filter';
 import { SkillImage } from '../ui/SkillImage';
+import { DemandTrend } from './DemandTrend';
 import { SalaryDistribution } from './SalaryDistribution';
 
 interface HistProps {
@@ -279,39 +281,11 @@ function Predictions() {
 
 export function SkillPage() {
   const { name } = useParams<{ name: string }>();
-  const selectedPeriod = usePeriodStore((state) => state.selectedPeriod);
-  const selectedExperience = useExperienceStore(
-    (state) => state.selectedExperience,
-  );
 
-  const { period, experience } = useFilters();
-
-  const {
-    data: skill,
-    isLoading,
-    isFetching,
-  } = useQuery({
-    queryKey: [name, period, experience],
-    queryFn: async () => {
-      const data = await API.skill(
-        name,
-        selectedPeriod,
-        selectedExperience == Experience.any
-          ? undefined
-          : (selectedExperience ?? undefined),
-      );
-      return data;
-    },
-    placeholderData: keepPreviousData,
-    staleTime: Infinity,
-  });
+  const { skillDetails: skill } = useSkillDetails(name);
 
   return (
     <div className="app-container">
-      {/* <div className='h-52 w-[400px]'>
-                <Histogram />
-            </div> */}
-
       <div className="rounded bg-background-primary py-2">
         {skill?.name && (
           <div className="flex items-center rounded border-[1px] border-background-secondary p-2 py-4 shadow shadow-background-secondary">
@@ -327,7 +301,7 @@ export function SkillPage() {
         </div>
 
         <div className="flex gap-2">
-          <div className="w-[75%] resize rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
+          {/* <div className="w-[75%] resize rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
             <div className="text-base font-[500]">Demand trend</div>
             <div className="mt-1 flex items-center justify-between text-xs">
               <div className="text-3xl font-bold">1425</div>
@@ -348,8 +322,16 @@ export function SkillPage() {
             <div className="h-52 w-full">
               {skill?.name && <Plot name={skill.name} />}
             </div>
+          </div> */}
+          <div className="w-[75%]">
+            {skill?.name && (
+              <DemandTrend
+                name={skill.name}
+                mentions={skill.count}
+                prevMentions={skill.prev_count}
+              />
+            )}
           </div>
-
           <div className="w-[25%]">
             {skill?.name && (
               <SalaryDistribution

@@ -6,6 +6,7 @@ import {
   KeySkillServer,
   SalaryChart,
   Stats,
+  TrendChart,
 } from '@/interfaces';
 import { API } from '@/interfaces/api';
 
@@ -26,7 +27,7 @@ export class ServerAPI implements API {
   ): Promise<KeySkillServer> {
     const response = await axios.get(`/api/key-skills/skill/${skillName}`, {
       params: {
-        period,
+        days_period: period,
         experience,
       },
     });
@@ -96,15 +97,17 @@ export class ServerAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
-  ): Promise<Chart[]> {
+    numberOfBins?: number,
+  ): Promise<TrendChart> {
     const response = await axios.get('/api/charts/skill', {
       params: {
         skill_name: name,
         period,
         experience,
+        number_of_bins: numberOfBins,
       },
     });
-    return response.data as Chart[];
+    return response.data as TrendChart;
   }
 
   async domainPlot(
@@ -141,7 +144,7 @@ export class ServerAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins: number,
+    numberOfBins?: number,
   ): Promise<SalaryChart> {
     const response = await axios.get('/api/charts/salary', {
       params: {

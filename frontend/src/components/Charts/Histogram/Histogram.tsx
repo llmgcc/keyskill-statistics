@@ -8,50 +8,14 @@ import {
   YAxis,
 } from 'recharts';
 
+import type { BinExtended, Chart } from '../common';
+import { generateTicks } from '../utils';
 import { XAxisTick } from './XAxisTick';
 
-interface HistogramBin {
-  bin: number;
-  count: number;
-}
-
-interface HistogramBinExtended {
-  bin: number;
-  count: number;
-  from: number;
-  to: number;
-}
-
-interface HistogramChart {
-  data: HistogramBin[];
-  from: number;
-  to: number;
-}
-
 interface HistogramProps {
-  data: HistogramChart;
+  data: Chart;
   tooltip: JSX.Element;
   sparkline?: boolean;
-}
-
-export interface ChartTooltip {
-  active?: boolean;
-  payload?: {
-    payload: HistogramBinExtended;
-    value: number;
-  }[];
-  label?: string;
-}
-
-function generateTicks(start: number, end: number, numberOfTicks: number) {
-  const ticks = [];
-  const interval = (end - start) / (numberOfTicks - 1);
-  let currentTick = start;
-  for (let i = 0; i < numberOfTicks; i++) {
-    ticks.push(currentTick.toFixed(1));
-    currentTick += interval;
-  }
-  return ticks;
 }
 
 export function Histogram({
@@ -63,7 +27,7 @@ export function Histogram({
   const end = data.to;
   const interval = (end - start) / data.data.length;
 
-  const chartDataExtended: HistogramBinExtended[] = data.data.map((d) => ({
+  const chartDataExtended: BinExtended[] = data.data.map((d) => ({
     ...d,
     from: start + (d.bin - 1) * interval,
     to: start + d.bin * interval,

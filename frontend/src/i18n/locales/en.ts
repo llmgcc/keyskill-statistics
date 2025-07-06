@@ -95,6 +95,8 @@ export default {
     charts: {
       salaryDistribution: 'Salary Distribution',
       salarySubtitle: 'Expected median salary per month',
+      demandTrend: 'Demand trend',
+      trendSubtitle: 'Mentions in the last <text>{{days}}</text> days',
     },
   },
 };

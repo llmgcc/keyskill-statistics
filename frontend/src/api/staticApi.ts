@@ -6,6 +6,7 @@ import {
   KeySkillServer,
   SalaryChart,
   Stats,
+  TrendChart,
 } from '@/interfaces';
 import { API, SkillsOrderBy } from '@/interfaces/api';
 
@@ -34,6 +35,13 @@ export class StaticAPI implements API {
   async mainStats(): Promise<Stats> {
     const response = await axios.get('/static-api/general/stats.json');
     return response.data;
+  }
+
+  async skill() // skillName: string,
+  // period: number,
+  // experience?: Experience,
+  : Promise<KeySkillServer> {
+    return new Promise(() => []);
   }
 
   async currencyList(): Promise<Currency[]> {
@@ -101,11 +109,12 @@ export class StaticAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
-  ): Promise<Chart[]> {
+    // numberOfBins?: number
+  ): Promise<TrendChart> {
     const response = await axios.get(
       `/static-api/charts/skills_${period}_${experience ?? 'any'}.json`,
     );
-    return response.data[name] as Chart[];
+    return response.data[name] as TrendChart;
   }
 
   async domainPlot(
@@ -138,7 +147,11 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/categories_salary_${period}_${experience ?? 'any'}.json`,
     );
-    return { max_salary: 1, chart: response.data[name][0] };
+    return {
+      chart: response.data[name][0],
+      salary_from: 0,
+      salary_to: 1_000_000,
+    };
   }
 
   async categorySalaryPlot(
@@ -149,19 +162,23 @@ export class StaticAPI implements API {
     const response = await axios.get(
       `/static-api/charts/domains_salary_${period}_${experience ?? 'any'}.json`,
     );
-    return { max_salary: 1, chart: response.data[name][0] };
+    return {
+      chart: response.data[name][0],
+      salary_from: 0,
+      salary_to: 1_000_000,
+    };
   }
 
   async salaryPlot(
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins: number,
+    // numberOfBins: number,
   ): Promise<SalaryChart> {
     const response = await axios.get(
       `/static-api/charts/salary_${period}_${experience ?? 'any'}.json`,
     );
-    return { max_salary: 1, chart: response.data[name] };
+    return { chart: response.data[name], salary_from: 0, salary_to: 1_000_000 };
   }
 
   async highlightsHighestSalary(

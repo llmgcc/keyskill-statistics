@@ -7,6 +7,7 @@ import {
   KeySkill,
   SalaryChart,
   Stats,
+  TrendChart,
 } from './index';
 
 export interface SkillsOrderBy {
@@ -26,7 +27,11 @@ export interface API {
   ) => Promise<Category[]>;
   domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
 
-  skill: (skillName: string) => Promise<KeySkillServer>;
+  skill: (
+    skillName: string,
+    period: number,
+    experience?: Experience,
+  ) => Promise<KeySkillServer>;
 
   skillsList: (
     limit: number,
@@ -45,7 +50,8 @@ export interface API {
     name: string,
     period: number,
     experience?: Experience,
-  ) => Promise<Chart[]>;
+    numberOfBins?: number,
+  ) => Promise<TrendChart>;
 
   domainPlot: (
     name: string,

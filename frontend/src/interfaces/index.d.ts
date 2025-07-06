@@ -29,6 +29,12 @@ type Chart = {
   count: number;
 };
 
+type TrendChart = {
+  date_from: number;
+  date_to: number;
+  chart: Chart[];
+};
+
 type SalaryChart = {
   salary_from: number;
   salary_to: number;

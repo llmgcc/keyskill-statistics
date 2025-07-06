@@ -9,7 +9,13 @@ export function useSkillSalaryData(skill: string, numberOfBins = 20) {
   const selectedCurrency = useCurrencyStore((state) => state.selectedCurrency);
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: [`skill_salary_distribution`, period, experience, numberOfBins],
+    queryKey: [
+      `skill_salary_distribution`,
+      period,
+      experience,
+      numberOfBins,
+      skill,
+    ],
     queryFn: async () => {
       const data = await API.salaryPlot(
         skill,
