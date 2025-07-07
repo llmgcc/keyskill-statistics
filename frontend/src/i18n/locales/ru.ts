@@ -55,6 +55,8 @@ export default {
       all: 'Все',
       navigate: 'Навигация',
       close: 'Закрыть',
+      domainsPrimary: 'Основное направление',
+      categoriesPrimary: 'Основная категория',
     },
     domains: {
       [Domains['Frontend development']]: 'Frontend разработка',

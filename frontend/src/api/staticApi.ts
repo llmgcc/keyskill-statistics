@@ -40,7 +40,7 @@ export class StaticAPI implements API {
   async skill() // skillName: string,
   // period: number,
   // experience?: Experience,
-  : Promise<KeySkillServer> {
+  : Promise<KeySkill> {
     return new Promise(() => []);
   }
 

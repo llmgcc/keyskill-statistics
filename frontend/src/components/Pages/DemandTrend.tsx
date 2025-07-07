@@ -11,7 +11,7 @@ import { ValueChangeRenderer } from '../Table/renderers/ValueChangeRenderer';
 interface DemandTrendProps {
   name: string;
   mentions: number;
-  prevMentions: number;
+  prevMentions?: number;
 }
 
 export function DemandTrend({
@@ -23,7 +23,7 @@ export function DemandTrend({
   const { from, to, data } = useSkillTrendData(name, 25);
   const { t } = useTranslation();
 
-  const difference = mentions - prevMentions;
+  const difference = prevMentions ? mentions - prevMentions : null;
 
   const text = <span className="font-bold" />;
 
@@ -41,8 +41,8 @@ export function DemandTrend({
             />
           </div>
           <div className="mx-1 text-xs text-text-secondary">
-            {difference >= 0 ? '+' : ''}
-            {difference} {t('columns.mentions').toLowerCase()}
+            {difference && difference >= 0 ? '+' : ''}
+            {difference ?? '-'} {t('columns.mentions').toLowerCase()}
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@ export function DemandTrend({
             color={
               difference === 0
                 ? colors.gray[400]
-                : difference > 0
+                : difference && difference > 0
                   ? colors.green[400]
                   : colors.red[400]
             }

@@ -48,10 +48,6 @@ function NavigationSearchRow<T extends CategoryBase>({
   isLoading,
   onClick,
 }: NavigationSearchRowProps<T>) {
-  if (!data.length) {
-    return null;
-  }
-
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {

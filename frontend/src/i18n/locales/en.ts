@@ -59,6 +59,8 @@ export default {
       all: 'All',
       navigate: 'Navigate',
       close: 'Close',
+      domainsPrimary: 'Primary domain',
+      categoriesPrimary: 'Primary category',
     },
     domains: Domains,
     domainsShort: DomainShort,

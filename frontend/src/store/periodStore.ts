@@ -7,7 +7,7 @@ type PeriodStore = {
   setPeriod: (period: number) => void;
 };
 
-const PERIODS = [7, 14, 30];
+const PERIODS = [7, 14, 30, 90, 30 * 6, 30 * 12];
 
 export const usePeriodStore = create<PeriodStore>()(
   persist(

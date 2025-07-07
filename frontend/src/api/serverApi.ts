@@ -24,7 +24,7 @@ export class ServerAPI implements API {
     skillName: string,
     period: number,
     experience?: Experience,
-  ): Promise<KeySkillServer> {
+  ): Promise<KeySkill> {
     const response = await axios.get(`/api/key-skills/skill/${skillName}`, {
       params: {
         days_period: period,

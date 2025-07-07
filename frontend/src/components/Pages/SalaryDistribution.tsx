@@ -9,8 +9,8 @@ import { ValueChangeRenderer } from '../Table/renderers/ValueChangeRenderer';
 
 interface SalaryDistributionProps {
   name: string;
-  medianSalary: number;
-  prevMedianSalary: number;
+  medianSalary?: number;
+  prevMedianSalary?: number;
 }
 
 export function SalaryDistribution({
@@ -21,8 +21,14 @@ export function SalaryDistribution({
   const { from, to, data } = useSkillSalaryData(name, 25);
   const { t } = useTranslation();
 
-  const { value: medianConverted, abbr, code } = useCurrencyValue(medianSalary);
-  const { value: prevMedianConverted } = useCurrencyValue(prevMedianSalary);
+  const {
+    value: medianConverted,
+    abbr,
+    code,
+  } = useCurrencyValue(medianSalary ?? 0);
+  const { value: prevMedianConverted } = useCurrencyValue(
+    prevMedianSalary ?? 0,
+  );
 
   const difference = medianConverted - prevMedianConverted;
 
