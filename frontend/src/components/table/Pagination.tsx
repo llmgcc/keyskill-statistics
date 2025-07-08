@@ -87,7 +87,7 @@ export function Pagination({
           </Button>
         </div>
 
-        {getPageNumbers().map((pageNum) =>
+        {getPageNumbers().map(pageNum =>
           pageNum === -1 ? (
             <div key={`dots-${Math.random()}`}>
               <span className="px-2">...</span>
@@ -103,7 +103,7 @@ export function Pagination({
                 {pageNum + 1}
               </Button>
             </div>
-          ),
+          )
         )}
 
         <div>
@@ -142,7 +142,7 @@ export function Pagination({
         {!isMobile && (
           <Select
             defaultValue={String(pageSize)}
-            onValueChange={(v) => handlePageChange(0, Number(v))}
+            onValueChange={v => handlePageChange(0, Number(v))}
           >
             <SelectTrigger>
               <div>
@@ -150,7 +150,7 @@ export function Pagination({
               </div>
             </SelectTrigger>
             <SelectContent>
-              {pages.map((p) => (
+              {pages.map(p => (
                 <SelectItem key={p} value={String(p)}>
                   {p}
                 </SelectItem>

@@ -1,12 +1,13 @@
 import { API } from '@/api/api';
-import { useCurrencyStore } from '@/store/currencyStore';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+
+import { useCurrencyStore } from '@/store/currencyStore';
 
 import { useFilters } from '../useFilters';
 
 export function useSkillSalaryData(skill: string, numberOfBins = 20) {
   const { period, experience } = useFilters();
-  const selectedCurrency = useCurrencyStore((state) => state.selectedCurrency);
+  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: [
@@ -21,7 +22,7 @@ export function useSkillSalaryData(skill: string, numberOfBins = 20) {
         skill,
         period,
         experience,
-        numberOfBins,
+        numberOfBins
       );
       return data;
     },
@@ -32,7 +33,7 @@ export function useSkillSalaryData(skill: string, numberOfBins = 20) {
   const chartData = [];
   if (data?.chart?.length) {
     for (let i = 1; i <= numberOfBins; i++) {
-      const index = data.chart.findIndex((p) => p.bin == i);
+      const index = data.chart.findIndex(p => p.bin == i);
       if (index !== -1) {
         chartData.push({
           bin: i,

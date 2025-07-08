@@ -11,7 +11,7 @@ const PERIODS = [7, 14, 30, 90, 30 * 6, 30 * 12];
 
 export const usePeriodStore = create<PeriodStore>()(
   persist(
-    (set) => ({
+    set => ({
       selectedPeriod: PERIODS[2],
       periodList: PERIODS,
       setPeriod: (period: number) => {
@@ -20,7 +20,7 @@ export const usePeriodStore = create<PeriodStore>()(
     }),
     {
       name: 'period-storage',
-      partialize: (state) => ({ selectedPeriod: state.selectedPeriod }),
-    },
-  ),
+      partialize: state => ({ selectedPeriod: state.selectedPeriod }),
+    }
+  )
 );

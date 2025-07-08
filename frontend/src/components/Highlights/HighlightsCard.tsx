@@ -1,8 +1,8 @@
 import { memo, useState } from 'react';
-import { KeySkill } from '@/interfaces';
 import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
+import { KeySkill } from '@/interfaces';
 import { Experience } from '@/config/experience';
 import { HighlightsCardTab } from '@/components/Highlights/HighlightsCardTab';
 
@@ -18,7 +18,7 @@ interface HighlightsCardProps {
 
 function _HighlightsCard({ highlights }: HighlightsCardProps) {
   const [currentTab, setCurrentTab] = useState<string>(
-    Object.keys(highlights)?.[0],
+    Object.keys(highlights)?.[0]
   );
   const { t } = useTranslation();
 
@@ -35,9 +35,9 @@ function _HighlightsCard({ highlights }: HighlightsCardProps) {
                 defaultValue={currentTab}
                 size={'1'}
                 variant="surface"
-                onValueChange={(v) => setCurrentTab(v)}
+                onValueChange={v => setCurrentTab(v)}
               >
-                {Object.keys(highlights).map((k) => (
+                {Object.keys(highlights).map(k => (
                   <SegmentedControl.Item
                     value={k}
                     className="cursor-pointer"

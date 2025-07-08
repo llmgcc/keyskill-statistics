@@ -1,12 +1,12 @@
 import { API } from '@/api/api';
-import { Category } from '@/interfaces';
-import { useCategoriesStore } from '@/store/categoriesStore';
-import { useExperienceStore } from '@/store/experienceStore';
-import { usePeriodStore } from '@/store/periodStore';
 import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
+import { Category } from '@/interfaces';
 import { useCategories } from '@/hooks/useCategories';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
 import {
   categoryNameAccessor,
   chartAccessor,

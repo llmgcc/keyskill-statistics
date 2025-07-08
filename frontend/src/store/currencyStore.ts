@@ -1,8 +1,8 @@
 import { API } from '@/api/api';
-import { Currency } from '@/interfaces/index';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+import { Currency } from '@/interfaces/index';
 import { CurrencyIcons } from '@/config/currencies';
 
 type CurrencyStore = {
@@ -22,17 +22,17 @@ export const useCurrencyStore = create<CurrencyStore>()(
         const currencies = await API.currencyList();
         if (currencies.length) {
           // Fix RUR
-          const rur = currencies.find((c) => c.currency_code === 'RUR');
+          const rur = currencies.find(c => c.currency_code === 'RUR');
           if (rur) rur.currency_code = 'RUB';
 
           const filteredCurrencies = currencies
             .filter((c: Currency) => usedCurrencies.includes(c?.currency_code))
             .sort((a, b) => {
               const aIndex = Object.keys(CurrencyIcons).indexOf(
-                a.currency_code,
+                a.currency_code
               );
               const bIndex = Object.keys(CurrencyIcons).indexOf(
-                b.currency_code,
+                b.currency_code
               );
               return aIndex - bIndex;
             });
@@ -42,16 +42,16 @@ export const useCurrencyStore = create<CurrencyStore>()(
             set({ selectedCurrency: filteredCurrencies[0] });
         }
       },
-      setSelectedCurrency: (code) => {
-        set((state) => ({
+      setSelectedCurrency: code => {
+        set(state => ({
           selectedCurrency:
-            state.currencies.find((c) => c.currency_code === code) ?? null,
+            state.currencies.find(c => c.currency_code === code) ?? null,
         }));
       },
     }),
     {
       name: 'currency-storage',
-      partialize: (state) => ({ selectedCurrency: state.selectedCurrency }),
-    },
-  ),
+      partialize: state => ({ selectedCurrency: state.selectedCurrency }),
+    }
+  )
 );

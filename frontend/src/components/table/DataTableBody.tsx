@@ -22,9 +22,9 @@ export function DataTableBody<T extends object>({
 
   return (
     <tbody className="divide-y divide-background-secondary text-text">
-      {table.getRowModel().rows.map((row) => (
+      {table.getRowModel().rows.map(row => (
         <tr key={row.id} className="h-20">
-          {row.getVisibleCells().map((cell) => (
+          {row.getVisibleCells().map(cell => (
             <td
               key={cell.id}
               className="size-full p-4"

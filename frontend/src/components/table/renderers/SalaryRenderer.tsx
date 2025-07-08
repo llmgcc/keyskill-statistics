@@ -1,8 +1,8 @@
-import { SalaryChart } from '@/interfaces';
-import { useStatsStore } from '@/store/statsStore';
 import { Skeleton } from '@radix-ui/themes';
 
+import { SalaryChart } from '@/interfaces';
 import { Experience } from '@/config/experience';
+import { useStatsStore } from '@/store/statsStore';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { SkillHist } from '@/components/Charts/SkillHist';
 
@@ -19,7 +19,7 @@ interface SalaryRendererProps {
   source(
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ): Promise<SalaryChart>;
 }
 

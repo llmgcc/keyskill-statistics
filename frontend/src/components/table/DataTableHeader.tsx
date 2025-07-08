@@ -39,9 +39,9 @@ export function DataTableHeader<T extends object>({
       ref={ref}
       style={{ top: isTablet || isMobile ? 0 : offset }}
     >
-      {table.getHeaderGroups().map((headerGroup) => (
+      {table.getHeaderGroups().map(headerGroup => (
         <tr key={headerGroup.id}>
-          {headerGroup.headers.map((header) => (
+          {headerGroup.headers.map(header => (
             <th
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
@@ -63,7 +63,7 @@ export function DataTableHeader<T extends object>({
                     ? null
                     : flexRender(
                         header.column.columnDef.header,
-                        header.getContext(),
+                        header.getContext()
                       )}
                 </div>
                 {alignRight(header.column.columnDef.meta)

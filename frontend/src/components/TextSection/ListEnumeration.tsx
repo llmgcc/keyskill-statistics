@@ -1,5 +1,6 @@
-import { Category } from '@/interfaces';
 import { useTranslation } from 'react-i18next';
+
+import { Category } from '@/interfaces';
 
 interface ListEnumerationProps {
   list: Category[];
@@ -35,7 +36,7 @@ export function ListEnumeration({
     <>
       {displayList
         .slice(0, -1)
-        .map((item) => renderItem(item))
+        .map(item => renderItem(item))
         .reduce((result, item) => (
           <>
             {result}, {item}

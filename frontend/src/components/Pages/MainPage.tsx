@@ -27,7 +27,7 @@ export function MainPage() {
   return (
     <div>
       <TextSection
-        onLinkClick={(tabName) => {
+        onLinkClick={tabName => {
           navigate({ search: `?tab=${tabName}` }, { replace: true });
           scrollToTabs();
         }}

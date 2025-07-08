@@ -28,20 +28,19 @@ function _TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
   };
 
   useEffect(() => {
-    if (!tabs.some((tab) => tab.name === currentTab)) {
+    if (!tabs.some(tab => tab.name === currentTab)) {
       navigate({ search: `?${paramKey}=${tabs[0].name}` }, { replace: true });
     }
   }, [currentTab]);
 
-  const currentTabConfig =
-    tabs.find((tab) => tab.name === currentTab) || tabs[0];
+  const currentTabConfig = tabs.find(tab => tab.name === currentTab) || tabs[0];
 
   return (
     <div className="app-container mt-4">
       <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
         <div className="items-center lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-4">
           <Tabs.List size={isMobile ? '1' : '2'}>
-            {tabs.map((tab) => (
+            {tabs.map(tab => (
               <Tabs.Trigger
                 value={tab.name}
                 key={tab.name}
@@ -54,7 +53,7 @@ function _TabNavigation({ tabs, paramKey = 'tab' }: TabNavigationProps) {
           <div>{currentTabConfig.append}</div>
         </div>
 
-        {tabs.map((tab) => (
+        {tabs.map(tab => (
           <Tabs.Content key={tab.name} value={tab.name} className="py-2">
             {tab.body}
           </Tabs.Content>

@@ -1,9 +1,5 @@
-import { memo, useMemo, useState } from 'react';
 import { API } from '@/api/api';
-import { KeySkill } from '@/interfaces';
-import { SkillsOrderBy } from '@/interfaces/api';
-import { useExperienceStore } from '@/store/experienceStore';
-import { usePeriodStore } from '@/store/periodStore';
+import { memo, useMemo, useState } from 'react';
 import {
   ColumnDef,
   PaginationState,
@@ -11,8 +7,12 @@ import {
 } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
+import { KeySkill } from '@/interfaces';
+import { SkillsOrderBy } from '@/interfaces/api';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
 
 import { SkillsFilterState } from '../SkillFilter/SkillFilter';
 import { DataTable } from '../Table/DataTable';
@@ -47,7 +47,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
   const debouncedFilterState = useDebounce(filterState, 500);
 
   useMemo(() => {
-    setPagination((prev) => ({
+    setPagination(prev => ({
       ...prev,
       pageIndex: 0,
     }));
@@ -115,7 +115,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
               confidenceAccessor({
                 accessorKey: 'category-confidence',
                 header: t(
-                  `categoriesShort.${filterState.category?.selected?.name}`,
+                  `categoriesShort.${filterState.category?.selected?.name}`
                 ),
                 name: filterState.category?.selected?.name,
                 categoryKey: 'categories',
@@ -152,7 +152,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
       isLoading,
       isFetching,
       pagination,
-    ],
+    ]
   );
 
   const totalRows = skillsData?.rows || 0;

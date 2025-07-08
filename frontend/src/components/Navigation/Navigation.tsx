@@ -1,8 +1,8 @@
-import { useStatsStore } from '@/store/statsStore';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { useStickyOffset } from '@/hooks/useStickyOffset';
+import { useStatsStore } from '@/store/statsStore';
 import { CurrencySwitch } from '@/components/Navigation/CurrencySwitch';
 import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
 import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
@@ -12,7 +12,7 @@ import { NavigationSearch } from './NavigationSearch';
 
 export function Navigation() {
   const navigate = useNavigate();
-  const stats = useStatsStore((state) => state.stats);
+  const stats = useStatsStore(state => state.stats);
   const { t } = useTranslation();
 
   const { ref, offset } = useStickyOffset<HTMLDivElement>('navigation');
@@ -33,7 +33,7 @@ export function Navigation() {
       <div>
         <div className="border-b-[1px] border-background-secondary">
           <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
-            {navbarStats.map((s) => (
+            {navbarStats.map(s => (
               <div key={s.title}>
                 <div className="text-xs sm:block md:flex">
                   <div>{s.title}:</div>

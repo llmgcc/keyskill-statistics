@@ -17,17 +17,17 @@ export function Highlights() {
     [HighlightsEnum['Fastest-Growing Skills']]: {
       icon: <FaFire className="text-background-accent" />,
       source: API.highlightsGainers,
-      valueRenderer: (skill) => <SkillValueRenderer skill={skill} />,
+      valueRenderer: skill => <SkillValueRenderer skill={skill} />,
     },
     [HighlightsEnum['Skills Losing Demand']]: {
       icon: <FaArrowTrendDown className="text-background-accent" />,
       source: API.highlightsDecliners,
-      valueRenderer: (skill) => <SkillValueRenderer skill={skill} />,
+      valueRenderer: skill => <SkillValueRenderer skill={skill} />,
     },
     [HighlightsEnum['Newly Emerging Skills']]: {
       icon: <BsStars className="text-background-accent" />,
       source: API.highlightsNewSkills,
-      valueRenderer: (skill) => <SkillValueRenderer skill={skill} />,
+      valueRenderer: skill => <SkillValueRenderer skill={skill} />,
     },
   };
 
@@ -35,17 +35,17 @@ export function Highlights() {
     [HighlightsEnum['Highest-Paying Skills']]: {
       icon: <FaFire className="text-background-accent" />,
       source: API.highlightsHighestSalary,
-      valueRenderer: (skill) => <SkillSalaryRenderer skill={skill} />,
+      valueRenderer: skill => <SkillSalaryRenderer skill={skill} />,
     },
     [HighlightsEnum['Lowest-Paying Skills']]: {
       icon: <FaArrowTrendDown className="text-background-accent" />,
       source: API.highlightsLowestSalary,
-      valueRenderer: (skill) => <SkillSalaryRenderer skill={skill} />,
+      valueRenderer: skill => <SkillSalaryRenderer skill={skill} />,
     },
     [HighlightsEnum['Skills with Undisclosed Salaries']]: {
       icon: <FaQuestion className="text-background-accent" size={10} />,
       source: API.highlightsUndefinedSalary,
-      valueRenderer: (skill) => <SkillSalaryRenderer skill={skill} />,
+      valueRenderer: skill => <SkillSalaryRenderer skill={skill} />,
     },
   };
 

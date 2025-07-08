@@ -9,7 +9,7 @@ export function LanguageSwitch() {
   const selectedLanguage = i18n.language;
   const languages = Object.keys(Language);
 
-  const options = languages.map((language) => ({
+  const options = languages.map(language => ({
     code: language,
     name: LanguageTitle[language as Language],
   }));
@@ -22,7 +22,7 @@ export function LanguageSwitch() {
       }
       options={options}
       selectedOptionCode={selectedLanguage}
-      onSelect={(option) => i18n.changeLanguage(option.code)}
+      onSelect={option => i18n.changeLanguage(option.code)}
     />
   );
 }

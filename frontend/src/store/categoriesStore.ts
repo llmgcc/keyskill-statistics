@@ -1,13 +1,14 @@
 import { API } from '@/api/api';
-import { Category } from '@/interfaces/index';
 import { create } from 'zustand';
+
+import { Category } from '@/interfaces/index';
 
 type CategoriesStore = {
   categories: Category[];
   fetchCategories: () => Promise<void>;
 };
 
-export const useCategoriesStore = create<CategoriesStore>()((set) => ({
+export const useCategoriesStore = create<CategoriesStore>()(set => ({
   categories: [],
   strict: true,
   fetchCategories: async () => {

@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { KeySkill } from '@/interfaces';
-import { useExperienceStore } from '@/store/experienceStore';
-import { usePeriodStore } from '@/store/periodStore';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import { KeySkill } from '@/interfaces';
 import { Experience } from '@/config/experience';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
 import { SkillDescription } from '@/components/SkillDescription/SkillDescription';
 
 interface HighlightsCardTabProps {
@@ -20,9 +20,9 @@ export function _HighlightsCardTab({
   valueRenderer,
 }: HighlightsCardTabProps) {
   const selectedExperience = useExperienceStore(
-    (state) => state.selectedExperience,
+    state => state.selectedExperience
   );
-  const selectedPeriod = usePeriodStore((state) => state.selectedPeriod);
+  const selectedPeriod = usePeriodStore(state => state.selectedPeriod);
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: [title, selectedExperience, selectedPeriod],
@@ -31,7 +31,7 @@ export function _HighlightsCardTab({
         selectedPeriod,
         selectedExperience == Experience.any
           ? undefined
-          : (selectedExperience ?? undefined),
+          : (selectedExperience ?? undefined)
       );
       return data;
     },

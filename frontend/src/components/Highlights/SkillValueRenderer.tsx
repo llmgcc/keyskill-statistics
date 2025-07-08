@@ -1,6 +1,6 @@
-import { KeySkill } from '@/interfaces';
 import { MdArrowRightAlt } from 'react-icons/md';
 
+import { KeySkill } from '@/interfaces';
 import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
 
 interface SkillValueRendererProps {

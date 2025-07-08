@@ -1,7 +1,7 @@
 import { API } from '@/api/api';
-import { SkillsOrderBy } from '@/interfaces/api';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import { SkillsOrderBy } from '@/interfaces/api';
 import { Experience } from '@/config/experience';
 
 interface UseSkillsOptions {
@@ -54,7 +54,7 @@ export function useSkills({
         category,
         categoryStrict,
         skillName,
-        orderBy,
+        orderBy
       );
 
       return {

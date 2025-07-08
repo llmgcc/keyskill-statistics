@@ -11,7 +11,7 @@ type ExperienceStore = {
 
 export const useExperienceStore = create<ExperienceStore>()(
   persist(
-    (set) => ({
+    set => ({
       selectedExperience: Experience.any,
       experienceList: Object.values(Experience),
       setExperience: (experience: string) => {
@@ -20,7 +20,7 @@ export const useExperienceStore = create<ExperienceStore>()(
     }),
     {
       name: 'experience-storage',
-      partialize: (state) => ({ selectedExperience: state.selectedExperience }),
-    },
-  ),
+      partialize: state => ({ selectedExperience: state.selectedExperience }),
+    }
+  )
 );

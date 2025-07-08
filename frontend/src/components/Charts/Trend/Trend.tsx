@@ -32,7 +32,7 @@ export function Trend({
 
   const numberOfTicks = 5;
 
-  const chartDataExtended: BinExtended[] = data.data.map((d) => ({
+  const chartDataExtended: BinExtended[] = data.data.map(d => ({
     ...d,
     from: start + (d.bin - 1) * interval,
     to: start + d.bin * interval,
@@ -41,7 +41,7 @@ export function Trend({
   const xTicks = generateTicks(2, chartDataExtended.length - 1, numberOfTicks);
   const xDomain = [1, chartDataExtended.length];
 
-  const yMax = Math.max(...chartDataExtended.map((c) => c.count)) ?? 0;
+  const yMax = Math.max(...chartDataExtended.map(c => c.count)) ?? 0;
   const yTicks = generateTicks(0, yMax, numberOfTicks);
   const yDomain = [1, yMax];
 
@@ -67,7 +67,7 @@ export function Trend({
               ticks={xTicks}
               height={20}
               domain={xDomain}
-              tick={(props) => (
+              tick={props => (
                 <XAxisTick {...props} start={start} interval={interval} />
               )}
             />

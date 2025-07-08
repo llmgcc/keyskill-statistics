@@ -1,8 +1,8 @@
 import { memo, useState } from 'react';
-import { KeySkill } from '@/interfaces';
 import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
+import { KeySkill } from '@/interfaces';
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Domains, DomainsStyle } from '@/config/domains';
 import { Category } from '@/config/types';
@@ -56,7 +56,7 @@ export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
 
   function getPopoverContent() {
     const content =
-      skill[buttonKey]?.map((c) => ({
+      skill[buttonKey]?.map(c => ({
         ...c,
         color: getColor(c),
         value: c.confidence,
@@ -64,12 +64,12 @@ export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
         name: t(`${getTranslationKey(buttonKey)}.${c.name}`),
       })) ?? [];
 
-    const maxValue = Math.max(...content.map((c) => c.value));
+    const maxValue = Math.max(...content.map(c => c.value));
 
     const filteredContent: { name: string; color: string; value: number }[] =
-      content.filter((c) => c.value / maxValue >= 0 / 100);
+      content.filter(c => c.value / maxValue >= 0 / 100);
     const confidenceSum = filteredContent
-      .map((c) => c.value)
+      .map(c => c.value)
       .reduce((a, b) => a + b, 0);
 
     filteredContent.push({
@@ -108,7 +108,7 @@ export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
               <SegmentedControl.Root
                 value={buttonKey}
                 size={'1'}
-                onValueChange={(value) => setButtonKey(value as SkillKey)}
+                onValueChange={value => setButtonKey(value as SkillKey)}
               >
                 <SegmentedControl.Item
                   value="domains"

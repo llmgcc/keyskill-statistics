@@ -1,11 +1,11 @@
 import { API } from '@/api/api';
-import { Category } from '@/interfaces';
-import { useExperienceStore } from '@/store/experienceStore';
-import { usePeriodStore } from '@/store/periodStore';
 import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
+import { Category } from '@/interfaces';
 import { useDomains } from '@/hooks/useDomains';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
 
 import { DataTable } from '../Table/DataTable';
 import {

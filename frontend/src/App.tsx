@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import '@/App.css';
 import '@/i18n/i18n';
 
+import { Route, Routes } from 'react-router-dom';
+
 import { useCategoriesStore } from '@/store/categoriesStore.ts';
 import { useCurrencyStore } from '@/store/currencyStore.ts';
 import { useDomainsStore } from '@/store/domainsStore.ts';
 import { useStatsStore } from '@/store/statsStore.ts';
-import { Route, Routes } from 'react-router-dom';
-
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 
 import { CategoryPage } from './components/Pages/CategoryPage';
@@ -17,10 +17,10 @@ import { MainPage } from './components/Pages/MainPage';
 import { SkillPage } from './components/Pages/SkillPage';
 
 export default function App() {
-  const fetchCategories = useCategoriesStore((state) => state.fetchCategories);
-  const fetchDomains = useDomainsStore((state) => state.fetchDomains);
-  const fetchStats = useStatsStore((state) => state.fetchStats);
-  const fetchCurrencies = useCurrencyStore((state) => state.fetchCurrencies);
+  const fetchCategories = useCategoriesStore(state => state.fetchCategories);
+  const fetchDomains = useDomainsStore(state => state.fetchDomains);
+  const fetchStats = useStatsStore(state => state.fetchStats);
+  const fetchCurrencies = useCurrencyStore(state => state.fetchCurrencies);
 
   useEffect(() => {
     fetchCurrencies();

@@ -1,4 +1,3 @@
-import { Chart, KeySkill, SalaryChart } from '@/interfaces';
 import { getPercentDifference } from '@/utils/common';
 import { Badge, ProgressCircle } from '@chakra-ui/react';
 import { Skeleton } from '@radix-ui/themes';
@@ -6,6 +5,7 @@ import { ColumnDef, sortingFns } from '@tanstack/react-table';
 import { GoDiff } from 'react-icons/go';
 import colors from 'tailwindcss/colors';
 
+import { Chart, KeySkill, SalaryChart } from '@/interfaces';
 import { Experience } from '@/config/experience';
 import { CountRenderer } from '@/components/Table/renderers/CountRenderer';
 import { SalaryRenderer } from '@/components/Table/renderers/SalaryRenderer';
@@ -61,7 +61,7 @@ export const prevPlaceAccessor = <T extends KeySkill>(
     accessorKey: string;
     header?: string;
     size?: number;
-  } = { accessorKey: 'prev_place', size: 50 },
+  } = { accessorKey: 'prev_place', size: 50 }
 ): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => (
@@ -80,7 +80,7 @@ export const prevPlaceAccessor = <T extends KeySkill>(
     const b = rowb.original.prev_place - rowb.original.place;
     return a < b ? 1 : a > b ? -1 : 0;
   },
-  cell: (info) => {
+  cell: info => {
     const prev = info.row.original.prev_place;
     const current = info.row.original.place;
     return <ValueChangeRenderer prev={prev} current={current} />;
@@ -100,7 +100,7 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   accessorKey: config.accessorKey as string,
   header: () => <div>{config.header}</div>,
   sortingFn: sortingFns.alphanumeric,
-  cell: (info) => {
+  cell: info => {
     return (
       <div>
         <SkillDescription {...info.row.original} />
@@ -120,7 +120,7 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
   accessorKey: config.accessorKey as string,
   header: () => <div>{config.header}</div>,
   sortingFn: sortingFns.alphanumeric,
-  cell: (info) => {
+  cell: info => {
     return (
       <CategoryDescription
         categoryKey={config.category}
@@ -137,7 +137,7 @@ export const countAccessor = <T extends KeySkill>(config: {
   size?: number;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
-  cell: (info) => {
+  cell: info => {
     function getMax() {
       const ratio = info.row.original.ratio;
       if (ratio) {
@@ -145,7 +145,7 @@ export const countAccessor = <T extends KeySkill>(config: {
       }
       const allValues = info.table
         .getFilteredRowModel()
-        .rows.map((row) => row.getValue('count') as number);
+        .rows.map(row => row.getValue('count') as number);
       const maxValue = Math.max(...allValues);
       return maxValue;
     }
@@ -176,7 +176,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
   source(
     name: string,
     period: number,
-    experience?: Experience | null,
+    experience?: Experience | null
   ): Promise<SalaryChart>;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
@@ -185,7 +185,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
       <div>{config.header}</div>
     </div>
   ),
-  cell: (info) => {
+  cell: info => {
     return (
       <SalaryRenderer
         maxCount={10 ** 6}
@@ -210,7 +210,7 @@ export const prevCountAccessor = <T extends KeySkill>(
     accessorKey: string;
     header?: string;
     size?: number;
-  } = { accessorKey: 'prev_count', size: 50 },
+  } = { accessorKey: 'prev_count', size: 50 }
 ): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <GoDiff className="stroke-1" />,
@@ -223,18 +223,18 @@ export const prevCountAccessor = <T extends KeySkill>(
     }
     const a = getPercentDifference(
       rowa.original.count,
-      rowa.original.prev_count,
+      rowa.original.prev_count
     );
     const b = getPercentDifference(
       rowb.original.count,
-      rowb.original.prev_count,
+      rowb.original.prev_count
     );
     if (rowa.original.prev_place && rowb.original.prev_place) {
       return a < b ? 1 : a > b ? -1 : 0;
     }
     return 0;
   },
-  cell: (info) => {
+  cell: info => {
     return (
       <div>
         <ValueChangeRenderer
@@ -262,12 +262,12 @@ export const chartAccessor = <T extends KeySkill>(config: {
   source(
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ): Promise<Chart[]>;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div>{config.header}</div>,
-  cell: (info) => {
+  cell: info => {
     const color =
       !info.row.original.prev_count ||
       info.row.original.count >= info.row.original.prev_count
@@ -306,9 +306,9 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: config.header,
-  cell: (info) => {
+  cell: info => {
     const confidence = info.row.original[config.categoryKey].find(
-      (c) => c.name === config.name,
+      c => c.name === config.name
     )?.confidence;
     return (
       <>
@@ -344,10 +344,10 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
   },
   sortingFn: (rowA, rowB) => {
     const confidenceA =
-      rowA.original[config.categoryKey].find((c) => c.name === config.name)
+      rowA.original[config.categoryKey].find(c => c.name === config.name)
         ?.confidence || 0;
     const confidenceB =
-      rowB.original[config.categoryKey].find((c) => c.name === config.name)
+      rowB.original[config.categoryKey].find(c => c.name === config.name)
         ?.confidence || 0;
     return confidenceA - confidenceB;
   },

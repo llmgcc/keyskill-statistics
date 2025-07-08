@@ -1,5 +1,5 @@
-import { StrictMode } from 'react';
 import i18n from '@/i18n/i18n';
+import { StrictMode } from 'react';
 import { Theme } from '@radix-ui/themes';
 import {
   keepPreviousData,
@@ -44,5 +44,5 @@ createRoot(document.getElementById('root')!).render(
         </Provider>
       </BrowserRouter>
     </Theme>
-  </StrictMode>,
+  </StrictMode>
 );

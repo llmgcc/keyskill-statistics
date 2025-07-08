@@ -27,7 +27,7 @@ export function SalaryDistribution({
     code,
   } = useCurrencyValue(medianSalary ?? 0);
   const { value: prevMedianConverted } = useCurrencyValue(
-    prevMedianSalary ?? 0,
+    prevMedianSalary ?? 0
   );
 
   const difference = medianConverted - prevMedianConverted;

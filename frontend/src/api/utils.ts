@@ -1,25 +1,26 @@
+import { getPercentDifference } from '@/utils/common';
+
 import { KeySkill } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
-import { getPercentDifference } from '@/utils/common';
 
 function getCategoryConfidence(
   skill: KeySkill,
   category: string,
   key: 'domains' | 'categories',
   domainStrict: boolean,
-  categoryStrict: boolean,
+  categoryStrict: boolean
 ) {
   if (!skill?.[key]?.length) return null;
-  const foundCategory = skill?.[key].find((c) => c?.name == category);
+  const foundCategory = skill?.[key].find(c => c?.name == category);
   const strictMode = key == 'domains' ? domainStrict : categoryStrict;
 
   if (strictMode) {
     const maxConfidence = skill[key].reduce(
       (a, b) => Math.max(a, b.confidence),
-      0,
+      0
     );
     const maxConfidenceCategory = skill[key].find(
-      (c) => c.confidence == maxConfidence,
+      c => c.confidence == maxConfidence
     );
     if (maxConfidenceCategory?.name !== category) {
       return null;
@@ -36,39 +37,39 @@ export function filterSkills(
   domainStrict: boolean = true,
   category?: string,
   categoryStrict: boolean = true,
-  skillName?: string,
+  skillName?: string
 ) {
   let skillsData = skills;
   if (domain) {
     skillsData = skillsData.filter(
-      (c) =>
+      c =>
         getCategoryConfidence(
           c,
           domain,
           'domains',
           domainStrict,
-          categoryStrict,
-        ) !== null,
+          categoryStrict
+        ) !== null
     );
   }
   if (category) {
     skillsData = skillsData.filter(
-      (c) =>
+      c =>
         getCategoryConfidence(
           c,
           category,
           'categories',
           domainStrict,
-          categoryStrict,
-        ) !== null,
+          categoryStrict
+        ) !== null
     );
   }
 
   if (skillName) {
     skillsData = skillsData.filter(
-      (c) =>
+      c =>
         c.name.toLowerCase().includes(skillName.toLowerCase()) ||
-        c.translation?.toLowerCase().includes(skillName.toLowerCase()),
+        c.translation?.toLowerCase().includes(skillName.toLowerCase())
     );
   }
   return skillsData;
@@ -78,7 +79,7 @@ function compare(
   a: KeySkill,
   b: KeySkill,
   asc: boolean,
-  field: keyof KeySkill,
+  field: keyof KeySkill
 ) {
   let valueA = a[field];
   let valueB = b[field];
@@ -124,17 +125,15 @@ export function sortSkills(skills: KeySkill[], orderBy: SkillsOrderBy) {
   if (orderBy?.type) {
     if (orderBy.type === 'default' && data.length) {
       data = data.sort((a, b) =>
-        compare(b, a, orderBy.asc, orderBy.column as keyof KeySkill),
+        compare(b, a, orderBy.asc, orderBy.column as keyof KeySkill)
       );
     }
     if (orderBy.type === 'category-confidence') {
       data = data.sort((a, b) => {
         const valueA =
-          a.categories.find((c) => c.name === orderBy.category)?.confidence ??
-          0;
+          a.categories.find(c => c.name === orderBy.category)?.confidence ?? 0;
         const valueB =
-          b.categories.find((c) => c.name === orderBy.category)?.confidence ??
-          0;
+          b.categories.find(c => c.name === orderBy.category)?.confidence ?? 0;
 
         const asc = orderBy.asc;
         if (valueA < valueB) {
@@ -149,9 +148,9 @@ export function sortSkills(skills: KeySkill[], orderBy: SkillsOrderBy) {
     if (orderBy.type === 'domain-confidence') {
       data = data.sort((a, b) => {
         const valueA =
-          a.domains.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
+          a.domains.find(c => c.name === orderBy.domain)?.confidence ?? 0;
         const valueB =
-          b.domains.find((c) => c.name === orderBy.domain)?.confidence ?? 0;
+          b.domains.find(c => c.name === orderBy.domain)?.confidence ?? 0;
 
         const asc = orderBy.asc;
         if (valueA < valueB) {

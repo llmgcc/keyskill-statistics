@@ -1,16 +1,16 @@
 import { API } from '@/api/api';
-import { useExperienceStore } from '@/store/experienceStore';
-import { usePeriodStore } from '@/store/periodStore';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 
 import { Experience } from '@/config/experience';
+import { useExperienceStore } from '@/store/experienceStore';
+import { usePeriodStore } from '@/store/periodStore';
 
 export function CategoryPage() {
   const { name } = useParams<{ name: string }>();
-  const selectedPeriod = usePeriodStore((state) => state.selectedPeriod);
+  const selectedPeriod = usePeriodStore(state => state.selectedPeriod);
   const selectedExperience = useExperienceStore(
-    (state) => state.selectedExperience,
+    state => state.selectedExperience
   );
 
   const {
@@ -25,7 +25,7 @@ export function CategoryPage() {
         selectedPeriod,
         selectedExperience == Experience.any
           ? undefined
-          : (selectedExperience ?? undefined),
+          : (selectedExperience ?? undefined)
       );
       return data;
     },

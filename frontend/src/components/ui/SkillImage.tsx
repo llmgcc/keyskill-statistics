@@ -1,5 +1,5 @@
-import { memo } from 'react';
 import { baseURL } from '@/api/api';
+import { memo } from 'react';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
 import { Domains, DomainsStyle } from '@/config/domains';

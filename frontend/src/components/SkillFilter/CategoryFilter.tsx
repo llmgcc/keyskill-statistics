@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Category } from '@/interfaces';
 import { ScrollArea, Switch, Text, TextField, Tooltip } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 
+import { Category } from '@/interfaces';
 import {
   Select,
   SelectContent,
@@ -36,14 +36,13 @@ function CategoryFilter({
 
   function getFilteredOptions() {
     if (!textFilter) return defaultOptions;
-    return defaultOptions.filter((option) =>
-      option.name.toLowerCase().includes(String(textFilter).toLowerCase()),
+    return defaultOptions.filter(option =>
+      option.name.toLowerCase().includes(String(textFilter).toLowerCase())
     );
   }
 
   function selectCategory(categoryName: string) {
-    const category =
-      defaultOptions.find((c) => c.name === categoryName) ?? null;
+    const category = defaultOptions.find(c => c.name === categoryName) ?? null;
     onChange(category, strictFilter);
   }
 
@@ -82,15 +81,15 @@ function CategoryFilter({
             placeholder={t('categoryFilter.placeholder')}
             size="2"
             value={textFilter}
-            onChange={(e) => {
+            onChange={e => {
               e.stopPropagation();
               setTextFilter(e.target.value);
             }}
             className="border-shadow-full bg-background-secondary/50 outline-background-secondary"
-            onMouseDown={(e) => e.stopPropagation()}
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={(e) => e.stopPropagation()}
-            onFocus={(e) => e.stopPropagation()}
+            onMouseDown={e => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
+            onKeyDown={e => e.stopPropagation()}
+            onFocus={e => e.stopPropagation()}
           >
             <TextField.Slot>
               <BiSearch height="16" width="16" />
@@ -104,7 +103,7 @@ function CategoryFilter({
                   <Switch
                     size="1"
                     checked={strictFilter}
-                    onCheckedChange={(v) => {
+                    onCheckedChange={v => {
                       setStrictFilter(v);
                       onChange(selected, v);
                     }}

@@ -8,7 +8,7 @@ export function mapRange(
   inMin: number,
   inMax: number,
   outMin: number,
-  outMax: number,
+  outMax: number
 ) {
   return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
 }
@@ -18,7 +18,7 @@ export function normalizeData(
   width: number,
   height: number,
   xoffset: number,
-  yoffset: number,
+  yoffset: number
 ) {
   const max = Math.max(...data);
   const min = Math.min(...data);
@@ -73,7 +73,7 @@ function curveToString(data: number[][], height: number) {
     d += `Q${pc[n - 2][0].x}, ${pc[n - 2][0].y} ${data[n][0]},${data[n][1]}`;
 
     const maxY = height;
-    const minX = Math.min(...data.map((t) => t[0]));
+    const minX = Math.min(...data.map(t => t[0]));
     connection = `L ${data[n][0]} ${maxY} L ${minX} ${maxY} ${minX} ${data[0][1]}`;
   }
 

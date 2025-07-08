@@ -28,7 +28,7 @@ export function SvgHist({ data, width, height, color }: SvgHistProps) {
             <stop offset="100%" stopColor="#fff" />
           </linearGradient>
         </defs>
-        {normalized.map((x) => (
+        {normalized.map(x => (
           <Fragment key={`${x[0]}-${x[1]}`}>
             <rect
               x={x[0]}

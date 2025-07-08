@@ -17,7 +17,7 @@ export function useSkillTrendData(skill: string, numberOfBins = 20) {
   const chartData = [];
   if (data?.chart?.length) {
     for (let i = 1; i <= numberOfBins; i++) {
-      const index = data.chart.findIndex((p) => p.bin == i);
+      const index = data.chart.findIndex(p => p.bin == i);
       if (index !== -1) {
         chartData.push({
           bin: i,

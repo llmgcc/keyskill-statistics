@@ -45,7 +45,7 @@ export function NavigationSelect({
       </PopoverTrigger>
       <PopoverContent>
         <div className="min-w-36 p-2">
-          {options.map((option) => (
+          {options.map(option => (
             <div
               className={`flex min-w-max cursor-pointer items-center justify-between rounded px-2 py-3 hover:text-background-accent ${option.code === selectedOptionCode ? 'bg-background-secondary' : ''}`}
               key={option.code}

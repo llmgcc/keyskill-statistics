@@ -1,11 +1,12 @@
-import { useCurrencyStore } from '@/store/currencyStore';
 import { useTranslation } from 'react-i18next';
+
+import { useCurrencyStore } from '@/store/currencyStore';
 
 import { ChartTooltip } from '../common';
 
 export function SalaryTooltip({ active, payload }: ChartTooltip) {
   const { t } = useTranslation();
-  const selectedCurrency = useCurrencyStore((state) => state.selectedCurrency);
+  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
   if (active && payload && payload.length) {
     const from = payload[0].payload.from;

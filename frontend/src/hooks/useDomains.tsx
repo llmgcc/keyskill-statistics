@@ -19,7 +19,7 @@ export function useDomains({
         selectedPeriod,
         selectedExperience == Experience.any
           ? undefined
-          : (selectedExperience ?? undefined),
+          : (selectedExperience ?? undefined)
       );
       return data;
     },

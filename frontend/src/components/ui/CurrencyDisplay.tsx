@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import { useCurrencyStore } from '@/store/currencyStore';
 
 type CurrencyDisplayProps = {

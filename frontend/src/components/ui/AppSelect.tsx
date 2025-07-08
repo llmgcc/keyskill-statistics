@@ -23,7 +23,7 @@ export const SelectTrigger = React.memo(
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
     );
-  }),
+  })
 );
 
 export const SelectContent = React.memo(
@@ -47,7 +47,7 @@ export const SelectContent = React.memo(
         </Theme>
       </SelectPrimitive.Portal>
     );
-  }),
+  })
 );
 
 export const SelectItem = React.memo(
@@ -67,5 +67,5 @@ export const SelectItem = React.memo(
         </SelectPrimitive.ItemIndicator>
       </SelectPrimitive.Item>
     );
-  }),
+  })
 );

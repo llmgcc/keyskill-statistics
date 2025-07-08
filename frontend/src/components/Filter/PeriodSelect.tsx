@@ -1,8 +1,8 @@
-import { usePeriodStore } from '@/store/periodStore';
 import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/shallow';
 
 import { useScreenSize } from '@/hooks/useScreenSize';
+import { usePeriodStore } from '@/store/periodStore';
 import {
   Select,
   SelectContent,
@@ -14,11 +14,11 @@ export function PeriodSelect() {
   const { isMobile } = useScreenSize();
   const { t } = useTranslation();
   const [setPeriod, selectedPeriod, periodList] = usePeriodStore(
-    useShallow((state) => [
+    useShallow(state => [
       state.setPeriod,
       state.selectedPeriod,
       state.periodList,
-    ]),
+    ])
   );
 
   function periodTitle() {
@@ -31,7 +31,7 @@ export function PeriodSelect() {
   return (
     <Select
       defaultValue={String(selectedPeriod)}
-      onValueChange={(v) => setPeriod(Number(v))}
+      onValueChange={v => setPeriod(Number(v))}
     >
       <SelectTrigger>
         <span className="text-text-primary sm:text-xs md:text-sm">
@@ -43,7 +43,7 @@ export function PeriodSelect() {
       </SelectTrigger>
 
       <SelectContent>
-        {periodList.map((period) => (
+        {periodList.map(period => (
           <SelectItem key={period} value={String(period)}>
             <div className="flex">
               <div className="mr-1 text-text-primary">

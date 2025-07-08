@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { KeySkill } from '@/interfaces';
 
+import { KeySkill } from '@/interfaces';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 
 interface SkillSalaryRendererProps {

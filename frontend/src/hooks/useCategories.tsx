@@ -19,7 +19,7 @@ export function useCategories({
         selectedPeriod ?? 10,
         selectedExperience == Experience.any
           ? undefined
-          : (selectedExperience ?? undefined),
+          : (selectedExperience ?? undefined)
       );
       return data;
     },

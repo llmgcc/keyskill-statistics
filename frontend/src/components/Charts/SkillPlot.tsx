@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { Chart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import { Chart } from '@/interfaces';
 import { Experience } from '@/config/experience';
 
 import { Plot } from './Plot';
@@ -13,7 +13,7 @@ interface SkillPlotProps {
   source(
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ): Promise<Chart[]>;
   period: number;
   color: string;
@@ -35,7 +35,7 @@ export function _SkillPlot({
       const data = await source(
         name,
         period,
-        experience == Experience.any ? undefined : (experience ?? undefined),
+        experience == Experience.any ? undefined : (experience ?? undefined)
       );
       return data ?? [];
     },
@@ -47,7 +47,7 @@ export function _SkillPlot({
   if (data?.length) {
     const COUNT_BINS = 20;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
-      const index = data.findIndex((p) => p.bin == i);
+      const index = data.findIndex(p => p.bin == i);
       if (index !== -1) {
         chartData.push(data[index].count);
       } else {

@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { KeySkill } from '@/interfaces';
 import { useTranslation } from 'react-i18next';
 
+import { KeySkill } from '@/interfaces';
 import { Language } from '@/config/languages';
 import { SkillImage } from '@/components/ui/SkillImage';
 

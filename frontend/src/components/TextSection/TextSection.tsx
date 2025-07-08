@@ -1,12 +1,12 @@
-import { Category } from '@/interfaces';
-import { useCategoriesStore } from '@/store/categoriesStore';
-import { useDomainsStore } from '@/store/domainsStore';
-import { useStatsStore } from '@/store/statsStore';
 import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
 
+import { Category } from '@/interfaces';
 import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { useDomainsStore } from '@/store/domainsStore';
+import { useStatsStore } from '@/store/statsStore';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 import { Grid } from './Grid';
@@ -16,24 +16,23 @@ interface TextSectionProps {
 }
 
 export function TextSection({ onLinkClick }: TextSectionProps) {
-  const stats = useStatsStore((state) => state.stats);
-  const categories = useCategoriesStore((state) => state.categories);
-  const domains = useDomainsStore((state) => state.domains);
+  const stats = useStatsStore(state => state.stats);
+  const categories = useCategoriesStore(state => state.categories);
+  const domains = useDomainsStore(state => state.domains);
   const { t } = useTranslation();
 
   const preferredDomains: Category[] = [
-    domains.find((c) => c.name === Domains['Backend development']) ?? null,
-    domains.find(
-      (c) => c.name === Domains['Data Science & Machine Learning'],
-    ) ?? null,
-    domains.find((c) => c.name === Domains['Project management']) ?? null,
-  ].filter((e) => e !== null);
+    domains.find(c => c.name === Domains['Backend development']) ?? null,
+    domains.find(c => c.name === Domains['Data Science & Machine Learning']) ??
+      null,
+    domains.find(c => c.name === Domains['Project management']) ?? null,
+  ].filter(e => e !== null);
 
   const preferredCategories: Category[] = [
-    categories.find((c) => c.name === Categories['Soft skills']) ?? null,
-    categories.find((c) => c.name === Categories.Languages) ?? null,
-    categories.find((c) => c.name === Categories.Databases) ?? null,
-  ].filter((e) => e !== null);
+    categories.find(c => c.name === Categories['Soft skills']) ?? null,
+    categories.find(c => c.name === Categories.Languages) ?? null,
+    categories.find(c => c.name === Categories.Databases) ?? null,
+  ].filter(e => e !== null);
 
   const badge = (
     <span className="rounded-lg bg-[#f1f4f9] px-2 py-1 font-mono font-normal text-[#5e6c77]" />
@@ -53,7 +52,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
     <Link
       href=""
       rel="noopener noreferrer"
-      onClick={(e) => {
+      onClick={e => {
         e.preventDefault();
         onLinkClick?.('categories');
       }}
@@ -66,7 +65,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
     <Link
       href=""
       rel="noopener noreferrer"
-      onClick={(e) => {
+      onClick={e => {
         e.preventDefault();
         onLinkClick?.('domains');
       }}

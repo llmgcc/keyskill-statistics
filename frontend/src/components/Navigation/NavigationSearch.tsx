@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useCategoriesStore } from '@/store/categoriesStore';
-import { useDomainsStore } from '@/store/domainsStore';
 import {
   Badge,
   Button,
@@ -19,6 +17,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { useDomainsStore } from '@/store/domainsStore';
 
 import { SkillDescription } from '../SkillDescription/SkillDescription';
 import { CategoryDescription } from '../ui/CategoryDescription';
@@ -109,7 +109,7 @@ function NavigationSearchRow<T extends CategoryBase>({
               setHoveredIndex(undefined)
             }
             className={`cursor-pointer p-1 ${hoveredIndex === index + startingIndex ? 'rounded-md bg-background-secondary' : ''}`}
-            ref={(el) => (itemRefs.current[index] = el)}
+            ref={el => (itemRefs.current[index] = el)}
             onClick={() => onClick(skill.name)}
           >
             <Skeleton
@@ -165,19 +165,19 @@ export function NavigationSearch() {
     },
   });
 
-  const domains = useDomainsStore((state) => state.domains).filter(
-    (domain) =>
+  const domains = useDomainsStore(state => state.domains).filter(
+    domain =>
       domain.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t(`domains.${domain.name}`)
         .toLowerCase()
-        .includes(searchQuery.toLowerCase()),
+        .includes(searchQuery.toLowerCase())
   );
-  const categories = useCategoriesStore((state) => state.categories).filter(
-    (category) =>
+  const categories = useCategoriesStore(state => state.categories).filter(
+    category =>
       category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t(`categories.${category.name}`)
         .toLowerCase()
-        .includes(searchQuery.toLowerCase()),
+        .includes(searchQuery.toLowerCase())
   );
 
   const totalRows =
@@ -297,7 +297,7 @@ export function NavigationSearch() {
           scrollBehavior="inside"
           open={open}
           closeOnEscape={true}
-          onOpenChange={(isOpen) => {
+          onOpenChange={isOpen => {
             setOpen(isOpen.open);
           }}
           size={'xl'}
@@ -327,7 +327,7 @@ export function NavigationSearch() {
                             placeholder={t('common.search')}
                             variant="flushed"
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={e => setSearchQuery(e.target.value)}
                           />
                         </InputGroup>
                       </div>
@@ -361,7 +361,7 @@ export function NavigationSearch() {
                   <div className="h-[80%] rounded-md bg-background-primary !opacity-100">
                     <div className="">
                       <div className="flex gap-2 px-4 py-3 text-text-secondary">
-                        {tabs.map((tab) => (
+                        {tabs.map(tab => (
                           <div
                             key={tab.name}
                             role="button"
@@ -378,14 +378,14 @@ export function NavigationSearch() {
                         <NavigationSearchRow
                           title={t('common.skills')}
                           data={skillsData?.skills ?? []}
-                          valueRenderer={(skill) => (
+                          valueRenderer={skill => (
                             <SkillDescription {...skill} />
                           )}
                           startingIndex={0}
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={isLoading || isFetching}
-                          onClick={(value) => {
+                          onClick={value => {
                             navigate(`/skill/${value}`);
                             setOpen(false);
                           }}
@@ -395,7 +395,7 @@ export function NavigationSearch() {
                         <NavigationSearchRow
                           title={t('common.domains')}
                           data={domains ?? []}
-                          valueRenderer={(domain) => (
+                          valueRenderer={domain => (
                             <CategoryDescription
                               categoryKey="domain"
                               categoryName={domain.name}
@@ -409,7 +409,7 @@ export function NavigationSearch() {
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={!domains.length}
-                          onClick={(value) => {
+                          onClick={value => {
                             navigate(`/domain/${value}`);
                             setOpen(false);
                           }}
@@ -420,7 +420,7 @@ export function NavigationSearch() {
                         <NavigationSearchRow
                           title={t('common.categories')}
                           data={categories ?? []}
-                          valueRenderer={(category) => (
+                          valueRenderer={category => (
                             <CategoryDescription
                               categoryKey="category"
                               categoryName={category.name}
@@ -435,7 +435,7 @@ export function NavigationSearch() {
                           setHoveredIndex={setHoveredIndex}
                           hoveredIndex={hoveredIndex}
                           isLoading={!categories.length}
-                          onClick={(value) => {
+                          onClick={value => {
                             navigate(`/category/${value}`);
                             setOpen(false);
                           }}

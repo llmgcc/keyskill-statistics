@@ -1,10 +1,11 @@
-import { Category } from '@/interfaces';
-import { useCategoriesStore } from '@/store/categoriesStore';
-import { useDomainsStore } from '@/store/domainsStore';
 import { Button } from '@radix-ui/themes';
 import { BiCategory } from 'react-icons/bi';
 import { MdOutlineCategory } from 'react-icons/md';
 import { RiResetLeftFill } from 'react-icons/ri';
+
+import { Category } from '@/interfaces';
+import { useCategoriesStore } from '@/store/categoriesStore';
+import { useDomainsStore } from '@/store/domainsStore';
 
 import CategoryFilter from './CategoryFilter';
 import { SkillNameFilter } from './SkillNameFilter';
@@ -30,8 +31,8 @@ export function SkillFilter({
   filter: filterState,
   onFilterChanged,
 }: SkillFilterProps) {
-  const categories = useCategoriesStore((state) => state.categories);
-  const domains = useDomainsStore((state) => state.domains);
+  const categories = useCategoriesStore(state => state.categories);
+  const domains = useDomainsStore(state => state.domains);
 
   function updateDomainFilter(domain: Category | null, strict: boolean) {
     onFilterChanged({

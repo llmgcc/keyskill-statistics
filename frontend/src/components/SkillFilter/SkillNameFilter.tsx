@@ -12,7 +12,7 @@ export function SkillNameFilter({ skill, onChange }: SkillNameFilter) {
   return (
     <TextField.Root
       value={skill}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       placeholder={t('categoryFilter.placeholderForSkill')}
       className="border-shadow-full h-9 bg-background-secondary/50 outline-background-secondary md:h-7"
     >

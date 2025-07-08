@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { SalaryChart } from '@/interfaces';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import { SalaryChart } from '@/interfaces';
 import { Experience } from '@/config/experience';
 
 import { Hist } from './Hist';
@@ -13,7 +13,7 @@ interface SkillHistProps {
   source(
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ): Promise<SalaryChart>;
   period: number;
   color: string;
@@ -36,7 +36,7 @@ export function _SkillHist({
       const data = await source(
         name,
         period,
-        experience == Experience.any ? undefined : (experience ?? undefined),
+        experience == Experience.any ? undefined : (experience ?? undefined)
       );
       return data;
     },
@@ -48,7 +48,7 @@ export function _SkillHist({
   if (data?.chart?.length) {
     const COUNT_BINS = 15;
     for (let i = 1; i <= (COUNT_BINS ?? 1); i++) {
-      const index = data.chart.findIndex((p) => p.bin == i);
+      const index = data.chart.findIndex(p => p.bin == i);
       if (index !== -1) {
         chartData.push(data.chart[index].count);
       } else {

@@ -9,8 +9,8 @@ interface StickyHeights {
 export const useStickyHeights = create<StickyHeights>((set, get) => ({
   heights: {},
   setHeight: (id, height) =>
-    set((state) => ({ heights: { ...state.heights, [id]: height } })),
-  getOffset: (id) => {
+    set(state => ({ heights: { ...state.heights, [id]: height } })),
+  getOffset: id => {
     const ids = Object.keys(get().heights);
     const index = ids.indexOf(id);
     return ids

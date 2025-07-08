@@ -27,7 +27,7 @@ export function Histogram({
   const end = data.to;
   const interval = (end - start) / data.data.length;
 
-  const chartDataExtended: BinExtended[] = data.data.map((d) => ({
+  const chartDataExtended: BinExtended[] = data.data.map(d => ({
     ...d,
     from: start + (d.bin - 1) * interval,
     to: start + d.bin * interval,
@@ -40,7 +40,7 @@ export function Histogram({
   const xTicks = generateTicks(2, chartDataExtended.length - 1, numberOfTicks);
   const xDomain = [1 - 0.5, chartDataExtended.length + 0.5];
 
-  const yMax = Math.max(...chartDataExtended.map((c) => c.count)) ?? 0;
+  const yMax = Math.max(...chartDataExtended.map(c => c.count)) ?? 0;
   const yTicks = generateTicks(0, yMax, numberOfTicks);
   const yDomain = [1, yMax];
 
@@ -66,7 +66,7 @@ export function Histogram({
                 domain={xDomain}
                 ticks={xTicks}
                 height={10}
-                tick={(props) => (
+                tick={props => (
                   <XAxisTick {...props} start={start} interval={interval} />
                 )}
               />

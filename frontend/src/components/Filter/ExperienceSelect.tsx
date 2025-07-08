@@ -1,9 +1,9 @@
-import { useExperienceStore } from '@/store/experienceStore';
 import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/shallow';
 
 import { Experience } from '@/config/experience';
 import { useScreenSize } from '@/hooks/useScreenSize';
+import { useExperienceStore } from '@/store/experienceStore';
 import {
   Select,
   SelectContent,
@@ -16,11 +16,11 @@ export function ExperienceSelect() {
   const { t } = useTranslation();
   const [setExperience, selectedExperience, experienceList] =
     useExperienceStore(
-      useShallow((state) => [
+      useShallow(state => [
         state.setExperience,
         state.selectedExperience,
         state.experienceList,
-      ]),
+      ])
     );
 
   function experienceTitle() {
@@ -33,7 +33,7 @@ export function ExperienceSelect() {
   return (
     <Select
       defaultValue={selectedExperience ?? undefined}
-      onValueChange={(v) => setExperience(v as Experience)}
+      onValueChange={v => setExperience(v as Experience)}
     >
       <SelectTrigger>
         <span className="text-text-primary sm:text-xs md:text-sm">
@@ -44,7 +44,7 @@ export function ExperienceSelect() {
         </span>
       </SelectTrigger>
       <SelectContent>
-        {experienceList.map((experience) => (
+        {experienceList.map(experience => (
           <SelectItem key={experience} value={experience}>
             <div className="flex">
               <div className="mr-1 text-text-primary">

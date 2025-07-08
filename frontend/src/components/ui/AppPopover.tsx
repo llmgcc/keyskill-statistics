@@ -23,5 +23,5 @@ export const PopoverContent = React.memo(
         </PopoverPrimitive.Content>
       </Theme>
     </PopoverPrimitive.Portal>
-  )),
+  ))
 );

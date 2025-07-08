@@ -23,14 +23,14 @@ export interface API {
   currencyList: () => Promise<Currency[]>;
   categoriesList: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<Category[]>;
   domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
 
   skill: (
     skillName: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill>;
 
   skillsList: (
@@ -43,75 +43,75 @@ export interface API {
     category?: string,
     categoryStrict?: boolean,
     skillName?: string,
-    orderBy?: SkillsOrderBy,
+    orderBy?: SkillsOrderBy
   ) => Promise<KeySkillServer>;
 
   skillPlot: (
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins?: number,
+    numberOfBins?: number
   ) => Promise<TrendChart>;
 
   domainPlot: (
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<Chart[]>;
 
   domainPlot: (
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<Chart[]>;
 
   technologyPlot: (
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<Chart[]>;
 
   salaryPlot: (
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins: number,
+    numberOfBins: number
   ) => Promise<SalaryChart>;
 
   categorySalaryPlot: (
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<SalaryChart>;
 
   technologySalaryPlot: (
     name: string,
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<SalaryChart>;
 
   highlightsHighestSalary: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
   highlightsLowestSalary: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
   highlightsUndefinedSalary: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
   highlightsGainers: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
   highlightsDecliners: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
   highlightsNewSkills: (
     period: number,
-    experience?: Experience,
+    experience?: Experience
   ) => Promise<KeySkill[]>;
 }

@@ -1,6 +1,6 @@
-import { Category } from '@/interfaces';
 import { useTranslation } from 'react-i18next';
 
+import { Category } from '@/interfaces';
 import { useScreenSize } from '@/hooks/useScreenSize';
 
 interface CategoryFilterTriggerProps {

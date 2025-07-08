@@ -108,7 +108,7 @@ export function CategoryPieChart(props: {
               startAngle={360}
               endAngle={0}
             >
-              {props.data.map((entry) => (
+              {props.data.map(entry => (
                 <Cell
                   key={`cell-${entry.name}`}
                   fill={entry.color}
@@ -128,7 +128,7 @@ export function CategoryPieChart(props: {
                 key={c.name}
                 className={`flex cursor-pointer justify-between p-2 text-xs ${activeIndex === index ? 'opacity-100' : activeIndex !== null ? 'opacity-50' : ''}`}
                 onMouseLeave={() => setActiveIndex(null)}
-                onMouseEnter={(e) => onPieEnter(e, index)}
+                onMouseEnter={e => onPieEnter(e, index)}
               >
                 <div className="flex">
                   <div
