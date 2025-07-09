@@ -386,7 +386,7 @@ export function NavigationSearch() {
                           hoveredIndex={hoveredIndex}
                           isLoading={isLoading || isFetching}
                           onClick={value => {
-                            navigate(`/skill/${value}`);
+                            navigate(`/skill/${encodeURIComponent(value)}`);
                             setOpen(false);
                           }}
                         />

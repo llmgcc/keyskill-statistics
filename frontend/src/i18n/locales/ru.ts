@@ -2,6 +2,7 @@ import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
 import { Experience } from '@/config/experience';
 import { Highlights } from '@/config/highlights';
+import { Level } from '@/config/level';
 
 export default {
   translation: {
@@ -300,6 +301,7 @@ export default {
       [Experience.between1And3]: 'От 1 года до 3 лет',
       [Experience.between3And6]: 'От 3 до 6 лет',
       [Experience.moreThan6]: 'Более 6 лет',
+      [Experience.unknown]: 'Не указан',
     },
     experienceShort: {
       [Experience.any]: 'Любой',
@@ -333,6 +335,17 @@ export default {
       salarySubtitle: 'Ожидаемая медианная зарплата в месяц',
       demandTrend: 'Тренд спроса',
       trendSubtitle: 'Упоминаний за последние <text>{{days}}</text> дней',
+    },
+    complexity: {
+      title: 'Сложность навыка',
+      subtitle: {
+        [Level.Junior]: 'Характерен для начальных позиций',
+        [Level.Middle]: 'Распространен среди middle специалистов',
+        [Level.Senior]: 'Ожидается для экспертных позиций',
+      },
+      description:
+        'Сложность рассчитывается на основе частоты встречаемости навыка среди специалистов разного уровня',
+      distribution: 'Распределение по опыту',
     },
   },
 };

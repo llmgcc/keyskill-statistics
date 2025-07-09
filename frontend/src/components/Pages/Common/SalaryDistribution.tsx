@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useSkillSalaryData } from '@/hooks/data/useSkillSalaryData';
 import { useCurrencyValue } from '@/hooks/useCurrencyValue';
 
-import { Histogram } from '../Charts/Histogram/Histogram';
-import { SalaryTooltip } from '../Charts/Histogram/SalaryTooltip';
-import { ValueChangeRenderer } from '../Table/renderers/ValueChangeRenderer';
+import { Histogram } from '../../Charts/Histogram/Histogram';
+import { SalaryTooltip } from '../../Charts/Histogram/SalaryTooltip';
+import { ValueChangeRenderer } from '../../Table/renderers/ValueChangeRenderer';
 
 interface SalaryDistributionProps {
   name: string;

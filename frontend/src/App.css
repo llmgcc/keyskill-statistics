@@ -9,6 +9,27 @@ body {
   margin: 0;
 }
 
+.gradient {
+  /* inset: 0;
+  height: 100%;
+  width: 100%;
+  background-image: radial-gradient(rgba(var(--color-background-gray)) 1px, transparent 1px);
+  background-size: 16px 16px;
+  filter: blur(0.5px);
+  -webkit-mask-image: linear-gradient(to right,
+    transparent,
+    rgba(var(--color-background-gray)) 20%,
+    rgba(var(--color-background-gray)) 80%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, 
+    transparent,
+    rgba(var(--color-background-gray)) 20%, 
+    rgba(var(--color-background-gray)) 80%,
+    transparent
+  ); */
+}
+
 body {
   font-size: 0.75rem;
   font-family: 'Inter', sans-serif;

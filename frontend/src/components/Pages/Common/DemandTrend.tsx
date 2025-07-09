@@ -4,9 +4,9 @@ import colors from 'tailwindcss/colors';
 import { useSkillTrendData } from '@/hooks/data/useSkillTrendData';
 import { useFilters } from '@/hooks/useFilters';
 
-import { MentionsTooltip } from '../Charts/Trend/MentionsTooltip';
-import { Trend } from '../Charts/Trend/Trend';
-import { ValueChangeRenderer } from '../Table/renderers/ValueChangeRenderer';
+import { MentionsTooltip } from '../../Charts/Trend/MentionsTooltip';
+import { Trend } from '../../Charts/Trend/Trend';
+import { ValueChangeRenderer } from '../../Table/renderers/ValueChangeRenderer';
 
 interface DemandTrendProps {
   name: string;

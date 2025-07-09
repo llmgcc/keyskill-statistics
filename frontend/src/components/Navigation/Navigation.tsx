@@ -72,7 +72,7 @@ export function Navigation() {
                 onClick={() => navigate('/')}
                 className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
               >
-                KEYSKILLS
+                KS|DATA
               </div>
             </div>
 
@@ -85,6 +85,9 @@ export function Navigation() {
               </div>
               <div className="cursor-pointer hover:text-background-accent">
                 Categories
+              </div>
+              <div className="cursor-pointer hover:text-background-accent">
+                Highlights
               </div>
             </div>
           </div>

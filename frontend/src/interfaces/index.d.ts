@@ -1,3 +1,5 @@
+import { Experience } from '@/config/experience';
+
 export type Currency = {
   currency_abbr: string;
   currency_rate: number;
@@ -59,4 +61,6 @@ type KeySkill = {
   categories: Category[];
   image?: string;
   ratio: number;
+  complexity_score?: number;
+  experience_counts?: Record<string, number>;
 };

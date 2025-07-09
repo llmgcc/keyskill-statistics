@@ -6,6 +6,7 @@ import {
 import { DomainDescription, Domains, DomainShort } from '@/config/domains';
 import { Experience } from '@/config/experience';
 import { Highlights } from '@/config/highlights';
+import { LevelDescription } from '@/config/level';
 
 export default {
   translation: {
@@ -74,6 +75,7 @@ export default {
       [Experience.between1And3]: '1-3 years',
       [Experience.between3And6]: '3-6 years',
       [Experience.moreThan6]: 'More than 6 years',
+      [Experience.unknown]: 'Unknown',
     },
     experienceShort: {
       [Experience.any]: 'Any',
@@ -99,6 +101,13 @@ export default {
       salarySubtitle: 'Expected median salary per month',
       demandTrend: 'Demand trend',
       trendSubtitle: 'Mentions in the last <text>{{days}}</text> days',
+    },
+    complexity: {
+      title: 'Skill complexity',
+      subtitle: LevelDescription,
+      description:
+        'Complexity is calculated based on the frequency of occurrence of the skill among specialists of different levels',
+      distribution: 'Experience distribution',
     },
   },
 };

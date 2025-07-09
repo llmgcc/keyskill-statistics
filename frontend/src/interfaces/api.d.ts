@@ -27,7 +27,9 @@ export interface API {
   ) => Promise<Category[]>;
   domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
 
-  skill: (
+  skill: (skillName: string) => Promise<KeySkill>;
+
+  skillDetails: (
     skillName: string,
     period: number,
     experience?: Experience

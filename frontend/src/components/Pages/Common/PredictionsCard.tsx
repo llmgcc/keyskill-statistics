@@ -12,9 +12,10 @@ export function PredictionsCard({
   translationKey,
 }: PredictionsCardProps) {
   const { t } = useTranslation();
+  const confidence = 0;
 
   return (
-    <div className="mt-2 rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
+    <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
       <div className="text-base font-[500]">
         {t(`common.${translationKey}`)}
       </div>
@@ -37,8 +38,11 @@ export function PredictionsCard({
                 className="group relative my-2 h-8 w-full cursor-pointer rounded bg-background-secondary p-2"
               >
                 <div
-                  className="absolute left-0 top-0 z-0 h-full rounded bg-background-gray hover:bg-background-accent group-hover:bg-background-accent/70"
-                  style={{ width: `${d?.confidence * 100}%` }}
+                  className="absolute left-0 top-0 z-0 h-full rounded bg-background-gray ease-in-out hover:bg-background-accent group-hover:bg-background-accent/70"
+                  style={{
+                    width: `${(d?.confidence ?? 0) * 100}%`,
+                    transition: 'width 1000ms ease-in-out',
+                  }}
                 ></div>
                 <div className="relative z-10 flex h-full w-full items-center justify-between text-sm">
                   <div>

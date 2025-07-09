@@ -40,7 +40,7 @@ export const complexityAccessor = <T extends KeySkill>(config: {
   accessorKey: config.accessorKey as string,
   header: config.header ?? 'Complexity',
   size: config.size || 150,
-  cell: ({ getValue }) => (
+  cell: info => (
     <div className="relative flex items-center justify-end">
       <ProgressCircle.Root value={75} size={'xs'}>
         <ProgressCircle.Circle color={'red'}>
@@ -48,7 +48,9 @@ export const complexityAccessor = <T extends KeySkill>(config: {
           <ProgressCircle.Range strokeLinecap="round" />
         </ProgressCircle.Circle>
       </ProgressCircle.Root>
-      <div className="ml-1">46.25%</div>
+      <div className="ml-1">
+        {info.row.original.complexity_score?.toFixed(2) ?? '-'}
+      </div>
     </div>
   ),
   meta: {

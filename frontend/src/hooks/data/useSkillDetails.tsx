@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useFilters } from '../useFilters';
 
-export function useSkillDetails(name: string) {
+export function useSkillDetails(name: string | null) {
   const { period, experience } = useFilters();
 
   const {
@@ -13,9 +13,14 @@ export function useSkillDetails(name: string) {
   } = useQuery({
     queryKey: ['skill_details', name, period, experience],
     queryFn: async () => {
-      const data = await API.skill(name, period, experience);
+      const data = await API.skillDetails(
+        encodeURIComponent(name)!,
+        period,
+        experience
+      );
       return data;
     },
+    enabled: !!name,
   });
 
   return {

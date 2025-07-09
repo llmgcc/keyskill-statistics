@@ -19,17 +19,25 @@ export class ServerAPI implements API {
     return response.data;
   }
 
-  async skill(
+  async skill(skillName: string): Promise<KeySkill> {
+    const response = await axios.get(`/api/key-skills/skill/${skillName}`);
+    return response.data;
+  }
+
+  async skillDetails(
     skillName: string,
     period: number,
     experience?: Experience
   ): Promise<KeySkill> {
-    const response = await axios.get(`/api/key-skills/skill/${skillName}`, {
-      params: {
-        days_period: period,
-        experience,
-      },
-    });
+    const response = await axios.get(
+      `/api/key-skills/skill_details/${skillName}`,
+      {
+        params: {
+          days_period: period,
+          experience,
+        },
+      }
+    );
     return response.data;
   }
 
