@@ -5,7 +5,7 @@ import { Experience, ExperienceColor } from '@/config/experience';
 import { Level, LevelColor } from '@/config/level';
 
 interface ComplexityProps {
-  skill: KeySkill;
+  skill?: KeySkill;
 }
 
 export function Complexity({ skill }: ComplexityProps) {
@@ -78,13 +78,13 @@ export function Complexity({ skill }: ComplexityProps) {
         </div>
       </div>
 
-      <div className="mt-5 text-base">
-        <div className="text-base text-text-primary">
-          {t('complexity.description')}
-        </div>
-      </div>
+      {/* <div className="mt-5 text-base"> */}
+      {/* <div className="text-base text-text-primary"> */}
+      {/* {t('complexity.description')} */}
+      {/* </div> */}
+      {/* </div> */}
 
-      <div className="mt-1">
+      <div className="mt-3">
         <div className="my-1 text-base">{t('complexity.distribution')}</div>
         <div className="flex h-5 w-full gap-1">
           {Object.keys(Experience)

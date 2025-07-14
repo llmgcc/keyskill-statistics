@@ -29,15 +29,12 @@ export class ServerAPI implements API {
     period: number,
     experience?: Experience
   ): Promise<KeySkill> {
-    const response = await axios.get(
-      `/api/key-skills/skill_details/${skillName}`,
-      {
-        params: {
-          days_period: period,
-          experience,
-        },
-      }
-    );
+    const response = await axios.get(`/api/key-skills/details/${skillName}`, {
+      params: {
+        days_period: period,
+        experience,
+      },
+    });
     return response.data;
   }
 

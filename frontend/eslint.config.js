@@ -40,10 +40,6 @@ export default tseslint.config({
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-explicit-any': 'warn',
     
-    'import/order': ['error', {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      'newlines-between': 'always',
-    }],
     'no-console': 'warn',
     'prefer-const': 'error',
   },

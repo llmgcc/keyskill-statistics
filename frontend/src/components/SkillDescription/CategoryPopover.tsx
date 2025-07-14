@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { SegmentedControl } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,7 @@ interface CategoryPopoverProps {
   defaultKey: SkillKey;
 }
 
-export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
+export function CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
   const [buttonKey, setButtonKey] = useState<SkillKey>(defaultKey);
   const { t, i18n } = useTranslation();
   const categories = skill[defaultKey] ?? [];
@@ -136,5 +136,3 @@ export function _CategoryPopover({ skill, defaultKey }: CategoryPopoverProps) {
     </Popover>
   );
 }
-
-export const CategoryPopover = memo(_CategoryPopover);

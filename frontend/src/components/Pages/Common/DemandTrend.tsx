@@ -28,7 +28,7 @@ export function DemandTrend({
   const text = <span className="font-bold" />;
 
   return (
-    <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
+    <div className="z-10 rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
       <div className="text-base font-[500]">{t('charts.demandTrend')}</div>
       <div className="mt-1 flex items-center justify-between text-xs">
         <div className="text-3xl font-bold">{mentions}</div>

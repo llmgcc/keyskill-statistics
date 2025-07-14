@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Theme } from '@radix-ui/themes';
-import { Select as SelectPrimitive } from 'radix-ui';
-import { BiChevronDown } from 'react-icons/bi';
-import { FaCheck } from 'react-icons/fa';
+import { Portal, Select as SelectPrimitive } from '@chakra-ui/react';
 
 export const Select = SelectPrimitive.Root;
 
@@ -12,16 +9,26 @@ export const SelectTrigger = React.memo(
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
   >(({ children, ...props }, forwardedRef) => {
     return (
-      <SelectPrimitive.Trigger
-        ref={forwardedRef}
-        {...props}
-        className="border-shadow-full flex cursor-pointer items-center rounded bg-background-secondary px-2 py-1 outline-background-secondary hover:bg-background-gray hover:shadow-none hover:outline-background-gray focus:shadow-background-gray focus:outline-background-gray sm:text-xs md:text-sm"
-      >
-        <SelectPrimitive.Value>{children}</SelectPrimitive.Value>
-        <SelectPrimitive.Icon className="text-text">
-          <BiChevronDown size={20} />
-        </SelectPrimitive.Icon>
-      </SelectPrimitive.Trigger>
+      <>
+        <SelectPrimitive.HiddenSelect />
+        <SelectPrimitive.Control>
+          <SelectPrimitive.Trigger
+            ref={forwardedRef}
+            {...props}
+            className="test-base cursor-pointer border-[1px] border-background-secondary hover:bg-background-secondary data-[state=open]:bg-background-secondary"
+          >
+            <SelectPrimitive.ValueText
+              placeholder="Select member"
+              className="min-w-max pr-6"
+            >
+              {children}
+            </SelectPrimitive.ValueText>
+          </SelectPrimitive.Trigger>
+          <SelectPrimitive.IndicatorGroup>
+            <SelectPrimitive.Indicator />
+          </SelectPrimitive.IndicatorGroup>
+        </SelectPrimitive.Control>
+      </>
     );
   })
 );
@@ -32,20 +39,18 @@ export const SelectContent = React.memo(
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
   >(({ children, ...props }, forwardedRef) => {
     return (
-      <SelectPrimitive.Portal>
-        <Theme>
+      <Portal>
+        <SelectPrimitive.Positioner>
           <SelectPrimitive.Content
             position="popper"
-            className="SelectContent min-w-max rounded-md border-2 border-background-secondary bg-background-primary text-text shadow-md shadow-background-gray focus:outline-background-secondary"
-            sideOffset={5}
-            align="end"
+            className="SelectContent min-w-max rounded-md border-[1px] border-background-secondary bg-background-primary text-text shadow-md shadow-background-gray focus:outline-background-secondary"
             ref={forwardedRef}
             {...props}
           >
-            <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+            {children}
           </SelectPrimitive.Content>
-        </Theme>
-      </SelectPrimitive.Portal>
+        </SelectPrimitive.Positioner>
+      </Portal>
     );
   })
 );
@@ -59,12 +64,12 @@ export const SelectItem = React.memo(
       <SelectPrimitive.Item
         {...props}
         ref={forwardedRef}
-        className="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm font-[400] outline-none focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
+        className="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm font-[400] outline-none hover:bg-background-secondary focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
       >
         <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator>
-          <FaCheck className="ml-4 text-xs text-green-400" />
-        </SelectPrimitive.ItemIndicator>
+        <SelectPrimitive.ItemIndicator
+          color={'green.400'}
+        ></SelectPrimitive.ItemIndicator>
       </SelectPrimitive.Item>
     );
   })

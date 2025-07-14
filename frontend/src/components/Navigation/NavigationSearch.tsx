@@ -379,7 +379,7 @@ export function NavigationSearch() {
                           title={t('common.skills')}
                           data={skillsData?.skills ?? []}
                           valueRenderer={skill => (
-                            <SkillDescription {...skill} />
+                            <SkillDescription skill={skill} />
                           )}
                           startingIndex={0}
                           setHoveredIndex={setHoveredIndex}

@@ -12,14 +12,22 @@ import {
 export const toaster = createToaster({
   placement: 'bottom-end',
   pauseOnPageIdle: true,
+  overlap: true,
 });
 
 export const Toaster = () => {
   return (
     <Portal>
-      <ChakraToaster toaster={toaster} insetInline={{ mdDown: '4' }}>
+      <ChakraToaster
+        toaster={toaster}
+        insetInline={{ mdDown: '4' }}
+        className="bg-background-primary"
+      >
         {toast => (
-          <Toast.Root width={{ md: 'sm' }}>
+          <Toast.Root
+            width={{ md: 'sm' }}
+            className="border-background-secondary bg-background-primary shadow-background-secondary"
+          >
             {toast.type === 'loading' ? (
               <Spinner size="sm" color="blue.solid" />
             ) : (

@@ -12,7 +12,7 @@ export function PredictionsCard({
   translationKey,
 }: PredictionsCardProps) {
   const { t } = useTranslation();
-  const confidence = 0;
+  // const confidence = 0;
 
   return (
     <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">

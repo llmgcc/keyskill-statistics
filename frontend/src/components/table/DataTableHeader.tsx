@@ -1,10 +1,10 @@
 import { flexRender, Header, Table } from '@tanstack/react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 
-import { useScreenSize } from '@/hooks/useScreenSize';
-import { useStickyOffset } from '@/hooks/useStickyOffset';
-
 import { alignRight } from './common';
+
+// import { useScreenSize } from '@/hooks/useScreenSize';
+// import { useTopOffset } from '@/hooks/useTopOffset';
 
 interface DataTableHeaderProps<T extends object> {
   table: Table<T>;
@@ -13,9 +13,7 @@ interface DataTableHeaderProps<T extends object> {
 export function DataTableHeader<T extends object>({
   table,
 }: DataTableHeaderProps<T>) {
-  const { isTablet, isMobile } = useScreenSize();
-  const { ref, offset } =
-    useStickyOffset<HTMLTableSectionElement>('tableHeader');
+  // const { isTablet, isMobile } = useScreenSize();
 
   function sortingIcon(header: Header<T, unknown>) {
     function sortingDirection() {
@@ -33,11 +31,16 @@ export function DataTableHeader<T extends object>({
     return <div className="size-3">{sortingDirection()}</div>;
   }
 
+  // const navOffset = useTopOffset('#navbar');
+  // const filterOffset = useTopOffset('#filter');
+
   return (
+    // <Sticky innerZ={1000} top={navOffset + filterOffset} enableTransforms={true}
+    //   innerActiveClass="!block !w-full"
+    //   innerClass="!block !w-full"
+    // >
     <thead
-      className={`sticky z-[45] h-10 border-spacing-0 bg-background-primary text-xs shadow-background-secondary`}
-      ref={ref}
-      style={{ top: isTablet || isMobile ? 0 : offset }}
+      className={`z-[45] h-10 w-full border-spacing-0 bg-background-primary text-xs shadow-background-secondary`}
     >
       {table.getHeaderGroups().map(headerGroup => (
         <tr key={headerGroup.id}>
@@ -53,7 +56,7 @@ export function DataTableHeader<T extends object>({
               className={`border-shadow select-none bg-background-primary p-4 ${header.column.getCanSort() && 'cursor-pointer'}`}
             >
               <div
-                className={`flex h-full items-center ${alignRight(header.column.columnDef.meta) ? 'justify-end' : 'justify-start'}`}
+                className={`flex h-full w-full items-center ${alignRight(header.column.columnDef.meta) ? 'justify-end' : 'justify-start'}`}
               >
                 {alignRight(header.column.columnDef.meta)
                   ? sortingIcon(header)
@@ -75,5 +78,6 @@ export function DataTableHeader<T extends object>({
         </tr>
       ))}
     </thead>
+    // </Sticky>
   );
 }

@@ -141,7 +141,7 @@ export function Pagination({
       <div className="flex">
         {!isMobile && (
           <Select
-            defaultValue={String(pageSize)}
+            // defaultValue={String(pageSize)}
             onValueChange={v => handlePageChange(0, Number(v))}
           >
             <SelectTrigger>
@@ -151,7 +151,7 @@ export function Pagination({
             </SelectTrigger>
             <SelectContent>
               {pages.map(p => (
-                <SelectItem key={p} value={String(p)}>
+                <SelectItem key={p} item={String(p)}>
                   {p}
                 </SelectItem>
               ))}

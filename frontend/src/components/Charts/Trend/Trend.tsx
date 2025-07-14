@@ -46,60 +46,62 @@ export function Trend({
   const yDomain = [1, yMax];
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={chartDataExtended ?? []}>
-        {!sparkline && (
-          <>
-            <CartesianGrid
-              stroke="rgb(var(--color-background-gray))"
-              strokeDasharray="1 1"
-              strokeOpacity={0.5}
-              horizontalFill={[]}
-              verticalFill={[]}
-            />
+    <div className="relative size-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartDataExtended ?? []}>
+          {!sparkline && (
+            <>
+              <CartesianGrid
+                stroke="rgb(var(--color-background-gray))"
+                strokeDasharray="1 1"
+                strokeOpacity={0.5}
+                horizontalFill={[]}
+                verticalFill={[]}
+              />
 
-            <XAxis
-              axisLine={false}
-              tickLine={false}
-              dataKey="bin"
-              type="number"
-              allowDecimals={true}
-              ticks={xTicks}
-              height={20}
-              domain={xDomain}
-              tick={props => (
-                <XAxisTick {...props} start={start} interval={interval} />
-              )}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              dataKey="count"
-              type="number"
-              allowDecimals={true}
-              domain={yDomain}
-              ticks={yTicks}
-              tick={{
-                fill: 'rgb(var(--color-text-secondary))',
-              }}
-              style={{
-                fontSize: '8px',
-              }}
-              width={25}
-            />
-            <Tooltip content={tooltip} cursor={{ fill: 'transparent' }} />
-          </>
-        )}
+              <XAxis
+                axisLine={false}
+                tickLine={false}
+                dataKey="bin"
+                type="number"
+                allowDecimals={true}
+                ticks={xTicks}
+                height={20}
+                domain={xDomain}
+                tick={props => (
+                  <XAxisTick {...props} start={start} interval={interval} />
+                )}
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                dataKey="count"
+                type="number"
+                allowDecimals={true}
+                domain={yDomain}
+                ticks={yTicks}
+                tick={{
+                  fill: 'rgb(var(--color-text-secondary))',
+                }}
+                style={{
+                  fontSize: '8px',
+                }}
+                width={25}
+              />
+              <Tooltip content={tooltip} cursor={{ fill: 'transparent' }} />
+            </>
+          )}
 
-        <Line
-          type="monotone"
-          dot={false}
-          strokeWidth={4}
-          dataKey="count"
-          stroke={`${color}`}
-          className={!sparkline ? 'cursor-pointer' : ''}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+          <Line
+            type="monotone"
+            dot={false}
+            strokeWidth={4}
+            dataKey="count"
+            stroke={`${color}`}
+            className={!sparkline ? 'cursor-pointer' : ''}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

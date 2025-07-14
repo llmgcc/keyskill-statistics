@@ -48,7 +48,7 @@ export function CategoryFilterItem({
     <SelectItem
       className="flex cursor-pointer items-center justify-between bg-background-primary p-2 hover:bg-background-secondary focus:outline-none"
       key={category?.name ?? defaultName}
-      value={category?.name ?? defaultName}
+      item={category?.name ?? defaultName}
     >
       <div className="flex items-center">
         <div

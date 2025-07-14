@@ -105,7 +105,7 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   cell: info => {
     return (
       <div>
-        <SkillDescription {...info.row.original} />
+        <SkillDescription skill={info.row.original} />
       </div>
     );
   },

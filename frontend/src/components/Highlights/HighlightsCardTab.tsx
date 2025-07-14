@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Skeleton } from '@radix-ui/themes';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
@@ -14,7 +13,7 @@ interface HighlightsCardTabProps {
   valueRenderer: (skill: KeySkill) => JSX.Element | null;
 }
 
-export function _HighlightsCardTab({
+export function HighlightsCardTab({
   title,
   source,
   valueRenderer,
@@ -63,7 +62,7 @@ export function _HighlightsCardTab({
             <div className="">
               <Skeleton loading={loading}>
                 <div>
-                  <SkillDescription {...h} />
+                  <SkillDescription skill={h} />
                 </div>
               </Skeleton>
             </div>
@@ -76,5 +75,3 @@ export function _HighlightsCardTab({
     </div>
   );
 }
-
-export const HighlightsCardTab = memo(_HighlightsCardTab);

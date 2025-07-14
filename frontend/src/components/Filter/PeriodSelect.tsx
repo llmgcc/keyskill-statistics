@@ -1,3 +1,4 @@
+import { createListCollection } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/shallow';
 
@@ -21,33 +22,48 @@ export function PeriodSelect() {
     ])
   );
 
-  function periodTitle() {
+  function periodTitle(period: number) {
     if (isMobile) {
-      return `${selectedPeriod}${t('common.days')[0]}`;
+      return `${period}${t('common.days')[0]}`;
     }
-    return `${selectedPeriod} ${t('common.days')}`;
+    return `${period} ${t('common.days')}`;
   }
+
+  const periodCollection = createListCollection({
+    items: periodList.map(e => ({
+      value: String(e),
+      label: periodTitle(e),
+    })),
+  });
 
   return (
     <Select
-      defaultValue={String(selectedPeriod)}
-      onValueChange={v => setPeriod(Number(v))}
+      collection={periodCollection}
+      size="xs"
+      value={[String(selectedPeriod)]}
+      onValueChange={details => setPeriod(Number(details.value?.[0]))}
+      className="min-w-max"
     >
-      <SelectTrigger>
-        <span className="text-text-primary sm:text-xs md:text-sm">
-          {t('common.period')}
-        </span>
-        <span className="ml-1 text-text-secondary sm:text-xs md:text-sm">
-          {periodTitle()}
-        </span>
+      <SelectTrigger
+        style={{ width: 'fit-content', minWidth: 'auto' }}
+        minWidth={'max-content'}
+      >
+        <div className="flex min-w-max items-center gap-1">
+          <span className="text-text-primary sm:text-xs md:text-sm">
+            {t('common.period')}
+          </span>
+          <span className="text-text-secondary sm:text-xs md:text-sm">
+            {periodTitle(selectedPeriod)}
+          </span>
+        </div>
       </SelectTrigger>
 
       <SelectContent>
-        {periodList.map(period => (
-          <SelectItem key={period} value={String(period)}>
+        {periodCollection.items.map(e => (
+          <SelectItem key={e.value} item={e}>
             <div className="flex">
               <div className="mr-1 text-text-primary">
-                {period} {t('common.days')}
+                {e.value} {t('common.days')}
               </div>
             </div>
           </SelectItem>

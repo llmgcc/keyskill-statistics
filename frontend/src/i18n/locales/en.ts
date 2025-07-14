@@ -62,6 +62,12 @@ export default {
       close: 'Close',
       domainsPrimary: 'Primary domain',
       categoriesPrimary: 'Primary category',
+      skillOfAllTime: 'skill of all time',
+    },
+    favorites: {
+      removed: 'removed from favorites',
+      added: 'added to favorites',
+      favorites: 'Favorites',
     },
     domains: Domains,
     domainsShort: DomainShort,

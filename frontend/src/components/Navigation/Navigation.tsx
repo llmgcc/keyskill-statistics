@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import Sticky from 'react-stickynode';
 
-import { useStickyOffset } from '@/hooks/useStickyOffset';
 import { useStatsStore } from '@/store/statsStore';
 import { CurrencySwitch } from '@/components/Navigation/CurrencySwitch';
 import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
@@ -15,8 +15,6 @@ export function Navigation() {
   const stats = useStatsStore(state => state.stats);
   const { t } = useTranslation();
 
-  const { ref, offset } = useStickyOffset<HTMLDivElement>('navigation');
-
   const navbarStats = [
     {
       title: t('navigation.uniqueSkills'),
@@ -29,7 +27,7 @@ export function Navigation() {
   ];
 
   return (
-    <>
+    <div>
       <div>
         <div className="border-b-[1px] border-background-secondary">
           <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
@@ -46,71 +44,76 @@ export function Navigation() {
           </div>
         </div>
       </div>
-      <div
-        ref={ref}
-        className={`sticky z-50 border-b-[1px] border-background-secondary bg-background-primary`}
-        style={{ top: offset }}
-      >
+
+      <Sticky top={0} enableTransforms={false} innerZ={1}>
         <div
-          className={`app-container flex h-12 w-full items-center justify-between py-4`}
+          className={`z-50 border-b-[1px] border-background-secondary bg-background-primary`}
+          id="navbar"
         >
-          <div className="flex items-center justify-center gap-6 text-sm">
-            <div className="flex items-center text-text">
-              <div className="flex size-5 items-center justify-center rounded">
-                <div>
-                  <div className="mb-[1px] flex">
-                    <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
-                    <div className="size-2 rounded-sm bg-background-accent/50"></div>
-                  </div>
-                  <div className="flex">
-                    <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
-                    <div className="size-2 rounded-sm bg-background-accent/100"></div>
+          <div
+            className={`app-container flex h-12 w-full items-center justify-between bg-background-primary py-4`}
+          >
+            <div className="flex items-center justify-center gap-6 text-sm">
+              <div className="flex items-center text-text">
+                <div className="flex size-5 items-center justify-center rounded">
+                  <div>
+                    <div className="mb-[1px] flex">
+                      <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
+                      <div className="size-2 rounded-sm bg-background-accent/50"></div>
+                    </div>
+                    <div className="flex">
+                      <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
+                      <div className="size-2 rounded-sm bg-background-accent/100"></div>
+                    </div>
                   </div>
                 </div>
+                <div
+                  onClick={() => navigate('/')}
+                  className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
+                >
+                  KS|DATA
+                </div>
               </div>
-              <div
-                onClick={() => navigate('/')}
-                className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
-              >
-                KS|DATA
-              </div>
-            </div>
 
-            <div className="flex gap-6 text-sm font-[600] text-text-primary">
-              <div className="cursor-pointer hover:text-background-accent">
-                Skills
+              <div className="hidden gap-6 text-sm font-[600] text-text-primary md:flex">
+                <div className="cursor-pointer hover:text-background-accent">
+                  Skills
+                </div>
+                <div className="cursor-pointer hover:text-background-accent">
+                  Domains
+                </div>
+                <div className="cursor-pointer hover:text-background-accent">
+                  Categories
+                </div>
+                <div className="cursor-pointer hover:text-background-accent">
+                  Highlights
+                </div>
+                <div className="cursor-pointer hover:text-background-accent">
+                  Favourites
+                </div>
               </div>
-              <div className="cursor-pointer hover:text-background-accent">
-                Domains
+            </div>
+            <div></div>
+            <div className="flex items-center">
+              <div className="mx-2 flex items-center">
+                <NavigationSearch />
               </div>
-              <div className="cursor-pointer hover:text-background-accent">
-                Categories
+              <div className="mx-2 flex items-center">
+                <ThemeSwitch />
               </div>
-              <div className="cursor-pointer hover:text-background-accent">
-                Highlights
+              <div className="mx-2 flex items-center">
+                <CurrencySwitch />
               </div>
-            </div>
-          </div>
-          <div></div>
-          <div className="flex items-center">
-            <div className="mx-2 flex items-center">
-              <NavigationSearch />
-            </div>
-            <div className="mx-2 flex items-center">
-              <ThemeSwitch />
-            </div>
-            <div className="mx-2 flex items-center">
-              <CurrencySwitch />
-            </div>
-            <div className="mx-2 flex items-center">
-              <LanguageSwitch />
-            </div>
-            <div className="ml-2 flex items-center">
-              <GithubRepo />
+              <div className="mx-2 flex items-center">
+                <LanguageSwitch />
+              </div>
+              <div className="ml-2 flex items-center">
+                <GithubRepo />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </Sticky>
+    </div>
   );
 }

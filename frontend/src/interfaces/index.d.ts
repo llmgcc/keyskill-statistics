@@ -1,5 +1,3 @@
-import { Experience } from '@/config/experience';
-
 export type Currency = {
   currency_abbr: string;
   currency_rate: number;
@@ -52,6 +50,7 @@ type KeySkill = {
   name: string;
   translation?: string;
   count: number;
+  all_time_place?: number;
   prev_count?: number;
   place: number;
   prev_place?: number;

@@ -9,8 +9,6 @@ import { useDomainsStore } from '@/store/domainsStore';
 import { useStatsStore } from '@/store/statsStore';
 import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
-import { Grid } from './Grid';
-
 interface TextSectionProps {
   onLinkClick?: (tabName: string) => void;
 }

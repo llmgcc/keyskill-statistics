@@ -1,70 +1,47 @@
-import { Badge } from '@chakra-ui/react';
+import { Tabs } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import Sticky from 'react-stickynode';
 
 import { useSkillDetails } from '@/hooks/data/useSkillDetails';
-import { useSkillDetailsShort } from '@/hooks/data/useSkillDetailsShort';
+import { useTopOffset } from '@/hooks/useTopOffset';
 
 import { Filter } from '../Filter/Filter';
-import { SkillImage } from '../ui/SkillImage';
 import { Complexity } from './Common/Complexity';
 import { DemandTrend } from './Common/DemandTrend';
+import { Header } from './Common/Header';
 import { PredictionsCard } from './Common/PredictionsCard';
 import { SalaryDistribution } from './Common/SalaryDistribution';
-
-function Header({ skillShort }) {
-  return (
-    <>
-      {skillShort?.name && (
-        <div className="relative z-10 flex items-center justify-between rounded border-[0px] border-background-secondary p-2 py-4 shadow-background-secondary">
-          <div className="gradient absolute left-0 top-[-50%] -z-10 size-full h-[200%]"></div>
-          <div className="flex">
-            <div className="h-10 w-10">
-              <SkillImage
-                domain={skillShort.domains[0]?.name}
-                path={skillShort?.image}
-              />
-            </div>
-            <div className="mx-3">
-              <div className="text-xl font-bold">{skillShort?.name}</div>
-              <div className="flex items-center text-xs text-text-secondary">
-                <div className="">{skillShort.domains[0]?.name}</div>
-                <div className="mx-1">•</div>
-                <div className="">{skillShort.categories[0]?.name}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* <div className="text-base">
-              Rank
-              <Badge
-                size={'md'}
-                variant={'surface'}
-                className="ml-2 bg-background-secondary"
-              >
-                #{skillDetails?.place}
-              </Badge>
-            </div> */}
-        </div>
-      )}
-    </>
-  );
-}
 
 export function SkillPage() {
   const { name } = useParams<{ name: string }>();
   const decodedName = name ? decodeURIComponent(name) : null;
-  const { skillDetailsShort: skillShort } = useSkillDetailsShort(
-    decodedName ?? null
-  );
+
   const { skillDetails } = useSkillDetails(decodedName ?? null);
+
+  const navOffset = useTopOffset('#navbar');
+  const headerOffset = useTopOffset('#header');
+
+  const skillChanged = skillDetails?.name !== name;
 
   return (
     <div className="app-container">
       <div className="rounded bg-background-primary py-2">
-        <Header skillShort={skillShort} />
+        <div>
+          <Header skill={skillDetails} isLoading={skillChanged} />
+        </div>
 
         <div className="my-2">
-          <Filter />
+          <Sticky
+            top={navOffset + headerOffset}
+            enableTransforms={false}
+            innerActiveClass="border-none rounded-none shadow-md shadow-background-secondary"
+            innerClass="border-[1px] border-background-secondary"
+            innerZ={1000}
+          >
+            <div className="relative z-40 bg-background-primary">
+              <Filter />
+            </div>
+          </Sticky>
         </div>
 
         <div className="flex gap-2">
@@ -90,7 +67,50 @@ export function SkillPage() {
 
         <div className="mt-2 flex gap-2">
           <div className="w-[75%]">
-            <Complexity skill={skillDetails} />
+            <div>
+              <Complexity skill={skillDetails} />
+            </div>
+            <div className="w-full">
+              <Tabs.Root
+                defaultValue="members"
+                variant="enclosed"
+                className="mt-2 border-none bg-background-primary"
+                size="sm"
+              >
+                <Tabs.List className="flex gap-2 bg-background-primary">
+                  {['Related skills', 'Similar skills'].map(tab => (
+                    <Tabs.Trigger
+                      value={tab}
+                      key={tab}
+                      className="border-none bg-background-primary p-2"
+                      _selected={{
+                        bg: 'rgba(var(--color-background-secondary))',
+                      }}
+                    >
+                      {tab}
+                    </Tabs.Trigger>
+                  ))}
+                </Tabs.List>
+
+                <Tabs.Content value="Related skills" className="p-0">
+                  <div className="p-2 text-base">
+                    <div className="text-sm text-text-secondary">
+                      Skills that frequently appear together in job postings.
+                      Shows which competencies are typically required in
+                      combination
+                    </div>
+                  </div>
+                </Tabs.Content>
+                <Tabs.Content value="Similar skills" className="p-0">
+                  <div className="p-2 text-base">
+                    <div className="text-sm text-text-secondary">
+                      Skills that are similar in meaning or functionality. They
+                      can be alternatives or useful additions
+                    </div>
+                  </div>
+                </Tabs.Content>
+              </Tabs.Root>
+            </div>
           </div>
           <div className="w-[25%]">
             {skillDetails?.name && (

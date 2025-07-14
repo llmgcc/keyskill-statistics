@@ -58,6 +58,12 @@ export default {
       close: 'Закрыть',
       domainsPrimary: 'Основное направление',
       categoriesPrimary: 'Основная категория',
+      skillOfAllTime: 'навык за все время',
+    },
+    favorites: {
+      removed: 'удален из избранного',
+      added: 'добавлен в избранное',
+      favorites: 'Избранное',
     },
     domains: {
       [Domains['Frontend development']]: 'Frontend разработка',

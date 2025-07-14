@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Sticky from 'react-stickynode';
 
+import { useTopOffset } from '@/hooks/useTopOffset';
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
@@ -24,6 +26,8 @@ export function MainPage() {
     }
   };
 
+  const navOffset = useTopOffset('#navbar');
+
   return (
     <div>
       <TextSection
@@ -33,7 +37,14 @@ export function MainPage() {
         }}
       />
       <div className="app-container">
-        <Filter />
+        <Sticky
+          top={navOffset}
+          enableTransforms={false}
+          innerActiveClass="shadow-md shadow-background-secondary"
+          innerZ={1000}
+        >
+          <Filter />
+        </Sticky>
       </div>
       <Highlights />
       <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
