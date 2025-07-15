@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
+import { useCurrencyStore } from '@/store/currencyStore';
+
 export interface CustomTickProps {
   start: number;
   interval: number;
@@ -27,7 +29,7 @@ export const XAxisTick = ({
 }: CustomTickProps) => {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
-
+  const currency = useCurrencyStore(state => state.selectedCurrency);
   const bin = payload?.value ?? 0;
   const value = start + (bin - 1) * interval;
 
@@ -39,8 +41,9 @@ export const XAxisTick = ({
         dy={6}
         textAnchor="middle"
         fill="rgba(var(--color-text-secondary))"
-        style={{ fontSize: '8px' }}
+        style={{ fontSize: '10px' }}
       >
+        {currency?.currency_abbr ?? ''}
         {formatCompactNumber(value, currentLanguage)}
       </text>
     </g>

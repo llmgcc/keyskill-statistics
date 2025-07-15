@@ -49,10 +49,10 @@ type KeySkillServer = {
 type KeySkill = {
   name: string;
   translation?: string;
-  count: number;
+  count?: number;
   all_time_place?: number;
   prev_count?: number;
-  place: number;
+  place?: number;
   prev_place?: number;
   average_salary?: number;
   prev_average_salary?: number;

@@ -59,6 +59,7 @@ export default {
       domainsPrimary: 'Основное направление',
       categoriesPrimary: 'Основная категория',
       skillOfAllTime: 'навык за все время',
+      loading: 'Загрузка',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -315,6 +316,7 @@ export default {
       [Experience.between1And3]: '1-3',
       [Experience.between3And6]: '3-6',
       [Experience.moreThan6]: '>6',
+      [Experience.unknown]: 'Не указан',
     },
     highlights: {
       [Highlights['Fastest-Growing Skills']]: 'Самые быстрорастущие навыки',
@@ -341,6 +343,7 @@ export default {
       salarySubtitle: 'Ожидаемая медианная зарплата в месяц',
       demandTrend: 'Тренд спроса',
       trendSubtitle: 'Упоминаний за последние <text>{{days}}</text> дней',
+      notEnoughData: 'Недостаточно данных',
     },
     complexity: {
       title: 'Сложность навыка',

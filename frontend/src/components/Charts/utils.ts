@@ -7,7 +7,7 @@ export function generateTicks(
   const interval = (end - start) / (numberOfTicks - 1);
   let currentTick = start;
   for (let i = 0; i < numberOfTicks; i++) {
-    ticks.push(currentTick.toFixed(1));
+    ticks.push(currentTick);
     currentTick += interval;
   }
   return ticks;

@@ -24,8 +24,8 @@ export const XAxisTick = ({
   const date = new Date(timestamp);
 
   const formattedDate = date.toLocaleDateString(i18n.language, {
-    day: '2-digit',
-    month: '2-digit',
+    day: 'numeric',
+    month: 'short',
     year: '2-digit',
   });
 
@@ -37,7 +37,7 @@ export const XAxisTick = ({
         dy={6}
         textAnchor="middle"
         fill="rgba(var(--color-text-secondary))"
-        style={{ fontSize: '8px' }}
+        style={{ fontSize: '10px' }}
       >
         {formattedDate}
       </text>

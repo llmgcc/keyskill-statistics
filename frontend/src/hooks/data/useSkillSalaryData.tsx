@@ -1,11 +1,11 @@
 import { API } from '@/api/api';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { useCurrencyStore } from '@/store/currencyStore';
 
 import { useFilters } from '../useFilters';
 
-export function useSkillSalaryData(skill: string, numberOfBins = 20) {
+export function useSkillSalaryData(skill: string | null, numberOfBins = 20) {
   const { period, experience } = useFilters();
   const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
@@ -19,19 +19,18 @@ export function useSkillSalaryData(skill: string, numberOfBins = 20) {
     ],
     queryFn: async () => {
       const data = await API.salaryPlot(
-        skill,
+        skill ?? '',
         period,
         experience,
         numberOfBins
       );
       return data;
     },
-    placeholderData: keepPreviousData,
-    staleTime: Infinity,
+    enabled: !!skill,
   });
 
   const chartData = [];
-  if (data?.chart?.length) {
+  if (data?.chart) {
     for (let i = 1; i <= numberOfBins; i++) {
       const index = data.chart.findIndex(p => p.bin == i);
       if (index !== -1) {
@@ -51,7 +50,7 @@ export function useSkillSalaryData(skill: string, numberOfBins = 20) {
   return {
     from: (data?.salary_from ?? 0) * (selectedCurrency?.currency_rate ?? 1),
     to: (data?.salary_to ?? 0) * (selectedCurrency?.currency_rate ?? 1),
-    data: chartData,
+    chart: chartData,
     isLoading,
     isFetching,
   };

@@ -17,9 +17,9 @@ export function ValueChangeRenderer({
   if (isValid) {
     difference = percent ? getPercentDifference(current, prev) : current - prev;
     if (difference < 0) {
-      colorClass = 'text-red-500';
+      colorClass = 'text-rose-500';
     } else {
-      colorClass = 'text-green-400';
+      colorClass = 'text-emerald-500';
     }
   }
 
@@ -33,7 +33,7 @@ export function ValueChangeRenderer({
               : difference}
           </div>
         ) : (
-          <div className="text-text-secondary">-</div>
+          <div className="text-zinc-400">-</div>
         )}
       </div>
     </div>

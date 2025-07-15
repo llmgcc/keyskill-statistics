@@ -45,7 +45,7 @@ export function Navigation() {
         </div>
       </div>
 
-      <Sticky top={0} enableTransforms={false} innerZ={1}>
+      <Sticky top={0} enableTransforms={false} innerZ={1000}>
         <div
           className={`z-50 border-b-[1px] border-background-secondary bg-background-primary`}
           id="navbar"

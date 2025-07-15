@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   Bar,
   BarChart,
@@ -23,6 +24,7 @@ export function Histogram({
   tooltip,
   sparkline = false,
 }: HistogramProps) {
+  const { t } = useTranslation();
   const start = data.from;
   const end = data.to;
   const interval = (end - start) / data.data.length;
@@ -41,18 +43,20 @@ export function Histogram({
   const xDomain = [1 - 0.5, chartDataExtended.length + 0.5];
 
   const yMax = Math.max(...chartDataExtended.map(c => c.count)) ?? 0;
-  const yTicks = generateTicks(0, yMax, numberOfTicks);
-  const yDomain = [1, yMax];
+  const yTicks = generateTicks(0, Math.max(yMax, 1), numberOfTicks);
+  const yDomain = [1, Math.max(yMax, 1)];
+
+  const hasData = chartDataExtended.some(d => d.count > 0);
 
   return (
-    <div className="size-full">
+    <div className="relative size-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartDataExtended ?? []}>
-          {!sparkline && (
+          {!sparkline && hasData && (
             <>
               <CartesianGrid
                 stroke="rgb(var(--color-background-gray))"
-                strokeDasharray="1 1"
+                strokeDasharray="2 4"
                 strokeOpacity={0.5}
                 horizontalFill={[]}
                 verticalFill={[]}
@@ -65,7 +69,7 @@ export function Histogram({
                 allowDecimals={true}
                 domain={xDomain}
                 ticks={xTicks}
-                height={10}
+                height={20}
                 tick={props => (
                   <XAxisTick {...props} start={start} interval={interval} />
                 )}
@@ -83,32 +87,42 @@ export function Histogram({
                   fill: 'rgb(var(--color-text-secondary))',
                 }}
                 style={{
-                  fontSize: '8px',
+                  fontSize: '10px',
                 }}
-                width={25}
+                width={35}
               />
 
               <Tooltip content={tooltip} cursor={{ fill: 'transparent' }} />
             </>
           )}
 
-          <Bar
-            className={!sparkline ? 'cursor-pointer' : ''}
-            dataKey="count"
-            fill="rgb(var(--color-background-gray))"
-            radius={[
-              histBarRadius,
-              histBarRadius,
-              histBarRadius,
-              histBarRadius,
-            ]}
-            activeBar={{
-              fill: 'rgb(var(--color-background-accent))',
-              opacity: 0.7,
-            }}
-          />
+          {hasData && (
+            <Bar
+              className={!sparkline ? 'cursor-pointer' : ''}
+              dataKey="count"
+              fill="rgb(var(--color-background-gray))"
+              radius={[
+                histBarRadius,
+                histBarRadius,
+                histBarRadius,
+                histBarRadius,
+              ]}
+              activeBar={{
+                fill: 'rgb(var(--color-background-accent))',
+                opacity: 0.7,
+              }}
+              barSize={100}
+            />
+          )}
         </BarChart>
       </ResponsiveContainer>
+      {!hasData && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-sm text-[rgb(var(--color-text-secondary))]">
+            {t('charts.notEnoughData')}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

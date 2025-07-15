@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Sticky from 'react-stickynode';
 
 import { useSkillDetails } from '@/hooks/data/useSkillDetails';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import { useTopOffset } from '@/hooks/useTopOffset';
 
 import { Filter } from '../Filter/Filter';
@@ -16,7 +17,9 @@ export function SkillPage() {
   const { name } = useParams<{ name: string }>();
   const decodedName = name ? decodeURIComponent(name) : null;
 
-  const { skillDetails } = useSkillDetails(decodedName ?? null);
+  const { skillDetails, isLoading, isFetching } = useSkillDetails(
+    decodedName ?? null
+  );
 
   const navOffset = useTopOffset('#navbar');
   const headerOffset = useTopOffset('#header');
@@ -44,33 +47,30 @@ export function SkillPage() {
           </Sticky>
         </div>
 
-        <div className="flex gap-2">
-          <div className="w-[65%]">
-            {skillDetails?.name && (
-              <DemandTrend
-                name={skillDetails.name}
-                mentions={skillDetails.count}
-                prevMentions={skillDetails.prev_count}
-              />
-            )}
+        <div className="flex flex-col gap-2 md:flex-row">
+          <div className="w-full md:flex-[65]">
+            <DemandTrend
+              data={skillDetails ?? null}
+              isDataReady={!(isLoading || isFetching)}
+            />
           </div>
-          <div className="w-[35%]">
-            {skillDetails?.name && (
-              <SalaryDistribution
-                name={skillDetails.name}
-                medianSalary={skillDetails.average_salary}
-                prevMedianSalary={skillDetails.prev_average_salary}
-              />
-            )}
+          <div className="w-full md:flex-[35]">
+            <SalaryDistribution
+              data={skillDetails ?? null}
+              isDataReady={!(isLoading || isFetching)}
+            />
           </div>
         </div>
 
-        <div className="mt-2 flex gap-2">
-          <div className="w-[75%]">
+        <div className="mt-2 flex flex-col gap-2 lg:flex-row">
+          <div className="flex-[70]">
             <div>
-              <Complexity skill={skillDetails} />
+              <Complexity
+                data={skillDetails ?? null}
+                isDataReady={!(isLoading || isFetching)}
+              />
             </div>
-            <div className="w-full">
+            {/* <div className="w-full">
               <Tabs.Root
                 defaultValue="members"
                 variant="enclosed"
@@ -110,19 +110,20 @@ export function SkillPage() {
                   </div>
                 </Tabs.Content>
               </Tabs.Root>
-            </div>
+            </div> */}
           </div>
-          <div className="w-[25%]">
+          <div className="flex-[30]">
             {skillDetails?.name && (
               <div className="flex w-[100%] flex-col gap-2">
                 <PredictionsCard
                   translationKey="domains"
+                  type="domain"
                   categories={skillDetails?.domains ?? []}
                 />
-                <PredictionsCard
+                {/* <PredictionsCard
                   translationKey="categories"
                   categories={skillDetails?.categories ?? []}
-                />
+                /> */}
               </div>
             )}
           </div>

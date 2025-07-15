@@ -13,7 +13,7 @@ export const LevelDescription = {
 };
 
 export const LevelColor = {
-  [Level.Junior]: colors.sky[400],
-  [Level.Middle]: colors.emerald[400],
-  [Level.Senior]: colors.rose[400],
+  [Level.Junior]: colors.neutral[300],
+  [Level.Middle]: colors.emerald[300],
+  [Level.Senior]: colors.rose[300],
 };

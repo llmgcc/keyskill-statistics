@@ -28,7 +28,11 @@ export function SkillPlot({
   color,
   experience,
 }: SkillPlotProps) {
-  const { data, isLoading, isFetching } = useQuery({
+  const {
+    data: d,
+    isLoading,
+    isFetching,
+  } = useQuery({
     queryKey: [`${name}_plot_${plotKey}`, period, experience],
     queryFn: async () => {
       const data = await source(
@@ -42,6 +46,7 @@ export function SkillPlot({
     staleTime: Infinity,
   });
 
+  const data = d?.chart ?? [];
   const chartData = [];
   if (data?.length) {
     const COUNT_BINS = 20;

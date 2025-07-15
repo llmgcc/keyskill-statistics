@@ -1,5 +1,5 @@
 import { skillName } from '@/utils/common';
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Sticky from 'react-stickynode';
@@ -89,6 +89,9 @@ export function Header({ skill, isLoading }: HeaderProps) {
                 variant={'outline'}
                 size="xs"
                 loading={isLoading}
+                spinner={
+                  <Spinner className="text-background-secondary" size="xs" />
+                }
                 className="border-background-secondary text-text-secondary hover:bg-background-secondary"
                 onClick={onFavouriteClick}
               >

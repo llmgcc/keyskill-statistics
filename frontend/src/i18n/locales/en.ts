@@ -63,6 +63,7 @@ export default {
       domainsPrimary: 'Primary domain',
       categoriesPrimary: 'Primary category',
       skillOfAllTime: 'skill of all time',
+      loading: 'Loading',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -89,6 +90,7 @@ export default {
       [Experience.between1And3]: '1-3',
       [Experience.between3And6]: '3-6',
       [Experience.moreThan6]: '>6',
+      [Experience.unknown]: 'Unknown',
     },
     highlights: Highlights,
     pagination: {
@@ -107,6 +109,7 @@ export default {
       salarySubtitle: 'Expected median salary per month',
       demandTrend: 'Demand trend',
       trendSubtitle: 'Mentions in the last <text>{{days}}</text> days',
+      notEnoughData: 'Not enough data',
     },
     complexity: {
       title: 'Skill complexity',
