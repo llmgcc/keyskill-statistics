@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+import { Table } from '@chakra-ui/react';
 import {
   ColumnDef,
   getCoreRowModel,
@@ -48,10 +49,11 @@ export function DataTable<T extends object>({
     data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
-    onSortingChange: manualSortingState?.setSorting ?? setSorting,
+    // onSortingChange: manualSortingState?.setSorting ?? setSorting,
+    onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     state: {
-      sorting: manualSortingState?.sorting ?? sorting,
+      sorting: sorting,
     },
     defaultColumn: {
       minSize: 0,
@@ -59,21 +61,24 @@ export function DataTable<T extends object>({
       maxSize: Number.MAX_SAFE_INTEGER,
     },
     enableSortingRemoval: true,
-    manualSorting: !!manualSortingState,
+    // manualSorting: !!manualSortingState,
   });
 
   return (
-    <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500] leading-none">
+    <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500]">
       <div
         className={`max-w-full ${isTablet || isMobile ? 'overflow-x-scroll' : 'overflow-x-clip'}`}
       >
-        <table className="border-shadow w-full bg-background-primary text-text-primary">
+        <Table.Root
+          className="border-shadow w-full border-t-[1px] bg-background-primary text-text-primary"
+          unstyled
+        >
           <DataTableHeader table={table} />
           <DataTableBody table={table} isLoading={isLoading} />
-        </table>
+        </Table.Root>
       </div>
 
-      {!!pagination && (
+      {/* {!!pagination && (
         <Pagination
           totalRows={pagination.totalRows}
           pageIndex={pagination.pageIndex}
@@ -81,7 +86,7 @@ export function DataTable<T extends object>({
           onPageChange={pagination.onPageChange}
           pages={pagination.pages}
         />
-      )}
+      )} */}
     </div>
   );
 }

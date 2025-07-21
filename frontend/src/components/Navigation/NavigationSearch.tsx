@@ -397,7 +397,7 @@ export function NavigationSearch() {
                           data={domains ?? []}
                           valueRenderer={domain => (
                             <CategoryDescription
-                              categoryKey="domain"
+                              categoryKey="domains"
                               categoryName={domain.name}
                             />
                           )}
@@ -422,7 +422,7 @@ export function NavigationSearch() {
                           data={categories ?? []}
                           valueRenderer={category => (
                             <CategoryDescription
-                              categoryKey="category"
+                              categoryKey="categories"
                               categoryName={category.name}
                             />
                           )}

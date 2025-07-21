@@ -2,6 +2,7 @@ import { getPercentDifference } from '@/utils/common';
 import { Badge, ProgressCircle } from '@chakra-ui/react';
 import { Skeleton } from '@radix-ui/themes';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 import { GoDiff } from 'react-icons/go';
 import colors from 'tailwindcss/colors';
 
@@ -40,19 +41,33 @@ export const complexityAccessor = <T extends KeySkill>(config: {
   accessorKey: config.accessorKey as string,
   header: config.header ?? 'Complexity',
   size: config.size || 150,
-  cell: info => (
-    <div className="relative flex items-center justify-end">
-      <ProgressCircle.Root value={75} size={'xs'}>
-        <ProgressCircle.Circle color={'red'}>
-          <ProgressCircle.Track />
-          <ProgressCircle.Range strokeLinecap="round" />
-        </ProgressCircle.Circle>
-      </ProgressCircle.Root>
-      <div className="ml-1">
-        {info.row.original.complexity_score?.toFixed(2) ?? '-'}
+  cell: info => {
+    return (
+      <div className="test size-full">
+        <div className="flex size-full items-center justify-end gap-1">
+          <div>
+            <ProgressCircle.Root
+              size={'xs'}
+              value={info.row.original.complexity_score ?? 0}
+              max={1}
+              color={'red'}
+            >
+              <ProgressCircle.Circle css={{ '--thickness': '4px' }}>
+                <ProgressCircle.Track />
+                <ProgressCircle.Range
+                  strokeLinecap="round"
+                  stroke={'rgba(var(--color-background-gray))'}
+                />
+              </ProgressCircle.Circle>
+            </ProgressCircle.Root>
+          </div>
+          <div className="w-[22px]">
+            {((info.row.original.complexity_score ?? 0) * 10).toFixed(1)}
+          </div>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
   meta: {
     alignRight: true,
   },
@@ -113,11 +128,29 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   enablePinning: true,
 });
 
+export const favouriteAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  // header?: string;
+  // size?: number;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => <div></div>,
+  sortingFn: sortingFns.alphanumeric,
+  cell: info => {
+    return (
+      <div>
+        <FaRegStar className={`p-0 text-background-accent`} />
+      </div>
+    );
+  },
+  size: 5,
+});
+
 export const categoryNameAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
   size?: number;
-  category: 'domain' | 'category';
+  category: 'domains' | 'categories';
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div>{config.header}</div>,
@@ -153,7 +186,11 @@ export const countAccessor = <T extends KeySkill>(config: {
     }
 
     return (
-      <CountRenderer count={info.getValue() as number} maxCount={getMax()} />
+      <CountRenderer
+        count={info.getValue() as number}
+        maxCount={getMax()}
+        prev_count={info.row.original.prev_count}
+      />
     );
   },
   header: () => (
@@ -161,7 +198,7 @@ export const countAccessor = <T extends KeySkill>(config: {
       <div className="">{config.header ?? 'Mentions'}</div>
     </div>
   ),
-  size: 150,
+  size: 125,
   meta: {
     alignRight: true,
   },
@@ -242,6 +279,55 @@ export const prevCountAccessor = <T extends KeySkill>(
         <ValueChangeRenderer
           current={info.row.original.count}
           prev={info.row.original.prev_count}
+          percent={true}
+        />
+      </div>
+    );
+  },
+  size: 100,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const prevSalaryAccessor = <T extends KeySkill>(
+  config: {
+    accessorKey: string;
+    header?: string;
+    size?: number;
+  } = { accessorKey: 'prev_average_salary', size: 50 }
+): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => <GoDiff className="stroke-1" />,
+  sortingFn: (rowa, rowb) => {
+    if (!rowa.original.prev_average_salary) {
+      return 1;
+    }
+    if (!rowb.original.prev_average_salary) {
+      return -1;
+    }
+    const a = getPercentDifference(
+      rowa.original.average_salary,
+      rowa.original.prev_average_salary
+    );
+    const b = getPercentDifference(
+      rowb.original.average_salary,
+      rowb.original.prev_average_salary
+    );
+    if (
+      rowa.original.prev_average_salary &&
+      rowb.original.prev_average_salary
+    ) {
+      return a < b ? 1 : a > b ? -1 : 0;
+    }
+    return 0;
+  },
+  cell: info => {
+    return (
+      <div>
+        <ValueChangeRenderer
+          current={info.row.original.average_salary}
+          prev={info.row.original.prev_average_salary}
           percent={true}
         />
       </div>

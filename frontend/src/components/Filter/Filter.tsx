@@ -9,9 +9,7 @@ export function Filter() {
 
   return (
     <div className="text z-[1000] text-text" id="filter">
-      <div
-        className={`z-40 flex h-10 justify-between rounded bg-background-primary p-2`}
-      >
+      <div className={`z-40 flex h-10 justify-between rounded p-2`}>
         <div className="flex items-center text-sm">
           <div className="mx-1 text-background-accent">
             <IoFilterSharp />

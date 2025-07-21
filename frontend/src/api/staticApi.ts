@@ -50,6 +50,20 @@ export class StaticAPI implements API {
     return new Promise(() => []);
   }
 
+  async relatedSkills(
+    skillName: string,
+    period: number,
+    experience?: Experience
+  ): Promise<KeySkill[]> {
+    const response = await axios.get(`/api/key-skills/related/${skillName}`, {
+      params: {
+        days_period: period,
+        experience,
+      },
+    });
+    return response.data;
+  }
+
   async currencyList(): Promise<Currency[]> {
     const response = await axios.get('/static-api/general/currency.json');
     return response.data;

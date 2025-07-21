@@ -1,9 +1,7 @@
-import { Badge, Separator } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-import { KeySkill } from '@/interfaces';
 import { Experience, ExperienceColor } from '@/config/experience';
-import { Level, LevelColor } from '@/config/level';
+import { Level } from '@/config/level';
 import { Overlay } from '@/components/ui/Overlay';
 
 interface ComplexityData {
@@ -12,7 +10,7 @@ interface ComplexityData {
 }
 
 interface ComplexityProps {
-  data?: ComplexityData;
+  data: ComplexityData | null;
   isDataReady: boolean;
 }
 
@@ -26,13 +24,24 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
   );
 
   function getLevel(): Level {
-    if (complexity <= 0.33) {
+    const c = complexity * 10;
+
+    if (c < 2) {
       return Level.Junior;
     }
-    if (complexity <= 0.66) {
+    if (c < 5) {
+      return Level['Junior+'];
+    }
+    if (c < 6) {
       return Level.Middle;
     }
-    return Level.Senior;
+    if (complexity < 7.5) {
+      return Level['Middle+'];
+    }
+    if (complexity < 9) {
+      return Level.Senior;
+    }
+    return Level['Senior+'];
   }
 
   const currentLevel = getLevel();
@@ -46,12 +55,10 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="flex flex-col items-end">
             <div className="flex items-center gap-1 text-3xl font-bold">
-              {/* <div className='w-4 aspect-square rounded' style={{backgroundColor: LevelColor[currentLevel] }}></div> */}
               {experienceSum ? currentLevel : '-'}
             </div>
           </div>
           <div className="flex items-center gap-1 font-[500]">
-            {/* <div className='w-4 h-4 aspect-square rounded' style={{backgroundColor: LevelColor[currentLevel] }}></div> */}
             <div className="text-xl font-bold">
               {(complexity * 10).toFixed(2)}{' '}
               <span className="text-lg text-text-secondary/50">/ 10</span>
@@ -64,57 +71,6 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
             ? t(`complexity.subtitle.${currentLevel}`)
             : t('charts.notEnoughData')}
         </div>
-
-        {/* <div className="relative w-full p-2 border-background-secondary      shadow shadow-background-secondary border-[1px]">
-        <div className='relative flex w-full'>
-          <div className="h-full w-full">
-            <div className="py-1 text-xs text-text-secondary">{Level.Junior}</div>
-            <div
-              className="flex h-2 items-center justify-center rounded-l-sm border-[2px] border-background-secondary"
-              style={{ backgroundColor: LevelColor[Level.Junior] }}
-            ></div>
-
-          </div>
-          <div className="h-full w-full">
-            <div className="py-1 text-xs text-text-secondary">{Level.Middle}</div>
-            <div
-              className="flex h-2 items-center justify-center border-[2px] border-background-secondary"
-              style={{ backgroundColor: LevelColor[Level.Middle] }}
-            ></div>
-          </div>
-          <div className="h-full w-full">
-            <div className="py-1 text-xs text-text-secondary">{Level.Senior}</div>
-            <div
-              className="flex h-2 items-center justify-center rounded-r-sm border-[2px] border-background-secondary"
-              style={{ backgroundColor: LevelColor[Level.Senior] }}
-            ></div>
-          </div>
-                <div
-                className="absolute top-[20px] flex h-4 w-4 items-center justify-center rounded-full bg-background-primary transition-all duration-1000 ease-in-out"
-                style={{
-                  left: `calc(${Math.min(98, complexity * 100)}%)`,
-                }}
-              >
-                <div className="size-1/2 rounded-full" style={{backgroundColor: LevelColor[currentLevel] }}>
-                </div>
-              </div>
-        </div>
-        <div className='flex justify-between text-text-secondary mt-2 text-xs'>
-          <div>0%</div>
-          <div>100%</div>
-        </div>
-
-
-
-      </div> */}
-
-        {/* <div className="mt-5 text-base">
-      <div className="text-base text-text-primary">
-      {t('complexity.description')}
-      </div>
-      </div> */}
-
-        {/* <Separator variant="solid" className='mt-4'  size="md"/> */}
 
         <div className="mt-1">
           <div className="my-1 text-base">{t('complexity.distribution')}</div>

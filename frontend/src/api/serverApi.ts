@@ -24,6 +24,46 @@ export class ServerAPI implements API {
     return response.data;
   }
 
+  async relatedSkills(
+    skillName: string,
+    period: number,
+    experience?: Experience,
+    order_by?: {
+      order_by: string;
+      descending: boolean;
+    }
+  ): Promise<KeySkill[]> {
+    const response = await axios.get(`/api/key-skills/related/${skillName}`, {
+      params: {
+        days_period: period,
+        experience,
+        order_by: order_by?.order_by,
+        descending: order_by?.descending,
+      },
+    });
+    return response.data as Promise<KeySkill[]>;
+  }
+
+  async similarSkills(
+    skillName: string,
+    period: number,
+    experience?: Experience,
+    order_by?: {
+      order_by: string;
+      descending: boolean;
+    }
+  ): Promise<KeySkill[]> {
+    const response = await axios.get(`/api/key-skills/similar/${skillName}`, {
+      params: {
+        days_period: period,
+        experience,
+        order_by: order_by?.order_by,
+        descending: order_by?.descending,
+      },
+    });
+    return response.data as Promise<KeySkill[]>;
+  }
+
   async skillDetails(
     skillName: string,
     period: number,

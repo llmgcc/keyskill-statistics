@@ -6,11 +6,11 @@ import { Domains, DomainsStyle } from '@/config/domains';
 
 interface SkillImageProps {
   path?: string;
-  domain?: Domains | string;
-  category?: Categories | string;
+  domains?: Domains | string;
+  categories?: Categories | string;
 }
 
-function _SkillImage({ path, domain, category }: SkillImageProps) {
+function _SkillImage({ path, domains, categories }: SkillImageProps) {
   function imageLogo() {
     if (path) {
       const url = `${baseURL}/${path}`;
@@ -20,14 +20,14 @@ function _SkillImage({ path, domain, category }: SkillImageProps) {
         </div>
       );
     }
-    if (domain && Object.values(Domains).includes(domain as Domains)) {
-      return DomainsStyle[domain as Domains].logo;
+    if (domains && Object.values(Domains).includes(domains as Domains)) {
+      return DomainsStyle[domains as Domains].logo;
     }
     if (
-      category &&
-      Object.values(Categories).includes(category as Categories)
+      categories &&
+      Object.values(Categories).includes(categories as Categories)
     ) {
-      return CategoriesStyle[category as Categories].logo;
+      return CategoriesStyle[categories as Categories].logo;
     }
     return null;
   }
@@ -36,14 +36,14 @@ function _SkillImage({ path, domain, category }: SkillImageProps) {
     if (path) {
       return null;
     }
-    if (domain && Object.values(Domains).includes(domain as Domains)) {
-      return DomainsStyle[domain as Domains].color;
+    if (domains && Object.values(Domains).includes(domains as Domains)) {
+      return DomainsStyle[domains as Domains].color;
     }
     if (
-      category &&
-      Object.values(Categories).includes(category as Categories)
+      categories &&
+      Object.values(Categories).includes(categories as Categories)
     ) {
-      return `${CategoriesStyle[category as Categories].color}`;
+      return `${CategoriesStyle[categories as Categories].color}`;
     }
     return null;
   }

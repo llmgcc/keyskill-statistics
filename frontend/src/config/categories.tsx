@@ -1,33 +1,25 @@
-import { AiOutlineApi } from 'react-icons/ai';
-import { BiJoystick } from 'react-icons/bi';
-import { BsShieldLock } from 'react-icons/bs';
-import { CiServer } from 'react-icons/ci';
 import {
-  FaBox,
-  FaBoxes,
-  FaBug,
-  FaCheck,
+  BiBarChart,
+  BiDotsHorizontal,
+  BiJoystick,
+  BiMobile,
+  BiServer,
+  BiShield,
+  BiTerminal,
+} from 'react-icons/bi';
+import { BsBox, BsCloudCheck, BsGear, BsRobot } from 'react-icons/bs';
+import {
+  FaCode,
   FaCodeBranch,
   FaDatabase,
-  FaLaptopCode,
-  FaNetworkWired,
-  FaRobot,
+  FaHandshake,
+  FaPaintBrush,
+  FaQuestion,
 } from 'react-icons/fa';
-import { FaPeopleGroup } from 'react-icons/fa6';
-import { FiBox, FiMessageSquare, FiSearch } from 'react-icons/fi';
-import { GrClearOption, GrNodes } from 'react-icons/gr';
-import { HiCommandLine, HiServer } from 'react-icons/hi2';
-import {
-  IoCodeOutline,
-  IoColorPaletteOutline,
-  IoDocument,
-  IoPhonePortrait,
-} from 'react-icons/io5';
-import { LuScale3D } from 'react-icons/lu';
-import { MdBarChart } from 'react-icons/md';
-import { PiBracketsCurlyBold } from 'react-icons/pi';
-import { SiApachekafka } from 'react-icons/si';
-import { TbCloudLock, TbDevicesSearch } from 'react-icons/tb';
+import { MdApi } from 'react-icons/md';
+import { PiBracketsCurly } from 'react-icons/pi';
+import { RiDashboard2Fill } from 'react-icons/ri';
+import { TbServerBolt } from 'react-icons/tb';
 import colors from 'tailwindcss/colors';
 
 export enum Categories {
@@ -41,246 +33,165 @@ export enum Categories {
   'Infrastructure Automation & Configuration' = 'Infrastructure Automation & Configuration',
   'Code Collaboration & Integration' = 'Code Collaboration & Integration',
   'Graphic design' = 'Graphic design',
-  'Monitoring' = 'Monitoring',
-  'CMS' = 'CMS',
-  'Network Protocols' = 'Network Protocols',
-  'Web Servers' = 'Web Servers',
-  'Integrated Development Environments' = 'Integrated Development Environments',
-  'Cloud platforms' = 'Cloud platforms',
-  'Mobile Libraries and Frameworks' = 'Mobile Libraries and Frameworks',
-  'Message Brokers' = 'Message Brokers',
-  'Testing Tools' = 'Testing Tools',
+  'Monitoring & Logging' = 'Monitoring & Logging',
   'Machine Learning Libraries and Frameworks' = 'Machine Learning Libraries and Frameworks',
-  'Security tools and frameworks' = 'Security tools and frameworks',
-  'API technologies and protocols' = 'API technologies and protocols',
-  'Game engines' = 'Game engines',
-  'Project Management Tools' = 'Project Management Tools',
-  'Blockchain platforms & tools' = 'Blockchain platforms & tools',
-  'Messaging & Queuing systems' = 'Messaging & Queuing systems',
-  'Search & Indexing engines' = 'Search & Indexing engines',
-  'Data Visualization & BI tools' = 'Data Visualization & BI tools',
-  'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
-  'Documentation tools' = 'Documentation tools',
-  'Code Quality Tools' = 'Code Quality Tools',
+  'API Technologies & Standards' = 'API Technologies & Standards',
+  'Web Servers & Proxies' = 'Web Servers & Proxies',
+  'Message Brokers & Queues' = 'Message Brokers & Queues',
+  'Security Tools & Practices' = 'Security Tools & Practices',
+  'Mobile Development Frameworks' = 'Mobile Development Frameworks',
+  'Game Engines & Tools' = 'Game Engines & Tools',
+  'Business Intelligence Tools' = 'Business Intelligence Tools',
+  'Other' = 'Other',
+  'Unknown' = 'Unknown',
 }
 
 export const CategoryDescription: Record<Categories, string> = {
-  Languages:
-    'Programming and markup languages for development and data processing',
-  Databases: 'Systems for storing and querying structured data',
+  Languages: 'Programming languages used to write software and applications',
+  Databases: 'Systems for storing and managing structured data',
   'Frontend Libraries and Frameworks':
-    'Tools for dynamic interfaces and state management',
+    'Libraries and frameworks for building user interfaces and web applications',
   'Backend Libraries and Frameworks':
-    '	Server frameworks for APIs, business logic, and database work',
-  'Soft skills': 'Communication, teamwork, and interpersonal abilities',
+    'Libraries and frameworks for server-side application development',
+  'Soft skills': 'Non-technical interpersonal and professional skills',
   'Operating systems':
-    'OS for development, deployment, and system administration',
+    'Software platforms that manage computer hardware and software resources',
   'Containerization & Orchestration':
-    'Packaging in containers and managing scalable deployments',
+    'Tools for packaging, deploying and managing containerized applications',
   'Infrastructure Automation & Configuration':
-    '	Infrastructure-as-code: automated provisioning and configuration',
+    'Tools for automating infrastructure deployment and configuration',
   'Code Collaboration & Integration':
-    'Version control and CI/CD tools for team development',
+    'Tools and practices for version control and continuous integration',
   'Graphic design':
-    'Creating visual elements, layouts, and digital illustrations',
-  Monitoring: 'Collecting metrics and alerts to track system health',
-  CMS: 'Content management platforms for website publishing and upkeep',
-  'Network Protocols':
-    'Rules for data exchange between devices and applications',
-  'Web Servers': 'Servers for handling HTTP/HTTPS requests and serving content',
-  'Integrated Development Environments':
-    'IDEs with editor, debugger, and build tools',
-  'Cloud platforms':
-    'Cloud services for compute, storage, and resource management',
-  'Mobile Libraries and Frameworks':
-    'Frameworks for native and cross‑platform mobile development',
-  'Message Brokers':
-    'Message brokers and queues for asynchronous communication',
-  'Testing Tools':
-    'Automating functional, integration, and performance testing',
+    'Tools for creating and editing visual content and user interfaces',
+  'Monitoring & Logging':
+    'Tools and platforms for system monitoring, logging and observability',
   'Machine Learning Libraries and Frameworks':
-    'Libraries for training, evaluating, and deploying ML/DL models',
-  'Security tools and frameworks':
-    'Tools for penetration testing, security analysis, and protection',
-  'API technologies and protocols':
-    'Protocols and standards for building and consuming web services',
-  'Game engines':
-    'Frameworks for 2D/3D game development, rendering, and physics',
-  'Project Management Tools':
-    'Tools for planning, tracking, and managing project tasks',
-  'Blockchain platforms & tools':
-    'Platforms and utilities for decentralized application development',
-  'Messaging & Queuing systems':
-    'Message brokers and queues for asynchronous communication',
-  'Search & Indexing engines':
-    'Full‑text search systems and data indexing engines',
-  'Data Visualization & BI tools':
-    'Dashboards and reports for data visualization and business analytics',
-  'Graphics APIs & GPGPU': 'APIs for hardware rendering and GPGPU computation',
-  'Documentation tools':
-    'Systems for writing, storing, and publishing technical docs',
-  'Code Quality Tools':
-    'Analyzers and linters for code quality and compliance metrics',
+    'Libraries and tools for developing machine learning and AI applications',
+  'API Technologies & Standards':
+    'Technologies and specifications for building and documenting APIs',
+  'Web Servers & Proxies':
+    'Software for serving web content and managing network traffic',
+  'Message Brokers & Queues':
+    'Systems for handling asynchronous messaging and event processing',
+  'Security Tools & Practices':
+    'Tools and methodologies for application and infrastructure security',
+  'Mobile Development Frameworks':
+    'Frameworks for building mobile applications',
+  'Game Engines & Tools': 'Platforms and tools for game development',
+  'Business Intelligence Tools':
+    'Tools for data analysis and business reporting',
+  Other: "Skills that don't fit into other specific categories",
+  Unknown: 'Unclassified or emerging technology skills',
 };
 
 export const CategoryShort: Record<Categories, string> = {
-  Languages: 'Langs',
+  Languages: 'Lang',
   Databases: 'DB',
-  'Frontend Libraries and Frameworks': 'FrontLibs',
-  'Backend Libraries and Frameworks': 'BackLibs',
+  'Frontend Libraries and Frameworks': 'Front',
+  'Backend Libraries and Frameworks': 'Back',
   'Soft skills': 'Soft',
   'Operating systems': 'OS',
-  'Containerization & Orchestration': 'Containers',
+  'Containerization & Orchestration': 'Cont',
   'Infrastructure Automation & Configuration': 'IaC',
   'Code Collaboration & Integration': 'CI/CD',
   'Graphic design': 'Design',
-  Monitoring: 'Monitor',
-  CMS: 'CMS',
-  'Network Protocols': 'Net',
-  'Web Servers': 'WebServ',
-  'Integrated Development Environments': 'IDE',
-  'Cloud platforms': 'Cloud',
-  'Mobile Libraries and Frameworks': 'Mobile',
-  'Message Brokers': 'Brokers',
-  'Testing Tools': 'Testing',
+  'Monitoring & Logging': 'Monitor',
   'Machine Learning Libraries and Frameworks': 'ML',
-  'Security tools and frameworks': 'Security',
-  'API technologies and protocols': 'API',
-  'Game engines': 'Games',
-  'Project Management Tools': 'PM',
-  'Blockchain platforms & tools': 'Block',
-  'Messaging & Queuing systems': 'Queue',
-  'Search & Indexing engines': 'Search',
-  'Data Visualization & BI tools': 'BI',
-  'Graphics APIs & GPGPU': 'Graphics',
-  'Documentation tools': 'Docs',
-  'Code Quality Tools': 'CodeQ',
+  'API Technologies & Standards': 'API',
+  'Web Servers & Proxies': 'Web',
+  'Message Brokers & Queues': 'Queue',
+  'Security Tools & Practices': 'Sec',
+  'Mobile Development Frameworks': 'Mobile',
+  'Game Engines & Tools': 'Game',
+  'Business Intelligence Tools': 'BI',
+  Other: 'Other',
+  Unknown: 'Unknown',
 };
 
 export const CategoriesStyle = {
   [Categories.Languages]: {
-    logo: <PiBracketsCurlyBold />,
-    color: colors.indigo[600],
+    logo: <PiBracketsCurly />,
+    color: colors.blue[500],
   },
   [Categories.Databases]: {
     logo: <FaDatabase />,
-    color: colors.sky[600],
+    color: colors.violet[600],
   },
   [Categories['Frontend Libraries and Frameworks']]: {
-    logo: <IoCodeOutline />,
-    color: colors.violet[500],
+    logo: <FaCode />,
+    color: colors.red[400],
   },
   [Categories['Backend Libraries and Frameworks']]: {
-    logo: <CiServer />,
-    color: colors.amber[600],
+    logo: <BiServer />,
+    color: colors.indigo[500],
   },
   [Categories['Soft skills']]: {
-    logo: <FaPeopleGroup />,
-    color: colors.fuchsia[500],
+    logo: <FaHandshake />,
+    color: colors.pink[400],
   },
   [Categories['Operating systems']]: {
-    logo: <HiCommandLine />,
-    color: colors.slate[600],
+    logo: <BiTerminal />,
+    color: colors.gray[600],
   },
   [Categories['Containerization & Orchestration']]: {
-    logo: <FaBox />,
-    color: colors.blue[400],
+    logo: <BsBox />,
+    color: colors.blue[600],
   },
   [Categories['Infrastructure Automation & Configuration']]: {
-    logo: <FaBoxes />,
-    color: colors.orange[500],
+    logo: <BsGear />,
+    color: colors.amber[600],
   },
   [Categories['Code Collaboration & Integration']]: {
     logo: <FaCodeBranch />,
-    color: colors.teal[500],
-  },
-  [Categories['Graphic design']]: {
-    logo: <IoColorPaletteOutline />,
-    color: colors.rose[500],
-  },
-  [Categories.Monitoring]: {
-    logo: <FiSearch />,
-    color: colors.emerald[500],
-  },
-  [Categories.CMS]: {
-    logo: <FiBox />,
-    color: colors.purple[400],
-  },
-  [Categories['Network Protocols']]: {
-    logo: <FaNetworkWired />,
-    color: colors.cyan[500],
-  },
-  [Categories['Web Servers']]: {
-    logo: <HiServer />,
-    color: colors.lime[500],
-  },
-  [Categories['Integrated Development Environments']]: {
-    logo: <FaLaptopCode />,
-    color: colors.sky[400],
-  },
-  [Categories['Cloud platforms']]: {
-    logo: <TbCloudLock />,
-    color: colors.blue[300],
-  },
-  [Categories['Mobile Libraries and Frameworks']]: {
-    logo: <IoPhonePortrait />,
-    color: colors.pink[500],
-  },
-  [Categories['Message Brokers']]: {
-    logo: <SiApachekafka />,
-    color: colors.green[500],
-  },
-  [Categories['Testing Tools']]: {
-    logo: <FaBug />,
-    color: colors.green[800],
-  },
-  [Categories['Machine Learning Libraries and Frameworks']]: {
-    logo: <FaRobot />,
-    color: colors.fuchsia[600],
-  },
-  [Categories['Security tools and frameworks']]: {
-    logo: <BsShieldLock />,
-    color: colors.yellow[500],
-  },
-  [Categories['API technologies and protocols']]: {
-    logo: <AiOutlineApi />,
-    color: colors.orange[400],
-  },
-  [Categories['Game engines']]: {
-    logo: <BiJoystick />,
     color: colors.purple[600],
   },
-  [Categories['Project Management Tools']]: {
-    logo: <FaCheck />,
-    color: colors.cyan[400],
+  [Categories['Graphic design']]: {
+    logo: <FaPaintBrush />,
+    color: colors.rose[400],
   },
-  [Categories['Blockchain platforms & tools']]: {
-    logo: <GrNodes />,
+  [Categories['Monitoring & Logging']]: {
+    logo: <RiDashboard2Fill />,
+    color: colors.emerald[500],
+  },
+  [Categories['Machine Learning Libraries and Frameworks']]: {
+    logo: <BsRobot />,
+    color: colors.yellow[600],
+  },
+  [Categories['API Technologies & Standards']]: {
+    logo: <MdApi />,
+    color: colors.sky[500],
+  },
+  [Categories['Web Servers & Proxies']]: {
+    logo: <TbServerBolt />,
+    color: colors.teal[500],
+  },
+  [Categories['Message Brokers & Queues']]: {
+    logo: <BsCloudCheck />,
+    color: colors.violet[300],
+  },
+  [Categories['Security Tools & Practices']]: {
+    logo: <BiShield />,
+    color: colors.zinc[600],
+  },
+  [Categories['Mobile Development Frameworks']]: {
+    logo: <BiMobile />,
+    color: colors.fuchsia[500],
+  },
+  [Categories['Game Engines & Tools']]: {
+    logo: <BiJoystick />,
+    color: colors.orange[500],
+  },
+  [Categories['Business Intelligence Tools']]: {
+    logo: <BiBarChart />,
     color: colors.lime[600],
   },
-  [Categories['Messaging & Queuing systems']]: {
-    logo: <FiMessageSquare />,
-    color: colors.blue[500],
+  [Categories.Other]: {
+    logo: <BiDotsHorizontal />,
+    color: colors.zinc[500],
   },
-  [Categories['Search & Indexing engines']]: {
-    logo: <TbDevicesSearch />,
-    color: colors.red[400],
-  },
-
-  [Categories['Data Visualization & BI tools']]: {
-    logo: <MdBarChart />,
-    color: colors.red[400],
-  },
-  [Categories['Graphics APIs & GPGPU']]: {
-    logo: <LuScale3D />,
-    color: colors.red[400],
-  },
-  [Categories['Documentation tools']]: {
-    logo: <IoDocument />,
-    color: colors.red[400],
-  },
-  [Categories['Code Quality Tools']]: {
-    logo: <GrClearOption />,
-    color: colors.red[400],
+  [Categories.Unknown]: {
+    logo: <FaQuestion />,
+    color: colors.slate[400],
   },
 };

@@ -35,6 +35,12 @@ export interface API {
     experience?: Experience
   ) => Promise<KeySkill>;
 
+  relatedSkills: (
+    skillName: string,
+    period: number,
+    experience?: Experience
+  ) => Promise<KeySkill[]>;
+
   skillsList: (
     limit: number,
     offset: number,

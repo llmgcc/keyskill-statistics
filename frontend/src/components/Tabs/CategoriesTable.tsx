@@ -33,7 +33,7 @@ export function CategoriesTable() {
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
     categoryNameAccessor({
       accessorKey: 'name',
-      category: 'domain',
+      category: 'domains',
       header: t('columns.name'),
     }),
     salaryAccessor({

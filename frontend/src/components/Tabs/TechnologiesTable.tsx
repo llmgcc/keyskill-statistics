@@ -34,7 +34,7 @@ export function TechnologiesTable() {
     prevPlaceAccessor({ accessorKey: 'prev_place' }),
     categoryNameAccessor({
       accessorKey: 'name',
-      category: 'category',
+      category: 'categories',
       header: t('columns.name'),
     }),
 

@@ -72,7 +72,7 @@ export function Header({ skill, isLoading }: HeaderProps) {
       innerZ={1000}
       top={navOffset}
       enableTransforms={false}
-      innerActiveClass="shadow-md shadow-background-secondary "
+      innerActiveClass="shadow-md shadow-background-secondary"
     >
       <div id="header" className="z-1 bg-background-primary">
         <div className="z-50 flex items-center justify-between rounded border-[0px] border-background-secondary p-2 py-4 shadow-background-secondary">

@@ -21,9 +21,11 @@ import {
   complexityAccessor,
   confidenceAccessor,
   countAccessor,
+  favouriteAccessor,
   placeAccessor,
   prevCountAccessor,
   prevPlaceAccessor,
+  prevSalaryAccessor,
   salaryAccessor,
   skillNameAccessor,
 } from './accessors';
@@ -97,6 +99,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
   const columns = useMemo(
     () =>
       [
+        favouriteAccessor({ accessorKey: 'favourite' }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
@@ -132,8 +135,9 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
           source: API.salaryPlot,
           header: t('columns.salary'),
         }),
+        // prevSalaryAccessor({ accessorKey: 'prev_average_salary' }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
-        prevCountAccessor({ accessorKey: 'prev_count' }),
+        // prevCountAccessor({ accessorKey: 'prev_count' }),
         chartAccessor({
           accessorKey: 'chart',
           isLoading: isLoading || isFetching,

@@ -7,7 +7,7 @@ import { DomainDescription } from '@/config/domains';
 import { SkillImage } from './SkillImage';
 
 interface CategoryDescriptionProps {
-  categoryKey: 'domain' | 'category';
+  categoryKey: 'domains' | 'categories';
   categoryName: string;
 }
 
@@ -18,12 +18,12 @@ function _CategoryDescription({
   const { t } = useTranslation();
 
   function categoryDescription() {
-    if (categoryKey == 'domain') {
+    if (categoryKey == 'domains') {
       if (Object.keys(DomainDescription).includes(categoryName)) {
         return t(`domainDescription.${categoryName}`);
       }
     }
-    if (categoryKey == 'category') {
+    if (categoryKey == 'categories') {
       if (Object.keys(CategoryDescriptionEnum).includes(categoryName)) {
         return t(`categoryDescription.${categoryName}`);
       }
@@ -31,7 +31,7 @@ function _CategoryDescription({
     return null;
   }
 
-  const key = categoryKey == 'domain' ? 'domains' : 'categories';
+  const key = categoryKey;
 
   return (
     <div className="flex items-center">

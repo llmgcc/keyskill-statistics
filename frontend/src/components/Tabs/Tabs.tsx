@@ -5,7 +5,7 @@ import { CgList } from 'react-icons/cg';
 import { MdOutlineCategory } from 'react-icons/md';
 
 import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
-import { TabNavigation } from '../ui/TabNavigation';
+import { RouterTabs } from '../ui/RouterTabs';
 import { CategoriesTable } from './CategoriesTable';
 import { KeySkills } from './KeySkills';
 import { TechnologiesTable } from './TechnologiesTable';
@@ -63,7 +63,7 @@ function _Tabs() {
     },
   ];
 
-  return <TabNavigation tabs={tabs} />;
+  return <RouterTabs tabs={tabs} />;
 }
 
 export const Tabs = memo(_Tabs);

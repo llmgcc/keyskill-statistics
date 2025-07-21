@@ -11,6 +11,7 @@ import { useDomainsStore } from '@/store/domainsStore.ts';
 import { useStatsStore } from '@/store/statsStore.ts';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 
+import { Footer } from './components/Footer/Footer';
 import { CategoryPage } from './components/Pages/CategoryPage';
 import { DomainPage } from './components/Pages/DomainPage';
 import { MainPage } from './components/Pages/MainPage';
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/domain/:name" element={<DomainPage />} />
         <Route path="/category/:name" element={<CategoryPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

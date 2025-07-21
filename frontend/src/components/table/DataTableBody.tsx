@@ -1,10 +1,11 @@
+import { Table } from '@chakra-ui/react';
 import { Skeleton } from '@radix-ui/themes';
-import { Cell, flexRender, Table } from '@tanstack/react-table';
+import { Cell, flexRender, Table as ITable } from '@tanstack/react-table';
 
 import { alignRight } from './common';
 
 interface DataTableBodyProps<T extends object> {
-  table: Table<T>;
+  table: ITable<T>;
   isLoading?: boolean;
 }
 
@@ -21,13 +22,13 @@ export function DataTableBody<T extends object>({
   }
 
   return (
-    <tbody className="divide-y divide-background-secondary text-text">
+    <Table.Body className="divide-y divide-background-secondary bg-background-primary text-text">
       {table.getRowModel().rows.map(row => (
-        <tr key={row.id} className="h-20">
+        <Table.Row key={row.id} className="h-20">
           {row.getVisibleCells().map(cell => (
-            <td
+            <Table.Cell
               key={cell.id}
-              className="size-full p-4"
+              className="size-full bg-background-primary p-4"
               style={{
                 width: cell.column.getSize()
                   ? `${cell.column.getSize()}px`
@@ -47,10 +48,10 @@ export function DataTableBody<T extends object>({
                   )}
                 </div>
               </div>
-            </td>
+            </Table.Cell>
           ))}
-        </tr>
+        </Table.Row>
       ))}
-    </tbody>
+    </Table.Body>
   );
 }

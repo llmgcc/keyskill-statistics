@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useSkillSalaryData } from '@/hooks/data/useSkillSalaryData';
 import { useCurrencyValue } from '@/hooks/useCurrencyValue';
+import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { Overlay } from '@/components/ui/Overlay';
 
 import { Histogram } from '../../Charts/Histogram/Histogram';
@@ -53,11 +54,7 @@ export function SalaryDistribution({
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="text-3xl font-bold">
-            {abbr}
-            {Number(medianConverted).toLocaleString([], {
-              maximumFractionDigits: 0,
-              minimumFractionDigits: 0,
-            })}
+            <CurrencyDisplay valueInRUB={data?.average_salary ?? 0} />
           </div>
           <div className="flex flex-col items-end">
             <div className="mx-1 flex items-center text-xs">

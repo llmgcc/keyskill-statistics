@@ -64,6 +64,9 @@ export default {
       categoriesPrimary: 'Primary category',
       skillOfAllTime: 'skill of all time',
       loading: 'Loading',
+      popular: 'Popular',
+      trending: 'Trending',
+      highestSalary: 'Highest salary',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -117,6 +120,16 @@ export default {
       description:
         'Complexity is calculated based on the frequency of occurrence of the skill among specialists of different levels',
       distribution: 'Experience distribution',
+    },
+    skillPage: {
+      relatedSkills: {
+        title: 'Related skills',
+        subtitle: 'Skills that frequently appear together',
+      },
+      similarSkills: {
+        title: 'Similar skills',
+        subtitle: 'Skills that are similar in meaning or functionality',
+      },
     },
   },
 };

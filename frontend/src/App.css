@@ -94,7 +94,7 @@ body[data-scroll-locked] {
 
 @media (max-width: 768px) {
   html {
-    font-size: 75%;
+    /* font-size: 5%; */
   }
 }
 

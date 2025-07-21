@@ -17,10 +17,7 @@ export const SelectTrigger = React.memo(
             {...props}
             className="test-base cursor-pointer border-[1px] border-background-secondary hover:bg-background-secondary data-[state=open]:bg-background-secondary"
           >
-            <SelectPrimitive.ValueText
-              placeholder="Select member"
-              className="min-w-max pr-6"
-            >
+            <SelectPrimitive.ValueText className="min-w-max pr-6">
               {children}
             </SelectPrimitive.ValueText>
           </SelectPrimitive.Trigger>
@@ -64,7 +61,7 @@ export const SelectItem = React.memo(
       <SelectPrimitive.Item
         {...props}
         ref={forwardedRef}
-        className="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm font-[400] outline-none hover:bg-background-secondary focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
+        className="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-background-secondary focus:bg-background-secondary data-[state=checked]:bg-background-secondary"
       >
         <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
         <SelectPrimitive.ItemIndicator

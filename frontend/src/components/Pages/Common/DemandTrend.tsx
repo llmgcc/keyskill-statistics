@@ -1,4 +1,5 @@
 import { Trans, useTranslation } from 'react-i18next';
+import { BiInfoCircle } from 'react-icons/bi';
 import colors from 'tailwindcss/colors';
 
 import { useSkillTrendData } from '@/hooks/data/useSkillTrendData';
@@ -11,7 +12,7 @@ import { ValueChangeRenderer } from '../../Table/renderers/ValueChangeRenderer';
 
 interface TrendData {
   name: string;
-  count: number;
+  count?: number;
   prev_count?: number;
 }
 
@@ -43,7 +44,12 @@ export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
       />
 
       <div className="z-10 rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
-        <div className="text-base font-[500]">{t('charts.demandTrend')}</div>
+        <div className="flex items-center gap-1 text-base font-[500]">
+          <div>{t('charts.demandTrend')}</div>
+          <div className="text-text-secondary">
+            <BiInfoCircle />
+          </div>
+        </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="text-3xl font-bold">{mentions ?? 0}</div>
           <div className="flex flex-col items-end">

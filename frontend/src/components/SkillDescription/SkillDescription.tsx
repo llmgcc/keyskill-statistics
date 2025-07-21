@@ -58,8 +58,8 @@ export function SkillDescription({
           }
         >
           <SkillImage
-            domain={skill?.domains?.[0]?.name}
-            category={skill?.categories?.[0]?.name}
+            domains={skill?.domains?.[0]?.name}
+            categories={skill?.categories?.[0]?.name}
             path={skill?.image}
           />
         </Skeleton>

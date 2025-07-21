@@ -1,13 +1,15 @@
-import { flexRender, Header, Table } from '@tanstack/react-table';
+import { Table } from '@chakra-ui/react';
+import { flexRender, Header, Table as ITable } from '@tanstack/react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
+import Sticky from 'react-stickynode';
+
+// import { useScreenSize } from '@/hooks/useScreenSize';
+import { useTopOffset } from '@/hooks/useTopOffset';
 
 import { alignRight } from './common';
 
-// import { useScreenSize } from '@/hooks/useScreenSize';
-// import { useTopOffset } from '@/hooks/useTopOffset';
-
 interface DataTableHeaderProps<T extends object> {
-  table: Table<T>;
+  table: ITable<T>;
 }
 
 export function DataTableHeader<T extends object>({
@@ -31,21 +33,21 @@ export function DataTableHeader<T extends object>({
     return <div className="size-3">{sortingDirection()}</div>;
   }
 
-  // const navOffset = useTopOffset('#navbar');
-  // const filterOffset = useTopOffset('#filter');
+  const navOffset = useTopOffset('#navbar');
+  const filterOffset = useTopOffset('#filter');
+  const headerOffset = useTopOffset('#header');
 
   return (
-    // <Sticky innerZ={1000} top={navOffset + filterOffset} enableTransforms={true}
-    //   innerActiveClass="!block !w-full"
-    //   innerClass="!block !w-full"
-    // >
-    <thead
-      className={`z-[45] h-10 w-full border-spacing-0 bg-background-primary text-xs shadow-background-secondary`}
+    <Table.Header
+      className={`sticky z-[1000] h-10 w-full border-spacing-0 text-xs shadow-background-secondary`}
+      style={{
+        top: `${headerOffset + filterOffset + navOffset}px`,
+      }}
     >
       {table.getHeaderGroups().map(headerGroup => (
-        <tr key={headerGroup.id}>
+        <Table.Row key={headerGroup.id} className="">
           {headerGroup.headers.map(header => (
-            <th
+            <Table.ColumnHeader
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
               style={{
@@ -53,31 +55,32 @@ export function DataTableHeader<T extends object>({
                   ? `${header.getSize()}px`
                   : 'fit-content',
               }}
-              className={`border-shadow select-none bg-background-primary p-4 ${header.column.getCanSort() && 'cursor-pointer'}`}
+              className={`m-0 select-none bg-background-primary p-0 ${header.column.getCanSort() && 'cursor-pointer'}`}
             >
-              <div
-                className={`flex h-full w-full items-center ${alignRight(header.column.columnDef.meta) ? 'justify-end' : 'justify-start'}`}
-              >
-                {alignRight(header.column.columnDef.meta)
-                  ? sortingIcon(header)
-                  : null}
-                <div className={`font-[700] text-text`}>
-                  {header.isPlaceholder
+              <div className={`w-full`}>
+                <div
+                  className={`$ flex items-center bg-background-primary p-4 ${alignRight(header.column.columnDef.meta) ? 'justify-end' : 'justify-start'}`}
+                >
+                  {alignRight(header.column.columnDef.meta)
+                    ? sortingIcon(header)
+                    : null}
+                  <div className={`font-[700] text-text-primary`}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </div>
+                  {alignRight(header.column.columnDef.meta)
                     ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                    : sortingIcon(header)}
                 </div>
-                {alignRight(header.column.columnDef.meta)
-                  ? null
-                  : sortingIcon(header)}
               </div>
-            </th>
+            </Table.ColumnHeader>
           ))}
-        </tr>
+        </Table.Row>
       ))}
-    </thead>
-    // </Sticky>
+    </Table.Header>
   );
 }
