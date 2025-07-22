@@ -3,17 +3,29 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useFilters } from '../useFilters';
 
-export function useSkillTrendData(skill: string | null, numberOfBins = 20) {
+export function useSkillTrendData(
+  skill: string | null,
+  numberOfBins = 20,
+  relatedTo?: string | null
+) {
   const { period, experience } = useFilters();
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: [`skill_trend`, period, experience, skill, numberOfBins],
+    queryKey: [
+      `skill_trend`,
+      period,
+      experience,
+      skill,
+      numberOfBins,
+      relatedTo,
+    ],
     queryFn: async () => {
       const data = await API.skillPlot(
         skill ?? '',
         period,
         experience,
-        numberOfBins
+        numberOfBins,
+        relatedTo
       );
       return data;
     },

@@ -141,7 +141,8 @@ export class ServerAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins?: number
+    numberOfBins?: number,
+    relatedTo?: string | null
   ): Promise<TrendChart> {
     const response = await axios.get('/api/charts/skill', {
       params: {
@@ -149,6 +150,7 @@ export class ServerAPI implements API {
         period,
         experience,
         number_of_bins: numberOfBins,
+        related_to: relatedTo,
       },
     });
     return response.data as TrendChart;
@@ -188,7 +190,8 @@ export class ServerAPI implements API {
     name: string,
     period: number,
     experience?: Experience,
-    numberOfBins?: number
+    numberOfBins?: number,
+    relatedTo?: string | null
   ): Promise<SalaryChart> {
     const response = await axios.get('/api/charts/salary', {
       params: {
@@ -196,6 +199,7 @@ export class ServerAPI implements API {
         period,
         experience,
         number_of_bins: numberOfBins,
+        related_to: relatedTo,
       },
     });
     return response.data;

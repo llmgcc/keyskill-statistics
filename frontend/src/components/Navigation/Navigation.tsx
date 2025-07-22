@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { LiaNetworkWiredSolid } from 'react-icons/lia';
+import { PiCodeSimpleLight } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 import Sticky from 'react-stickynode';
 
@@ -55,8 +57,9 @@ export function Navigation() {
           >
             <div className="flex items-center justify-center gap-6 text-sm">
               <div className="flex items-center text-text">
-                <div className="flex size-5 items-center justify-center rounded">
-                  <div>
+                <div className="flex aspect-square items-center justify-center rounded-lg bg-background-secondary/50 p-1 text-[#5e6c77] text-background-accent">
+                  <PiCodeSimpleLight size={20} />
+                  {/* <div>
                     <div className="mb-[1px] flex">
                       <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
                       <div className="size-2 rounded-sm bg-background-accent/50"></div>
@@ -65,7 +68,7 @@ export function Navigation() {
                       <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
                       <div className="size-2 rounded-sm bg-background-accent/100"></div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div
                   onClick={() => navigate('/')}
@@ -75,7 +78,7 @@ export function Navigation() {
                 </div>
               </div>
 
-              <div className="hidden gap-6 text-sm font-[600] text-text-primary md:flex">
+              <div className="hidden gap-6 text-sm font-[600] text-text-primary lg:flex">
                 <div className="cursor-pointer hover:text-background-accent">
                   Skills
                 </div>
@@ -95,7 +98,7 @@ export function Navigation() {
             </div>
             <div></div>
             <div className="flex items-center">
-              <div className="mx-2 flex items-center">
+              <div className="mx-2 hidden items-center lg:flex">
                 <NavigationSearch />
               </div>
               <div className="mx-2 flex items-center">

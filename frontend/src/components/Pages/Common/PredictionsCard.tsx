@@ -17,11 +17,9 @@ export function PredictionsCard({
 }: PredictionsCardProps) {
   const { t } = useTranslation();
 
-  const primaryCategory = categories[0]?.name;
-
   function getCategories(): Category[] {
     if (!categories?.length) {
-      return new Array(5).fill(null).map((_, i) => ({
+      return new Array(10).fill(null).map((_, i) => ({
         name: i.toString(),
         confidence: 0.5,
         count: 1,
@@ -32,20 +30,9 @@ export function PredictionsCard({
   }
 
   return (
-    <div className="relative">
-      <Overlay isLoading={!categories.length} isFetching={!isDataReady} />
-
+    <Overlay isLoading={!categories.length} isFetching={!isDataReady}>
       <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
         <div className="text-base font-[500]">{t(`common.${type}`)}</div>
-        {/* <div className="mt-1 flex items-center justify-between text-xs">
-        <div className="text-3xl font-bold">
-          {primaryCategory ? t(`${type}.${categories[0]?.name}`) : '-'}
-        </div>
-      </div>
-
-      <div className="text-xs text-text-secondary">
-        {t(`common.${type}Primary`)}
-      </div> */}
 
         <div className="mt-2 w-full">
           {
@@ -69,7 +56,7 @@ export function PredictionsCard({
                           }}
                         ></div>
                         <div className="z-[0] flex h-8 w-full items-center justify-between px-1">
-                          <div className="min-w-0 flex-1 truncate pr-2">
+                          <div className="min-w-0 max-w-[80%] flex-1 truncate pr-2">
                             <div
                               className="mb-1 max-w-full truncate"
                               title={t(`${type}.${d.name}`)}
@@ -82,15 +69,6 @@ export function PredictionsCard({
                           </div>
                         </div>
                       </div>
-                      {/* <div className="relative h-2 w-full rounded-sm bg-background-secondary"> */}
-                      {/* <div
-                        className="absolute left-0 top-0 z-0 h-full rounded-sm bg-background-gray ease-in-out hover:bg-background-accent group-hover:bg-background-accent/70"
-                        style={{
-                          width: `${(d?.confidence ?? 0) * 100}%`,
-                          transition: 'width 1000ms ease-in-out',
-                        }}
-                      ></div> */}
-                      {/* </div> */}
                     </div>
                   </div>
                 </div>
@@ -99,6 +77,6 @@ export function PredictionsCard({
           }
         </div>
       </div>
-    </div>
+    </Overlay>
   );
 }

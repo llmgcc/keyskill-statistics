@@ -8,9 +8,15 @@ interface SkillImageProps {
   path?: string;
   domains?: Domains | string;
   categories?: Categories | string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-function _SkillImage({ path, domains, categories }: SkillImageProps) {
+function _SkillImage({
+  path,
+  domains,
+  categories,
+  size = 'md',
+}: SkillImageProps) {
   function imageLogo() {
     if (path) {
       const url = `${baseURL}/${path}`;
@@ -51,9 +57,15 @@ function _SkillImage({ path, domains, categories }: SkillImageProps) {
   const color = imageColor();
   const style = color ? { backgroundColor: color } : null;
 
+  const sizeConfig = {
+    sm: 'h-5 w-5',
+    md: 'h-7 w-7',
+    lg: 'h-10 w-10',
+  };
+
   return (
     <div
-      className={`flex aspect-square h-full w-full items-center justify-center rounded-md text-xs`}
+      className={`flex aspect-square items-center justify-center rounded-md text-xs ${sizeConfig[size]}`}
       style={style ?? undefined}
     >
       <div className="flex aspect-square h-full w-full items-center justify-center p-0 text-base text-white">

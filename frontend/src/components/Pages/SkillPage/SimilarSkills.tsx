@@ -1,16 +1,18 @@
-import { API } from '@/api/api';
+import { placeholderData } from '@/utils/common';
 import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import { KeySkill } from '@/interfaces';
 import { useSimilarSkills } from '@/hooks/data/useSimilarSkills';
-import { useFilters } from '@/hooks/useFilters';
 import { DataTable } from '@/components/Table/DataTable';
 import {
+  chartAccessor,
   countAccessor,
   placeAccessor,
   salaryAccessor,
+  similarityAccessor,
+  skillImageAccessor,
   skillNameAccessor,
 } from '@/components/Tabs/accessors';
 
@@ -22,8 +24,6 @@ interface SimilarSkillsProps {
 export function SimilarSkills({ name, order_by }: SimilarSkillsProps) {
   const { t } = useTranslation();
 
-  const { period, experience } = useFilters();
-
   const { similarSkills, isFetching, isLoading } = useSimilarSkills(
     name,
     order_by
@@ -33,28 +33,23 @@ export function SimilarSkills({ name, order_by }: SimilarSkillsProps) {
     () =>
       [
         placeAccessor({ accessorKey: 'place' }),
+        skillImageAccessor({ accessorKey: 'image' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
+        similarityAccessor({
+          accessorKey: 'similarity_score',
+          header: t('columns.similarity'),
+        }),
         salaryAccessor({
           accessorKey: 'average_salary',
-          isLoading: isLoading || isFetching,
-          selectedPeriod: period,
-          selectedExperience: experience,
-          key: 'skills_salary',
-          source: API.salaryPlot,
           header: t('columns.salary'),
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
-        // chartAccessor({
-        //   accessorKey: 'chart',
-        //   isLoading: isLoading || isFetching,
-        //   selectedPeriod: period,
-        //   selectedExperience: experience ?? undefined,
-        //   key: 'skills_plot',
-        //   source: API.skillPlot,
-        //   header: t('columns.trend'),
-        // }),
+        chartAccessor({
+          accessorKey: 'chart',
+          header: t('columns.trend'),
+        }),
       ] as Array<ColumnDef<KeySkill, unknown>>,
-    [t, period, experience, isLoading, isFetching]
+    [t]
   );
 
   return (
@@ -65,8 +60,11 @@ export function SimilarSkills({ name, order_by }: SimilarSkillsProps) {
 
       <DataTable
         columns={columns}
-        data={similarSkills ?? []}
-        isLoading={isLoading || isFetching}
+        data={similarSkills ?? placeholderData(10)}
+        isLoading={isLoading || !similarSkills}
+        isFetching={isFetching || !name}
+        pinnedLeft={['place', 'image']}
+        minWidth={1050}
       />
     </div>
   );

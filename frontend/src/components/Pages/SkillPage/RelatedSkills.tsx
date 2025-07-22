@@ -1,17 +1,17 @@
-import { API } from '@/api/api';
+import { placeholderData } from '@/utils/common';
 import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import { KeySkill } from '@/interfaces';
 import { useRelatedSkills } from '@/hooks/data/useRelatedSkills';
-import { useFilters } from '@/hooks/useFilters';
 import { DataTable } from '@/components/Table/DataTable';
 import {
-  //   chartAccessor,
+  chartAccessor,
   countAccessor,
   placeAccessor,
   salaryAccessor,
+  skillImageAccessor,
   skillNameAccessor,
 } from '@/components/Tabs/accessors';
 
@@ -23,8 +23,6 @@ interface RelatedSkillsProps {
 export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
   const { t } = useTranslation();
 
-  const { period, experience } = useFilters();
-
   const { relatedSkills, isFetching, isLoading } = useRelatedSkills(
     name,
     order_by
@@ -34,41 +32,36 @@ export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
     () =>
       [
         placeAccessor({ accessorKey: 'place' }),
+        skillImageAccessor({ accessorKey: 'image' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
         salaryAccessor({
           accessorKey: 'average_salary',
-          isLoading: isLoading || isFetching,
-          selectedPeriod: period,
-          selectedExperience: experience,
-          key: 'skills_salary',
-          source: API.salaryPlot,
           header: t('columns.salary'),
+          relatedTo: name,
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
-        // chartAccessor({
-        //   accessorKey: 'chart',
-        //   isLoading: isLoading || isFetching,
-        //   selectedPeriod: period,
-        //   selectedExperience: experience ?? undefined,
-        //   key: 'skills_plot',
-        //   source: API.skillPlot,
-        //   header: t('columns.trend'),
-        // }),
+        chartAccessor({
+          accessorKey: 'chart',
+          header: t('columns.trend'),
+          relatedTo: name,
+        }),
       ] as Array<ColumnDef<KeySkill, unknown>>,
-    [t, period, experience, isLoading, isFetching]
+    [t, name]
   );
 
   return (
-    <div>
+    <>
       <div className="mb-2 text-sm text-text-secondary">
         {t(`skillPage.relatedSkills.subtitle`)}
       </div>
-
       <DataTable
         columns={columns}
-        data={relatedSkills ?? []}
-        isLoading={isLoading || isFetching}
+        data={relatedSkills ?? placeholderData(10)}
+        isLoading={isLoading || !relatedSkills}
+        isFetching={isFetching || !name}
+        pinnedLeft={['place', 'image']}
+        minWidth={900}
       />
-    </div>
+    </>
   );
 }

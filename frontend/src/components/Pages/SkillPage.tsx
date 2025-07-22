@@ -61,18 +61,18 @@ export function SkillPage() {
           </div>
         </div>
 
-        <div className="mt-2 flex flex-col gap-2 lg:flex-row">
-          <div className="order-2 flex flex-[70] flex-col gap-2 lg:order-1">
-            <div className="">
-              <Complexity
-                data={skillDetails ?? null}
-                isDataReady={!(isLoading || isFetching)}
-              />
-            </div>
-            <SkillPageTabs skill={skillDetails ?? null} />
+        <div className="mt-2 flex flex-col gap-2 2xl:flex-row">
+          <div className="order-2 flex flex-[70] flex-col gap-2 2xl:order-1">
+            <Complexity
+              data={skillDetails ?? null}
+              isDataReady={!(isLoading || isFetching)}
+            />
+            <SkillPageTabs
+              skill={skillChanged ? null : (skillDetails ?? null)}
+            />
           </div>
-          <div className="order-1 flex-[30] lg:order-2">
-            <div className="flex w-[100%] flex-col gap-2">
+          <div className="order-1 flex-[30] 2xl:order-2">
+            <div className="flex flex-col gap-2">
               <PredictionsCard
                 categories={skillDetails?.domains ?? []}
                 type="domains"
@@ -86,8 +86,6 @@ export function SkillPage() {
             </div>
           </div>
         </div>
-
-        <div></div>
       </div>
     </div>
   );

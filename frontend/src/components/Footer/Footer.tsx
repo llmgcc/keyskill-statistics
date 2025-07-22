@@ -1,19 +1,12 @@
 import { Button, Separator } from '@chakra-ui/react';
+import { LiaNetworkWiredSolid } from 'react-icons/lia';
+import { PiCodeSimpleLight } from 'react-icons/pi';
 
 function Logo() {
   return (
     <div className="flex items-center text-text">
-      <div className="flex size-5 items-center justify-center rounded">
-        <div>
-          <div className="mb-[1px] flex">
-            <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
-            <div className="size-2 rounded-sm bg-background-accent/50"></div>
-          </div>
-          <div className="flex">
-            <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
-            <div className="size-2 rounded-sm bg-background-accent/100"></div>
-          </div>
-        </div>
+      <div className="flex aspect-square items-center justify-center rounded-lg bg-background-secondary/50 p-1 text-[#5e6c77] text-background-accent">
+        <PiCodeSimpleLight size={20} />
       </div>
       <div className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent">
         KS|DATA

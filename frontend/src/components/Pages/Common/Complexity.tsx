@@ -35,10 +35,10 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
     if (c < 6) {
       return Level.Middle;
     }
-    if (complexity < 7.5) {
+    if (c < 7.5) {
       return Level['Middle+'];
     }
-    if (complexity < 9) {
+    if (c < 9) {
       return Level.Senior;
     }
     return Level['Senior+'];
@@ -47,9 +47,7 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
   const currentLevel = getLevel();
 
   return (
-    <div className="relative">
-      <Overlay isLoading={!data} isFetching={!isDataReady} />
-
+    <Overlay isLoading={!data} isFetching={!isDataReady}>
       <div className="resize rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
         <div className="text-base font-[500]">{t('complexity.title')}</div>
         <div className="mt-1 flex items-center justify-between text-xs">
@@ -127,6 +125,6 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Overlay>
   );
 }

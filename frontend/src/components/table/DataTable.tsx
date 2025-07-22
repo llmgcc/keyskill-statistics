@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Table } from '@chakra-ui/react';
 import {
   ColumnDef,
@@ -8,11 +8,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { useScreenSize } from '@/hooks/useScreenSize';
-
+import { Overlay } from '../ui/Overlay';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
-import { Pagination } from './Pagination';
 
 interface PaginationState {
   totalRows: number;
@@ -31,29 +29,54 @@ interface DataTableProps<T extends object> {
   data: T[];
   columns: ColumnDef<T>[];
   isLoading?: boolean;
+  isFetching?: boolean;
   pagination?: PaginationState;
   sorting?: DataTableSortingState;
+  minWidth?: number;
+  pinnedLeft?: string[];
 }
 
 export function DataTable<T extends object>({
   data,
   columns,
   isLoading = false,
-  pagination,
-  sorting: manualSortingState,
+  isFetching = false,
+  minWidth = 1150,
+  pinnedLeft,
 }: DataTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { isTablet, isMobile } = useScreenSize();
+  // const { isTablet, isMobile } = useScreenSize();
+
+  const ref = useRef<HTMLDivElement>(null);
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+
+    const observer = new ResizeObserver(_ => {
+      const isOverflowing = container.clientWidth < minWidth;
+      if (isOverflowing !== isOverflow && container.clientWidth) {
+        setIsOverflow(isOverflowing);
+      }
+    });
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [minWidth, isOverflow]);
 
   const table = useReactTable({
     data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
-    // onSortingChange: manualSortingState?.setSorting ?? setSorting,
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     state: {
       sorting: sorting,
+      columnPinning: {
+        left: pinnedLeft,
+        right: [],
+      },
     },
     defaultColumn: {
       minSize: 0,
@@ -62,20 +85,32 @@ export function DataTable<T extends object>({
     },
     enableSortingRemoval: true,
     // manualSorting: !!manualSortingState,
+    enableColumnPinning: true,
   });
 
   return (
     <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500]">
       <div
-        className={`max-w-full ${isTablet || isMobile ? 'overflow-x-scroll' : 'overflow-x-clip'}`}
+        className={`max-w-full ${isOverflow ? 'overflow-x-auto' : 'overflow-x-clip'}`}
+        ref={ref}
       >
-        <Table.Root
-          className="border-shadow w-full border-t-[1px] bg-background-primary text-text-primary"
-          unstyled
-        >
-          <DataTableHeader table={table} />
-          <DataTableBody table={table} isLoading={isLoading} />
-        </Table.Root>
+        <Overlay isLoading={false} isFetching={isFetching}>
+          <Table.Root
+            className="border-shadow w-full bg-background-primary text-text-primary"
+            unstyled
+          >
+            <DataTableHeader
+              table={table}
+              pinned={isOverflow}
+              isLoading={isLoading || isFetching}
+            />
+            <DataTableBody
+              table={table}
+              isLoading={isLoading}
+              pinned={isOverflow}
+            />
+          </Table.Root>
+        </Overlay>
       </div>
 
       {/* {!!pagination && (

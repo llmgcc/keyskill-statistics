@@ -37,12 +37,10 @@ export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
   const text = <span className="font-bold" />;
 
   return (
-    <div className="relative">
-      <Overlay
-        isLoading={!data}
-        isFetching={isLoading || isFetching || !isDataReady}
-      />
-
+    <Overlay
+      isLoading={!data}
+      isFetching={isLoading || isFetching || !isDataReady}
+    >
       <div className="z-10 rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
         <div className="flex items-center gap-1 text-base font-[500]">
           <div>{t('charts.demandTrend')}</div>
@@ -84,6 +82,7 @@ export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
                 from,
                 to,
               }}
+              strokeWidth={4}
               tooltip={<MentionsTooltip />}
               color={
                 difference === 0
@@ -96,6 +95,6 @@ export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
           )}
         </div>
       </div>
-    </div>
+    </Overlay>
   );
 }

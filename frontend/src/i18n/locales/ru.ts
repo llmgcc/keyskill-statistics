@@ -63,6 +63,7 @@ export default {
       popular: 'Популярные',
       trending: 'Растущий спрос',
       highestSalary: 'Высокая зарплата',
+      noData: 'Результаты не найдены',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -313,6 +314,7 @@ export default {
       mentions: 'Упоминаний',
       trend: 'Тренд',
       skills: 'Навыков',
+      similarity: 'Похожесть',
     },
     charts: {
       salaryDistribution: 'Распределение зарплат',

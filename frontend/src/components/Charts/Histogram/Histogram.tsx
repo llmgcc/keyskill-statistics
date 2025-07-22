@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Bar,
@@ -17,12 +18,14 @@ interface HistogramProps {
   data: Chart;
   tooltip: JSX.Element;
   sparkline?: boolean;
+  height?: number;
 }
 
-export function Histogram({
+function Histogram_({
   data,
   tooltip,
   sparkline = false,
+  height,
 }: HistogramProps) {
   const { t } = useTranslation();
   const start = data.from;
@@ -50,7 +53,7 @@ export function Histogram({
 
   return (
     <div className="relative size-full">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={height ?? '100%'}>
         <BarChart data={chartDataExtended ?? []}>
           {!sparkline && hasData && (
             <>
@@ -61,40 +64,42 @@ export function Histogram({
                 horizontalFill={[]}
                 verticalFill={[]}
               />
-              <XAxis
-                axisLine={false}
-                tickLine={false}
-                dataKey="bin"
-                type="number"
-                allowDecimals={true}
-                domain={xDomain}
-                ticks={xTicks}
-                height={20}
-                tick={props => (
-                  <XAxisTick {...props} start={start} interval={interval} />
-                )}
-              />
-
-              <YAxis
-                axisLine={false}
-                tickLine={false}
-                dataKey="count"
-                type="number"
-                allowDecimals={true}
-                domain={yDomain}
-                ticks={yTicks}
-                tick={{
-                  fill: 'rgb(var(--color-text-secondary))',
-                }}
-                style={{
-                  fontSize: '10px',
-                }}
-                width={35}
-              />
-
               <Tooltip content={tooltip} cursor={{ fill: 'transparent' }} />
             </>
           )}
+
+          <XAxis
+            axisLine={false}
+            tickLine={false}
+            dataKey="bin"
+            type="number"
+            allowDecimals={true}
+            domain={xDomain}
+            ticks={xTicks}
+            height={20}
+            tick={props => (
+              <XAxisTick {...props} start={start} interval={interval} />
+            )}
+            hide={sparkline || !hasData}
+          />
+
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            dataKey="count"
+            type="number"
+            allowDecimals={true}
+            domain={yDomain}
+            ticks={yTicks}
+            tick={{
+              fill: 'rgb(var(--color-text-secondary))',
+            }}
+            style={{
+              fontSize: '10px',
+            }}
+            width={35}
+            hide={sparkline || !hasData}
+          />
 
           {hasData && (
             <Bar
@@ -112,11 +117,12 @@ export function Histogram({
                 opacity: 0.7,
               }}
               barSize={100}
+              // isAnimationActive={!sparkline}
             />
           )}
         </BarChart>
       </ResponsiveContainer>
-      {!hasData && (
+      {!hasData && !sparkline && (
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-sm text-[rgb(var(--color-text-secondary))]">
             {t('charts.notEnoughData')}
@@ -126,3 +132,5 @@ export function Histogram({
     </div>
   );
 }
+
+export const Histogram = memo(Histogram_);

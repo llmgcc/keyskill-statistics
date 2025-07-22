@@ -30,11 +30,9 @@ export function SalaryDistribution({
   );
   const { t } = useTranslation();
 
-  const {
-    value: medianConverted,
-    abbr,
-    code,
-  } = useCurrencyValue(data?.average_salary ?? 0);
+  const { value: medianConverted, code } = useCurrencyValue(
+    data?.average_salary ?? 0
+  );
   const { value: prevMedianConverted } = useCurrencyValue(
     data?.prev_average_salary ?? 0
   );
@@ -42,12 +40,10 @@ export function SalaryDistribution({
   const difference = medianConverted - prevMedianConverted;
 
   return (
-    <div className="relative">
-      <Overlay
-        isLoading={!data}
-        isFetching={isLoading || isFetching || !isDataReady}
-      />
-
+    <Overlay
+      isLoading={!data}
+      isFetching={isLoading || isFetching || !isDataReady}
+    >
       <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
         <div className="text-base font-[500]">
           {t('charts.salaryDistribution')}
@@ -91,6 +87,6 @@ export function SalaryDistribution({
           )}
         </div>
       </div>
-    </div>
+    </Overlay>
   );
 }

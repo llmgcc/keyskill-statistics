@@ -62,4 +62,6 @@ type KeySkill = {
   ratio: number;
   complexity_score?: number;
   experience_counts?: Record<string, number>;
+  confidence?: number;
+  similarity_score?: number;
 };

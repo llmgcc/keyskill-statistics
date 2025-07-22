@@ -1,21 +1,41 @@
 import { getPercentDifference } from '@/utils/common';
-import { Badge, ProgressCircle } from '@chakra-ui/react';
-import { Skeleton } from '@radix-ui/themes';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
-import { FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar } from 'react-icons/fa';
 import { GoDiff } from 'react-icons/go';
-import colors from 'tailwindcss/colors';
 
-import { Chart, KeySkill, SalaryChart } from '@/interfaces';
-import { Experience } from '@/config/experience';
+import { KeySkill } from '@/interfaces';
 import { CountRenderer } from '@/components/Table/renderers/CountRenderer';
 import { SalaryRenderer } from '@/components/Table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
 
-import { SkillPlot } from '../Charts/SkillPlot';
+import { CircleProgress } from '../Charts/CircleProgress';
+import { SkillTrend } from '../Charts/Trend/SkillTrend';
 import { SkillDescription } from '../SkillDescription/SkillDescription';
-import { ProgressBar } from '../Table/renderers/ProgressBar';
 import { CategoryDescription } from '../ui/CategoryDescription';
+import { SkillImage } from '../ui/SkillImage';
+
+export const skillImageAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  header?: string;
+  size?: number;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: config.header ?? '',
+  size: config.size || 0,
+  cell: info => (
+    <SkillImage
+      path={info.row.original.image}
+      domains={info.row.original.domains?.[0]?.name}
+      categories={info.row.original.categories?.[0]?.name}
+    />
+  ),
+  enablePinning: true,
+  enableSorting: false,
+  meta: {
+    paddingLeft: 10,
+    paddingRight: 5,
+  },
+});
 
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
@@ -28,6 +48,7 @@ export const placeAccessor = <T extends KeySkill>(config: {
   cell: ({ getValue }) => (
     <div className="text-text-secondary">{getValue() as number}</div>
   ),
+  enablePinning: true,
   meta: {
     alignRight: true,
   },
@@ -42,30 +63,19 @@ export const complexityAccessor = <T extends KeySkill>(config: {
   header: config.header ?? 'Complexity',
   size: config.size || 150,
   cell: info => {
+    const complexity = info.row.original.complexity_score;
     return (
-      <div className="test size-full">
-        <div className="flex size-full items-center justify-end gap-1">
-          <div>
-            <ProgressCircle.Root
-              size={'xs'}
-              value={info.row.original.complexity_score ?? 0}
-              max={1}
-              color={'red'}
-            >
-              <ProgressCircle.Circle css={{ '--thickness': '4px' }}>
-                <ProgressCircle.Track />
-                <ProgressCircle.Range
-                  strokeLinecap="round"
-                  stroke={'rgba(var(--color-background-gray))'}
-                />
-              </ProgressCircle.Circle>
-            </ProgressCircle.Root>
+      <>
+        {complexity ? (
+          <div className="relative flex items-center">
+            <CircleProgress value={complexity} maxValue={1} />
+            <div className="ml-1 text-sm">
+              {' '}
+              {(complexity * 100).toFixed(0)}%
+            </div>
           </div>
-          <div className="w-[22px]">
-            {((info.row.original.complexity_score ?? 0) * 10).toFixed(1)}
-          </div>
-        </div>
-      </div>
+        ) : null}
+      </>
     );
   },
   meta: {
@@ -93,14 +103,14 @@ export const prevPlaceAccessor = <T extends KeySkill>(
     if (!rowb.original.prev_place) {
       return -1;
     }
-    const a = rowa.original.prev_place - rowa.original.place;
-    const b = rowb.original.prev_place - rowb.original.place;
+    const a = rowa.original.prev_place - (rowa.original.place ?? 0);
+    const b = rowb.original.prev_place - (rowb.original.place ?? 0);
     return a < b ? 1 : a > b ? -1 : 0;
   },
   cell: info => {
     const prev = info.row.original.prev_place;
     const current = info.row.original.place;
-    return <ValueChangeRenderer prev={prev} current={current} />;
+    return <ValueChangeRenderer prev={prev} current={current ?? 0} />;
   },
   size: 50,
   enablePinning: true,
@@ -119,29 +129,26 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   sortingFn: sortingFns.alphanumeric,
   cell: info => {
     return (
-      <div>
-        <SkillDescription skill={info.row.original} />
+      <div className="overflow-hidden">
+        <SkillDescription skill={info.row.original} image={false} />
       </div>
     );
   },
-  size: 0,
-  enablePinning: true,
+  size: 500,
+  meta: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
 });
 
 export const favouriteAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
-  // header?: string;
-  // size?: number;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div></div>,
   sortingFn: sortingFns.alphanumeric,
-  cell: info => {
-    return (
-      <div>
-        <FaRegStar className={`p-0 text-background-accent`} />
-      </div>
-    );
+  cell: _ => {
+    return <FaRegStar className={`p-0 text-background-accent`} />;
   },
   size: 5,
 });
@@ -173,23 +180,10 @@ export const countAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   cell: info => {
-    function getMax() {
-      const ratio = info.row.original.ratio;
-      if (ratio) {
-        return (info.getValue() as number) / info.row.original.ratio;
-      }
-      const allValues = info.table
-        .getFilteredRowModel()
-        .rows.map(row => row.getValue('count') as number);
-      const maxValue = Math.max(...allValues);
-      return maxValue;
-    }
-
     return (
       <CountRenderer
         count={info.getValue() as number}
-        maxCount={getMax()}
-        prev_count={info.row.original.prev_count}
+        prevCount={info.row.original.prev_count}
       />
     );
   },
@@ -198,7 +192,7 @@ export const countAccessor = <T extends KeySkill>(config: {
       <div className="">{config.header ?? 'Mentions'}</div>
     </div>
   ),
-  size: 125,
+  size: 100,
   meta: {
     alignRight: true,
   },
@@ -207,16 +201,7 @@ export const countAccessor = <T extends KeySkill>(config: {
 export const salaryAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
-  size?: number;
-  isLoading: boolean;
-  selectedPeriod: number;
-  selectedExperience?: Experience | null;
-  key: string;
-  source(
-    name: string,
-    period: number,
-    experience?: Experience | null
-  ): Promise<SalaryChart>;
+  relatedTo?: string | null;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => (
@@ -226,19 +211,10 @@ export const salaryAccessor = <T extends KeySkill>(config: {
   ),
   cell: info => {
     return (
-      <SalaryRenderer
-        maxCount={10 ** 6}
-        isLoading={config.isLoading}
-        selectedPeriod={config.selectedPeriod}
-        selectedExperience={config.selectedExperience ?? undefined}
-        name={info.row.original.name}
-        plotKey={config.key}
-        count={(info.getValue() as number) ?? 0}
-        source={config.source}
-      />
+      <SalaryRenderer skill={info.row.original} realtedTo={config.relatedTo} />
     );
   },
-  size: 150,
+  size: 120,
   meta: {
     alignRight: true,
   },
@@ -261,11 +237,11 @@ export const prevCountAccessor = <T extends KeySkill>(
       return -1;
     }
     const a = getPercentDifference(
-      rowa.original.count,
+      rowa.original.count ?? 0,
       rowa.original.prev_count
     );
     const b = getPercentDifference(
-      rowb.original.count,
+      rowb.original.count ?? 0,
       rowb.original.prev_count
     );
     if (rowa.original.prev_place && rowb.original.prev_place) {
@@ -277,7 +253,7 @@ export const prevCountAccessor = <T extends KeySkill>(
     return (
       <div>
         <ValueChangeRenderer
-          current={info.row.original.count}
+          current={info.row.original.count ?? 0}
           prev={info.row.original.prev_count}
           percent={true}
         />
@@ -307,11 +283,11 @@ export const prevSalaryAccessor = <T extends KeySkill>(
       return -1;
     }
     const a = getPercentDifference(
-      rowa.original.average_salary,
+      rowa.original.average_salary ?? 0,
       rowa.original.prev_average_salary
     );
     const b = getPercentDifference(
-      rowb.original.average_salary,
+      rowb.original.average_salary ?? 0,
       rowb.original.prev_average_salary
     );
     if (
@@ -326,7 +302,7 @@ export const prevSalaryAccessor = <T extends KeySkill>(
     return (
       <div>
         <ValueChangeRenderer
-          current={info.row.original.average_salary}
+          current={info.row.original.average_salary ?? 0}
           prev={info.row.original.prev_average_salary}
           percent={true}
         />
@@ -343,43 +319,18 @@ export const chartAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
   size?: number;
-  isLoading: boolean;
-  selectedPeriod: number;
-  selectedExperience?: Experience;
-  key: string;
-  source(
-    name: string,
-    period: number,
-    experience?: Experience
-  ): Promise<Chart[]>;
+  relatedTo?: string | null;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div>{config.header}</div>,
   cell: info => {
-    const color =
-      !info.row.original.prev_count ||
-      info.row.original.count >= info.row.original.prev_count
-        ? colors.green[400]
-        : colors.red[500];
     return (
-      <div style={{ height: '40px' }} className="w-40">
-        <div className="size-full">
-          <Skeleton loading={config.isLoading} className="size-full">
-            <SkillPlot
-              name={info.row.original.name}
-              plotKey={config.key}
-              source={config.source}
-              period={config.selectedPeriod}
-              color={color}
-              strokeWidth={2}
-              experience={config.selectedExperience}
-            />
-          </Skeleton>
-        </div>
+      <div style={{ height: '40px' }} className="size-full">
+        <SkillTrend skill={info.row.original} realtedTo={config.relatedTo} />
       </div>
     );
   },
-  size: 150,
+  size: 120,
   enableSorting: false,
   meta: {
     alignRight: true,
@@ -402,25 +353,7 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
       <>
         {confidence ? (
           <div className="relative flex items-center">
-            <svg className="h-5 w-5" viewBox="0 0 36 36">
-              <path
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="rgb(var(--color-background-secondary))"
-                strokeWidth="5"
-              />
-              <path
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="rgb(var(--color-background-gray))"
-                strokeWidth="5"
-                strokeDasharray={`${confidence * 100}, 100`}
-              />
-            </svg>
+            <CircleProgress value={confidence} maxValue={1} />
             <div className="ml-1 text-sm">
               {' '}
               {(confidence * 100).toFixed(0)}%
@@ -438,6 +371,34 @@ export const confidenceAccessor = <T extends KeySkill>(config: {
       rowB.original[config.categoryKey].find(c => c.name === config.name)
         ?.confidence || 0;
     return confidenceA - confidenceB;
+  },
+  size: 100,
+  enableSorting: true,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const similarityAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  header: string;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: config.header,
+  cell: info => {
+    const similarity = info.row.original.similarity_score ?? 0;
+    return (
+      <>
+        {similarity ? (
+          <>
+            <div className="mx-1">
+              <CircleProgress value={similarity} maxValue={1} />
+            </div>
+            <div> {(similarity * 100).toFixed(0)}%</div>
+          </>
+        ) : null}
+      </>
+    );
   },
   size: 100,
   enableSorting: true,

@@ -5,7 +5,11 @@ import { useCurrencyStore } from '@/store/currencyStore';
 
 import { useFilters } from '../useFilters';
 
-export function useSkillSalaryData(skill: string | null, numberOfBins = 20) {
+export function useSkillSalaryData(
+  skill: string | null,
+  numberOfBins = 20,
+  relatedTo?: string | null
+) {
   const { period, experience } = useFilters();
   const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
@@ -16,13 +20,15 @@ export function useSkillSalaryData(skill: string | null, numberOfBins = 20) {
       experience,
       numberOfBins,
       skill,
+      relatedTo,
     ],
     queryFn: async () => {
       const data = await API.salaryPlot(
         skill ?? '',
         period,
         experience,
-        numberOfBins
+        numberOfBins,
+        relatedTo
       );
       return data;
     },

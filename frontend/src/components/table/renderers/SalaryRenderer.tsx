@@ -1,67 +1,36 @@
-import { Skeleton } from '@radix-ui/themes';
-
-import { SalaryChart } from '@/interfaces';
-import { Experience } from '@/config/experience';
+import { KeySkill } from '@/interfaces';
 import { useStatsStore } from '@/store/statsStore';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
-import { SkillHist } from '@/components/Charts/SkillHist';
+import { SkillHistogram } from '@/components/Charts/Histogram/SkillHistogram';
 
 import { ProgressBar } from './ProgressBar';
 
 interface SalaryRendererProps {
-  count?: number;
-  maxCount: number;
-  isLoading: boolean;
-  selectedPeriod: number;
-  selectedExperience?: Experience;
-  name: string;
-  plotKey: string;
-  source(
-    name: string,
-    period: number,
-    experience?: Experience
-  ): Promise<SalaryChart>;
+  skill: KeySkill | null;
+  realtedTo?: string | null;
 }
 
-export function SalaryRenderer({
-  count,
-  isLoading,
-  selectedPeriod,
-  selectedExperience,
-  name,
-  plotKey,
-  source,
-}: SalaryRendererProps) {
+export function SalaryRenderer({ skill, realtedTo }: SalaryRendererProps) {
   const { stats } = useStatsStore();
 
-  const color = 'rgb(var(--color-background-secondary))';
-  const salary = count;
+  const salary = skill?.average_salary ?? 0;
   return (
-    <div className="relative size-full w-full">
-      <div className="z-50 flex justify-end text-text">
-        <CurrencyDisplay valueInRUB={salary} />
-      </div>
+    <div className="relative size-full">
       {!!salary && (
         <ProgressBar
-          count={count}
+          count={salary}
           maxCount={stats?.max_salary ?? 0}
-          offset={-10}
+          offset={-5}
         />
       )}
 
-      <Skeleton loading={isLoading} className="size-full">
-        {!isLoading && !!salary && salary > 0 && (
-          <SkillHist
-            name={name}
-            plotKey={plotKey}
-            source={source}
-            period={selectedPeriod}
-            color={color}
-            average={count ?? 0}
-            experience={selectedExperience ?? null}
-          />
-        )}
-      </Skeleton>
+      <div className="absolute bottom-[-6px] left-0 z-10 w-full">
+        <SkillHistogram skill={skill} relatedTo={realtedTo ?? null} />
+      </div>
+
+      <div className="relative z-50 text-text">
+        <CurrencyDisplay valueInRUB={salary} />
+      </div>
     </div>
   );
 }

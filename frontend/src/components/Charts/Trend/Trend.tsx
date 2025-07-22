@@ -19,9 +19,18 @@ interface TrendProps {
   tooltip: JSX.Element;
   sparkline?: boolean;
   color: string;
+  strokeWidth: number;
+  height?: number;
 }
 
-export function Trend({ data, tooltip, sparkline = false, color }: TrendProps) {
+export function Trend({
+  data,
+  tooltip,
+  sparkline = false,
+  color,
+  strokeWidth = 4,
+  height,
+}: TrendProps) {
   const { t } = useTranslation();
 
   const start = new Date(data.from).getTime();
@@ -51,8 +60,8 @@ export function Trend({ data, tooltip, sparkline = false, color }: TrendProps) {
   const hasData = chartDataExtended.some(d => d.count > 0);
 
   return (
-    <div className="relative size-full">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="relative size-full min-h-1 min-w-1">
+      <ResponsiveContainer width="100%" height={height ?? '100%'}>
         <AreaChart data={chartDataExtended ?? []}>
           <defs>
             <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
@@ -108,7 +117,7 @@ export function Trend({ data, tooltip, sparkline = false, color }: TrendProps) {
               type={curveFunction}
               dataKey="count"
               stroke={color}
-              strokeWidth={4}
+              strokeWidth={strokeWidth}
               fill="url(#areaGradient)"
               dot={false}
               activeDot={{
@@ -118,12 +127,13 @@ export function Trend({ data, tooltip, sparkline = false, color }: TrendProps) {
                 fill: color,
               }}
               className={!sparkline ? 'cursor-pointer' : ''}
+              // isAnimationActive={!sparkline}
             />
           )}
         </AreaChart>
       </ResponsiveContainer>
 
-      {!hasData && (
+      {!hasData && !sparkline && (
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-sm text-[rgb(var(--color-text-secondary))]">
             {t('charts.notEnoughData')}

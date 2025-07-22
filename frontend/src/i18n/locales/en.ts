@@ -67,6 +67,7 @@ export default {
       popular: 'Popular',
       trending: 'Trending',
       highestSalary: 'Highest salary',
+      noData: 'No results found',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -106,6 +107,7 @@ export default {
       mentions: 'Mentions',
       trend: 'Trend',
       skills: 'Skills',
+      similarity: 'Similarity',
     },
     charts: {
       salaryDistribution: 'Salary Distribution',

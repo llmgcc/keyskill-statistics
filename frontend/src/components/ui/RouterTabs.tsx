@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react';
-import { Tabs } from '@chakra-ui/react';
+import { memo, useCallback, useEffect } from 'react';
+import { Separator, Tabs } from '@chakra-ui/react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 interface Tab {
@@ -13,9 +13,14 @@ interface RouterTabsProps {
   tabs: Tab[];
   paramKey?: string;
   defaultTab?: string;
+  append?: JSX.Element;
 }
 
-export function RouterTabs({ tabs, paramKey = 'tab' }: RouterTabsProps) {
+export function RouterTabs_({
+  tabs,
+  paramKey = 'tab',
+  append,
+}: RouterTabsProps) {
   const [searchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -55,36 +60,47 @@ export function RouterTabs({ tabs, paramKey = 'tab' }: RouterTabsProps) {
   }, [paramKey, searchParams, navigate, location.pathname, currentTabConfig]);
 
   return (
-    <div className="app-container mt-4">
+    <div className="">
       <Tabs.Root
         defaultValue={tabs[0].name}
         value={currentTabConfig.name}
         variant="enclosed"
-        className="mt-2 border-none bg-background-primary"
+        className="mt-2 border-none bg-background-primary p-0"
         size="sm"
         lazyMount
         onValueChange={details => handleTabChange(details.value)}
       >
-        <Tabs.List className="flex gap-2 border-background-secondary bg-background-primary shadow-background-secondary">
-          {tabs.map(tab => (
-            <Tabs.Trigger
-              value={tab.name}
-              key={tab.name}
-              className="border-none border-background-secondary bg-background-primary p-2 shadow-background-secondary"
-              _selected={{
-                bg: 'rgba(var(--color-background-secondary))',
-              }}
-            >
-              {tab.title}
-            </Tabs.Trigger>
-          ))}
-        </Tabs.List>
+        <div className="flex items-center gap-2 overflow-x-auto p-0">
+          <Tabs.List className="flex gap-2 border-background-secondary bg-background-primary p-0 shadow-background-secondary">
+            {tabs.map(tab => (
+              <Tabs.Trigger
+                value={tab.name}
+                key={tab.name}
+                className="border-none border-background-secondary bg-background-primary p-2 shadow-background-secondary"
+                _selected={{
+                  bg: 'rgba(var(--color-background-secondary))',
+                }}
+              >
+                {tab.title}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+          <div className=" ">
+            <Separator
+              orientation={'vertical'}
+              size="md"
+              className="mx-1"
+              height="6"
+            />
+          </div>
+          <div>{append ?? null}</div>
+        </div>
         <div>{currentTabConfig.append ?? null}</div>
         {tabs.map(tab => (
           <Tabs.Content
             value={tab.name}
             key={tab.name}
-            className="mt-1 px-1 py-0 text-base"
+            className="mt-1 p-0 text-base"
           >
             {tab.body}
           </Tabs.Content>
@@ -93,3 +109,5 @@ export function RouterTabs({ tabs, paramKey = 'tab' }: RouterTabsProps) {
     </div>
   );
 }
+
+export const RouterTabs = memo(RouterTabs_);

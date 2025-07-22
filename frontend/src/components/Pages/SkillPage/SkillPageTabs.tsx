@@ -1,26 +1,11 @@
-import { useMemo, useState } from 'react';
-import {
-  Button,
-  createListCollection,
-  Separator,
-  Tabs,
-} from '@chakra-ui/react';
+import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiNetworkChart } from 'react-icons/bi';
-import { FaArrowTrendUp } from 'react-icons/fa6';
-import { MdEqualizer } from 'react-icons/md';
 import { PiApproximateEquals } from 'react-icons/pi';
 
 import { KeySkill } from '@/interfaces';
-import { CurrencyIcons } from '@/config/currencies';
-import { useCurrencyStore } from '@/store/currencyStore';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from '@/components/ui/AppSelect';
 import { RouterTabs } from '@/components/ui/RouterTabs';
+import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { RelatedSkills } from './RelatedSkills';
 import { SimilarSkills } from './SimilarSkills';
@@ -31,40 +16,24 @@ interface SkillPageTabsProps {
 
 export function SkillPageTabs({ skill }: SkillPageTabsProps) {
   const { t } = useTranslation();
-  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
+  // const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
-  const [orderButtonIndex, setOrderButtonIndex] = useState<number>(0);
+  const [order, setOrder] = useState<{
+    column: string;
+    descending: boolean;
+  } | null>(null);
 
-  const numberOfRowsCollection = createListCollection({
-    items: [10, 25, 50],
-  });
+  // const numberOfRowsCollection = createListCollection({
+  //   items: [10, 25, 50],
+  // });
 
-  const [numberOfRows, setNumberOfRows] = useState<number>(
-    numberOfRowsCollection.items[0]
-  );
+  // const [numberOfRows, setNumberOfRows] = useState<number>(
+  //   numberOfRowsCollection.items[0]
+  // );
 
-  const buttons = useMemo(
-    () => [
-      {
-        icon: <MdEqualizer />,
-        id: 'popular',
-        column: 'place',
-        descending: false,
-      },
-      {
-        icon: <FaArrowTrendUp />,
-        id: 'trending',
-        column: 'change',
-        descending: true,
-      },
-      {
-        icon: CurrencyIcons[selectedCurrency!.currency_code],
-        id: 'highestSalary',
-        column: 'average_salary',
-        descending: true,
-      },
-    ],
-    [selectedCurrency]
+  const handleOrderChange = useCallback(
+    (column: string, descending: boolean) => setOrder({ column, descending }),
+    []
   );
 
   const tabs = useMemo(
@@ -82,10 +51,14 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
         body: (
           <RelatedSkills
             name={skill?.name ?? null}
-            order_by={{
-              order_by: buttons[orderButtonIndex].column,
-              descending: buttons[orderButtonIndex].descending,
-            }}
+            order_by={
+              order
+                ? {
+                    order_by: order.column,
+                    descending: order.descending,
+                  }
+                : undefined
+            }
           />
         ),
       },
@@ -102,20 +75,27 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
         body: (
           <SimilarSkills
             name={skill?.name ?? null}
-            order_by={{
-              order_by: buttons[orderButtonIndex].column,
-              descending: buttons[orderButtonIndex].descending,
-            }}
+            order_by={
+              order
+                ? {
+                    order_by: order.column,
+                    descending: order.descending,
+                  }
+                : undefined
+            }
           />
         ),
       },
     ],
-    [buttons, orderButtonIndex, skill?.name, t]
+    [skill?.name, t, order]
   );
 
   return (
     <div className="w-full rounded border-background-secondary">
-      <RouterTabs tabs={tabs} />
+      <RouterTabs
+        tabs={tabs}
+        append={<OrderButtons onChange={handleOrderChange} />}
+      />
       {/* <Tabs.Root
         defaultValue={tabs[0].id}
         variant="enclosed"
