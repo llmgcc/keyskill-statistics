@@ -12,7 +12,7 @@ export function skillName(skill: KeySkill | null, language: string) {
 export function placeholderData(count: number) {
   const empty: KeySkill = {
     place: 100,
-    name: ' '.repeat(10),
+    name: '',
     count: 100,
     prev_count: 200,
     prev_place: 200,

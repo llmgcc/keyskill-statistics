@@ -54,7 +54,7 @@ export class StaticAPI implements API {
     skillName: string,
     period: number,
     experience?: Experience
-  ): Promise<KeySkill[]> {
+  ): Promise<KeySkillServer> {
     const response = await axios.get(`/api/key-skills/related/${skillName}`, {
       params: {
         days_period: period,

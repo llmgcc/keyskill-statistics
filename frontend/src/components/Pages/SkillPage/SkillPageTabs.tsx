@@ -1,11 +1,13 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiNetworkChart } from 'react-icons/bi';
 import { PiApproximateEquals } from 'react-icons/pi';
 
 import { KeySkill } from '@/interfaces';
+import { useOrderByState } from '@/hooks/useOrderByState';
+import { useCurrencyStore } from '@/store/currencyStore';
 import { RouterTabs } from '@/components/ui/RouterTabs';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
+import { buttonsList, OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { RelatedSkills } from './RelatedSkills';
 import { SimilarSkills } from './SimilarSkills';
@@ -16,13 +18,22 @@ interface SkillPageTabsProps {
 
 export function SkillPageTabs({ skill }: SkillPageTabsProps) {
   const { t } = useTranslation();
-  // const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
+  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
-  const [order, setOrder] = useState<{
-    column: string;
-    descending: boolean;
-  } | null>(null);
+  const orderButtonsRelated = buttonsList(
+    ['popular', 'trending', 'highestSalary'],
+    selectedCurrency
+  );
+  // const [orderButtonRelated, setOrderButtonRelated] = useState(orderButtonsRelated[0]);
 
+  const orderButtonsSimilar = buttonsList(
+    ['similar', 'popular', 'trending', 'highestSalary'],
+    selectedCurrency
+  );
+  // const [orderButtonSimilar, setOrderButtonSimilar] = useState(orderButtonsSimilar[0]);
+
+  const [relatedOrder, setRelatedOrder] = useOrderByState(orderButtonsRelated);
+  const [similarOrder, setSimilarOrder] = useOrderByState(orderButtonsSimilar);
   // const numberOfRowsCollection = createListCollection({
   //   items: [10, 25, 50],
   // });
@@ -31,10 +42,10 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
   //   numberOfRowsCollection.items[0]
   // );
 
-  const handleOrderChange = useCallback(
-    (column: string, descending: boolean) => setOrder({ column, descending }),
-    []
-  );
+  // const handleOrderChange = useCallback(
+  //   (button : OrderButton) => setOrderButton(button),
+  //   []
+  // );
 
   const tabs = useMemo(
     () => [
@@ -52,13 +63,20 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
           <RelatedSkills
             name={skill?.name ?? null}
             order_by={
-              order
+              relatedOrder
                 ? {
-                    order_by: order.column,
-                    descending: order.descending,
+                    order_by: relatedOrder.column,
+                    descending: relatedOrder.descending,
                   }
                 : undefined
             }
+          />
+        ),
+        append: (
+          <OrderButtons
+            onChange={b => setRelatedOrder(b)}
+            buttons={orderButtonsRelated}
+            currentButtonId={relatedOrder.id}
           />
         ),
       },
@@ -72,14 +90,21 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
           </div>
         ),
         name: 'similarSkills',
+        append: (
+          <OrderButtons
+            onChange={b => setSimilarOrder(b)}
+            buttons={orderButtonsSimilar}
+            currentButtonId={similarOrder.id}
+          />
+        ),
         body: (
           <SimilarSkills
             name={skill?.name ?? null}
             order_by={
-              order
+              similarOrder
                 ? {
-                    order_by: order.column,
-                    descending: order.descending,
+                    order_by: similarOrder.column,
+                    descending: similarOrder.descending,
                   }
                 : undefined
             }
@@ -87,15 +112,21 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
         ),
       },
     ],
-    [skill?.name, t, order]
+    [
+      skill?.name,
+      t,
+      orderButtonsSimilar,
+      similarOrder,
+      orderButtonsRelated,
+      setSimilarOrder,
+      relatedOrder,
+      setRelatedOrder,
+    ]
   );
 
   return (
     <div className="w-full rounded border-background-secondary">
-      <RouterTabs
-        tabs={tabs}
-        append={<OrderButtons onChange={handleOrderChange} />}
-      />
+      <RouterTabs tabs={tabs} />
       {/* <Tabs.Root
         defaultValue={tabs[0].id}
         variant="enclosed"

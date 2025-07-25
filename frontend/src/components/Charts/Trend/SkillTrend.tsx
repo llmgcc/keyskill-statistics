@@ -23,6 +23,8 @@ export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
   const prevMentions = skill?.prev_count ?? 0;
   const difference = prevMentions && mentions ? mentions - prevMentions : null;
 
+  const actualData = chart;
+
   return (
     <div className="size-full">
       <Skeleton
@@ -32,7 +34,7 @@ export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
         {from && to && !(isLoading || isFetching) && (
           <Trend
             data={{
-              data: chart,
+              data: actualData,
               from,
               to,
             }}

@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Portal, Select as SelectPrimitive } from '@chakra-ui/react';
+import {
+  createListCollection,
+  Portal,
+  Select as SelectPrimitive,
+  SelectValueChangeDetails,
+} from '@chakra-ui/react';
 
 export const Select = SelectPrimitive.Root;
 
@@ -71,3 +76,49 @@ export const SelectItem = React.memo(
     );
   })
 );
+
+interface AppSelectProps {
+  options: string[];
+  value: string;
+  onValueChange: (details: SelectValueChangeDetails<string>) => void;
+  triggerFormatter: () => JSX.Element;
+  valueFormatter: (value: string) => JSX.Element;
+}
+
+export function AppSelect({
+  value,
+  options,
+  onValueChange,
+  triggerFormatter,
+  valueFormatter,
+}: AppSelectProps) {
+  const collection = createListCollection({
+    items: options,
+  });
+
+  return (
+    <div>
+      <Select
+        collection={collection}
+        size="xs"
+        value={[value]}
+        onValueChange={onValueChange}
+        className="min-w-max"
+      >
+        <SelectTrigger
+          style={{ width: 'fit-content', minWidth: 'auto' }}
+          minWidth={'max-content'}
+        >
+          {triggerFormatter()}
+        </SelectTrigger>
+        <SelectContent>
+          {collection.items.map(e => (
+            <SelectItem key={e} item={e}>
+              {valueFormatter(e)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}

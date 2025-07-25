@@ -117,7 +117,7 @@ function Histogram_({
                 opacity: 0.7,
               }}
               barSize={100}
-              // isAnimationActive={!sparkline}
+              isAnimationActive={!sparkline}
             />
           )}
         </BarChart>

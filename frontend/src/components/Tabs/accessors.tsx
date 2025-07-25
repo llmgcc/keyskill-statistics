@@ -1,4 +1,5 @@
 import { getPercentDifference } from '@/utils/common';
+import { Skeleton } from '@chakra-ui/react';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
 import { FaRegStar } from 'react-icons/fa';
 import { GoDiff } from 'react-icons/go';
@@ -200,6 +201,7 @@ export const countAccessor = <T extends KeySkill>(config: {
 
 export const salaryAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
+  isLoading: boolean;
   header?: string;
   relatedTo?: string | null;
 }): ColumnDef<T> => ({
@@ -211,7 +213,21 @@ export const salaryAccessor = <T extends KeySkill>(config: {
   ),
   cell: info => {
     return (
-      <SalaryRenderer skill={info.row.original} realtedTo={config.relatedTo} />
+      <Skeleton
+        loading={config.isLoading}
+        className={`size-full min-h-10 min-w-10 ${config.isLoading ?? 'bg-background-secondary'}`}
+      >
+        <div className="size-full">
+          {config.isLoading ? (
+            <div className="size-full">qwe</div>
+          ) : (
+            <SalaryRenderer
+              skill={config.isLoading ? null : info.row.original}
+              realtedTo={config.relatedTo}
+            />
+          )}
+        </div>
+      </Skeleton>
     );
   },
   size: 120,
@@ -317,6 +333,7 @@ export const prevSalaryAccessor = <T extends KeySkill>(
 
 export const chartAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
+  isLoading: boolean;
   header?: string;
   size?: number;
   relatedTo?: string | null;
@@ -326,7 +343,15 @@ export const chartAccessor = <T extends KeySkill>(config: {
   cell: info => {
     return (
       <div style={{ height: '40px' }} className="size-full">
-        <SkillTrend skill={info.row.original} realtedTo={config.relatedTo} />
+        <Skeleton
+          loading={config.isLoading}
+          className={`size-full ${config.isLoading ?? 'bg-background-secondary'}`}
+        >
+          <SkillTrend
+            skill={config.isLoading ? null : info.row.original}
+            realtedTo={config.relatedTo}
+          />
+        </Skeleton>
       </div>
     );
   },

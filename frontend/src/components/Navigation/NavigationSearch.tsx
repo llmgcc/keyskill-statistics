@@ -307,7 +307,7 @@ export function NavigationSearch() {
             <Dialog.Backdrop className="bg-black/30 backdrop-blur-sm" />
             <Dialog.Positioner>
               <Dialog.Content className="!m-0 h-full rounded-md border-2 border-none border-background-secondary !bg-transparent !p-0 text-sm shadow-none">
-                <Dialog.Body className="h-full overflow-hidden !bg-transparent !opacity-100">
+                <Dialog.Body className="h-full !bg-transparent !opacity-100">
                   <div className="rounded-md border-2 border-background-secondary bg-background-primary !opacity-100">
                     <div className="flex items-center gap-2 px-2 py-1 text-text-secondary">
                       <div>

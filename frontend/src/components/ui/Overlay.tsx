@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import { Box, Spinner } from '@chakra-ui/react';
 
 interface OverlayProps {
@@ -7,7 +7,7 @@ interface OverlayProps {
   children?: ReactNode;
 }
 
-export function Overlay({ children, isLoading, isFetching }: OverlayProps) {
+function Overlay_({ children, isLoading, isFetching }: OverlayProps) {
   return (
     <div className="relative">
       {(isLoading || isFetching) && (
@@ -37,3 +37,5 @@ export function Overlay({ children, isLoading, isFetching }: OverlayProps) {
     </div>
   );
 }
+
+export const Overlay = memo(Overlay_);

@@ -9,12 +9,14 @@ interface DataTableBodyProps<T extends object> {
   table: ITable<T>;
   isLoading?: boolean;
   pinned: boolean;
+  onSelect: (rowData: T) => void;
 }
 
 export function DataTableBody<T extends object>({
   table,
   isLoading,
   pinned,
+  onSelect,
 }: DataTableBodyProps<T>) {
   function data(cell: Cell<T, unknown>) {
     return <>{flexRender(cell.column.columnDef.cell, cell.getContext())}</>;
@@ -37,11 +39,15 @@ export function DataTableBody<T extends object>({
         </Table.Row>
       ) : (
         rows.map(row => (
-          <Table.Row key={row.id}>
+          <Table.Row
+            key={row.id}
+            className="cursor-pointer bg-background-primary hover:bg-background-secondary/50"
+            onClick={() => onSelect(row.original)}
+          >
             {row.getVisibleCells().map(cell => (
               <Table.Cell
                 key={cell.id}
-                className={`overflow-hidden truncate text-ellipsis bg-background-primary py-4`}
+                className={`overflow-hidden truncate text-ellipsis py-4`}
                 style={{
                   maxWidth: cell.column.getSize()
                     ? `${cell.column.getSize()}px`

@@ -1,5 +1,5 @@
 import { API } from '@/api/api';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { useFilters } from '../useFilters';
 
@@ -10,15 +10,17 @@ export function useSkillTrendData(
 ) {
   const { period, experience } = useFilters();
 
+  const queryKey = [
+    `skill_trend`,
+    period,
+    experience,
+    skill,
+    numberOfBins,
+    relatedTo,
+  ];
+
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: [
-      `skill_trend`,
-      period,
-      experience,
-      skill,
-      numberOfBins,
-      relatedTo,
-    ],
+    queryKey: queryKey,
     queryFn: async () => {
       const data = await API.skillPlot(
         skill ?? '',
@@ -30,16 +32,19 @@ export function useSkillTrendData(
       return data;
     },
     enabled: !!skill,
+    placeholderData: keepPreviousData,
   });
 
+  const currentData = data;
+
   const chartData = [];
-  if (data?.chart) {
+  if (currentData?.chart) {
     for (let i = 1; i <= numberOfBins; i++) {
-      const index = data.chart.findIndex(p => p.bin == i);
+      const index = currentData.chart.findIndex(p => p.bin == i);
       if (index !== -1) {
         chartData.push({
           bin: i,
-          count: data.chart[index].count,
+          count: currentData.chart[index].count,
         });
       } else {
         chartData.push({
@@ -51,8 +56,8 @@ export function useSkillTrendData(
   }
 
   return {
-    from: data?.date_from,
-    to: data?.date_to,
+    from: currentData?.date_from,
+    to: currentData?.date_to,
     chart: chartData,
     isLoading,
     isFetching,

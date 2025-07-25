@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { LiaNetworkWiredSolid } from 'react-icons/lia';
 import { PiCodeSimpleLight } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 import Sticky from 'react-stickynode';

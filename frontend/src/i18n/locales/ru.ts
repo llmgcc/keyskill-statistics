@@ -62,8 +62,11 @@ export default {
       loading: 'Загрузка',
       popular: 'Популярные',
       trending: 'Растущий спрос',
+      similar: 'Похожие',
       highestSalary: 'Высокая зарплата',
       noData: 'Результаты не найдены',
+      showMore: 'Показать больше',
+      showLess: 'Показать меньше',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -305,7 +308,7 @@ export default {
         'Навыки с неизвестной зарплатой',
     },
     pagination: {
-      text: 'Показано {{currentPage}} - {{totalPages}} из {{totalRows}} результатов',
+      text: '{{currentPage}} - {{totalPages}} из {{totalRows}}',
       show: 'Показывать',
     },
     columns: {

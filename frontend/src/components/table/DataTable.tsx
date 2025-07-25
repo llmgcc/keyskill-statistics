@@ -1,9 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Table } from '@chakra-ui/react';
 import {
   ColumnDef,
   getCoreRowModel,
   getSortedRowModel,
+  OnChangeFn,
+  PaginationState,
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
@@ -11,29 +13,20 @@ import {
 import { Overlay } from '../ui/Overlay';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
+import { PaginationButtons } from './PaginationButtons';
 
-interface PaginationState {
-  totalRows: number;
-  pageSize: number;
-  pageIndex: number;
-  onPageChange: (page: number, pageSize: number) => void;
-  pages: number[];
-}
-
-interface DataTableSortingState {
-  sorting: SortingState;
-  setSorting: Dispatch<SetStateAction<SortingState>>;
-}
-
-interface DataTableProps<T extends object> {
+export interface DataTableProps<T extends object> {
   data: T[];
   columns: ColumnDef<T>[];
   isLoading?: boolean;
   isFetching?: boolean;
-  pagination?: PaginationState;
-  sorting?: DataTableSortingState;
   minWidth?: number;
   pinnedLeft?: string[];
+  pagination?: PaginationState;
+  setPagination?: OnChangeFn<PaginationState>;
+  rows?: number;
+  pageSizeVariants: number[];
+  onSelect?: (rowData: T) => void;
 }
 
 export function DataTable<T extends object>({
@@ -43,10 +36,13 @@ export function DataTable<T extends object>({
   isFetching = false,
   minWidth = 1150,
   pinnedLeft,
+  pagination,
+  setPagination,
+  rows,
+  pageSizeVariants,
+  onSelect,
 }: DataTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  // const { isTablet, isMobile } = useScreenSize();
-
   const ref = useRef<HTMLDivElement>(null);
   const [isOverflow, setIsOverflow] = useState(false);
 
@@ -71,12 +67,14 @@ export function DataTable<T extends object>({
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onPaginationChange: setPagination ?? undefined,
     state: {
       sorting: sorting,
       columnPinning: {
         left: pinnedLeft,
         right: [],
       },
+      pagination: pagination ?? undefined,
     },
     defaultColumn: {
       minSize: 0,
@@ -84,8 +82,10 @@ export function DataTable<T extends object>({
       maxSize: Number.MAX_SAFE_INTEGER,
     },
     enableSortingRemoval: true,
-    // manualSorting: !!manualSortingState,
     enableColumnPinning: true,
+    autoResetPageIndex: false,
+    manualPagination: true,
+    debugTable: true,
   });
 
   return (
@@ -108,20 +108,21 @@ export function DataTable<T extends object>({
               table={table}
               isLoading={isLoading}
               pinned={isOverflow}
+              onSelect={onSelect}
             />
           </Table.Root>
         </Overlay>
       </div>
 
-      {/* {!!pagination && (
-        <Pagination
-          totalRows={pagination.totalRows}
-          pageIndex={pagination.pageIndex}
-          pageSize={pagination.pageSize}
-          onPageChange={pagination.onPageChange}
-          pages={pagination.pages}
+      {!!pagination && !!rows && !!setPagination && (
+        <PaginationButtons
+          rows={rows}
+          pagination={pagination}
+          pageSizeVariants={pageSizeVariants}
+          setPagination={setPagination}
+          isLoading={isLoading || isFetching}
         />
-      )} */}
+      )}
     </div>
   );
 }

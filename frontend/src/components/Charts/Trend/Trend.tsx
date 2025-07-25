@@ -127,7 +127,7 @@ export function Trend({
                 fill: color,
               }}
               className={!sparkline ? 'cursor-pointer' : ''}
-              // isAnimationActive={!sparkline}
+              isAnimationActive={!sparkline}
             />
           )}
         </AreaChart>

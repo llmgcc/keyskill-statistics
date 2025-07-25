@@ -31,17 +31,21 @@ export class ServerAPI implements API {
     order_by?: {
       order_by: string;
       descending: boolean;
-    }
-  ): Promise<KeySkill[]> {
+    },
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<KeySkillServer> {
     const response = await axios.get(`/api/key-skills/related/${skillName}`, {
       params: {
         days_period: period,
         experience,
         order_by: order_by?.order_by,
         descending: order_by?.descending,
+        limit: limit,
+        offset: offset,
       },
     });
-    return response.data as Promise<KeySkill[]>;
+    return response.data as Promise<KeySkillServer>;
   }
 
   async similarSkills(
@@ -52,7 +56,7 @@ export class ServerAPI implements API {
       order_by: string;
       descending: boolean;
     }
-  ): Promise<KeySkill[]> {
+  ): Promise<KeySkillServer> {
     const response = await axios.get(`/api/key-skills/similar/${skillName}`, {
       params: {
         days_period: period,
@@ -61,7 +65,7 @@ export class ServerAPI implements API {
         descending: order_by?.descending,
       },
     });
-    return response.data as Promise<KeySkill[]>;
+    return response.data as Promise<KeySkillServer>;
   }
 
   async skillDetails(

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CategoryDescription as CategoryDescriptionEnum } from '@/config/categories';
@@ -11,7 +10,7 @@ interface CategoryDescriptionProps {
   categoryName: string;
 }
 
-function _CategoryDescription({
+export function CategoryDescription({
   categoryKey,
   categoryName,
 }: CategoryDescriptionProps) {
@@ -47,5 +46,3 @@ function _CategoryDescription({
     </div>
   );
 }
-
-export const CategoryDescription = memo(_CategoryDescription);

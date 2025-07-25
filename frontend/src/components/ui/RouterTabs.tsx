@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect } from 'react';
 import { Separator, Tabs } from '@chakra-ui/react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 interface Tab {
   title: JSX.Element;
@@ -16,14 +16,9 @@ interface RouterTabsProps {
   append?: JSX.Element;
 }
 
-export function RouterTabs_({
-  tabs,
-  paramKey = 'tab',
-  append,
-}: RouterTabsProps) {
-  const [searchParams] = useSearchParams();
+function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const navigate = useNavigate();
 
   const currentTab = searchParams.get(paramKey) || tabs[0].name;
   const currentTabConfig = tabs.find(tab => tab.name === currentTab) || tabs[0];
@@ -34,30 +29,18 @@ export function RouterTabs_({
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, newTab);
 
-      navigate(
-        {
-          pathname: location.pathname,
-          search: newSearchParams.toString(),
-        },
-        { replace: true }
-      );
+      setSearchParams(newSearchParams);
     },
-    [tabs, searchParams, paramKey, navigate, location.pathname]
+    [tabs, searchParams, paramKey, setSearchParams]
   );
 
   useEffect(() => {
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set(paramKey, currentTabConfig?.name);
-      navigate(
-        {
-          pathname: location.pathname,
-          search: newSearchParams.toString(),
-        },
-        { replace: true }
-      );
+      newSearchParams.set(paramKey, currentTab);
+      setSearchParams(newSearchParams);
     }
-  }, [paramKey, searchParams, navigate, location.pathname, currentTabConfig]);
+  }, [paramKey, searchParams, setSearchParams, location.pathname, currentTab]);
 
   return (
     <div className="">
@@ -93,9 +76,11 @@ export function RouterTabs_({
               height="6"
             />
           </div>
-          <div>{append ?? null}</div>
+          <div key={currentTabConfig.name}>
+            {currentTabConfig.append ?? null}
+          </div>
         </div>
-        <div>{currentTabConfig.append ?? null}</div>
+        {/* <div>{currentTabConfig.append ?? null}</div> */}
         {tabs.map(tab => (
           <Tabs.Content
             value={tab.name}

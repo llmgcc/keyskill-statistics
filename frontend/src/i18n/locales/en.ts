@@ -66,8 +66,11 @@ export default {
       loading: 'Loading',
       popular: 'Popular',
       trending: 'Trending',
+      similar: 'Similar',
       highestSalary: 'Highest salary',
       noData: 'No results found',
+      showMore: 'Show more',
+      showLess: 'Show less',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -98,7 +101,7 @@ export default {
     },
     highlights: Highlights,
     pagination: {
-      text: 'Showing {{currentPage}} - {{totalPages}} of {{totalRows}} results',
+      text: '{{currentPage}} - {{totalPages}} of {{totalRows}}',
       show: 'Show',
     },
     columns: {

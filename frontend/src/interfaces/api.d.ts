@@ -39,7 +39,7 @@ export interface API {
     skillName: string,
     period: number,
     experience?: Experience
-  ) => Promise<KeySkill[]>;
+  ) => Promise<KeySkillServer>;
 
   skillsList: (
     limit: number,

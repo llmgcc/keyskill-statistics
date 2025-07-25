@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import { Category } from '@/interfaces';
@@ -17,6 +19,8 @@ export function PredictionsCard({
 }: PredictionsCardProps) {
   const { t } = useTranslation();
 
+  const [showAll, setShowAll] = useState(false);
+
   function getCategories(): Category[] {
     if (!categories?.length) {
       return new Array(10).fill(null).map((_, i) => ({
@@ -26,8 +30,11 @@ export function PredictionsCard({
         place: 1,
       }));
     }
-    return categories;
+    const displayCount = showAll ? categories.length : 5;
+    return categories.slice(0, displayCount);
   }
+
+  const hasMore = categories.length > 5;
 
   return (
     <Overlay isLoading={!categories.length} isFetching={!isDataReady}>
@@ -75,6 +82,18 @@ export function PredictionsCard({
               ))}
             </div>
           }
+          {hasMore && (
+            <div className="mt-2 flex items-center justify-center">
+              <Button
+                onClick={() => setShowAll(!showAll)}
+                variant={'ghost'}
+                size={'xs'}
+                className="text-sm text-text-secondary hover:bg-background-secondary"
+              >
+                {showAll ? t('common.showLess') : t('common.showMore')}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </Overlay>

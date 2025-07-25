@@ -1,5 +1,3 @@
-import colors from 'tailwindcss/colors';
-
 export enum Level {
   Junior = 'Junior',
   'Junior+' = 'Junior+',

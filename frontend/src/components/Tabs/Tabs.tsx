@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
@@ -10,7 +10,7 @@ import { CategoriesTable } from './CategoriesTable';
 import { KeySkills } from './KeySkills';
 import { TechnologiesTable } from './TechnologiesTable';
 
-function _Tabs() {
+export function Tabs() {
   const { t } = useTranslation();
 
   const [filterState, setFilterState] = useState<SkillsFilterState>({
@@ -65,5 +65,3 @@ function _Tabs() {
 
   return <RouterTabs tabs={tabs} />;
 }
-
-export const Tabs = memo(_Tabs);
