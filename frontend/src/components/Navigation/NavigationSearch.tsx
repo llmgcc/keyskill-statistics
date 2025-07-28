@@ -16,6 +16,7 @@ import { IoCloseCircleSharp, IoSearch } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 import { useDebounce } from '@/hooks/useDebounce';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import { useSkills } from '@/hooks/useSkills';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
@@ -135,6 +136,8 @@ export function NavigationSearch() {
   const [selectedTab, setSelectedTab] = useState<
     'Categories' | 'Domains' | 'All'
   >('All');
+
+  const { isMobile } = useScreenSize();
 
   const handleKeyPress = (event: KeyboardEvent) => {
     if (event.key === '/') {
@@ -277,20 +280,30 @@ export function NavigationSearch() {
 
   return (
     <div>
-      <Button
-        onClick={onOpen}
-        className="flex size-full h-8 w-56 cursor-pointer items-center justify-between rounded bg-background-secondary px-2 py-1 text-sm text-text-secondary hover:bg-background-gray"
-      >
-        <div className="flex">
-          <div className="mr-2">
-            <IoSearch />
+      {isMobile ? (
+        <Button
+          onClick={onOpen}
+          variant="ghost"
+          className="flex aspect-square size-fit items-center !bg-transparent !p-0"
+        >
+          <IoSearch className="cursor-pointer !text-2xl font-[900] text-text transition-colors duration-150 hover:text-background-accent" />
+        </Button>
+      ) : (
+        <Button
+          onClick={onOpen}
+          className="flex size-full h-8 w-fit cursor-pointer items-center justify-between rounded bg-background-secondary px-2 py-1 text-sm text-text-secondary hover:bg-background-gray md:w-56"
+        >
+          <div className="flex">
+            <div className="mr-2">
+              <IoSearch />
+            </div>
+            <div>{t('common.search')}</div>
           </div>
-          <div>{t('common.search')}</div>
-        </div>
-        <div className="flex aspect-square w-5 items-center justify-center rounded bg-background-primary text-xs text-text">
-          <Kbd>/</Kbd>
-        </div>
-      </Button>
+          <div className="flex aspect-square w-5 items-center justify-center rounded bg-background-primary text-xs text-text">
+            <Kbd>/</Kbd>
+          </div>
+        </Button>
+      )}
 
       <div>
         <Dialog.Root

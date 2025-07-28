@@ -1,4 +1,4 @@
-import { Button } from '@radix-ui/themes';
+import { Button } from '@chakra-ui/react';
 import { BsGithub } from 'react-icons/bs';
 
 const openRepo = () => {
@@ -8,7 +8,7 @@ const openRepo = () => {
 export function GithubRepo() {
   return (
     <Button
-      variant="soft"
+      variant="ghost"
       className="ml-1 aspect-square size-fit !bg-transparent !p-0"
       title="GitHub"
       onClick={openRepo}

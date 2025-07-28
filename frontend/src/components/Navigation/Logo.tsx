@@ -1,11 +1,11 @@
-import { Link } from '@chakra-ui/react';
 import { PiCodeSimpleLight } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 
 export const APP_NAME = 'KS|DATA';
 
 export function Logo() {
   return (
-    <Link href="/" className="w-fit">
+    <Link to="/" className="w-fit">
       <div className="flex items-center text-text">
         <div className="flex aspect-square items-center justify-center rounded-lg bg-background-secondary/50 p-1 text-background-accent">
           <PiCodeSimpleLight size={20} />

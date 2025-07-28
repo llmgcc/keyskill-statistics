@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { IoLanguageOutline } from 'react-icons/io5';
+import { HiLanguage } from 'react-icons/hi2';
 
 import { Language, LanguageTitle } from '@/config/languages';
 import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
@@ -18,7 +18,7 @@ export function LanguageSwitch() {
     <NavigationSelect
       title={t('navigation.tooltips.language')}
       icon={
-        <IoLanguageOutline className="cursor-pointer text-2xl text-red-400 text-text hover:text-background-accent" />
+        <HiLanguage className="cursor-pointer !text-2xl font-[900] text-text transition-colors duration-150 hover:text-background-accent" />
       }
       options={options}
       selectedOptionCode={selectedLanguage}

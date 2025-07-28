@@ -1,6 +1,7 @@
-import { Badge, Button, Link, Separator } from '@chakra-ui/react';
+import { Badge, Button, Separator } from '@chakra-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
 import { MdKeyboardDoubleArrowUp } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { useShallow } from 'zustand/shallow';
 
 import { Language, LanguageTitle } from '@/config/languages';
@@ -112,8 +113,8 @@ export function Footer() {
                   {c.links.map(link => (
                     <li key={link.id}>
                       <Link
-                        href={link.href}
-                        className="text-text/80 hover:text-background-accent"
+                        to={link.href}
+                        className="text-text/80 hover:text-background-accent hover:underline"
                         target={link.blank ? '_blank' : undefined}
                       >
                         {t(`common.${link.id}`)}

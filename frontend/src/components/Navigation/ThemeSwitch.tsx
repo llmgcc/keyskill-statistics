@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@radix-ui/themes';
+import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { RiLightbulbFlashLine, RiLightbulbLine } from 'react-icons/ri';
 
@@ -34,7 +34,7 @@ export function ThemeSwitch() {
   return (
     <div>
       <Button
-        variant="soft"
+        variant="ghost"
         className="flex aspect-square size-fit items-center !bg-transparent !p-0"
         title={t('navigation.tooltips.theme')}
         onClick={() =>

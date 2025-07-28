@@ -21,6 +21,21 @@ import { Highlights } from './components/Pages/Highlights/Highlights';
 import { MainPage } from './components/Pages/MainPage';
 import { SkillPage } from './components/Pages/SkillPage';
 import { Skills } from './components/Pages/Skills/Skills';
+import { useRouterConfig } from './router';
+
+function TitleWrapper({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+  return <>{children}</>;
+}
 
 export default function App() {
   const fetchCategories = useCategoriesStore(state => state.fetchCategories);
@@ -35,21 +50,19 @@ export default function App() {
     fetchStats();
   }, []);
 
+  const config = useRouterConfig();
+
   return (
     <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
       <Navigation />
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/skill/:name" element={<SkillPage />} />
-        <Route path="/domain/:name" element={<DomainPage />} />
-        <Route path="/category/:name" element={<CategoryPage />} />
-
-        <Route path="/skills" element={<Skills />} />
-
-        <Route path="/domains" element={<Domains />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/highlights" element={<Highlights />} />
-        <Route path="/favourites" element={<Favourites />} />
+        {config.map(c => (
+          <Route
+            path={c.path}
+            element={<TitleWrapper title={c.title}>{c.element}</TitleWrapper>}
+            key={c.id}
+          />
+        ))}
       </Routes>
       <Footer />
     </div>
