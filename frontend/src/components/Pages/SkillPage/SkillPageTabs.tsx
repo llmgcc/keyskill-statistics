@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiNetworkChart } from 'react-icons/bi';
 import { PiApproximateEquals } from 'react-icons/pi';
+import { useSearchParams } from 'react-router-dom';
 
 import { KeySkill } from '@/interfaces';
 import { useOrderByState } from '@/hooks/useOrderByState';
@@ -124,9 +125,17 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
     ]
   );
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleTabChange = () => {
+    const newSearchParams = new URLSearchParams();
+    newSearchParams.set('abasdasdsad', 'abasdasdsad');
+    setSearchParams(newSearchParams, { replace: true });
+  };
+
   return (
     <div className="w-full rounded border-background-secondary">
-      <RouterTabs tabs={tabs} />
+      <RouterTabs tabs={tabs} onValueChange={handleTabChange} />
       {/* <Tabs.Root
         defaultValue={tabs[0].id}
         variant="enclosed"

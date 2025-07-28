@@ -48,7 +48,7 @@ export function MainPage() {
       </div>
       <Highlights />
       <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
-      <div ref={tabsRef} className='app-container'>
+      <div ref={tabsRef} className="app-container">
         <Tabs />
       </div>
     </div>

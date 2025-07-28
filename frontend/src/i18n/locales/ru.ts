@@ -71,7 +71,7 @@ export default {
       noData: 'Результаты не найдены',
       showMore: 'Показать больше',
       showLess: 'Показать меньше',
-      github: 'GitHub'
+      github: 'GitHub',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -357,7 +357,7 @@ export default {
     },
     footer: {
       text: '{{appName}} анализирует рынок IT-вакансий и определяет востребованные навыки для карьерного роста',
-      backToTop: 'Вернуться наверх'
-    }
+      backToTop: 'Вернуться наверх',
+    },
   },
 };

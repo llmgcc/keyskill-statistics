@@ -20,7 +20,7 @@ export const SelectTrigger = React.memo(
           <SelectPrimitive.Trigger
             ref={forwardedRef}
             {...props}
-            className="!w-full test-base cursor-pointer border-[1px] border-background-secondary hover:bg-background-secondary data-[state=open]:bg-background-secondary"
+            className="test-base !w-full cursor-pointer border-[1px] border-background-secondary hover:bg-background-secondary data-[state=open]:bg-background-secondary"
           >
             <SelectPrimitive.ValueText className="min-w-max pr-6">
               {children}
@@ -83,7 +83,7 @@ interface AppSelectProps {
   onValueChange: (details: SelectValueChangeDetails<string>) => void;
   triggerFormatter: () => JSX.Element;
   valueFormatter: (value: string) => JSX.Element;
-  className?: string
+  className?: string;
 }
 
 export function AppSelect({
@@ -92,7 +92,7 @@ export function AppSelect({
   onValueChange,
   triggerFormatter,
   valueFormatter,
-  className=""
+  className = '',
 }: AppSelectProps) {
   const collection = createListCollection({
     items: options,

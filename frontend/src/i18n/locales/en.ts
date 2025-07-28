@@ -75,7 +75,7 @@ export default {
       noData: 'No results found',
       showMore: 'Show more',
       showLess: 'Show less',
-      github: 'GitHub'
+      github: 'GitHub',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -143,7 +143,7 @@ export default {
     },
     footer: {
       text: '{{appName}} provides IT job market analytics, showing which skills are needed for professional development',
-      backToTop: 'Back to top'
-    }
+      backToTop: 'Back to top',
+    },
   },
 };

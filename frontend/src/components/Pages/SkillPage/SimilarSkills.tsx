@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 import { KeySkill } from '@/interfaces';
 import { useSimilarSkills } from '@/hooks/data/useSimilarSkills';
+import { useFilters } from '@/hooks/useFilters';
+import { usePaginationState } from '@/hooks/usePaginationState';
 import { DataTable } from '@/components/Table/DataTable';
 import {
   chartAccessor,
@@ -15,8 +17,6 @@ import {
   skillImageAccessor,
   skillNameAccessor,
 } from '@/components/Tabs/accessors';
-import { useFilters } from '@/hooks/useFilters';
-import { usePaginationState } from '@/hooks/usePaginationState';
 
 interface SimilarSkillsProps {
   name: string | null;
@@ -25,7 +25,6 @@ interface SimilarSkillsProps {
 
 export function SimilarSkills({ name, order_by }: SimilarSkillsProps) {
   const { t } = useTranslation();
-
 
   const { period, experience } = useFilters();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(

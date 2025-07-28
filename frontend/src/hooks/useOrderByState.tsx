@@ -16,14 +16,14 @@ export function useOrderByState(
   const setOrder = (button: OrderButton) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(paramKey, button.id);
-    setSearchParams(newParams);
+    setSearchParams(prev => newParams);
   };
 
   useEffect(() => {
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, currentButton.id);
-      setSearchParams(newSearchParams, {replace: true});
+      setSearchParams(prev => newSearchParams, { replace: true });
     }
   }, [
     paramKey,

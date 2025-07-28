@@ -9,8 +9,8 @@ import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
 import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 import { GithubRepo } from './GithubRepo';
-import { NavigationSearch } from './NavigationSearch';
 import { Logo } from './Logo';
+import { NavigationSearch } from './NavigationSearch';
 
 export function Navigation() {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export function Navigation() {
             className={`app-container flex h-12 w-full items-center justify-between bg-background-primary py-4`}
           >
             <div className="flex items-center justify-center gap-6 text-sm">
-            <Logo/>
+              <Logo />
               <div className="hidden gap-6 text-sm font-[600] text-text-primary lg:flex">
                 <div className="cursor-pointer hover:text-background-accent">
                   Skills

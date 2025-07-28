@@ -215,7 +215,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
     return (
       <Skeleton
         loading={config.isLoading}
-        className={`size-full min-h-10 min-w-10 ${config.isLoading ?? 'bg-background-secondary'}`}
+        className={`${config.isLoading ? 'h-[40px] w-full bg-background-secondary' : 'size-full'}`}
       >
         <div className="size-full">
           {config.isLoading ? (

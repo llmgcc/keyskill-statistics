@@ -12,10 +12,15 @@ import { useStatsStore } from '@/store/statsStore.ts';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 
 import { Footer } from './components/Footer/Footer';
+import { Categories } from './components/Pages/Categories/Categories';
 import { CategoryPage } from './components/Pages/CategoryPage';
 import { DomainPage } from './components/Pages/DomainPage';
+import { Domains } from './components/Pages/Domains/Domains';
+import { Favourites } from './components/Pages/Favourites/Favourites';
+import { Highlights } from './components/Pages/Highlights/Highlights';
 import { MainPage } from './components/Pages/MainPage';
 import { SkillPage } from './components/Pages/SkillPage';
+import { Skills } from './components/Pages/Skills/Skills';
 
 export default function App() {
   const fetchCategories = useCategoriesStore(state => state.fetchCategories);
@@ -38,6 +43,13 @@ export default function App() {
         <Route path="/skill/:name" element={<SkillPage />} />
         <Route path="/domain/:name" element={<DomainPage />} />
         <Route path="/category/:name" element={<CategoryPage />} />
+
+        <Route path="/skills" element={<Skills />} />
+
+        <Route path="/domains" element={<Domains />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/highlights" element={<Highlights />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
       <Footer />
     </div>

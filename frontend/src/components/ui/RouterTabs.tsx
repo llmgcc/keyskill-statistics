@@ -14,9 +14,14 @@ interface RouterTabsProps {
   paramKey?: string;
   defaultTab?: string;
   append?: JSX.Element;
+  onValueChange: () => void;
 }
 
-function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
+function RouterTabs_({
+  tabs,
+  paramKey = 'tab',
+  onValueChange = () => {},
+}: RouterTabsProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -25,23 +30,20 @@ function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
 
   const handleTabChange = useCallback(
     (name: string) => {
+      onValueChange();
       const newTab = tabs.find(t => t.name === name)?.name ?? tabs[0].name;
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, newTab);
-      console.log('handle tab change', newSearchParams)
-      setSearchParams(newSearchParams);
+      setSearchParams(prev => newSearchParams);
     },
-    [tabs, searchParams, paramKey, setSearchParams]
+    [tabs, searchParams, paramKey, setSearchParams, onValueChange]
   );
 
-
-  
   useEffect(() => {
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, currentTab);
-      console.log('search tab change', newSearchParams)
-      setSearchParams(newSearchParams, {replace: true});
+      setSearchParams(prev => newSearchParams, { replace: true });
     }
   }, [paramKey, searchParams, setSearchParams, location.pathname, currentTab]);
 
@@ -54,7 +56,9 @@ function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
         className="mt-2 border-none bg-background-primary p-0"
         size="sm"
         lazyMount
-        onValueChange={details => handleTabChange(details.value)}
+        onValueChange={details => {
+          handleTabChange(details.value);
+        }}
       >
         <div className="flex items-center gap-2 overflow-x-auto p-0">
           <Tabs.List className="flex gap-2 border-background-secondary bg-background-primary p-0 shadow-background-secondary">

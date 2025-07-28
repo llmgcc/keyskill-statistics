@@ -1,8 +1,8 @@
 import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
+import { PaginationState } from '@tanstack/react-table';
 
 import { useFilters } from '../useFilters';
-import { PaginationState } from '@tanstack/react-table';
 
 export function useSimilarSkills(
   name: string | null,
@@ -11,12 +11,15 @@ export function useSimilarSkills(
 ) {
   const { period, experience } = useFilters();
 
-  const {
-    data,
-    isLoading,
-    isFetching,
-  } = useQuery({
-    queryKey: ['similar_skills', name, period, experience, order_by, pagination],
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: [
+      'similar_skills',
+      name,
+      period,
+      experience,
+      order_by,
+      pagination,
+    ],
     queryFn: async () => {
       const data = await API.similarSkills(
         encodeURIComponent(name ?? '')!,
