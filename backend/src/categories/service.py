@@ -12,7 +12,7 @@ from src.common import average_salary_case
 from src.config import settings
 
 
-async def categories_list(session: Session, days_period=30, experience=None):
+async def categories_list(session: Session, days_period=30, experience=None, category=None):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -64,6 +64,7 @@ async def categories_list(session: Session, days_period=30, experience=None):
         .outerjoin(Category, Category.id == KeySkillCategory.category_id)
         .outerjoin(current_skills, current_skills.c.name == KeySkillCategory.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillCategory.name)
+        .where(Category.name == category if category is not None else True)
         .group_by(Category.name)
         .order_by(desc("count"))
     )

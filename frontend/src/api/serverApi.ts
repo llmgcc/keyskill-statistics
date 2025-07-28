@@ -55,7 +55,9 @@ export class ServerAPI implements API {
     order_by?: {
       order_by: string;
       descending: boolean;
-    }
+    },
+    limit: number = 10,
+    offset: number = 0
   ): Promise<KeySkillServer> {
     const response = await axios.get(`/api/key-skills/similar/${skillName}`, {
       params: {
@@ -63,6 +65,8 @@ export class ServerAPI implements API {
         experience,
         order_by: order_by?.order_by,
         descending: order_by?.descending,
+        limit: limit,
+        offset: offset,
       },
     });
     return response.data as Promise<KeySkillServer>;

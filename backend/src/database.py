@@ -6,4 +6,4 @@ DATABASE_URL = f"postgresql://{settings.user}:{settings.password}@{settings.host
 engine = create_engine(DATABASE_URL)
 
 DATABASE_URL_ASYNC = f"postgresql+asyncpg://{settings.user}:{settings.password}@{settings.host}/{settings.database}"
-async_engine = create_async_engine(DATABASE_URL_ASYNC, echo=True, future=True)
+async_engine = create_async_engine(DATABASE_URL_ASYNC, echo=False, future=True)

@@ -9,25 +9,35 @@ from src.charts.service import (
     technologies_chart,
     technologies_salary_chart,
 )
-from src.charts.schemas import ChartsResponse, SalaryChartResponse
-from typing import List
+from src.charts.schemas import ChartsResponse, SalaryChartResponse, TrendChartResponse
+from typing import List, Optional
+from src.config import settings
+
 
 router = APIRouter(prefix="/charts", tags=["Charts"])
 
 
-@router.get(summary="Skill chart", path="/skill", response_model=List[ChartsResponse])
+@router.get(summary="Skill chart", path="/skill", response_model=TrendChartResponse)
 async def get_skills_chart(
     skill_name,
     experience=None,
     session: Session = Depends(get_async_session),
     period: int = 30,
+    number_of_bins: int = 25,
+    related_to: Optional[str] = None
 ):
-    return await skills_chart(
+    chart, date_from, date_to =  await skills_chart(
         skill_name=skill_name,
         session=session,
         days_period=period,
         experience=experience,
+        number_of_bins=number_of_bins,
+        related_to=related_to
     )
+
+    
+    
+    return {"chart": (chart) or [], "date_from": date_from, "date_to": date_to} 
 
 
 @router.get(
@@ -38,12 +48,14 @@ async def get_salary_chart(
     session: Session = Depends(get_async_session),
     period: int = 30,
     experience=None,
+    number_of_bins: int = 20,
+    related_to: Optional[str] = None
 ):
-    chart, max_salary = await salary_chart(
-        skill_name, session, days_period=period, experience=experience
+    chart = await salary_chart(
+        skill_name, session, days_period=period, experience=experience, number_of_bins=number_of_bins, related_to = related_to
     )
 
-    return {"chart": chart or [], "max_salary": max_salary}
+    return {"chart": chart or [], "salary_from": 0, "salary_to": settings.max_salary}
 
 
 @router.get(

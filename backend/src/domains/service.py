@@ -12,7 +12,7 @@ from src.common import average_salary_case
 from src.config import settings
 
 
-async def domains_list(session: Session, days_period=30, experience=None):
+async def domains_list(session: Session, days_period=30, experience=None, domain = None):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -68,6 +68,7 @@ async def domains_list(session: Session, days_period=30, experience=None):
         .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)
         .outerjoin(skills, skills.c.name == KeySkillDomain.name)
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillDomain.name)
+        .where(Domain.name == domain if domain is not None else True)
         .group_by(Domain.name)
         .order_by(desc("count"))
     )

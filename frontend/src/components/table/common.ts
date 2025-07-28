@@ -27,13 +27,14 @@ export function getCommonPinningStyles<T>(
 
   return {
     boxShadow: isLastLeftPinnedColumn
-      ? '-4px 0 4px -4px rgb(var(--color-background-gray)) inset'
+      ? '-4px 0 4px -4px rgb(var(--colors-background-gray)) inset'
       : isFirstRightPinnedColumn
         ? '4px 0 4px -4px rgb(var(--colors-background-gray)) inset'
         : undefined,
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
-    opacity: isPinned ? 0.95 : 1,
+    opacity: isPinned ? 0.9 : 1,
+    backgroundColor: 'rgba(var(--color-background-primary))',
     position: isPinned ? 'sticky' : 'relative',
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,

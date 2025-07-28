@@ -10,6 +10,7 @@ import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 
 import { GithubRepo } from './GithubRepo';
 import { NavigationSearch } from './NavigationSearch';
+import { Logo } from './Logo';
 
 export function Navigation() {
   const navigate = useNavigate();
@@ -55,28 +56,7 @@ export function Navigation() {
             className={`app-container flex h-12 w-full items-center justify-between bg-background-primary py-4`}
           >
             <div className="flex items-center justify-center gap-6 text-sm">
-              <div className="flex items-center text-text">
-                <div className="flex aspect-square items-center justify-center rounded-lg bg-background-secondary/50 p-1 text-[#5e6c77] text-background-accent">
-                  <PiCodeSimpleLight size={20} />
-                  {/* <div>
-                    <div className="mb-[1px] flex">
-                      <div className="mr-[1px] size-2 rounded-sm bg-background-accent/25"></div>
-                      <div className="size-2 rounded-sm bg-background-accent/50"></div>
-                    </div>
-                    <div className="flex">
-                      <div className="mr-[1px] size-2 rounded-sm bg-background-accent/75"></div>
-                      <div className="size-2 rounded-sm bg-background-accent/100"></div>
-                    </div>
-                  </div> */}
-                </div>
-                <div
-                  onClick={() => navigate('/')}
-                  className="h-100 font-sm text-md mx-1 flex cursor-pointer items-center justify-center font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent"
-                >
-                  KS|DATA
-                </div>
-              </div>
-
+            <Logo/>
               <div className="hidden gap-6 text-sm font-[600] text-text-primary lg:flex">
                 <div className="cursor-pointer hover:text-background-accent">
                   Skills

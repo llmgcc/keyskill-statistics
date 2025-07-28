@@ -1,5 +1,17 @@
 from categories_classifier import CategoriesClassifier
 from domains_classifier import DomainsClassifier
 
-(DomainsClassifier().fill_db())
-(CategoriesClassifier().fill_db())
+
+SEARCH = 500
+(
+    DomainsClassifier()
+    .search(SEARCH)
+    .predict()
+    .fill_db()
+)
+(
+    CategoriesClassifier()
+    .search(SEARCH)
+    .predict()
+    .fill_db()
+)

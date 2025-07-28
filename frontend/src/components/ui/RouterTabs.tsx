@@ -28,17 +28,20 @@ function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
       const newTab = tabs.find(t => t.name === name)?.name ?? tabs[0].name;
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, newTab);
-
+      console.log('handle tab change', newSearchParams)
       setSearchParams(newSearchParams);
     },
     [tabs, searchParams, paramKey, setSearchParams]
   );
 
+
+  
   useEffect(() => {
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, currentTab);
-      setSearchParams(newSearchParams);
+      console.log('search tab change', newSearchParams)
+      setSearchParams(newSearchParams, {replace: true});
     }
   }, [paramKey, searchParams, setSearchParams, location.pathname, currentTab]);
 

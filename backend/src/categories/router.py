@@ -28,3 +28,25 @@ async def get_categories_list(
             status_code=500,
             detail=f"Error: {str(e)}",
         )
+
+
+@router.get(
+    path="/{category}",
+    summary="Category Details",
+    response_model=CategoriesResponse,
+)
+async def get_category(
+    category: str,
+    session: Session = Depends(get_async_session),
+    experience: str | None = Query(
+        None, description="Experience", example=Experience.noExperience
+    ),
+    period: int = Query(30, ge=1, description="Period", example=30),
+):
+    try:
+        return (await categories_list(session, experience=experience, days_period=period, category=category))[0]
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error: {str(e)}",
+        )

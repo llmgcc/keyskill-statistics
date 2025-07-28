@@ -57,6 +57,7 @@ class DomainsClassifier:
             pickle.dump(clf, f)
 
         write_results("domains", clf, KEYS, self.skills_db, weights)
+        return self
 
     def search(self, trials, NUM_SKILLS_TO_TRAIN=1000):
         cluster_skills = {}

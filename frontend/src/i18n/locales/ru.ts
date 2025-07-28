@@ -51,10 +51,14 @@ export default {
       unknownCategory: 'Неизвестно',
       domains: 'Направления',
       categories: 'Категории',
-      skills: 'Ключевые навыки',
+      skills: 'Навыки',
+      highlights: 'Обзор',
+      favourites: 'Избранные',
       search: 'Поиск',
       all: 'Все',
       navigate: 'Навигация',
+      navigation: 'Навигация',
+      links: 'Ссылки',
       close: 'Закрыть',
       domainsPrimary: 'Основное направление',
       categoriesPrimary: 'Основная категория',
@@ -67,6 +71,7 @@ export default {
       noData: 'Результаты не найдены',
       showMore: 'Показать больше',
       showLess: 'Показать меньше',
+      github: 'GitHub'
     },
     favorites: {
       removed: 'удален из избранного',
@@ -350,5 +355,9 @@ export default {
         subtitle: 'Навыки, схожие по значению или функциональности',
       },
     },
+    footer: {
+      text: '{{appName}} анализирует рынок IT-вакансий и определяет востребованные навыки для карьерного роста',
+      backToTop: 'Вернуться наверх'
+    }
   },
 };

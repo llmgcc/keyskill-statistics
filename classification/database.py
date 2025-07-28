@@ -47,6 +47,13 @@ class SkillDatabase:
             with open(self.PATH_TO_SKILLS, encoding="utf-8") as f:
                 self.skills_cache = json.load(f)
 
+
+
+    def get_all_skills(self):
+        return list(self.skills_cache.keys())
+
+
+
     def update_skills_cache(self):
         self.update_translations()
         self.update_skills()
@@ -231,7 +238,7 @@ class SkillDatabase:
                 category_similar_skills += similar_skills
 
             category_hints[c] = {
-                "title": title,
+                "title": f'{c}. {title}',
                 "similar_skills": category_similar_skills,
             }
 
@@ -247,8 +254,9 @@ class SkillDatabase:
             ]
             for _ in range(BATCH_SIZE):
                 np.random.shuffle(similar_skills)
-                name = f"Required Skills: {', '.join(similar_skills[0:5])}.{title}."
+                name = f"{title}. Examples: {', '.join(similar_skills[0:3])}"
                 category_names.append(name)
+                print(f'new name: {name}')
 
         from sentence_transformers import SentenceTransformer
 
@@ -263,7 +271,8 @@ class SkillDatabase:
         category_embeddings = [np.mean(batch, axis=0) for batch in embeddings_batches]
 
         for i, s in enumerate(self.skills_cache.keys()):
-            print(f"{i}/{len(self.skills_cache.keys())}")
+            if i % 500 == 0:
+                print(f"{i}/{len(self.skills_cache.keys())}")
             target_embedding = self.skills_cache[s]["embedding"]
             dots = []
             for embedding in category_embeddings:
@@ -279,9 +288,13 @@ class SkillDatabase:
         with open(self.PATH_TO_SKILLS, "w", encoding="utf-8") as f:
             f.write(json.dumps(self.skills_cache))
 
-    def get_vector(self, skill_name, weights):
+    def get_vector(self, skill_name, weights = [1,1,1,1]):
         weights = np.array(weights)
         weights = weights / np.sum(weights)
+
+        if skill_name not in self.skills_cache:
+            # print(f"skill {skill_name} not found")
+            return None
 
         skill = self.skills_cache[skill_name]
         vector = np.concatenate(
@@ -319,25 +332,38 @@ class SkillDatabase:
         estimation = np.array(estimation)
         return estimation / np.sum(estimation)
 
-    def get_cluster_skills(self, skills_list):
-        skills_query = list(map(lambda x: f"KeySkill.name ~* $${x}$$", skills_list))
-        similar_skills = pd.read_sql(
-            f"""
-            SELECT KeySkill.name, count(*) FROM KeySkill
-                WHERE KeySkill.vacancy_id IN (
-                    SELECT KeySkill.vacancy_id FROM KeySkill    
-                        INNER JOIN Vacancy ON Vacancy.id = KeySkill.vacancy_id
-                        WHERE ({" OR ".join(skills_query)})
-                )
-                GROUP BY KeySkill.name
-                ORDER BY count DESC
-            """,
-            con=self.CONNECTION_URL,
-        ).to_dict("records")
-        return dict(map(lambda x: (x["name"], x["count"]), similar_skills))
+    def get_cluster_skills(self, skills_list, for_other=False):
+        if not skills_list:
+            return {}
 
-    def get_all_skills(self):
-        return list(map(lambda x: x["name"], self.all_skills))
+        cursor = self.CONNECTION_URL.cursor()
+        
+        cursor.execute("DROP TABLE IF EXISTS tmp_skills")
+        cursor.execute("CREATE TEMP TABLE tmp_skills (pattern TEXT)")
+        for skill in skills_list:
+            cursor.execute("INSERT INTO tmp_skills VALUES (%s)", (skill,))
+        
+        query = f"""
+            SELECT ks.name, COUNT(*) 
+            FROM KeySkill ks
+            WHERE ks.vacancy_id {'NOT IN' if for_other else 'IN'} (
+                SELECT DISTINCT ks_inner.vacancy_id
+                FROM KeySkill ks_inner
+                JOIN tmp_skills ts ON ks_inner.name ~* ts.pattern
+            )
+            GROUP BY ks.name
+            ORDER BY COUNT(*) DESC
+        """
+        
+        cursor.execute(query)
+        similar_skills = cursor.fetchall()
+        cursor.close()
+        
+        if not similar_skills:
+            return {}
+            
+        max_count = similar_skills[0][1]
+        return {name: count / max_count for name, count in similar_skills}
 
     def update_domains(self, skills, categories, predictions):
         cursor = self.CONNECTION_URL.cursor()
@@ -363,9 +389,9 @@ class SkillDatabase:
             )
 
             inserted = 0
-            MIN_INSERTED = 5
+            MIN_INSERTED = 10
             for category, confidence in predictions_with_labels:
-                if confidence * 100 >= 10 or inserted < MIN_INSERTED:
+                if inserted < MIN_INSERTED:
                     cursor.execute(
                         "INSERT INTO KeySkillDomain (domain_id, name, confidence) VALUES(%s, %s, %s)",
                         (category_id[category], skill, confidence),
@@ -397,12 +423,60 @@ class SkillDatabase:
             )
 
             inserted = 0
-            MIN_INSERTED = 5
+            MIN_INSERTED = 10
             for category, confidence in predictions_with_labels:
-                if confidence * 100 >= 10 or inserted < MIN_INSERTED:
+                if inserted < MIN_INSERTED:
                     cursor.execute(
                         "INSERT INTO KeySkillCategory (category_id, name, confidence) VALUES(%s, %s, %s)",
                         (category_id[category], skill, confidence),
                     )
                     inserted += 1
         self.CONNECTION_URL.commit()
+    
+
+    def update_similar_skills(self):
+        skill_vectors = {}
+        for skill in self.all_skills:
+            if skill["count"] >= 5:
+                vector = self.get_vector(skill["name"], [1, 1000, 1, 1000])
+                if vector is not None:
+                    skill_vectors[skill["name"]] = vector
+        
+        skills_list = list(skill_vectors.keys())
+        all_similarities = []
+        
+        for i, target_name in enumerate(skills_list):
+            print(f"Processing {i}/{len(skills_list)}")
+            target_vector = skill_vectors[target_name]
+            
+            # Calculate similarity with all other skills
+            similarities = []
+            for skill_name in skills_list:
+                if skill_name != target_name:
+                    skill_vector = skill_vectors[skill_name]
+                    similarity = np.dot(target_vector, skill_vector)
+                    similarities.append((skill_name, similarity))
+            
+            # Sort by similarity score and take top 20
+            similarities.sort(key=lambda x: x[1], reverse=True)
+            top_similar = similarities[:100]
+            
+            # Add to results
+            for skill_name, similarity in top_similar:
+                skill1, skill2 = sorted([target_name, skill_name])
+                all_similarities.append((skill1, skill2, similarity))
+        
+        print(f"Inserting {len(all_similarities)} similarity records...")
+        cursor = self.CONNECTION_URL.cursor()
+        cursor.execute("TRUNCATE KeySkillSimilarity CASCADE")
+        
+        for skill1, skill2, similarity in all_similarities:
+            cursor.execute(
+                "INSERT INTO KeySkillSimilarity (skill1, skill2, similarity_score) VALUES (%s, %s, %s) ON CONFLICT (skill1, skill2) DO NOTHING",
+                (skill1, skill2, similarity)
+            )
+        
+        self.CONNECTION_URL.commit()
+        print("Done!")
+
+SkillDatabase().update_similar_skills()

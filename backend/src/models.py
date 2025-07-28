@@ -85,3 +85,9 @@ class KeySkillCategory(SQLModel, table=True):
     )
     name: str = Field(default=None, primary_key=True)
     confidence: float = Field()
+
+
+class KeySkillSimilarity(SQLModel, table=True):
+    skill1: str = Field(foreign_key="keyskill.name", primary_key=True)
+    skill2: str = Field(foreign_key="keyskill.name", primary_key=True)
+    similarity_score: float = Field()

@@ -6,13 +6,15 @@ import datetime
 from src.common import average_salary_case
 
 
+
 async def skills_chart(
     skill_name,
     session: Session,
     days_period=15,
-    number_of_bins=20,
+    number_of_bins=25,
     for_all_skills=False,
     experience=None,
+    related_to=None
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -33,14 +35,22 @@ async def skills_chart(
             and_(
                 Vacancy.created_at.between(prev_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
+                Vacancy.id.in_(
+                    select(Vacancy.id)
+                    .select_from(Vacancy)
+                    .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
+                    .where(KeySkill.name == related_to)
+                ) if related_to is not None else True
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
-        .where(Vacancy.experience == experience if experience is not None else True)
+        .where(Vacancy.experience == (None if experience == 'unknown' else experience) if experience is not None else True)
         .where(bin >= 1)
         .where(bin <= number_of_bins)
         .order_by(Vacancy.created_at.desc())
     ).subquery()
+        
+
 
     grouped_bins_count = func.count().label("count")
     grouped_bins = (
@@ -61,14 +71,14 @@ async def skills_chart(
                 func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
             ).label("chart"),
         ).group_by(grouped_bins.c.name)
-        return count_chart.subquery()
+        return count_chart.subquery(), prev_from, current_to
     else:
         count_chart = select(
             func.to_json(
                 func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
             ).label("chart"),
         ).group_by(grouped_bins.c.name)
-        return (await session.exec(count_chart)).first()
+        return (await session.exec(count_chart)).first(), prev_from, current_to
 
 
 async def salary_chart(
@@ -78,6 +88,7 @@ async def salary_chart(
     number_of_bins=15,
     experience=None,
     for_all_skills=False,
+    related_to = None
 ):
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
@@ -97,6 +108,12 @@ async def salary_chart(
             and_(
                 Vacancy.created_at.between(current_from, current_to),
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
+                Vacancy.id.in_(
+                    select(Vacancy.id)
+                    .select_from(Vacancy)
+                    .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
+                    .where(KeySkill.name == related_to)
+                ) if related_to is not None else True
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
@@ -104,7 +121,7 @@ async def salary_chart(
     )
 
     if experience is not None:
-        vacancies = vacancies.where(Vacancy.experience == experience)
+        vacancies = vacancies.where(Vacancy.experience == (None if experience == 'unknown' else experience))
 
     right = settings.max_salary
     left = 0
@@ -164,9 +181,9 @@ async def salary_chart(
                 average_salary_per_skill.c.name == salary_chart.c.name,
             )
         ).subquery()
-        return salary_chart_with_avg, right
+        return salary_chart_with_avg
     else:
-        return (await session.exec(salary_chart_with_avg)).first(), right
+        return (await session.exec(salary_chart_with_avg)).first()
 
 
 async def category_chart(

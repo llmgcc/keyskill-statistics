@@ -2,25 +2,29 @@ import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
 
 import { useFilters } from '../useFilters';
+import { PaginationState } from '@tanstack/react-table';
 
 export function useSimilarSkills(
   name: string | null,
+  pagination: PaginationState,
   order_by?: { order_by: string; descending: boolean }
 ) {
   const { period, experience } = useFilters();
 
   const {
-    data: similarSkills,
+    data,
     isLoading,
     isFetching,
   } = useQuery({
-    queryKey: ['similar_skills', name, period, experience, order_by],
+    queryKey: ['similar_skills', name, period, experience, order_by, pagination],
     queryFn: async () => {
       const data = await API.similarSkills(
         encodeURIComponent(name ?? '')!,
         period,
         experience,
-        order_by ? order_by : undefined
+        order_by ? order_by : undefined,
+        pagination.pageSize,
+        pagination.pageIndex * pagination.pageSize
       );
       return data;
     },
@@ -28,7 +32,8 @@ export function useSimilarSkills(
   });
 
   return {
-    similarSkills,
+    similarSkills: data?.skills,
+    rows: data?.rows ?? 0,
     isLoading,
     isFetching,
   };

@@ -88,7 +88,6 @@ export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
         onSelect={(rowData: KeySkill) => {
-          // console.log(rowData)
           navigate(`/skill/${encodeURIComponent(rowData.name)}`);
         }}
       />

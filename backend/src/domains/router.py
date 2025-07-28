@@ -13,3 +13,10 @@ async def get_domains_list(
     session: Session = Depends(get_async_session), experience=None, period: int = 30
 ):
     return await domains_list(session, experience=experience, days_period=period)
+
+
+@router.get(summary="Domain details", path="/{domain}", response_model=DomainsResponse)
+async def get_domain(
+    domain : str, session: Session = Depends(get_async_session), experience=None, period: int = 30
+):
+    return (await domains_list(session, experience=experience, days_period=period, domain=domain))[0]

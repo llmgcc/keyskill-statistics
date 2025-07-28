@@ -3,6 +3,8 @@ __pycache__
 /results/domains/** 
 /results/categories/** 
 
+nn.py
+
 app.egg-info
 *.pyc
 .mypy_cache

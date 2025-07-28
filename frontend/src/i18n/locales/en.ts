@@ -55,10 +55,14 @@ export default {
       unknownCategory: 'Unknown',
       domains: 'Domains',
       categories: 'Categories',
-      skills: 'Key skills',
+      skills: 'Skills',
+      highlights: 'Highlights',
+      favourites: 'Favourites',
       search: 'Search',
       all: 'All',
       navigate: 'Navigate',
+      navigation: 'Navigation',
+      links: 'Links',
       close: 'Close',
       domainsPrimary: 'Primary domain',
       categoriesPrimary: 'Primary category',
@@ -71,6 +75,7 @@ export default {
       noData: 'No results found',
       showMore: 'Show more',
       showLess: 'Show less',
+      github: 'GitHub'
     },
     favorites: {
       removed: 'removed from favorites',
@@ -136,5 +141,9 @@ export default {
         subtitle: 'Skills that are similar in meaning or functionality',
       },
     },
+    footer: {
+      text: '{{appName}} provides IT job market analytics, showing which skills are needed for professional development',
+      backToTop: 'Back to top'
+    }
   },
 };

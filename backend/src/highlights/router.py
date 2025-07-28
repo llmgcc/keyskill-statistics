@@ -9,14 +9,15 @@ from src.highlights.service import (
     lowest_salary,
     undefined_salary,
 )
-from src.highlights.schemas import HighlightsDefaultResponse
+# from src.highlights.schemas import HighlightsDefaultResponse
+from src.keyskills.schemas import SkillsResponse
 from typing import List
 
 router = APIRouter(prefix="/highlights", tags=["Highlights"])
 
 
 @router.get(
-    summary="Gainers", path="/gainers", response_model=List[HighlightsDefaultResponse]
+    summary="Gainers", path="/gainers", response_model=List[SkillsResponse]
 )
 async def get_gainers(
     session: Session = Depends(get_async_session),
@@ -29,7 +30,7 @@ async def get_gainers(
 @router.get(
     summary="Decliners",
     path="/decliners",
-    response_model=List[HighlightsDefaultResponse],
+    response_model=List[SkillsResponse],
 )
 async def get_decliners(
     session: Session = Depends(get_async_session),
@@ -40,7 +41,7 @@ async def get_decliners(
 
 
 @router.get(
-    summary="New skills", path="/new", response_model=List[HighlightsDefaultResponse]
+    summary="New skills", path="/new", response_model=List[SkillsResponse]
 )
 async def get_new_skills(
     session: Session = Depends(get_async_session),
@@ -53,7 +54,7 @@ async def get_new_skills(
 @router.get(
     summary="Highest Salary",
     path="/highest-salary",
-    response_model=List[HighlightsDefaultResponse],
+    response_model=List[SkillsResponse],
 )
 async def get_top_salary(
     session: Session = Depends(get_async_session),
@@ -66,7 +67,7 @@ async def get_top_salary(
 @router.get(
     summary="Lowest Salary",
     path="/lowest-salary",
-    response_model=List[HighlightsDefaultResponse],
+    response_model=List[SkillsResponse],
 )
 async def get_lowest_salary(
     session: Session = Depends(get_async_session),
@@ -79,7 +80,7 @@ async def get_lowest_salary(
 @router.get(
     summary="Undefined Salary",
     path="/undefined-salary",
-    response_model=List[HighlightsDefaultResponse],
+    response_model=List[SkillsResponse],
 )
 async def get_undefined_salary(
     session: Session = Depends(get_async_session),

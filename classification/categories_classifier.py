@@ -57,6 +57,7 @@ class CategoriesClassifier:
             pickle.dump(clf, f)
 
         write_results("categories", clf, KEYS, self.skills_db, weights)
+        return self
 
     def search(self, trials, NUM_SKILLS_TO_TRAIN=1000):
         estimations = []

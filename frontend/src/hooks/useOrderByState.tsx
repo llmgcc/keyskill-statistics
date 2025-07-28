@@ -23,7 +23,7 @@ export function useOrderByState(
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, currentButton.id);
-      setSearchParams(newSearchParams);
+      setSearchParams(newSearchParams, {replace: true});
     }
   }, [
     paramKey,

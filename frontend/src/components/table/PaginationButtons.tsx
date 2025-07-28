@@ -20,6 +20,8 @@ export function PaginationButtons({
   isLoading,
   pageSizeVariants,
 }: PaginationButtons) {
+
+
   return (
     <div className="text-text-xs mt-2 flex items-center justify-center sm:justify-between">
       <div className="hidden text-sm text-text-secondary sm:block">
@@ -44,23 +46,26 @@ export function PaginationButtons({
               pageSize: page.pageSize,
             });
           }}
+          siblingCount={1}
         >
           <ButtonGroup variant="ghost" size={'sm'}>
             <Pagination.PrevTrigger asChild>
               <IconButton
                 disabled={isLoading}
-                className="text-sm text-text-primary"
+                className="text-sm text-text-primary  hover:bg-background-secondary"
               >
                 <LuChevronLeft />
               </IconButton>
             </Pagination.PrevTrigger>
 
+
+          
             <Pagination.Items
               render={page => (
                 <IconButton
                   variant={{ base: 'ghost', _selected: 'outline' }}
                   disabled={isLoading}
-                  className="text-sm text-text-primary"
+                  className="text-sm text-text-primary hover:bg-background-secondary [&[data-selected]]:border-background-secondary [&[data-selected]]:bg-background-secondary"
                 >
                   {page.value}
                 </IconButton>
@@ -70,7 +75,7 @@ export function PaginationButtons({
             <Pagination.NextTrigger asChild>
               <IconButton
                 disabled={isLoading}
-                className="text-sm text-text-primary"
+                className="text-sm text-text-primary hover:bg-background-secondary"
               >
                 <LuChevronRight />
               </IconButton>
