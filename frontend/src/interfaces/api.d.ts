@@ -44,7 +44,7 @@ export interface API {
   skillsList: (
     limit: number,
     offset: number,
-    period: number,
+    period: number | null,
     experience?: Experience,
     domain?: string,
     domainStrict?: boolean,

@@ -7,7 +7,7 @@ import { Experience } from '@/config/experience';
 interface UseSkillsOptions {
   limit: number;
   offset: number;
-  period: number;
+  period: number | null;
   experience?: Experience | null;
   domain?: string;
   category?: string;
@@ -59,9 +59,6 @@ export function useSkills({
 
       return {
         skills: data.skills,
-        count_bins: 1,
-        salary_bins: 1,
-        max_salary: 1,
         rows: data.rows,
       };
     },

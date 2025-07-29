@@ -13,7 +13,7 @@ import { ThemeSwitch } from '@/components/Navigation/ThemeSwitch';
 import { GithubRepo } from './GithubRepo';
 import { Logo } from './Logo';
 import { NavigationMobile } from './NavigationMobile';
-import { NavigationSearch } from './NavigationSearch';
+import { NavSearch } from './NavSearch/NavSearch';
 
 export function Navigation() {
   const stats = useStatsStore(state => state.stats);
@@ -104,7 +104,8 @@ export function Navigation() {
               <div></div>
               <div className="flex items-center">
                 <div className="items-center lg:flex">
-                  <NavigationSearch />
+                  {/* <NavigationSearch /> */}
+                  <NavSearch />
                 </div>
                 <div className="flex items-center">
                   <ThemeSwitch />

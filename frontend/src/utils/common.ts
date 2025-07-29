@@ -21,5 +21,7 @@ export function placeholderData(count: number) {
     categories: [],
     ratio: 1,
   };
-  return new Array(count).fill(null).map(_ => empty);
+  return new Array(count)
+    .fill(null)
+    .map((_, i) => ({ ...empty, name: i.toString() }));
 }

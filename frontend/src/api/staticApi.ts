@@ -92,7 +92,7 @@ export class StaticAPI implements API {
   async skillsList(
     limit: number,
     offset: number,
-    period: number,
+    period: number | null,
     experience?: Experience,
     domain?: string,
     domainStrict?: boolean,
