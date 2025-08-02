@@ -3,6 +3,8 @@ import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { RiLightbulbFlashLine, RiLightbulbLine } from 'react-icons/ri';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 export enum Theme {
   Light = 'light',
   Dark = 'dark',
@@ -26,7 +28,7 @@ export function ThemeSwitch() {
     return savedTheme || getSystemTheme();
   });
   const { t } = useTranslation();
-
+  const { isMobile } = useScreenSize();
   useEffect(() => {
     updateTheme(theme);
   }, [theme]);
@@ -40,6 +42,7 @@ export function ThemeSwitch() {
         onClick={() =>
           setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark)
         }
+        size={isMobile ? 'xs' : 'md'}
       >
         {theme === Theme.Light ? (
           <RiLightbulbFlashLine className="cursor-pointer text-xl text-text transition-colors duration-150 hover:text-background-accent" />

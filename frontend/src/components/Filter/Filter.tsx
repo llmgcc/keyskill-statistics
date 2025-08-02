@@ -14,7 +14,9 @@ export function Filter() {
           <div className="mx-1 text-background-accent">
             <IoFilterSharp />
           </div>
-          <div className="ml-1 font-[600] text-text">{t('filters.title')}</div>
+          <div className="ml-1 hidden font-[600] text-text md:block">
+            {t('filters.title')}
+          </div>
         </div>
         <div className="flex items-center text-xs">
           <div className="mx-2 flex w-fit items-center">

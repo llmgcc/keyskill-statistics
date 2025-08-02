@@ -108,7 +108,7 @@ export function DataTable<T extends object>({
               table={table}
               isLoading={isLoading}
               pinned={isOverflow}
-              onSelect={onSelect}
+              onSelect={onSelect ?? (() => {})}
             />
           </Table.Root>
         </Overlay>

@@ -2,6 +2,8 @@ import { Button, Menu } from '@chakra-ui/react';
 import { Spinner } from '@radix-ui/themes';
 import { FaCheck } from 'react-icons/fa';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 interface Option {
   code: string;
   name: string;
@@ -22,9 +24,9 @@ export function NavigationSelect({
   options,
   onSelect,
   selectedOptionCode,
-  size = 'md',
 }: NavigationSelectProps) {
   const triggerIcon = icon;
+  const { isMobile } = useScreenSize();
   return (
     <Menu.Root defaultHighlightedValue={selectedOptionCode}>
       <Menu.Trigger asChild>
@@ -32,7 +34,7 @@ export function NavigationSelect({
           variant="ghost"
           className="flex aspect-square size-fit items-center !bg-transparent !p-0"
           title={title}
-          size={size}
+          size={isMobile ? 'xs' : 'md'}
         >
           {!!options.length && !!selectedOptionCode && icon ? (
             triggerIcon

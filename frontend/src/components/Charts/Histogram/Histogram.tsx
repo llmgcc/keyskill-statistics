@@ -27,7 +27,7 @@ function Histogram_({
   sparkline = false,
   height,
 }: HistogramProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const start = data.from;
   const end = data.to;
   const interval = (end - start) / data.data.length;
@@ -97,7 +97,14 @@ function Histogram_({
             style={{
               fontSize: '10px',
             }}
-            width={35}
+            tickFormatter={value => {
+              const formatter = new Intl.NumberFormat(i18n.language, {
+                notation: 'compact',
+                compactDisplay: 'short',
+              });
+              return formatter.format(value);
+            }}
+            width={45}
             hide={sparkline || !hasData}
           />
 

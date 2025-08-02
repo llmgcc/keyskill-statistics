@@ -17,16 +17,18 @@ export function SalaryRenderer({ skill, realtedTo }: SalaryRendererProps) {
   return (
     <div className="relative size-full">
       {!!salary && (
-        <ProgressBar
-          count={salary}
-          maxCount={stats?.max_salary ?? 0}
-          offset={-5}
-        />
-      )}
+        <>
+          <ProgressBar
+            count={salary}
+            maxCount={stats?.max_salary ?? 0}
+            offset={-5}
+          />
 
-      <div className="absolute bottom-[-6px] left-0 z-10 w-full">
-        <SkillHistogram skill={skill} relatedTo={realtedTo ?? null} />
-      </div>
+          <div className="absolute bottom-[-6px] left-0 z-10 w-full">
+            <SkillHistogram skill={skill} relatedTo={realtedTo ?? null} />
+          </div>
+        </>
+      )}
 
       <div className="relative z-50 text-text">
         <CurrencyDisplay valueInRUB={salary} />

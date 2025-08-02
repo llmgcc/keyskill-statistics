@@ -12,15 +12,6 @@ import { useStatsStore } from '@/store/statsStore.ts';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 
 import { Footer } from './components/Footer/Footer';
-import { Categories } from './components/Pages/Categories/Categories';
-import { CategoryPage } from './components/Pages/CategoryPage';
-import { DomainPage } from './components/Pages/DomainPage';
-import { Domains } from './components/Pages/Domains/Domains';
-import { Favourites } from './components/Pages/Favourites/Favourites';
-import { Highlights } from './components/Pages/Highlights/Highlights';
-import { MainPage } from './components/Pages/MainPage';
-import { SkillPage } from './components/Pages/SkillPage';
-import { Skills } from './components/Pages/Skills/Skills';
 import { useRouterConfig } from './router';
 
 function TitleWrapper({

@@ -133,7 +133,11 @@ export function Footer() {
           <div className="space-y-1">
             <div>
               Powered by{' '}
-              <Link href="https://hh.ru/" target="_blank">
+              <Link
+                to="https://hh.ru/"
+                target="_blank"
+                className="border-background-accent hover:text-background-accent hover:underline"
+              >
                 HeadHunter
               </Link>
             </div>

@@ -18,7 +18,6 @@ function SkillHistogram_({ skill, relatedTo }: SkillHistogramProps) {
     25,
     relatedTo
   );
-
   return (
     <div className="size-full">
       <Skeleton

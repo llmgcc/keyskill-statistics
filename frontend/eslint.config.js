@@ -6,6 +6,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import reactCompiler from "eslint-plugin-react-compiler"
+
 
 export default tseslint.config({
   files: ['**/*.ts', '**/*.tsx'],
@@ -14,7 +16,7 @@ export default tseslint.config({
     eslintJs.configs.recommended,
     tseslint.configs.recommended,
     eslintReact.configs['recommended-typescript'],
-    prettier,
+    prettier,  
   ],
   languageOptions: {
     globals: globals.browser,
@@ -30,6 +32,7 @@ export default tseslint.config({
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
     import: importPlugin,
+    'react-compiler': reactCompiler,
   },
   rules: {
     '@eslint-react/no-missing-key': 'warn',
@@ -42,5 +45,7 @@ export default tseslint.config({
     
     'no-console': 'warn',
     'prefer-const': 'error',
+
+    "react-compiler/react-compiler": "error"
   },
 });

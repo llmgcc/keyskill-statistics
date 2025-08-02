@@ -5,6 +5,8 @@ import { FaBars } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 interface NavigationMobileProps {
   links: {
     id: string;
@@ -19,7 +21,7 @@ export const NavigationMobile = forwardRef<
   NavigationMobileProps
 >(({ links, isOpen, setIsOpen }, ref) => {
   const { t } = useTranslation();
-
+  const { isMobile } = useScreenSize();
   return (
     <div className="flex items-center">
       <Separator
@@ -40,6 +42,7 @@ export const NavigationMobile = forwardRef<
           <Button
             variant="ghost"
             className="flex aspect-square size-fit items-center !bg-transparent !p-0"
+            size={isMobile ? 'xs' : 'md'}
           >
             {!isOpen ? (
               <FaBars className="cursor-pointer !text-2xl font-[900] text-text transition-colors duration-150 hover:text-background-accent" />

@@ -49,14 +49,20 @@ export function DataTableBody<T extends object>({
                 key={cell.id}
                 className={`overflow-hidden truncate text-ellipsis py-4`}
                 style={{
+                  minWidth: cell.column.getSize()
+                    ? `${cell.column.getSize()}px`
+                    : 'fit-content',
                   maxWidth: cell.column.getSize()
+                    ? `${cell.column.getSize()}px`
+                    : 'fit-content',
+                  width: cell.column.getSize()
                     ? `${cell.column.getSize()}px`
                     : 'fit-content',
                   ...(pinned && getCommonPinningStyles(cell.column)),
                   ...padding(cell.column.columnDef.meta),
                 }}
               >
-                <div className="size-full">
+                <div>
                   <div className="size-full">
                     {isLoading ? (
                       <Skeleton className="size-full min-h-10 min-w-10">

@@ -1,37 +1,17 @@
-import { useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Dispatch, SetStateAction, useState } from 'react';
 
-import { OrderButton } from '@/components/Tabs/OrderButtons';
+import { useCurrencyStore } from '@/store/currencyStore';
+import { buttonsList, OrderButton } from '@/components/Tabs/OrderButtons';
 
 export function useOrderByState(
-  buttons: OrderButton[],
-  paramKey: string = 'orderBy'
-): [OrderButton, (button: OrderButton) => void] {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
+  buttonNames: string[]
+): [OrderButton, Dispatch<SetStateAction<OrderButton>>, OrderButton[]] {
+  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
+  const buttons = buttonsList(buttonNames, selectedCurrency);
 
-  const currentId = searchParams.get(paramKey) || buttons[0].id;
-  const currentButton = buttons.find(b => b.id === currentId) || buttons[0];
+  const [orderByState, setOrderBy] = useState<OrderButton>(() => {
+    return buttons[0];
+  });
 
-  const setOrder = (button: OrderButton) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(paramKey, button.id);
-    setSearchParams(prev => newParams);
-  };
-
-  useEffect(() => {
-    if (!searchParams.get(paramKey)) {
-      const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set(paramKey, currentButton.id);
-      setSearchParams(prev => newSearchParams, { replace: true });
-    }
-  }, [
-    paramKey,
-    searchParams,
-    setSearchParams,
-    location.pathname,
-    currentButton.id,
-  ]);
-
-  return [currentButton, setOrder];
+  return [orderByState, setOrderBy, buttons];
 }

@@ -51,7 +51,16 @@ export function DataTableHeader<T extends object>({
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
               style={{
+                // minWidth: header.getSize()
+                //   ? `${header.getSize()}px`
+                //   : 'fit-content',
+                width: header.getSize()
+                  ? `${header.getSize()}px`
+                  : 'fit-content',
                 minWidth: header.getSize()
+                  ? `${header.getSize()}px`
+                  : 'fit-content',
+                maxWidth: header.getSize()
                   ? `${header.getSize()}px`
                   : 'fit-content',
                 ...(pinned && getCommonPinningStyles(header.column)),
@@ -59,7 +68,7 @@ export function DataTableHeader<T extends object>({
               }}
               className={`m-0 select-none bg-background-primary p-0 ${header.column.getCanSort() && 'cursor-pointer'}`}
             >
-              <div className={`w-full`}>
+              <div>
                 <div
                   className={`flex items-center bg-background-primary ${alignRight(header.column.columnDef.meta) ? 'justify-end' : 'justify-start'}`}
                 >

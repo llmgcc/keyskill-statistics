@@ -31,7 +31,7 @@ export function Trend({
   strokeWidth = 4,
   height,
 }: TrendProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const start = new Date(data.from).getTime();
   const end = new Date(data.to).getTime();
@@ -106,7 +106,14 @@ export function Trend({
                 style={{
                   fontSize: '10px',
                 }}
-                width={35}
+                width={45}
+                tickFormatter={value => {
+                  const formatter = new Intl.NumberFormat(i18n.language, {
+                    notation: 'compact',
+                    compactDisplay: 'short',
+                  });
+                  return formatter.format(value);
+                }}
               />
               <Tooltip content={tooltip} cursor={{ fill: 'transparent' }} />
             </>

@@ -1,31 +1,35 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type FavoritesStore = {
-  favoriteSkills: string[];
-  addSkill: (skill: string) => void;
-  removeSkill: (name: string) => void;
-  isFavorite: (name: string) => boolean;
-};
+export type FavouriteType = 'skills' | 'domains' | 'categories';
+
+interface FavoritesStore {
+  favourites: { name: string; type: FavouriteType }[];
+  add: (skill: string, type: FavouriteType) => void;
+  remove: (name: string, type: FavouriteType) => void;
+  isFavorite: (name: string, type: FavouriteType) => boolean;
+}
 
 export const useFavoritesStore = create<FavoritesStore>()(
   persist(
     (set, get) => ({
-      favoriteSkills: [],
-      addSkill: skill => {
-        const { favoriteSkills } = get();
-        if (!favoriteSkills.some(s => s === skill)) {
-          set({ favoriteSkills: [...favoriteSkills, skill] });
+      favourites: [],
+      add: (name, type) => {
+        const { favourites } = get();
+        if (!favourites.some(s => s.name === name && s.type === type)) {
+          set({ favourites: [...favourites, { name, type }] });
         }
       },
-      removeSkill: name => {
+      remove: (name, type) => {
         set(state => ({
-          favoriteSkills: state.favoriteSkills.filter(s => s !== name),
+          favourites: state.favourites.filter(
+            s => s.name !== name && s.type !== type
+          ),
         }));
       },
-      isFavorite: name => {
-        const list = get().favoriteSkills;
-        return !!list.find(s => s === name);
+      isFavorite: (name, type) => {
+        const list = get().favourites;
+        return !!list.find(s => s.name === name && s.type === type);
       },
     }),
     {

@@ -32,6 +32,7 @@ export function NavSearchTrigger({ onOpen }: NavSearchTriggerProps) {
       onClick={onOpen}
       variant="ghost"
       className="flex aspect-square size-fit items-center !bg-transparent !p-0"
+      size={isMobile ? 'xs' : 'md'}
     >
       <IoSearch className="cursor-pointer !text-2xl font-[900] text-text transition-colors duration-150 hover:text-background-accent" />
     </Button>

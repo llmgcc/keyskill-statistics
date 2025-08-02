@@ -10,6 +10,7 @@ export function useSkillDetails(name: string | null) {
     data: skillDetails,
     isLoading,
     isFetching,
+    isError,
   } = useQuery({
     queryKey: ['skill_details', name, period, experience],
     queryFn: async () => {
@@ -27,5 +28,6 @@ export function useSkillDetails(name: string | null) {
     skillDetails,
     isLoading,
     isFetching,
+    isError,
   };
 }

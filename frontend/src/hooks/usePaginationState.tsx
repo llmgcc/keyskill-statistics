@@ -5,15 +5,19 @@ import { useSearchParams } from 'react-router-dom';
 export function usePaginationState(
   defaultPage: number = 0,
   pageSizeVariants: number[],
-  queryKey: string | null
+  queryKey: string | null,
+  keyPrefix?: string = ''
 ) {
+  const pageQueryKey = `${keyPrefix}_page`;
+  const itemsQueryKey = `${keyPrefix}_items`;
+
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log('here', searchParams.get('page'), searchParams.get('items'));
+
   const [paginationState, setPaginationState] = useState<PaginationState>(
     () => {
       let page = defaultPage;
       let size = pageSizeVariants[0];
-      const pageParam = searchParams.get('page');
+      const pageParam = searchParams.get(pageQueryKey);
       if (pageParam) {
         const parsed = parseInt(pageParam, 10);
         if (!isNaN(parsed) && parsed >= 0) {
@@ -21,14 +25,14 @@ export function usePaginationState(
         }
       }
 
-      const sizeParam = searchParams.get('items');
+      const sizeParam = searchParams.get(itemsQueryKey);
       if (sizeParam) {
         const parsed = parseInt(sizeParam, 10);
         if (!isNaN(parsed) && pageSizeVariants.includes(parsed)) {
           size = parsed;
         }
       }
-
+      // console.log('init', Math.max(0, page), size)
       return {
         pageIndex: Math.max(0, page),
         pageSize: size,
@@ -39,21 +43,34 @@ export function usePaginationState(
   const updatePagination = useCallback(
     (pagination: PaginationState, replace = false) => {
       const newParams = new URLSearchParams(searchParams);
-      newParams.set('page', String(pagination.pageIndex ?? defaultPage));
+      newParams.set(pageQueryKey, String(pagination.pageIndex ?? defaultPage));
       newParams.set(
-        'items',
+        itemsQueryKey,
         String(
           pageSizeVariants.includes(pagination.pageSize)
             ? pagination.pageSize
             : pageSizeVariants[0]
         )
       );
-      setSearchParams(newParams, { replace });
-      setPaginationState(prev => ({
+      setSearchParams(
+        prev => {
+          prev.set(pageQueryKey, String(pagination.pageIndex));
+          prev.set(itemsQueryKey, String(pagination.pageSize));
+          return prev;
+        },
+        { replace }
+      );
+      setPaginationState({
         ...pagination,
-      }));
+      });
+      // console.log('setting')
     },
-    [defaultPage, pageSizeVariants, searchParams, setSearchParams]
+    [
+      defaultPage,
+      pageSizeVariants,
+      searchParams.get(pageQueryKey),
+      setSearchParams,
+    ]
   );
 
   // Reset
@@ -63,6 +80,7 @@ export function usePaginationState(
       (prevQueryKeyRef.current !== queryKey && prevQueryKeyRef.current) ||
       (prevQueryKeyRef.current && queryKey === null)
     ) {
+      console.log('reset', searchParams.toString());
       updatePagination(
         {
           ...paginationState,
@@ -70,38 +88,41 @@ export function usePaginationState(
         },
         true
       );
+      // setPaginationState({
+      //   ...paginationState,
+      //   pageIndex: 0,
+      // })
     }
     prevQueryKeyRef.current = queryKey;
-  }, [queryKey, paginationState, updatePagination]);
+  }, [queryKey]);
 
   useEffect(() => {
-    if (!searchParams.get('page')) {
+    if (!searchParams.get(pageQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set('page', String(paginationState.pageIndex));
-      setSearchParams(prev => newSearchParams, { replace: true });
+      newSearchParams.set(pageQueryKey, String(paginationState.pageIndex));
+      setSearchParams(prev => newSearchParams);
     }
-    if (!searchParams.get('items')) {
+    if (!searchParams.get(itemsQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set('items', String(paginationState.pageSize));
-      setSearchParams(prev => newSearchParams, { replace: true });
+      newSearchParams.set(itemsQueryKey, String(paginationState.pageSize));
+      setSearchParams(prev => newSearchParams);
     }
   }, [searchParams, setSearchParams, paginationState]);
 
   useEffect(() => {
-    const pageParam = searchParams.get('page');
-    const sizeParam = searchParams.get('items');
+    const pageParam = searchParams.get(pageQueryKey);
+    const sizeParam = searchParams.get(itemsQueryKey);
     if (pageParam || sizeParam) {
       let newPage = paginationState.pageIndex;
       let newSize = paginationState.pageSize;
-
-      if (pageParam) {
+      if (pageParam !== null) {
         const parsed = parseInt(pageParam, 10);
         if (!isNaN(parsed) && parsed >= 0) {
           newPage = parsed;
         }
       }
 
-      if (sizeParam) {
+      if (sizeParam !== null) {
         const parsed = parseInt(sizeParam, 10);
         if (!isNaN(parsed) && pageSizeVariants.includes(parsed)) {
           newSize = parsed;
@@ -120,7 +141,7 @@ export function usePaginationState(
         );
       }
     }
-  }, [searchParams]);
+  }, [searchParams, paginationState]);
 
   return {
     pagination: paginationState,

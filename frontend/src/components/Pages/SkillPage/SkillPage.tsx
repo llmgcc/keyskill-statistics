@@ -1,61 +1,50 @@
-import { useParams } from 'react-router-dom';
-import Sticky from 'react-stickynode';
+import { skillName } from '@/utils/common';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSkillDetails } from '@/hooks/data/useSkillDetails';
-import { useTopOffset } from '@/hooks/useTopOffset';
 
-import { Filter } from '../Filter/Filter';
-import { Complexity } from './Common/Complexity';
-import { DemandTrend } from './Common/DemandTrend';
-import { Header } from './Common/Header';
-import { PredictionsCard } from './Common/PredictionsCard';
-import { SalaryDistribution } from './Common/SalaryDistribution';
-import { SkillPageTabs } from './SkillPage/SkillPageTabs';
+import { Complexity } from '../Common/Complexity';
+import { PredictionsCard, PredictionTooltip } from '../Common/PredictionsCard';
+import { StickyFilter } from '../Common/StickyFilter';
+import { SkillHeader } from './SkillHeader';
+import { SkillPageTabs } from './SkillPageTabs';
+import { SkillSalary } from './SkillSalary';
+import { SkillTrend } from './SkillTrend';
 
 export function SkillPage() {
   const { name } = useParams<{ name: string }>();
   const decodedName = name ? decodeURIComponent(name) : null;
-
-  const { skillDetails, isLoading, isFetching } = useSkillDetails(
+  const navigate = useNavigate();
+  const { skillDetails, isLoading, isFetching, isError } = useSkillDetails(
     decodedName ?? null
   );
-
-  const navOffset = useTopOffset('#navbar');
-  const headerOffset = useTopOffset('#header');
-
+  const { i18n } = useTranslation();
   const skillChanged = skillDetails?.name !== name;
+
+  if (isError) {
+    navigate('/');
+  }
 
   return (
     <div className="app-container">
       <div className="rounded bg-background-primary py-2">
         <div>
-          <Header skill={skillDetails} isLoading={skillChanged} />
+          <SkillHeader skill={skillDetails} isLoading={skillChanged} />
         </div>
 
-        <div className="my-2">
-          <Sticky
-            top={navOffset + headerOffset}
-            enableTransforms={false}
-            innerActiveClass="border-none rounded-none shadow-md shadow-background-secondary rounded-none"
-            innerClass="border-[1px] border-background-secondary rounded"
-            innerZ={1000}
-          >
-            <div className="relative z-40 bg-background-primary">
-              <Filter />
-            </div>
-          </Sticky>
-        </div>
+        <StickyFilter />
 
         <div className="flex flex-col gap-2 md:flex-row">
           <div className="w-full md:flex-[65]">
-            <DemandTrend
-              data={skillDetails ?? null}
+            <SkillTrend
+              skill={skillDetails ?? null}
               isDataReady={!(isLoading || isFetching)}
             />
           </div>
           <div className="w-full md:flex-[35]">
-            <SalaryDistribution
-              data={skillDetails ?? null}
+            <SkillSalary
+              skill={skillDetails ?? null}
               isDataReady={!(isLoading || isFetching)}
             />
           </div>
@@ -77,11 +66,23 @@ export function SkillPage() {
                 categories={skillDetails?.domains ?? []}
                 type="domains"
                 isDataReady={!(isLoading || isFetching)}
+                tooltip={
+                  <PredictionTooltip
+                    name={skillName(skillDetails ?? null, i18n.language)}
+                    translationKey="charts.tooltips.prediction.domain"
+                  />
+                }
               />
               <PredictionsCard
                 categories={skillDetails?.categories ?? []}
                 type="categories"
                 isDataReady={!(isLoading || isFetching)}
+                tooltip={
+                  <PredictionTooltip
+                    name={skillName(skillDetails ?? null, i18n.language)}
+                    translationKey="charts.tooltips.prediction.category"
+                  />
+                }
               />
             </div>
           </div>

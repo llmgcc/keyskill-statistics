@@ -1,68 +1,42 @@
 import { API } from '@/api/api';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { PaginationState } from '@tanstack/react-table';
 
+import { ServerFilters, ServerOrderBy } from '@/interfaces';
 import { SkillsOrderBy } from '@/interfaces/api';
 import { Experience } from '@/config/experience';
 
-interface UseSkillsOptions {
-  limit: number;
-  offset: number;
-  period: number | null;
-  experience?: Experience | null;
-  domain?: string;
-  category?: string;
-  categoryStrict?: boolean;
-  domainStrict?: boolean;
-  skillName?: string;
-  orderBy: SkillsOrderBy;
-}
+import { useFilters } from './useFilters';
 
-export function useSkills({
-  limit,
-  offset,
-  period,
-  experience,
-  domain,
-  category,
-  categoryStrict,
-  domainStrict,
-  skillName,
-  orderBy,
-}: UseSkillsOptions) {
-  return useQuery({
-    queryKey: [
-      'skills',
-      limit,
-      offset,
-      period,
-      experience,
-      domain,
-      category,
-      categoryStrict,
-      domainStrict,
-      skillName,
-      orderBy,
-    ],
+export function useSkills(
+  pagination: PaginationState,
+  order_by?: ServerOrderBy,
+  filter?: ServerFilters,
+  enabled: boolean = true
+) {
+  const { period, experience } = useFilters();
+
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: ['skills', pagination, order_by, filter, period, experience],
     queryFn: async () => {
       const data = await API.skillsList(
-        limit,
-        offset,
-        period,
-        experience == Experience.any ? undefined : (experience ?? undefined),
-        domain,
-        domainStrict,
-        category,
-        categoryStrict,
-        skillName,
-        orderBy
+        filter?.period === null ? null : period,
+        filter?.experience === null ? null : experience,
+        pagination.pageSize,
+        pagination.pageSize * pagination.pageIndex,
+        order_by,
+        filter
       );
 
-      return {
-        skills: data.skills,
-        rows: data.rows,
-      };
+      return data;
     },
-    placeholderData: keepPreviousData,
-    staleTime: Infinity,
+    enabled: enabled,
   });
+
+  return {
+    rows: data?.rows,
+    skills: data?.skills,
+    isFetching,
+    isLoading,
+  };
 }

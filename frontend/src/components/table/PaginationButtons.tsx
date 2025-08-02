@@ -3,6 +3,8 @@ import { PaginationState } from '@tanstack/react-table';
 import { Trans } from 'react-i18next';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 import { PageSize } from './PageSize';
 
 interface PaginationButtons {
@@ -20,6 +22,7 @@ export function PaginationButtons({
   isLoading,
   pageSizeVariants,
 }: PaginationButtons) {
+  const { isMobile } = useScreenSize();
   return (
     <div className="text-text-xs mt-2 flex items-center justify-center sm:justify-between">
       <div className="hidden text-sm text-text-secondary sm:block">
@@ -46,7 +49,7 @@ export function PaginationButtons({
           }}
           siblingCount={1}
         >
-          <ButtonGroup variant="ghost" size={'sm'}>
+          <ButtonGroup variant="ghost" size={isMobile ? '2xs' : 'xs'}>
             <Pagination.PrevTrigger asChild>
               <IconButton
                 disabled={isLoading}

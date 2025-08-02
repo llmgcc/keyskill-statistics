@@ -4,10 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill } from '@/interfaces';
-import { useRelatedSkills } from '@/hooks/data/useRelatedSkills';
+import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
+import { useSkills } from '@/hooks/useSkills';
 import { DataTable } from '@/components/Table/DataTable';
 import { PageSize } from '@/components/Table/PageSize';
 import {
@@ -15,16 +15,39 @@ import {
   countAccessor,
   placeAccessor,
   salaryAccessor,
+  similarityAccessor,
   skillImageAccessor,
   skillNameAccessor,
 } from '@/components/Tabs/accessors';
 
-interface RelatedSkillsProps {
-  name: string | null;
-  order_by?: { order_by: string; descending: boolean };
+interface SkillsTableProps {
+  columns?: string[];
+  order_by?: ServerOrderBy;
+  filter?: ServerFilters;
+  enabled?: boolean;
+  paginationPrefix?: string;
+  width?: number;
+  text?: string;
 }
 
-export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
+const DEAFULT_COLUMNS = [
+  'place',
+  'image',
+  'name',
+  'average_salary',
+  'count',
+  'chart',
+];
+
+export function SkillsTable({
+  order_by,
+  filter,
+  columns = DEAFULT_COLUMNS,
+  enabled = false,
+  paginationPrefix,
+  width = 1200,
+  text = '',
+}: SkillsTableProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -32,44 +55,50 @@ export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
     0,
     [10, 25, 50],
-    name ? JSON.stringify([name, period, order_by, experience]) : null
+    enabled ? JSON.stringify([period, order_by, experience]) : null,
+    paginationPrefix
   );
 
-  const { relatedSkills, isFetching, isLoading, rows } = useRelatedSkills(
-    name,
+  const { skills, isFetching, isLoading, rows } = useSkills(
     pagination,
-    order_by
+    order_by,
+    filter,
+    enabled
   );
 
-  const columns = useMemo(
+  const tableColumns = useMemo(
     () =>
       [
         placeAccessor({ accessorKey: 'place' }),
         skillImageAccessor({ accessorKey: 'image' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
+        similarityAccessor({
+          accessorKey: 'similarity_score',
+          header: t('columns.similarity'),
+        }),
         salaryAccessor({
           accessorKey: 'average_salary',
           header: t('columns.salary'),
-          relatedTo: name,
-          isLoading: isLoading || isFetching,
+          isLoading: isLoading || isFetching || !enabled,
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
         chartAccessor({
           accessorKey: 'chart',
           header: t('columns.trend'),
-          relatedTo: name,
-          isLoading: isLoading || isFetching,
+          isLoading: isLoading || isFetching || !enabled,
         }),
-      ] as Array<ColumnDef<KeySkill, unknown>>,
-    [t, name, isLoading, isFetching]
+      ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
+    [t, isLoading, isFetching, enabled]
   );
+
+  const cols = columns
+    .map(column => tableColumns.find(c => c.accessorKey === column))
+    .filter(e => e);
 
   return (
     <>
-      <div className="flex items-center justify-between">
-        <div className="mb-2 text-sm text-text-secondary">
-          {t(`skillPage.relatedSkills.subtitle`)}
-        </div>
+      <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
+        <div className="mb-2 text-sm text-text-secondary">{text}</div>
         <PageSize
           variants={pageSizeVariants}
           pagination={pagination}
@@ -77,12 +106,12 @@ export function RelatedSkills({ name, order_by }: RelatedSkillsProps) {
         />
       </div>
       <DataTable
-        columns={columns}
-        data={relatedSkills ?? placeholderData(10)}
-        isLoading={isLoading || !relatedSkills}
-        isFetching={isFetching || !name}
+        columns={cols as Array<ColumnDef<KeySkill, unknown>>}
+        data={skills ?? placeholderData(10)}
+        isLoading={isLoading || !skills}
+        isFetching={isFetching || !enabled}
         pinnedLeft={['place', 'image']}
-        minWidth={900}
+        minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}

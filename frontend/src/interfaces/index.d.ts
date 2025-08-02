@@ -1,3 +1,19 @@
+export interface ServerOrderBy {
+  order_by: string;
+  descending: boolean;
+}
+
+export interface ServerFilters {
+  category?: string;
+  domain?: string;
+  strict?: boolean;
+  related_to?: string;
+  similar_to?: string;
+  period?: number;
+  experience?: number;
+  skillName?: string;
+}
+
 export type Currency = {
   currency_abbr: string;
   currency_rate: number;
@@ -22,6 +38,7 @@ export type Category = {
   prev_place?: number;
   average_salary?: number;
   confidence: number;
+  all_time_place?: number;
 };
 
 type Chart = {

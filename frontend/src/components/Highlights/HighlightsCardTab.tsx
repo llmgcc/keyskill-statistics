@@ -5,7 +5,7 @@ import { KeySkill } from '@/interfaces';
 import { Experience } from '@/config/experience';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
-import { SkillDescription } from '@/components/SkillDescription/SkillDescription';
+import { SkillDescription } from '@/components/ui/Description/SkillDescription';
 
 interface HighlightsCardTabProps {
   title: string;

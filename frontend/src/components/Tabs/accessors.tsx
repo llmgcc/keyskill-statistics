@@ -11,8 +11,8 @@ import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRen
 
 import { CircleProgress } from '../Charts/CircleProgress';
 import { SkillTrend } from '../Charts/Trend/SkillTrend';
-import { SkillDescription } from '../SkillDescription/SkillDescription';
-import { CategoryDescription } from '../ui/CategoryDescription';
+import { CategoryDescription } from '../ui/Description/CategoryDescription';
+import { SkillDescription } from '../ui/Description/SkillDescription';
 import { SkillImage } from '../ui/SkillImage';
 
 export const skillImageAccessor = <T extends KeySkill>(config: {
@@ -22,13 +22,15 @@ export const skillImageAccessor = <T extends KeySkill>(config: {
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: config.header ?? '',
-  size: config.size || 0,
+  size: 50,
   cell: info => (
-    <SkillImage
-      path={info.row.original.image}
-      domains={info.row.original.domains?.[0]?.name}
-      categories={info.row.original.categories?.[0]?.name}
-    />
+    <div className="flex items-start justify-center">
+      <SkillImage
+        path={info.row.original.image}
+        domains={info.row.original.domains?.[0]?.name}
+        categories={info.row.original.categories?.[0]?.name}
+      />
+    </div>
   ),
   enablePinning: true,
   enableSorting: false,
@@ -167,7 +169,7 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
     return (
       <CategoryDescription
         categoryKey={config.category}
-        categoryName={info.row.original.name}
+        category={info.row.original}
       />
     );
   },
@@ -230,7 +232,7 @@ export const salaryAccessor = <T extends KeySkill>(config: {
       </Skeleton>
     );
   },
-  size: 120,
+  size: 125,
   meta: {
     alignRight: true,
   },
@@ -345,7 +347,7 @@ export const chartAccessor = <T extends KeySkill>(config: {
       <div style={{ height: '40px' }} className="size-full">
         <Skeleton
           loading={config.isLoading}
-          className={`size-full ${config.isLoading ?? 'bg-background-secondary'}`}
+          className={`size-full ${config.isLoading && 'bg-background-secondary'}`}
         >
           <SkillTrend
             skill={config.isLoading ? null : info.row.original}
@@ -355,7 +357,7 @@ export const chartAccessor = <T extends KeySkill>(config: {
       </div>
     );
   },
-  size: 120,
+  size: 125,
   enableSorting: false,
   meta: {
     alignRight: true,

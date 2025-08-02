@@ -9,8 +9,8 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
-import { CategoryDescription } from '@/components/ui/CategoryDescription';
-import { SkillDescription } from '@/components/SkillDescription/SkillDescription';
+import { CategoryDescription } from '@/components/ui/Description/CategoryDescription';
+import { SkillDescription } from '@/components/ui/Description/SkillDescription';
 
 import { NavSearchBodyGroup } from './NavSearchBodyGroup';
 
@@ -27,19 +27,25 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
   const [isMouseActive, setIsMouseActive] = useState(false);
 
   const {
-    data: skillsData,
+    skills: skillsData,
     isLoading,
     isFetching,
-  } = useSkills({
-    limit: 20,
-    offset: 0,
-    period: null,
-    skillName: debouncedQuery || undefined,
-    orderBy: {
-      column: 'count',
-      asc: true,
+    rows,
+  } = useSkills(
+    {
+      pageIndex: 0,
+      pageSize: 20,
     },
-  });
+    {
+      order_by: 'count',
+      descending: true,
+    },
+    {
+      period: null,
+      skillName: debouncedQuery || undefined,
+      experience: null,
+    }
+  );
 
   const domains = useDomainsStore(state => state.domains).filter(
     domain =>
@@ -72,8 +78,8 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
         scrollToTab('Skills-tab');
       },
       title: t('common.skills'),
-      data: skillsData?.skills ?? [],
-      values: (skillsData?.skills ?? []).map(c => (
+      data: skillsData ?? [],
+      values: (skillsData ?? []).map(c => (
         <SkillDescription skill={c} key={c.name} />
       )),
     },
@@ -85,11 +91,7 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
       title: t('common.domains'),
       data: domains,
       values: domains.map(c => (
-        <CategoryDescription
-          categoryKey="domains"
-          categoryName={c.name}
-          key={c.name}
-        />
+        <CategoryDescription categoryKey="domains" category={c} key={c.name} />
       )),
     },
     {
@@ -102,15 +104,14 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
       values: categories.map(c => (
         <CategoryDescription
           categoryKey="categories"
-          categoryName={c.name}
+          category={c}
           key={c.name}
         />
       )),
     },
   ];
 
-  const totalRows =
-    (skillsData?.skills?.length ?? 0) + domains.length + categories.length;
+  const totalRows = (rows ?? 0) + domains.length + categories.length;
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
@@ -149,12 +150,7 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
 
   useUpdateEffect(() => {
     setHoveredIndex(0);
-  }, [
-    searchQuery,
-    skillsData?.skills?.length,
-    domains.length,
-    categories.length,
-  ]);
+  }, [searchQuery, skillsData?.length, domains.length, categories.length]);
 
   const emptyData = placeholderData(10);
 
@@ -176,14 +172,12 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
         </div>
       </div>
 
-      <div className="px-4">
+      <div className="px-4 pb-4">
         <div id="Skills-tab">
           <NavSearchBodyGroup
             title={t('common.skills')}
             data={
-              isLoading || isFetching || !skillsData?.skills
-                ? emptyData
-                : skillsData.skills
+              isLoading || isFetching || !skillsData ? emptyData : skillsData
             }
             valueRenderer={skill => <SkillDescription skill={skill} />}
             startingIndex={0}
@@ -203,12 +197,9 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
             title={t('common.domains')}
             data={isLoading || isFetching ? (emptyData as Category[]) : domains}
             valueRenderer={domain => (
-              <CategoryDescription
-                categoryKey="domains"
-                categoryName={domain.name}
-              />
+              <CategoryDescription categoryKey="domains" category={domain} />
             )}
-            startingIndex={skillsData?.skills?.length ?? 0}
+            startingIndex={skillsData?.length ?? 0}
             setHoveredIndex={setHoveredIndex}
             hoveredIndex={hoveredIndex}
             isLoading={isLoading || isFetching}
@@ -229,10 +220,10 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
             valueRenderer={category => (
               <CategoryDescription
                 categoryKey="categories"
-                categoryName={category.name}
+                category={category}
               />
             )}
-            startingIndex={(skillsData?.skills?.length ?? 0) + domains.length}
+            startingIndex={(skillsData?.length ?? 0) + domains.length}
             setHoveredIndex={setHoveredIndex}
             hoveredIndex={hoveredIndex}
             isLoading={isLoading || isFetching}

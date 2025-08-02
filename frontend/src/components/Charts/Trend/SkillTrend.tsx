@@ -24,7 +24,6 @@ export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
   const difference = prevMentions && mentions ? mentions - prevMentions : null;
 
   const actualData = chart;
-
   return (
     <div className="size-full">
       <Skeleton

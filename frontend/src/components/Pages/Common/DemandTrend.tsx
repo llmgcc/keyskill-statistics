@@ -1,8 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next';
-import { BiInfoCircle } from 'react-icons/bi';
 import colors from 'tailwindcss/colors';
 
-import { useSkillTrendData } from '@/hooks/data/useSkillTrendData';
+import { Chart } from '@/interfaces';
 import { useFilters } from '@/hooks/useFilters';
 import { Overlay } from '@/components/ui/Overlay';
 
@@ -16,18 +15,33 @@ interface TrendData {
   prev_count?: number;
 }
 
+interface ChartData {
+  from: number | null;
+  to: number | null;
+  chart: Chart[];
+}
+
 interface DemandTrendProps {
   data: TrendData | null;
   isDataReady: boolean;
+  chartData: ChartData;
+  isChartLoading: boolean;
+  tooltip: JSX.Element;
 }
 
-export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
+export function DemandTrend({
+  data,
+  isDataReady,
+  chartData,
+  isChartLoading,
+  tooltip,
+}: DemandTrendProps) {
   const { period } = useFilters();
 
-  const { from, to, chart, isLoading, isFetching } = useSkillTrendData(
-    data?.name ?? null,
-    25
-  );
+  const from = chartData.from;
+  const to = chartData.to;
+  const chart = chartData.chart;
+
   const { t } = useTranslation();
 
   const mentions = data?.count ?? 0;
@@ -37,16 +51,11 @@ export function DemandTrend({ data, isDataReady }: DemandTrendProps) {
   const text = <span className="font-bold" />;
 
   return (
-    <Overlay
-      isLoading={!data}
-      isFetching={isLoading || isFetching || !isDataReady}
-    >
+    <Overlay isLoading={!data} isFetching={isChartLoading || !isDataReady}>
       <div className="z-10 rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
-        <div className="flex items-center gap-1 text-base font-[500]">
+        <div className="flex items-center text-base font-[500]">
           <div>{t('charts.demandTrend')}</div>
-          <div className="text-text-secondary">
-            <BiInfoCircle />
-          </div>
+          <div>{tooltip}</div>
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="text-3xl font-bold">{mentions ?? 0}</div>

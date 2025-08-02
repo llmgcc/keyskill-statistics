@@ -30,7 +30,7 @@ export function ValueChangeRenderer({
           <div>
             {percent
               ? `${!!difference && difference >= 0 ? '+' : ''}${getPercentDifference(current, prev).toFixed(1)}%`
-              : difference}
+              : `${!!difference && difference >= 0 ? '+' : ''}${difference}`}
           </div>
         ) : (
           <div className="text-zinc-400">-</div>

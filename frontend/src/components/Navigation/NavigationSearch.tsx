@@ -21,8 +21,8 @@ import { useSkills } from '@/hooks/useSkills';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
 
-import { SkillDescription } from '../SkillDescription/SkillDescription';
-import { CategoryDescription } from '../ui/CategoryDescription';
+import { CategoryDescription } from '../ui/Description/CategoryDescription';
+import { SkillDescription } from '../ui/Description/SkillDescription';
 
 interface CategoryBase {
   name: string;
@@ -157,16 +157,20 @@ export function NavigationSearch() {
     data: skillsData,
     isLoading,
     isFetching,
-  } = useSkills({
-    limit: 20,
-    offset: 0,
-    period: 30,
-    skillName: debouncedQuery || undefined,
-    orderBy: {
-      column: 'count',
-      asc: true,
+  } = useSkills(
+    {
+      pageIndex: 0,
+      pageSize: 20,
     },
-  });
+    {
+      order_by: 'count',
+      descending: true,
+    },
+    {
+      period: null,
+      skillName: debouncedQuery || undefined,
+    }
+  );
 
   const domains = useDomainsStore(state => state.domains).filter(
     domain =>
@@ -411,7 +415,7 @@ export function NavigationSearch() {
                           valueRenderer={domain => (
                             <CategoryDescription
                               categoryKey="domains"
-                              categoryName={domain.name}
+                              category={domain}
                             />
                           )}
                           startingIndex={
@@ -436,7 +440,7 @@ export function NavigationSearch() {
                           valueRenderer={category => (
                             <CategoryDescription
                               categoryKey="categories"
-                              categoryName={category.name}
+                              category={category}
                             />
                           )}
                           startingIndex={

@@ -1,8 +1,10 @@
+import { Separator } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import { Experience, ExperienceColor } from '@/config/experience';
-import { Level } from '@/config/level';
+import { Level, LevelRange } from '@/config/level';
 import { Overlay } from '@/components/ui/Overlay';
+import { InfoTip } from '@/components/ui/toggle-tip';
 
 interface ComplexityData {
   complexity_score?: number;
@@ -12,6 +14,35 @@ interface ComplexityData {
 interface ComplexityProps {
   data: ComplexityData | null;
   isDataReady: boolean;
+}
+
+function ComplexityTooltip() {
+  const { t } = useTranslation();
+
+  return (
+    <InfoTip
+      content={
+        <div className="min-w-34 flex max-w-96 flex-col gap-1 overflow-auto text-xs text-text-primary">
+          <div className="mb-1 text-sm">
+            {t('charts.tooltips.complexity.title')}
+          </div>
+          <Separator />
+
+          <div>
+            {Object.keys(LevelRange).map(level => (
+              <div className="my-1 flex justify-between" key={level}>
+                <div>{level}</div>
+                <div className="flex gap-1">
+                  <div>{LevelRange[level as Level].min}</div>-
+                  <div>{LevelRange[level as Level].max}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
+    ></InfoTip>
+  );
 }
 
 export function Complexity({ data, isDataReady }: ComplexityProps) {
@@ -25,23 +56,15 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
 
   function getLevel(): Level {
     const c = complexity * 10;
-
-    if (c < 2) {
-      return Level.Junior;
+    for (const level of Object.keys(Level)) {
+      if (
+        LevelRange[level as Level].min <= c &&
+        LevelRange[level as Level].max >= c
+      ) {
+        return level as Level;
+      }
     }
-    if (c < 5) {
-      return Level['Junior+'];
-    }
-    if (c < 6) {
-      return Level.Middle;
-    }
-    if (c < 7.5) {
-      return Level['Middle+'];
-    }
-    if (c < 9) {
-      return Level.Senior;
-    }
-    return Level['Senior+'];
+    return Level.Junior;
   }
 
   const currentLevel = getLevel();
@@ -49,7 +72,12 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
   return (
     <Overlay isLoading={!data} isFetching={!isDataReady}>
       <div className="resize rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
-        <div className="text-base font-[500]">{t('complexity.title')}</div>
+        <div className="flex items-center text-base font-[500]">
+          <div className="text-base font-[500]">{t('complexity.title')}</div>
+          <div>
+            <ComplexityTooltip />
+          </div>
+        </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="flex flex-col items-end">
             <div className="flex items-center gap-1 text-3xl font-bold">
@@ -80,7 +108,7 @@ export function Complexity({ data, isDataReady }: ComplexityProps) {
                   <div
                     className={`h-full rounded transition-all duration-1000 ease-in-out`}
                     style={{
-                      width: `${(data?.experience_counts?.[experience] || 1) * 100}%`,
+                      width: `${((data?.experience_counts?.[experience] || 0) / (experienceSum || 1)) * 100}%`,
                       backgroundColor:
                         ExperienceColor[experience as Experience],
                     }}

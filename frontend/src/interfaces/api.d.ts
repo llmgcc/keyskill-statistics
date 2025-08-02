@@ -22,10 +22,13 @@ export interface API {
   mainStats: () => Promise<Stats>;
   currencyList: () => Promise<Currency[]>;
   categoriesList: (
-    period: number,
+    period?: number,
     experience?: Experience
   ) => Promise<Category[]>;
-  domainsList: (period: number, experience?: Experience) => Promise<Category[]>;
+  domainsList: (
+    period?: number,
+    experience?: Experience
+  ) => Promise<Category[]>;
 
   skill: (skillName: string) => Promise<KeySkill>;
 
@@ -34,6 +37,18 @@ export interface API {
     period: number,
     experience?: Experience
   ) => Promise<KeySkill>;
+
+  domainDetails: (
+    domainName: string,
+    period: number,
+    experience?: Experience
+  ) => Promise<Category>;
+
+  categoryDetails: (
+    categoryName: string,
+    period: number,
+    experience?: Experience
+  ) => Promise<Category>;
 
   relatedSkills: (
     skillName: string,

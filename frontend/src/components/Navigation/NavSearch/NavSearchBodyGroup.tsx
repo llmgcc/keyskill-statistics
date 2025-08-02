@@ -73,8 +73,8 @@ export function NavSearchBodyGroup<T extends CategoryBase>({
   }, [hoveredIndex, startingIndex, data, onClick, isLoading]);
 
   return (
-    <div className="mt-2">
-      <div className="flex items-center pb-2 text-text-secondary">
+    <div className="relative mt-2">
+      <div className="sticky top-[60px] z-10 flex items-center bg-background-primary py-1 text-text-secondary">
         <div>{title}</div>
         <div className="mx-1">
           <Badge variant="outline">{data?.length}</Badge>

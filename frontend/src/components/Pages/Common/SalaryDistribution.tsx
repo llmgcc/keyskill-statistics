@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { useSkillSalaryData } from '@/hooks/data/useSkillSalaryData';
+import { Chart } from '@/interfaces';
 import { useCurrencyValue } from '@/hooks/useCurrencyValue';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { Overlay } from '@/components/ui/Overlay';
@@ -15,20 +15,32 @@ export interface HistData {
   prev_average_salary?: number;
 }
 
+interface ChartData {
+  from: number | null;
+  to: number | null;
+  chart: Chart[];
+}
+
 interface SalaryDistributionProps {
   data: HistData | null;
   isDataReady: boolean;
+  chartData: ChartData;
+  isChartLoading: boolean;
+  tooltip: JSX.Element;
 }
 
 export function SalaryDistribution({
   data,
   isDataReady,
+  chartData,
+  isChartLoading,
+  tooltip,
 }: SalaryDistributionProps) {
-  const { from, to, chart, isFetching, isLoading } = useSkillSalaryData(
-    data?.name ?? null,
-    25
-  );
   const { t } = useTranslation();
+
+  const from = chartData.from;
+  const to = chartData.to;
+  const chart = chartData.chart;
 
   const { value: medianConverted, code } = useCurrencyValue(
     data?.average_salary ?? 0
@@ -40,13 +52,13 @@ export function SalaryDistribution({
   const difference = medianConverted - prevMedianConverted;
 
   return (
-    <Overlay
-      isLoading={!data}
-      isFetching={isLoading || isFetching || !isDataReady}
-    >
+    <Overlay isLoading={!data} isFetching={isChartLoading || !isDataReady}>
       <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
-        <div className="text-base font-[500]">
-          {t('charts.salaryDistribution')}
+        <div className="flex items-center text-base font-[500]">
+          <div className="text-base font-[500]">
+            {t('charts.salaryDistribution')}
+          </div>
+          <div>{tooltip}</div>
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="text-3xl font-bold">
@@ -75,12 +87,12 @@ export function SalaryDistribution({
         </div>
 
         <div className="h-52 w-full">
-          {!(isLoading || isFetching) && (
+          {!!to && (
             <Histogram
               data={{
                 data: chart,
-                from,
-                to,
+                from: from ?? 0,
+                to: to ?? 0,
               }}
               tooltip={<SalaryTooltip />}
             />

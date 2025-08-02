@@ -66,7 +66,7 @@ export default {
       close: 'Close',
       domainsPrimary: 'Primary domain',
       categoriesPrimary: 'Primary category',
-      skillOfAllTime: 'skill of all time',
+      skillOfAllTime: 'of all time',
       loading: 'Loading',
       popular: 'Popular',
       trending: 'Trending',
@@ -76,6 +76,10 @@ export default {
       showMore: 'Show more',
       showLess: 'Show less',
       github: 'GitHub',
+      mentions: 'mentions',
+      last: 'last',
+      previous: 'previous',
+      change: 'change',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -123,9 +127,30 @@ export default {
       demandTrend: 'Demand trend',
       trendSubtitle: 'Mentions in the last <text>{{days}}</text> days',
       notEnoughData: 'Not enough data',
+      tooltips: {
+        demand: {
+          skill: 'Total mentions of <b>{{name}}</b> over time',
+          domain:
+            'Total mentions of all skills in <b>{{name}}</b> domain over time',
+          category:
+            'Total mentions of all skills in <b>{{name}}</b> category over time',
+        },
+        salary: {
+          skill: 'Salary distribution for skill <b>{{name}}</b>',
+          domain: 'Salary distribution for domain <b>{{name}}</b>',
+          category: 'Salary distribution for category <b>{{name}}</b>',
+        },
+        prediction: {
+          domain: 'Predicted domains for skill <b>{{name}}</b>',
+          category: 'Predicted categories for skill <b>{{name}}</b>',
+        },
+        complexity: {
+          title: 'Complexity is based on the experience distribution',
+        },
+      },
     },
     complexity: {
-      title: 'Skill complexity',
+      title: 'Complexity',
       subtitle: LevelDescription,
       description:
         'Complexity is calculated based on the frequency of occurrence of the skill among specialists of different levels',

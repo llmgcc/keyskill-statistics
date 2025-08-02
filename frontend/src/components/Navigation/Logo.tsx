@@ -10,7 +10,7 @@ export function Logo() {
         <div className="flex aspect-square items-center justify-center rounded-lg bg-background-secondary/50 p-1 text-background-accent">
           <PiCodeSimpleLight size={20} />
         </div>
-        <div className="mx-2 cursor-pointer font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent">
+        <div className="mx-2 cursor-pointer text-xs font-bold uppercase text-text transition-colors duration-150 hover:text-background-accent md:text-sm">
           {APP_NAME}
         </div>
       </div>

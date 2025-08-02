@@ -14,7 +14,7 @@ interface RouterTabsProps {
   paramKey?: string;
   defaultTab?: string;
   append?: JSX.Element;
-  onValueChange: () => void;
+  onValueChange?: () => void;
 }
 
 function RouterTabs_({
@@ -30,20 +30,19 @@ function RouterTabs_({
 
   const handleTabChange = useCallback(
     (name: string) => {
-      onValueChange();
       const newTab = tabs.find(t => t.name === name)?.name ?? tabs[0].name;
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, newTab);
-      setSearchParams(prev => newSearchParams);
+      setSearchParams(newSearchParams);
     },
-    [tabs, searchParams, paramKey, setSearchParams, onValueChange]
+    [tabs, searchParams, paramKey, setSearchParams]
   );
 
   useEffect(() => {
     if (!searchParams.get(paramKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(paramKey, currentTab);
-      setSearchParams(prev => newSearchParams, { replace: true });
+      setSearchParams(newSearchParams, { replace: true });
     }
   }, [paramKey, searchParams, setSearchParams, location.pathname, currentTab]);
 
@@ -61,7 +60,7 @@ function RouterTabs_({
         }}
       >
         <div className="flex items-center gap-2 overflow-x-auto p-0">
-          <Tabs.List className="flex gap-2 border-background-secondary bg-background-primary p-0 shadow-background-secondary">
+          <Tabs.List className="flex flex-nowrap gap-2 border-background-secondary bg-background-primary p-0 shadow-background-secondary">
             {tabs.map(tab => (
               <Tabs.Trigger
                 value={tab.name}
