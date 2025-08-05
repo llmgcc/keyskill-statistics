@@ -80,6 +80,7 @@ export default {
       last: 'last',
       previous: 'previous',
       change: 'change',
+      confidence: 'Confidence',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -159,11 +160,32 @@ export default {
     skillPage: {
       relatedSkills: {
         title: 'Related skills',
-        subtitle: 'Skills that frequently appear together',
+        subtitle: 'Skills that often appear together with <b>{{name}}</b>',
       },
       similarSkills: {
         title: 'Similar skills',
-        subtitle: 'Skills that are similar in meaning or functionality',
+        subtitle:
+          'Skills similar in meaning or functionality to <b>{{name}}</b>',
+      },
+    },
+    categoryPage: {
+      primarySkills: {
+        title: 'Primary skills',
+        subtitle:
+          'Skills most strongly associated with category <b>{{category}}</b>',
+      },
+      allSkills: {
+        title: 'All skills',
+        subtitle: 'Skills associated with category <b>{{category}}</b>',
+      },
+    },
+    domainPage: {
+      primarySkills: {
+        subtitle:
+          'Skills most strongly associated with domain <b>{{category}}</b>',
+      },
+      allSkills: {
+        subtitle: 'Skills associated with domain <b>{{category}}</b>',
       },
     },
     footer: {

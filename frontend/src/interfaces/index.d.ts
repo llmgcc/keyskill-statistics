@@ -39,6 +39,7 @@ export type Category = {
   average_salary?: number;
   confidence: number;
   all_time_place?: number;
+  prev_average_salary?: number;
 };
 
 type Chart = {

@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Category } from '@/interfaces';
@@ -14,7 +15,7 @@ interface CategoryDescriptionProps {
   image?: boolean;
 }
 
-export function CategoryDescription({
+function CategoryDescription_({
   categoryKey,
   category,
   size = 'md',
@@ -23,7 +24,7 @@ export function CategoryDescription({
 }: CategoryDescriptionProps) {
   const { t } = useTranslation();
 
-  function categoryDescription() {
+  const categoryDescription = useCallback(() => {
     const categoryName = category?.name;
     if (!categoryName || isLoading) return;
     if (categoryKey == 'domains') {
@@ -37,7 +38,7 @@ export function CategoryDescription({
       }
     }
     return null;
-  }
+  }, [category, isLoading, t, categoryKey]);
 
   return (
     <Description
@@ -60,3 +61,5 @@ export function CategoryDescription({
     />
   );
 }
+
+export const CategoryDescription = memo(CategoryDescription_);

@@ -1,13 +1,11 @@
 import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { BiNetworkChart } from 'react-icons/bi';
-import { PiApproximateEquals } from 'react-icons/pi';
+import { Trans, useTranslation } from 'react-i18next';
+import { BiCrown, BiGrid } from 'react-icons/bi';
 
 import { Category } from '@/interfaces';
 import { useOrderByState } from '@/hooks/useOrderByState';
-import { useCurrencyStore } from '@/store/currencyStore';
 import { RouterTabs } from '@/components/ui/RouterTabs';
-import { buttonsList, OrderButtons } from '@/components/Tabs/OrderButtons';
+import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { SkillsTable } from '../Common/SkillsTable';
 
@@ -17,7 +15,6 @@ interface CategoryPageTabsProps {
 
 export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
   const { t } = useTranslation();
-  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
   const [strictOrder, setStrictOrder, orderButtonsStrict] = useOrderByState([
     'popular',
@@ -36,19 +33,43 @@ export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
         title: (
           <div className="flex items-center gap-1 text-nowrap text-text-primary">
             <div>
-              <BiNetworkChart />
+              <BiCrown />
             </div>
-            <div>{t(`skillPage.relatedSkills.title`)}</div>
+            <div>{t(`categoryPage.primarySkills.title`)}</div>
           </div>
         ),
-        name: 'relatedSkills',
+        name: 'coreSkills',
         body: (
           <SkillsTable
+            enabled={!!category}
             filter={{ category: category?.name, strict: true }}
             order_by={{
               order_by: strictOrder.column,
               descending: strictOrder.descending,
             }}
+            columns={[
+              'place',
+              'image',
+              'name',
+              `${category?.name}-confidence`,
+              'average_salary',
+              'count',
+              'chart',
+            ]}
+            paginationPrefix="core"
+            text={
+              category?.name ? (
+                <Trans
+                  i18nKey="categoryPage.primarySkills.subtitle"
+                  components={{ b: <b /> }}
+                  values={{
+                    category: t(`categories.${category.name}`),
+                  }}
+                />
+              ) : (
+                ''
+              )
+            }
           />
         ),
         append: (
@@ -63,12 +84,12 @@ export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
         title: (
           <div className="flex items-center gap-1 text-nowrap text-text-primary">
             <div>
-              <PiApproximateEquals />
+              <BiGrid />
             </div>
-            <div>{t(`skillPage.similarSkills.title`)}</div>
+            <div>{t(`categoryPage.allSkills.title`)}</div>
           </div>
         ),
-        name: 'similarSkills',
+        name: 'allSkills',
         append: (
           <OrderButtons
             onChange={b => setAllOrder(b)}
@@ -78,11 +99,35 @@ export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
         ),
         body: (
           <SkillsTable
+            enabled={!!category}
             filter={{ category: category?.name, strict: false }}
             order_by={{
               order_by: allOrder.column,
               descending: allOrder.descending,
             }}
+            columns={[
+              'place',
+              'image',
+              'name',
+              `${category?.name}-confidence`,
+              'average_salary',
+              'count',
+              'chart',
+            ]}
+            paginationPrefix="all"
+            text={
+              category?.name ? (
+                <Trans
+                  i18nKey="categoryPage.allSkills.subtitle"
+                  components={{ b: <b /> }}
+                  values={{
+                    category: t(`categories.${category.name}`),
+                  }}
+                />
+              ) : (
+                ''
+              )
+            }
           />
         ),
       },

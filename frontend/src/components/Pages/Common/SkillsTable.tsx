@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
+import { Categories } from '@/config/categories';
+import { Domains } from '@/config/domains';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
 import { useSkills } from '@/hooks/useSkills';
@@ -12,6 +14,7 @@ import { DataTable } from '@/components/Table/DataTable';
 import { PageSize } from '@/components/Table/PageSize';
 import {
   chartAccessor,
+  confidenceAccessor,
   countAccessor,
   placeAccessor,
   salaryAccessor,
@@ -27,7 +30,7 @@ interface SkillsTableProps {
   enabled?: boolean;
   paginationPrefix?: string;
   width?: number;
-  text?: string;
+  text?: string | JSX.Element;
 }
 
 const DEAFULT_COLUMNS = [
@@ -87,6 +90,23 @@ export function SkillsTable({
           header: t('columns.trend'),
           isLoading: isLoading || isFetching || !enabled,
         }),
+
+        ...Object.keys(Domains).map(domain =>
+          confidenceAccessor({
+            accessorKey: `${domain}-confidence`,
+            header: t('common.confidence'),
+            name: domain,
+            categoryKey: 'domains',
+          })
+        ),
+        ...Object.keys(Categories).map(category =>
+          confidenceAccessor({
+            accessorKey: `${category}-confidence`,
+            header: t('common.confidence'),
+            name: category,
+            categoryKey: 'categories',
+          })
+        ),
       ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, enabled]
   );
@@ -97,7 +117,7 @@ export function SkillsTable({
 
   return (
     <>
-      <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
+      <div className="my-1 flex flex-col items-start justify-between md:flex-row md:items-center">
         <div className="mb-2 text-sm text-text-secondary">{text}</div>
         <PageSize
           variants={pageSizeVariants}

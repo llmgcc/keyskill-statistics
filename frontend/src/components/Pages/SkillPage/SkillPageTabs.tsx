@@ -1,5 +1,6 @@
+import { skillName } from '@/utils/common';
 import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { BiNetworkChart } from 'react-icons/bi';
 import { PiApproximateEquals } from 'react-icons/pi';
 
@@ -15,7 +16,7 @@ interface SkillPageTabsProps {
 }
 
 export function SkillPageTabs({ skill }: SkillPageTabsProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [relatedOrder, setRelatedOrder, orderButtonsRelated] = useOrderByState([
     'popular',
@@ -53,7 +54,15 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
               descending: relatedOrder.descending,
             }}
             width={1000}
-            text={t(`skillPage.relatedSkills.subtitle`)}
+            text={
+              <Trans
+                i18nKey="skillPage.relatedSkills.subtitle"
+                components={{ b: <b /> }}
+                values={{
+                  name: skillName(skill, i18n.language),
+                }}
+              />
+            }
           />
         ),
         append: (
@@ -102,7 +111,15 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
               descending: similarOrder.descending,
             }}
             width={1100}
-            text={t(`skillPage.similarSkills.subtitle`)}
+            text={
+              <Trans
+                i18nKey="skillPage.similarSkills.subtitle"
+                components={{ b: <b /> }}
+                values={{
+                  name: skillName(skill, i18n.language),
+                }}
+              />
+            }
           />
         ),
       },
@@ -116,6 +133,7 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
       setSimilarOrder,
       relatedOrder,
       setRelatedOrder,
+      i18n.language,
     ]
   );
 

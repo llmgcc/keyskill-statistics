@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Skeleton } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -13,7 +14,7 @@ interface DescriptionProps {
   imageProps: SkillImageProps;
 }
 
-export function Description({
+function Description_({
   displayName,
   subtitle,
   isLoading = false,
@@ -30,15 +31,15 @@ export function Description({
       text: 'text-[0.6em]',
     },
     md: {
-      header: 'text-sm font-[600]',
-      text: 'text-[0.8em]',
+      header: 'text-sm',
+      text: 'text-[0.9em]',
     },
     base: {
-      header: 'text-base font-[600]',
+      header: 'text-base',
       text: 'text-[0.9em]',
     },
     lg: {
-      header: 'text-lg font-[600]',
+      header: 'text-lg',
       text: 'text-[0.9em]',
     },
   };
@@ -76,7 +77,7 @@ export function Description({
           {
             <div>
               <div
-                className={`${config.text} text-text-secondary transition-all duration-200`}
+                className={`font-[400] text-text-secondary transition-all duration-200`}
               >
                 <Skeleton
                   loading={isLoading}
@@ -84,8 +85,12 @@ export function Description({
                     isLoading ? 'size-full bg-background-secondary' : ''
                   }
                 >
-                  <span className="font-[500]">#{allTimePlace}</span>{' '}
-                  {t('common.skillOfAllTime')}
+                  <div className={`font-[400] ${config.text}`}>
+                    <span className={`${config.text}`}>#{allTimePlace}</span>{' '}
+                    <span className={`${config.text}`}>
+                      {t('common.skillOfAllTime')}
+                    </span>
+                  </div>
                 </Skeleton>
               </div>
             </div>
@@ -98,10 +103,12 @@ export function Description({
             loading={isLoading}
             className={isLoading ? 'size-full bg-background-secondary' : ''}
           >
-            {subtitle}
+            <span className={`${config.text}`}>{subtitle}</span>
           </Skeleton>
         </div>
       </div>
     </div>
   );
 }
+
+export const Description = memo(Description_);

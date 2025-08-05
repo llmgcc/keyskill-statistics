@@ -29,14 +29,14 @@ export function DomainPage() {
         </div>
         <StickyFilter />
 
-        <div className="flex flex-col gap-2 md:flex-row">
-          <div className="w-full md:flex-[65]">
+        <div className="flex flex-col gap-2 lg:flex-row">
+          <div className="w-full lg:flex-[65]">
             <DomainTrend
               domain={domainDetails ?? null}
               isDataReady={!(isLoading || isFetching)}
             />
           </div>
-          <div className="w-full md:flex-[35]">
+          <div className="w-full lg:flex-[35]">
             <DomainSalary
               domain={domainDetails ?? null}
               isDataReady={!(isLoading || isFetching)}

@@ -76,6 +76,7 @@ export default {
       last: 'последние',
       previous: 'предыдущие',
       change: 'изменение',
+      confidence: 'Уверенность',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -374,11 +375,32 @@ export default {
     skillPage: {
       relatedSkills: {
         title: 'Связанные навыки',
-        subtitle: 'Навыки, которые часто встречаются вместе',
+        subtitle: 'Навыки, которые часто встречаются вместе с <b>{{name}}</b>',
       },
       similarSkills: {
         title: 'Похожие навыки',
-        subtitle: 'Навыки, схожие по значению или функциональности',
+        subtitle:
+          'Навыки, похожие по значению или по функциональности на <b>{{name}}</b>',
+      },
+    },
+    categoryPage: {
+      primarySkills: {
+        title: 'Основные навыки',
+        subtitle:
+          'Навыки, наиболее тесно связанные с категорией <b>{{category}}</b>',
+      },
+      allSkills: {
+        title: 'Все навыки',
+        subtitle: 'Навыки, связанные с категорией <b>{{category}}</b>',
+      },
+    },
+    domainPage: {
+      primarySkills: {
+        subtitle:
+          'Навыки, наиболее тесно связанные с направлением <b>{{category}}</b>',
+      },
+      allSkills: {
+        subtitle: 'Навыки, связанные с направлением <b>{{category}}</b>',
       },
     },
     footer: {

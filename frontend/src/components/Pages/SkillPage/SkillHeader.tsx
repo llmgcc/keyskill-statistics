@@ -20,7 +20,7 @@ export function SkillHeader({ skill, isLoading }: SkillHeaderProps) {
       description={(isFixed: boolean) => (
         <SkillDescription
           skill={skill}
-          size={isFixed ? 'base' : 'lg'}
+          size={isFixed ? 'md' : 'lg'}
           isLoading={isLoading}
         />
       )}

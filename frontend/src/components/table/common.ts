@@ -34,7 +34,7 @@ export function getCommonPinningStyles<T>(
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
     opacity: isPinned ? 0.9 : 1,
-    backgroundColor: 'rgba(var(--color-background-primary))',
+    backgroundColor: 'inherit',
     position: isPinned ? 'sticky' : 'relative',
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,
