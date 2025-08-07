@@ -10,7 +10,7 @@ import {
   Stats,
   TrendChart,
 } from '@/interfaces';
-import { API } from '@/interfaces/api';
+import { API, SkillsOrderBy } from '@/interfaces/api';
 import { Experience } from '@/config/experience';
 
 import { axiosHTTP as axios } from './axiosHttp';
@@ -303,6 +303,87 @@ export class ServerAPI implements API {
         skill_name: filter?.skillName,
       },
     });
+    return response.data;
+  }
+
+  async favouriteSkills(
+    names: string[],
+    period: number | null,
+    experience: Experience,
+    orderBy: ServerOrderBy,
+    limit: number,
+    offset: number
+  ): Promise<KeySkillServer> {
+    const response = await axios.post(
+      '/api/key-skills/favourites',
+      {
+        names: names,
+      },
+      {
+        params: {
+          experience,
+          period,
+          limit,
+          offset,
+          order_by: orderBy?.order_by,
+          descending: orderBy?.descending,
+        },
+      }
+    );
+    return response.data;
+  }
+
+  async favouriteDomains(
+    names: string[],
+    period: number | null,
+    experience: Experience,
+    orderBy: ServerOrderBy,
+    limit: number,
+    offset: number
+  ): Promise<KeySkillServer> {
+    const response = await axios.post(
+      '/api/domains/favourites',
+      {
+        names: names,
+      },
+      {
+        params: {
+          experience,
+          period,
+          limit,
+          offset,
+          order_by: orderBy?.order_by,
+          descending: orderBy?.descending,
+        },
+      }
+    );
+    return response.data;
+  }
+
+  async favouriteCategories(
+    names: string[],
+    period: number | null,
+    experience: Experience,
+    orderBy: ServerOrderBy,
+    limit: number,
+    offset: number
+  ): Promise<KeySkillServer> {
+    const response = await axios.post(
+      '/api/categories/favourites',
+      {
+        names: names,
+      },
+      {
+        params: {
+          experience,
+          period,
+          limit,
+          offset,
+          order_by: orderBy?.order_by,
+          descending: orderBy?.descending,
+        },
+      }
+    );
     return response.data;
   }
 

@@ -75,6 +75,33 @@ export interface API {
     orderBy?: SkillsOrderBy
   ) => Promise<KeySkillServer>;
 
+  favouriteSkills: (
+    names: string[],
+    period: number | null,
+    experience: Experience,
+    orderBy: ServerOrderBy,
+    limit: number,
+    offset: number
+  ) => Promise<KeySkillServer>;
+
+  favouriteDomains: (
+    names: string[],
+    period: number | null,
+    experience?: Experience,
+    orderBy?: SkillsOrderBy,
+    limit: number,
+    offset: number
+  ) => Promise<KeySkillServer>;
+
+  favouriteCategories: (
+    names: string[],
+    period: number | null,
+    experience?: Experience,
+    orderBy?: SkillsOrderBy,
+    limit: number,
+    offset: number
+  ) => Promise<KeySkillServer>;
+
   skillPlot: (
     name: string,
     period: number,

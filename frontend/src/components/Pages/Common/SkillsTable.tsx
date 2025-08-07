@@ -157,13 +157,7 @@ export function SkillsTable({
         data={skills ?? placeholderData(pagination.pageSize)}
         isLoading={isLoading || !skills}
         isFetching={isFetching || !enabled}
-        pinnedLeft={[
-          'favourite_skill',
-          'favourite_category',
-          'favourite_domain',
-          'place',
-          'image',
-        ]}
+        pinnedLeft={['favourite_skill', 'place', 'image']}
         minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}

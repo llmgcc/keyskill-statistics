@@ -50,6 +50,17 @@ export class StaticAPI implements API {
     return new Promise(() => []);
   }
 
+  async favouriteSkills(
+    names: string[],
+    period: number | null,
+    experience: Experience,
+    orderBy: ServerOrderBy,
+    limit: number,
+    offset: number
+  ): Promise<KeySkillServer> {
+    return new Promise([]);
+  }
+
   async relatedSkills(
     skillName: string,
     period: number,

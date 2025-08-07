@@ -75,6 +75,7 @@ export default {
       unknownSalary: 'Unknown salary',
       similar: 'Similar',
       highestSalary: 'Highest salary',
+      lowestSalary: 'Lowest salary',
       noData: 'No results found',
       showMore: 'Show more',
       showLess: 'Show less',
@@ -256,6 +257,14 @@ export default {
             'Analysis of IT skills where salary information is not specified. Featured are <text>{{skillCount}}</text> skills without salary data over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with varying compensation terms.',
         },
       },
+    },
+    favouritesPage: {
+      title: 'Favourites',
+      subtitle:
+        'Personal collection of saved IT skills, domains, and categories for tracking and comparison. Manage your watchlist to monitor trends and changes. Data is displayed for the last <text>{{days}}</text> days and reflects current market conditions.',
+      skills: 'Favourite skills',
+      domains: 'Favourite domains',
+      categories: 'Favourite categories',
     },
     footer: {
       text: '{{appName}} provides IT job market analytics, showing which skills are needed for professional development',
