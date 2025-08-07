@@ -136,26 +136,40 @@ export class ServerAPI implements API {
   }
 
   async categoriesList(
-    period?: number,
-    experience?: Experience
-  ): Promise<Category[]> {
+    period: number | null,
+    experience?: Experience,
+    limit: number = 10,
+    offset: number = 0,
+    order_by?: ServerOrderBy
+  ): Promise<DomainsServer> {
     const response = await axios.get('/api/categories/list', {
       params: {
-        period,
         experience,
+        period,
+        limit,
+        offset,
+        order_by: order_by?.order_by,
+        descending: order_by?.descending,
       },
     });
     return response.data;
   }
 
   async domainsList(
-    period?: number,
-    experience?: Experience
-  ): Promise<Category[]> {
+    period: number | null,
+    experience?: Experience,
+    limit: number = 10,
+    offset: number = 0,
+    order_by?: ServerOrderBy
+  ): Promise<DomainsServer> {
     const response = await axios.get('/api/domains/list', {
       params: {
-        period,
         experience,
+        period,
+        limit,
+        offset,
+        order_by: order_by?.order_by,
+        descending: order_by?.descending,
       },
     });
     return response.data;
@@ -251,13 +265,15 @@ export class ServerAPI implements API {
   async technologySalaryPlot(
     name: string,
     period: number,
-    experience?: Experience
+    experience?: Experience,
+    number_of_bins?: number
   ): Promise<SalaryChart> {
     const response = await axios.get('/api/charts/technology-salary', {
       params: {
         technology: name,
         period,
         experience,
+        number_of_bins,
       },
     });
     return response.data;
@@ -285,6 +301,20 @@ export class ServerAPI implements API {
         order_by: order_by?.order_by,
         descending: order_by?.descending,
         skill_name: filter?.skillName,
+      },
+    });
+    return response.data;
+  }
+
+  async highlightByType(
+    name: string,
+    period: number,
+    experience?: Experience
+  ): Promise<KeySkill[]> {
+    const response = await axios.get(`/api/highlights/${name}`, {
+      params: {
+        experience,
+        period,
       },
     });
     return response.data;

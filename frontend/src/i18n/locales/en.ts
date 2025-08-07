@@ -5,7 +5,7 @@ import {
 } from '@/config/categories';
 import { DomainDescription, Domains, DomainShort } from '@/config/domains';
 import { Experience } from '@/config/experience';
-import { Highlights } from '@/config/highlights';
+import { Highlights, HighlightTitles } from '@/config/highlights';
 import { LevelDescription } from '@/config/level';
 
 export default {
@@ -70,6 +70,9 @@ export default {
       loading: 'Loading',
       popular: 'Popular',
       trending: 'Trending',
+      declining: 'Declining demand',
+      new: 'New',
+      unknownSalary: 'Unknown salary',
       similar: 'Similar',
       highestSalary: 'Highest salary',
       noData: 'No results found',
@@ -81,6 +84,8 @@ export default {
       previous: 'previous',
       change: 'change',
       confidence: 'Confidence',
+      seeMore: 'See more',
+      mainPage: 'Main page',
     },
     favorites: {
       removed: 'removed from favorites',
@@ -109,7 +114,7 @@ export default {
       [Experience.moreThan6]: '>6',
       [Experience.unknown]: 'Unknown',
     },
-    highlights: Highlights,
+    highlights: HighlightTitles,
     pagination: {
       text: '{{currentPage}} - {{totalPages}} of {{totalRows}}',
       show: 'Show',
@@ -186,6 +191,70 @@ export default {
       },
       allSkills: {
         subtitle: 'Skills associated with domain <b>{{category}}</b>',
+      },
+    },
+    skills: {
+      title: 'IT Skills Analysis',
+      subtitle:
+        'Complete analysis of demand, salary and complexity for <text>{{skillCount}}</text> skills including <examples/>. Data is displayed for the last <text>{{days}}</text> days and reflects trends {{experienceText}}.',
+      experienceText: {
+        [Experience.any]: 'across <text>all</text> experience levels',
+        [Experience.noExperience]: 'for <text>entry-level</text> roles',
+        [Experience.between1And3]:
+          'for junior roles requiring <text>1-3 years</text> experience',
+        [Experience.between3And6]:
+          'for mid-level roles requiring <text>3-6 years</text> experience',
+        [Experience.moreThan6]:
+          'for senior roles requiring <text>6+ years</text> experience',
+        [Experience.unknown]:
+          'for roles with <text>unspecified</text> experience requirements',
+      },
+    },
+    domainsPage: {
+      title: 'IT Domains Analysis',
+      subtitle:
+        'Complete analysis of market demand and salary levels for <text>{{domainCount}}</text> IT domains including <examples/>. Data is displayed for the last <text>{{days}}</text> days and reflects trends {{experienceText}}.',
+    },
+    categoriesPage: {
+      title: 'IT Categories Analysis',
+      subtitle:
+        'Complete analysis of market demand and salary levels for <text>{{categoryCount}}</text> IT categories including <examples/>. Data is displayed for the last <text>{{days}}</text> days and reflects trends {{experienceText}}.',
+    },
+    highlightsPage: {
+      title: 'IT Skills Highlights',
+      subtitle:
+        'Key trends and statistics for IT skills: demand growth, salary insights, and emerging technologies. Data is displayed for the last <text>{{days}}</text> days and reflects trends {{experienceText}}.',
+      highlightType: {
+        [Highlights.gainers]: {
+          title: 'Fastest Growing IT Skills',
+          subtitle:
+            'Analysis of IT skills showing the highest growth in popularity. Featured are <text>{{skillCount}}</text> skills that became more in-demand over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes emerging technologies such as AI/ML frameworks, cloud platforms, and modern development tools.',
+        },
+        [Highlights.decliners]: {
+          title: 'Skills with Declining Demand',
+          subtitle:
+            'Analysis of IT skills showing the biggest drop in popularity. Featured are <text>{{skillCount}}</text> skills that became less in-demand over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies that are losing relevance.',
+        },
+        [Highlights.new]: {
+          title: 'New Skills',
+          subtitle:
+            'Analysis of IT skills that appeared in the job market for the first time. Featured are <text>{{skillCount}}</text> skills that were first encountered over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes new technologies and tools.',
+        },
+        [Highlights['highest-salary']]: {
+          title: 'Highest Paying Skills',
+          subtitle:
+            'Analysis of IT skills with the highest salaries. Featured are <text>{{skillCount}}</text> skills that offer the highest pay over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with high demand.',
+        },
+        [Highlights['lowest-salary']]: {
+          title: 'Lowest Paying Skills',
+          subtitle:
+            'Analysis of IT skills with the lowest salaries. Featured are <text>{{skillCount}}</text> skills that offer the lowest pay over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes more accessible technologies.',
+        },
+        [Highlights['unknown-salary']]: {
+          title: 'Skills with Unknown Salary',
+          subtitle:
+            'Analysis of IT skills where salary information is not specified. Featured are <text>{{skillCount}}</text> skills without salary data over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with varying compensation terms.',
+        },
       },
     },
     footer: {

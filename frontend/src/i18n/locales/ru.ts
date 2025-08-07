@@ -53,7 +53,7 @@ export default {
       categories: 'Категории',
       skills: 'Навыки',
       highlights: 'Обзор',
-      favourites: 'Избранные',
+      favourites: 'Избранное',
       search: 'Поиск',
       all: 'Все',
       navigate: 'Навигация',
@@ -66,6 +66,9 @@ export default {
       loading: 'Загрузка',
       popular: 'Популярные',
       trending: 'Растущий спрос',
+      declining: 'Падающий спрос',
+      new: 'Новые',
+      unknownSalary: 'Неизвестная зарплата',
       similar: 'Похожие',
       highestSalary: 'Высокая зарплата',
       noData: 'Результаты не найдены',
@@ -77,6 +80,8 @@ export default {
       previous: 'предыдущие',
       change: 'изменение',
       confidence: 'Уверенность',
+      seeMore: 'Еще',
+      mainPage: 'Главная',
     },
     favorites: {
       removed: 'удален из избранного',
@@ -309,13 +314,12 @@ export default {
       [Experience.unknown]: 'Не указан',
     },
     highlights: {
-      [Highlights['Fastest-Growing Skills']]: 'Самые быстрорастущие навыки',
-      [Highlights['Skills Losing Demand']]: 'Навыки с падающим спросом',
-      [Highlights['Newly Emerging Skills']]: 'Новые навыки',
-      [Highlights['Highest-Paying Skills']]: 'Навыки с максимальной зарплатой',
-      [Highlights['Lowest-Paying Skills']]: 'Навыки с минимальной зарплатой',
-      [Highlights['Skills with Undisclosed Salaries']]:
-        'Навыки с неизвестной зарплатой',
+      [Highlights.gainers]: 'Самые быстрорастущие навыки',
+      [Highlights.decliners]: 'Навыки с падающим спросом',
+      [Highlights.new]: 'Новые навыки',
+      [Highlights['highest-salary']]: 'Высокооплачиваемые навыки',
+      [Highlights['lowest-salary']]: 'Низкооплачиваемые навыки',
+      [Highlights['unknown-salary']]: 'Навыки с неизвестной зарплатой',
     },
     pagination: {
       text: '{{currentPage}} - {{totalPages}} из {{totalRows}}',
@@ -401,6 +405,67 @@ export default {
       },
       allSkills: {
         subtitle: 'Навыки, связанные с направлением <b>{{category}}</b>',
+      },
+    },
+    skills: {
+      title: 'Анализ IT навыков',
+      subtitle:
+        'Полный анализ спроса, зарплат и сложности для <text>{{skillCount}}</text> IT навыков, включая <examples/>. Данные отображаются за последние <text>{{days}}</text> дней и отражают тренды {{experienceText}}.',
+      experienceText: {
+        [Experience.any]: 'для <text>всех</text> уровней опыта',
+        [Experience.noExperience]: 'для <text>начинающих</text> специалистов',
+        [Experience.between1And3]: 'для позиций с опытом <text>1-3 года</text>',
+        [Experience.between3And6]: 'для позиций с опытом <text>3-6 лет</text>',
+        [Experience.moreThan6]: 'для позиций с опытом <text>6+ лет</text>',
+        [Experience.unknown]:
+          'для позиций с <text>неуказанными</text> требованиями к опыту',
+      },
+    },
+    domainsPage: {
+      title: 'Анализ IT направлений',
+      subtitle:
+        'Полный анализ спроса, зарплат и сложности для <text>{{domainCount}}</text> IT направлений, включая <examples/>. Данные отображаются за последние <text>{{days}}</text> дней и отражают тренды {{experienceText}}.',
+    },
+    categoriesPage: {
+      title: 'Анализ IT категорий',
+      subtitle:
+        'Полный анализ спроса, зарплат и сложности для <text>{{categoryCount}}</text> IT категорий, включая <examples/>. Данные отображаются за последние <text>{{days}}</text> дней и отражают тренды {{experienceText}}.',
+    },
+    highlightsPage: {
+      title: 'Обзор IT навыков',
+      subtitle:
+        'Ключевые тренды и статистика по IT навыкам: рост спроса, зарплатные показатели и новые технологии. Данные отображаются за последние <text>{{days}}</text> дней и отражают тренды {{experienceText}}.',
+      highlightType: {
+        [Highlights.gainers]: {
+          title: 'Самые быстрорастущие навыки',
+          subtitle:
+            'Анализ IT навыков, которые показывают наибольший рост популярности. Представлено <text>{{skillCount}}</text> навыков, которые стали более востребованы за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают новые технологии, такие как AI/ML фреймворки, облачные платформы и современные инструменты разработки.',
+        },
+        [Highlights.decliners]: {
+          title: 'Навыки с падающим спросом',
+          subtitle:
+            'Анализ IT навыков, которые показывают наибольшее снижение популярности. Представлено <text>{{skillCount}}</text> навыков, которые стали менее востребованы за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают технологии, которые теряют актуальность.',
+        },
+        [Highlights.new]: {
+          title: 'Новые навыки',
+          subtitle:
+            'Анализ IT навыков, которые впервые появились на рынке труда. Представлено <text>{{skillCount}}</text> навыков, которые впервые встретились за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают новые технологии и инструменты.',
+        },
+        [Highlights['highest-salary']]: {
+          title: 'Самые высокооплачиваемые навыки',
+          subtitle:
+            'Анализ IT навыков с самыми высокими зарплатами. Представлено <text>{{skillCount}}</text> навыков, которые имеют самую высокую оплату за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают технологии с высоким спросом.',
+        },
+        [Highlights['lowest-salary']]: {
+          title: 'Самые низкооплачиваемые навыки',
+          subtitle:
+            'Анализ IT навыков с самыми низкими зарплатами. Представлено <text>{{skillCount}}</text> навыков, которые имеют самую низкую оплату за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают более доступные технологии.',
+        },
+        [Highlights['unknown-salary']]: {
+          title: 'Навыки с неизвестной зарплатой',
+          subtitle:
+            'Анализ IT навыков, для которых зарплата не указана. Представлено <text>{{skillCount}}</text> навыков без информации о зарплате за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают технологии с разными условиями оплаты.',
+        },
       },
     },
     footer: {

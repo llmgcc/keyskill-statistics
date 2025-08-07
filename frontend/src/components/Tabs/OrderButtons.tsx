@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { FaArrowTrendUp } from 'react-icons/fa6';
+import { FaArrowTrendDown, FaArrowTrendUp } from 'react-icons/fa6';
+import { GrNew } from 'react-icons/gr';
 import { LuEqualApproximately } from 'react-icons/lu';
 import { MdEqualizer } from 'react-icons/md';
 
@@ -45,12 +46,40 @@ export function buttonsList(
       descending: true,
     },
     {
+      icon: <GrNew />,
+      id: 'new',
+      column: 'new',
+      descending: true,
+    },
+    {
+      icon: <FaArrowTrendDown />,
+      id: 'declining',
+      column: 'change',
+      descending: false,
+    },
+    {
       icon: selectedCurrency?.currency_code
         ? CurrencyIcons[selectedCurrency.currency_code]
         : null,
       id: 'highestSalary',
       column: 'average_salary',
       descending: true,
+    },
+    {
+      icon: selectedCurrency?.currency_code
+        ? CurrencyIcons[selectedCurrency.currency_code]
+        : null,
+      id: 'lowestSalary',
+      column: 'average_salary',
+      descending: false,
+    },
+    {
+      icon: selectedCurrency?.currency_code
+        ? CurrencyIcons[selectedCurrency.currency_code]
+        : null,
+      id: 'unknownSalary',
+      column: 'unknown_salary',
+      descending: false,
     },
   ];
   return (

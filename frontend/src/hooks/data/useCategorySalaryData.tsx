@@ -7,8 +7,7 @@ import { useFilters } from '../useFilters';
 
 export function useCategorySalaryData(
   category: string | null,
-  numberOfBins = 20,
-  relatedTo?: string | null
+  numberOfBins = 20
 ) {
   const { period, experience } = useFilters();
   const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
@@ -20,7 +19,6 @@ export function useCategorySalaryData(
       experience,
       numberOfBins,
       category,
-      relatedTo,
     ],
     queryFn: async () => {
       const data = await API.technologySalaryPlot(

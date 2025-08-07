@@ -1,24 +1,19 @@
 import { KeySkill } from '@/interfaces';
 import { useStatsStore } from '@/store/statsStore';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
-import { SkillHistogram } from '@/components/Charts/Histogram/SkillHistogram';
+import { CategoryHistogram } from '@/components/Charts/Histogram/CategoryHistogram';
+import { DomainHistogram } from '@/components/Charts/Histogram/DomainHistogram';
 
 import { ProgressBar } from './ProgressBar';
 
 interface SalaryRendererProps {
-  skill: KeySkill | null;
-  withSalary?: boolean;
-  realtedTo?: string | null;
+  category: KeySkill | null;
 }
 
-export function SalaryRenderer({
-  skill,
-  realtedTo,
-  withSalary = true,
-}: SalaryRendererProps) {
+export function CategorySalaryRenderer({ category }: SalaryRendererProps) {
   const { stats } = useStatsStore();
 
-  const salary = skill?.average_salary ?? 0;
+  const salary = category?.average_salary ?? 0;
   return (
     <div className="relative size-full">
       {!!salary && (
@@ -30,13 +25,13 @@ export function SalaryRenderer({
           />
 
           <div className="absolute bottom-[-6px] left-0 z-10 w-full">
-            <SkillHistogram skill={skill} relatedTo={realtedTo ?? null} />
+            <CategoryHistogram category={category} />
           </div>
         </>
       )}
 
       <div className="relative z-50 text-text">
-        {withSalary && <CurrencyDisplay valueInRUB={salary} />}
+        <CurrencyDisplay valueInRUB={salary} />
       </div>
     </div>
   );

@@ -89,6 +89,14 @@ export class StaticAPI implements API {
     return response.data;
   }
 
+  async highlightByType(
+    name: string,
+    period: number,
+    experience?: Experience
+  ): Promise<KeySkill[]> {
+    return new Promise([]);
+  }
+
   async skillsList(
     limit: number,
     offset: number,

@@ -19,7 +19,7 @@ export function Navigation() {
   const stats = useStatsStore(state => state.stats);
   const { t } = useTranslation();
 
-  const { isMobile } = useScreenSize();
+  const { isTablet, isMobile } = useScreenSize();
 
   const navbarStats = [
     {
@@ -34,20 +34,20 @@ export function Navigation() {
 
   const links = [
     {
-      id: 'skills',
-      href: '/skills',
+      id: 'highlights',
+      href: '/highlights',
     },
     {
-      id: 'categories',
-      href: '/categories',
+      id: 'skills',
+      href: '/skills',
     },
     {
       id: 'domains',
       href: '/domains',
     },
     {
-      id: 'highlights',
-      href: '/highlights',
+      id: 'categories',
+      href: '/categories',
     },
     {
       id: 'favourites',
@@ -119,7 +119,7 @@ export function Navigation() {
                 <div className="flex items-center">
                   <GithubRepo />
                 </div>
-                {isMobile && (
+                {(isTablet || isMobile) && (
                   <NavigationMobile
                     links={links}
                     isOpen={isOpen}

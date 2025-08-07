@@ -64,6 +64,11 @@ type KeySkillServer = {
   rows: number;
 };
 
+type DomainsServer = {
+  domains: Category[];
+  rows: number;
+};
+
 type KeySkill = {
   name: string;
   translation?: string;

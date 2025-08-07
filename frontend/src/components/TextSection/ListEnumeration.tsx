@@ -1,24 +1,25 @@
 import { useTranslation } from 'react-i18next';
 
-import { Category } from '@/interfaces';
+// import { Category } from '@/interfaces';
 
 interface ListEnumerationProps {
-  list: Category[];
+  list: string[];
   maxToDisplay?: number;
-  translationKey: string;
+  // translationKey: string;
 }
 
 export function ListEnumeration({
   list,
   maxToDisplay = 3,
-  translationKey,
+  // translationKey,
 }: ListEnumerationProps) {
   const { t } = useTranslation();
   if (!list?.length) return '';
   const displayList = list.slice(0, maxToDisplay);
-  const renderItem = (item: Category) => {
+  const renderItem = (item: string) => {
     return (
-      <span className="text-text">{t(`${translationKey}.${item.name}`)}</span>
+      // <span className="text-text">{t(`${translationKey}.${item.name}`)}</span>
+      <span className="text-text">{item}</span>
     );
   };
   if (displayList.length === 1) {

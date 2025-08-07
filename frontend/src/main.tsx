@@ -18,6 +18,7 @@ import { Provider } from '@/components/ui/provider';
 import { Toaster } from '@/components/ui/toaster';
 
 import App from './App.tsx';
+import ScrollToTop from './components/ui/ScrollToTop.tsx';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +38,7 @@ createRoot(document.getElementById('root')!).render(
           process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
         }
       >
+        <ScrollToTop />
         <Provider>
           <I18nextProvider i18n={i18n}>
             <QueryClientProvider client={queryClient}>

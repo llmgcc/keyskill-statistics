@@ -99,7 +99,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
   const columns = useMemo(
     () =>
       [
-        favouriteAccessor({ accessorKey: 'favourite' }),
+        // favouriteAccessor({ accessorKey: 'favourite' }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
@@ -125,7 +125,10 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
               }),
             ]
           : []),
-        complexityAccessor({ accessorKey: 'complexity' }),
+        complexityAccessor({
+          accessorKey: 'complexity',
+          header: t('complexity.title'),
+        }),
         salaryAccessor({
           accessorKey: 'average_salary',
           isLoading: isLoading || isFetching,

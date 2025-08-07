@@ -21,8 +21,7 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
 
   const preferredDomains: Category[] = [
     domains.find(c => c.name === Domains['Backend development']) ?? null,
-    domains.find(c => c.name === Domains['Data Science & Machine Learning']) ??
-      null,
+    domains.find(c => c.name === Domains['Data Science']) ?? null,
     domains.find(c => c.name === Domains['Project management']) ?? null,
   ].filter(e => e !== null);
 
@@ -103,9 +102,8 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
                 }}
               />{' '}
               <ListEnumeration
-                list={preferredDomains}
+                list={preferredDomains.map(c => t(`domains.${c.name}`))}
                 maxToDisplay={3}
-                translationKey={'domains'}
               />
             </div>
             <div className="mx-5">
@@ -117,9 +115,8 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
                 }}
               />{' '}
               <ListEnumeration
-                list={preferredCategories}
+                list={preferredCategories.map(c => t(`categories.${c.name}`))}
                 maxToDisplay={3}
-                translationKey={'categories'}
               />
             </div>
             <div>{t('mainText.end')}</div>

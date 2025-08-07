@@ -23,7 +23,7 @@ export const useFavoritesStore = create<FavoritesStore>()(
       remove: (name, type) => {
         set(state => ({
           favourites: state.favourites.filter(
-            s => s.name !== name && s.type !== type
+            s => !(s.name === name && s.type === type)
           ),
         }));
       },

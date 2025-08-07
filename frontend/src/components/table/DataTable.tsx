@@ -71,7 +71,7 @@ export function DataTable<T extends object>({
     state: {
       sorting: sorting,
       columnPinning: {
-        left: pinnedLeft,
+        left: isOverflow ? pinnedLeft : [],
         right: [],
       },
       pagination: pagination ?? undefined,

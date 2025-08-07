@@ -1,29 +1,46 @@
 import { API } from '@/api/api';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
+import { PaginationState } from '@tanstack/react-table';
 
-import { Experience } from '@/config/experience';
+import { ServerFilters, ServerOrderBy } from '@/interfaces';
 
-interface UseDomainsOptions {
-  selectedPeriod: number;
-  selectedExperience?: Experience | null;
-}
+import { useFilters } from './useFilters';
 
-export function useDomains({
-  selectedPeriod,
-  selectedExperience,
-}: UseDomainsOptions) {
-  return useQuery({
-    queryKey: ['domains_list', selectedPeriod, selectedExperience],
+export function useDomains(
+  pagination: PaginationState,
+  order_by?: ServerOrderBy,
+  filter?: ServerFilters,
+  enabled: boolean = true
+) {
+  const { period, experience } = useFilters();
+
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: [
+      'domains_list',
+      pagination,
+      order_by,
+      filter,
+      period,
+      experience,
+    ],
     queryFn: async () => {
       const data = await API.domainsList(
-        selectedPeriod,
-        selectedExperience == Experience.any
-          ? undefined
-          : (selectedExperience ?? undefined)
+        filter?.period === null ? null : period,
+        filter?.experience === null ? null : experience,
+        pagination.pageSize,
+        pagination.pageSize * pagination.pageIndex,
+        order_by
       );
+
       return data;
     },
-    placeholderData: keepPreviousData,
-    staleTime: Infinity,
+    enabled: enabled,
   });
+
+  return {
+    rows: data?.rows,
+    domains: data?.domains,
+    isFetching,
+    isLoading,
+  };
 }

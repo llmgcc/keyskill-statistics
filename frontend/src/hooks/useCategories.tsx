@@ -1,29 +1,46 @@
 import { API } from '@/api/api';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
+import { PaginationState } from '@tanstack/react-table';
 
-import { Experience } from '@/config/experience';
+import { ServerFilters, ServerOrderBy } from '@/interfaces';
 
-interface UseCategoriesOptions {
-  selectedPeriod: number;
-  selectedExperience?: Experience | null;
-}
+import { useFilters } from './useFilters';
 
-export function useCategories({
-  selectedPeriod,
-  selectedExperience,
-}: UseCategoriesOptions) {
-  return useQuery({
-    queryKey: ['categories_list', selectedPeriod, selectedExperience],
+export function useCategories(
+  pagination: PaginationState,
+  order_by?: ServerOrderBy,
+  filter?: ServerFilters,
+  enabled: boolean = true
+) {
+  const { period, experience } = useFilters();
+
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: [
+      'categories_list',
+      pagination,
+      order_by,
+      filter,
+      period,
+      experience,
+    ],
     queryFn: async () => {
       const data = await API.categoriesList(
-        selectedPeriod ?? 10,
-        selectedExperience == Experience.any
-          ? undefined
-          : (selectedExperience ?? undefined)
+        filter?.period === null ? null : period,
+        filter?.experience === null ? null : experience,
+        pagination.pageSize,
+        pagination.pageSize * pagination.pageIndex,
+        order_by
       );
+
       return data;
     },
-    placeholderData: keepPreviousData,
-    staleTime: Infinity,
+    enabled: enabled,
   });
+
+  return {
+    rows: data?.rows,
+    categories: data?.categories,
+    isFetching,
+    isLoading,
+  };
 }

@@ -6,7 +6,8 @@ import { CategoryPage } from './components/Pages/CategoryPage/CategoryPage';
 import { DomainPage } from './components/Pages/DomainPage/DomainPage';
 import { Domains } from './components/Pages/Domains/Domains';
 import { Favourites } from './components/Pages/Favourites/Favourites';
-import { Highlights } from './components/Pages/Highlights/Highlights';
+import { HighlightsPage } from './components/Pages/Highlights/HighlightsPage';
+import { HighlightTypePage } from './components/Pages/Highlights/HighlightTypePage';
 import { MainPage } from './components/Pages/MainPage';
 import { SkillPage } from './components/Pages/SkillPage/SkillPage';
 import { Skills } from './components/Pages/Skills/Skills';
@@ -40,7 +41,19 @@ export function useRouterConfig() {
     {
       id: 'highlights',
       path: '/highlights',
-      element: <Highlights />,
+      element: <HighlightsPage />,
+      title: createTitle('Highlights'),
+    },
+    {
+      id: 'highlights',
+      path: '/highlights',
+      element: <HighlightsPage />,
+      title: createTitle('Highlights'),
+    },
+    {
+      id: 'highlights',
+      path: '/highlights/:type',
+      element: <HighlightTypePage />,
       title: createTitle('Highlights'),
     },
     {

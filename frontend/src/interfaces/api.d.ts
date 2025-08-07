@@ -30,6 +30,12 @@ export interface API {
     experience?: Experience
   ) => Promise<Category[]>;
 
+  highlightByType(
+    name: string,
+    period: number,
+    experience?: Experience
+  ): Promise<KeySkill[]>;
+
   skill: (skillName: string) => Promise<KeySkill>;
 
   skillDetails: (

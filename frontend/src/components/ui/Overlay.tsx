@@ -9,7 +9,7 @@ interface OverlayProps {
 
 function Overlay_({ children, isLoading, isFetching }: OverlayProps) {
   return (
-    <div className="relative">
+    <div className="relative size-full">
       {(isLoading || isFetching) && (
         <Box
           position="absolute"

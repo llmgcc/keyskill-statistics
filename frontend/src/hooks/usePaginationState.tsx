@@ -100,12 +100,12 @@ export function usePaginationState(
     if (!searchParams.get(pageQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(pageQueryKey, String(paginationState.pageIndex));
-      setSearchParams(prev => newSearchParams);
+      setSearchParams(prev => newSearchParams, { replace: true });
     }
     if (!searchParams.get(itemsQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(itemsQueryKey, String(paginationState.pageSize));
-      setSearchParams(prev => newSearchParams);
+      setSearchParams(prev => newSearchParams, { replace: true });
     }
   }, [searchParams, setSearchParams, paginationState]);
 

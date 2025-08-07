@@ -43,20 +43,20 @@ export function Footer() {
       id: 'navigation',
       links: [
         {
-          id: 'skills',
-          href: '/skills',
+          id: 'highlights',
+          href: '/highlights',
         },
         {
-          id: 'categories',
-          href: '/categories',
+          id: 'skills',
+          href: '/skills',
         },
         {
           id: 'domains',
           href: '/domains',
         },
         {
-          id: 'highlights',
-          href: '/highlights',
+          id: 'categories',
+          href: '/categories',
         },
         {
           id: 'favourites',

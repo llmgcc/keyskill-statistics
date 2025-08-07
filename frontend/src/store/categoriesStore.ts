@@ -12,7 +12,7 @@ export const useCategoriesStore = create<CategoriesStore>()(set => ({
   categories: [],
   strict: true,
   fetchCategories: async () => {
-    const categories = await API.categoriesList();
+    const categories = (await API.categoriesList()).categories;
     set({ categories: categories });
   },
 }));

@@ -1,63 +1,75 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { Domains as DomainsConfig } from '@/config/domains';
+import { Highlights } from '@/config/highlights';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 import { OrderButtons } from '@/components/Tabs/OrderButtons';
-import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
-import { DomainsTable } from '../Common/DomainsTable';
+import { SkillsTable } from '../Common/SkillsTable';
 import { StickyFilter } from '../Common/StickyFilter';
 
-export function Domains() {
-  const { t } = useTranslation();
+const OrderByHighlightType = {
+  [Highlights.gainers]: 'trending',
+  [Highlights.decliners]: 'declining',
+  [Highlights.new]: 'new',
+  [Highlights['highest-salary']]: 'highestSalary',
+  [Highlights['lowest-salary']]: 'lowestSalary',
+  [Highlights['unknown-salary']]: 'unknownSalary',
+};
+
+export function HighlightTypePage() {
+  const { type } = useParams<{ type: string }>();
   const [totalRows, setTotalRows] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  const { t } = useTranslation();
   const selectedPeriod = usePeriodStore(state => state.selectedPeriod);
   const selectedExperience = useExperienceStore(
     state => state.selectedExperience
   );
+  const isError = !Object.keys(Highlights).includes(type ?? '');
+
   const [order, setOrder, orderButtons] = useOrderByState([
-    'popular',
-    'trending',
-    'highestSalary',
+    type ? OrderByHighlightType[type as Highlights] : '',
   ]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate('/highlights');
+    }
+  }, [type, navigate, isError]);
+
+  if (isError) {
+    return null;
+  }
 
   return (
     <div className="app-container">
       <AppBreadcrumb
         routes={[
           { displayName: t('common.mainPage'), url: '/' },
-          { displayName: t('common.domains'), url: '/domains' },
+          { displayName: t('common.highlights'), url: '/highlights' },
+          { displayName: t(`highlights.${type}`), url: '/highlights' },
         ]}
       />
       <div className="pb-4">
         <h1 className="text-3xl font-bold leading-[130%] text-text">
-          {t('domainsPage.title')}
+          {t(`highlightsPage.highlightType.${type}.title`)}
         </h1>
         <div className="text-base leading-relaxed text-text-secondary">
           <Trans
-            i18nKey="domainsPage.subtitle"
+            i18nKey={`highlightsPage.highlightType.${type}.subtitle`}
             values={{
-              domainCount: totalRows,
+              skillCount: totalRows,
               days: selectedPeriod,
               experienceText: t(`skills.experienceText.${selectedExperience}`),
             }}
             components={{
               text: <span className="font-[500] text-text-primary" />,
-              examples: (
-                <ListEnumeration
-                  list={[
-                    t(`domains.${DomainsConfig['Data Science']}`),
-                    t(`domains.${DomainsConfig['Backend development']}`),
-                    t(`domains.${DomainsConfig['DevOps & Infrastructure']}`),
-                    t(`domains.${DomainsConfig.Blockchain}`),
-                  ]}
-                  maxToDisplay={4}
-                />
-              ),
             }}
           />
         </div>
@@ -66,9 +78,9 @@ export function Domains() {
         <StickyFilter />
       </div>
       <div>
-        <DomainsTable
+        <SkillsTable
           columns={[
-            'favourite_domain',
+            'favourite_skill',
             'place',
             'prev_place',
             'image',
@@ -78,7 +90,7 @@ export function Domains() {
             'count',
             'chart',
           ]}
-          paginationPrefix="domains"
+          paginationPrefix="skills"
           enabled={true}
           order_by={{
             order_by: order.column,

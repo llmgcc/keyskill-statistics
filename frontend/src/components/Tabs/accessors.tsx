@@ -1,18 +1,23 @@
 import { getPercentDifference } from '@/utils/common';
 import { Skeleton } from '@chakra-ui/react';
 import { ColumnDef, sortingFns } from '@tanstack/react-table';
-import { FaRegStar } from 'react-icons/fa';
 import { GoDiff } from 'react-icons/go';
 
 import { KeySkill } from '@/interfaces';
+import { FavouriteType } from '@/store/favoritesStore';
 import { CountRenderer } from '@/components/Table/renderers/CountRenderer';
 import { SalaryRenderer } from '@/components/Table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
 
 import { CircleProgress } from '../Charts/CircleProgress';
+import { CategoryTrend } from '../Charts/Trend/CategoryTrend';
+import { DomainTrend } from '../Charts/Trend/DomainTrend';
 import { SkillTrend } from '../Charts/Trend/SkillTrend';
+import { CategorySalaryRenderer } from '../Table/renderers/CategorySalaryRenderer';
+import { DomainSalaryRenderer } from '../Table/renderers/DomainSalaryRenderer';
 import { CategoryDescription } from '../ui/Description/CategoryDescription';
 import { SkillDescription } from '../ui/Description/SkillDescription';
+import { FavouriteButton } from '../ui/FavouriteButton';
 import { SkillImage } from '../ui/SkillImage';
 
 export const skillImageAccessor = <T extends KeySkill>(config: {
@@ -40,6 +45,28 @@ export const skillImageAccessor = <T extends KeySkill>(config: {
   },
 });
 
+export const categoryImageAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  category: 'domains' | 'categories';
+  header?: string;
+  size?: number;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: config.header ?? '',
+  size: 50,
+  cell: info => (
+    <div className="flex items-start justify-center">
+      <SkillImage {...{ [config.category]: info.row.original.name }} />
+    </div>
+  ),
+  enablePinning: true,
+  enableSorting: false,
+  meta: {
+    paddingLeft: 10,
+    paddingRight: 5,
+  },
+});
+
 export const placeAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   header?: string;
@@ -54,6 +81,8 @@ export const placeAccessor = <T extends KeySkill>(config: {
   enablePinning: true,
   meta: {
     alignRight: true,
+    // paddingLeft: 0,
+    // paddingRight: 0
   },
 });
 
@@ -70,16 +99,21 @@ export const complexityAccessor = <T extends KeySkill>(config: {
     return (
       <>
         {complexity ? (
-          <div className="relative flex items-center">
+          <div className="relative flex items-center gap-1">
             <CircleProgress value={complexity} maxValue={1} />
-            <div className="ml-1 text-sm">
-              {' '}
-              {(complexity * 100).toFixed(0)}%
+            <div className="w-7 truncate text-sm">
+              {(complexity * 10).toFixed(1)}{' '}
+              {/* <span className="text-xs text-text-secondary/50">/ 10</span> */}
             </div>
           </div>
         ) : null}
       </>
     );
+  },
+  sortingFn: (rowA, rowB) => {
+    const a = rowA.original.complexity_score ?? 0;
+    const b = rowB.original.complexity_score ?? 0;
+    return a - b;
   },
   meta: {
     alignRight: true,
@@ -146,14 +180,30 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
 
 export const favouriteAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
+  isLoading: boolean;
+  displayName: (skill: KeySkill) => string | null;
+  favouriteType: FavouriteType;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div></div>,
-  sortingFn: sortingFns.alphanumeric,
-  cell: _ => {
-    return <FaRegStar className={`p-0 text-background-accent`} />;
+  enableSorting: false,
+  cell: info => {
+    return (
+      <div className="flex items-center justify-center">
+        <FavouriteButton
+          isLoading={config.isLoading}
+          name={info.row.original.name}
+          displayName={config.displayName(info.row.original)}
+          favouriteType={config.favouriteType}
+        />
+      </div>
+    );
   },
-  size: 5,
+  size: 20,
+  meta: {
+    paddingLeft: 5,
+    paddingRight: 0,
+  },
 });
 
 export const categoryNameAccessor = <T extends KeySkill>(config: {
@@ -170,10 +220,15 @@ export const categoryNameAccessor = <T extends KeySkill>(config: {
       <CategoryDescription
         categoryKey={config.category}
         category={info.row.original}
+        image={false}
       />
     );
   },
-  size: 0,
+  size: 500,
+  meta: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
 });
 
 export const countAccessor = <T extends KeySkill>(config: {
@@ -226,6 +281,78 @@ export const salaryAccessor = <T extends KeySkill>(config: {
             <SalaryRenderer
               skill={config.isLoading ? null : info.row.original}
               realtedTo={config.relatedTo}
+            />
+          )}
+        </div>
+      </Skeleton>
+    );
+  },
+  size: 125,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const domainSalaryAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  isLoading: boolean;
+  header?: string;
+  relatedTo?: string | null;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => (
+    <div className="flex items-center">
+      <div>{config.header}</div>
+    </div>
+  ),
+  cell: info => {
+    return (
+      <Skeleton
+        loading={config.isLoading}
+        className={`${config.isLoading ? 'h-[40px] w-full bg-background-secondary' : 'size-full'}`}
+      >
+        <div className="size-full">
+          {config.isLoading ? (
+            <div className="size-full">qwe</div>
+          ) : (
+            <DomainSalaryRenderer
+              domain={config.isLoading ? null : info.row.original}
+            />
+          )}
+        </div>
+      </Skeleton>
+    );
+  },
+  size: 125,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const categorySalaryAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  isLoading: boolean;
+  header?: string;
+  relatedTo?: string | null;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => (
+    <div className="flex items-center">
+      <div>{config.header}</div>
+    </div>
+  ),
+  cell: info => {
+    return (
+      <Skeleton
+        loading={config.isLoading}
+        className={`${config.isLoading ? 'h-[40px] w-full bg-background-secondary' : 'size-full'}`}
+      >
+        <div className="size-full">
+          {config.isLoading ? (
+            <div className="size-full">qwe</div>
+          ) : (
+            <CategorySalaryRenderer
+              category={config.isLoading ? null : info.row.original}
             />
           )}
         </div>
@@ -352,6 +479,64 @@ export const chartAccessor = <T extends KeySkill>(config: {
           <SkillTrend
             skill={config.isLoading ? null : info.row.original}
             realtedTo={config.relatedTo}
+          />
+        </Skeleton>
+      </div>
+    );
+  },
+  size: 125,
+  enableSorting: false,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const domainChartAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  isLoading: boolean;
+  header?: string;
+  size?: number;
+  relatedTo?: string | null;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => <div>{config.header}</div>,
+  cell: info => {
+    return (
+      <div style={{ height: '40px' }} className="size-full">
+        <Skeleton
+          loading={config.isLoading}
+          className={`size-full ${config.isLoading && 'bg-background-secondary'}`}
+        >
+          <DomainTrend domain={config.isLoading ? null : info.row.original} />
+        </Skeleton>
+      </div>
+    );
+  },
+  size: 125,
+  enableSorting: false,
+  meta: {
+    alignRight: true,
+  },
+});
+
+export const categoryChartAccessor = <T extends KeySkill>(config: {
+  accessorKey: string;
+  isLoading: boolean;
+  header?: string;
+  size?: number;
+  relatedTo?: string | null;
+}): ColumnDef<T> => ({
+  accessorKey: config.accessorKey as string,
+  header: () => <div>{config.header}</div>,
+  cell: info => {
+    return (
+      <div style={{ height: '40px' }} className="size-full">
+        <Skeleton
+          loading={config.isLoading}
+          className={`size-full ${config.isLoading && 'bg-background-secondary'}`}
+        >
+          <CategoryTrend
+            category={config.isLoading ? null : info.row.original}
           />
         </Skeleton>
       </div>

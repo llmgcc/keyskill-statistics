@@ -1,30 +1,25 @@
-import i18n from '@/i18n/i18n';
-import { placeholderData, skillName } from '@/utils/common';
+import { placeholderData } from '@/utils/common';
 import { useEffect, useMemo } from 'react';
 import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
-import { Categories } from '@/config/categories';
-import { Domains } from '@/config/domains';
+import { useCategories } from '@/hooks/useCategories';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { useSkills } from '@/hooks/useSkills';
 import { DataTable } from '@/components/Table/DataTable';
 import { PageSize } from '@/components/Table/PageSize';
 import {
-  chartAccessor,
+  categoryChartAccessor,
+  categoryImageAccessor,
+  categoryNameAccessor,
+  categorySalaryAccessor,
   complexityAccessor,
-  confidenceAccessor,
   countAccessor,
   favouriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
-  salaryAccessor,
-  similarityAccessor,
-  skillImageAccessor,
-  skillNameAccessor,
 } from '@/components/Tabs/accessors';
 
 interface SkillsTableProps {
@@ -50,7 +45,7 @@ const DEAFULT_COLUMNS = [
 
 const DEFAULT_PAGE_SIZE_VARIANTS = [10, 25, 50];
 
-export function SkillsTable({
+export function CategoriesTable({
   order_by,
   filter,
   columns = DEAFULT_COLUMNS,
@@ -72,7 +67,7 @@ export function SkillsTable({
     paginationPrefix
   );
 
-  const { skills, isFetching, isLoading, rows } = useSkills(
+  const { categories, isFetching, isLoading, rows } = useCategories(
     pagination,
     order_by,
     filter,
@@ -89,51 +84,35 @@ export function SkillsTable({
     () =>
       [
         favouriteAccessor({
-          accessorKey: 'favourite_skill',
+          accessorKey: 'favourite_category',
           isLoading: isLoading || isFetching,
-          displayName: (skill: KeySkill) => skillName(skill, i18n.language),
-          favouriteType: 'skills',
+          displayName: (skill: KeySkill) => t(`categories.${skill.name}`),
+          favouriteType: 'categories',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
-        skillImageAccessor({ accessorKey: 'image' }),
-        skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),
-        similarityAccessor({
-          accessorKey: 'similarity_score',
-          header: t('columns.similarity'),
+        categoryImageAccessor({ accessorKey: 'image', category: 'categories' }),
+        categoryNameAccessor({
+          accessorKey: 'name',
+          header: t('columns.name'),
+          category: 'categories',
         }),
+
         complexityAccessor({
           accessorKey: 'complexity',
           header: t('complexity.title'),
         }),
-        salaryAccessor({
+        categorySalaryAccessor({
           accessorKey: 'average_salary',
           header: t('columns.salary'),
           isLoading: isLoading || isFetching || !enabled,
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
-        chartAccessor({
+        categoryChartAccessor({
           accessorKey: 'chart',
           header: t('columns.trend'),
           isLoading: isLoading || isFetching || !enabled,
         }),
-
-        ...Object.keys(Domains).map(domain =>
-          confidenceAccessor({
-            accessorKey: `${domain}-confidence`,
-            header: t('common.confidence'),
-            name: domain,
-            categoryKey: 'domains',
-          })
-        ),
-        ...Object.keys(Categories).map(category =>
-          confidenceAccessor({
-            accessorKey: `${category}-confidence`,
-            header: t('common.confidence'),
-            name: category,
-            categoryKey: 'categories',
-          })
-        ),
       ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, enabled]
   );
@@ -154,23 +133,17 @@ export function SkillsTable({
       </div>
       <DataTable
         columns={cols as Array<ColumnDef<KeySkill, unknown>>}
-        data={skills ?? placeholderData(pagination.pageSize)}
-        isLoading={isLoading || !skills}
+        data={categories ?? placeholderData(pagination.pageSize)}
+        isLoading={isLoading || !categories}
         isFetching={isFetching || !enabled}
-        pinnedLeft={[
-          'favourite_skill',
-          'favourite_category',
-          'favourite_domain',
-          'place',
-          'image',
-        ]}
+        pinnedLeft={['favourite_category', 'place', 'image']}
         minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
         onSelect={(rowData: KeySkill) => {
-          navigate(`/skill/${encodeURIComponent(rowData.name)}`);
+          navigate(`/category/${encodeURIComponent(rowData.name)}`);
         }}
       />
     </>
