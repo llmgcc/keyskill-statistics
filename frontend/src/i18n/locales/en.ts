@@ -87,6 +87,9 @@ export default {
       confidence: 'Confidence',
       seeMore: 'See more',
       mainPage: 'Main page',
+      allSkills: 'All skills',
+      allCategories: 'All categories',
+      allDomains: 'All domains',
     },
     favorites: {
       removed: 'removed from favorites',

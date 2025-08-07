@@ -138,7 +138,7 @@ export class ServerAPI implements API {
   async categoriesList(
     period: number | null,
     experience?: Experience,
-    limit: number = 10,
+    limit: number,
     offset: number = 0,
     order_by?: ServerOrderBy
   ): Promise<DomainsServer> {
@@ -158,7 +158,7 @@ export class ServerAPI implements API {
   async domainsList(
     period: number | null,
     experience?: Experience,
-    limit: number = 10,
+    limit: number,
     offset: number = 0,
     order_by?: ServerOrderBy
   ): Promise<DomainsServer> {

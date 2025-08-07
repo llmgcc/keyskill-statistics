@@ -23,51 +23,93 @@ interface HighlightCardProps {
   change: (skill: KeySkill) => JSX.Element;
 }
 
+interface HighlightSeeMoreProps {
+  type: Highlights;
+  short?: boolean;
+}
+
+interface HighlightCardBodyProps {
+  highlights: KeySkill[];
+  value: (skill: KeySkill) => JSX.Element;
+  change: (skill: KeySkill) => JSX.Element;
+  isLoading: boolean;
+  maxToDisplay?: number;
+}
+
+export function HighlightCardBody({
+  highlights,
+  isLoading,
+  value,
+  change,
+  maxToDisplay = 10,
+}: HighlightCardBodyProps) {
+  const navigate = useNavigate();
+  return (
+    <div className="divide-y divide-background-secondary">
+      {(
+        highlights?.slice(0, maxToDisplay) ??
+        placeholderData(10).slice(0, maxToDisplay)
+      ).map(h => (
+        <div
+          key={h.name}
+          className="flex cursor-pointer items-center justify-between p-2 hover:bg-background-secondary"
+          onClick={() => !isLoading && navigate(`/skill/${h.name}`)}
+        >
+          <div className="min-w-0 flex-[5] pr-4">
+            <SkillDescription skill={h} />
+          </div>
+
+          <div className="flex flex-1 items-center justify-end space-x-4">
+            <div className="flex flex-col items-end">
+              <div className="text-sm font-medium">{value(h)}</div>
+              <div className="text-xs">{change(h)}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function HighlightSeeMore({
+  type,
+  short = false,
+}: HighlightSeeMoreProps) {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  return (
+    <Button
+      size="xs"
+      variant="ghost"
+      className="p-1 hover:bg-background-secondary"
+      onClick={() => navigate(`/highlights/${type}`)}
+    >
+      {!short && t('common.seeMore')} <MdKeyboardArrowRight />
+    </Button>
+  );
+}
+
 function HighlightCard({ type, value, change }: HighlightCardProps) {
   const { highlights, isLoading, isFetching } = useHighlights(type);
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
     <Overlay isFetching={isFetching} isLoading={isLoading}>
-      <div className="h-full w-full overflow-hidden rounded-lg border-[1px] border-background-secondary shadow-sm">
+      <div className="h-full w-full overflow-hidden rounded border-[1px] border-background-secondary shadow-sm">
         <div className="bg-background flex items-center justify-between border-b-[1px] border-background-secondary p-2">
           <div className="flex items-center gap-2 text-sm font-medium">
             {HighlightIcons[type]}
             <span>{t(`highlights.${type}`)}</span>
           </div>
-          <Button
-            size="xs"
-            variant="ghost"
-            className="p-1 hover:bg-background-secondary"
-            onClick={() => navigate(`/highlights/${type}`)}
-          >
-            {t('common.seeMore')} <MdKeyboardArrowRight />
-          </Button>
+          <HighlightSeeMore type={type} />
         </div>
 
-        <div className="divide-y divide-background-secondary">
-          {(highlights ?? placeholderData(10)).map(h => (
-            <div
-              key={h.name}
-              className="flex cursor-pointer items-center justify-between p-3 hover:bg-background-secondary"
-              onClick={() =>
-                !(isLoading || isFetching) && navigate(`/skill/${h.name}`)
-              }
-            >
-              <div className="min-w-0 flex-[5] pr-4">
-                <SkillDescription skill={h} />
-              </div>
-
-              <div className="flex flex-1 items-center justify-end space-x-4">
-                <div className="flex flex-col items-end">
-                  <div className="text-sm font-medium">{value(h)}</div>
-                  <div className="text-xs">{change(h)}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <HighlightCardBody
+          value={value}
+          change={change}
+          highlights={highlights ?? placeholderData(10)}
+          isLoading={isLoading}
+        />
       </div>
     </Overlay>
   );

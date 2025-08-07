@@ -83,6 +83,9 @@ export default {
       confidence: 'Уверенность',
       seeMore: 'Еще',
       mainPage: 'Главная',
+      allSkills: 'Все навыки',
+      allCategories: 'Все категории',
+      allDomains: 'Все направления',
     },
     favorites: {
       removed: 'удален из избранного',

@@ -8,7 +8,7 @@ import { Domains } from './components/Pages/Domains/Domains';
 import { Favourites } from './components/Pages/Favourites/Favourites';
 import { HighlightsPage } from './components/Pages/Highlights/HighlightsPage';
 import { HighlightTypePage } from './components/Pages/Highlights/HighlightTypePage';
-import { MainPage } from './components/Pages/MainPage';
+import { MainPage } from './components/Pages/MainPage/MainPage';
 import { SkillPage } from './components/Pages/SkillPage/SkillPage';
 import { Skills } from './components/Pages/Skills/Skills';
 

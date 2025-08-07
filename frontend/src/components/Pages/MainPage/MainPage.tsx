@@ -8,7 +8,8 @@ import { Filter } from '@/components/Filter/Filter';
 import { Highlights } from '@/components/Highlights/Highlights.tsx';
 import { TextSection } from '@/components/TextSection/TextSection';
 
-import { Tabs } from '../Tabs/Tabs';
+import { Tabs } from '../../Tabs/Tabs';
+import { StickyFilter } from '../Common/StickyFilter';
 
 export function MainPage() {
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -37,18 +38,11 @@ export function MainPage() {
         }}
       />
       <div className="app-container">
-        <Sticky
-          top={navOffset}
-          enableTransforms={false}
-          innerActiveClass="shadow-md shadow-background-secondary"
-          innerZ={1000}
-        >
-          <Filter />
-        </Sticky>
+        <StickyFilter />
       </div>
       <Highlights />
       <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
-      <div ref={tabsRef} className="app-container">
+      <div ref={tabsRef} className="app-container mt-8">
         <Tabs />
       </div>
     </div>

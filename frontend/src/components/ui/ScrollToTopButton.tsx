@@ -28,7 +28,7 @@ export function ScrollToTopButton({
   return isVisible ? (
     <Button
       onClick={onClick}
-      className="bg-primary fixed bottom-8 right-8 z-50 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-background-accent p-4 text-white shadow-lg"
+      className="fixed bottom-8 right-8 z-50 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-background-accent p-4 text-white shadow-md shadow-background-secondary"
       aria-label="Scroll to top"
     >
       <div className="flex items-center justify-center">
