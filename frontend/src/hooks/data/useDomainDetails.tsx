@@ -14,11 +14,11 @@ export function useDomainDetails(name: string | null) {
   } = useQuery({
     queryKey: ['domains_details', name, period, experience],
     queryFn: async () => {
-      const data = await API.domainDetails(
-        encodeURIComponent(name)!,
+      const data = await API.domains.domainDetails({
+        name: encodeURIComponent(name!),
         period,
-        experience
-      );
+        experience,
+      });
       return data;
     },
     enabled: !!name,

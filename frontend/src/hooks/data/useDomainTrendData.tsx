@@ -11,12 +11,12 @@ export function useDomainTrendData(domain: string | null, numberOfBins = 20) {
   const { data, isLoading, isFetching } = useQuery({
     queryKey: queryKey,
     queryFn: async () => {
-      const data = await API.domainPlot(
-        domain ?? '',
+      const data = await API.charts.domainTrend({
+        name: domain ?? '',
         period,
         experience,
-        numberOfBins
-      );
+        numberOfBins,
+      });
       return data;
     },
     enabled: !!domain,

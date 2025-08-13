@@ -14,11 +14,11 @@ export function useCategoryDetails(name: string | null) {
   } = useQuery({
     queryKey: ['category_details', name, period, experience],
     queryFn: async () => {
-      const data = await API.categoryDetails(
-        encodeURIComponent(name)!,
+      const data = await API.categories.categoryDetails({
+        name: encodeURIComponent(name!),
         period,
-        experience
-      );
+        experience,
+      });
       return data;
     },
     enabled: !!name,

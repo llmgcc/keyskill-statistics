@@ -1,9 +1,18 @@
+import colors from 'tailwindcss/colors';
+
 interface CircleProgressProps {
   value: number;
   maxValue: number;
 }
 
 export function CircleProgress({ value, maxValue }: CircleProgressProps) {
+  const percent = (value / maxValue) * 100;
+
+  function color() {
+    if (percent <= 25) return colors.red[500];
+    return 'rgb(var(--color-background-accent))';
+  }
+
   return (
     <svg className="h-5 w-5" viewBox="0 0 36 36">
       <path
@@ -19,9 +28,9 @@ export function CircleProgress({ value, maxValue }: CircleProgressProps) {
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
         fill="none"
-        stroke="rgb(var(--color-background-gray))"
+        stroke={color()}
         strokeWidth="5"
-        strokeDasharray={`${(value / maxValue) * 100}, 100`}
+        strokeDasharray={`${percent}, 100`}
       />
     </svg>
   );

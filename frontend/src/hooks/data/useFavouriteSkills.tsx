@@ -2,13 +2,13 @@ import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
 import { PaginationState } from '@tanstack/react-table';
 
-import { FavouriteType, useFavoritesStore } from '@/store/favoritesStore';
+import { useFavoritesStore } from '@/store/favoritesStore';
 
 import { useFilters } from '../useFilters';
 
 export function useFavouriteSkills(
   pagination: PaginationState,
-  order_by?: { order_by: string; descending: boolean }
+  orderBy?: { order_by: string; descending: boolean }
 ) {
   const { period, experience } = useFilters();
 
@@ -20,17 +20,21 @@ export function useFavouriteSkills(
       // favourites,
       period,
       experience,
-      order_by,
+      orderBy,
       pagination,
     ],
     queryFn: async () => {
-      const data = await API.favouriteSkills(
+      const data = await API.skills.favoriteSkills(
         favourites.filter(f => f.type === 'skills').map(f => f.name),
-        period,
-        experience,
-        order_by ? order_by : undefined,
-        pagination.pageSize,
-        pagination.pageIndex * pagination.pageSize
+        {
+          limit: pagination.pageSize,
+          offset: pagination.pageSize * pagination.pageIndex,
+        },
+        {
+          period,
+          experience,
+        },
+        orderBy
       );
       return data;
     },

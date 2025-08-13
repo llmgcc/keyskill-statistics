@@ -68,7 +68,7 @@ export function FavouriteButton({
     <IconButton
       variant={'ghost'}
       size={size}
-      loading={isLoading}
+      disabled={isLoading}
       spinner={<Spinner className="text-background-accent" size="xs" />}
       className="text-text-secondary transition-all duration-200 hover:bg-background-secondary"
       onClick={handleClick}

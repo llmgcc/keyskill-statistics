@@ -19,7 +19,7 @@ export const useCurrencyStore = create<CurrencyStore>()(
       selectedCurrency: null,
       fetchCurrencies: async () => {
         const usedCurrencies = Object.keys(CurrencyIcons);
-        const currencies = await API.currencyList();
+        const currencies = await API.general.currencyList();
         if (currencies.length) {
           // Fix RUR
           const rur = currencies.find(c => c.currency_code === 'RUR');

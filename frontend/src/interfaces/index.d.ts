@@ -1,6 +1,57 @@
+import { Experience } from '@/config/experience';
+
 export interface ServerOrderBy {
   order_by: string;
   descending: boolean;
+}
+
+export interface DomainsServer {
+  domains: Category[];
+  rows: number;
+}
+
+export interface CategoriesServer {
+  categories: Category[];
+  rows: number;
+}
+
+export interface DomainsServer {
+  domains: Category[];
+  rows: number;
+}
+
+export interface OrderBy {
+  column: string;
+  descending: bool;
+}
+
+export interface Pagination {
+  limit: number;
+  offset: number;
+}
+
+export interface FilterBase {
+  period: number | null;
+  experience?: Experience | null;
+}
+
+export interface CategoryFilter extends FilterBase {
+  name?: string;
+}
+
+export interface SkillFilter extends FilterBase {
+  category?: string;
+  domain?: string;
+  strict?: boolean;
+  related_to?: string;
+  similar_to?: string;
+  skill?: string;
+}
+
+export interface TrendFilter extends FilterBase {
+  name: string;
+  numberOfBins: number;
+  relatedTo?: string | null;
 }
 
 export interface ServerFilters {
@@ -14,23 +65,23 @@ export interface ServerFilters {
   skillName?: string;
 }
 
-export type Currency = {
+export interface Currency {
   currency_abbr: string;
   currency_rate: number;
   currency_code: string;
   currency_name: string;
-};
+}
 
-export type Stats = {
+export interface Stats {
   last_update: string;
   unique_skills: number;
   date_from: string;
   date_to: string;
   number_of_vacancies: string;
   max_salary: number;
-};
+}
 
-export type Category = {
+export interface Category {
   name: string;
   count: number;
   prev_count?: number;
@@ -40,36 +91,36 @@ export type Category = {
   confidence: number;
   all_time_place?: number;
   prev_average_salary?: number;
-};
+}
 
-type Chart = {
+interface Chart {
   bin: number;
   count: number;
-};
+}
 
-type TrendChart = {
+interface TrendChart {
   date_from: number;
   date_to: number;
   chart: Chart[];
-};
+}
 
-type SalaryChart = {
+interface SalaryChart {
   salary_from: number;
   salary_to: number;
   chart: Chart[];
-};
+}
 
-type KeySkillServer = {
+interface KeySkillServer {
   skills: KeySkill[];
   rows: number;
-};
+}
 
-type DomainsServer = {
+interface DomainsServer {
   domains: Category[];
   rows: number;
-};
+}
 
-type KeySkill = {
+interface KeySkill {
   name: string;
   translation?: string;
   count?: number;
@@ -87,4 +138,4 @@ type KeySkill = {
   experience_counts?: Record<string, number>;
   confidence?: number;
   similarity_score?: number;
-};
+}

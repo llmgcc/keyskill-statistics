@@ -50,7 +50,7 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
             enabled={!!skill}
             filter={{ related_to: skill?.name }}
             order_by={{
-              order_by: relatedOrder.column,
+              column: relatedOrder.column,
               descending: relatedOrder.descending,
             }}
             width={1000}
@@ -107,7 +107,7 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
             enabled={!!skill}
             filter={{ similar_to: skill?.name }}
             order_by={{
-              order_by: similarOrder.column,
+              column: similarOrder.column,
               descending: similarOrder.descending,
             }}
             width={1100}

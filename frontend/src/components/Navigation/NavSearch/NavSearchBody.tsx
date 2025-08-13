@@ -37,12 +37,12 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
       pageSize: 20,
     },
     {
-      order_by: 'count',
-      descending: true,
+      order_by: 'place',
+      descending: false,
     },
     {
       period: null,
-      skillName: debouncedQuery || undefined,
+      skill: debouncedQuery || undefined,
       experience: null,
     }
   );

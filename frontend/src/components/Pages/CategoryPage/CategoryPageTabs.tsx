@@ -44,7 +44,7 @@ export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
             enabled={!!category}
             filter={{ category: category?.name, strict: true }}
             order_by={{
-              order_by: strictOrder.column,
+              column: strictOrder.column,
               descending: strictOrder.descending,
             }}
             columns={[
@@ -102,7 +102,7 @@ export function CategoryPageTabs({ category }: CategoryPageTabsProps) {
             enabled={!!category}
             filter={{ category: category?.name, strict: false }}
             order_by={{
-              order_by: allOrder.column,
+              column: allOrder.column,
               descending: allOrder.descending,
             }}
             columns={[

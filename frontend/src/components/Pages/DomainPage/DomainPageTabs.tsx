@@ -44,7 +44,7 @@ export function DomainPageTabs({ domain }: DomainPageTabsProps) {
             enabled={!!domain}
             filter={{ domain: domain?.name, strict: true }}
             order_by={{
-              order_by: strictOrder.column,
+              column: strictOrder.column,
               descending: strictOrder.descending,
             }}
             paginationPrefix="core"
@@ -102,7 +102,7 @@ export function DomainPageTabs({ domain }: DomainPageTabsProps) {
             enabled={!!domain}
             filter={{ domain: domain?.name, strict: false }}
             order_by={{
-              order_by: allOrder.column,
+              column: allOrder.column,
               descending: allOrder.descending,
             }}
             paginationPrefix="all"

@@ -5,11 +5,7 @@ import { useCurrencyStore } from '@/store/currencyStore';
 
 import { useFilters } from '../useFilters';
 
-export function useDomainSalaryData(
-  domain: string | null,
-  numberOfBins = 20,
-  relatedTo?: string | null
-) {
+export function useDomainSalaryData(domain: string | null, numberOfBins = 20) {
   const { period, experience } = useFilters();
   const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
 
@@ -20,15 +16,14 @@ export function useDomainSalaryData(
       experience,
       numberOfBins,
       domain,
-      relatedTo,
     ],
     queryFn: async () => {
-      const data = await API.categorySalaryPlot(
-        domain ?? '',
+      const data = await API.charts.domainSalary({
+        name: domain ?? '',
         period,
         experience,
-        numberOfBins
-      );
+        numberOfBins,
+      });
       return data;
     },
     enabled: !!domain,

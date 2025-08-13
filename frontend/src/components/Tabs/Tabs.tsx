@@ -57,7 +57,7 @@ export function Tabs() {
           paginationPrefix="skills"
           enabled={true}
           order_by={{
-            order_by: skillsOrder.column,
+            column: skillsOrder.column,
             descending: skillsOrder.descending,
           }}
           width={1150}
@@ -99,7 +99,7 @@ export function Tabs() {
           paginationPrefix="domains"
           enabled={true}
           order_by={{
-            order_by: domainsOrder.column,
+            column: domainsOrder.column,
             descending: domainsOrder.descending,
           }}
           width={1150}
@@ -142,7 +142,7 @@ export function Tabs() {
           paginationPrefix="categories"
           enabled={true}
           order_by={{
-            order_by: categoriesOrder.column,
+            column: categoriesOrder.column,
             descending: categoriesOrder.descending,
           }}
           width={1150}

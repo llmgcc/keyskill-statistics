@@ -11,7 +11,7 @@ type StatsStore = {
 export const useStatsStore = create<StatsStore>()(set => ({
   stats: null,
   fetchStats: async () => {
-    const stats = await API.mainStats();
+    const stats = await API.general.mainStats();
     set({ stats });
   },
 }));

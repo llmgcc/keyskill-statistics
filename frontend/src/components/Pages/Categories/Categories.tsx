@@ -83,7 +83,7 @@ export function Categories() {
           paginationPrefix="categories"
           enabled={true}
           order_by={{
-            order_by: order.column,
+            column: order.column,
             descending: order.descending,
           }}
           width={1150}

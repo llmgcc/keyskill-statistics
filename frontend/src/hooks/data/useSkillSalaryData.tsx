@@ -23,13 +23,13 @@ export function useSkillSalaryData(
       relatedTo,
     ],
     queryFn: async () => {
-      const data = await API.salaryPlot(
-        skill ?? '',
+      const data = await API.charts.skillSalary({
+        name: skill ?? '',
         period,
         experience,
         numberOfBins,
-        relatedTo
-      );
+        relatedTo,
+      });
       return data;
     },
     enabled: !!skill,

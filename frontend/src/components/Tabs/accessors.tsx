@@ -250,7 +250,7 @@ export const countAccessor = <T extends KeySkill>(config: {
       <div className="">{config.header ?? 'Mentions'}</div>
     </div>
   ),
-  size: 100,
+  size: 80,
   meta: {
     alignRight: true,
   },

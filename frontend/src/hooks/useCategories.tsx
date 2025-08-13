@@ -2,14 +2,14 @@ import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
 import { PaginationState } from '@tanstack/react-table';
 
-import { ServerFilters, ServerOrderBy } from '@/interfaces';
+import { CategoryFilter, OrderBy } from '@/interfaces';
 
 import { useFilters } from './useFilters';
 
 export function useCategories(
   pagination: PaginationState,
-  order_by?: ServerOrderBy,
-  filter?: ServerFilters,
+  orderBy?: OrderBy,
+  filter?: CategoryFilter,
   enabled: boolean = true
 ) {
   const { period, experience } = useFilters();
@@ -18,18 +18,22 @@ export function useCategories(
     queryKey: [
       'categories_list',
       pagination,
-      order_by,
+      orderBy,
       filter,
       period,
       experience,
     ],
     queryFn: async () => {
-      const data = await API.categoriesList(
-        filter?.period === null ? null : period,
-        filter?.experience === null ? null : experience,
-        pagination.pageSize,
-        pagination.pageSize * pagination.pageIndex,
-        order_by
+      const data = await API.categories.categoriesList(
+        {
+          limit: pagination.pageSize,
+          offset: pagination.pageSize * pagination.pageIndex,
+        },
+        {
+          period: filter?.period === null ? null : period,
+          experience: filter?.experience === null ? null : experience,
+        },
+        orderBy
       );
 
       return data;

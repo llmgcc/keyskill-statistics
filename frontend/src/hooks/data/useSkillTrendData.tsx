@@ -22,13 +22,13 @@ export function useSkillTrendData(
   const { data, isLoading, isFetching } = useQuery({
     queryKey: queryKey,
     queryFn: async () => {
-      const data = await API.skillPlot(
-        skill ?? '',
+      const data = await API.charts.skillTrend({
+        name: skill ?? '',
         period,
         experience,
         numberOfBins,
-        relatedTo
-      );
+        relatedTo,
+      });
       return data;
     },
     enabled: !!skill,

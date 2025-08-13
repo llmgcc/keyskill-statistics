@@ -21,12 +21,12 @@ export function useCategorySalaryData(
       category,
     ],
     queryFn: async () => {
-      const data = await API.technologySalaryPlot(
-        category ?? '',
+      const data = await API.charts.categorySalary({
+        name: category ?? '',
         period,
         experience,
-        numberOfBins
-      );
+        numberOfBins,
+      });
       return data;
     },
     enabled: !!category,

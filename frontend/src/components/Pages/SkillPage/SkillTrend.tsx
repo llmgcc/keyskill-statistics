@@ -18,7 +18,6 @@ export function SkillTrend({ skill, isDataReady }: SkillTrendProps) {
     25
   );
   const { i18n, t } = useTranslation();
-
   return (
     <DemandTrend
       data={skill}

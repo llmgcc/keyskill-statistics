@@ -14,11 +14,11 @@ export function useSkillDetails(name: string | null) {
   } = useQuery({
     queryKey: ['skill_details', name, period, experience],
     queryFn: async () => {
-      const data = await API.skillDetails(
-        encodeURIComponent(name)!,
+      const data = await API.skills.skillDetails({
+        skill: encodeURIComponent(name!),
         period,
-        experience
-      );
+        experience,
+      });
       return data;
     },
     enabled: !!name,

@@ -20,12 +20,12 @@ export function useCategoryTrendData(
   const { data, isLoading, isFetching } = useQuery({
     queryKey: queryKey,
     queryFn: async () => {
-      const data = await API.categoryPlot(
-        category ?? '',
+      const data = await API.charts.categoryTrend({
+        name: category ?? '',
         period,
         experience,
-        numberOfBins
-      );
+        numberOfBins,
+      });
       return data;
     },
     enabled: !!category,

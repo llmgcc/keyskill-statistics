@@ -12,7 +12,7 @@ import { OrderButtons } from '@/components/Tabs/OrderButtons';
 import { SkillsTable } from '../Common/SkillsTable';
 import { StickyFilter } from '../Common/StickyFilter';
 
-const OrderByHighlightType = {
+export const OrderByHighlightType = {
   [Highlights.gainers]: 'trending',
   [Highlights.decliners]: 'declining',
   [Highlights.new]: 'new',
@@ -53,7 +53,7 @@ export function HighlightTypePage() {
         routes={[
           { displayName: t('common.mainPage'), url: '/' },
           { displayName: t('common.highlights'), url: '/highlights' },
-          { displayName: t(`highlights.${type}`), url: '/highlights' },
+          { displayName: t(`highlights.${type}`), url: '/highlights/' },
         ]}
       />
       <div className="pb-4">
@@ -93,7 +93,7 @@ export function HighlightTypePage() {
           paginationPrefix="skills"
           enabled={true}
           order_by={{
-            order_by: order.column,
+            column: order.column,
             descending: order.descending,
           }}
           width={1150}

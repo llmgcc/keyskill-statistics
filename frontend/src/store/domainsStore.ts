@@ -12,7 +12,7 @@ export const useDomainsStore = create<DomainsStore>()(set => ({
   domains: [],
   strict: true,
   fetchDomains: async () => {
-    const domains = (await API.domainsList()).domains;
+    const domains = (await API.domains.domainsList()).domains;
     set({ domains });
   },
 }));

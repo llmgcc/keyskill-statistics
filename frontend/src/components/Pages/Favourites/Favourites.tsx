@@ -50,7 +50,7 @@ export function Favourites() {
         body: (
           <FavouriteSkills
             order_by={{
-              order_by: orderSkills.column,
+              column: orderSkills.column,
               descending: orderSkills.descending,
             }}
           />
@@ -76,7 +76,7 @@ export function Favourites() {
         body: (
           <FavouriteDomains
             order_by={{
-              order_by: orderDomains.column,
+              column: orderDomains.column,
               descending: orderDomains.descending,
             }}
           />
@@ -102,7 +102,7 @@ export function Favourites() {
         body: (
           <FavouriteCategories
             order_by={{
-              order_by: orderCategories.column,
+              column: orderCategories.column,
               descending: orderCategories.descending,
             }}
           />
