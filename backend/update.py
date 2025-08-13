@@ -64,7 +64,7 @@ def count_vacancies(days):
     return np.array(list(reversed(data)))
 
 
-def get_dates(days=60):
+def get_dates(days=90):
     dates = count_vacancies(days)
     dates = sorted(dates, key=lambda x: x[0])
     dates_from_to = []

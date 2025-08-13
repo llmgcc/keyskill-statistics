@@ -1,7 +1,9 @@
 from pydantic import BaseModel
-from sqlmodel import  SQLModel
+from sqlmodel import SQLModel
 from typing import List, Optional
 from enum import Enum
+from src.schemas import BaseFilter
+
 
 class ChartResponse(SQLModel):
     bin: int
@@ -49,10 +51,31 @@ class SkillsResponse(SQLModel):
     categories: List[CategoriesResponse] | None
     experience_counts: dict[str | None, int] | None
     complexity_score: float | None
+    similarity_score: float | None = None
+
 
 class SkillsSimilarityResponse(SkillsResponse):
-    similarity_score : float
+    similarity_score: float
+
+
+class KeySkillsSimilarResponse(SQLModel):
+    skills: List[SkillsSimilarityResponse]
+    rows: int
+
 
 class KeySkillsResponse(SQLModel):
     skills: List[SkillsResponse]
     rows: int
+
+
+class FavouriteSkillsRequest(BaseModel):
+    names: List[str]
+
+
+class SkillsFilter(BaseFilter):
+    skill: Optional[str] = None
+    domain: Optional[str] = None
+    category: Optional[str] = None
+    strict: Optional[bool] = False
+    related_to: Optional[str] = None
+    similar_to: Optional[str] = None

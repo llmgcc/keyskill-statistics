@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request
 from src.keyskills.router import router as skills_router
-from src.highlights.router import router as highlights_router
 from src.domains.router import router as domains_router
 from src.categories.router import router as categories_router
 from src.general.router import router as main_router
@@ -25,7 +24,6 @@ async def add_process_time_header(request: Request, call_next):
 
 
 app.include_router(skills_router, prefix="/api")
-app.include_router(highlights_router, prefix="/api")
 app.include_router(domains_router, prefix="/api")
 app.include_router(categories_router, prefix="/api")
 app.include_router(main_router, prefix="/api")

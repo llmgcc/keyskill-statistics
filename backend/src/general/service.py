@@ -1,5 +1,5 @@
 from sqlmodel import Session, select, func, cast, Date, distinct
-from src.models import *
+from src.models import Vacancy, KeySkill, Currency, VacancySalary
 from src.config import settings
 from src.common import average_salary_case
 
@@ -66,10 +66,3 @@ async def get_currency_list(session: Session):
         Currency.currency_code,
     )
     return await session.exec(currency_query)
-
-
-async def get_experience_list(session: Session):
-    experience_query = (
-        select(Vacancy.experience).distinct().order_by(Vacancy.experience)
-    )
-    return await session.exec(experience_query)

@@ -1,3 +1,5 @@
+from typing import Optional
+from sqlalchemy import case
 from sqlmodel import Session, select, func, desc
 from src.models import (
     Currency,
@@ -10,13 +12,125 @@ from src.models import (
 import datetime
 from src.common import average_salary_case
 from src.config import settings
+from src.common import get_order_by_clause
+from src.schemas import Pagination, OrderBy
+from src.domains.schemas import DomainFilter
 
 
-async def domains_list(session: Session, days_period=30, experience=None, domain = None):
-    current_to = settings.max_date
-    current_from = current_to - datetime.timedelta(days=days_period)
-    prev_to = current_from
-    prev_from = prev_to - datetime.timedelta(days=days_period)
+def create_complexity_subquery(current_from, current_to):
+    domain_vacancies = (
+        select(
+            Domain.name,
+            Vacancy.id.label("vacancy_id"),
+            Vacancy.experience.label("experience"),
+        )
+        .select_from(Domain)
+        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
+        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
+        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .where(Vacancy.created_at.between(current_from, current_to))
+        .where(KeySkillDomain.confidence >= 0.1)
+        .distinct(Domain.name, Vacancy.id)
+    ).subquery()
+
+    experience_counts_subquery = (
+        select(
+            domain_vacancies.c.name,
+            domain_vacancies.c.experience,
+            func.count().label("exp_count"),
+        )
+        .select_from(domain_vacancies)
+        .group_by(domain_vacancies.c.name, domain_vacancies.c.experience)
+    ).subquery()
+
+    experience_json_subquery = (
+        select(
+            experience_counts_subquery.c.name,
+            func.json_object_agg(
+                func.coalesce(experience_counts_subquery.c.experience, "unknown"),
+                experience_counts_subquery.c.exp_count,
+            ).label("experience_counts"),
+            (
+                func.sum(
+                    experience_counts_subquery.c.exp_count
+                    * case(
+                        (experience_counts_subquery.c.experience == "unknown", 0.00),
+                        (
+                            experience_counts_subquery.c.experience == "noExperience",
+                            0.1,
+                        ),
+                        (
+                            experience_counts_subquery.c.experience == "between1And3",
+                            0.3,
+                        ),
+                        (
+                            experience_counts_subquery.c.experience == "between3And6",
+                            0.6,
+                        ),
+                        (experience_counts_subquery.c.experience == "moreThan6", 1),
+                        else_=0.00,
+                    )
+                )
+                / func.sum(experience_counts_subquery.c.exp_count)
+            ).label("raw_complexity_score"),
+        ).group_by(experience_counts_subquery.c.name)
+    ).subquery()
+
+    normalized_complexity_subquery = (
+        select(
+            experience_json_subquery.c.name,
+            experience_json_subquery.c.experience_counts,
+            experience_json_subquery.c.raw_complexity_score,
+            func.cume_dist()
+            .over(order_by=experience_json_subquery.c.raw_complexity_score)
+            .label("complexity_score"),
+        ).select_from(experience_json_subquery)
+    ).subquery()
+
+    return normalized_complexity_subquery
+
+
+def create_all_time_place_subquery():
+    all_time_count = func.count().label("count")
+
+    all_time_base = (
+        select(
+            Domain.name,
+            all_time_count,
+            func.row_number()
+            .over(order_by=desc(all_time_count))
+            .label("all_time_place"),
+        )
+        .select_from(KeySkillDomain)
+        .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)
+        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
+        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .where(
+            Vacancy.created_at.between(settings.min_date, settings.max_date),
+        )
+        .group_by(Domain.name)
+    )
+
+    return all_time_base.subquery()
+
+
+def get_base_domains(
+    days_period=None,
+    experience=None,
+    domain=None,
+    order_by=None,
+    descending=None,
+):
+    if days_period is None:
+        current_to = settings.max_date
+        current_from = settings.min_date
+        prev_to = current_from
+        prev_from = prev_to - (current_to - current_from)
+    else:
+        current_to = settings.max_date
+        current_from = current_to - datetime.timedelta(days=days_period)
+        prev_to = current_from
+        prev_from = prev_to - datetime.timedelta(days=days_period)
 
     skills = (
         select(
@@ -32,7 +146,11 @@ async def domains_list(session: Session, days_period=30, experience=None, domain
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
-        .where(Vacancy.experience == experience if experience else True)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
         .order_by(desc("count"))
@@ -40,11 +158,24 @@ async def domains_list(session: Session, days_period=30, experience=None, domain
     ).cte("skills")
 
     prev_skills = (
-        select(KeySkill.name, func.count(KeySkill.name).label("count"))
+        select(
+            KeySkill.name,
+            func.count(KeySkill.name).label("count"),
+            func.percentile_cont(0.5)
+            .within_group(average_salary_case())
+            .filter(Vacancy.created_at.between(prev_from, prev_to))
+            .label("median_salary"),
+        )
         .select_from(KeySkill)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(prev_from, prev_to))
-        .where(Vacancy.experience == experience if experience else True)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
         .group_by(KeySkill.name)
         .having(func.count(KeySkill.name) >= 5)
@@ -52,6 +183,9 @@ async def domains_list(session: Session, days_period=30, experience=None, domain
 
     count = func.count(skills.c.name).label("count")
     prev_count = func.count(prev_skills.c.name).label("prev_count")
+
+    all_time_place_subquery = create_all_time_place_subquery()
+    complexity_subquery = create_complexity_subquery(current_from, current_to)
 
     domains = (
         select(
@@ -63,6 +197,9 @@ async def domains_list(session: Session, days_period=30, experience=None, domain
             func.percentile_cont(0.5)
             .within_group(skills.c.median_salary)
             .label("average_salary"),
+            func.percentile_cont(0.5)
+            .within_group(prev_skills.c.median_salary)
+            .label("prev_average_salary"),
         )
         .select_from(KeySkillDomain)
         .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)
@@ -70,7 +207,110 @@ async def domains_list(session: Session, days_period=30, experience=None, domain
         .outerjoin(prev_skills, prev_skills.c.name == KeySkillDomain.name)
         .where(Domain.name == domain if domain is not None else True)
         .group_by(Domain.name)
-        .order_by(desc("count"))
     )
 
-    return (await session.exec(domains)).all()
+    domains_result = (
+        select(
+            *domains.c,
+            all_time_place_subquery.c.all_time_place,
+            complexity_subquery.c.experience_counts,
+            complexity_subquery.c.complexity_score,
+        )
+        .join(
+            all_time_place_subquery,
+            all_time_place_subquery.c.name == domains.c.name,
+            isouter=True,
+        )
+        .join(
+            complexity_subquery,
+            complexity_subquery.c.name == domains.c.name,
+            isouter=True,
+        )
+    )
+
+    return domains_result
+
+
+async def domains_list(
+    session: Session,
+    pagination: Optional[Pagination] = None,
+    filter: Optional[DomainFilter] = None,
+    order_by: Optional[OrderBy] = None,
+):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    domain = filter.domain if filter else None
+    limit = pagination.limit if pagination else None
+    offset = pagination.offset if pagination else 0
+    descending = order_by.descending if order_by else None
+    column = order_by.column if order_by else None
+
+    domains = get_base_domains(
+        days_period=days_period,
+        experience=experience,
+        order_by=column,
+        descending=descending,
+        domain=domain,
+    )
+
+    rows = (
+        await session.exec(
+            select(func.count(func.distinct(domains.c.name))).select_from(domains)
+        )
+    ).one()
+
+    domains_result = (
+        (select(*domains.c))
+        .order_by(*get_order_by_clause(domains, column, descending))
+        .limit(limit)
+        .offset(offset)
+    )
+
+    return {
+        "domains": (await session.exec(domains_result)).all(),
+        "rows": rows,
+    }
+
+
+async def favourites(
+    session: Session,
+    names: list[str],
+    pagination: Optional[Pagination] = None,
+    filter: Optional[DomainFilter] = None,
+    order_by: Optional[OrderBy] = None,
+):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    limit = pagination.limit if pagination else None
+    offset = pagination.offset if pagination else 0
+    descending = order_by.descending if order_by else None
+    column = order_by.column if order_by else None
+
+    domains = get_base_domains(
+        days_period=days_period,
+        experience=experience,
+        order_by=column,
+        descending=descending,
+    )
+
+    filtered = (
+        select(*domains.c).select_from(domains).where(domains.c.name.in_(names))
+    ).subquery()
+
+    rows = (
+        await session.exec(
+            select(func.count(func.distinct(filtered.c.name))).select_from(filtered)
+        )
+    ).one()
+
+    domains_result = (
+        (select(*filtered.c))
+        .order_by(*get_order_by_clause(filtered, column, descending))
+        .limit(limit)
+        .offset(offset)
+    )
+
+    return {
+        "domains": (await session.exec(domains_result)).all(),
+        "rows": rows,
+    }

@@ -1,62 +1,65 @@
-from typing import List
-from fastapi import APIRouter, Depends, Query
+from typing import Optional
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel
 from sqlmodel import Session
 from src.dependencies import get_async_session
-from src.keyskills.service import skills_list, skill_details, related_skills, similar_skills
-from src.keyskills.schemas import KeySkillsResponse, SkillsResponse, SkillsSimilarityResponse, SkillOrderByQueryParams
-from urllib.parse import unquote
+from src.keyskills.service import (
+    skills_list,
+    skill_details,
+    favourites,
+)
+from src.keyskills.schemas import (
+    KeySkillsResponse,
+    SkillsResponse,
+    FavouriteSkillsRequest,
+    SkillsFilter,
+)
+from src.schemas import Pagination, OrderBy
 
 router = APIRouter(prefix="/key-skills", tags=["Key Skills"])
+
+
+class SkillsOrder(BaseModel):
+    order_by: Optional[str] = None
+    descending: Optional[bool] = None
 
 
 @router.get(summary="Key Skills", path="/list", response_model=KeySkillsResponse)
 async def get_skills(
     session: Session = Depends(get_async_session),
-    period: int = 5,
-    limit: int = 20,
-    offset=0,
-    experience=None
+    pagination: Pagination = Depends(),
+    filter: SkillsFilter = Depends(),
+    order_by: OrderBy = Depends(),
 ):
     return await skills_list(
-        session,
-        limit=limit,
-        offset=offset,
-        days_period=period,
-        experience=experience,
+        session, pagination=pagination, filter=filter, order_by=order_by
     )
 
-@router.get(summary="Skill Details", path="/details/{skill_name:path}", response_model=SkillsResponse)
+
+@router.get(
+    summary="Skill Details",
+    path="/details/{skill:path}",
+    response_model=SkillsResponse,
+)
 async def get_skill_details(
-    skill_name: str,
-    days_period : int = 5,
-    experience: str = None,
     session: Session = Depends(get_async_session),
+    filter: SkillsFilter = Depends(),
 ):
-    return await skill_details(session, skill_name, days_period, experience)
+    return await skill_details(session, filter=filter)
 
 
-@router.get(summary="Related", path="/related/{skill_name:path}", response_model=KeySkillsResponse)
-async def get_related_skills(
-    skill_name: str,
-    days_period : int = 5,
-    experience=None,
+@router.post(summary="Favourites", path="/favourites", response_model=KeySkillsResponse)
+async def get_favourites(
+    request: FavouriteSkillsRequest,
     session: Session = Depends(get_async_session),
-    order_by: SkillOrderByQueryParams = Depends(),
-    limit : int = 10,
-    offset : int = 10
+    pagination: Pagination = Depends(),
+    filter: SkillsFilter = Depends(),
+    order_by: OrderBy = Depends(),
 ):
-    return await related_skills(session, skill_name, days_period, experience=experience, order_by=order_by, limit=limit, offset=offset)
-
-
-
-
-@router.get(summary="Similar", path="/similar/{skill_name:path}", response_model=KeySkillsResponse)
-async def get_similar_skills(
-    skill_name: str,
-    limit: int = Query(10),
-    days_period : int = 30,
-    session: Session = Depends(get_async_session),
-    order_by: SkillOrderByQueryParams = Depends(),
-    offset : int = 10
-):
-    return await similar_skills(session, skill_name, limit=limit, days_period=days_period, order_by=order_by, offset=offset)
+    return await favourites(
+        session,
+        names=request.names,
+        pagination=pagination,
+        filter=filter,
+        order_by=order_by,
+    )

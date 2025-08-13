@@ -1,21 +1,31 @@
-from sqlmodel import Session, and_, case, extract, select, func, cast, Date
+from typing import Optional
+from sqlmodel import Session, and_, extract, select, func, cast, Date
 from src.config import settings
-from src.models import *
+from src.models import (
+    Vacancy,
+    KeySkill,
+    KeySkillCategory,
+    KeySkillDomain,
+    VacancySalary,
+    Currency,
+    Category,
+    Domain,
+)
 from sqlalchemy.dialects.postgresql import aggregate_order_by
 import datetime
 from src.common import average_salary_case
-
+from src.charts.schemas import ChartFilter
 
 
 async def skills_chart(
-    skill_name,
-    session: Session,
-    days_period=15,
-    number_of_bins=25,
-    for_all_skills=False,
-    experience=None,
-    related_to=None
+    session: Session, filter: Optional[ChartFilter] = None, for_all_skills=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    skill_name = filter.name
+    related_to = filter.related_to
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -40,17 +50,21 @@ async def skills_chart(
                     .select_from(Vacancy)
                     .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
                     .where(KeySkill.name == related_to)
-                ) if related_to is not None else True
+                )
+                if related_to is not None
+                else True,
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
-        .where(Vacancy.experience == (None if experience == 'unknown' else experience) if experience is not None else True)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
         .order_by(Vacancy.created_at.desc())
     ).subquery()
-        
-
 
     grouped_bins_count = func.count().label("count")
     grouped_bins = (
@@ -82,17 +96,17 @@ async def skills_chart(
 
 
 async def salary_chart(
-    skill_name,
-    session: Session,
-    days_period=15,
-    number_of_bins=15,
-    experience=None,
-    for_all_skills=False,
-    related_to = None
+    session: Session, filter: Optional[ChartFilter] = None, for_all_skills=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    skill_name = filter.name
+    related_to = filter.related_to
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
-    
+
     vacancies = (
         select(
             KeySkill.name.label("name"),
@@ -113,7 +127,9 @@ async def salary_chart(
                     .select_from(Vacancy)
                     .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
                     .where(KeySkill.name == related_to)
-                ) if related_to is not None else True
+                )
+                if related_to is not None
+                else True,
             )
         )
         .where(KeySkill.name == skill_name if not for_all_skills else True)
@@ -121,7 +137,9 @@ async def salary_chart(
     )
 
     if experience is not None:
-        vacancies = vacancies.where(Vacancy.experience == (None if experience == 'unknown' else experience))
+        vacancies = vacancies.where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+        )
 
     right = settings.max_salary
     left = 0
@@ -187,8 +205,13 @@ async def salary_chart(
 
 
 async def category_chart(
-    category, session: Session, days_period=15, number_of_bins=20, experience=None
+    session: Session, filter: Optional[ChartFilter] = None, for_all=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    category = filter.name
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -212,8 +235,12 @@ async def category_chart(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Domain.name == category)
-        .where(Vacancy.experience == experience if experience is not None else True)
+        .where(Domain.name == category if not for_all else True)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
         .order_by(Vacancy.created_at.desc())
@@ -237,16 +264,26 @@ async def category_chart(
         ).label("chart"),
     ).group_by(grouped_bins.c.name)
 
-    return (await session.exec(count_chart)).first()
+    if for_all:
+        count_chart = select(
+            grouped_bins.c.name,
+            func.to_json(
+                func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
+            ).label("chart"),
+        ).group_by(grouped_bins.c.name)
+        return count_chart.subquery(), prev_from, current_to
+    else:
+        return (await session.exec(count_chart)).first(), prev_from, current_to
 
 
 async def category_salary_chart(
-    category,
-    session: Session,
-    days_period=15,
-    number_of_bins=15,
-    experience=None,
+    session: Session, filter: Optional[ChartFilter] = None, for_all=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    category = filter.name
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     vacancies = (
@@ -269,11 +306,15 @@ async def category_salary_chart(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Domain.name == category)
+        .where(Domain.name == category if not for_all else True)
     )
 
     if experience is not None:
-        vacancies = vacancies.where(Vacancy.experience == experience)
+        vacancies = vacancies.where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
 
     right = 10**6
     left = 0
@@ -326,12 +367,26 @@ async def category_salary_chart(
         average_salary_per_skill.c.name == salary_chart.c.name,
     )
 
-    return (await session.exec(salary_chart_with_avg)).first(), right
+    if for_all:
+        salary_chart_with_avg = (
+            select(salary_chart.c.name, salary_chart.c.salary_chart).join(
+                average_salary_per_skill,
+                average_salary_per_skill.c.name == salary_chart.c.name,
+            )
+        ).subquery()
+        return salary_chart_with_avg, right
+    else:
+        return (await session.exec(salary_chart_with_avg)).first(), right
 
 
 async def technologies_chart(
-    technology, session: Session, days_period=15, number_of_bins=20, experience=None
+    session: Session, filter: Optional[ChartFilter] = None, for_all=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    technology = filter.name
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
     prev_to = current_from
@@ -355,9 +410,12 @@ async def technologies_chart(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Category.name == technology)
-        .where(KeySkillCategory.confidence >= 0.25)
-        .where(Vacancy.experience == experience if experience is not None else True)
+        .where(Category.name == technology if not for_all else True)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
         .order_by(Vacancy.created_at.desc())
@@ -381,16 +439,26 @@ async def technologies_chart(
         ).label("chart"),
     ).group_by(grouped_bins.c.name)
 
-    return (await session.exec(count_chart)).first()
+    if for_all:
+        count_chart = select(
+            grouped_bins.c.name,
+            func.to_json(
+                func.array_agg(aggregate_order_by(json_object, bin_label.asc()))
+            ).label("chart"),
+        ).group_by(grouped_bins.c.name)
+        return count_chart.subquery(), prev_from, current_to
+    else:
+        return (await session.exec(count_chart)).first(), prev_from, current_to
 
 
 async def technologies_salary_chart(
-    technology,
-    session: Session,
-    days_period=15,
-    number_of_bins=15,
-    experience=None,
+    session: Session, filter: Optional[ChartFilter] = None, for_all=False
 ):
+    days_period = filter.period if filter else None
+    experience = filter.experience if filter else None
+    number_of_bins = filter.number_of_bins
+    technology = filter.name
+
     current_to = settings.max_date
     current_from = current_to - datetime.timedelta(days=days_period)
 
@@ -407,6 +475,11 @@ async def technologies_salary_chart(
         .join(Currency, Currency.currency_code == VacancySalary.currency)
         .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
         .join(Category, Category.id == KeySkillCategory.category_id)
+        .where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
         .where(KeySkillCategory.confidence >= 0.25)
         .where(
             and_(
@@ -414,11 +487,8 @@ async def technologies_salary_chart(
                 Vacancy.created_at.between(settings.min_date, settings.max_date),
             )
         )
-        .where(Category.name == technology)
+        .where(Category.name == technology if not for_all else True)
     )
-
-    if experience is not None:
-        vacancies = vacancies.where(Vacancy.experience == experience)
 
     right = 10**6
     left = 0
@@ -471,4 +541,13 @@ async def technologies_salary_chart(
         average_salary_per_skill.c.name == salary_chart.c.name,
     )
 
-    return (await session.exec(salary_chart_with_avg)).first(), right
+    if for_all:
+        salary_chart_with_avg = (
+            select(salary_chart.c.name, salary_chart.c.salary_chart).join(
+                average_salary_per_skill,
+                average_salary_per_skill.c.name == salary_chart.c.name,
+            )
+        ).subquery()
+        return salary_chart_with_avg, right
+    else:
+        return (await session.exec(salary_chart_with_avg)).first(), right
