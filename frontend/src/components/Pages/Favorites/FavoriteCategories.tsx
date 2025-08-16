@@ -5,70 +5,68 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { KeySkill, ServerOrderBy } from '@/interfaces';
-import { useFavouriteDomains } from '@/hooks/data/useFavouriteDomains';
+import { useFavoriteCategories } from '@/hooks/data/useFavoriteCategories';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
 import { DataTable } from '@/components/Table/DataTable';
 import { PageSize } from '@/components/Table/PageSize';
 import {
+  categoryChartAccessor,
   categoryImageAccessor,
   categoryNameAccessor,
+  categorySalaryAccessor,
   complexityAccessor,
   countAccessor,
-  domainChartAccessor,
-  domainSalaryAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
 } from '@/components/Tabs/accessors';
 
-interface FavouriteDomainsProps {
+interface favoriteCategoriesProps {
   order_by?: ServerOrderBy;
 }
 
-export function FavouriteDomains({ order_by }: FavouriteDomainsProps) {
+export function FavoriteCategories({ order_by }: favoriteCategoriesProps) {
   const { period, experience } = useFilters();
   const navigate = useNavigate();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
     0,
     [10, 25, 50],
     JSON.stringify([period, order_by, experience]),
-    'domains'
+    'categories'
   );
-  const { favouriteDomains, isLoading, isFetching, rows } = useFavouriteDomains(
-    pagination,
-    order_by
-  );
+  const { favoriteCategories, isLoading, isFetching, rows } =
+    useFavoriteCategories(pagination, order_by);
   const { t, i18n } = useTranslation();
 
   const tableColumns = useMemo(
     () =>
       [
-        favouriteAccessor({
-          accessorKey: 'favourite_domain',
+        favoriteAccessor({
+          accessorKey: 'favorite_category',
           isLoading: isLoading || isFetching,
           displayName: (skill: KeySkill) => skillName(skill, i18n.language),
-          favouriteType: 'domains',
+          favoriteType: 'categories',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
-        categoryImageAccessor({ accessorKey: 'image', category: 'domains' }),
+        categoryImageAccessor({ accessorKey: 'image', category: 'categories' }),
         categoryNameAccessor({
           accessorKey: 'name',
           header: t('columns.name'),
-          category: 'domains',
+          category: 'categories',
         }),
         complexityAccessor({
           accessorKey: 'complexity',
           header: t('complexity.title'),
         }),
-        domainSalaryAccessor({
+        categorySalaryAccessor({
           accessorKey: 'average_salary',
           header: t('columns.salary'),
           isLoading: isLoading || isFetching,
         }),
         countAccessor({ accessorKey: 'count', header: t('columns.mentions') }),
-        domainChartAccessor({
+        categoryChartAccessor({
           accessorKey: 'chart',
           header: t('columns.trend'),
           isLoading: isLoading || isFetching,
@@ -81,7 +79,7 @@ export function FavouriteDomains({ order_by }: FavouriteDomainsProps) {
     <>
       <div className="my-1 flex items-center justify-between gap-4 overflow-auto">
         <div className="text-sm text-text-secondary">
-          {t('favouritesPage.domains')}
+          {t('favoritesPage.categories')}
         </div>
         <PageSize
           variants={pageSizeVariants}
@@ -91,17 +89,17 @@ export function FavouriteDomains({ order_by }: FavouriteDomainsProps) {
       </div>
       <DataTable
         columns={tableColumns as Array<ColumnDef<KeySkill, unknown>>}
-        data={favouriteDomains ?? placeholderData(pagination.pageSize)}
-        isLoading={isLoading || !favouriteDomains}
+        data={favoriteCategories ?? placeholderData(pagination.pageSize)}
+        isLoading={isLoading || !favoriteCategories}
         isFetching={isFetching}
-        pinnedLeft={['favourite_domain', 'place', 'image']}
+        pinnedLeft={['favorite_category', 'place', 'image']}
         minWidth={1150}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
         onSelect={(rowData: KeySkill) => {
-          navigate(`/domains/${encodeURIComponent(rowData.name)}`);
+          navigate(`/categories/${encodeURIComponent(rowData.name)}`);
         }}
       />
     </>

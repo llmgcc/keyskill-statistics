@@ -1,11 +1,36 @@
 import {
   BiBarChart,
+  BiBookOpen,
+  BiBrain,
+  BiBuilding,
+  BiChat,
+  BiCloud,
+  BiCog,
+  BiCoin,
+  BiCube,
+  BiData,
+  BiDesktop,
   BiDotsHorizontal,
+  BiEdit,
+  BiFile,
+  BiGroup,
   BiJoystick,
+  BiLink,
   BiMobile,
+  BiNetworkChart,
+  BiPackage,
+  BiSearch,
   BiServer,
   BiShield,
+  BiSolidBattery,
+  BiSolidCube,
+  BiStats,
+  BiTask,
   BiTerminal,
+  BiTestTube,
+  BiText,
+  BiTransfer,
+  BiTrendingUp,
 } from 'react-icons/bi';
 import { BsBox, BsCloudCheck, BsGear, BsRobot } from 'react-icons/bs';
 import {
@@ -42,6 +67,31 @@ export enum Categories {
   'Mobile Development Frameworks' = 'Mobile Development Frameworks',
   'Game Engines & Tools' = 'Game Engines & Tools',
   'Business Intelligence Tools' = 'Business Intelligence Tools',
+  'Testing Frameworks' = 'Testing Frameworks',
+  'Cloud Services' = 'Cloud Services',
+  'Package Managers' = 'Package Managers',
+  'Build Tools' = 'Build Tools',
+  'Code Editors & IDEs' = 'Code Editors & IDEs',
+  'State Management Libraries' = 'State Management Libraries',
+  'Content Management Systems' = 'Content Management Systems',
+  'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
+  'Project Management Tools' = 'Project Management Tools',
+  'Network Protocols' = 'Network Protocols',
+  'Blockchain Platforms and tools' = 'Blockchain Platforms and tools',
+  '3D Modeling Tools' = '3D Modeling Tools',
+  'CRM Platforms' = 'CRM Platforms',
+  'Documentation Tools' = 'Documentation Tools',
+  'Search Engine Technologies' = 'Search Engine Technologies',
+  'Virtualization Platforms' = 'Virtualization Platforms',
+  'AI Generation Tools' = 'AI Generation Tools',
+  'NLP Processing Libraries' = 'NLP Processing Libraries',
+  'ETL Tools' = 'ETL Tools',
+  'Object-Relational Mappers' = 'Object-Relational Mappers',
+  'SEO Analysis Tools' = 'SEO Analysis Tools',
+  'ERP Systems' = 'ERP Systems',
+  'Data Warehousing Tools' = 'Data Warehousing Tools',
+  'Big Data Frameworks' = 'Big Data Frameworks',
+  'Communication & Collaboration Tools' = 'Communication & Collaboration Tools',
   'Other' = 'Other',
   'Unknown' = 'Unknown',
 }
@@ -81,6 +131,50 @@ export const CategoryDescription: Record<Categories, string> = {
   'Game Engines & Tools': 'Platforms and tools for game development',
   'Business Intelligence Tools':
     'Tools for data analysis and business reporting',
+  'Testing Frameworks':
+    'Frameworks and libraries specifically for automated testing',
+  'Cloud Services': 'Specific cloud platform services and tools',
+  'Package Managers': 'Tools for managing software packages and dependencies',
+  'Build Tools': 'Tools for building, bundling and compiling code',
+  'Code Editors & IDEs': 'Integrated development environments and text editors',
+  'State Management Libraries': 'Libraries for managing application state',
+  'Content Management Systems':
+    'Platforms for creating, managing and publishing digital content',
+  'Graphics APIs & GPGPU':
+    'Graphics programming interfaces and general-purpose GPU computing frameworks',
+  'Project Management Tools':
+    'Applications used for planning, tracking, and managing software development projects',
+  'Network Protocols':
+    'Communication protocols that define rules for data transmission between devices and systems across networks',
+  'Blockchain Platforms and tools':
+    'Platforms and frameworks for developing blockchain applications and smart contracts',
+  '3D Modeling Tools':
+    'Software for creating and editing 3D models and animations',
+  'CRM Platforms':
+    'Customer relationship management systems for managing interactions with customers',
+  'Documentation Tools':
+    'Tools for creating and managing technical documentation',
+  'Search Engine Technologies':
+    'Platforms and tools for implementing search functionality',
+  'Virtualization Platforms':
+    'Technologies for creating and managing virtual machines and environments',
+  'AI Generation Tools':
+    'AI-powered tools for generating content, code and other assets',
+  'NLP Processing Libraries':
+    'Libraries and frameworks for natural language processing tasks',
+  'ETL Tools':
+    'Tools for extracting, transforming and loading data between systems',
+  'Object-Relational Mappers':
+    'Libraries that map database structures to object-oriented models',
+  'SEO Analysis Tools': 'Tools for optimizing websites for search engines',
+  'ERP Systems':
+    'Enterprise resource planning systems for managing business operations',
+  'Data Warehousing Tools':
+    'Platforms and tools for storing and analyzing large-scale data',
+  'Big Data Frameworks':
+    'Frameworks for processing and analyzing large datasets',
+  'Communication & Collaboration Tools':
+    'Platforms and tools for team communication and collaboration',
   Other: "Skills that don't fit into other specific categories",
   Unknown: 'Unclassified or emerging technology skills',
 };
@@ -193,5 +287,106 @@ export const CategoriesStyle = {
   [Categories.Unknown]: {
     logo: <FaQuestion />,
     color: colors.slate[400],
+  },
+
+  [Categories['Testing Frameworks']]: {
+    logo: <BiTestTube />,
+    color: colors.green[500],
+  },
+  [Categories['Cloud Services']]: {
+    logo: <BiCloud />,
+    color: colors.blue[400],
+  },
+  [Categories['Package Managers']]: {
+    logo: <BiPackage />,
+    color: colors.blue[500],
+  },
+  [Categories['Build Tools']]: {
+    logo: <BiCog />,
+    color: colors.gray[500],
+  },
+  [Categories['Code Editors & IDEs']]: {
+    logo: <BiEdit />,
+    color: colors.purple[500],
+  },
+  [Categories['State Management Libraries']]: {
+    logo: <BiSolidBattery />,
+    color: colors.indigo[400],
+  },
+  [Categories['Content Management Systems']]: {
+    logo: <BiFile />,
+    color: colors.cyan[500],
+  },
+  [Categories['Graphics APIs & GPGPU']]: {
+    logo: <BiCube />,
+    color: colors.red[500],
+  },
+  [Categories['Project Management Tools']]: {
+    logo: <BiTask />,
+    color: colors.blue[700],
+  },
+  [Categories['Network Protocols']]: {
+    logo: <BiNetworkChart />,
+    color: colors.teal[600],
+  },
+  [Categories['Blockchain Platforms and tools']]: {
+    logo: <BiCoin />,
+    color: colors.yellow[500],
+  },
+  [Categories['3D Modeling Tools']]: {
+    logo: <BiSolidCube />,
+    color: colors.purple[400],
+  },
+  [Categories['CRM Platforms']]: {
+    logo: <BiGroup />,
+    color: colors.pink[500],
+  },
+  [Categories['Documentation Tools']]: {
+    logo: <BiBookOpen />,
+    color: colors.slate[500],
+  },
+  [Categories['Search Engine Technologies']]: {
+    logo: <BiSearch />,
+    color: colors.orange[400],
+  },
+  [Categories['Virtualization Platforms']]: {
+    logo: <BiDesktop />,
+    color: colors.gray[700],
+  },
+  [Categories['AI Generation Tools']]: {
+    logo: <BiBrain />,
+    color: colors.violet[500],
+  },
+  [Categories['NLP Processing Libraries']]: {
+    logo: <BiText />,
+    color: colors.emerald[400],
+  },
+  [Categories['ETL Tools']]: {
+    logo: <BiTransfer />,
+    color: colors.amber[500],
+  },
+  [Categories['Object-Relational Mappers']]: {
+    logo: <BiLink />,
+    color: colors.indigo[600],
+  },
+  [Categories['SEO Analysis Tools']]: {
+    logo: <BiTrendingUp />,
+    color: colors.green[600],
+  },
+  [Categories['ERP Systems']]: {
+    logo: <BiBuilding />,
+    color: colors.stone[600],
+  },
+  [Categories['Data Warehousing Tools']]: {
+    logo: <BiData />,
+    color: colors.blue[800],
+  },
+  [Categories['Big Data Frameworks']]: {
+    logo: <BiStats />,
+    color: colors.red[600],
+  },
+  [Categories['Communication & Collaboration Tools']]: {
+    logo: <BiChat />,
+    color: colors.sky[400],
   },
 };

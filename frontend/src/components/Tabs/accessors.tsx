@@ -4,7 +4,7 @@ import { ColumnDef, sortingFns } from '@tanstack/react-table';
 import { GoDiff } from 'react-icons/go';
 
 import { KeySkill } from '@/interfaces';
-import { FavouriteType } from '@/store/favoritesStore';
+import { favoriteType } from '@/store/favoritesStore';
 import { CountRenderer } from '@/components/Table/renderers/CountRenderer';
 import { SalaryRenderer } from '@/components/Table/renderers/SalaryRenderer';
 import { ValueChangeRenderer } from '@/components/Table/renderers/ValueChangeRenderer';
@@ -17,7 +17,7 @@ import { CategorySalaryRenderer } from '../Table/renderers/CategorySalaryRendere
 import { DomainSalaryRenderer } from '../Table/renderers/DomainSalaryRenderer';
 import { CategoryDescription } from '../ui/Description/CategoryDescription';
 import { SkillDescription } from '../ui/Description/SkillDescription';
-import { FavouriteButton } from '../ui/FavouriteButton';
+import { FavoriteButton } from '../ui/FavoriteButton';
 import { SkillImage } from '../ui/SkillImage';
 
 export const skillImageAccessor = <T extends KeySkill>(config: {
@@ -178,11 +178,11 @@ export const skillNameAccessor = <T extends KeySkill>(config: {
   },
 });
 
-export const favouriteAccessor = <T extends KeySkill>(config: {
+export const favoriteAccessor = <T extends KeySkill>(config: {
   accessorKey: string;
   isLoading: boolean;
   displayName: (skill: KeySkill) => string | null;
-  favouriteType: FavouriteType;
+  favoriteType: favoriteType;
 }): ColumnDef<T> => ({
   accessorKey: config.accessorKey as string,
   header: () => <div></div>,
@@ -190,11 +190,11 @@ export const favouriteAccessor = <T extends KeySkill>(config: {
   cell: info => {
     return (
       <div className="flex items-center justify-center">
-        <FavouriteButton
+        <FavoriteButton
           isLoading={config.isLoading}
           name={info.row.original.name}
           displayName={config.displayName(info.row.original)}
-          favouriteType={config.favouriteType}
+          favoriteType={config.favoriteType}
         />
       </div>
     );

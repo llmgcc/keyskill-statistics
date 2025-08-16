@@ -1,6 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useCategoryDetails } from '@/hooks/data/useCategoryDetails';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 
 import { Complexity } from '../Common/Complexity';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -15,6 +18,10 @@ export function CategoryPage() {
     useCategoryDetails(name ?? null);
   const navigate = useNavigate();
   const categoryChanged = categoryDetails?.name !== name;
+  const { t } = useTranslation();
+  useDocumentTitle(
+    categoryDetails?.name ? t(`categories.${categoryDetails.name}`) : null
+  );
 
   if (isError) {
     navigate('/');
@@ -22,6 +29,21 @@ export function CategoryPage() {
 
   return (
     <div className="app-container">
+      <AppBreadcrumb
+        className="pb-1"
+        routes={[
+          { displayName: t('common.mainPage'), url: '/' },
+          { displayName: t('common.categories'), url: '/categories' },
+          {
+            displayName: categoryDetails?.name
+              ? categoryDetails?.name
+                ? t(`categories.${categoryDetails.name}`)
+                : ''
+              : '',
+            url: '/categories/',
+          },
+        ]}
+      />
       <div className="rounded bg-background-primary py-2">
         <div>
           <CategoryHeader category={categoryDetails} isLoading={isLoading} />

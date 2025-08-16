@@ -1,9 +1,13 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/shallow';
 
 import { CurrencyIcons } from '@/config/currencies';
 import { useCurrencyStore } from '@/store/currencyStore';
-import { NavigationSelect } from '@/components/Navigation/NavigationSelect';
+import {
+  NavigationSelect,
+  Option,
+} from '@/components/Navigation/NavigationSelect';
 
 export function CurrencySwitch() {
   const { t } = useTranslation();
@@ -15,12 +19,16 @@ export function CurrencySwitch() {
     ])
   );
 
-  const options = currencies.map(c => ({
-    code: c.currency_code,
-    name: t(`currency.${c.currency_code}`),
-  }));
+  const options = useMemo(
+    () =>
+      currencies.map(c => ({
+        code: c.currency_code,
+        name: t(`currency.${c.currency_code}`),
+      })),
+    [currencies, t]
+  );
 
-  const currencyIcon = () => {
+  const currencyIcon = useMemo(() => {
     if (selectedCurrency) {
       const CurrencyIcon = CurrencyIcons[selectedCurrency.currency_code].type;
       return (
@@ -28,15 +36,20 @@ export function CurrencySwitch() {
       );
     }
     return null;
-  };
+  }, [selectedCurrency]);
+
+  const handleSelect = useCallback(
+    (option: Option) => setSelectedCurrency(option.code),
+    [setSelectedCurrency]
+  );
 
   return (
     <NavigationSelect
       title={t('navigation.tooltips.currency')}
-      icon={currencyIcon()}
+      icon={currencyIcon}
       options={options}
       selectedOptionCode={selectedCurrency?.currency_code ?? null}
-      onSelect={option => setSelectedCurrency(option.code)}
+      onSelect={handleSelect}
     />
   );
 }

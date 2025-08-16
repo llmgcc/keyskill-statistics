@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSkillDetails } from '@/hooks/data/useSkillDetails';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 
 import { Complexity } from '../Common/Complexity';
 import { PredictionsCard, PredictionTooltip } from '../Common/PredictionsCard';
@@ -19,8 +21,12 @@ export function SkillPage() {
   const { skillDetails, isLoading, isFetching, isError } = useSkillDetails(
     decodedName ?? null
   );
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const skillChanged = skillDetails?.name !== name;
+
+  useDocumentTitle(
+    skillDetails?.name ? skillName(skillDetails, i18n.language) : null
+  );
 
   if (isError) {
     navigate('/');
@@ -28,7 +34,20 @@ export function SkillPage() {
 
   return (
     <div className="app-container">
-      <div className="rounded bg-background-primary py-2">
+      <AppBreadcrumb
+        className="pb-1"
+        routes={[
+          { displayName: t('common.mainPage'), url: '/' },
+          { displayName: t('common.skills'), url: '/skills' },
+          {
+            displayName: skillDetails?.name
+              ? (skillName(skillDetails, i18n.language) ?? '')
+              : '',
+            url: '/skills/',
+          },
+        ]}
+      />
+      <div className="rounded bg-background-primary">
         <div>
           <SkillHeader skill={skillDetails} isLoading={skillChanged} />
         </div>

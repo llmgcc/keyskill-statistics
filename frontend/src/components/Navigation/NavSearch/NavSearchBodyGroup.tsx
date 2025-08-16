@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { Badge, Skeleton } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +22,7 @@ interface NavSearchBodyGroupProps<T extends CategoryBase> {
   isMouseActive: boolean;
 }
 
-export function NavSearchBodyGroup<T extends CategoryBase>({
+function NavSearchBodyGroup_<T extends CategoryBase>({
   title,
   data,
   valueRenderer,
@@ -116,3 +116,5 @@ export function NavSearchBodyGroup<T extends CategoryBase>({
     </div>
   );
 }
+
+export const NavSearchBodyGroup = memo(NavSearchBodyGroup_);

@@ -4,6 +4,7 @@ import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
 import { MdOutlineCategory } from 'react-icons/md';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
@@ -12,11 +13,11 @@ import { RouterTabs } from '@/components/ui/RouterTabs';
 import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { StickyFilter } from '../Common/StickyFilter';
-import { FavouriteCategories } from './FavouriteCategories';
-import { FavouriteDomains } from './FavouriteDomains';
-import { FavouriteSkills } from './FavouriteSkills';
+import { FavoriteCategories } from './FavoriteCategories';
+import { FavoriteDomains } from './FavoriteDomains';
+import { FavoriteSkills } from './FavoriteSkills';
 
-export function Favourites() {
+export function Favorites() {
   const { t } = useTranslation();
   const selectedPeriod = usePeriodStore(state => state.selectedPeriod);
   const selectedExperience = useExperienceStore(
@@ -48,7 +49,7 @@ export function Favourites() {
         ),
         name: 'skills',
         body: (
-          <FavouriteSkills
+          <FavoriteSkills
             order_by={{
               column: orderSkills.column,
               descending: orderSkills.descending,
@@ -74,7 +75,7 @@ export function Favourites() {
         ),
         name: 'domains',
         body: (
-          <FavouriteDomains
+          <FavoriteDomains
             order_by={{
               column: orderDomains.column,
               descending: orderDomains.descending,
@@ -100,7 +101,7 @@ export function Favourites() {
         ),
         name: 'categories',
         body: (
-          <FavouriteCategories
+          <FavoriteCategories
             order_by={{
               column: orderCategories.column,
               descending: orderCategories.descending,
@@ -130,21 +131,23 @@ export function Favourites() {
     ]
   );
 
+  useDocumentTitle(t('common.favorites'));
+
   return (
     <div className="app-container">
       <AppBreadcrumb
         routes={[
           { displayName: t('common.mainPage'), url: '/' },
-          { displayName: t('common.favourites'), url: '/favourites' },
+          { displayName: t('common.favorites'), url: '/favorites' },
         ]}
       />
       <div className="pb-4">
         <h1 className="text-3xl font-bold leading-[130%] text-text">
-          {t('favouritesPage.title')}
+          {t('favoritesPage.title')}
         </h1>
         <div className="text-base leading-relaxed text-text-secondary">
           <Trans
-            i18nKey="favouritesPage.subtitle"
+            i18nKey="favoritesPage.subtitle"
             values={{
               domainCount: 0,
               days: selectedPeriod,

@@ -25,7 +25,7 @@ export function SkillHeader({ skill, isLoading }: SkillHeaderProps) {
         />
       )}
       isLoading={isLoading}
-      favouriteType={'skills'}
+      favoriteType={'skills'}
       name={skill?.name ?? null}
       displayName={skill?.name ? displayName : null}
     />

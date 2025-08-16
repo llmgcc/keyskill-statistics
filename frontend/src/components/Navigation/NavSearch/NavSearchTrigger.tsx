@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Button, Kbd } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { IoSearch } from 'react-icons/io5';
@@ -9,7 +9,7 @@ interface NavSearchTriggerProps {
   onOpen: () => void;
 }
 
-export function NavSearchTrigger({ onOpen }: NavSearchTriggerProps) {
+function NavSearchTrigger_({ onOpen }: NavSearchTriggerProps) {
   const { isMobile } = useScreenSize();
   const { t } = useTranslation();
 
@@ -53,3 +53,5 @@ export function NavSearchTrigger({ onOpen }: NavSearchTriggerProps) {
     </Button>
   );
 }
+
+export const NavSearchTrigger = memo(NavSearchTrigger_);

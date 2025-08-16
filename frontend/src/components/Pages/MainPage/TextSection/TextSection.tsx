@@ -7,7 +7,7 @@ import { Domains } from '@/config/domains';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
 import { useStatsStore } from '@/store/statsStore';
-import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
+import { ListEnumeration } from '@/components/ui/ListEnumeration';
 
 interface TextSectionProps {
   onLinkClick?: (tabName: string) => void;
@@ -123,8 +123,6 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
           </div>
         </div>
       </div>
-
-      {/* <Grid></Grid> */}
     </div>
   );
 }

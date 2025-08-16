@@ -1,10 +1,10 @@
 import { placeholderData } from '@/utils/common';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Button, useUpdateEffect } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { Category } from '@/interfaces';
+import { Category, KeySkill } from '@/interfaces';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSkills } from '@/hooks/useSkills';
 import { useCategoriesStore } from '@/store/categoriesStore';
@@ -19,7 +19,7 @@ interface NavSearchBodyProps {
   setOpen: (state: boolean) => void;
 }
 
-export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
+function NavSearchBody_({ searchQuery, setOpen }: NavSearchBodyProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const debouncedQuery = useDebounce(searchQuery, 500);
@@ -30,14 +30,13 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
     skills: skillsData,
     isLoading,
     isFetching,
-    rows,
   } = useSkills(
     {
       pageIndex: 0,
       pageSize: 20,
     },
     {
-      order_by: 'place',
+      column: 'place',
       descending: false,
     },
     {
@@ -47,20 +46,25 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
     }
   );
 
-  const domains = useDomainsStore(state => state.domains).filter(
-    domain =>
-      domain.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
-      t(`domains.${domain.name}`)
-        .toLowerCase()
-        .includes(debouncedQuery.toLowerCase())
-  );
-  const categories = useCategoriesStore(state => state.categories).filter(
-    category =>
-      category.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
-      t(`categories.${category.name}`)
-        .toLowerCase()
-        .includes(debouncedQuery.toLowerCase())
-  );
+  const domains = useDomainsStore(state => state.domains)
+    .filter(
+      domain =>
+        domain.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
+        t(`domains.${domain.name}`)
+          .toLowerCase()
+          .includes(debouncedQuery.toLowerCase())
+    )
+    .slice(0, 20);
+
+  const categories = useCategoriesStore(state => state.categories)
+    .filter(
+      category =>
+        category.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
+        t(`categories.${category.name}`)
+          .toLowerCase()
+          .includes(debouncedQuery.toLowerCase())
+    )
+    .slice(0, 20);
 
   function scrollToTab(name: string) {
     const dialogBody = document.getElementById('navsearch-dialog');
@@ -111,7 +115,8 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
     },
   ];
 
-  const totalRows = (rows ?? 0) + domains.length + categories.length;
+  const totalRows =
+    (skillsData?.length ?? 0) + domains.length + categories.length;
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
@@ -152,7 +157,7 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
     setHoveredIndex(0);
   }, [searchQuery, skillsData?.length, domains.length, categories.length]);
 
-  const emptyData = placeholderData(10);
+  const emptyData = placeholderData(20);
 
   return (
     <div id="navsearch-dialog">
@@ -179,7 +184,9 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
             data={
               isLoading || isFetching || !skillsData ? emptyData : skillsData
             }
-            valueRenderer={skill => <SkillDescription skill={skill} />}
+            valueRenderer={skill => (
+              <SkillDescription skill={skill as KeySkill} />
+            )}
             startingIndex={0}
             setHoveredIndex={setHoveredIndex}
             hoveredIndex={hoveredIndex}
@@ -197,7 +204,10 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
             title={t('common.domains')}
             data={isLoading || isFetching ? (emptyData as Category[]) : domains}
             valueRenderer={domain => (
-              <CategoryDescription categoryKey="domains" category={domain} />
+              <CategoryDescription
+                categoryKey="domains"
+                category={domain as Category}
+              />
             )}
             startingIndex={skillsData?.length ?? 0}
             setHoveredIndex={setHoveredIndex}
@@ -220,7 +230,7 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
             valueRenderer={category => (
               <CategoryDescription
                 categoryKey="categories"
-                category={category}
+                category={category as Category}
               />
             )}
             startingIndex={(skillsData?.length ?? 0) + domains.length}
@@ -238,3 +248,5 @@ export function NavSearchBody({ searchQuery, setOpen }: NavSearchBodyProps) {
     </div>
   );
 }
+
+export const NavSearchBody = memo(NavSearchBody_);

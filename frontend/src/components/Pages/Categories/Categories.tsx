@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import { Categories as CategoriesConfig } from '@/config/categories';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
+import { ListEnumeration } from '@/components/ui/ListEnumeration';
 import { OrderButtons } from '@/components/Tabs/OrderButtons';
-import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 import { CategoriesTable } from '../Common/CategoriesTable';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -24,7 +25,7 @@ export function Categories() {
     'trending',
     'highestSalary',
   ]);
-
+  useDocumentTitle(t('common.categories'));
   return (
     <div className="app-container">
       <AppBreadcrumb
@@ -70,7 +71,7 @@ export function Categories() {
       <div>
         <CategoriesTable
           columns={[
-            'favourite_category',
+            'favorite_category',
             'place',
             'prev_place',
             'image',

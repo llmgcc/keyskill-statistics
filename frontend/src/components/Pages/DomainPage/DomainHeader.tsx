@@ -23,7 +23,7 @@ export function DomainHeader({ domain, isLoading }: DomainHeaderProps) {
         />
       )}
       isLoading={isLoading}
-      favouriteType={'domains'}
+      favoriteType={'domains'}
       name={domain?.name ?? null}
       displayName={domain?.name ? t(`domains.${domain?.name ?? ''}`) : null}
     />

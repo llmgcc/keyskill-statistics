@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiLanguage } from 'react-icons/hi2';
 
@@ -9,10 +10,14 @@ export function LanguageSwitch() {
   const selectedLanguage = i18n.language;
   const languages = Object.keys(Language);
 
-  const options = languages.map(language => ({
-    code: language,
-    name: LanguageTitle[language as Language],
-  }));
+  const options = useMemo(
+    () =>
+      languages.map(language => ({
+        code: language,
+        name: LanguageTitle[language as Language],
+      })),
+    [languages]
+  );
 
   return (
     <NavigationSelect

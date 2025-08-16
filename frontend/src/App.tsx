@@ -12,21 +12,7 @@ import { useStatsStore } from '@/store/statsStore.ts';
 import { Navigation } from '@/components/Navigation/Navigation.tsx';
 
 import { Footer } from './components/Footer/Footer';
-import { useRouterConfig } from './router';
-
-function TitleWrapper({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
-  return <>{children}</>;
-}
+import { routerConfig } from './router';
 
 export default function App() {
   const fetchCategories = useCategoriesStore(state => state.fetchCategories);
@@ -41,18 +27,14 @@ export default function App() {
     fetchStats();
   }, []);
 
-  const config = useRouterConfig();
+  const config = routerConfig();
 
   return (
     <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
       <Navigation />
       <Routes>
         {config.map(c => (
-          <Route
-            path={c.path}
-            element={<TitleWrapper title={c.title}>{c.element}</TitleWrapper>}
-            key={c.id}
-          />
+          <Route path={c.path} element={c.element} key={c.id} />
         ))}
       </Routes>
       <Footer />

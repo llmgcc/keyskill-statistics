@@ -59,8 +59,8 @@ export function Footer() {
           href: '/categories',
         },
         {
-          id: 'favourites',
-          href: '/favourites',
+          id: 'favorites',
+          href: '/favorites',
         },
       ],
     },

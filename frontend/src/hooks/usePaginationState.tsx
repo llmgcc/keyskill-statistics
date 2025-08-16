@@ -32,7 +32,6 @@ export function usePaginationState(
           size = parsed;
         }
       }
-      // console.log('init', Math.max(0, page), size)
       return {
         pageIndex: Math.max(0, page),
         pageSize: size,
@@ -63,7 +62,6 @@ export function usePaginationState(
       setPaginationState({
         ...pagination,
       });
-      // console.log('setting')
     },
     [
       defaultPage,
@@ -80,7 +78,6 @@ export function usePaginationState(
       (prevQueryKeyRef.current !== queryKey && prevQueryKeyRef.current) ||
       (prevQueryKeyRef.current && queryKey === null)
     ) {
-      console.log('reset', searchParams.toString());
       updatePagination(
         {
           ...paginationState,

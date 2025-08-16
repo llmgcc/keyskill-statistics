@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Highlights } from '@/config/highlights';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
@@ -18,7 +19,7 @@ export const OrderByHighlightType = {
   [Highlights.new]: 'new',
   [Highlights['highest-salary']]: 'highestSalary',
   [Highlights['lowest-salary']]: 'lowestSalary',
-  [Highlights['unknown-salary']]: 'unknownSalary',
+  [Highlights['gainers-salary']]: 'unknownSalary',
 };
 
 export function HighlightTypePage() {
@@ -42,6 +43,8 @@ export function HighlightTypePage() {
       navigate('/highlights');
     }
   }, [type, navigate, isError]);
+
+  useDocumentTitle(t(`highlights.${type}`));
 
   if (isError) {
     return null;
@@ -80,7 +83,7 @@ export function HighlightTypePage() {
       <div>
         <SkillsTable
           columns={[
-            'favourite_skill',
+            'favorite_skill',
             'place',
             'prev_place',
             'image',

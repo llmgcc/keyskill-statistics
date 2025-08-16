@@ -5,7 +5,7 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
+import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
 import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
 import { useFilters } from '@/hooks/useFilters';
@@ -18,7 +18,7 @@ import {
   complexityAccessor,
   confidenceAccessor,
   countAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
   salaryAccessor,
@@ -29,7 +29,7 @@ import {
 
 interface SkillsTableProps {
   columns?: string[];
-  order_by?: ServerOrderBy;
+  order_by?: OrderBy;
   filter?: ServerFilters;
   enabled?: boolean;
   paginationPrefix?: string;
@@ -88,11 +88,11 @@ export function SkillsTable({
   const tableColumns = useMemo(
     () =>
       [
-        favouriteAccessor({
-          accessorKey: 'favourite_skill',
+        favoriteAccessor({
+          accessorKey: 'favorite_skill',
           isLoading: isLoading || isFetching,
           displayName: (skill: KeySkill) => skillName(skill, i18n.language),
-          favouriteType: 'skills',
+          favoriteType: 'skills',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
@@ -157,7 +157,7 @@ export function SkillsTable({
         data={skills ?? placeholderData(pagination.pageSize)}
         isLoading={isLoading || !skills}
         isFetching={isFetching || !enabled}
-        pinnedLeft={['favourite_skill', 'place', 'image']}
+        pinnedLeft={['favorite_skill', 'place', 'image']}
         minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}

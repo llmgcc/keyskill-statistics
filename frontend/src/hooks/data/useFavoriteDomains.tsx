@@ -7,17 +7,17 @@ import { useFavoritesStore } from '@/store/favoritesStore';
 
 import { useFilters } from '../useFilters';
 
-export function useFavouriteDomains(
+export function useFavoriteDomains(
   pagination: PaginationState,
   orderBy: OrderBy
 ) {
   const { period, experience } = useFilters();
-  const favourites = useFavoritesStore(state => state.favourites);
+  const favorites = useFavoritesStore(state => state.favorites);
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['favourite_domains', period, experience, orderBy, pagination],
+    queryKey: ['favorite_domains', period, experience, orderBy, pagination],
     queryFn: async () => {
       const data = await API.domains.favoriteDomains(
-        favourites.filter(f => f.type === 'domains').map(f => f.name),
+        favorites.filter(f => f.type === 'domains').map(f => f.name),
         {
           limit: pagination.pageSize,
           offset: pagination.pageSize * pagination.pageIndex,
@@ -33,7 +33,7 @@ export function useFavouriteDomains(
   });
 
   return {
-    favouriteDomains: data?.domains,
+    favoriteDomains: data?.domains,
     rows: data?.rows ?? 0,
     isLoading,
     isFetching,

@@ -1,10 +1,9 @@
-import { Button, Menu } from '@chakra-ui/react';
-import { Spinner } from '@radix-ui/themes';
+import { Button, Menu, Spinner } from '@chakra-ui/react';
 import { FaCheck } from 'react-icons/fa';
 
 import { useScreenSize } from '@/hooks/useScreenSize';
 
-interface Option {
+export interface Option {
   code: string;
   name: string;
 }
@@ -39,7 +38,7 @@ export function NavigationSelect({
           {!!options.length && !!selectedOptionCode && icon ? (
             triggerIcon
           ) : (
-            <Spinner loading />
+            <Spinner />
           )}
         </Button>
       </Menu.Trigger>

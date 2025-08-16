@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
+import { ListEnumeration } from '@/components/ui/ListEnumeration';
 import { OrderButtons } from '@/components/Tabs/OrderButtons';
-import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 import { SkillsTable } from '../Common/SkillsTable';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -24,6 +25,8 @@ export function Skills() {
     'trending',
     'highestSalary',
   ]);
+
+  useDocumentTitle(t('common.skills'));
 
   return (
     <div className="app-container">
@@ -64,7 +67,7 @@ export function Skills() {
       <div>
         <SkillsTable
           columns={[
-            'favourite_skill',
+            'favorite_skill',
             'place',
             'prev_place',
             'image',

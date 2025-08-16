@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiCategory } from 'react-icons/bi';
 import { CgList } from 'react-icons/cg';
@@ -6,14 +5,11 @@ import { MdOutlineCategory } from 'react-icons/md';
 
 import { useOrderByState } from '@/hooks/useOrderByState';
 
-import { CategoriesTable } from '../Pages/Common/CategoriesTable';
-import { DomainsTable } from '../Pages/Common/DomainsTable';
-import { SkillsTable } from '../Pages/Common/SkillsTable';
-import { SkillFilter, SkillsFilterState } from '../SkillFilter/SkillFilter';
-import { RouterTabs } from '../ui/RouterTabs';
-import { KeySkills } from './KeySkills';
-import { OrderButtons } from './OrderButtons';
-import { TechnologiesTable } from './TechnologiesTable';
+import { OrderButtons } from '../../Tabs/OrderButtons';
+import { RouterTabs } from '../../ui/RouterTabs';
+import { CategoriesTable } from '../Common/CategoriesTable';
+import { DomainsTable } from '../Common/DomainsTable';
+import { SkillsTable } from '../Common/SkillsTable';
 
 export function Tabs() {
   const { t } = useTranslation();
@@ -44,7 +40,7 @@ export function Tabs() {
       body: (
         <SkillsTable
           columns={[
-            'favourite_skill',
+            'favorite_skill',
             'place',
             'prev_place',
             'image',
@@ -86,7 +82,7 @@ export function Tabs() {
       body: (
         <DomainsTable
           columns={[
-            'favourite_domain',
+            'favorite_domain',
             'place',
             'prev_place',
             'image',
@@ -105,7 +101,6 @@ export function Tabs() {
           width={1150}
           text={<div>{t('common.allDomains')}</div>}
           pageSizes={[25, 50, 100]}
-          // onRowsChange={setTotalRows}
         />
       ),
       append: (
@@ -129,7 +124,7 @@ export function Tabs() {
       body: (
         <CategoriesTable
           columns={[
-            'favourite_category',
+            'favorite_category',
             'place',
             'prev_place',
             'image',
@@ -148,7 +143,6 @@ export function Tabs() {
           width={1150}
           text={<div>{t('common.allCategories')}</div>}
           pageSizes={[25, 50, 100]}
-          // onRowsChange={setTotalRows}
         />
       ),
       append: (

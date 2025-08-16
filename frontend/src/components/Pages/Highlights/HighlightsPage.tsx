@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { KeySkill } from '@/interfaces';
 import { HighlightIcons, Highlights } from '@/config/highlights';
 import { useHighlights } from '@/hooks/data/useHighlights';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
@@ -141,6 +142,7 @@ export function HighlightsPage() {
   const selectedExperience = useExperienceStore(
     state => state.selectedExperience
   );
+  useDocumentTitle(t('common.highlights'));
 
   return (
     <div className="app-container justify-center">
@@ -210,9 +212,9 @@ export function HighlightsPage() {
         </div>
         <div>
           <HighlightCard
-            type={Highlights['unknown-salary']}
-            value={count}
-            change={countChange}
+            type={Highlights['gainers-salary']}
+            value={salary}
+            change={salaryChange}
           />
         </div>
       </div>

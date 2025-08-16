@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import { Domains as DomainsConfig } from '@/config/domains';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
+import { ListEnumeration } from '@/components/ui/ListEnumeration';
 import { OrderButtons } from '@/components/Tabs/OrderButtons';
-import { ListEnumeration } from '@/components/TextSection/ListEnumeration';
 
 import { DomainsTable } from '../Common/DomainsTable';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -24,7 +25,7 @@ export function Domains() {
     'trending',
     'highestSalary',
   ]);
-
+  useDocumentTitle(t('common.domains'));
   return (
     <div className="app-container">
       <AppBreadcrumb
@@ -68,7 +69,7 @@ export function Domains() {
       <div>
         <DomainsTable
           columns={[
-            'favourite_domain',
+            'favorite_domain',
             'place',
             'prev_place',
             'image',

@@ -4,7 +4,7 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
+import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
 import { useDomains } from '@/hooks/useDomains';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
@@ -17,14 +17,14 @@ import {
   countAccessor,
   domainChartAccessor,
   domainSalaryAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
 } from '@/components/Tabs/accessors';
 
 interface SkillsTableProps {
   columns?: string[];
-  order_by?: ServerOrderBy;
+  order_by?: OrderBy;
   filter?: ServerFilters;
   enabled?: boolean;
   paginationPrefix?: string;
@@ -83,11 +83,11 @@ export function DomainsTable({
   const tableColumns = useMemo(
     () =>
       [
-        favouriteAccessor({
-          accessorKey: 'favourite_domain',
+        favoriteAccessor({
+          accessorKey: 'favorite_domain',
           isLoading: isLoading || isFetching,
           displayName: (skill: KeySkill) => t(`domains.${skill.name}`),
-          favouriteType: 'domains',
+          favoriteType: 'domains',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
@@ -136,7 +136,7 @@ export function DomainsTable({
         data={domains ?? placeholderData(pagination.pageSize)}
         isLoading={isLoading || !domains}
         isFetching={isFetching || !enabled}
-        pinnedLeft={['favourite_domain', 'place', 'image']}
+        pinnedLeft={['favorite_domain', 'place', 'image']}
         minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}

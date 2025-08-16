@@ -1,15 +1,14 @@
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import Sticky from 'react-stickynode';
 
-import { useTopOffset } from '@/hooks/useTopOffset';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
-import { Filter } from '@/components/Filter/Filter';
-import { Highlights } from '@/components/Highlights/Highlights.tsx';
-import { TextSection } from '@/components/TextSection/TextSection';
+import { Highlights } from '@/components/Pages/MainPage/Highlights/Highlights';
+import { TextSection } from '@/components/Pages/MainPage/TextSection/TextSection';
 
-import { Tabs } from '../../Tabs/Tabs';
 import { StickyFilter } from '../Common/StickyFilter';
+import { Tabs } from './Tabs';
 
 export function MainPage() {
   const tabsRef = useRef<HTMLDivElement | null>(null);
@@ -27,12 +26,13 @@ export function MainPage() {
     }
   };
 
-  const navOffset = useTopOffset('#navbar');
+  const { t } = useTranslation();
+  useDocumentTitle(t(`common.mainPage`));
 
   return (
     <div>
       <TextSection
-        onLinkClick={tabName => {
+        onLinkClick={(tabName: string) => {
           navigate({ search: `?tab=${tabName}` }, { replace: true });
           scrollToTabs();
         }}

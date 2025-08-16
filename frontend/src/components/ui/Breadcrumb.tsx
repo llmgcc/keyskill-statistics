@@ -8,11 +8,12 @@ interface BreadcrumbRoute {
 
 interface AppBreadcrumbPops {
   routes: BreadcrumbRoute[];
+  className?: string;
 }
 
-export function AppBreadcrumb({ routes }: AppBreadcrumbPops) {
+export function AppBreadcrumb({ routes, className = '' }: AppBreadcrumbPops) {
   return (
-    <Breadcrumb.Root variant={'plain'} className="py-4">
+    <Breadcrumb.Root variant={'plain'} className={`py-4 ${className}`}>
       <Breadcrumb.List>
         {routes.map((route, index) => (
           <Fragment key={route.url}>

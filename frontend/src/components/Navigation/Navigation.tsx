@@ -50,8 +50,8 @@ export function Navigation() {
       href: '/categories',
     },
     {
-      id: 'favourites',
-      href: '/favourites',
+      id: 'favorites',
+      href: '/favorites',
     },
   ];
 
@@ -104,7 +104,6 @@ export function Navigation() {
               <div></div>
               <div className="flex items-center">
                 <div className="items-center lg:flex">
-                  {/* <NavigationSearch /> */}
                   <NavSearch />
                 </div>
                 <div className="flex items-center">

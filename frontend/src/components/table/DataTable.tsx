@@ -85,7 +85,7 @@ export function DataTable<T extends object>({
     enableColumnPinning: true,
     autoResetPageIndex: false,
     manualPagination: true,
-    debugTable: true,
+    // debugTable: true,
   });
 
   return (

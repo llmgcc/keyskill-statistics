@@ -23,7 +23,7 @@ export function CategoryHeader({ category, isLoading }: CategoryHeaderProps) {
         />
       )}
       isLoading={isLoading}
-      favouriteType={'categories'}
+      favoriteType={'categories'}
       name={category?.name ?? null}
       displayName={
         category?.name ? t(`categories.${category?.name ?? ''}`) : null

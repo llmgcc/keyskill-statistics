@@ -21,7 +21,7 @@ import {
   complexityAccessor,
   confidenceAccessor,
   countAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevCountAccessor,
   prevPlaceAccessor,
@@ -99,7 +99,7 @@ function _KeySkills({ filter: filterState }: KeySkillsProps) {
   const columns = useMemo(
     () =>
       [
-        // favouriteAccessor({ accessorKey: 'favourite' }),
+        // favoriteAccessor({ accessorKey: 'favorite' }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
         skillNameAccessor({ accessorKey: 'name', header: t('columns.name') }),

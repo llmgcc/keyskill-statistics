@@ -57,7 +57,7 @@ export default {
       categories: 'Categories',
       skills: 'Skills',
       highlights: 'Highlights',
-      favourites: 'Favourites',
+      favorites: 'Favorites',
       search: 'Search',
       all: 'All',
       navigate: 'Navigate',
@@ -254,20 +254,20 @@ export default {
           subtitle:
             'Analysis of IT skills with the lowest salaries. Featured are <text>{{skillCount}}</text> skills that offer the lowest pay over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes more accessible technologies.',
         },
-        [Highlights['unknown-salary']]: {
-          title: 'Skills with Unknown Salary',
+        [Highlights['gainers-salary']]: {
+          title: 'Skills with Growing Salaries',
           subtitle:
-            'Analysis of IT skills where salary information is not specified. Featured are <text>{{skillCount}}</text> skills without salary data over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with varying compensation terms.',
+            'Analysis of IT skills showing the highest growth in salary. Featured are <text>{{skillCount}}</text> skills over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with varying compensation terms.',
         },
       },
     },
-    favouritesPage: {
-      title: 'Favourites',
+    favoritesPage: {
+      title: 'Favorites',
       subtitle:
         'Personal collection of saved IT skills, domains, and categories for tracking and comparison. Manage your watchlist to monitor trends and changes. Data is displayed for the last <text>{{days}}</text> days and reflects current market conditions.',
-      skills: 'Favourite skills',
-      domains: 'Favourite domains',
-      categories: 'Favourite categories',
+      skills: 'favorite skills',
+      domains: 'favorite domains',
+      categories: 'favorite categories',
     },
     footer: {
       text: '{{appName}} provides IT job market analytics, showing which skills are needed for professional development',

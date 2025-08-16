@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Input, InputGroup, Kbd } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { IoCloseCircleSharp, IoSearch } from 'react-icons/io5';
@@ -8,11 +9,7 @@ interface NavSearchHeaderProps {
   onClose: () => void;
 }
 
-export function NavSearchHeader({
-  filter,
-  onFilter,
-  onClose,
-}: NavSearchHeaderProps) {
+function NavSearchHeader_({ filter, onFilter, onClose }: NavSearchHeaderProps) {
   const { t } = useTranslation();
 
   return (
@@ -66,3 +63,5 @@ export function NavSearchHeader({
     </div>
   );
 }
+
+export const NavSearchHeader = memo(NavSearchHeader_);

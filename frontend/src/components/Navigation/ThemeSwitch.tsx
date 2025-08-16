@@ -3,12 +3,8 @@ import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { RiLightbulbFlashLine, RiLightbulbLine } from 'react-icons/ri';
 
+import { Theme } from '@/config/theme';
 import { useScreenSize } from '@/hooks/useScreenSize';
-
-export enum Theme {
-  Light = 'light',
-  Dark = 'dark',
-}
 
 function getSystemTheme() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

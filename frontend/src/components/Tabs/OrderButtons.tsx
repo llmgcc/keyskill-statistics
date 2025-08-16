@@ -79,7 +79,7 @@ export function buttonsList(
         : null,
       id: 'unknownSalary',
       column: 'unknown_salary',
-      descending: false,
+      descending: true,
     },
   ];
   return (

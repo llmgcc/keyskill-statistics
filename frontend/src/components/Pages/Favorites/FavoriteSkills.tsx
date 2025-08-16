@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { KeySkill, ServerOrderBy } from '@/interfaces';
-import { useFavouriteSkills } from '@/hooks/data/useFavouriteSkills';
+import { useFavoriteSkills } from '@/hooks/data/useFavoriteSkills';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
 import { DataTable } from '@/components/Table/DataTable';
@@ -14,7 +14,7 @@ import {
   chartAccessor,
   complexityAccessor,
   countAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
   salaryAccessor,
@@ -22,11 +22,11 @@ import {
   skillNameAccessor,
 } from '@/components/Tabs/accessors';
 
-interface FavouriteSkillsProps {
+interface favoriteSkillsProps {
   order_by?: ServerOrderBy;
 }
 
-export function FavouriteSkills({ order_by }: FavouriteSkillsProps) {
+export function FavoriteSkills({ order_by }: favoriteSkillsProps) {
   const { period, experience } = useFilters();
   const navigate = useNavigate();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
@@ -35,7 +35,7 @@ export function FavouriteSkills({ order_by }: FavouriteSkillsProps) {
     JSON.stringify([period, order_by, experience]),
     'skills'
   );
-  const { favouriteSkills, isLoading, isFetching, rows } = useFavouriteSkills(
+  const { favoriteSkills, isLoading, isFetching, rows } = useFavoriteSkills(
     pagination,
     order_by
   );
@@ -44,11 +44,11 @@ export function FavouriteSkills({ order_by }: FavouriteSkillsProps) {
   const tableColumns = useMemo(
     () =>
       [
-        favouriteAccessor({
-          accessorKey: 'favourite_skill',
+        favoriteAccessor({
+          accessorKey: 'favorite_skill',
           isLoading: isLoading || isFetching,
           displayName: (skill: KeySkill) => skillName(skill, i18n.language),
-          favouriteType: 'skills',
+          favoriteType: 'skills',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
@@ -78,7 +78,7 @@ export function FavouriteSkills({ order_by }: FavouriteSkillsProps) {
     <>
       <div className="my-1 flex items-center justify-between gap-4 overflow-auto">
         <div className="text-sm text-text-secondary">
-          {t('favouritesPage.skills')}
+          {t('favoritesPage.skills')}
         </div>
         <PageSize
           variants={pageSizeVariants}
@@ -88,10 +88,10 @@ export function FavouriteSkills({ order_by }: FavouriteSkillsProps) {
       </div>
       <DataTable
         columns={tableColumns as Array<ColumnDef<KeySkill, unknown>>}
-        data={favouriteSkills ?? placeholderData(pagination.pageSize)}
-        isLoading={isLoading || !favouriteSkills}
+        data={favoriteSkills ?? placeholderData(pagination.pageSize)}
+        isLoading={isLoading || !favoriteSkills}
         isFetching={isFetching}
-        pinnedLeft={['favourite_skill', 'place', 'image']}
+        pinnedLeft={['favorite_skill', 'place', 'image']}
         minWidth={1150}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}

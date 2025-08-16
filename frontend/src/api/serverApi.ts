@@ -53,7 +53,7 @@ export const ServerAPI: API = {
       orderBy: OrderBy
     ) => {
       const response = await axios.post(
-        '/api/categories/favourites',
+        '/api/categories/favorites',
         {
           names: names,
         },
@@ -98,7 +98,7 @@ export const ServerAPI: API = {
       orderBy: OrderBy
     ) => {
       const response = await axios.post(
-        '/api/domains/favourites',
+        '/api/domains/favorites',
         {
           names: names,
         },
@@ -198,7 +198,7 @@ export const ServerAPI: API = {
       orderBy: OrderBy
     ) => {
       const response = await axios.post(
-        '/api/key-skills/favourites',
+        '/api/key-skills/favorites',
         {
           names: names,
         },

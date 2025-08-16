@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Dialog, Portal, useDisclosure } from '@chakra-ui/react';
 
 import { NavSearchBody } from './NavSearchBody';
 import { NavSearchHeader } from './NavSearchHeader';
 import { NavSearchTrigger } from './NavSearchTrigger';
 
-export function NavSearch() {
+function NavSearch_() {
   const { open, onOpen, setOpen } = useDisclosure();
 
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -47,3 +47,5 @@ export function NavSearch() {
     </Dialog.Root>
   );
 }
+
+export const NavSearch = memo(NavSearch_);

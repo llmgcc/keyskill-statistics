@@ -2,13 +2,10 @@ import { CategoryFilter, KeySkill, OrderBy, SkillFilter } from '@/interfaces';
 
 import { axiosHTTP as axios } from './axiosHttp';
 
-export const DEFAULT_ORDER = { column: 'count', descending: true };
+export const DEFAULT_ORDER = { column: 'all_time_place', descending: false };
 export const ALL_TIME_FILTER = { period: null, experience: null };
 
-export function sortSkills(
-  skills: KeySkill[],
-  orderBy: OrderBy = { column: 'count', descending: true }
-) {
+export function sortSkills(skills: KeySkill[], orderBy: OrderBy) {
   if (orderBy.column === 'change') {
     return [...skills].sort((a, b) => {
       const aChange = a.prev_count
@@ -39,17 +36,27 @@ export function sortSkills(
 
   if (orderBy.column === 'unknown_salary') {
     return [...skills].sort((a, b) => {
-      return (
-        (b.average_salary ?? 0) - (a.average_salary ?? 0) ||
-        (a.count ?? 0) - (b.count ?? 0)
-      );
+      const aChange = a.prev_count
+        ? (((a.average_salary ?? 0) - (a.prev_average_salary ?? 0)) /
+            (a.prev_average_salary ?? 0)) *
+          100
+        : null;
+      const bChange = b.prev_count
+        ? (((b.average_salary ?? 0) - (b.prev_average_salary ?? 0)) /
+            (b.prev_average_salary ?? 0)) *
+          100
+        : null;
+
+      if (!a.prev_average_salary || !b.prev_average_salary) return 1;
+      if (aChange === null) return 1;
+      if (bChange === null) return -1;
+
+      return orderBy.descending ? bChange - aChange : aChange - bChange;
     });
   }
-
   return [...skills].sort((a, b) => {
     const aValue = a[orderBy.column as keyof KeySkill];
     const bValue = b[orderBy.column as keyof KeySkill];
-
     if (aValue === null || aValue === undefined) return 1;
     if (bValue === null || bValue === undefined) return -1;
 
@@ -90,7 +97,7 @@ export async function getSkills(
           ...c,
         };
       }),
-      orderBy
+      orderBy ?? DEFAULT_ORDER
     );
   }
 
@@ -109,7 +116,7 @@ export async function getSkills(
             ...s,
           };
         }),
-      orderBy
+      orderBy ?? DEFAULT_ORDER
     );
   }
 
@@ -119,14 +126,14 @@ export async function getSkills(
         filteredSkills.filter(
           skill => skill.domains?.[0]?.name === filter.domain
         ),
-        orderBy
+        orderBy ?? DEFAULT_ORDER
       );
     } else {
       return sortSkills(
         filteredSkills.filter(skill =>
           skill.domains?.map(d => d.name)?.includes(filter.domain ?? '')
         ),
-        orderBy
+        orderBy ?? DEFAULT_ORDER
       );
     }
   }
@@ -137,19 +144,19 @@ export async function getSkills(
         filteredSkills.filter(
           skill => skill.categories?.[0]?.name === filter.category
         ),
-        orderBy
+        orderBy ?? DEFAULT_ORDER
       );
     } else {
       return sortSkills(
         filteredSkills.filter(skill =>
           skill.categories?.map(d => d.name)?.includes(filter.category ?? '')
         ),
-        orderBy
+        orderBy ?? DEFAULT_ORDER
       );
     }
   }
 
-  return sortSkills(filteredSkills, orderBy);
+  return sortSkills(filteredSkills, orderBy ?? DEFAULT_ORDER);
 }
 
 export async function getCategories(
@@ -158,7 +165,7 @@ export async function getCategories(
 ): Promise<KeySkill[]> {
   const path = getPath('categories', filter);
   const response = await axios.get(`/static-api/categories/${path}`);
-  return sortSkills(response.data, orderBy);
+  return sortSkills(response.data, orderBy ?? DEFAULT_ORDER);
 }
 
 export async function getDomains(
@@ -167,5 +174,5 @@ export async function getDomains(
 ): Promise<KeySkill[]> {
   const path = getPath('domains', filter);
   const response = await axios.get(`/static-api/domains/${path}`);
-  return sortSkills(response.data, orderBy);
+  return sortSkills(response.data, orderBy ?? DEFAULT_ORDER);
 }

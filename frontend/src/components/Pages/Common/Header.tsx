@@ -2,13 +2,13 @@ import { useState } from 'react';
 import Sticky from 'react-stickynode';
 
 import { useTopOffset } from '@/hooks/useTopOffset';
-import { FavouriteType } from '@/store/favoritesStore';
-import { FavouriteButton } from '@/components/ui/FavouriteButton';
+import { favoriteType } from '@/store/favoritesStore';
+import { FavoriteButton } from '@/components/ui/FavoriteButton';
 
 interface HeaderProps {
   description: (isFixed: boolean) => JSX.Element;
   isLoading: boolean;
-  favouriteType: FavouriteType;
+  favoriteType: favoriteType;
   name: string | null;
   displayName: string | null;
 }
@@ -16,7 +16,7 @@ interface HeaderProps {
 export function Header({
   description,
   isLoading,
-  favouriteType,
+  favoriteType,
   name,
   displayName,
 }: HeaderProps) {
@@ -49,11 +49,11 @@ export function Header({
           <div className="flex flex-col items-end justify-end gap-1 text-sm">
             <div>
               {name && (
-                <FavouriteButton
+                <FavoriteButton
                   isLoading={isLoading}
                   name={name}
                   displayName={displayName}
-                  favouriteType={favouriteType}
+                  favoriteType={favoriteType}
                 />
               )}
             </div>

@@ -3,31 +3,31 @@ import { IconButton, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 
-import { FavouriteType, useFavoritesStore } from '@/store/favoritesStore';
+import { favoriteType, useFavoritesStore } from '@/store/favoritesStore';
 import { toaster } from '@/components/ui/toaster';
 
-interface FavouriteButtonProps {
+interface favoriteButtonProps {
   isLoading: boolean;
   name?: string;
   displayName?: string | null;
-  favouriteType: FavouriteType;
+  favoriteType: favoriteType;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
-export function FavouriteButton({
+export function FavoriteButton({
   name,
-  favouriteType,
+  favoriteType,
   displayName,
   isLoading,
   size = 'xs',
-}: FavouriteButtonProps) {
+}: favoriteButtonProps) {
   const { isFavorite, add, remove } = useFavoritesStore();
   const { t } = useTranslation();
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = e => {
     if (!name || isLoading) return;
-    if (isFavorite(name, favouriteType)) {
-      remove(name, favouriteType);
+    if (isFavorite(name, favoriteType)) {
+      remove(name, favoriteType);
 
       toaster.create({
         description: (
@@ -44,7 +44,7 @@ export function FavouriteButton({
         type: 'info',
       });
     } else {
-      add(name, favouriteType);
+      add(name, favoriteType);
       toaster.create({
         description: (
           <div className="text-base">
@@ -74,7 +74,7 @@ export function FavouriteButton({
       onClick={handleClick}
     >
       {name &&
-        (!isFavorite(name, favouriteType) ? (
+        (!isFavorite(name, favoriteType) ? (
           <FaRegStar className={`p-0 text-background-accent`} />
         ) : (
           <FaStar className={`p-0 text-background-accent`} />

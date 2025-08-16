@@ -6,18 +6,18 @@ import { useFavoritesStore } from '@/store/favoritesStore';
 
 import { useFilters } from '../useFilters';
 
-export function useFavouriteSkills(
+export function useFavoriteSkills(
   pagination: PaginationState,
   orderBy?: { order_by: string; descending: boolean }
 ) {
   const { period, experience } = useFilters();
 
-  const favourites = useFavoritesStore(state => state.favourites);
+  const favorites = useFavoritesStore(state => state.favorites);
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: [
-      'favourite_skills',
-      // favourites,
+      'favorite_skills',
+      // favorites,
       period,
       experience,
       orderBy,
@@ -25,7 +25,7 @@ export function useFavouriteSkills(
     ],
     queryFn: async () => {
       const data = await API.skills.favoriteSkills(
-        favourites.filter(f => f.type === 'skills').map(f => f.name),
+        favorites.filter(f => f.type === 'skills').map(f => f.name),
         {
           limit: pagination.pageSize,
           offset: pagination.pageSize * pagination.pageIndex,
@@ -42,7 +42,7 @@ export function useFavouriteSkills(
   });
 
   return {
-    favouriteSkills: data?.skills,
+    favoriteSkills: data?.skills,
     rows: data?.rows ?? 0,
     isLoading,
     isFetching,

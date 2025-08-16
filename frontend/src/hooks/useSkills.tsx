@@ -1,17 +1,15 @@
 import { API } from '@/api/api';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { PaginationState } from '@tanstack/react-table';
 
-import { OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
-import { SkillsOrderBy } from '@/interfaces/api';
-import { Experience } from '@/config/experience';
+import { OrderBy, SkillFilter } from '@/interfaces';
 
 import { useFilters } from './useFilters';
 
 export function useSkills(
   pagination: PaginationState,
   orderBy?: OrderBy,
-  filter?: ServerFilters,
+  filter?: SkillFilter,
   enabled: boolean = true
 ) {
   const { period, experience } = useFilters();

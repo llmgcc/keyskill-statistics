@@ -1,6 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useDomainDetails } from '@/hooks/data/useDomainDetails';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 
 import { Complexity } from '../Common/Complexity';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -16,6 +19,10 @@ export function DomainPage() {
   );
   const navigate = useNavigate();
   const domainChanged = domainDetails?.name !== name;
+  const { t } = useTranslation();
+  useDocumentTitle(
+    domainDetails?.name ? t(`domains.${domainDetails.name}`) : null
+  );
 
   if (isError) {
     navigate('/');
@@ -23,6 +30,21 @@ export function DomainPage() {
 
   return (
     <div className="app-container">
+      <AppBreadcrumb
+        className="pb-1"
+        routes={[
+          { displayName: t('common.mainPage'), url: '/' },
+          { displayName: t('common.domains'), url: '/domains' },
+          {
+            displayName: domainDetails?.name
+              ? domainDetails?.name
+                ? t(`domains.${domainDetails.name}`)
+                : ''
+              : '',
+            url: '/domains/',
+          },
+        ]}
+      />
       <div className="rounded bg-background-primary py-2">
         <div>
           <DomainHeader domain={domainDetails} isLoading={domainChanged} />

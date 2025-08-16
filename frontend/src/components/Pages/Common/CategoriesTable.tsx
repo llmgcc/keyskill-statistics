@@ -4,7 +4,7 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerFilters, ServerOrderBy } from '@/interfaces';
+import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
 import { useCategories } from '@/hooks/useCategories';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
@@ -17,14 +17,14 @@ import {
   categorySalaryAccessor,
   complexityAccessor,
   countAccessor,
-  favouriteAccessor,
+  favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
 } from '@/components/Tabs/accessors';
 
 interface SkillsTableProps {
   columns?: string[];
-  order_by?: ServerOrderBy;
+  order_by?: OrderBy;
   filter?: ServerFilters;
   enabled?: boolean;
   paginationPrefix?: string;
@@ -83,11 +83,11 @@ export function CategoriesTable({
   const tableColumns = useMemo(
     () =>
       [
-        favouriteAccessor({
-          accessorKey: 'favourite_category',
+        favoriteAccessor({
+          accessorKey: 'favorite_category',
           isLoading: isLoading || isFetching,
           displayName: (skill: KeySkill) => t(`categories.${skill.name}`),
-          favouriteType: 'categories',
+          favoriteType: 'categories',
         }),
         placeAccessor({ accessorKey: 'place' }),
         prevPlaceAccessor({ accessorKey: 'prev_place' }),
@@ -136,7 +136,7 @@ export function CategoriesTable({
         data={categories ?? placeholderData(pagination.pageSize)}
         isLoading={isLoading || !categories}
         isFetching={isFetching || !enabled}
-        pinnedLeft={['favourite_category', 'place', 'image']}
+        pinnedLeft={['favorite_category', 'place', 'image']}
         minWidth={width}
         pagination={pagination}
         setPagination={setPagination as OnChangeFn<PaginationState>}
