@@ -22,7 +22,7 @@ class DomainsListResponse(SQLModel):
     rows: int
 
 
-class FavouriteDomainsRequest(BaseModel):
+class FavoriteDomainsRequest(BaseModel):
     names: List[str]
 
 

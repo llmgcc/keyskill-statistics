@@ -23,7 +23,7 @@ class CategoriesListResponse(SQLModel):
     rows: int
 
 
-class FavouriteCategoriesRequest(BaseModel):
+class FavoriteCategoriesRequest(BaseModel):
     names: List[str]
 
 

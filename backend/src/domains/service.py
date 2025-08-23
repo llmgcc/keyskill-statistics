@@ -1,5 +1,5 @@
 from typing import Optional
-from sqlalchemy import case
+from sqlalchemy import case, or_
 from sqlmodel import Session, select, func, desc
 from src.models import (
     Currency,
@@ -28,8 +28,16 @@ def create_complexity_subquery(current_from, current_to):
         .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
         .join(KeySkill, KeySkill.name == KeySkillDomain.name)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
-        .where(KeySkillDomain.confidence >= 0.1)
+        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .distinct(Domain.name, Vacancy.id)
     ).subquery()
 
@@ -54,10 +62,10 @@ def create_complexity_subquery(current_from, current_to):
                 func.sum(
                     experience_counts_subquery.c.exp_count
                     * case(
-                        (experience_counts_subquery.c.experience == "unknown", 0.00),
+                        (experience_counts_subquery.c.experience == "unknown", 0.0),
                         (
                             experience_counts_subquery.c.experience == "noExperience",
-                            0.1,
+                            0.0,
                         ),
                         (
                             experience_counts_subquery.c.experience == "between1And3",
@@ -65,10 +73,10 @@ def create_complexity_subquery(current_from, current_to):
                         ),
                         (
                             experience_counts_subquery.c.experience == "between3And6",
-                            0.6,
+                            0.7,
                         ),
-                        (experience_counts_subquery.c.experience == "moreThan6", 1),
-                        else_=0.00,
+                        (experience_counts_subquery.c.experience == "moreThan6", 1.0),
+                        else_=0.0,
                     )
                 )
                 / func.sum(experience_counts_subquery.c.exp_count)
@@ -80,10 +88,7 @@ def create_complexity_subquery(current_from, current_to):
         select(
             experience_json_subquery.c.name,
             experience_json_subquery.c.experience_counts,
-            experience_json_subquery.c.raw_complexity_score,
-            func.cume_dist()
-            .over(order_by=experience_json_subquery.c.raw_complexity_score)
-            .label("complexity_score"),
+            experience_json_subquery.c.raw_complexity_score.label("complexity_score"),
         ).select_from(experience_json_subquery)
     ).subquery()
 
@@ -96,18 +101,28 @@ def create_all_time_place_subquery():
     all_time_base = (
         select(
             Domain.name,
+            Vacancy.id.label("vacancy_id"),
+            Vacancy.created_at,
             all_time_count,
             func.row_number()
             .over(order_by=desc(all_time_count))
             .label("all_time_place"),
         )
-        .select_from(KeySkillDomain)
-        .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)
+        .select_from(Domain)
+        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
         .join(KeySkill, KeySkill.name == KeySkillDomain.name)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
+        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
+        .where(KeySkillDomain.confidence >= settings.min_confidence)
         .where(
-            Vacancy.created_at.between(settings.min_date, settings.max_date),
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
         )
+        .distinct(Domain.name, Vacancy.id)
         .group_by(Domain.name)
     )
 
@@ -132,100 +147,89 @@ def get_base_domains(
         prev_to = current_from
         prev_from = prev_to - datetime.timedelta(days=days_period)
 
-    skills = (
-        select(
-            KeySkill.name,
-            func.count(KeySkill.name).label("count"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case())
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("median_salary"),
-        )
-        .select_from(KeySkill)
+    domain_vacancies = (
+        select(Domain.name, Vacancy.id.label("vacancy_id"), Vacancy.created_at)
+        .select_from(Domain)
+        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
+        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .where(Vacancy.created_at.between(current_from, current_to))
+        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
+        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .where(
             Vacancy.experience == (None if experience == "unknown" else experience)
             if experience is not None
             else True
         )
-        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
-        .group_by(KeySkill.name)
-        .order_by(desc("count"))
-        .having(func.count(KeySkill.name) >= 5)
-    ).cte("skills")
+        .distinct(Domain.name, Vacancy.id)
+    ).subquery()
 
-    prev_skills = (
-        select(
-            KeySkill.name,
-            func.count(KeySkill.name).label("count"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case())
-            .filter(Vacancy.created_at.between(prev_from, prev_to))
-            .label("median_salary"),
-        )
-        .select_from(KeySkill)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .where(Vacancy.created_at.between(prev_from, prev_to))
-        .where(
-            Vacancy.experience == (None if experience == "unknown" else experience)
-            if experience is not None
-            else True
-        )
-        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
-        .group_by(KeySkill.name)
-        .having(func.count(KeySkill.name) >= 5)
-    ).cte("prev_skills")
+    count = (
+        func.count()
+        .filter(domain_vacancies.c.created_at.between(current_from, current_to))
+        .label("count")
+    )
 
-    count = func.count(skills.c.name).label("count")
-    prev_count = func.count(prev_skills.c.name).label("prev_count")
+    all_time_count = func.count().label("count")
 
-    all_time_place_subquery = create_all_time_place_subquery()
-    complexity_subquery = create_complexity_subquery(current_from, current_to)
+    prev_count = (
+        func.count()
+        .filter(domain_vacancies.c.created_at.between(prev_from, prev_to))
+        .label("count")
+    )
+
+    salary = (
+        func.percentile_cont(0.5)
+        .within_group(average_salary_case())
+        .filter(domain_vacancies.c.created_at.between(current_from, current_to))
+        .label("average_salary")
+    )
+
+    prev_salary = (
+        func.percentile_cont(0.5)
+        .within_group(average_salary_case())
+        .filter(domain_vacancies.c.created_at.between(prev_from, prev_to))
+        .label("prev_average_salary")
+    )
 
     domains = (
         select(
             Domain.name,
-            count,
-            prev_count,
+            count.label("count"),
+            prev_count.label("prev_count"),
+            salary,
+            prev_salary,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.percentile_cont(0.5)
-            .within_group(skills.c.median_salary)
-            .label("average_salary"),
-            func.percentile_cont(0.5)
-            .within_group(prev_skills.c.median_salary)
-            .label("prev_average_salary"),
+            func.row_number()
+            .over(order_by=desc(all_time_count))
+            .label("all_time_place"),
         )
-        .select_from(KeySkillDomain)
-        .outerjoin(Domain, Domain.id == KeySkillDomain.domain_id)
-        .outerjoin(skills, skills.c.name == KeySkillDomain.name)
-        .outerjoin(prev_skills, prev_skills.c.name == KeySkillDomain.name)
+        .outerjoin(domain_vacancies, domain_vacancies.c.name == Domain.name)
+        .outerjoin(
+            VacancySalary, domain_vacancies.c.vacancy_id == VacancySalary.vacancy_id
+        )
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Domain.name == domain if domain is not None else True)
         .group_by(Domain.name)
     )
 
-    domains_result = (
-        select(
-            *domains.c,
-            all_time_place_subquery.c.all_time_place,
-            complexity_subquery.c.experience_counts,
-            complexity_subquery.c.complexity_score,
-        )
-        .join(
-            all_time_place_subquery,
-            all_time_place_subquery.c.name == domains.c.name,
-            isouter=True,
-        )
-        .join(
-            complexity_subquery,
-            complexity_subquery.c.name == domains.c.name,
-            isouter=True,
-        )
+    complexity_subquery = create_complexity_subquery(current_from, current_to)
+
+    domains_result = select(
+        *domains.c,
+        complexity_subquery.c.experience_counts,
+        complexity_subquery.c.complexity_score,
+    ).outerjoin(
+        complexity_subquery,
+        complexity_subquery.c.name == domains.c.name,
     )
 
     return domains_result
@@ -272,7 +276,7 @@ async def domains_list(
     }
 
 
-async def favourites(
+async def favorites(
     session: Session,
     names: list[str],
     pagination: Optional[Pagination] = None,

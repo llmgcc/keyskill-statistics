@@ -51,12 +51,14 @@ async def build_static_from_route(router):
         transport=ASGITransport(app=app), base_url="http://localhost:8000"
     ) as client:
         for route in router.routes:
+            print('From route', route.path)
             response = await client.get(route.path)
             path = route.path
             write(path, response.text)
 
 
 async def copy_images_folder():
+    print('Copy images')
     source_dir = os.path.dirname(os.path.abspath(__file__)) + "/src/static"
     dest_dir = FRONTEND_STATIC_API_PATH + "/static"
     os.makedirs(dest_dir, exist_ok=True)
@@ -102,6 +104,7 @@ async def build_skills_similar():
 
 async def build_skills():
     async def build(period, experience):
+        print(f'Skills {period} {experience}')
         skills = get_base_skills(days_period=period, experience=experience)
         data = [
             SkillsResponse.model_validate(item).model_dump_json()
@@ -154,6 +157,7 @@ async def build_skills():
 
 async def build_domains():
     async def build(period, experience):
+        print(f'Domains {period} {experience}')
         e = None if experience == "any" else experience
         skills = get_base_domains(days_period=period, experience=e)
         data = [
@@ -206,6 +210,7 @@ async def build_domains():
 
 async def build_categories():
     async def build(period, experience):
+        print(f'Categories {period} {experience}')
         e = None if experience == "any" else experience
         skills = get_base_categories(days_period=period, experience=e)
         data = [

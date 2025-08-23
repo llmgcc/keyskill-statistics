@@ -68,7 +68,7 @@ class KeySkillsResponse(SQLModel):
     rows: int
 
 
-class FavouriteSkillsRequest(BaseModel):
+class FavoriteSkillsRequest(BaseModel):
     names: List[str]
 
 

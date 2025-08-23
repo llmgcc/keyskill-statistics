@@ -1,4 +1,5 @@
 from typing import Optional
+from sqlalchemy import or_
 from sqlmodel import Session, and_, extract, select, func, cast, Date
 from src.config import settings
 from src.models import (
@@ -229,6 +230,8 @@ async def category_chart(
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
         .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
         .join(Domain, Domain.id == KeySkillDomain.domain_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(
             and_(
                 Vacancy.created_at.between(prev_from, current_to),
@@ -241,13 +244,21 @@ async def category_chart(
             if experience is not None
             else True
         )
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
+        .where(KeySkillDomain.confidence >= settings.min_confidence)
         .order_by(Vacancy.created_at.desc())
     )
 
     bins = bins.subquery()
-    grouped_bins_count = func.count().label("count")
+    grouped_bins_count = func.count(func.distinct(bins.c.id)).label("count")
+
     grouped_bins = (
         select(bins.c.name, bins.c.bin, grouped_bins_count)
         .group_by(bins.c.name, bins.c.bin)
@@ -292,6 +303,7 @@ async def category_salary_chart(
             Vacancy.created_at,
             average_salary_case().label("average_salary"),
             Currency.currency_code,
+            Vacancy.id,
         )
         .select_from(Vacancy)
         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
@@ -299,7 +311,7 @@ async def category_salary_chart(
         .join(Currency, Currency.currency_code == VacancySalary.currency)
         .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
         .join(Domain, Domain.id == KeySkillDomain.domain_id)
-        .where(KeySkillDomain.confidence >= 0.25)
+        .where(KeySkillDomain.confidence >= settings.min_confidence)
         .where(
             and_(
                 Vacancy.created_at.between(current_from, current_to),
@@ -307,6 +319,12 @@ async def category_salary_chart(
             )
         )
         .where(Domain.name == category if not for_all else True)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
     )
 
     if experience is not None:
@@ -324,7 +342,7 @@ async def category_salary_chart(
     bin = func.ceil(((vacancy_average_salary - left) / bin_size)).label("bin")
 
     bins = (
-        select(vacancies.c.name, bin, vacancy_average_salary)
+        select(vacancies.c.name, bin, vacancy_average_salary, vacancies.c.id)
         .select_from(vacancies)
         .where(bin >= 1)
         .where(bin <= number_of_bins)
@@ -342,7 +360,7 @@ async def category_salary_chart(
         .group_by(bins.c.name)
     ).subquery()
 
-    grouped_bins_count = func.count().label("count")
+    grouped_bins_count = func.count(func.distinct(bins.c.id)).label("count")
     grouped_bins = (
         select(bins.c.name, bins.c.bin, grouped_bins_count)
         .group_by(bins.c.name, bins.c.bin)
@@ -404,6 +422,8 @@ async def technologies_chart(
         .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
         .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
         .join(Category, Category.id == KeySkillCategory.category_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(
             and_(
                 Vacancy.created_at.between(prev_from, current_to),
@@ -416,13 +436,20 @@ async def technologies_chart(
             if experience is not None
             else True
         )
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
+        .where(KeySkillCategory.confidence >= settings.min_confidence)
         .order_by(Vacancy.created_at.desc())
     )
 
     bins = bins.subquery()
-    grouped_bins_count = func.count().label("count")
+    grouped_bins_count = func.count(func.distinct(bins.c.id)).label("count")
     grouped_bins = (
         select(bins.c.name, bins.c.bin, grouped_bins_count)
         .group_by(bins.c.name, bins.c.bin)
@@ -468,6 +495,7 @@ async def technologies_salary_chart(
             Vacancy.created_at,
             average_salary_case().label("average_salary"),
             Currency.currency_code,
+            Vacancy.id,
         )
         .select_from(Vacancy)
         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
@@ -475,12 +503,7 @@ async def technologies_salary_chart(
         .join(Currency, Currency.currency_code == VacancySalary.currency)
         .join(KeySkillCategory, KeySkillCategory.name == KeySkill.name)
         .join(Category, Category.id == KeySkillCategory.category_id)
-        .where(
-            Vacancy.experience == (None if experience == "unknown" else experience)
-            if experience is not None
-            else True
-        )
-        .where(KeySkillCategory.confidence >= 0.25)
+        .where(KeySkillCategory.confidence >= settings.min_confidence)
         .where(
             and_(
                 Vacancy.created_at.between(current_from, current_to),
@@ -488,7 +511,19 @@ async def technologies_salary_chart(
             )
         )
         .where(Category.name == technology if not for_all else True)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
     )
+    if experience is not None:
+        vacancies = vacancies.where(
+            Vacancy.experience == (None if experience == "unknown" else experience)
+            if experience is not None
+            else True
+        )
 
     right = 10**6
     left = 0
@@ -498,7 +533,7 @@ async def technologies_salary_chart(
     bin = func.ceil(((vacancy_average_salary - left) / bin_size)).label("bin")
 
     bins = (
-        select(vacancies.c.name, bin, vacancy_average_salary)
+        select(vacancies.c.name, bin, vacancy_average_salary, vacancies.c.id)
         .select_from(vacancies)
         .where(bin >= 1)
         .where(bin <= number_of_bins)
@@ -516,7 +551,7 @@ async def technologies_salary_chart(
         .group_by(bins.c.name)
     ).subquery()
 
-    grouped_bins_count = func.count().label("count")
+    grouped_bins_count = func.count(func.distinct(bins.c.id)).label("count")
     grouped_bins = (
         select(bins.c.name, bins.c.bin, grouped_bins_count)
         .group_by(bins.c.name, bins.c.bin)

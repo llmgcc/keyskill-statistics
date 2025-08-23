@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
 from src.dependencies import get_async_session
-from src.domains.service import domains_list, favourites
+from src.domains.service import domains_list, favorites
 from src.domains.schemas import (
     DomainsResponse,
     DomainsListResponse,
-    FavouriteDomainsRequest,
+    FavoriteDomainsRequest,
     DomainFilter,
 )
 from src.schemas import Pagination, OrderBy
@@ -37,17 +37,15 @@ async def get_domain(
     return (await domains_list(session, filter=filter))["domains"][0]
 
 
-@router.post(
-    summary="Favourites", path="/favourites", response_model=DomainsListResponse
-)
-async def get_favourites(
-    request: FavouriteDomainsRequest,
+@router.post(summary="favorites", path="/favorites", response_model=DomainsListResponse)
+async def get_favorites(
+    request: FavoriteDomainsRequest,
     session: Session = Depends(get_async_session),
     pagination: Pagination = Depends(),
     filter: DomainFilter = Depends(),
     order_by: OrderBy = Depends(),
 ):
-    return await favourites(
+    return await favorites(
         session,
         names=request.names,
         pagination=pagination,

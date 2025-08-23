@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
 from src.dependencies import get_async_session
-from src.categories.service import categories_list, favourites
+from src.categories.service import categories_list, favorites
 from src.categories.schemas import (
     CategoriesResponse,
     CategoriesListResponse,
-    FavouriteCategoriesRequest,
+    FavoriteCategoriesRequest,
 )
 from src.schemas import Pagination, OrderBy
 from src.categories.schemas import CategoryFilter
@@ -42,16 +42,16 @@ async def get_category(
 
 
 @router.post(
-    summary="Favourites", path="/favourites", response_model=CategoriesListResponse
+    summary="favorites", path="/favorites", response_model=CategoriesListResponse
 )
-async def get_favourites(
-    request: FavouriteCategoriesRequest,
+async def get_favorites(
+    request: FavoriteCategoriesRequest,
     session: Session = Depends(get_async_session),
     pagination: Pagination = Depends(),
     filter: CategoryFilter = Depends(),
     order_by: OrderBy = Depends(),
 ):
-    return await favourites(
+    return await favorites(
         session,
         names=request.names,
         pagination=pagination,

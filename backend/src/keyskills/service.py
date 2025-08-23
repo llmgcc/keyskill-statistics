@@ -85,10 +85,10 @@ def create_complexity_subquery(current_from, current_to):
                 func.sum(
                     experience_counts_subquery.c.exp_count
                     * case(
-                        (experience_counts_subquery.c.experience == "unknown", 0.00),
+                        (experience_counts_subquery.c.experience == "unknown", 0.0),
                         (
                             experience_counts_subquery.c.experience == "noExperience",
-                            0.1,
+                            0.0,
                         ),
                         (
                             experience_counts_subquery.c.experience == "between1And3",
@@ -96,10 +96,10 @@ def create_complexity_subquery(current_from, current_to):
                         ),
                         (
                             experience_counts_subquery.c.experience == "between3And6",
-                            0.6,
+                            0.7,
                         ),
-                        (experience_counts_subquery.c.experience == "moreThan6", 1),
-                        else_=0.00,
+                        (experience_counts_subquery.c.experience == "moreThan6", 1.0),
+                        else_=0.0,
                     )
                 )
                 / func.sum(experience_counts_subquery.c.exp_count)
@@ -111,10 +111,7 @@ def create_complexity_subquery(current_from, current_to):
         select(
             experience_json_subquery.c.name,
             experience_json_subquery.c.experience_counts,
-            experience_json_subquery.c.raw_complexity_score,
-            func.cume_dist()
-            .over(order_by=experience_json_subquery.c.raw_complexity_score)
-            .label("complexity_score"),
+            experience_json_subquery.c.raw_complexity_score.label("complexity_score"),
         ).select_from(experience_json_subquery)
     ).subquery()
 
@@ -226,7 +223,6 @@ def get_base_skills(
             )
         )
     )
-
     skills_base = skills_base.having(count >= settings.skills_min_count)
 
     skills = select(*skills_base.c).select_from(skills_base)
@@ -275,25 +271,95 @@ def get_base_skills(
 
     if domain:
         if strict:
+            highest_domain = (
+                select(
+                    KeySkillDomain.name.label("skill_name"),
+                    Domain.name.label("domain_name"),
+                    func.row_number()
+                    .over(
+                        partition_by=KeySkillDomain.name,
+                        order_by=KeySkillDomain.confidence.desc(),
+                    )
+                    .label("rank"),
+                )
+                .select_from(KeySkillDomain)
+                .join(Domain, Domain.id == KeySkillDomain.domain_id)
+                .where(KeySkillDomain.confidence >= settings.min_confidence)
+            ).subquery()
+
             result = select(*result_subquery.c).where(
-                sqlalchemy.text(f"domains[1]->>'name' = '{domain}'")
+                sqlalchemy.exists(
+                    select(1)
+                    .select_from(highest_domain)
+                    .where(
+                        and_(
+                            highest_domain.c.skill_name == result_subquery.c.name,
+                            highest_domain.c.domain_name == domain,
+                            highest_domain.c.rank == 1,
+                        )
+                    )
+                )
             )
         else:
             result = select(*result_subquery.c).where(
-                sqlalchemy.text(
-                    f"EXISTS (SELECT 1 FROM unnest(domains) AS d WHERE d->>'name' = '{domain}')"
+                sqlalchemy.exists(
+                    select(1)
+                    .select_from(KeySkillDomain)
+                    .join(Domain, Domain.id == KeySkillDomain.domain_id)
+                    .where(
+                        and_(
+                            Domain.name == domain,
+                            KeySkillDomain.name == result_subquery.c.name,
+                            KeySkillDomain.confidence >= settings.min_confidence,
+                        )
+                    )
                 )
             )
 
     if category:
         if strict:
+            highest_category = (
+                select(
+                    KeySkillCategory.name.label("skill_name"),
+                    Category.name.label("category_name"),
+                    func.row_number()
+                    .over(
+                        partition_by=KeySkillCategory.name,
+                        order_by=KeySkillCategory.confidence.desc(),
+                    )
+                    .label("rank"),
+                )
+                .select_from(KeySkillCategory)
+                .join(Category, Category.id == KeySkillCategory.category_id)
+                .where(KeySkillCategory.confidence >= settings.min_confidence)
+            ).subquery()
+
             result = select(*result_subquery.c).where(
-                sqlalchemy.text(f"categories[1]->>'name' = '{category}'")
+                sqlalchemy.exists(
+                    select(1)
+                    .select_from(highest_category)
+                    .where(
+                        and_(
+                            highest_category.c.skill_name == result_subquery.c.name,
+                            highest_category.c.category_name == category,
+                            highest_category.c.rank == 1,
+                        )
+                    )
+                )
             )
         else:
             result = select(*result_subquery.c).where(
-                sqlalchemy.text(
-                    f"EXISTS (SELECT 1 FROM unnest(categories) AS d WHERE d->>'name' = '{category}')"
+                sqlalchemy.exists(
+                    select(1)
+                    .select_from(KeySkillCategory)
+                    .join(Category, Category.id == KeySkillCategory.category_id)
+                    .where(
+                        and_(
+                            Category.name == category,
+                            KeySkillCategory.name == result_subquery.c.name,
+                            KeySkillCategory.confidence >= settings.min_confidence,
+                        )
+                    )
                 )
             )
 
@@ -312,10 +378,8 @@ async def skills_list(
     related_to = filter.related_to if filter else None
     similar_to = filter.similar_to if filter else None
     skill_name = filter.skill if filter else None
-    domain = filter.domain if filter else None
     category = filter.category if filter else None
     strict = filter.strict if filter else None
-    related_to = filter.related_to if filter else None
     limit = pagination.limit if pagination else None
     offset = pagination.offset if pagination else 0
     descending = order_by.descending if order_by else None
@@ -411,7 +475,6 @@ async def skills_list(
         )
     ).one()
 
-    print("test\n\n\n\n\n\n", order_by, descending, column)
     skills = (
         select(*skills_subquery.c)
         .select_from(skills_subquery)
@@ -426,7 +489,7 @@ async def skills_list(
     }
 
 
-async def favourites(
+async def favorites(
     session: Session,
     names: list[str],
     pagination: Optional[Pagination] = None,
@@ -655,26 +718,32 @@ async def get_all_skills_related(session: Session, period: int, experience: str 
     prev_to = current_from
     prev_from = prev_to - datetime.timedelta(days=period)
 
+    valid_skills = get_base_skills(
+        days_period=period,
+        experience=experience,
+    ).subquery()
+
     skill_vacancies = (
-        select(KeySkill.name.label("main_skill"), Vacancy.id.label("vacancy_id"))
-        .select_from(KeySkill)
+        select(KeySkill.name.label("skill_name"), Vacancy.id.label("vacancy_id"))
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .where(
             and_(
+                Vacancy.created_at.between(settings.min_date, settings.max_date),
                 Vacancy.created_at.between(
                     current_to - datetime.timedelta(days=period * 2), current_to
                 ),
                 Vacancy.experience == (None if experience == "unknown" else experience)
-                if experience
+                if experience is not None
                 else True,
+                KeySkill.name.in_(select(valid_skills.c.name)),
             )
         )
     ).subquery()
 
-    related_skills_ranked = (
+    related_skills_query = (
         select(
-            skill_vacancies.c.main_skill,
-            KeySkill.name,
+            skill_vacancies.c.skill_name.label("main_skill"),
+            KeySkill.name.label("related_skill"),
             func.count()
             .filter(Vacancy.created_at.between(current_from, current_to))
             .label("count"),
@@ -693,7 +762,7 @@ async def get_all_skills_related(session: Session, period: int, experience: str 
             KeySkillTranslation.translation,
             func.row_number()
             .over(
-                partition_by=skill_vacancies.c.main_skill,
+                partition_by=skill_vacancies.c.skill_name,
                 order_by=func.count()
                 .filter(Vacancy.created_at.between(current_from, current_to))
                 .desc(),
@@ -701,7 +770,7 @@ async def get_all_skills_related(session: Session, period: int, experience: str 
             .label("place"),
             func.row_number()
             .over(
-                partition_by=skill_vacancies.c.main_skill,
+                partition_by=skill_vacancies.c.skill_name,
                 order_by=func.count()
                 .filter(Vacancy.created_at.between(prev_from, prev_to))
                 .desc(),
@@ -713,59 +782,60 @@ async def get_all_skills_related(session: Session, period: int, experience: str 
             KeySkill,
             and_(
                 KeySkill.vacancy_id == skill_vacancies.c.vacancy_id,
-                KeySkill.name != skill_vacancies.c.main_skill,
+                KeySkill.name != skill_vacancies.c.skill_name,
             ),
         )
         .join(Vacancy, Vacancy.id == skill_vacancies.c.vacancy_id)
-        .outerjoin(
-            VacancySalary, VacancySalary.vacancy_id == skill_vacancies.c.vacancy_id
-        )
+        .outerjoin(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .outerjoin(KeySkillImage, KeySkillImage.name == KeySkill.name)
         .outerjoin(KeySkillTranslation, KeySkillTranslation.name == KeySkill.name)
-        .where(Vacancy.created_at.between(prev_from, current_to))
         .group_by(
-            skill_vacancies.c.main_skill,
+            skill_vacancies.c.skill_name,
             KeySkill.name,
             KeySkillImage.image,
             KeySkillTranslation.translation,
         )
         .having(
-            func.count().filter(Vacancy.created_at.between(current_from, current_to))
-            >= (settings.skills_min_count or 5)
+            and_(
+                func.count().filter(
+                    Vacancy.created_at.between(current_from, current_to)
+                )
+                >= settings.skills_min_count,
+                func.percentile_cont(0.5)
+                .within_group(average_salary_case())
+                .filter(Vacancy.created_at.between(current_from, current_to))
+                <= settings.max_salary,
+                KeySkill.name.in_(select(valid_skills.c.name)),
+            )
         )
     ).subquery()
 
-    final_query = (
-        select(
-            related_skills_ranked.c.main_skill.label("skill_name"),
-            func.json_agg(
-                func.json_build_object(
-                    "name",
-                    related_skills_ranked.c.name,
-                    "count",
-                    related_skills_ranked.c.count,
-                    "prev_count",
-                    related_skills_ranked.c.prev_count,
-                    "place",
-                    related_skills_ranked.c.place,
-                    "prev_place",
-                    related_skills_ranked.c.prev_place,
-                    "average_salary",
-                    related_skills_ranked.c.average_salary,
-                    "prev_average_salary",
-                    related_skills_ranked.c.prev_average_salary,
-                    "image",
-                    related_skills_ranked.c.image,
-                    "translation",
-                    related_skills_ranked.c.translation,
-                )
-            ).label("related_skills"),
-        )
-        .select_from(related_skills_ranked)
-        .group_by(related_skills_ranked.c.main_skill)
-        .order_by(related_skills_ranked.c.main_skill)
-    )
+    final_query = select(
+        related_skills_query.c.main_skill,
+        func.json_agg(
+            func.json_build_object(
+                "name",
+                related_skills_query.c.related_skill,
+                "count",
+                related_skills_query.c.count,
+                "prev_count",
+                related_skills_query.c.prev_count,
+                "average_salary",
+                related_skills_query.c.average_salary,
+                "prev_average_salary",
+                related_skills_query.c.prev_average_salary,
+                "image",
+                related_skills_query.c.image,
+                "translation",
+                related_skills_query.c.translation,
+                "place",
+                related_skills_query.c.place,
+                "prev_place",
+                related_skills_query.c.prev_place,
+            )
+        ).label("related_skills"),
+    ).group_by(related_skills_query.c.main_skill)
 
     return await session.exec(final_query)
 

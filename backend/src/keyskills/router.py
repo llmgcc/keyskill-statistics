@@ -6,12 +6,12 @@ from src.dependencies import get_async_session
 from src.keyskills.service import (
     skills_list,
     skill_details,
-    favourites,
+    favorites,
 )
 from src.keyskills.schemas import (
     KeySkillsResponse,
     SkillsResponse,
-    FavouriteSkillsRequest,
+    FavoriteSkillsRequest,
     SkillsFilter,
 )
 from src.schemas import Pagination, OrderBy
@@ -48,15 +48,15 @@ async def get_skill_details(
     return await skill_details(session, filter=filter)
 
 
-@router.post(summary="Favourites", path="/favourites", response_model=KeySkillsResponse)
-async def get_favourites(
-    request: FavouriteSkillsRequest,
+@router.post(summary="favorites", path="/favorites", response_model=KeySkillsResponse)
+async def get_favorites(
+    request: FavoriteSkillsRequest,
     session: Session = Depends(get_async_session),
     pagination: Pagination = Depends(),
     filter: SkillsFilter = Depends(),
     order_by: OrderBy = Depends(),
 ):
-    return await favourites(
+    return await favorites(
         session,
         names=request.names,
         pagination=pagination,

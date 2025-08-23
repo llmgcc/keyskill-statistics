@@ -1,6 +1,6 @@
 from typing import Optional
 from sqlalchemy import case
-from sqlmodel import Session, select, func, desc
+from sqlmodel import Session, or_, select, func, desc
 from src.models import (
     Currency,
     KeySkill,
@@ -27,8 +27,16 @@ def create_complexity_subquery(current_from, current_to):
         .join(KeySkillCategory, KeySkillCategory.category_id == Category.id)
         .join(KeySkill, KeySkill.name == KeySkillCategory.name)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
-        .where(KeySkillCategory.confidence >= 0.25)
+        .where(KeySkillCategory.confidence >= settings.min_confidence)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .distinct(Category.name, Vacancy.id)
     ).subquery()
 
@@ -53,10 +61,10 @@ def create_complexity_subquery(current_from, current_to):
                 func.sum(
                     experience_counts_subquery.c.exp_count
                     * case(
-                        (experience_counts_subquery.c.experience == "unknown", 0.00),
+                        (experience_counts_subquery.c.experience == "unknown", 0.0),
                         (
                             experience_counts_subquery.c.experience == "noExperience",
-                            0.1,
+                            0.0,
                         ),
                         (
                             experience_counts_subquery.c.experience == "between1And3",
@@ -64,10 +72,10 @@ def create_complexity_subquery(current_from, current_to):
                         ),
                         (
                             experience_counts_subquery.c.experience == "between3And6",
-                            0.6,
+                            0.7,
                         ),
-                        (experience_counts_subquery.c.experience == "moreThan6", 1),
-                        else_=0.00,
+                        (experience_counts_subquery.c.experience == "moreThan6", 1.0),
+                        else_=0.0,
                     )
                 )
                 / func.sum(experience_counts_subquery.c.exp_count)
@@ -79,38 +87,11 @@ def create_complexity_subquery(current_from, current_to):
         select(
             experience_json_subquery.c.name,
             experience_json_subquery.c.experience_counts,
-            experience_json_subquery.c.raw_complexity_score,
-            func.cume_dist()
-            .over(order_by=experience_json_subquery.c.raw_complexity_score)
-            .label("complexity_score"),
+            experience_json_subquery.c.raw_complexity_score.label("complexity_score"),
         ).select_from(experience_json_subquery)
     ).subquery()
 
     return normalized_complexity_subquery
-
-
-def create_all_time_place_subquery():
-    all_time_count = func.count().label("count")
-
-    all_time_base = (
-        select(
-            Category.name,
-            all_time_count,
-            func.row_number()
-            .over(order_by=desc(all_time_count))
-            .label("all_time_place"),
-        )
-        .select_from(KeySkillCategory)
-        .outerjoin(Category, Category.id == KeySkillCategory.category_id)
-        .join(KeySkill, KeySkill.name == KeySkillCategory.name)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .where(
-            Vacancy.created_at.between(settings.min_date, settings.max_date),
-        )
-        .group_by(Category.name)
-    )
-
-    return all_time_base.subquery()
 
 
 def get_base_categories(
@@ -131,99 +112,90 @@ def get_base_categories(
         prev_to = current_from
         prev_from = prev_to - datetime.timedelta(days=days_period)
 
-    current_skills = (
-        select(
-            KeySkill.name,
-            func.count(KeySkill.name).label("count"),
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case())
-            .filter(Vacancy.created_at.between(current_from, current_to))
-            .label("median_salary"),
-        )
-        .select_from(KeySkill)
+    category_vacancies = (
+        select(Category.name, Vacancy.id.label("vacancy_id"), Vacancy.created_at)
+        .select_from(Category)
+        .join(KeySkillCategory, KeySkillCategory.category_id == Category.id)
+        .join(KeySkill, KeySkill.name == KeySkillCategory.name)
         .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .where(Vacancy.created_at.between(current_from, current_to))
+        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
+        .where(KeySkillCategory.confidence >= settings.min_confidence)
+        .where(
+            or_(
+                average_salary_case() <= settings.max_salary,
+                average_salary_case() is None,
+            )
+        )
         .where(
             Vacancy.experience == (None if experience == "unknown" else experience)
             if experience is not None
             else True
         )
-        .group_by(KeySkill.name)
-        .having(func.count(KeySkill.name) >= 5)
-        .order_by(desc("count"))
-    ).cte("current_skills")
+        .distinct(Category.name, Vacancy.id)
+    ).subquery()
 
-    prev_skills = (
-        select(
-            KeySkill.name,
-            func.percentile_cont(0.5)
-            .within_group(average_salary_case())
-            .filter(Vacancy.created_at.between(prev_from, prev_to))
-            .label("median_salary"),
-        )
-        .select_from(KeySkill)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
-        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
-        .where(Vacancy.created_at.between(prev_from, prev_to))
-        .where(
-            Vacancy.experience == (None if experience == "unknown" else experience)
-            if experience is not None
-            else True
-        )
-        .group_by(KeySkill.name)
-        .having(func.count(KeySkill.name) >= 5)
-    ).cte("prev_skills")
+    count = (
+        func.count()
+        .filter(category_vacancies.c.created_at.between(current_from, current_to))
+        .label("count")
+    )
 
-    count = func.count(func.distinct(current_skills.c.name)).label("count")
-    prev_count = func.count(func.distinct(prev_skills.c.name)).label("prev_count")
+    all_time_count = func.count().label("count")
+
+    prev_count = (
+        func.count()
+        .filter(category_vacancies.c.created_at.between(prev_from, prev_to))
+        .label("count")
+    )
+
+    salary = (
+        func.percentile_cont(0.5)
+        .within_group(average_salary_case())
+        .filter(category_vacancies.c.created_at.between(current_from, current_to))
+        .label("average_salary")
+    )
+
+    prev_salary = (
+        func.percentile_cont(0.5)
+        .within_group(average_salary_case())
+        .filter(category_vacancies.c.created_at.between(prev_from, prev_to))
+        .label("prev_average_salary")
+    )
 
     categories = (
         select(
             Category.name,
-            count,
-            prev_count,
+            count.label("count"),
+            prev_count.label("prev_count"),
+            salary,
+            prev_salary,
             func.row_number().over(order_by=desc(count)).label("place"),
             func.row_number().over(order_by=desc(prev_count)).label("prev_place"),
-            func.percentile_cont(0.5)
-            .within_group(current_skills.c.median_salary)
-            .label("average_salary"),
-            func.percentile_cont(0.5)
-            .within_group(prev_skills.c.median_salary)
-            .label("prev_average_salary"),
+            func.row_number()
+            .over(order_by=desc(all_time_count))
+            .label("all_time_place"),
         )
-        .select_from(KeySkillCategory)
-        .outerjoin(Category, Category.id == KeySkillCategory.category_id)
-        .outerjoin(current_skills, current_skills.c.name == KeySkillCategory.name)
-        .outerjoin(prev_skills, prev_skills.c.name == KeySkillCategory.name)
+        .outerjoin(category_vacancies, category_vacancies.c.name == Category.name)
+        .outerjoin(
+            VacancySalary, category_vacancies.c.vacancy_id == VacancySalary.vacancy_id
+        )
+        .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Category.name == category if category is not None else True)
         .group_by(Category.name)
-        .order_by(desc("count"))
     )
 
-    all_time_place_subquery = create_all_time_place_subquery()
     complexity_subquery = create_complexity_subquery(current_from, current_to)
 
-    categories_result = (
-        select(
-            *categories.c,
-            all_time_place_subquery.c.all_time_place,
-            complexity_subquery.c.experience_counts,
-            complexity_subquery.c.complexity_score,
-        )
-        .join(
-            all_time_place_subquery,
-            all_time_place_subquery.c.name == categories.c.name,
-            isouter=True,
-        )
-        .join(
-            complexity_subquery,
-            complexity_subquery.c.name == categories.c.name,
-            isouter=True,
-        )
-    ).order_by(*get_order_by_clause(categories, order_by, descending))
+    categories_result = select(
+        *categories.c,
+        complexity_subquery.c.experience_counts,
+        complexity_subquery.c.complexity_score,
+    ).outerjoin(
+        complexity_subquery,
+        complexity_subquery.c.name == categories.c.name,
+    )
 
     return categories_result
 
@@ -269,7 +241,7 @@ async def categories_list(
     }
 
 
-async def favourites(
+async def favorites(
     session: Session,
     names: list[str],
     pagination: Optional[Pagination] = None,

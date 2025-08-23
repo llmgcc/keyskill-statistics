@@ -12,9 +12,10 @@ class Settings(BaseSettings):
     database: str
 
     max_date: datetime.datetime = MAX_DATE
-    min_date: datetime.datetime = MAX_DATE - datetime.timedelta(days=90)
+    min_date: datetime.datetime = MAX_DATE - datetime.timedelta(days=60)
     skills_min_count: int = 5
     max_salary: int = 10**6  # RUB
+    min_confidence: float = 0.05
 
     model_config = SettingsConfigDict(env_file="./.env.example")
 
