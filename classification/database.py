@@ -47,12 +47,8 @@ class SkillDatabase:
             with open(self.PATH_TO_SKILLS, encoding="utf-8") as f:
                 self.skills_cache = json.load(f)
 
-
-
     def get_all_skills(self):
         return list(self.skills_cache.keys())
-
-
 
     def update_skills_cache(self):
         self.update_translations()
@@ -238,7 +234,7 @@ class SkillDatabase:
                 category_similar_skills += similar_skills
 
             category_hints[c] = {
-                "title": f'{c}. {title}',
+                "title": f"{c}. {title}",
                 "similar_skills": category_similar_skills,
             }
 
@@ -256,7 +252,7 @@ class SkillDatabase:
                 np.random.shuffle(similar_skills)
                 name = f"{title}. Examples: {', '.join(similar_skills[0:3])}"
                 category_names.append(name)
-                print(f'new name: {name}')
+                print(f"new name: {name}")
 
         from sentence_transformers import SentenceTransformer
 
@@ -288,7 +284,7 @@ class SkillDatabase:
         with open(self.PATH_TO_SKILLS, "w", encoding="utf-8") as f:
             f.write(json.dumps(self.skills_cache))
 
-    def get_vector(self, skill_name, weights = [1,1,1,1]):
+    def get_vector(self, skill_name, weights=[1, 1, 1, 1]):
         weights = np.array(weights)
         weights = weights / np.sum(weights)
 
@@ -337,16 +333,16 @@ class SkillDatabase:
             return {}
 
         cursor = self.CONNECTION_URL.cursor()
-        
+
         cursor.execute("DROP TABLE IF EXISTS tmp_skills")
         cursor.execute("CREATE TEMP TABLE tmp_skills (pattern TEXT)")
         for skill in skills_list:
             cursor.execute("INSERT INTO tmp_skills VALUES (%s)", (skill,))
-        
+
         query = f"""
             SELECT ks.name, COUNT(*) 
             FROM KeySkill ks
-            WHERE ks.vacancy_id {'NOT IN' if for_other else 'IN'} (
+            WHERE ks.vacancy_id {"NOT IN" if for_other else "IN"} (
                 SELECT DISTINCT ks_inner.vacancy_id
                 FROM KeySkill ks_inner
                 JOIN tmp_skills ts ON ks_inner.name ~* ts.pattern
@@ -354,14 +350,14 @@ class SkillDatabase:
             GROUP BY ks.name
             ORDER BY COUNT(*) DESC
         """
-        
+
         cursor.execute(query)
         similar_skills = cursor.fetchall()
         cursor.close()
-        
+
         if not similar_skills:
             return {}
-            
+
         max_count = similar_skills[0][1]
         return {name: count / max_count for name, count in similar_skills}
 
@@ -432,7 +428,6 @@ class SkillDatabase:
                     )
                     inserted += 1
         self.CONNECTION_URL.commit()
-    
 
     def update_similar_skills(self):
         skill_vectors = {}
@@ -441,42 +436,37 @@ class SkillDatabase:
                 vector = self.get_vector(skill["name"], [1, 1000, 1, 1000])
                 if vector is not None:
                     skill_vectors[skill["name"]] = vector
-        
+
         skills_list = list(skill_vectors.keys())
         all_similarities = []
-        
+
         for i, target_name in enumerate(skills_list):
             print(f"Processing {i}/{len(skills_list)}")
             target_vector = skill_vectors[target_name]
-            
-            # Calculate similarity with all other skills
+
             similarities = []
             for skill_name in skills_list:
                 if skill_name != target_name:
                     skill_vector = skill_vectors[skill_name]
                     similarity = np.dot(target_vector, skill_vector)
                     similarities.append((skill_name, similarity))
-            
-            # Sort by similarity score and take top 20
+
             similarities.sort(key=lambda x: x[1], reverse=True)
             top_similar = similarities[:100]
-            
-            # Add to results
+
             for skill_name, similarity in top_similar:
                 skill1, skill2 = sorted([target_name, skill_name])
                 all_similarities.append((skill1, skill2, similarity))
-        
+
         print(f"Inserting {len(all_similarities)} similarity records...")
         cursor = self.CONNECTION_URL.cursor()
         cursor.execute("TRUNCATE KeySkillSimilarity CASCADE")
-        
+
         for skill1, skill2, similarity in all_similarities:
             cursor.execute(
                 "INSERT INTO KeySkillSimilarity (skill1, skill2, similarity_score) VALUES (%s, %s, %s) ON CONFLICT (skill1, skill2) DO NOTHING",
-                (skill1, skill2, similarity)
+                (skill1, skill2, similarity),
             )
-        
+
         self.CONNECTION_URL.commit()
         print("Done!")
-
-SkillDatabase().update_similar_skills()

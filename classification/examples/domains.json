@@ -1,20 +1,30 @@
 {
-	"Frontend development": {
+	"Frontend Development": {
 		"hint": "Development of user interfaces and client-side web applications using modern frameworks, HTML, CSS and JavaScript",
 		"examples": [
 			"React",
 			"Vue",
 			"Angular",
 			"Svelte",
-			"next.js",
+			"next.js|nuxt",
 			"HTML",
 			"CSS",
 			"Redux",
 			"Webpack",
-			"Sass"
+			"Sass",
+			"bootstrap",
+			"Styled",
+			"Flexbox",
+			"tailwind",
+			"RTK",
+			"^vite",
+			"zustand",
+			"pinia",
+			"vuex",
+			"frontend"
 		]
 	},
-	"Backend development": {
+	"Backend Development": {
 		"hint": "Server-side development including APIs, databases, business logic and system architecture",
 		"examples": [
 			"Laravel",
@@ -26,32 +36,49 @@
 			"Redis",
 			"Rabbit",
 			"REST",
-			"GraphQL"
+			"GraphQL",
+			"grpc",
+			"OAuth",
+			"django",
+			"Rails",
+			"asp\\.net",
+			"node.js",
+			"kafka",
+			"symfony",
+			"spring",
+			"backend"
 		]
 	},
-
-	"Testing & Quality assurance": {
+	"Testing & Quality Assurance": {
 		"hint": "Software testing and quality assurance including manual and automated testing, test case development, and quality control processes",
 		"examples": [
-			"^QA",
+			"^QA|Quality Assurance",
 			"(функциональное|ручное|Регрессионное|Автоматизированное|Интеграционное|Нагрузочное) тестирование",
-			"test case", 
 			"selenium",
 			"pytest",
 			"Postman",
-			"Test case",
+			"Test case|тест-кейс",
 			"Selenium",
 			"JUnit",
-			"Pytest"
+			"Gherkin",
+			"webDriver",
+			"Testflight",
+			"Allure",
+			"devtools",
+			"^testing|^Тестирование",
+			"Selenide",
+			"баг-трек",
+			"appium",
+			"cypress",
+			"jmeter",
+			"playwright"
 		]
 	},
-
-
-	"Technical support": {
+	"Technical Support": {
 		"hint": "Installation, configuration and maintenance of computer hardware, software and network systems, providing user assistance and troubleshooting",
 		"examples": [
 			"Техническая поддержка",
-			"Настройка (ПК|ПО|Сетевых)", 
+			"Настройка (ПК|ПО|Сетевых)",
 			"Helpdesk",
 			"Офисная техника",
 			"Установка ПО",
@@ -59,14 +86,24 @@
 			"Service Desk",
 			"Пользователь ПК",
 			"Active Directory",
-			"Офисная техника"
+			"Офисная техника",
+			"Администрирование ПК",
+			"Установка Windows",
+			"обслуживание ПК",
+			"ремонт оргтехники",
+			"Настройка почтовых серверов",
+			"Резервное копирование",
+			"Установка драйверов",
+			"Административная поддержка руководителя",
+			"Системы видеонаблюдения",
+			"Диагностика ПК"
 		]
 	},
 	"DevOps & Infrastructure": {
 		"hint": "Implementation and management of continuous integration/delivery pipelines, infrastructure automation, and cloud platform operations",
 		"examples": [
 			"kuber|k8s",
-			"devops", 
+			"devops",
 			"ansible",
 			"Terraform",
 			"Prometheus",
@@ -74,27 +111,45 @@
 			"docker",
 			"Grafana",
 			"Jenkins",
-			"nginx"
+			"nginx",
+			"Puppet",
+			"Chef",
+			"SaltStack",
+			"GitLab CI",
+			"CircleCI",
+			"Bamboo",
+			"AWS ECS",
+			"swarm",
+			"Splunk",
+			"Infrastructure"
 		]
 	},
-
-	
-	"Systems analytics": {
+	"Systems Analytics": {
 		"hint": "Analysis and documentation of business processes, system requirements and technical specifications to improve organizational efficiency",
 		"examples": [
 			"Use case",
 			"Системный анализ",
 			"BPMN",
-			"UML", 
+			"^UML",
 			"Бизнес-анализ",
 			"Постановка задач",
 			"Разработка технических заданий",
 			"Atlassian",
 			"Анализ требований",
-			"Разработка функциональных требований"
+			"Разработка функциональных требований",
+			"Моделирование бизнес",
+			"Спецификация требований",
+			"Бизнес-моделирование",
+			"Написание ТЗ",
+			"разработка ТЗ",
+			"брокеры",
+			"Google Analytics",
+			"Блок-схемы",
+			"Написание инструкций",
+			"Работа с системами аналитики"
 		]
 	},
-	"Project management": {
+	"Project Management": {
 		"hint": "Planning, executing and overseeing IT projects while managing resources, timelines and stakeholder communication using agile methodologies",
 		"examples": [
 			"Управление проектами",
@@ -102,20 +157,28 @@
 			"Scrum",
 			"Project management",
 			"Agile",
-			"Постановка задач разработчикам",
+			"Постановка задач",
 			"Kanban",
 			"Atlassian",
 			"MS Project",
-			"Roadmap"
+			"Roadmap",
+			"Управление командой",
+			"Разработка технических",
+			"бэклог",
+			"Управление интернет-проектами",
+			"Управление временем",
+			"Управление ожиданиями",
+			"Управление конфликтами",
+			"стейкхолд",
+			"Руководство коллективом",
+			"Стратегическое мышление"
 		]
 	},
-
-
-	"System administration": {
+	"System Administration": {
 		"hint": "Management and maintenance of IT infrastructure including servers, networks, security systems and hardware configurations",
 		"examples": [
 			"Администрирование сетевого оборудования",
-			"MikroTik", 
+			"MikroTik",
 			"Администрирование серверов",
 			"Zabbix",
 			"Active Directory",
@@ -123,7 +186,17 @@
 			"Администрирование серверов",
 			"Резервное копирование",
 			"Настройка почтовых серверов",
-			"VMware"
+			"VMware",
+			"Удаленное администрирование",
+			"Windows Server",
+			"Hyper-V",
+			"MS SQL Server",
+			"Настройка DNS",
+			"Системы видеонаблюдения",
+			"IP-телефония",
+			"Ubuntu",
+			"Proxmox",
+			"MS Exchange"
 		]
 	},
 	"Computer Graphics & Game Development": {
@@ -131,34 +204,52 @@
 		"examples": [
 			"Unity",
 			"Game",
-			"Unreal", 
+			"Unreal",
 			"OpenGL",
 			"Lua",
 			"Гейм-дизайн",
 			"Разработка компьютерных Игр",
-			"Blender 3D",
+			"Blender",
 			"Animation",
+			"Match-3",
+			"Autodesk",
+			"Scratch",
+			"3d",
+			"Roblox",
+			"Cinema",
+			"VFX",
+			"Blueprints",
+			"^VR",
+			"Моушн-дизайн",
 			"Match-3"
 		]
 	},
-	"Mobile development": {
+	"Mobile Development": {
 		"hint": "Development of applications for mobile devices including smartphones and tablets using platform-specific technologies and frameworks",
 		"examples": [
 			"Kotlin",
 			"Swift",
 			"IOS",
-			"Android", 
+			"Android",
 			"Xcode",
 			"Objective-C",
 			"Flutter",
 			"Jetpack",
 			"React Native",
-			"Coroutines"
+			"Coroutines",
+			"MVVM",
+			"Realm",
+			"Charles",
+			"SQLite",
+			"Dagger",
+			"Espresso",
+			"firebase",
+			"Мобильная разработка",
+			"dart",
+			"play store"
+			
 		]
 	},
-
-
-
 	"Design": {
 		"hint": "Creation of visual content, user interfaces and graphics using professional design tools and principles",
 		"examples": [
@@ -171,7 +262,17 @@
 			"^UX",
 			"CorelDRAW",
 			"Tilda",
-			"Типографика"
+			"Типографика",
+			"Прототипирование",
+			"After Effects",
+			"UIKit",
+			"Usability",
+			"Графические редакторы",
+			"Полиграфический дизайн",
+			"Дизайн-ревью",
+			"Векторная графика",
+			"Разработка логотипов",
+			"Иллюстрирование"
 		]
 	},
 	"Data Science": {
@@ -186,22 +287,50 @@
 			"^NLP",
 			"Scikit|sklearn",
 			"Deep Learning",
-			"^LLM"
+			"^LLM",
+			"keras",
+			"xgboost",
+			"HuggingFace",
+			"Classification",
+			"Reinforcement",
+			"Jupyter",
+			"Optuna",
+			"Hyperopt",
+			"neural",
+			"Llama"
 		]
 	},
 	"Cybersecurity": {
 		"hint": "Protection of systems, networks and data from digital attacks through security measures and best practices",
 		"examples": [
-			"информационная безопасность",
+			"информационная безопасность|Information Security|cybersec",
 			"security",
 			"^SAST",
 			"DAST",
-			"SIEM",
+			"^SIEM",
 			"WAF",
 			"devsecops",
 			"owasp",
 			"Databricks",
-			"PCI DSS"
+			"PCI DSS",
+			"Kaspersky",
+			"MaxPatrol",
+			"pentest|проникновение|пентест",
+			"Metasploit",
+			"Wireshark",
+			"Kali",
+			"Nessus",
+			"Antivirus",
+			"Firewalls",
+			"Nmap",
+			"Тестирование безопасности",
+			"антивирус",
+			"Аудит безопасности",
+			"Защита (персональных данных|информации)",
+			"криптограф",
+			"уязвимос",
+			"27001",
+			"152-ФЗ"
 		]
 	},
 	"HR Management": {
@@ -216,24 +345,42 @@
 			"^HR",
 			"сотрудник",
 			"Рекрут",
-			"Источники поиска"
+			"Источники поиска",
+			"Talent",
+			"Recruit",
+			"Интервью",
+			"Скрининг",
+			"^сорсинг",
+			"кадров",
+			"хедхант|headhunt",
+			"Грейдинг",
+			"рынка труда",
+			"ваканси"
 		]
 	},
-
-
 	"Digital Marketing & SEO": {
 		"hint": "Implementation of digital marketing strategies, search engine optimization, social media management and web analytics to improve online visibility",
 		"examples": [
 			"маркетинг|marketing",
 			"продвижение",
-			"^SEO",
-			"^SMM",
+			"SEO",
+			"SMM",
 			"реклама",
 			"Google Analytics",
 			"Яндекс.Метрика",
 			"Составление семантического ядра",
-			"Внутренняя оптимизация сайта",
-			"Внешняя оптимизация сайта"
+			"оптимизация сайта",
+			"Аудит поисковой видимости сайта",
+			"аудит сайт",
+			"Лидогенерация",
+			"Таргет",
+			"WEB аналитика",
+			"Социальные сети",
+			"adword",
+			"google ads",
+			"Поисковые системы",
+			"Анализ посещаемости",
+			"регистрация сайта"
 		]
 	},
 	"Systems Programming": {
@@ -248,7 +395,17 @@
 			"Assembler",
 			"U-Boot",
 			"JTAG",
-			"OpenMAX"
+			"OpenMAX",
+			"Микроконтрол|microcontrol|microch",
+			"электросхем",
+			"BIOS|uefi",
+			"RASPBERRY",
+			"arduino",
+			"x86",
+			"BARE METAL",
+			"driver|драйвер",
+			"gcc",
+			"buildroot"
 		]
 	},
 	"1C Development": {
@@ -266,7 +423,7 @@
 			"Торговля и склад"
 		]
 	},
-	"Website administration": {
+	"Website Administration": {
 		"hint": "Management and maintenance of websites including content updates, performance optimization, and technical troubleshooting",
 		"examples": [
 			"Wordpress",
@@ -293,15 +450,19 @@
 			"Web3",
 			"DeFi",
 			"Cosmos SDK",
-			"^dex"
+			"^dex",
+			"Smart contract",
+			"Крипта",
+			"Блокчейн",
+			"currency",
+			"Hyperledger"
 		]
 	},
-
-	"Data analytics": {
+	"Data Analytics": {
 		"hint": "Analysis and visualization of business data using specialized tools and platforms to generate insights and support decision-making",
 		"examples": [
 			"Power BI",
-			"Визуализация данных", 
+			"Визуализация данных",
 			"MS Excel",
 			"Tableau",
 			"^BI",
@@ -311,9 +472,7 @@
 			"DataLens",
 			"Power Pivot"
 		]
-	},	
-
-		
+	},
 	"Product Management": {
 		"hint": "Strategic planning and development of digital products including feature prioritization, roadmap development and stakeholder management",
 		"examples": [
@@ -347,15 +506,24 @@
 	"Database Administration": {
 		"hint": "Management and optimization of database systems including installation, configuration, backup, security and performance tuning",
 		"examples": [
-			"базами|базы|основы баз|база дан",
-			"СУБД|Cистемы управления базами данных",
-			"database",
+			"Работа с базами данных",
+			"Базы данных",
+			"СУБД",
+			"Администрирование баз данных",
+			"Основы баз данных",
+			"Cистемы управления базами данных",
+			"Database Engine",
+			"^dba",
 			"RDBMS",
-			"администратор баз",
-			"^dba"
+			"Database Administrator",
+			"Database",
+			"Оптимизация запросов",
+			"администратор баз данных",
+			"Администрирование СУБД",
+			"программирование БД",
+			"Реляционные базы данных"
 		]
 	},
-
 	"Other": {
 		"hint": "Other category encompasses non-technical and general business roles that fall outside specific IT domains",
 		"examples": [
@@ -386,9 +554,9 @@
 			"(Приём|сбор) заказ",
 			"Упаковка тов",
 			"Без штрафов",
-			"ходьба"
+			"ходьба",
+			"Кофе",
+			"недвижимость"
 		]
 	}
 }
-
-

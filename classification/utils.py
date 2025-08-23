@@ -18,12 +18,13 @@ def make_dataset(categories, database):
                 x.append(vector)
                 y.append(index)
                 skills.append((index, s))
+
     return x, y, skills
 
 
 def write_results(path, clf, categories, skills_db, weights):
     predictions = []
-    
+
     names = skills_db.get_all_skills()
     for s in names:
         vector = skills_db.get_vector(s, weights)
@@ -68,7 +69,7 @@ def write_results(path, clf, categories, skills_db, weights):
                 file.write("{:<25} {:<25}\n".format(name, probs[i]))
 
     with open(
-        f"{os.path.dirname(os.path.abspath(__file__))}/results/{path}/unknown.md",
+        f"{os.path.dirname(os.path.abspath(__file__))}/results/{path}/unknown_data.md",
         "w",
         encoding="utf-8",
     ) as file:
@@ -91,6 +92,12 @@ def get_vectors(skills_db, skills, weights):
         vector = skills_db.get_vector(skill, weights)
         X.append(vector)
         Y.append(category)
+
+    categories = set(list(map(lambda x: x[0], skills)))
+    for i in range(len(X) // len(categories)):
+        X.append(generate_unknown_vector(skills_db))
+        Y.append(len(categories))
+
     return X, Y
 
 
@@ -105,31 +112,22 @@ def get_cluster_skills(skills_db, categories):
     cluster_skills = {}
     all_examples = []
     for c in categories.keys():
-        cluster_skills[c] = skills_db.get_cluster_skills(
-            categories[c]["examples"]
-        )
+        cluster_skills[c] = skills_db.get_cluster_skills(categories[c]["examples"])
         all_examples.extend(categories[c]["examples"])
-
-
-    # print('All examples', len(all_examples))
-    # cluster_skills['Unknown'] = skills_db.get_cluster_skills(
-    #     all_examples,
-    #     for_other=True
-    # )
 
     return cluster_skills
 
 
 def generate_unknown_vector(skills_db):
-    names = np.array(list(map(lambda x: x['name'], skills_db.all_skills)))
+    names = np.array(list(map(lambda x: x["name"], skills_db.all_skills)))
     np.random.shuffle(names)
-    vectors = [skills_db.get_vector(skill, [1,1,1,1]) for skill in names[0:100]]
+    vectors = [skills_db.get_vector(skill, [1, 1, 1, 1]) for skill in names[0:100]]
     vectors = list(filter(lambda x: x is not None, vectors))
-    
+
     noisy_vectors = []
     for vector in vectors:
-        noise = np.random.normal(0, 0.5, vector.shape) 
+        noise = np.random.normal(0, 0.5, vector.shape)
         noisy_vector = vector + noise
         noisy_vectors.append(noisy_vector)
 
-    return np.mean(noisy_vectors, axis=0) 
+    return np.mean(noisy_vectors, axis=0)

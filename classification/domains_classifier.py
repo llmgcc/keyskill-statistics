@@ -27,8 +27,6 @@ class DomainsClassifier:
         self.x, self.y, self.skills = make_dataset(self.categories, self.skills_db)
 
     def predict(self):
-        KEYS = list(self.categories.keys())
-
         weights = np.array(
             [
                 self.best_params["w1"],
@@ -56,10 +54,12 @@ class DomainsClassifier:
         ) as f:
             pickle.dump(clf, f)
 
+        KEYS = list(self.categories.keys())
+
         write_results("domains", clf, KEYS, self.skills_db, weights)
         return self
 
-    def search(self, trials, NUM_SKILLS_TO_TRAIN=1000):
+    def search(self, trials, NUM_SKILLS_TO_TRAIN=5000):
         cluster_skills = {}
         for c in self.categories.keys():
             cluster_skills[c] = self.skills_db.get_cluster_skills(
@@ -117,6 +117,12 @@ class DomainsClassifier:
                 estimations.append(
                     self.skills_db.get_skill_probability_estimation(s, cluster_skills)
                 )
+
+            for i in range(len(X) // len(self.categories)):
+                vector = np.zeros(len(self.categories.keys()))
+                vector[-1] = 1
+                estimations.append(vector)
+
             estimations = np.array(estimations)
             vectors = [self.skills_db.get_vector(s, weights) for s in SKILLS_TO_TRAIN]
 

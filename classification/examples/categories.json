@@ -1,197 +1,777 @@
-    {
-    "Languages": {
-        "hint": "Programming languages used to write software and applications",
-        "examples": [
-            "Python",
-            "JavaScript", 
-            "^PHP(\\s)?(\\d)?",
-            "^Java(\\s)?(\\d)?",
-            "^C\\+\\+"
-        ]
-    },
-    "Databases": {
-        "hint": "Systems for storing and managing structured data",
-        "examples": [
-            "Postgres",
-            "MySQL",
-            "Clickhouse", 
-            "Oracle",
-            "MS SQL|MSSQL"
-        ]
-    },
-    "Frontend Libraries and Frameworks": {
-        "hint": "Libraries and frameworks for building user interfaces and web applications",
-        "examples": [
-            "Sass",
-            "React",
-            "Vue",
-            "Angular", 
-            "Svelte"
-        ]
-    },
-    "Backend Libraries and Frameworks": {
-        "hint": "Libraries and frameworks for server-side application development",
-        "examples": [
-            "Flask",
-            "Django",
-            "FastAPI",
-            "Spring",
-            "Laravel"
-        ]
-    },
-    "Soft skills": {
-        "hint": "Non-technical interpersonal and professional skills",
-        "examples": [
-            "Английский|English|Russian|Русский",
-            "работа в команде",
-            "мышление",
-            "Организаторские навыки",
-            "общение"
-        ]
-    },
-    "Operating systems": {
-        "hint": "Software platforms that manage computer hardware and software resources",
-        "examples": [
-            "^Linux",
-            "^Windows",
-            "MacOS",
-            "^Android",
-            "^iOS"
-        ]
-    },
-    "Containerization & Orchestration": {
-        "hint": "Tools for packaging, deploying and managing containerized applications",
-        "examples": [
-            "Docker",
-            "k8s|kuber",
-            "Helm",
-            "OpenShift",
-            "Istio"
-        ]
-    },
-    "Infrastructure Automation & Configuration": {
-        "hint": "Tools for automating infrastructure deployment and configuration",
-        "examples": [
-            "Ansible",
-            "Terraform", 
-            "Rundeck",
-            "AWX",
-            "VMware vCenter"
-        ]
-    },
-    "Code Collaboration & Integration": {
-        "hint": "Tools and practices for version control and continuous integration",
-        "examples": [
-            "^Git",
-            "bitbucket",
-            "SVN",
-            "Gerrit",
-            "CI/CD"
-        ]
-    },
-    "Graphic design": {
-        "hint": "Tools for creating and editing visual content and user interfaces",
-        "examples": [
-            "Figma",
-            "Photoshop",
-            "Illustrator",
-            "Inkscape",
-            "GIMP"
-        ]
-    },
-    "Monitoring & Logging": {
-        "hint": "Tools and platforms for system monitoring, logging and observability",
-        "examples": [
-            "Prometheus",
-            "Grafana",
-            "ELK Stack",
-            "Zabbix",
-            "Datadog"
-        ]
-    },
-    "Machine Learning Libraries and Frameworks": {
-        "hint": "Libraries and tools for developing machine learning and AI applications",
-        "examples": [
-            "TensorFlow",
-            "PyTorch",
-            "scikit-learn",
-            "Keras",
-            "Pandas"
-        ]
-    },
-    "API Technologies & Standards": {
-        "hint": "Technologies and specifications for building and documenting APIs",
-        "examples": [
-            "REST",
-            "GraphQL",
-            "OpenAPI",
-            "gRPC",
-            "SOAP"
-        ]
-    },
-    "Web Servers & Proxies": {
-        "hint": "Software for serving web content and managing network traffic",
-        "examples": [
-            "Nginx",
-            "Apache",
-            "HAProxy",
-            "Traefik",
-            "Caddy"
-        ]
-    },
-    "Message Brokers & Queues": {
-        "hint": "Systems for handling asynchronous messaging and event processing",
-        "examples": [
-            "Kafka",
-            "RabbitMQ",
-            "Redis",
-            "ActiveMQ",
-            "ZeroMQ"
-        ]
-    },
-    "Security Tools & Practices": {
-        "hint": "Tools and methodologies for application and infrastructure security",
-        "examples": [
-            "OWASP",
-            "^Vault",
-            "SIEM",
-            "Nmap",
-            "Snort"
-        ]
-    },
-    "Mobile Development Frameworks": {
-        "hint": "Frameworks for building mobile applications",
-        "examples": [
-            "React Native",
-            "Flutter",
-            "Xamarin",
-            "Ionic",
-            "SwiftUI"
-        ]
-    },
-    "Game Engines & Tools": {
-        "hint": "Platforms and tools for game development",
-        "examples": [
-            "Unity",
-            "Unreal",
-            "Godot",
-            "game",
-            "Phaser"
-        ]
-    },
-    "Business Intelligence Tools": {
-        "hint": "Tools for data analysis and business reporting",
-        "examples": [
-            "Tableau",
-            "Power BI",
-            "Looker",
-            "Qlik",
-            "Metabase"
-        ]
-    }
-}    
+{
+	"Programming Languages": {
+		"hint": "Programming languages used to write software and applications",
+		"examples": [
+			"Python",
+			"JavaScript",
+			"TypeScript",
+			"^PHP(\\s)?(\\d)?",
+			"^Java(\\s)?(\\d)?",
+			"^C\\+\\+",
+			"golang",
+			"rust",
+			"perl",
+			"kotlin",
+			"swift",
+			"Delphi",
+			"^Lua"
+		]
+	},
+	"Databases": {
+		"hint": "Systems for storing and managing structured data",
+		"examples": [
+			"Postgres",
+			"MySQL",
+			"Clickhouse",
+			"Oracle",
+			"MS SQL|MSSQL",
+			"maria",
+			"mongo",
+			"SQL Server",
+			"SQLite",
+			"Firebird"
+		]
+	},
+	"Frontend Libraries and Frameworks": {
+		"hint": "Libraries and frameworks for building user interfaces and web applications",
+		"examples": [
+			"Sass",
+			"React",
+			"Vue",
+			"Angular",
+			"Svelte",
+			"webpack",
+			"Tailwind",
+			"scss",
+			"CSS Modules",
+			"TanStack",
+			"jquery",
+			"bootstrap",
+			"верстка",
+			"frontend"
+		]
+	},
+	"Backend Libraries and Frameworks": {
+		"hint": "Libraries and frameworks for server-side application development",
+		"examples": [
+			"Flask",
+			"Django",
+			"FastAPI",
+			"Spring",
+			"Laravel",
+			"express",
+			"rails",
+			"asp\\.net",
+			"yii",
+			"flask",
+			"backend",
+			"phalcon"
+		]
+	},
+	"Soft Skills": {
+		"hint": "Non-technical interpersonal and professional skills",
+		"examples": [
+			"Английский|English|Russian|Русский",
+			"работа в команде",
+			"мышление",
+			"Организаторские навыки",
+			"общение",
+			"стабильность",
+			"креативн",
+			"Отвественность",
+			"исполнительность",
+			"многозаадачность",
+			"Бережливое",
+			"Стабильность",
+			"самостоятельность",
+			"обучение"
+		]
+	},
+	"Operating Systems": {
+		"hint": "Software platforms that manage computer hardware and software resources",
+		"examples": [
+			"^Linux",
+			"^Windows",
+			"MacOS",
+			"^Android",
+			"^iOS",
+			"^Ubuntu",
+			"Debian",
+			"CentOS",
+			"Red Hat",
+			"Fedora"
+		]
+	},
+	"Containerization & Orchestration": {
+		"hint": "Tools for packaging, deploying and managing containerized applications",
+		"examples": [
+			"Docker",
+			"k8s|kuber",
+			"Helm",
+			"OpenShift",
+			"Istio",
+			"swarm",
+			"compose",
+			"container|контейнер",
+			"orchestration|Оркестра",
+			"harbor"
+		]
+	},
+	"Infrastructure Automation & Configuration": {
+		"hint": "Tools for automating infrastructure deployment and configuration",
+		"examples": [
+			"Ansible",
+			"Terraform",
+			"Rundeck", 
+			"AWX",
+			"VMware",
+			"Puppet",
+			"Chef",
+			"SaltStack",
+			"CloudFormation",
+			"Pulumi",
+			"^iac"
+		]
+	},
+	"Code Collaboration & Integration": {
+		"hint": "Tools and practices for version control and continuous integration",
+		"examples": [
+			"^Git",
+			"bitbucket",
+			"SVN",
+			"Gerrit",
+			"CI/CD",
+			"Jenkins",
+			"CircleCI",
+			"TeamCity",
+			"Bamboo",
+			"Mercurial"
+		]
+	},
+	"Graphic Design": {
+		"hint": "Tools for creating and editing visual content and user interfaces",
+		"examples": [
+			"Figma",
+			"Photoshop",
+			"Illustrator",
+			"Inkscape",
+			"GIMP",
+			"Adobe XD",
+			"Sketch",
+			"CorelDRAW",
+			"Paint",
+			"Lunacy",
+			"^UI",
+			"^UX",
+			"прототипирование",
+			"^дизайн|^design",
+			"user interface",
+			"^Canva"
+		]
+	},
+	"Monitoring & Logging": {
+		"hint": "Tools and platforms for system monitoring, logging and observability",
+		"examples": [
+			"Prometheus",
+			"Grafana",
+			"ELK Stack",
+			"Zabbix",
+			"Datadog",
+			"Nagios",
+			"Splunk",
+			"Dynatrace",
+			"Logstash",
+			"Kibana",
+			"Sentry"
+		]
+	},
+	"Machine Learning Libraries and Frameworks": {
+		"hint": "Libraries and tools for developing machine learning and AI applications",
+		"examples": [
+			"TensorFlow",
+			"PyTorch",
+			"scikit-learn", 
+			"Keras",
+			"Pandas",
+			"XGBoost",
+			"LightGBM",
+			"CatBoost",
+			"NumPy",
+			"SciPy",
+			"математический|математическая",
+			"теория вероятностей",
+			"^LLM",
+			"mlops",
+			"mlflow",
+			"Jupyter",
+			"LangChain",
+			"hugging"
+		]
+	},
+	"API Technologies & Standards": {
+		"hint": "Technologies and specifications for building and documenting APIs",
+		"examples": [
+			"REST",
+			"GraphQL",
+			"OpenAPI",
+			"gRPC",
+			"SOAP",
+			"WebSocket",
+			"JSON-RPC",
+			"OData",
+			"Swagger",
+			"AsyncAPI",
+			"JSON",
+			"XML"	
+		]
+	},
+	"Web Servers & Proxies": {
+		"hint": "Software for serving web content and managing network traffic",
+		"examples": [
+			"Nginx",
+			"Apache",
+			"HAProxy",
+			"Traefik", 
+			"Caddy",
+			"Lighttpd",
+			"IIS",
+			"Envoy",
+			"Squid",
+			"Tomcat",
+			"charles"
+		]
+	},
+	"Message Brokers & Queues": {
+		"hint": "Systems for handling asynchronous messaging and event processing",
+		"examples": [
+			"Kafka",
+			"RabbitMQ", 
+			"ActiveMQ",
+			"ZeroMQ",
+			"NATS",
+			"SQS",
+			"Service Bus",
+			"IBM MQ",
+			"Pulsar",
+			"celery"
+		]
+	},
+	"Security Tools & Practices": {
+		"hint": "Tools and methodologies for application and infrastructure security",
+		"examples": [
+			"OWASP",
+			"^Vault",
+			"SIEM",
+			"Nmap", 
+			"Snort",
+			"Wireshark",
+			"Metasploit",
+			"Burp Suite",
+			"Kali",
+			"Penetration",
+			"антивирус",
+			"pentest",
+			"SAST"
+		]
+	},
+	"Mobile Development Frameworks": {
+		"hint": "Frameworks for building mobile applications",
+		"examples": [
+			"React Native",
+			"Flutter",
+			"Xamarin",
+			"Ionic",
+			"SwiftUI",
+			"Cordova",
+			"NativeScript",
+			"Capacitor",
+			"Kivy",
+			"Framework7",
+			"retrofit",
+			"realm"
+		]
+	},
+	"Game Engines & Tools": {
+		"hint": "Platforms and tools for game development",
+		"examples": [
+			"Unity",
+			"Unreal",
+			"Godot",
+			"Phaser",
+			"Construct",
+			"CryEngine",
+			"Defold",
+			"Cocos2d",
+			"LibGDX",
+			"pygame",
+			"game programming"
+		]
+	},
+	"Business Intelligence Tools": {
+		"hint": "Tools for data analysis and business reporting",
+		"examples": [
+			"Tableau",
+			"Power BI",
+			"Looker",
+			"Qlik",
+			"Metabase",
+			"Pentaho",
+			"Cognos",
+			"^bi-",
+			"Business Intelligence",
+			"excel",
+			"google docs",
+			"ms office"
+		]
+	},
+	"Testing Frameworks": {
+		"hint": "Frameworks and libraries specifically for automated testing",
+		"examples": [
+			"^Jest",
+			"Selenium",
+			"Cypress",
+			"JUnit",
+			"PyTest",
+			"Mocha",
+			"Jasmine",
+			"TestNG",
+			"Playwright",
+			"WebDriver",
+			"devtools",
+			"тестирование",
+			"^QA",
+			"espresso",
+			"browserstack",
+			"phpunit"
+		]
+	},
+	"Cloud Services": {
+		"hint": "Specific cloud platform services and tools",
+		"examples": [
+			"AWS S3",
+			"Azure cloud",
+			"Google Cloud",
+			"Lambda",
+			"EC2",
+			"DigitalOcean",
+			"Cloudflare",
+			"Heroku",
+			"Cloud"
+		]
+	},
+	"Package Managers": {
+		"hint": "Tools for managing software packages and dependencies",
+		"examples": [
+			"npm",
+			"pip",
+			"Maven",
+			"^Composer",
+			"yarn",
+			"NuGet",
+			"RubyGems",
+			"CocoaPods",
+			"Package Manager"
+		]
+	},
+	"Build Tools": {
+		"hint": "Tools for building, bundling and compiling code",
+		"examples": [
+			"Webpack",
+			"Vite",
+			"Gulp",
+			"^Make",
+			"Rollup",
+			"gradle"
+		]
+	},
+	"Code Editors & IDEs": {
+		"hint": "Integrated development environments and text editors",
+		"examples": [
+			"VS Code|vscode",
+			"IntelliJ",
+			"Eclipse",
+			"Vim",
+			"Sublime",
+			"cursor",
+			"Jetbrains",
+			"WebStorm",
+			"PyCharm",
+			"Xcode",
+			"Android studio",
+			"visual studio"
+		]
+	},
+	"State Management Libraries": {
+		"hint": "Libraries for managing application state",
+		"examples": [
+			"Redux",
+			"MobX",
+			"Vuex",
+			"Zustand",
+			"Recoil",
+			"Pinia"
+		]
+	},
+	"Content Management Systems": {
+		"hint": "Platforms for creating, managing and publishing digital content",
+		"examples": [
+			"WordPress",
+			"Drupal",
+			"Joomla",
+			"Strapi",
+			"Ghost",
+			"CMS",
+			"modx"
+		]
+	},
+	"Graphics APIs & GPGPU": {
+		"hint": "Graphics programming interfaces and general-purpose GPU computing frameworks.",
+		"examples": [
+			"OpenGL",
+			"DirectX",
+			"Vulkan",
+			"WebGL",
+			"WebGPU",
+			"Shader",
+			"OpenCL",
+			"CUDA",
+			"OpenMAX",
+			"^GPU"
+		]
+	},
+	"Project Management Tools": {
+		"hint": "Applications used for planning, tracking, and managing software development projects.",
+		"examples": [
+			"Jira",
+			"Trello",
+			"MS Project",
+			"Notion",
+			"YouTrack",
+			"Confluence",
+			"Asana",
+			"ClickUp",
+			"Redmine",
+			"OpenProject",
+			"aglile",
+			"scrum",
+			"pmbok"
+		]
+	},
+	"Network Protocols": {
+		"hint": "Communication protocols that define rules for data transmission between devices and systems across networks.",
+		"examples": [
+			"TCP/IP",
+			"^HTTP",
+			"DHCP",
+			"SMTP",
+			"SSH",
+			"UDP",
+			"ICMP",
+			"Ethernet",
+			"DNS",
+			"OSPF",
+			"^OSI"
+		]
+	},
+	"Blockchain Platforms and Tools": {
+		"hint": "Platforms and frameworks for developing blockchain applications and smart contracts",
+		"examples": [
+			"Ethereum",
+			"Solidity",
+			"Hyperledger",
+			"Remix",
+			"Polkadot",
+			"Truffle",
+			"Blockchain",
+			"Hardhat",
+			"Web3",
+			"Ethers",
+			"crypto|крипто",
+			"defi"
+		]
+	},
+	"3D Modeling Tools": {
+		"hint": "Software for creating and editing 3D models and animations",
+		"examples": [
+			"Blender",
+			"Maya",
+			"3ds Max",
+			"SketchUp",
+			"ZBrush",
+			"Substance",
+			"Houdini",
+			"Rhino",
+			"Marvelous",
+			"Cinema",
+			"SolidWorks|solid works",
+			"autocad"
+		]
+	},
+	"Enterprise Business Platforms": {
+		"hint": "Business management and enterprise resource planning platforms",
+		"examples": [
+			"Salesforce",
+			"HubSpot",
+			"Zoho CRM",
+			"Dynamics",
+			"SugarCRM",
+			"CRM",
+			"Pipedrive",
+			"Netsuite",
+			"документооборот", 
+			"зарплата и кадры", 
+			"розница",
+			"предприятие", 
+			"бухгалтерия", 
+			"управление торговлей",
+			"зарплата и управление",
+			"битрикс"
+		]
+	},
+	"Documentation Tools": {
+		"hint": "Tools for creating and managing technical documentation",
+		"examples": [
+			"Swagger",
+			"Docusaurus",
+			"MkDocs",
+			"Sphinx",
+			"GitBook",
+			"Confluence",
+			"документация"
+		]
+	},
+	"Search Engine Technologies": {
+		"hint": "Platforms and tools for implementing search functionality",
+		"examples": [
+			"Elasticsearch",
+			"Solr",
+			"Meilisearch",
+			"OpenSearch",
+			"Manticore",
+			"Google Search"
+		]
+	},
+	"Virtualization Platforms": {
+		"hint": "Technologies for creating and managing virtual machines and environments",
+		"examples": [
+			"VirtualBox",
+			"VMware",
+			"Hyper-V",
+			"QEMU",
+			"Proxmox",
+			"vSphere",
+			"KVM",
+			"Xen",
+			"Citrix Hypervisor",
+			"OpenStack"
+		]
+	},
 
-
-
-
-
+	"AI Generation Tools": {
+		"hint": "AI-powered tools for generating content, code and other assets",
+		"examples": [
+			"ChatGPT",
+			"MidJourney",
+			"Copilot",
+			"Claude",
+			"Cursor",
+			"DeepSeek",
+			"Stable Diffusion",
+			"Gemini",
+			"Perplexity"
+		]
+		
+	},
+	"NLP Processing Libraries": {
+		"hint": "Libraries and frameworks for natural language processing tasks",
+		"examples": [
+			"NLTK",
+			"spaCy",
+			"NLP",
+			"Transformer",
+			"Hugging Face",
+			"Gensim",
+			"FastText"
+		]
+	},
+	"ETL Tools": {
+		"hint": "Tools for extracting, transforming and loading data between systems",
+		"examples": [
+			"^NiFi",
+			"Talend",
+			"Airflow",
+			"Pentaho",
+			"dbt",
+			"Informatica",
+			"^ETL",
+			"Fivetran",
+			"Airbyte",
+			"Meltano"
+		]
+	},
+	"Object-Relational Mappers": {
+		"hint": "Libraries that map database structures to object-oriented models",
+		"examples": [
+			"SQLAlchemy",
+			"Hibernate",
+			"Prisma",
+			"Entity Framework",
+			"Sequelize",		
+			"Doctrine",
+			"TypeORM",
+			"Dapper",
+			"JOOQ"
+		]
+	},
+	"SEO Analysis Tools": {
+		"hint": "Tools for optimizing websites for search engines",
+		"examples": [
+			"SEMrush",
+			"Ahrefs",
+			"Screaming Frog",
+			"SEO",
+			"Google Search Console",
+			"Surfer",
+			"Majestic",
+			"Ranking",
+			"web аналитика"
+		]
+	},
+	"ERP Systems": {
+		"hint": "Enterprise resource planning systems for managing business operations",
+		"examples": [
+			"^SAP",
+			"^ERP",
+			"NetSuite",
+			"Odoo"
+		]
+	},
+	"Data Warehousing Tools": {
+		"hint": "Platforms and tools for storing and analyzing large-scale data",
+		"examples": [
+			"Snowflake",
+			"Redshift",
+			"BigQuery",
+			"Synapse",
+			"Teradata",
+			"Databricks",
+			"Vertica",
+			"Greenplum",
+			"Exasol",
+			"DWH"
+		]
+	},
+	"Big Data Frameworks": {
+		"hint": "Frameworks for processing and analyzing large datasets",
+		"examples": [
+			"Hadoop",
+			"Spark",
+			"Flink",
+			"Apache Beam",
+			"Presto",
+			"Trino"
+		]
+	},
+	"Communication & Collaboration Tools": {
+		"hint": "Platforms and tools for team communication and collaboration",
+		"examples": [
+			"Slack",
+			"Teams",
+			"Discord",
+			"Zoom",
+			"Miro",
+			"Mural",
+			"Telegram",
+			"WhatsApp",
+			"Skype"
+		]
+	},
+	"Hardware & Maintenance": {
+		"hint": "Computer hardware components, maintenance tools and repair equipment",
+		"examples": [
+			"Ремонт ПК",
+		 	"Диагностика оборудования", 
+			"Замена комплектующих",
+			"техническое обслуживание",
+			"настройка оборудования",
+			"офисная техника",
+			"ремонт оборудования",
+			"выездное обслуживание",
+			"настройка пк",
+			"настройка по",
+			"техническая поддержка",
+			"монтаж оборудования",
+			"настройка роутеров",
+			"пользователь пк",
+			"установка по",
+			"оборудование",
+			"диагностика пк",
+			"прокладка кабелей",
+			"слаботочные системы",
+			"монтаж инж",
+			"пуско-налад"
+		]
+	},
+	"Software Development Principles": {
+		"hint": "Software engineering principles, design patterns and best practices for code development",
+		"examples": [
+			"SOLID\\Z", 
+			"KISS", 
+			"^DRY", 
+			"YAGNI", 
+			"Pattern", 
+			"Clean Code", 
+			"GRASP", 
+			"^MVC",
+			"^MVP", 
+			"MVVM", 
+			"Dependency Injection",
+			"Design Principles",
+			"Шаблоны проектирования"
+		]
+	},
+	"Desktop Development Frameworks": {
+		"hint": "Frameworks and libraries for building desktop applications",
+		"examples": [
+			"Qt", 
+			"WPF", 
+			"WinForms", 
+			"Electron", 
+			"JavaFX", 
+			"Swing", 
+			"ImGui", 
+			"Avalonia"
+		]
+	},
+	"System Design & Notations": {
+		"hint": "Standards and notations for modeling, documenting and visualizing systems and processes",
+		"examples": [
+			"BPMN", 
+			"UML", 
+			"ArchiMate", 
+			"IDEF", 
+			"Process model", 
+			"Data model",
+			"notation",
+			"моделирование процессов",
+			"Use Case",
+			"diagram",
+			"TOGAF"
+		]
+	},
+	"Social Media & Content Platforms": {
+		"hint": "Social media platforms and content creation tools for marketing and engagement",
+		"examples": [
+			"TikTok", 
+			"YouTube", 
+			"Instagram", 
+			"Facebook", 
+			"LinkedIn", 
+			"Twitter", 
+			"Pinterest",
+			"Snapchat", 
+			"Reddit", 
+			"Twitch"
+		]
+	}
+}

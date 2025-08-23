@@ -1,1 +1,1 @@
-{"solver": "liblinear", "penalty": "l2", "C": 0.7298664062197785, "fit_intercept": true, "class_weight": "balanced", "w1": 0.9611984425185796, "w2": 0.020077766766953702, "w3": 0.0011594496076871921, "w4": 0.29108675285465646, "intercept_scaling": 0.9972464467176645, "dual": true}
+{"solver": "liblinear", "penalty": "l2", "C": 0.7979221292135946, "fit_intercept": true, "class_weight": "balanced", "w1": 0.7032801070959332, "w2": 0.10181650656592738, "w3": 0.0030488739720552858, "w4": 0.0004282660614591677, "intercept_scaling": 0.7888312458789649, "dual": true}
