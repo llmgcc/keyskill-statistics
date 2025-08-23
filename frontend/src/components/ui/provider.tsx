@@ -6,7 +6,6 @@ import { ColorModeProvider, type ColorModeProviderProps } from './color-mode';
 
 const system = createSystem(defaultConfig, {
   cssVarsPrefix: 'ck',
-  // disableLayers: true,
 });
 
 export function Provider(props: ColorModeProviderProps) {

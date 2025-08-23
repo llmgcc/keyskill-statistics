@@ -65,20 +65,22 @@ export function FavoriteButton({
   };
 
   return (
-    <IconButton
-      variant={'ghost'}
-      size={size}
-      disabled={isLoading}
-      spinner={<Spinner className="text-background-accent" size="xs" />}
-      className="text-text-secondary transition-all duration-200 hover:bg-background-secondary"
-      onClick={handleClick}
-    >
-      {name &&
-        (!isFavorite(name, favoriteType) ? (
-          <FaRegStar className={`p-0 text-background-accent`} />
-        ) : (
-          <FaStar className={`p-0 text-background-accent`} />
-        ))}
-    </IconButton>
+    <div>
+      <IconButton
+        variant={'ghost'}
+        size={size}
+        disabled={isLoading}
+        spinner={<Spinner className="text-background-accent" size="xs" />}
+        className="m-0 p-0 text-text-secondary transition-all duration-200 hover:bg-background-secondary"
+        onClick={handleClick}
+      >
+        {name &&
+          (!isFavorite(name, favoriteType) ? (
+            <FaRegStar className={`p-0 text-background-accent`} />
+          ) : (
+            <FaStar className={`p-0 text-background-accent`} />
+          ))}
+      </IconButton>
+    </div>
   );
 }

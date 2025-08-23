@@ -1,4 +1,4 @@
-import { FaQuestionCircle, FaStar } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { FaMoneyBillTrendUp } from 'react-icons/fa6';
 import {
   MdArrowDownward,
@@ -13,7 +13,7 @@ export enum Highlights {
   'new' = 'new',
   'highest-salary' = 'highest-salary',
   'lowest-salary' = 'lowest-salary',
-  'gainers-salary' = 'gainers-salary',
+  'growingSalary' = 'growingSalary',
 }
 
 export const HighlightIcons = {
@@ -24,7 +24,7 @@ export const HighlightIcons = {
   [Highlights['lowest-salary']]: (
     <MdArrowDownward className="text-orange-500" />
   ),
-  [Highlights['gainers-salary']]: (
+  [Highlights['growingSalary']]: (
     <FaMoneyBillTrendUp className="text-background-accent" />
   ),
 };
@@ -35,5 +35,14 @@ export const HighlightTitles = {
   [Highlights.new]: 'Newly Emerging Skills',
   [Highlights['highest-salary']]: 'Highest-Paying Skills',
   [Highlights['lowest-salary']]: 'Lowest-Paying Skills',
-  [Highlights['gainers-salary']]: 'Skills with Growing Salaries',
+  [Highlights['growingSalary']]: 'Skills with Growing Salaries',
+};
+
+export const OrderByHighlightType = {
+  [Highlights.gainers]: 'trending',
+  [Highlights.decliners]: 'declining',
+  [Highlights.new]: 'new',
+  [Highlights['highest-salary']]: 'highestSalary',
+  [Highlights['lowest-salary']]: 'lowestSalary',
+  [Highlights['growingSalary']]: 'growingSalary',
 };

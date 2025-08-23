@@ -31,7 +31,7 @@ export function HighlightsTabs({ tabs }: HighlightsTabsProps) {
   const { t } = useTranslation();
 
   const [tabValue, setTabValues] = useState<string | null>(tabs[0].value);
-  const { highlights, isLoading, isFetching } = useHighlights(tabValue);
+  const { highlights, isLoading, isFetching } = useHighlights(tabValue, 6);
 
   const currentTab = tabs.find(t => t.value === tabValue);
 

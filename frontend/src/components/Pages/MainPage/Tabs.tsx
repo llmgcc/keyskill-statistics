@@ -5,7 +5,7 @@ import { MdOutlineCategory } from 'react-icons/md';
 
 import { useOrderByState } from '@/hooks/useOrderByState';
 
-import { OrderButtons } from '../../Tabs/OrderButtons';
+import { OrderButtons } from '../../ui/OrderButtons';
 import { RouterTabs } from '../../ui/RouterTabs';
 import { CategoriesTable } from '../Common/CategoriesTable';
 import { DomainsTable } from '../Common/DomainsTable';

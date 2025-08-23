@@ -1,0 +1,11 @@
+@import 'nprogress/nprogress.css';
+
+#nprogress .bar {
+  background: rgb(var(--color-background-accent)) !important;
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px rgb(var(--color-background-accent)),
+    0 0 5px rgb(var(--color-background-accent)) !important;
+}

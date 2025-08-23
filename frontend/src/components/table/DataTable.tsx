@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-table';
 
 import { Overlay } from '../ui/Overlay';
+import { ScrollToTopButton } from '../ui/ScrollToTopButton';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
 import { PaginationButtons } from './PaginationButtons';
@@ -61,6 +62,19 @@ export function DataTable<T extends object>({
     return () => observer.disconnect();
   }, [minWidth, isOverflow]);
 
+  const scrollToTabs = () => {
+    const offset = 175;
+    const element = ref.current;
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const table = useReactTable({
     data: data ?? [],
     columns,
@@ -96,7 +110,7 @@ export function DataTable<T extends object>({
       >
         <Overlay isLoading={false} isFetching={isFetching}>
           <Table.Root
-            className="border-shadow w-full bg-background-primary text-text-primary"
+            className="w-full bg-background-primary text-text-primary"
             unstyled
           >
             <DataTableHeader
@@ -123,6 +137,7 @@ export function DataTable<T extends object>({
           isLoading={isLoading || isFetching}
         />
       )}
+      <ScrollToTopButton element={ref} onClick={scrollToTabs} />
     </div>
   );
 }

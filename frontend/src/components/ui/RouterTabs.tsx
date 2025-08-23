@@ -14,14 +14,9 @@ interface RouterTabsProps {
   paramKey?: string;
   defaultTab?: string;
   append?: JSX.Element;
-  onValueChange?: () => void;
 }
 
-function RouterTabs_({
-  tabs,
-  paramKey = 'tab',
-  onValueChange = () => {},
-}: RouterTabsProps) {
+function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 

@@ -4,8 +4,8 @@ import { BiCrown, BiGrid } from 'react-icons/bi';
 
 import { Category } from '@/interfaces';
 import { useOrderByState } from '@/hooks/useOrderByState';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 import { RouterTabs } from '@/components/ui/RouterTabs';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { SkillsTable } from '../Common/SkillsTable';
 

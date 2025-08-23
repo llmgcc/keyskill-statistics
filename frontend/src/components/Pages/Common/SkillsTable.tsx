@@ -5,14 +5,12 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
+import { KeySkill, OrderBy, SkillFilter } from '@/interfaces';
 import { Categories } from '@/config/categories';
 import { Domains } from '@/config/domains';
+import { useSkills } from '@/hooks/data/useSkills';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { useSkills } from '@/hooks/useSkills';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   chartAccessor,
   complexityAccessor,
@@ -25,12 +23,14 @@ import {
   similarityAccessor,
   skillImageAccessor,
   skillNameAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
 interface SkillsTableProps {
   columns?: string[];
   order_by?: OrderBy;
-  filter?: ServerFilters;
+  filter?: SkillFilter;
   enabled?: boolean;
   paginationPrefix?: string;
   width?: number;
@@ -138,9 +138,13 @@ export function SkillsTable({
     [t, isLoading, isFetching, enabled]
   );
 
-  const cols = columns
-    .map(column => tableColumns.find(c => c.accessorKey === column))
-    .filter(e => e);
+  const cols = useMemo(
+    () =>
+      columns
+        .map(column => tableColumns.find(c => c.accessorKey === column))
+        .filter(e => e),
+    [tableColumns, columns]
+  );
 
   return (
     <>

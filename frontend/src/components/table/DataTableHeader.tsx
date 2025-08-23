@@ -6,13 +6,13 @@ import { useTopOffset } from '@/hooks/useTopOffset';
 
 import { alignRight, getCommonPinningStyles, padding } from './common';
 
-interface DataTableHeaderProps<T extends object> {
+interface DataTableHeaderProps<T> {
   table: ITable<T>;
   pinned: boolean;
   isLoading: boolean;
 }
 
-export function DataTableHeader<T extends object>({
+export function DataTableHeader<T>({
   table,
   pinned,
   isLoading,
@@ -39,21 +39,18 @@ export function DataTableHeader<T extends object>({
 
   return (
     <Table.Header
-      className={`${!pinned && 'sticky'} ${isLoading ? 'z-[400]' : 'z-[1000]'} h-10 w-full border-spacing-0 text-xs shadow-sm shadow-background-secondary`}
+      className={`${!pinned && 'sticky'} h-10 border-b-[1px] border-background-secondary ${isLoading ? 'z-[400]' : 'z-[1000]'} w-full border-spacing-0 text-xs shadow-sm shadow-background-secondary`}
       style={{
-        top: `${headerOffset + filterOffset + navOffset}px`,
+        top: !pinned ? `${headerOffset + filterOffset + navOffset}px` : 0,
       }}
     >
       {table.getHeaderGroups().map(headerGroup => (
-        <Table.Row key={headerGroup.id} className="">
+        <Table.Row key={headerGroup.id} className="h-10">
           {headerGroup.headers.map(header => (
             <Table.ColumnHeader
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
               style={{
-                // minWidth: header.getSize()
-                //   ? `${header.getSize()}px`
-                //   : 'fit-content',
                 width: header.getSize()
                   ? `${header.getSize()}px`
                   : 'fit-content',

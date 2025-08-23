@@ -8,7 +8,7 @@ import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 import { ListEnumeration } from '@/components/ui/ListEnumeration';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 
 import { CategoriesTable } from '../Common/CategoriesTable';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -52,11 +52,13 @@ export function Categories() {
                 <ListEnumeration
                   list={[
                     t(`categories.${CategoriesConfig.Databases}`),
-                    t(`categories.${CategoriesConfig.Languages}`),
+                    t(
+                      `categories.${CategoriesConfig['Programming Languages']}`
+                    ),
                     t(
                       `categories.${CategoriesConfig['API Technologies & Standards']}`
                     ),
-                    t(`categories.${CategoriesConfig['Operating systems']}`),
+                    t(`categories.${CategoriesConfig['Operating Systems']}`),
                   ]}
                   maxToDisplay={4}
                 />

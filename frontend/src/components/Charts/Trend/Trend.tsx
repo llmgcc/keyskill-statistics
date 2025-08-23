@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import { curveCardinal } from 'd3-shape';
 import { useTranslation } from 'react-i18next';
 import {
@@ -23,7 +24,7 @@ interface TrendProps {
   height?: number;
 }
 
-export function Trend({
+function Trend_({
   data,
   tooltip,
   sparkline = false,
@@ -39,11 +40,15 @@ export function Trend({
 
   const numberOfTicks = 5;
 
-  const chartDataExtended: BinExtended[] = data.data.map(d => ({
-    ...d,
-    from: start + (d.bin - 1) * interval,
-    to: start + d.bin * interval,
-  }));
+  const chartDataExtended: BinExtended[] = useMemo(
+    () =>
+      data.data.map(d => ({
+        ...d,
+        from: start + (d.bin - 1) * interval,
+        to: start + d.bin * interval,
+      })),
+    [data.data, interval, start]
+  );
 
   const xTicks = generateTicks(2, chartDataExtended.length - 1, numberOfTicks);
   const xRange = chartDataExtended.length - 1;
@@ -57,14 +62,22 @@ export function Trend({
 
   const curveFunction = curveCardinal.tension(0.5);
 
-  const hasData = chartDataExtended.some(d => d.count > 0);
-
+  const hasData = useMemo(
+    () => chartDataExtended.some(d => d.count > 0),
+    [chartDataExtended]
+  );
   return (
     <div className="relative size-full min-h-1 min-w-1">
       <ResponsiveContainer width="100%" height={height ?? '100%'}>
         <AreaChart data={chartDataExtended ?? []}>
           <defs>
-            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient
+              id={`areaGradient-${color.replace('#', '')}`}
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
               <stop offset="0%" stopColor={color} stopOpacity={0.5} />
               <stop offset="100%" stopColor={color} stopOpacity={0} />
             </linearGradient>
@@ -125,7 +138,7 @@ export function Trend({
               dataKey="count"
               stroke={color}
               strokeWidth={strokeWidth}
-              fill="url(#areaGradient)"
+              fill={`url(#areaGradient-${color.replace('#', '')})`}
               dot={false}
               activeDot={{
                 r: 6,
@@ -139,7 +152,6 @@ export function Trend({
           )}
         </AreaChart>
       </ResponsiveContainer>
-
       {!hasData && !sparkline && (
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-sm text-[rgb(var(--color-text-secondary))]">
@@ -150,3 +162,5 @@ export function Trend({
     </div>
   );
 }
+
+export const Trend = memo(Trend_);

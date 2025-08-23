@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -23,8 +24,14 @@ export function CategoryPage() {
     categoryDetails?.name ? t(`categories.${categoryDetails.name}`) : null
   );
 
+  useEffect(() => {
+    if (isError) {
+      navigate('/');
+    }
+  }, [navigate, isError]);
+
   if (isError) {
-    navigate('/');
+    return null;
   }
 
   return (

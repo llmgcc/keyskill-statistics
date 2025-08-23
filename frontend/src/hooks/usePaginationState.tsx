@@ -6,7 +6,7 @@ export function usePaginationState(
   defaultPage: number = 0,
   pageSizeVariants: number[],
   queryKey: string | null,
-  keyPrefix?: string = ''
+  keyPrefix: string = ''
 ) {
   const pageQueryKey = `${keyPrefix}_page`;
   const itemsQueryKey = `${keyPrefix}_items`;
@@ -59,6 +59,7 @@ export function usePaginationState(
         },
         { replace }
       );
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
       setPaginationState({
         ...pagination,
       });
@@ -66,8 +67,10 @@ export function usePaginationState(
     [
       defaultPage,
       pageSizeVariants,
-      searchParams.get(pageQueryKey),
+      searchParams,
       setSearchParams,
+      itemsQueryKey,
+      pageQueryKey,
     ]
   );
 
@@ -85,26 +88,28 @@ export function usePaginationState(
         },
         true
       );
-      // setPaginationState({
-      //   ...paginationState,
-      //   pageIndex: 0,
-      // })
     }
     prevQueryKeyRef.current = queryKey;
-  }, [queryKey]);
+  }, [queryKey, paginationState, updatePagination]);
 
   useEffect(() => {
     if (!searchParams.get(pageQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(pageQueryKey, String(paginationState.pageIndex));
-      setSearchParams(prev => newSearchParams, { replace: true });
+      setSearchParams(newSearchParams, { replace: true });
     }
     if (!searchParams.get(itemsQueryKey)) {
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set(itemsQueryKey, String(paginationState.pageSize));
-      setSearchParams(prev => newSearchParams, { replace: true });
+      setSearchParams(newSearchParams, { replace: true });
     }
-  }, [searchParams, setSearchParams, paginationState]);
+  }, [
+    searchParams,
+    setSearchParams,
+    paginationState,
+    itemsQueryKey,
+    pageQueryKey,
+  ]);
 
   useEffect(() => {
     const pageParam = searchParams.get(pageQueryKey);
@@ -138,7 +143,14 @@ export function usePaginationState(
         );
       }
     }
-  }, [searchParams, paginationState]);
+  }, [
+    searchParams,
+    paginationState,
+    itemsQueryKey,
+    pageQueryKey,
+    pageSizeVariants,
+    updatePagination,
+  ]);
 
   return {
     pagination: paginationState,

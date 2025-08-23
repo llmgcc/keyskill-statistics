@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { KeySkill } from '@/interfaces';
 import { Language } from '@/config/languages';
@@ -10,6 +11,7 @@ interface SkillDescriptionProps {
   isLoading?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'base';
   image?: boolean;
+  onLinkClick?: () => void;
 }
 
 export function SkillDescription({
@@ -17,6 +19,7 @@ export function SkillDescription({
   isLoading = false,
   size = 'md',
   image = true,
+  onLinkClick,
 }: SkillDescriptionProps) {
   const { i18n, t } = useTranslation();
 
@@ -28,23 +31,36 @@ export function SkillDescription({
   const domain = skill?.domains?.[0] ?? null;
   const category = skill?.categories?.[0] ?? null;
 
+  const linkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    onLinkClick?.();
+    e.stopPropagation();
+  };
+
   return (
     <Description
       displayName={skillName ?? null}
       subtitle={
         !isLoading ? (
           <div className="flex">
-            <div className="">
-              <div className="text-text-secondary">
+            <div>
+              <Link
+                to={`/domain/${domain?.name}`}
+                className="text-text-secondary hover:text-background-accent"
+                onClick={linkClick}
+              >
                 {t(`domains.${domain?.name}`) ?? t(`common.unknownCategory`)}
-              </div>
+              </Link>
             </div>
             <div className="mx-1">•</div>
-            <div className="">
-              <div className="text-text-secondary">
+            <div>
+              <Link
+                to={`/category/${category?.name}`}
+                className="text-text-secondary hover:text-background-accent"
+                onClick={linkClick}
+              >
                 {t(`categories.${category?.name}`) ??
                   t(`common.unknownCategory`)}
-              </div>
+              </Link>
             </div>
           </div>
         ) : (

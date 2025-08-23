@@ -1,9 +1,0 @@
-.recharts-pie * {
-  outline: none !important;
-  border: none !important;
-}
-
-.SelectContent {
-  min-width: var(--radix-select-trigger-width);
-  max-height: var(--radix-select-content-available-height);
-}

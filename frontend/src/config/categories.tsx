@@ -3,8 +3,10 @@ import {
   BiBookOpen,
   BiBrain,
   BiBuilding,
+  BiBuildings,
   BiChat,
   BiCloud,
+  BiCodeBlock,
   BiCog,
   BiCoin,
   BiCube,
@@ -21,6 +23,7 @@ import {
   BiPackage,
   BiSearch,
   BiServer,
+  BiShare,
   BiShield,
   BiSolidBattery,
   BiSolidCube,
@@ -31,8 +34,16 @@ import {
   BiText,
   BiTransfer,
   BiTrendingUp,
+  BiWindow,
+  BiWrench,
 } from 'react-icons/bi';
-import { BsBox, BsCloudCheck, BsGear, BsRobot } from 'react-icons/bs';
+import {
+  BsBox,
+  BsCloudCheck,
+  BsDiagram2,
+  BsGear,
+  BsRobot,
+} from 'react-icons/bs';
 import {
   FaCode,
   FaCodeBranch,
@@ -48,16 +59,16 @@ import { TbServerBolt } from 'react-icons/tb';
 import colors from 'tailwindcss/colors';
 
 export enum Categories {
-  'Languages' = 'Languages',
+  'Programming Languages' = 'Programming Languages',
   'Databases' = 'Databases',
   'Frontend Libraries and Frameworks' = 'Frontend Libraries and Frameworks',
   'Backend Libraries and Frameworks' = 'Backend Libraries and Frameworks',
-  'Soft skills' = 'Soft skills',
-  'Operating systems' = 'Operating systems',
+  'Soft Skills' = 'Soft Skills',
+  'Operating Systems' = 'Operating Systems',
   'Containerization & Orchestration' = 'Containerization & Orchestration',
   'Infrastructure Automation & Configuration' = 'Infrastructure Automation & Configuration',
   'Code Collaboration & Integration' = 'Code Collaboration & Integration',
-  'Graphic design' = 'Graphic design',
+  'Graphic Design' = 'Graphic Design',
   'Monitoring & Logging' = 'Monitoring & Logging',
   'Machine Learning Libraries and Frameworks' = 'Machine Learning Libraries and Frameworks',
   'API Technologies & Standards' = 'API Technologies & Standards',
@@ -77,7 +88,7 @@ export enum Categories {
   'Graphics APIs & GPGPU' = 'Graphics APIs & GPGPU',
   'Project Management Tools' = 'Project Management Tools',
   'Network Protocols' = 'Network Protocols',
-  'Blockchain Platforms and tools' = 'Blockchain Platforms and tools',
+  'Blockchain Platforms and Tools' = 'Blockchain Platforms and Tools',
   '3D Modeling Tools' = '3D Modeling Tools',
   'CRM Platforms' = 'CRM Platforms',
   'Documentation Tools' = 'Documentation Tools',
@@ -94,17 +105,25 @@ export enum Categories {
   'Communication & Collaboration Tools' = 'Communication & Collaboration Tools',
   'Other' = 'Other',
   'Unknown' = 'Unknown',
+
+  'Hardware & Maintenance' = 'Hardware & Maintenance',
+  'Software Development Principles' = 'Software Development Principles',
+  'Desktop Development Frameworks' = 'Desktop Development Frameworks',
+  'System Design & Notations' = 'System Design & Notations',
+  'Social Media & Content Platforms' = 'Social Media & Content Platforms',
+  'Enterprise Business Platforms' = 'Enterprise Business Platforms',
 }
 
 export const CategoryDescription: Record<Categories, string> = {
-  Languages: 'Programming languages used to write software and applications',
+  'Programming Languages':
+    'Programming languages used to write software and applications',
   Databases: 'Systems for storing and managing structured data',
   'Frontend Libraries and Frameworks':
     'Libraries and frameworks for building user interfaces and web applications',
   'Backend Libraries and Frameworks':
     'Libraries and frameworks for server-side application development',
-  'Soft skills': 'Non-technical interpersonal and professional skills',
-  'Operating systems':
+  'Soft Skills': 'Non-technical interpersonal and professional skills',
+  'Operating Systems':
     'Software platforms that manage computer hardware and software resources',
   'Containerization & Orchestration':
     'Tools for packaging, deploying and managing containerized applications',
@@ -112,7 +131,7 @@ export const CategoryDescription: Record<Categories, string> = {
     'Tools for automating infrastructure deployment and configuration',
   'Code Collaboration & Integration':
     'Tools and practices for version control and continuous integration',
-  'Graphic design':
+  'Graphic Design':
     'Tools for creating and editing visual content and user interfaces',
   'Monitoring & Logging':
     'Tools and platforms for system monitoring, logging and observability',
@@ -146,7 +165,7 @@ export const CategoryDescription: Record<Categories, string> = {
     'Applications used for planning, tracking, and managing software development projects',
   'Network Protocols':
     'Communication protocols that define rules for data transmission between devices and systems across networks',
-  'Blockchain Platforms and tools':
+  'Blockchain Platforms and Tools':
     'Platforms and frameworks for developing blockchain applications and smart contracts',
   '3D Modeling Tools':
     'Software for creating and editing 3D models and animations',
@@ -177,34 +196,23 @@ export const CategoryDescription: Record<Categories, string> = {
     'Platforms and tools for team communication and collaboration',
   Other: "Skills that don't fit into other specific categories",
   Unknown: 'Unclassified or emerging technology skills',
-};
 
-export const CategoryShort: Record<Categories, string> = {
-  Languages: 'Lang',
-  Databases: 'DB',
-  'Frontend Libraries and Frameworks': 'Front',
-  'Backend Libraries and Frameworks': 'Back',
-  'Soft skills': 'Soft',
-  'Operating systems': 'OS',
-  'Containerization & Orchestration': 'Cont',
-  'Infrastructure Automation & Configuration': 'IaC',
-  'Code Collaboration & Integration': 'CI/CD',
-  'Graphic design': 'Design',
-  'Monitoring & Logging': 'Monitor',
-  'Machine Learning Libraries and Frameworks': 'ML',
-  'API Technologies & Standards': 'API',
-  'Web Servers & Proxies': 'Web',
-  'Message Brokers & Queues': 'Queue',
-  'Security Tools & Practices': 'Sec',
-  'Mobile Development Frameworks': 'Mobile',
-  'Game Engines & Tools': 'Game',
-  'Business Intelligence Tools': 'BI',
-  Other: 'Other',
-  Unknown: 'Unknown',
+  'Enterprise Business Platforms':
+    'Business management and enterprise resource planning platforms',
+  'Hardware & Maintenance':
+    'Computer hardware components, maintenance tools and repair equipment',
+  'Software Development Principles':
+    'Software engineering principles, design patterns and best practices for code development',
+  'Desktop Development Frameworks':
+    'Frameworks and libraries for building desktop applications',
+  'System Design & Notations':
+    'Standards and notations for modeling, documenting and visualizing systems and processes',
+  'Social Media & Content Platforms':
+    'Social media platforms and content creation tools for marketing and engagement',
 };
 
 export const CategoriesStyle = {
-  [Categories.Languages]: {
+  [Categories['Programming Languages']]: {
     logo: <PiBracketsCurly />,
     color: colors.blue[500],
   },
@@ -220,11 +228,11 @@ export const CategoriesStyle = {
     logo: <BiServer />,
     color: colors.indigo[500],
   },
-  [Categories['Soft skills']]: {
+  [Categories['Soft Skills']]: {
     logo: <FaHandshake />,
     color: colors.pink[400],
   },
-  [Categories['Operating systems']]: {
+  [Categories['Operating Systems']]: {
     logo: <BiTerminal />,
     color: colors.gray[600],
   },
@@ -240,7 +248,7 @@ export const CategoriesStyle = {
     logo: <FaCodeBranch />,
     color: colors.purple[600],
   },
-  [Categories['Graphic design']]: {
+  [Categories['Graphic Design']]: {
     logo: <FaPaintBrush />,
     color: colors.rose[400],
   },
@@ -329,7 +337,7 @@ export const CategoriesStyle = {
     logo: <BiNetworkChart />,
     color: colors.teal[600],
   },
-  [Categories['Blockchain Platforms and tools']]: {
+  [Categories['Blockchain Platforms and Tools']]: {
     logo: <BiCoin />,
     color: colors.yellow[500],
   },
@@ -388,5 +396,30 @@ export const CategoriesStyle = {
   [Categories['Communication & Collaboration Tools']]: {
     logo: <BiChat />,
     color: colors.sky[400],
+  },
+
+  [Categories['Hardware & Maintenance']]: {
+    logo: <BiWrench />,
+    color: colors.orange[600],
+  },
+  [Categories['Software Development Principles']]: {
+    logo: <BiCodeBlock />,
+    color: colors.emerald[600],
+  },
+  [Categories['Desktop Development Frameworks']]: {
+    logo: <BiWindow />,
+    color: colors.slate[600],
+  },
+  [Categories['System Design & Notations']]: {
+    logo: <BsDiagram2 />,
+    color: colors.cyan[600],
+  },
+  [Categories['Social Media & Content Platforms']]: {
+    logo: <BiShare />,
+    color: colors.pink[600],
+  },
+  [Categories['Enterprise Business Platforms']]: {
+    logo: <BiBuildings />,
+    color: colors.stone[600],
   },
 };

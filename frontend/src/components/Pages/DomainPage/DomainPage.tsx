@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -24,8 +25,14 @@ export function DomainPage() {
     domainDetails?.name ? t(`domains.${domainDetails.name}`) : null
   );
 
+  useEffect(() => {
+    if (isError) {
+      navigate('/');
+    }
+  }, [navigate, isError]);
+
   if (isError) {
-    navigate('/');
+    return null;
   }
 
   return (

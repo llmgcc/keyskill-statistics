@@ -14,7 +14,14 @@ export function useFavoriteCategories(
   const { period, experience } = useFilters();
   const favorites = useFavoritesStore(state => state.favorites);
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['favorite_categories', period, experience, orderBy, pagination],
+    queryKey: [
+      'favorite_categories',
+      period,
+      experience,
+      orderBy,
+      pagination,
+      favorites,
+    ],
     queryFn: async () => {
       const data = await API.categories.favoriteCategories(
         favorites.filter(f => f.type === 'categories').map(f => f.name),

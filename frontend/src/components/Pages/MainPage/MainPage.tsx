@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import { ScrollToTopButton } from '@/components/ui/ScrollToTopButton';
 import { Highlights } from '@/components/Pages/MainPage/Highlights/Highlights';
 import { TextSection } from '@/components/Pages/MainPage/TextSection/TextSection';
 
@@ -41,7 +40,6 @@ export function MainPage() {
         <StickyFilter />
       </div>
       <Highlights />
-      <ScrollToTopButton element={tabsRef} onClick={scrollToTabs} />
       <div ref={tabsRef} className="app-container mt-8">
         <Tabs />
       </div>

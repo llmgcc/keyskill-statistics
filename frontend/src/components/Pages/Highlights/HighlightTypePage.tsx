@@ -2,25 +2,16 @@ import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Highlights } from '@/config/highlights';
+import { Highlights, OrderByHighlightType } from '@/config/highlights';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 
 import { SkillsTable } from '../Common/SkillsTable';
 import { StickyFilter } from '../Common/StickyFilter';
-
-export const OrderByHighlightType = {
-  [Highlights.gainers]: 'trending',
-  [Highlights.decliners]: 'declining',
-  [Highlights.new]: 'new',
-  [Highlights['highest-salary']]: 'highestSalary',
-  [Highlights['lowest-salary']]: 'lowestSalary',
-  [Highlights['gainers-salary']]: 'unknownSalary',
-};
 
 export function HighlightTypePage() {
   const { type } = useParams<{ type: string }>();

@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 import { Categories } from './components/Pages/Categories/Categories';
 import { CategoryPage } from './components/Pages/CategoryPage/CategoryPage';
 import { DomainPage } from './components/Pages/DomainPage/DomainPage';
@@ -65,6 +67,11 @@ export function routerConfig() {
       id: 'category',
       path: '/category/:name',
       element: <CategoryPage />,
+    },
+    {
+      id: 'default',
+      path: '*',
+      element: <Navigate to="/" replace />,
     },
   ];
 }

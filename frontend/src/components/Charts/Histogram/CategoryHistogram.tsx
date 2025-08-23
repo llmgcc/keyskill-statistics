@@ -3,6 +3,7 @@ import { Skeleton } from '@chakra-ui/react';
 
 import { KeySkill } from '@/interfaces';
 import { useCategorySalaryData } from '@/hooks/data/useCategorySalaryData';
+import { useCurrencyValue } from '@/hooks/useCurrencyValue';
 
 import { Histogram } from './Histogram';
 import { SalaryTooltip } from './SalaryTooltip';
@@ -16,6 +17,9 @@ function CategoryHistogram_({ category }: CategoryHistogramProps) {
     category?.name ?? null,
     25
   );
+  const { value: medianConverted } = useCurrencyValue(
+    category?.average_salary ?? 0
+  );
   return (
     <div className="size-full">
       <Skeleton
@@ -28,6 +32,7 @@ function CategoryHistogram_({ category }: CategoryHistogramProps) {
               data: chart,
               from,
               to,
+              median: medianConverted,
             }}
             tooltip={<SalaryTooltip />}
             sparkline={true}

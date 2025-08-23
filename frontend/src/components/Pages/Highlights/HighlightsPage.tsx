@@ -212,7 +212,7 @@ export function HighlightsPage() {
         </div>
         <div>
           <HighlightCard
-            type={Highlights['gainers-salary']}
+            type={Highlights['growingSalary']}
             value={salary}
             change={salaryChange}
           />

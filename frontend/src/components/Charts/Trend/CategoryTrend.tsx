@@ -2,7 +2,6 @@ import { Skeleton } from '@chakra-ui/react';
 import colors from 'tailwindcss/colors';
 
 import { KeySkill } from '@/interfaces';
-import { useCategorySalaryData } from '@/hooks/data/useCategorySalaryData';
 import { useCategoryTrendData } from '@/hooks/data/useCategoryTrendData';
 
 import { MentionsTooltip } from './MentionsTooltip';
@@ -33,7 +32,7 @@ export function CategoryTrend({ category }: CategoryTrendProps) {
           <Trend
             data={{
               data: actualData,
-              from,
+              from: from ?? 0,
               to,
             }}
             sparkline={true}

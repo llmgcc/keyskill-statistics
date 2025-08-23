@@ -2,7 +2,6 @@ import { KeySkill } from '@/interfaces';
 import { useStatsStore } from '@/store/statsStore';
 import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { CategoryHistogram } from '@/components/Charts/Histogram/CategoryHistogram';
-import { DomainHistogram } from '@/components/Charts/Histogram/DomainHistogram';
 
 import { ProgressBar } from './ProgressBar';
 

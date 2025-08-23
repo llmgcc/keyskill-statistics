@@ -6,8 +6,8 @@ import { PiApproximateEquals } from 'react-icons/pi';
 
 import { KeySkill } from '@/interfaces';
 import { useOrderByState } from '@/hooks/useOrderByState';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 import { RouterTabs } from '@/components/ui/RouterTabs';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { SkillsTable } from '../Common/SkillsTable';
 
@@ -110,7 +110,7 @@ export function SkillPageTabs({ skill }: SkillPageTabsProps) {
               column: similarOrder.column,
               descending: similarOrder.descending,
             }}
-            width={1100}
+            width={1000}
             text={
               <Trans
                 i18nKey="skillPage.similarSkills.subtitle"

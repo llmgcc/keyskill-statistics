@@ -1,44 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import './styles/common.css';
-@import './styles/piechart.css';
-@import './styles/radix.css';
-@import 'nprogress/nprogress.css';
+@import './styles/loading.css';
+@import './styles/scrollbar.css';
 
 html,
 body {
   padding: 0;
   margin: 0;
-}
-
-#nprogress .bar {
-  background: rgb(var(--color-background-accent)) !important;
-}
-
-#nprogress .peg {
-  box-shadow:
-    0 0 10px rgb(var(--color-background-accent)),
-    0 0 5px rgb(var(--color-background-accent)) !important;
-}
-
-.gradient {
-  /* inset: 0;
-  height: 100%;
-  width: 100%;
-  background-image: radial-gradient(rgba(var(--color-background-gray)) 1px, transparent 1px);
-  background-size: 16px 16px;
-  filter: blur(0.5px);
-  -webkit-mask-image: linear-gradient(to right,
-    transparent,
-    rgba(var(--color-background-gray)) 20%,
-    rgba(var(--color-background-gray)) 80%,
-    transparent
-  );
-  mask-image: linear-gradient(to right, 
-    transparent,
-    rgba(var(--color-background-gray)) 20%, 
-    rgba(var(--color-background-gray)) 80%,
-    transparent
-  ); */
+  background-color: rgb(var(--color-background-primary)) !important;
 }
 
 body {
@@ -51,32 +20,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background-primary);
-}
-
-html {
-  background-color: rgb(var(--color-background-primary)) !important;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(var(--color-background-gray))
-    rgb(var(--color-background-primary));
-}
-
-*::-webkit-scrollbar-track {
-  background: rgb(var(--color-background-primary));
-}
-
-*::-webkit-scrollbar-thumb {
-  background: rgb(var(--color-background-gray));
-  border-radius: 4px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--color-background-secondary));
-}
-
-body {
   overflow-x: hidden;
 }
 
@@ -101,12 +44,6 @@ body[data-scroll-locked] {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (max-width: 768px) {
-  html {
-    /* font-size: 5%; */
-  }
 }
 
 @media (min-width: 1600px) {

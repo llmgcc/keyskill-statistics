@@ -30,10 +30,13 @@ export const ToggleTip = React.forwardRef<HTMLDivElement, ToggleTipProps>(
         {...rest}
         positioning={{ ...rest.positioning, gutter: 4 }}
       >
-        <ChakraPopover.Trigger asChild>{children}</ChakraPopover.Trigger>
+        <ChakraPopover.Trigger asChild onClick={e => e.stopPropagation()}>
+          {children}
+        </ChakraPopover.Trigger>
         <Portal disabled={!portalled} container={portalRef}>
           <ChakraPopover.Positioner>
             <ChakraPopover.Content
+              onClick={e => e.stopPropagation()}
               width="auto"
               px="2"
               py="1"
@@ -70,9 +73,10 @@ export const InfoTip = React.forwardRef<HTMLDivElement, InfoTipProps>(
           aria-label="info"
           size="2xs"
           {...buttonProps}
-          className="m-0 bg-background-primary p-0 transition-none"
+          className="m-0 flex h-fit w-fit cursor-pointer items-center border-0 bg-background-primary p-0 text-inherit transition-none"
+          unstyled
         >
-          <HiOutlineInformationCircle />
+          <HiOutlineInformationCircle size={'1em'} />
         </IconButton>
       </ToggleTip>
     );

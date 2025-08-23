@@ -1,4 +1,5 @@
 import { skillName } from '@/utils/common';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -28,8 +29,14 @@ export function SkillPage() {
     skillDetails?.name ? skillName(skillDetails, i18n.language) : null
   );
 
+  useEffect(() => {
+    if (isError) {
+      navigate('/');
+    }
+  }, [navigate, isError]);
+
   if (isError) {
-    navigate('/');
+    return null;
   }
 
   return (
@@ -91,6 +98,7 @@ export function SkillPage() {
                     translationKey="charts.tooltips.prediction.domain"
                   />
                 }
+                redirect="domain"
               />
               <PredictionsCard
                 categories={skillDetails?.categories ?? []}
@@ -102,6 +110,7 @@ export function SkillPage() {
                     translationKey="charts.tooltips.prediction.category"
                   />
                 }
+                redirect="category"
               />
             </div>
           </div>

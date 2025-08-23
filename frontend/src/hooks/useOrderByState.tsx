@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
+import { buttonsList } from '@/config/buttons';
 import { useCurrencyStore } from '@/store/currencyStore';
-import { buttonsList, OrderButton } from '@/components/Tabs/OrderButtons';
+import { OrderButton } from '@/components/ui/OrderButtons';
 
 export function useOrderByState(
   buttonNames: string[]

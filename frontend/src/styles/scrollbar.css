@@ -1,0 +1,18 @@
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-background-gray))
+    rgb(var(--color-background-primary));
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(var(--color-background-primary));
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-background-gray));
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-background-secondary));
+}

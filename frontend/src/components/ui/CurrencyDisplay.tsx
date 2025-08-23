@@ -7,7 +7,7 @@ type CurrencyDisplayProps = {
 };
 
 export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
-  const { selectedCurrency } = useCurrencyStore();
+  const selectedCurrency = useCurrencyStore(state => state.selectedCurrency);
   const prevCurrencyAbbr = useRef(selectedCurrency?.currency_abbr);
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -16,19 +16,20 @@ export function CurrencyDisplay({ valueInRUB }: CurrencyDisplayProps) {
       selectedCurrency?.currency_abbr &&
       prevCurrencyAbbr.current !== selectedCurrency.currency_abbr
     ) {
+      const currentDiv = divRef.current;
       const textColorClass = [
         'text-[rgb(var(--color-background-accent))]',
         'font-[600]',
       ];
-      divRef.current?.classList.add(...textColorClass);
+      currentDiv?.classList.add(...textColorClass);
       const timer = setTimeout(() => {
-        divRef.current?.classList.remove(...textColorClass);
+        currentDiv?.classList.remove(...textColorClass);
       }, 500);
 
       prevCurrencyAbbr.current = selectedCurrency.currency_abbr;
       return () => {
         clearTimeout(timer);
-        divRef.current?.classList.remove(...textColorClass);
+        currentDiv?.classList.remove(...textColorClass);
       };
     }
   }, [selectedCurrency?.currency_abbr]);

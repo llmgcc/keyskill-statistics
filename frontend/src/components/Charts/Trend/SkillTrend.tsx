@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Skeleton } from '@chakra-ui/react';
 import colors from 'tailwindcss/colors';
 
@@ -12,18 +13,16 @@ interface SkillTrendProps {
   realtedTo?: string | null;
 }
 
-export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
+function SkillTrend_({ skill, realtedTo }: SkillTrendProps) {
   const { from, to, chart, isLoading, isFetching } = useSkillTrendData(
     skill?.name ?? null,
     25,
     realtedTo
   );
-
   const mentions = skill?.count ?? 0;
   const prevMentions = skill?.prev_count ?? 0;
   const difference = prevMentions && mentions ? mentions - prevMentions : null;
 
-  const actualData = chart;
   return (
     <div className="size-full">
       <Skeleton
@@ -33,7 +32,7 @@ export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
         {from && to && !(isLoading || isFetching) && (
           <Trend
             data={{
-              data: actualData,
+              data: chart,
               from,
               to,
             }}
@@ -54,3 +53,5 @@ export function SkillTrend({ skill, realtedTo }: SkillTrendProps) {
     </div>
   );
 }
+
+export const SkillTrend = memo(SkillTrend_);

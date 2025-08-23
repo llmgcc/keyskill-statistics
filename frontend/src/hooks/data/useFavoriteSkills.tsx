@@ -2,22 +2,22 @@ import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
 import { PaginationState } from '@tanstack/react-table';
 
+import { OrderBy } from '@/interfaces';
 import { useFavoritesStore } from '@/store/favoritesStore';
 
 import { useFilters } from '../useFilters';
 
 export function useFavoriteSkills(
   pagination: PaginationState,
-  orderBy?: { order_by: string; descending: boolean }
+  orderBy: OrderBy
 ) {
   const { period, experience } = useFilters();
 
   const favorites = useFavoritesStore(state => state.favorites);
-
   const { data, isLoading, isFetching } = useQuery({
     queryKey: [
       'favorite_skills',
-      // favorites,
+      favorites,
       period,
       experience,
       orderBy,
@@ -38,9 +38,7 @@ export function useFavoriteSkills(
       );
       return data;
     },
-    // enabled: !,
   });
-
   return {
     favoriteSkills: data?.skills,
     rows: data?.rows ?? 0,

@@ -4,12 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
-import { useCategories } from '@/hooks/useCategories';
+import { Category, CategoryFilter, KeySkill, OrderBy } from '@/interfaces';
+import { useCategories } from '@/hooks/data/useCategories';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   categoryChartAccessor,
   categoryImageAccessor,
@@ -20,12 +18,14 @@ import {
   favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
 interface SkillsTableProps {
   columns?: string[];
   order_by?: OrderBy;
-  filter?: ServerFilters;
+  filter?: CategoryFilter;
   enabled?: boolean;
   paginationPrefix?: string;
   width?: number;
@@ -113,7 +113,7 @@ export function CategoriesTable({
           header: t('columns.trend'),
           isLoading: isLoading || isFetching || !enabled,
         }),
-      ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
+      ] as Array<ColumnDef<Category, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, enabled]
   );
 
@@ -132,8 +132,10 @@ export function CategoriesTable({
         />
       </div>
       <DataTable
-        columns={cols as Array<ColumnDef<KeySkill, unknown>>}
-        data={categories ?? placeholderData(pagination.pageSize)}
+        columns={cols as ColumnDef<Category>[]}
+        data={
+          categories ?? (placeholderData(pagination.pageSize) as Category[])
+        }
         isLoading={isLoading || !categories}
         isFetching={isFetching || !enabled}
         pinnedLeft={['favorite_category', 'place', 'image']}
@@ -142,7 +144,7 @@ export function CategoriesTable({
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
-        onSelect={(rowData: KeySkill) => {
+        onSelect={(rowData: Category) => {
           navigate(`/category/${encodeURIComponent(rowData.name)}`);
         }}
       />

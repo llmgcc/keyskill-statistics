@@ -3,6 +3,7 @@ import { Skeleton } from '@chakra-ui/react';
 
 import { KeySkill } from '@/interfaces';
 import { useDomainSalaryData } from '@/hooks/data/useDomainSalaryData';
+import { useCurrencyValue } from '@/hooks/useCurrencyValue';
 
 import { Histogram } from './Histogram';
 import { SalaryTooltip } from './SalaryTooltip';
@@ -16,6 +17,9 @@ function DomainHistogram_({ domain }: DomainHistogramProps) {
     domain?.name ?? null,
     25
   );
+  const { value: medianConverted } = useCurrencyValue(
+    domain?.average_salary ?? 0
+  );
   return (
     <div className="size-full">
       <Skeleton
@@ -28,6 +32,7 @@ function DomainHistogram_({ domain }: DomainHistogramProps) {
               data: chart,
               from,
               to,
+              median: medianConverted,
             }}
             tooltip={<SalaryTooltip />}
             sparkline={true}

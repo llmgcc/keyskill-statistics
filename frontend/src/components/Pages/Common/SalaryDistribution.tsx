@@ -54,11 +54,11 @@ export function SalaryDistribution({
   return (
     <Overlay isLoading={!data} isFetching={isChartLoading || !isDataReady}>
       <div className="rounded border-[1px] border-background-secondary p-3 shadow-sm shadow-background-secondary">
-        <div className="flex items-center text-base font-[500]">
+        <div className="flex items-center gap-1 text-base font-[500]">
           <div className="text-base font-[500]">
             {t('charts.salaryDistribution')}
           </div>
-          <div>{tooltip}</div>
+          <div className="text-sm text-text-secondary">{tooltip}</div>
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <div className="text-3xl font-bold">
@@ -93,6 +93,7 @@ export function SalaryDistribution({
                 data: chart,
                 from: from ?? 0,
                 to: to ?? 0,
+                median: medianConverted,
               }}
               tooltip={<SalaryTooltip />}
             />

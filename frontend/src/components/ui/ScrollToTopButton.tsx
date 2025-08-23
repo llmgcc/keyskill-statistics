@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@radix-ui/themes';
+import { Button } from '@chakra-ui/react';
 import { RiArrowUpSLine } from 'react-icons/ri';
 
 interface ScrollToTopButtonProps {

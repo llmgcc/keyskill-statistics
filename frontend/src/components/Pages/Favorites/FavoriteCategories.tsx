@@ -4,12 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerOrderBy } from '@/interfaces';
+import { Category, KeySkill, OrderBy } from '@/interfaces';
 import { useFavoriteCategories } from '@/hooks/data/useFavoriteCategories';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   categoryChartAccessor,
   categoryImageAccessor,
@@ -20,13 +18,15 @@ import {
   favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
-interface favoriteCategoriesProps {
-  order_by?: ServerOrderBy;
+interface FavoriteCategoriesProps {
+  order_by: OrderBy;
 }
 
-export function FavoriteCategories({ order_by }: favoriteCategoriesProps) {
+export function FavoriteCategories({ order_by }: FavoriteCategoriesProps) {
   const { period, experience } = useFilters();
   const navigate = useNavigate();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
@@ -71,7 +71,7 @@ export function FavoriteCategories({ order_by }: favoriteCategoriesProps) {
           header: t('columns.trend'),
           isLoading: isLoading || isFetching,
         }),
-      ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
+      ] as Array<ColumnDef<Category, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, i18n]
   );
 
@@ -88,8 +88,11 @@ export function FavoriteCategories({ order_by }: favoriteCategoriesProps) {
         />
       </div>
       <DataTable
-        columns={tableColumns as Array<ColumnDef<KeySkill, unknown>>}
-        data={favoriteCategories ?? placeholderData(pagination.pageSize)}
+        columns={tableColumns as Array<ColumnDef<Category, unknown>>}
+        data={
+          favoriteCategories ??
+          (placeholderData(pagination.pageSize) as Category[])
+        }
         isLoading={isLoading || !favoriteCategories}
         isFetching={isFetching}
         pinnedLeft={['favorite_category', 'place', 'image']}
@@ -98,7 +101,7 @@ export function FavoriteCategories({ order_by }: favoriteCategoriesProps) {
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
-        onSelect={(rowData: KeySkill) => {
+        onSelect={(rowData: Category) => {
           navigate(`/categories/${encodeURIComponent(rowData.name)}`);
         }}
       />

@@ -56,6 +56,9 @@ export const StaticAPI: API = {
       const category = allTimeCategories.find(
         c => c.name === decodeURIComponent(filter?.name ?? '')
       );
+      if (!category) {
+        throw new Error('Not found');
+      }
       return {
         name: category?.name,
         image: category?.image,
@@ -105,6 +108,9 @@ export const StaticAPI: API = {
       const domain = allTimeDomains.find(
         c => c.name === decodeURIComponent(filter?.name ?? '')
       );
+      if (!domain) {
+        throw new Error('Not found');
+      }
       return {
         name: domain?.name,
         image: domain?.image,
@@ -223,6 +229,9 @@ export const StaticAPI: API = {
       const skill = allTimeSkills.find(
         c => c.name === decodeURIComponent(filter?.skill ?? '')
       );
+      if (!skill) {
+        throw new Error('Not found');
+      }
       return {
         name: skill?.name,
         image: skill?.image,

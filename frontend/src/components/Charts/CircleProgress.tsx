@@ -9,7 +9,7 @@ export function CircleProgress({ value, maxValue }: CircleProgressProps) {
   const percent = (value / maxValue) * 100;
 
   function color() {
-    if (percent <= 25) return colors.red[500];
+    if (percent <= 25) return colors.rose[500];
     return 'rgb(var(--color-background-accent))';
   }
 

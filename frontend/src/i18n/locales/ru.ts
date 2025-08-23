@@ -68,7 +68,7 @@ export default {
       trending: 'Растущий спрос',
       declining: 'Падающий спрос',
       new: 'Новые',
-      unknownSalary: 'Неизвестная зарплата',
+      growingSalary: 'Растущая зарплата',
       similar: 'Похожие',
       highestSalary: 'Высокооплачиваемые',
       lowestSalary: 'Низкооплачиваемые',
@@ -93,85 +93,58 @@ export default {
       favorites: 'Избранное',
     },
     domains: {
-      [Domains['Frontend development']]: 'Frontend разработка',
-      [Domains['Backend development']]: 'Backend разработка',
-      [Domains['Testing & Quality assurance']]:
-        'Тестирование и Обеспечение качества',
-      [Domains['Technical support']]: 'Техническая поддержка',
+      [Domains['Frontend Development']]: 'Frontend Разработка',
+      [Domains['Backend Development']]: 'Backend Разработка',
+      [Domains['Testing & Quality Assurance']]:
+        'Тестирование и Обеспечение Качества',
+      [Domains['Technical Support']]: 'Техническая Поддержка',
       [Domains['DevOps & Infrastructure']]: 'DevOps и Инфраструктура',
-      [Domains['Systems analytics']]: 'Системная аналитика',
-      [Domains['Project management']]: 'Управление проектами',
-      [Domains['System administration']]: 'Системное администрирование',
+      [Domains['Systems Analytics']]: 'Системная Аналитика',
+      [Domains['Project Management']]: 'Управление Проектами',
+      [Domains['System Administration']]: 'Системное Администрирование',
       [Domains['Computer Graphics & Game Development']]:
-        'Компьютерная графика и Разработка игр',
-      [Domains['Mobile development']]: 'Мобильная разработка',
+        'Компьютерная Графика и Разработка Игр',
+      [Domains['Mobile Development']]: 'Мобильная Разработка',
       [Domains.Design]: 'Дизайн',
-      [Domains['Data Science']]: 'Наука о данных',
-      [Domains.Cybersecurity]: 'Информационная безопасность',
-      [Domains['HR Management']]: 'HR менеджмент',
-      [Domains['Digital Marketing & SEO']]: 'Цифровой маркетинг и SEO',
-      [Domains['Systems Programming']]: 'Системное программирование',
-      [Domains['1C Development']]: '1С разработка',
-      [Domains['Website administration']]: 'Администрирование сайтов',
+      [Domains['Data Science']]: 'Анализ данных',
+      [Domains.Cybersecurity]: 'Информационная Безопасность',
+      [Domains['HR Management']]: 'HR Менеджмент',
+      [Domains['Digital Marketing & SEO']]: 'Цифровой Маркетинг и SEO',
+      [Domains['Systems Programming']]: 'Системное Программирование',
+      [Domains['1C Development']]: '1С Разработка',
+      [Domains['Website Administration']]: 'Администрирование Сайтов',
       [Domains.Blockchain]: 'Блокчейн',
-      [Domains['Data analytics']]: 'Аналитика данных',
-      [Domains['Product Management']]: 'Управление продуктом',
-      [Domains['Network Administration']]: 'Сетевое администрирование',
-      [Domains['Database Administration']]: 'Администрирование баз данных',
+      [Domains['Data Analytics']]: 'Аналитика Данных',
+      [Domains['Product Management']]: 'Управление Продуктом',
+      [Domains['Network Administration']]: 'Сетевое Администрирование',
+      [Domains['Database Administration']]: 'Администрирование Баз Данных',
       [Domains.Other]: 'Другое',
       [Domains.Unknown]: 'Неизвестно',
     },
-    domainsShort: {
-      [Domains['Frontend development']]: 'Front',
-      [Domains['Backend development']]: 'Back',
-      [Domains['Testing & Quality assurance']]: 'QA',
-      [Domains['Technical support']]: 'Поддержка',
-      [Domains['DevOps & Infrastructure']]: 'DevOps',
-      [Domains['Systems analytics']]: 'СА',
-      [Domains['Project management']]: 'УП',
-      [Domains['System administration']]: 'СисАдм',
-      [Domains['Computer Graphics & Game Development']]: 'КГ/РИ',
-      [Domains['Mobile development']]: 'Моб',
-      [Domains.Design]: 'Дизайн',
-      [Domains['Data Science']]: 'DS',
-      [Domains.Cybersecurity]: 'Безоп',
-      [Domains['HR Management']]: 'HR',
-      [Domains['Digital Marketing & SEO']]: 'ЦМ/SEO',
-      [Domains['Systems Programming']]: 'СП',
-      [Domains['1C Development']]: '1С',
-      [Domains['Website administration']]: 'ВебАдм',
-      [Domains.Blockchain]: 'БЧ',
-      [Domains['Data analytics']]: 'АД',
-      [Domains['Product Management']]: 'УП',
-      [Domains['Network Administration']]: 'Сети',
-      [Domains['Database Administration']]: 'АБД',
-      [Domains.Other]: 'Другое',
-      [Domains.Unknown]: 'Неизв',
-    },
     domainDescription: {
-      [Domains['Frontend development']]:
+      [Domains['Frontend Development']]:
         'Создание интерактивных интерфейсов и оптимизация клиентской части',
-      [Domains['Backend development']]:
+      [Domains['Backend Development']]:
         'Разработка серверной логики, API и управление данными',
-      [Domains['Testing & Quality assurance']]:
+      [Domains['Testing & Quality Assurance']]:
         'Планирование и автоматизация тестирования приложений',
-      [Domains['Technical support']]:
+      [Domains['Technical Support']]:
         'Установка, настройка и устранение неполадок оборудования и ПО',
       [Domains['DevOps & Infrastructure']]:
         'Автоматизация CI/CD, контейнеризация и управление серверами',
-      [Domains['Systems analytics']]:
+      [Domains['Systems Analytics']]:
         'Сбор требований, бизнес‑процессы и техническая документация',
-      [Domains['Project management']]:
+      [Domains['Project Management']]:
         'Планирование, координация и контроль IT‑проектов',
-      [Domains['System administration']]:
+      [Domains['System Administration']]:
         'Настройка, мониторинг и поддержка серверных систем',
       [Domains['Computer Graphics & Game Development']]:
         '2D/3D‑графика, игровые движки и оптимизация рендеринга',
-      [Domains['Mobile development']]:
+      [Domains['Mobile Development']]:
         'Разработка нативных и кроссплатформенных мобильных приложений',
       [Domains.Design]: 'UI/UX‑дизайн, прототипирование и визуальная айдентика',
       [Domains['Data Science']]:
-        'Анализ данных, построение и деплой ML‑моделей',
+        'Анализ данных, построение и деплой ML моделей',
       [Domains.Cybersecurity]:
         'Защита систем, пентест и управление рисками безопасности',
       [Domains['HR Management']]: 'Подбор, адаптация и удержание IT‑персонала',
@@ -181,11 +154,11 @@ export default {
         'Низкоуровневое ПО: драйверы, встраиваемые системы, IoT',
       [Domains['1C Development']]:
         'Разработка и настройка бизнес‑приложений на платформе 1C',
-      [Domains['Website administration']]:
+      [Domains['Website Administration']]:
         'Управление CMS, контентом и безопасностью сайтов',
       [Domains.Blockchain]:
         'Смарт‑контракты, протоколы и децентрализованные сети',
-      [Domains['Data analytics']]:
+      [Domains['Data Analytics']]:
         'Бизнес-аналитика, визуализация данных и отчетность',
       [Domains['Product Management']]:
         'Стратегическое планирование и развитие цифровых продуктов',
@@ -200,65 +173,80 @@ export default {
     },
 
     categories: {
-      [Categories.Languages]: 'Языки программирования',
-      [Categories.Databases]: 'Базы данных',
+      [Categories['Programming Languages']]: 'Языки Программирования',
+      [Categories.Databases]: 'Базы Данных',
       [Categories['Frontend Libraries and Frameworks']]:
-        'Frontend библиотеки и фреймворки',
+        'Frontend Библиотеки и Фреймворки',
       [Categories['Backend Libraries and Frameworks']]:
-        'Backend библиотеки и фреймворки',
-      [Categories['Soft skills']]: 'Гибкие навыки',
-      [Categories['Operating systems']]: 'Операционные системы',
+        'Backend Библиотеки и Фреймворки',
+      [Categories['Soft Skills']]: 'Гибкие Навыки',
+      [Categories['Operating Systems']]: 'Операционные Системы',
       [Categories['Containerization & Orchestration']]:
-        'Контейнеризация и оркестрация',
+        'Контейнеризация и Оркестрация',
       [Categories['Infrastructure Automation & Configuration']]:
-        'Автоматизация и конфигурация инфраструктуры',
+        'Автоматизация и Конфигурация Инфраструктуры',
       [Categories['Code Collaboration & Integration']]:
-        'Совместная разработка и интеграция',
-      [Categories['Graphic design']]: 'Графический дизайн',
-      [Categories['Monitoring & Logging']]: 'Мониторинг и логирование',
+        'Совместная Разработка и Интеграция',
+      [Categories['Graphic Design']]: 'Графический Дизайн',
+      [Categories['Monitoring & Logging']]: 'Мониторинг и Логирование',
       [Categories['Machine Learning Libraries and Frameworks']]:
-        'Библиотеки и фреймворки машинного обучения',
+        'Библиотеки и Фреймворки Машинного Обучения',
       [Categories['API Technologies & Standards']]:
-        'API технологии и стандарты',
-      [Categories['Web Servers & Proxies']]: 'Веб-серверы и прокси',
-      [Categories['Message Brokers & Queues']]: 'Брокеры сообщений и очереди',
+        'API Технологии и Стандарты',
+      [Categories['Web Servers & Proxies']]: 'Веб-серверы и Прокси',
+      [Categories['Message Brokers & Queues']]: 'Брокеры Сообщений и Очереди',
       [Categories['Security Tools & Practices']]:
-        'Инструменты и практики безопасности',
+        'Инструменты и Практики Безопасности',
       [Categories['Mobile Development Frameworks']]:
-        'Фреймворки мобильной разработки',
-      [Categories['Game Engines & Tools']]: 'Игровые движки и инструменты',
+        'Фреймворки Мобильной Разработки',
+      [Categories['Game Engines & Tools']]: 'Игровые Движки и Инструменты',
       [Categories['Business Intelligence Tools']]:
-        'Инструменты бизнес-аналитики',
+        'Инструменты Бизнес-аналитики',
       [Categories.Other]: 'Другое',
       [Categories.Unknown]: 'Неизвестно',
+      [Categories['Enterprise Business Platforms']]:
+        'Корпоративные Бизнес-платформы',
+      [Categories['Hardware & Maintenance']]: 'Оборудование и Обслуживание',
+      [Categories['Software Development Principles']]: 'Принципы Разработки ПО',
+      [Categories['Desktop Development Frameworks']]:
+        'Фреймворки для Десктопной Разработки',
+      [Categories['System Design & Notations']]:
+        'Системное Проектирование и Нотации',
+      [Categories['Social Media & Content Platforms']]:
+        'Социальные Сети и Контент-платформы',
+      [Categories['Testing Frameworks']]: 'Фреймворки Тестирования',
+      [Categories['Cloud Services']]: 'Облачные Сервисы',
+      [Categories['Package Managers']]: 'Менеджеры Пакетов',
+      [Categories['Build Tools']]: 'Инструменты Сборки',
+      [Categories['Code Editors & IDEs']]: 'Редакторы Кода и IDE',
+      [Categories['State Management Libraries']]:
+        'Библиотеки Управления Состоянием',
+      [Categories['Content Management Systems']]:
+        'Системы Управления Контентом',
+      [Categories['Graphics APIs & GPGPU']]: 'Графические API и GPGPU',
+      [Categories['Project Management Tools']]:
+        'Инструменты Управления Проектами',
+      [Categories['Network Protocols']]: 'Сетевые Протоколы',
+      [Categories['Blockchain Platforms and Tools']]:
+        'Блокчейн Платформы и Инструменты',
+      [Categories['3D Modeling Tools']]: 'Инструменты 3D Моделирования',
+      [Categories['Documentation Tools']]: 'Инструменты Документации',
+      [Categories['Search Engine Technologies']]: 'Технологии Поисковых Систем',
+      [Categories['Virtualization Platforms']]: 'Платформы Виртуализации',
+      [Categories['AI Generation Tools']]: 'ИИ Инструменты Генерации',
+      [Categories['NLP Processing Libraries']]:
+        'Библиотеки Обработки Естественного Языка',
+      [Categories['ETL Tools']]: 'ETL Инструменты',
+      [Categories['Object-Relational Mappers']]: 'ORM библиотеки',
+      [Categories['SEO Analysis Tools']]: 'Инструменты SEO Анализа',
+      [Categories['ERP Systems']]: 'ERP Системы',
+      [Categories['Data Warehousing Tools']]: 'Инструменты Хранилищ Данных',
+      [Categories['Big Data Frameworks']]: 'Фреймворки Больших Данных',
+      [Categories['Communication & Collaboration Tools']]:
+        'Инструменты Коммуникации и Совместной Работы',
     },
-
-    categoriesShort: {
-      [Categories.Languages]: 'Языки',
-      [Categories.Databases]: 'БД',
-      [Categories['Frontend Libraries and Frameworks']]: 'Front',
-      [Categories['Backend Libraries and Frameworks']]: 'Back',
-      [Categories['Soft skills']]: 'Soft',
-      [Categories['Operating systems']]: 'ОС',
-      [Categories['Containerization & Orchestration']]: 'Конт',
-      [Categories['Infrastructure Automation & Configuration']]: 'IaC',
-      [Categories['Code Collaboration & Integration']]: 'CI/CD',
-      [Categories['Graphic design']]: 'Дизайн',
-      [Categories['Monitoring & Logging']]: 'Монит',
-      [Categories['Machine Learning Libraries and Frameworks']]: 'ML',
-      [Categories['API Technologies & Standards']]: 'API',
-      [Categories['Web Servers & Proxies']]: 'Веб',
-      [Categories['Message Brokers & Queues']]: 'Очереди',
-      [Categories['Security Tools & Practices']]: 'Безоп',
-      [Categories['Mobile Development Frameworks']]: 'Моб',
-      [Categories['Game Engines & Tools']]: 'Игры',
-      [Categories['Business Intelligence Tools']]: 'BI',
-      [Categories.Other]: 'Другое',
-      [Categories.Unknown]: 'Неизв',
-    },
-
     categoryDescription: {
-      [Categories.Languages]:
+      [Categories['Programming Languages']]:
         'Языки программирования для разработки и обработки данных',
       [Categories.Databases]:
         'Системы для хранения и управления структурированными данными',
@@ -266,9 +254,9 @@ export default {
         'Библиотеки и фреймворки для создания пользовательских интерфейсов и веб-приложений',
       [Categories['Backend Libraries and Frameworks']]:
         'Библиотеки и фреймворки для серверной разработки приложений',
-      [Categories['Soft skills']]:
+      [Categories['Soft Skills']]:
         'Нетехнические межличностные и профессиональные навыки',
-      [Categories['Operating systems']]:
+      [Categories['Operating Systems']]:
         'Программные платформы для управления аппаратными и программными ресурсами',
       [Categories['Containerization & Orchestration']]:
         'Инструменты для упаковки, развертывания и управления контейнеризованными приложениями',
@@ -276,7 +264,7 @@ export default {
         'Инструменты для автоматизации развертывания и настройки инфраструктуры',
       [Categories['Code Collaboration & Integration']]:
         'Инструменты и практики для контроля версий и непрерывной интеграции',
-      [Categories['Graphic design']]:
+      [Categories['Graphic Design']]:
         'Инструменты для создания и редактирования визуального контента и пользовательских интерфейсов',
       [Categories['Monitoring & Logging']]:
         'Инструменты и платформы для мониторинга систем, логирования и наблюдаемости',
@@ -300,6 +288,68 @@ export default {
         'Навыки, не подходящие под другие конкретные категории',
       [Categories.Unknown]:
         'Неклассифицированные или новые технологические навыки',
+
+      [Categories['Enterprise Business Platforms']]:
+        'Платформы для управления бизнесом и планирования корпоративных ресурсов',
+      [Categories['Hardware & Maintenance']]:
+        'Компьютерное оборудование, инструменты обслуживания и ремонтное оборудование',
+      [Categories['Software Development Principles']]:
+        'Принципы разработки ПО, паттерны проектирования и лучшие практики разработки кода',
+      [Categories['Desktop Development Frameworks']]:
+        'Фреймворки и библиотеки для создания десктопных приложений',
+      [Categories['System Design & Notations']]:
+        'Стандарты и нотации для моделирования, документирования и визуализации систем и процессов',
+      [Categories['Social Media & Content Platforms']]:
+        'Платформы социальных сетей и инструменты создания контента для маркетинга и взаимодействия',
+
+      [Categories['Testing Frameworks']]:
+        'Фреймворки и библиотеки специально для автоматизированного тестирования',
+      [Categories['Cloud Services']]:
+        'Специфические сервисы и инструменты облачных платформ',
+      [Categories['Package Managers']]:
+        'Инструменты для управления программными пакетами и зависимостями',
+      [Categories['Build Tools']]:
+        'Инструменты для сборки, объединения и компиляции кода',
+      [Categories['Code Editors & IDEs']]:
+        'Интегрированные среды разработки и текстовые редакторы',
+      [Categories['State Management Libraries']]:
+        'Библиотеки для управления состоянием приложений',
+      [Categories['Content Management Systems']]:
+        'Платформы для создания, управления и публикации цифрового контента',
+      [Categories['Graphics APIs & GPGPU']]:
+        'Графические программные интерфейсы и фреймворки для вычислений общего назначения на GPU',
+      [Categories['Project Management Tools']]:
+        'Приложения для планирования, отслеживания и управления проектами разработки ПО',
+      [Categories['Network Protocols']]:
+        'Протоколы связи, определяющие правила передачи данных между устройствами и системами в сетях',
+      [Categories['Blockchain Platforms and Tools']]:
+        'Платформы и фреймворки для разработки блокчейн-приложений и смарт-контрактов',
+      [Categories['3D Modeling Tools']]:
+        'Программное обеспечение для создания и редактирования 3D моделей и анимации',
+      [Categories['Documentation Tools']]:
+        'Инструменты для создания и управления технической документацией',
+      [Categories['Search Engine Technologies']]:
+        'Платформы и инструменты для реализации функций поиска',
+      [Categories['Virtualization Platforms']]:
+        'Технологии для создания и управления виртуальными машинами и средами',
+      [Categories['AI Generation Tools']]:
+        'ИИ-инструменты для генерации контента, кода и других ресурсов',
+      [Categories['NLP Processing Libraries']]:
+        'Библиотеки и фреймворки для задач обработки естественного языка',
+      [Categories['ETL Tools']]:
+        'Инструменты для извлечения, преобразования и загрузки данных между системами',
+      [Categories['Object-Relational Mappers']]:
+        'Библиотеки, которые отображают структуры баз данных на объектно-ориентированные модели',
+      [Categories['SEO Analysis Tools']]:
+        'Инструменты для оптимизации веб-сайтов для поисковых систем',
+      [Categories['ERP Systems']]:
+        'Системы планирования корпоративных ресурсов для управления бизнес-операциями',
+      [Categories['Data Warehousing Tools']]:
+        'Платформы и инструменты для хранения и анализа крупномасштабных данных',
+      [Categories['Big Data Frameworks']]:
+        'Фреймворки для обработки и анализа больших наборов данных',
+      [Categories['Communication & Collaboration Tools']]:
+        'Платформы и инструменты для командной коммуникации и совместной работы',
     },
     experience: {
       [Experience.any]: 'Любой',
@@ -323,7 +373,7 @@ export default {
       [Highlights.new]: 'Новые навыки',
       [Highlights['highest-salary']]: 'Высокооплачиваемые навыки',
       [Highlights['lowest-salary']]: 'Низкооплачиваемые навыки',
-      [Highlights['gainers-salary']]: 'Навыки с растущей зарплатой',
+      [Highlights['growingSalary']]: 'Навыки с растущей зарплатой',
     },
     pagination: {
       text: '{{currentPage}} - {{totalPages}} из {{totalRows}}',
@@ -369,16 +419,19 @@ export default {
     complexity: {
       title: 'Сложность',
       subtitle: {
-        [Level.Junior]: 'В основном требуется для начальных позиций',
-        [Level['Junior+']]: 'Характерен для начала карьеры',
-        [Level.Middle]: 'Стандартный уровень для специалистов',
-        [Level['Middle+']]: 'Для специалистов с расширенными задачами',
-        [Level.Senior]: 'Для экспертов и сложных задач',
-        [Level['Senior+']]: 'Для ведущих экспертов и руководящих позиций',
+        [Level.Junior]: 'Базовый уровень для начинающих специалистов',
+        [Level['Junior+']]:
+          'Начальный уровень с минимальными требованиями к опыту',
+        [Level.Middle]: 'Средний уровень для опытных специалистов',
+        [Level['Middle+']]: 'Повышенный уровень с расширенными требованиями',
+        [Level.Senior]: 'Высокий уровень для экспертов',
+        [Level['Senior+']]:
+          'Экспертный уровень с высокими требованиями к квалификации',
       },
       description:
         'Сложность рассчитывается на основе частоты встречаемости навыка среди специалистов разного уровня',
       distribution: 'Распределение по опыту',
+      info: 'Показатель сложности, рассчитанный на основе распределения требований к опыту работы. Высокие значения указывают на востребованность в senior позициях.',
     },
     skillPage: {
       relatedSkills: {
@@ -465,7 +518,7 @@ export default {
           subtitle:
             'Анализ IT навыков с самыми низкими зарплатами. Представлено <text>{{skillCount}}</text> навыков, которые имеют самую низкую оплату за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают более доступные технологии.',
         },
-        [Highlights['gainers-salary']]: {
+        [Highlights['growingSalary']]: {
           title: 'Навыки с растущей зарплатой',
           subtitle:
             'Анализ IT навыков, которые показывают наибольший рост зарплат. Представлено <text>{{skillCount}}</text> навыков за последние <text>{{days}}</text> дней. Данные отражают тренды {{experienceText}} и включают технологии с разными условиями оплаты.',
@@ -483,6 +536,15 @@ export default {
     footer: {
       text: '{{appName}} анализирует рынок IT-вакансий и определяет востребованные навыки для карьерного роста',
       backToTop: 'Вернуться наверх',
+    },
+    tooltips: {
+      salary:
+        'Ожидаемая медианная зарплата в месяц. Включает гистограмму распределения зарплат по различным диапазонам.',
+      domainsConfidence:
+        'Показатель уверенности в том, что навык относится к направлению <text>{{name}}</text>',
+      categoriesConfidence:
+        'Показатель уверенности в том, что навык относится к категории <text>{{name}}</text>',
+      similarity: 'Показатель схожести навыков по значению и функциональности',
     },
   },
 };

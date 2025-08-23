@@ -1,22 +1,24 @@
 import { API } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
 
-import { OrderByHighlightType } from '@/components/Pages/Highlights/HighlightTypePage';
-import { buttonsList } from '@/components/Tabs/OrderButtons';
+import { buttonsList } from '@/config/buttons';
+import { Highlights, OrderByHighlightType } from '@/config/highlights';
 
 import { useFilters } from '../useFilters';
 
-export function useHighlights(name: string | null) {
+export function useHighlights(name: string | null, limit: number = 10) {
   const { period, experience } = useFilters();
 
-  const highlight = buttonsList([OrderByHighlightType[name] ?? ''])?.[0];
+  const highlight = name
+    ? buttonsList([OrderByHighlightType[name as Highlights] ?? ''])?.[0]
+    : null;
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['highlights', name, period, experience],
+    queryKey: ['highlights', name, period, experience, limit],
     queryFn: async () => {
       const data = await API.skills.skillsList(
         {
-          limit: 10,
+          limit,
           offset: 0,
         },
         {
@@ -24,7 +26,7 @@ export function useHighlights(name: string | null) {
           experience,
         },
         {
-          column: highlight?.column,
+          column: highlight!.column,
           descending: highlight?.descending,
         }
       );

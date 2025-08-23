@@ -1,6 +1,8 @@
 import { memo, useState } from 'react';
 import { Dialog, Portal, useDisclosure } from '@chakra-ui/react';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
+
 import { NavSearchBody } from './NavSearchBody';
 import { NavSearchHeader } from './NavSearchHeader';
 import { NavSearchTrigger } from './NavSearchTrigger';
@@ -9,10 +11,11 @@ function NavSearch_() {
   const { open, onOpen, setOpen } = useDisclosure();
 
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const { isMobile } = useScreenSize();
 
   return (
     <Dialog.Root
-      scrollBehavior="inside"
+      scrollBehavior={isMobile ? 'outside' : 'inside'}
       open={open}
       closeOnEscape={true}
       onOpenChange={isOpen => {

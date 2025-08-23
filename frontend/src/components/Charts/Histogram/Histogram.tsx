@@ -4,6 +4,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -50,6 +51,16 @@ function Histogram_({
   const yDomain = [1, Math.max(yMax, 1)];
 
   const hasData = chartDataExtended.some(d => d.count > 0);
+
+  const median = data.median ?? 0;
+  const medianBin = Math.round((median - start) / interval);
+
+  const getBarColor = (bin: number) => {
+    if (bin === medianBin) return 'rgb(var(--color-background-gray))';
+    const distance = Math.abs(bin - medianBin);
+    const ratio = Math.min(distance / 5, 1);
+    return `color-mix(in srgb, rgb(var(--color-background-gray)) ${(1 - ratio) * 100}%, rgb(var(--color-background-secondary)) ${ratio * 100}%)`;
+  };
 
   return (
     <div className="relative size-full">
@@ -112,7 +123,6 @@ function Histogram_({
             <Bar
               className={!sparkline ? 'cursor-pointer' : ''}
               dataKey="count"
-              fill="rgb(var(--color-background-gray))"
               radius={[
                 histBarRadius,
                 histBarRadius,
@@ -125,7 +135,11 @@ function Histogram_({
               }}
               barSize={100}
               isAnimationActive={!sparkline}
-            />
+            >
+              {chartDataExtended.map(entry => (
+                <Cell key={`cell-${entry.bin}`} fill={getBarColor(entry.bin)} />
+              ))}
+            </Bar>
           )}
         </BarChart>
       </ResponsiveContainer>

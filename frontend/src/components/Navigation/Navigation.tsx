@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
+import { Badge } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Sticky from 'react-stickynode';
 
 import { useScreenSize } from '@/hooks/useScreenSize';
 import { useTopOffset } from '@/hooks/useTopOffset';
+import { useFavoritesStore } from '@/store/favoritesStore';
 import { useStatsStore } from '@/store/statsStore';
 import { CurrencySwitch } from '@/components/Navigation/CurrencySwitch';
 import { LanguageSwitch } from '@/components/Navigation/LanguageSwitch';
@@ -20,7 +22,7 @@ export function Navigation() {
   const { t } = useTranslation();
 
   const { isTablet, isMobile } = useScreenSize();
-
+  const favorites = useFavoritesStore(state => state.favorites);
   const navbarStats = [
     {
       title: t('navigation.uniqueSkills'),
@@ -52,6 +54,16 @@ export function Navigation() {
     {
       id: 'favorites',
       href: '/favorites',
+      title: (title: string) => (
+        <div className="flex items-center gap-1">
+          <div>{title}</div>
+          <div>
+            <Badge size={'sm'} className="bg-background-secondary">
+              {favorites.length}
+            </Badge>
+          </div>
+        </div>
+      ),
     },
   ];
 
@@ -61,12 +73,12 @@ export function Navigation() {
 
   return (
     <div className="relative">
-      <div id="navbar-info">
+      <div id="">
         <div className="border-b-[1px] border-background-secondary">
-          <div className="app-container flex h-2 items-center justify-between py-4 text-xs text-text-secondary">
+          <div className="app-container flex items-center justify-between py-2 text-xs text-text-secondary">
             {navbarStats.map(s => (
               <div key={s.title}>
-                <div className="text-xs sm:block md:flex">
+                <div className="flex flex-col justify-between text-xs md:flex-row">
                   <div>{s.title}:</div>
                   <div className="font-[600] text-background-accent sm:ml-0 md:ml-1">
                     {s.count}
@@ -96,7 +108,9 @@ export function Navigation() {
                       key={link.id}
                       to={link.href}
                     >
-                      {t(`common.${link.id}`)}
+                      {link.title
+                        ? link.title(t(`common.${link.id}`))
+                        : t(`common.${link.id}`)}
                     </Link>
                   ))}
                 </div>

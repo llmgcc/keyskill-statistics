@@ -7,7 +7,7 @@ import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 import { ListEnumeration } from '@/components/ui/ListEnumeration';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 
 import { SkillsTable } from '../Common/SkillsTable';
 import { StickyFilter } from '../Common/StickyFilter';

@@ -31,7 +31,7 @@ export interface Pagination {
 }
 
 export interface FilterBase {
-  period: number | null;
+  period?: number | null;
   experience?: Experience | null;
 }
 
@@ -91,6 +91,8 @@ export interface Category {
   confidence: number;
   all_time_place?: number;
   prev_average_salary?: number;
+  complexity_score?: number;
+  experience_counts?: Record<string, number>;
 }
 
 interface Chart {

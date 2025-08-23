@@ -53,8 +53,8 @@ export function Highlights() {
       displayChange: salaryChange,
     },
     {
-      value: HighlightsConfig['gainers-salary'],
-      label: HighlightIcons[HighlightsConfig['gainers-salary']],
+      value: HighlightsConfig['growingSalary'],
+      label: HighlightIcons[HighlightsConfig['growingSalary']],
       displayValue: salary,
       displayChange: salaryChange,
     },

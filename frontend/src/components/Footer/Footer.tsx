@@ -77,7 +77,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-10 bg-background-secondary/50">
+    <footer className="mt-10 flex-1 bg-background-secondary/50">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
           <div className="flex max-w-sm flex-col gap-4">

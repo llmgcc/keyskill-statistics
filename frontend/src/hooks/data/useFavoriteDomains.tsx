@@ -14,7 +14,14 @@ export function useFavoriteDomains(
   const { period, experience } = useFilters();
   const favorites = useFavoritesStore(state => state.favorites);
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['favorite_domains', period, experience, orderBy, pagination],
+    queryKey: [
+      'favorite_domains',
+      period,
+      experience,
+      orderBy,
+      pagination,
+      favorites,
+    ],
     queryFn: async () => {
       const data = await API.domains.favoriteDomains(
         favorites.filter(f => f.type === 'domains').map(f => f.name),

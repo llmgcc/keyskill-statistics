@@ -1,5 +1,5 @@
-import { Link } from '@radix-ui/themes';
 import { Trans, useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { Category } from '@/interfaces';
 import { Categories } from '@/config/categories';
@@ -20,14 +20,15 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
   const { t } = useTranslation();
 
   const preferredDomains: Category[] = [
-    domains.find(c => c.name === Domains['Backend development']) ?? null,
+    domains.find(c => c.name === Domains['Backend Development']) ?? null,
     domains.find(c => c.name === Domains['Data Science']) ?? null,
-    domains.find(c => c.name === Domains['Project management']) ?? null,
+    domains.find(c => c.name === Domains['Project Management']) ?? null,
   ].filter(e => e !== null);
 
   const preferredCategories: Category[] = [
-    categories.find(c => c.name === Categories['Soft skills']) ?? null,
-    categories.find(c => c.name === Categories.Languages) ?? null,
+    categories.find(c => c.name === Categories['Soft Skills']) ?? null,
+    categories.find(c => c.name === Categories['Programming Languages']) ??
+      null,
     categories.find(c => c.name === Categories.Databases) ?? null,
   ].filter(e => e !== null);
 
@@ -37,38 +38,33 @@ export function TextSection({ onLinkClick }: TextSectionProps) {
   const text = <span className="text-text-primary" />;
   const linkto = (
     <Link
-      href="https://dev.hh.ru/"
+      to="https://dev.hh.ru/"
       target="_blank"
       rel="noopener noreferrer"
-      underline="always"
-      color="ruby"
+      className="text-background-accent underline underline-offset-4"
     />
   );
 
   const linkToCategory = (
     <Link
-      href=""
+      to=""
       rel="noopener noreferrer"
       onClick={e => {
         e.preventDefault();
         onLinkClick?.('categories');
       }}
-      className="cursor-pointer"
-      underline="always"
-      color="ruby"
+      className="text-background-accent underline underline-offset-4"
     />
   );
   const linkToDomain = (
     <Link
-      href=""
+      to=""
       rel="noopener noreferrer"
       onClick={e => {
         e.preventDefault();
         onLinkClick?.('domains');
       }}
-      className="cursor-pointer"
-      underline="always"
-      color="ruby"
+      className="text-background-accent underline underline-offset-4"
     />
   );
 

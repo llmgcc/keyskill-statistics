@@ -18,16 +18,16 @@ import { RiUserStarLine } from 'react-icons/ri';
 import colors from 'tailwindcss/colors';
 
 export enum Domains {
-  'Frontend development' = 'Frontend development',
-  'Backend development' = 'Backend development',
-  'Testing & Quality assurance' = 'Testing & Quality assurance',
-  'Technical support' = 'Technical support',
+  'Frontend Development' = 'Frontend Development',
+  'Backend Development' = 'Backend Development',
+  'Testing & Quality Assurance' = 'Testing & Quality Assurance',
+  'Technical Support' = 'Technical Support',
   'DevOps & Infrastructure' = 'DevOps & Infrastructure',
-  'Systems analytics' = 'Systems analytics',
-  'Project management' = 'Project management',
-  'System administration' = 'System administration',
+  'Systems Analytics' = 'Systems Analytics',
+  'Project Management' = 'Project Management',
+  'System Administration' = 'System Administration',
   'Computer Graphics & Game Development' = 'Computer Graphics & Game Development',
-  'Mobile development' = 'Mobile development',
+  'Mobile Development' = 'Mobile Development',
   'Design' = 'Design',
   'Data Science' = 'Data Science',
   'Cybersecurity' = 'Cybersecurity',
@@ -35,9 +35,9 @@ export enum Domains {
   'Digital Marketing & SEO' = 'Digital Marketing & SEO',
   'Systems Programming' = 'Systems Programming',
   '1C Development' = '1C Development',
-  'Website administration' = 'Website administration',
+  'Website Administration' = 'Website Administration',
   'Blockchain' = 'Blockchain',
-  'Data analytics' = 'Data analytics',
+  'Data Analytics' = 'Data Analytics',
   'Product Management' = 'Product Management',
   'Network Administration' = 'Network Administration',
   'Database Administration' = 'Database Administration',
@@ -46,23 +46,23 @@ export enum Domains {
 }
 
 export const DomainDescription: Record<Domains, string> = {
-  'Frontend development':
+  'Frontend Development':
     'Building interactive user interfaces and optimizing client-side',
-  'Backend development': 'Implementing server logic, APIs, and data management',
-  'Testing & Quality assurance':
+  'Backend Development': 'Implementing server logic, APIs, and data management',
+  'Testing & Quality Assurance':
     'Planning and automating software testing processes',
-  'Technical support':
+  'Technical Support':
     'Installing, configuring and troubleshooting hardware and software',
   'DevOps & Infrastructure':
     'Automating CI/CD, containerization, and server maintenance',
-  'Systems analytics':
+  'Systems Analytics':
     'Gathering requirements, processes, and technical documentation',
-  'Project management': 'Planning, coordinating, and overseeing IT projects',
-  'System administration':
+  'Project Management': 'Planning, coordinating, and overseeing IT projects',
+  'System Administration':
     'Configuring, monitoring, and supporting server systems',
   'Computer Graphics & Game Development':
     '2D/3D graphics, game engines, and rendering optimization',
-  'Mobile development':
+  'Mobile Development':
     'Developing native and cross‑platform mobile applications',
   Design: 'UI/UX design, prototyping, and visual identity',
   'Data Science': 'Data analysis, modeling, and deploying ML solutions',
@@ -72,9 +72,9 @@ export const DomainDescription: Record<Domains, string> = {
     'Promotion, site optimization, and traffic analytics',
   'Systems Programming': 'Low‑level software: drivers, embedded systems, IoT',
   '1C Development': 'Building and customizing business apps on the 1C platform',
-  'Website administration': 'Managing CMS, content, and website security',
+  'Website Administration': 'Managing CMS, content, and website security',
   Blockchain: 'Smart contracts, protocols, and decentralized networks',
-  'Data analytics': 'Business intelligence, data visualization and reporting',
+  'Data Analytics': 'Business intelligence, data visualization and reporting',
   'Product Management':
     'Strategic planning and development of digital products',
   'Network Administration':
@@ -85,48 +85,20 @@ export const DomainDescription: Record<Domains, string> = {
   Unknown: 'Unclassified or emerging technology domains',
 };
 
-export const DomainShort: Record<Domains, string> = {
-  'Frontend development': 'Front',
-  'Backend development': 'Back',
-  'Testing & Quality assurance': 'QA',
-  'Technical support': 'Support',
-  'DevOps & Infrastructure': 'DevOps',
-  'Systems analytics': 'SA',
-  'Project management': 'PM',
-  'System administration': 'SysAdm',
-  'Computer Graphics & Game Development': 'CG/GD',
-  'Mobile development': 'Mobile',
-  Design: 'Design',
-  'Data Science': 'DS',
-  Cybersecurity: 'Sec',
-  'HR Management': 'HR',
-  'Digital Marketing & SEO': 'DM/SEO',
-  'Systems Programming': 'SP',
-  '1C Development': '1C',
-  'Website administration': 'WebAdm',
-  Blockchain: 'BC',
-  'Data analytics': 'DA',
-  'Product Management': 'ProdM',
-  'Network Administration': 'Net',
-  'Database Administration': 'DBA',
-  Other: 'Other',
-  Unknown: 'Unknown',
-};
-
 export const DomainsStyle = {
-  [Domains['Frontend development']]: {
+  [Domains['Frontend Development']]: {
     logo: <FaCode />,
     color: colors.red[500],
   },
-  [Domains['Backend development']]: {
+  [Domains['Backend Development']]: {
     logo: <CiServer />,
     color: colors.cyan[500],
   },
-  [Domains['Testing & Quality assurance']]: {
+  [Domains['Testing & Quality Assurance']]: {
     logo: <BiBug />,
     color: colors.emerald[600],
   },
-  [Domains['Technical support']]: {
+  [Domains['Technical Support']]: {
     logo: <MdAdminPanelSettings />,
     color: colors.blue[400],
   },
@@ -134,15 +106,15 @@ export const DomainsStyle = {
     logo: <BsBoxes />,
     color: colors.blue[500],
   },
-  [Domains['Systems analytics']]: {
+  [Domains['Systems Analytics']]: {
     logo: <IoAnalytics />,
     color: colors.purple[500],
   },
-  [Domains['Project management']]: {
+  [Domains['Project Management']]: {
     logo: <PiUsersThree />,
     color: colors.pink[500],
   },
-  [Domains['System administration']]: {
+  [Domains['System Administration']]: {
     logo: <HiServerStack />,
     color: colors.slate[700],
   },
@@ -150,7 +122,7 @@ export const DomainsStyle = {
     logo: <BiCube />,
     color: colors.red[600],
   },
-  [Domains['Mobile development']]: {
+  [Domains['Mobile Development']]: {
     logo: <GiSmartphone />,
     color: colors.fuchsia[500],
   },
@@ -182,7 +154,7 @@ export const DomainsStyle = {
     logo: <MdAdminPanelSettings />,
     color: colors.cyan[600],
   },
-  [Domains['Website administration']]: {
+  [Domains['Website Administration']]: {
     logo: <BsGlobe />,
     color: colors.teal[500],
   },
@@ -190,7 +162,7 @@ export const DomainsStyle = {
     logo: <GrNodes />,
     color: colors.gray[400],
   },
-  [Domains['Data analytics']]: {
+  [Domains['Data Analytics']]: {
     logo: <IoBarChart />,
     color: colors.indigo[500],
   },

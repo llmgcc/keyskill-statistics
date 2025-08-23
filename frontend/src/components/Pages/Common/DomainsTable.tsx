@@ -4,12 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, OrderBy, ServerFilters, ServerOrderBy } from '@/interfaces';
-import { useDomains } from '@/hooks/useDomains';
+import { Category, KeySkill, OrderBy, ServerFilters } from '@/interfaces';
+import { useDomains } from '@/hooks/data/useDomains';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   categoryImageAccessor,
   categoryNameAccessor,
@@ -20,7 +18,9 @@ import {
   favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
 interface SkillsTableProps {
   columns?: string[];
@@ -113,7 +113,7 @@ export function DomainsTable({
           header: t('columns.trend'),
           isLoading: isLoading || isFetching || !enabled,
         }),
-      ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
+      ] as Array<ColumnDef<Category, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, enabled]
   );
 
@@ -132,8 +132,8 @@ export function DomainsTable({
         />
       </div>
       <DataTable
-        columns={cols as Array<ColumnDef<KeySkill, unknown>>}
-        data={domains ?? placeholderData(pagination.pageSize)}
+        columns={cols as Array<ColumnDef<Category, unknown>>}
+        data={domains ?? (placeholderData(pagination.pageSize) as Category[])}
         isLoading={isLoading || !domains}
         isFetching={isFetching || !enabled}
         pinnedLeft={['favorite_domain', 'place', 'image']}
@@ -142,7 +142,7 @@ export function DomainsTable({
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
-        onSelect={(rowData: KeySkill) => {
+        onSelect={(rowData: Category) => {
           navigate(`/domain/${encodeURIComponent(rowData.name)}`);
         }}
       />

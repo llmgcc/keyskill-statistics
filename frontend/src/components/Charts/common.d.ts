@@ -12,6 +12,7 @@ export interface Chart {
   data: Bin[];
   from: number;
   to: number;
+  median?: number;
 }
 
 export interface ChartTooltip {

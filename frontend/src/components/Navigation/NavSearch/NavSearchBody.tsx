@@ -5,8 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { Category, KeySkill } from '@/interfaces';
+import { useSkills } from '@/hooks/data/useSkills';
 import { useDebounce } from '@/hooks/useDebounce';
-import { useSkills } from '@/hooks/useSkills';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import { useCategoriesStore } from '@/store/categoriesStore';
 import { useDomainsStore } from '@/store/domainsStore';
 import { CategoryDescription } from '@/components/ui/Description/CategoryDescription';
@@ -25,7 +26,7 @@ function NavSearchBody_({ searchQuery, setOpen }: NavSearchBodyProps) {
   const debouncedQuery = useDebounce(searchQuery, 500);
   const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(0);
   const [isMouseActive, setIsMouseActive] = useState(false);
-
+  const { isMobile } = useScreenSize();
   const {
     skills: skillsData,
     isLoading,
@@ -67,11 +68,18 @@ function NavSearchBody_({ searchQuery, setOpen }: NavSearchBodyProps) {
     .slice(0, 20);
 
   function scrollToTab(name: string) {
-    const dialogBody = document.getElementById('navsearch-dialog');
     const target = document.getElementById(name);
-    if (dialogBody && target) {
-      const targetOffset = target.offsetTop;
-      dialogBody.scrollTo({ top: targetOffset - 160, behavior: 'smooth' });
+    if (!target) return;
+
+    if (isMobile) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {}, 100);
+    } else {
+      const dialogBody = document.getElementById('navsearch-dialog');
+      if (dialogBody) {
+        const targetOffset = target.offsetTop;
+        dialogBody.scrollTo({ top: targetOffset - 160, behavior: 'smooth' });
+      }
     }
   }
 
@@ -185,7 +193,10 @@ function NavSearchBody_({ searchQuery, setOpen }: NavSearchBodyProps) {
               isLoading || isFetching || !skillsData ? emptyData : skillsData
             }
             valueRenderer={skill => (
-              <SkillDescription skill={skill as KeySkill} />
+              <SkillDescription
+                skill={skill as KeySkill}
+                onLinkClick={() => setOpen(false)}
+              />
             )}
             startingIndex={0}
             setHoveredIndex={setHoveredIndex}

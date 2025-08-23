@@ -4,12 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerOrderBy } from '@/interfaces';
+import { Category, KeySkill, OrderBy } from '@/interfaces';
 import { useFavoriteDomains } from '@/hooks/data/useFavoriteDomains';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   categoryImageAccessor,
   categoryNameAccessor,
@@ -20,13 +18,15 @@ import {
   favoriteAccessor,
   placeAccessor,
   prevPlaceAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
-interface favoriteDomainsProps {
-  order_by?: ServerOrderBy;
+interface FavoriteDomainsProps {
+  order_by: OrderBy;
 }
 
-export function FavoriteDomains({ order_by }: favoriteDomainsProps) {
+export function FavoriteDomains({ order_by }: FavoriteDomainsProps) {
   const { period, experience } = useFilters();
   const navigate = useNavigate();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
@@ -73,7 +73,7 @@ export function FavoriteDomains({ order_by }: favoriteDomainsProps) {
           header: t('columns.trend'),
           isLoading: isLoading || isFetching,
         }),
-      ] as Array<ColumnDef<KeySkill, unknown> & { accessorKey: string }>,
+      ] as Array<ColumnDef<Category, unknown> & { accessorKey: string }>,
     [t, isLoading, isFetching, i18n]
   );
 
@@ -90,8 +90,11 @@ export function FavoriteDomains({ order_by }: favoriteDomainsProps) {
         />
       </div>
       <DataTable
-        columns={tableColumns as Array<ColumnDef<KeySkill, unknown>>}
-        data={favoriteDomains ?? placeholderData(pagination.pageSize)}
+        columns={tableColumns as Array<ColumnDef<Category, unknown>>}
+        data={
+          favoriteDomains ??
+          (placeholderData(pagination.pageSize) as Category[])
+        }
         isLoading={isLoading || !favoriteDomains}
         isFetching={isFetching}
         pinnedLeft={['favorite_domain', 'place', 'image']}
@@ -100,7 +103,7 @@ export function FavoriteDomains({ order_by }: favoriteDomainsProps) {
         setPagination={setPagination as OnChangeFn<PaginationState>}
         pageSizeVariants={pageSizeVariants}
         rows={rows ?? 0}
-        onSelect={(rowData: KeySkill) => {
+        onSelect={(rowData: Category) => {
           navigate(`/domains/${encodeURIComponent(rowData.name)}`);
         }}
       />

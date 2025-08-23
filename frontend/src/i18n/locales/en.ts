@@ -1,9 +1,5 @@
-import {
-  Categories,
-  CategoryDescription,
-  CategoryShort,
-} from '@/config/categories';
-import { DomainDescription, Domains, DomainShort } from '@/config/domains';
+import { Categories, CategoryDescription } from '@/config/categories';
+import { DomainDescription, Domains } from '@/config/domains';
 import { Experience } from '@/config/experience';
 import { Highlights, HighlightTitles } from '@/config/highlights';
 import { LevelDescription } from '@/config/level';
@@ -72,7 +68,7 @@ export default {
       trending: 'Trending',
       declining: 'Declining demand',
       new: 'New',
-      unknownSalary: 'Unknown salary',
+      growingSalary: 'Growing salary',
       similar: 'Similar',
       highestSalary: 'Highest salary',
       lowestSalary: 'Lowest salary',
@@ -97,10 +93,8 @@ export default {
       favorites: 'Favorites',
     },
     domains: Domains,
-    domainsShort: DomainShort,
     domainDescription: DomainDescription,
     categories: Categories,
-    categoriesShort: CategoryShort,
     categoryDescription: CategoryDescription,
     experience: {
       [Experience.any]: 'Any',
@@ -165,6 +159,7 @@ export default {
       description:
         'Complexity is calculated based on the frequency of occurrence of the skill among specialists of different levels',
       distribution: 'Experience distribution',
+      info: 'Complexity calculated based on experience requirements distribution. Higher values indicate demand in senior positions.',
     },
     skillPage: {
       relatedSkills: {
@@ -254,7 +249,7 @@ export default {
           subtitle:
             'Analysis of IT skills with the lowest salaries. Featured are <text>{{skillCount}}</text> skills that offer the lowest pay over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes more accessible technologies.',
         },
-        [Highlights['gainers-salary']]: {
+        [Highlights['growingSalary']]: {
           title: 'Skills with Growing Salaries',
           subtitle:
             'Analysis of IT skills showing the highest growth in salary. Featured are <text>{{skillCount}}</text> skills over the last <text>{{days}}</text> days. Data reflects trends {{experienceText}} and includes technologies with varying compensation terms.',
@@ -272,6 +267,15 @@ export default {
     footer: {
       text: '{{appName}} provides IT job market analytics, showing which skills are needed for professional development',
       backToTop: 'Back to top',
+    },
+    tooltips: {
+      salary:
+        'Expected median monthly salary. Includes a histogram showing salary distribution across different ranges.',
+      domainsConfidence:
+        'Confidence level that the skill belongs to domain <text>{{name}}</text>',
+      categoriesConfidence:
+        'Confidence level that the skill belongs to category <text>{{name}}</text>',
+      similarity: 'Skill similarity in meaning or functionality',
     },
   },
 };

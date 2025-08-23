@@ -25,12 +25,12 @@ export default function App() {
     fetchCategories();
     fetchDomains();
     fetchStats();
-  }, []);
+  }, [fetchCategories, fetchCurrencies, fetchDomains, fetchStats]);
 
   const config = routerConfig();
 
   return (
-    <div className="main-app relative z-10 min-h-screen w-full bg-background-primary">
+    <div className="main-app relative z-10 flex min-h-screen w-full flex-col bg-background-primary">
       <Navigation />
       <Routes>
         {config.map(c => (

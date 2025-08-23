@@ -1,27 +1,22 @@
-import { Table } from '@chakra-ui/react';
-import { Skeleton } from '@radix-ui/themes';
-import { Cell, flexRender, Table as ITable } from '@tanstack/react-table';
+import { Skeleton, Table } from '@chakra-ui/react';
+import { flexRender, Table as ITable } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import { alignRight, getCommonPinningStyles, padding } from './common';
 
-interface DataTableBodyProps<T extends object> {
+interface DataTableBodyProps<T> {
   table: ITable<T>;
   isLoading?: boolean;
   pinned: boolean;
   onSelect: (rowData: T) => void;
 }
 
-export function DataTableBody<T extends object>({
+export function DataTableBody<T>({
   table,
   isLoading,
   pinned,
   onSelect,
 }: DataTableBodyProps<T>) {
-  function data(cell: Cell<T, unknown>) {
-    return <>{flexRender(cell.column.columnDef.cell, cell.getContext())}</>;
-  }
-
   const { t } = useTranslation();
   const rows = table.getRowModel().rows;
   const hasNoRows = rows.length === 0;
@@ -41,8 +36,8 @@ export function DataTableBody<T extends object>({
         rows.map(row => (
           <Table.Row
             key={row.id}
-            className="cursor-pointer bg-background-primary hover:bg-background-secondary/50"
-            onClick={() => onSelect(row.original)}
+            className={`cursor-pointer bg-background-primary ${!isLoading && 'hover:bg-background-secondary/50'}`}
+            onClick={() => !isLoading && onSelect(row.original)}
           >
             {row.getVisibleCells().map(cell => (
               <Table.Cell
@@ -62,21 +57,16 @@ export function DataTableBody<T extends object>({
                   ...padding(cell.column.columnDef.meta),
                 }}
               >
-                <div>
-                  <div className="size-full">
-                    {isLoading ? (
-                      <Skeleton className="size-full min-h-10 min-w-10">
-                        <div className="size-full">{data(cell)}</div>
-                      </Skeleton>
-                    ) : (
-                      <div
-                        className={`${alignRight(cell.column.columnDef.meta) ? 'flex size-full items-end justify-end text-end' : 'size-full text-left align-middle'}`}
-                      >
-                        {data(cell)}
-                      </div>
-                    )}
+                <Skeleton
+                  className={`size-full ${isLoading && 'bg-background-secondary'}`}
+                  loading={isLoading}
+                >
+                  <div
+                    className={`${alignRight(cell.column.columnDef.meta) ? 'flex size-full items-end justify-end text-end' : 'size-full text-left align-middle'}`}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </div>
-                </div>
+                </Skeleton>
               </Table.Cell>
             ))}
           </Table.Row>

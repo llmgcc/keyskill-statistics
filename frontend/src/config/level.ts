@@ -8,37 +8,37 @@ export enum Level {
 }
 
 export const LevelDescription = {
-  [Level.Junior]: 'Mostly needed in entry-level positions',
-  [Level['Junior+']]: 'Common for early-career roles',
-  [Level.Middle]: 'Standard level for professionals',
-  [Level['Middle+']]: 'For specialists with broader responsibilitiess',
-  [Level.Senior]: 'For experts and complex tasks',
-  [Level['Senior+']]: 'For top experts and leadership roles',
+  [Level.Junior]: 'Basic level for entry-level professionals',
+  [Level['Junior+']]: 'Entry level with minimal experience requirements',
+  [Level.Middle]: 'Intermediate level for experienced professionals',
+  [Level['Middle+']]: 'Advanced level with extended requirements',
+  [Level.Senior]: 'High level for experts',
+  [Level['Senior+']]: 'Expert level with high qualification requirements',
 };
 
 export const LevelRange = {
   [Level.Junior]: {
     min: 0,
-    max: 2,
+    max: 2.933,
   },
   [Level['Junior+']]: {
-    min: 2,
-    max: 5,
+    min: 2.933,
+    max: 3.8,
   },
   [Level.Middle]: {
-    min: 5,
-    max: 6,
+    min: 3.8,
+    max: 4.514,
   },
   [Level['Middle+']]: {
-    min: 6,
-    max: 7.5,
+    min: 4.514,
+    max: 5.2,
   },
   [Level.Senior]: {
-    min: 7.5,
-    max: 9,
+    min: 5.2,
+    max: 6.091,
   },
   [Level['Senior+']]: {
-    min: 9,
+    min: 6.091,
     max: 10,
   },
 };

@@ -4,12 +4,10 @@ import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { KeySkill, ServerOrderBy } from '@/interfaces';
+import { KeySkill, OrderBy } from '@/interfaces';
 import { useFavoriteSkills } from '@/hooks/data/useFavoriteSkills';
 import { useFilters } from '@/hooks/useFilters';
 import { usePaginationState } from '@/hooks/usePaginationState';
-import { DataTable } from '@/components/Table/DataTable';
-import { PageSize } from '@/components/Table/PageSize';
 import {
   chartAccessor,
   complexityAccessor,
@@ -20,13 +18,15 @@ import {
   salaryAccessor,
   skillImageAccessor,
   skillNameAccessor,
-} from '@/components/Tabs/accessors';
+} from '@/components/Table/accessors';
+import { DataTable } from '@/components/Table/DataTable';
+import { PageSize } from '@/components/Table/PageSize';
 
-interface favoriteSkillsProps {
-  order_by?: ServerOrderBy;
+interface FavoriteSkillsProps {
+  order_by: OrderBy;
 }
 
-export function FavoriteSkills({ order_by }: favoriteSkillsProps) {
+export function FavoriteSkills({ order_by }: FavoriteSkillsProps) {
   const { period, experience } = useFilters();
   const navigate = useNavigate();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(

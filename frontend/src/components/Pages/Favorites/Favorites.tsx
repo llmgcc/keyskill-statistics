@@ -9,8 +9,8 @@ import { useOrderByState } from '@/hooks/useOrderByState';
 import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 import { RouterTabs } from '@/components/ui/RouterTabs';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
 
 import { StickyFilter } from '../Common/StickyFilter';
 import { FavoriteCategories } from './FavoriteCategories';

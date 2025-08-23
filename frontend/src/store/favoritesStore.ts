@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { syncTabs } from 'zustand-sync-tabs';
 import { persist } from 'zustand/middleware';
 
 export type favoriteType = 'skills' | 'domains' | 'categories';
@@ -12,26 +13,35 @@ interface FavoritesStore {
 
 export const useFavoritesStore = create<FavoritesStore>()(
   persist(
-    (set, get) => ({
-      favorites: [],
-      add: (name, type) => {
-        const { favorites } = get();
-        if (!favorites.some(s => s.name === name && s.type === type)) {
-          set({ favorites: [...favorites, { name, type }] });
-        }
-      },
-      remove: (name, type) => {
-        set(state => ({
-          favorites: state.favorites.filter(
-            s => !(s.name === name && s.type === type)
-          ),
-        }));
-      },
-      isFavorite: (name, type) => {
-        const list = get().favorites;
-        return !!list.find(s => s.name === name && s.type === type);
-      },
-    }),
+    syncTabs(
+      (set, get) => ({
+        favorites: [],
+        add: (name, type) => {
+          set(state => {
+            if (
+              !state.favorites.some(s => s.name === name && s.type === type)
+            ) {
+              return {
+                favorites: [...state.favorites, { name, type }],
+              };
+            }
+            return state;
+          });
+        },
+        remove: (name, type) => {
+          set(state => ({
+            favorites: state.favorites.filter(
+              s => !(s.name === name && s.type === type)
+            ),
+          }));
+        },
+        isFavorite: (name, type) => {
+          const list = get().favorites;
+          return !!list.find(s => s.name === name && s.type === type);
+        },
+      }),
+      { name: 'favorites-sync' }
+    ),
     {
       name: 'favorites-storage',
     }

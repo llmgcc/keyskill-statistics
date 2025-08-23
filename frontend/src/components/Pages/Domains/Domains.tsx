@@ -8,7 +8,7 @@ import { useExperienceStore } from '@/store/experienceStore';
 import { usePeriodStore } from '@/store/periodStore';
 import { AppBreadcrumb } from '@/components/ui/Breadcrumb';
 import { ListEnumeration } from '@/components/ui/ListEnumeration';
-import { OrderButtons } from '@/components/Tabs/OrderButtons';
+import { OrderButtons } from '@/components/ui/OrderButtons';
 
 import { DomainsTable } from '../Common/DomainsTable';
 import { StickyFilter } from '../Common/StickyFilter';
@@ -52,7 +52,7 @@ export function Domains() {
                 <ListEnumeration
                   list={[
                     t(`domains.${DomainsConfig['Data Science']}`),
-                    t(`domains.${DomainsConfig['Backend development']}`),
+                    t(`domains.${DomainsConfig['Backend Development']}`),
                     t(`domains.${DomainsConfig['DevOps & Infrastructure']}`),
                     t(`domains.${DomainsConfig.Blockchain}`),
                   ]}
