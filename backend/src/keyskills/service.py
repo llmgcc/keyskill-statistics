@@ -840,14 +840,12 @@ async def get_all_skills_related(session: Session, period: int, experience: str 
     return await session.exec(final_query)
 
 
-async def get_all_skills_similar(session: Session):
+async def get_all_skills_similar(session: Session, period: int, experience: str = None):
     from src.models import KeySkillSimilarity
 
-    valid_skills = (
-        select(func.distinct(KeySkill.name).label("skill_name"))
-        .select_from(KeySkill)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
-        .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
+    valid_skills = get_base_skills(
+        days_period=period,
+        experience=experience,
     ).subquery()
 
     query = (
@@ -858,8 +856,8 @@ async def get_all_skills_similar(session: Session):
         )
         .where(
             and_(
-                KeySkillSimilarity.skill1.in_(select(valid_skills.c.skill_name)),
-                KeySkillSimilarity.skill2.in_(select(valid_skills.c.skill_name)),
+                KeySkillSimilarity.skill1.in_(select(valid_skills.c.name)),
+                KeySkillSimilarity.skill2.in_(select(valid_skills.c.name)),
             )
         )
         .union_all(
@@ -869,8 +867,8 @@ async def get_all_skills_similar(session: Session):
                 KeySkillSimilarity.similarity_score,
             ).where(
                 and_(
-                    KeySkillSimilarity.skill1.in_(select(valid_skills.c.skill_name)),
-                    KeySkillSimilarity.skill2.in_(select(valid_skills.c.skill_name)),
+                    KeySkillSimilarity.skill1.in_(select(valid_skills.c.name)),
+                    KeySkillSimilarity.skill2.in_(select(valid_skills.c.name)),
                 )
             )
         )

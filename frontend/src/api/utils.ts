@@ -103,7 +103,7 @@ export async function getSkills(
 
   if (filter?.similar_to) {
     const similarMap = (
-      await axios.get(`/static-api/skills/similar_skills.json`)
+      await axios.get(`/static-api/skills/${getPath('similar_skills', filter)}`)
     ).data;
     const skillsList = (similarMap[filter.similar_to] ?? []) as KeySkill[];
     return sortSkills(

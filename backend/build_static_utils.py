@@ -95,12 +95,16 @@ async def build_skills_similar():
     from src.keyskills.service import get_all_skills_similar
 
     async with AsyncSession(async_engine) as session:
-        result = await get_all_skills_similar(session)
-        data = {}
-        for row in result.all():
-            data[row[0]] = row[1]
-        write("/skills/similar_skills", data, is_json=True)
-
+        for period in PERIOD:
+            for experience in EXPERIENCE:
+                e = None if experience == "any" else experience
+                result = await get_all_skills_similar(session, period, e)
+                data = {}
+                for row in result.all():
+                    data[row[0]] = row[1]
+                write(
+                    f"/skills/similar_skills_{period}_{experience}", data, is_json=True
+                )
 
 async def build_skills():
     async def build(period, experience):
