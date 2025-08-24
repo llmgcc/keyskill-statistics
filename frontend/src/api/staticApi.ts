@@ -18,6 +18,16 @@ import {
   getSkills,
 } from './utils';
 
+
+const chartCache = new Map<string, Promise<any>>();
+
+export function getChartData(url: string): Promise<any> {
+  if (!chartCache.has(url)) {
+    chartCache.set(url, axios.get(url).then(response => response.data));
+  }
+  return chartCache.get(url)!;
+}
+
 export const StaticAPI: API = {
   general: {
     mainStats: async () => {
@@ -139,10 +149,9 @@ export const StaticAPI: API = {
   },
   charts: {
     skillTrend: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/skills_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -150,10 +159,9 @@ export const StaticAPI: API = {
       };
     },
     domainTrend: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/domains_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -161,10 +169,9 @@ export const StaticAPI: API = {
       };
     },
     categoryTrend: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/categories_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -172,10 +179,9 @@ export const StaticAPI: API = {
       };
     },
     skillSalary: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/skills_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
@@ -183,10 +189,9 @@ export const StaticAPI: API = {
       };
     },
     domainSalary: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/domains_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
@@ -194,10 +199,9 @@ export const StaticAPI: API = {
       };
     },
     categorySalary: async (filter: TrendFilter) => {
-      const response = await axios.get(
+      const charts = await getChartData(
         `/static-api/charts/categories_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
       );
-      const charts = response.data;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
