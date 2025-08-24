@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
 interface BreadcrumbRoute {
@@ -23,11 +24,10 @@ export function AppBreadcrumb({ routes, className = '' }: AppBreadcrumbPops) {
                   {route.displayName}
                 </Breadcrumb.CurrentLink>
               ) : (
-                <Breadcrumb.Link
-                  href={route.url}
-                  className="text-sm text-text-secondary hover:text-text-primary"
-                >
-                  {route.displayName}
+                <Breadcrumb.Link asChild>
+                  <Link to={route.url} className="text-sm text-text-secondary hover:text-text-primary">
+                    {route.displayName}
+                  </Link>
                 </Breadcrumb.Link>
               )}
             </Breadcrumb.Item>
