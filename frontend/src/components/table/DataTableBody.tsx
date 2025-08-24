@@ -58,7 +58,7 @@ export function DataTableBody<T>({
                 }}
               >
                 <Skeleton
-                  className={`size-full ${isLoading && 'bg-background-secondary'}`}
+                  className={`size-full ${isLoading && 'min-h-10 min-w-10 bg-background-secondary'}`}
                   loading={isLoading}
                 >
                   <div

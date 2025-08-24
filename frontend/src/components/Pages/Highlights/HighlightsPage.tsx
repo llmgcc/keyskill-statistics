@@ -54,7 +54,9 @@ export function HighlightCardBody({
         <div
           key={h.name}
           className="flex cursor-pointer items-center justify-between p-2 hover:bg-background-secondary"
-          onClick={() => !isLoading && navigate(`/skill/${h.name}`)}
+          onClick={() =>
+            !isLoading && navigate(`/skill/${encodeURIComponent(h.name)}`)
+          }
         >
           <div className="min-w-0 flex-[5] pr-4">
             <SkillDescription skill={h} />

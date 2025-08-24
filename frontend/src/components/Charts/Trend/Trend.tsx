@@ -34,8 +34,8 @@ function Trend_({
 }: TrendProps) {
   const { t, i18n } = useTranslation();
 
-  const start = new Date(data.from).getTime();
-  const end = new Date(data.to).getTime();
+  const start = new Date(String(data.from).replace(/\s/, 'T')).getTime();
+  const end = new Date(String(data.to).replace(/\s/, 'T')).getTime();
   const interval = (end - start) / data.data.length;
 
   const numberOfTicks = 5;

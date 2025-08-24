@@ -56,10 +56,21 @@ function Histogram_({
   const medianBin = Math.round((median - start) / interval);
 
   const getBarColor = (bin: number) => {
+    const supportsColorMix = CSS.supports(
+      'color',
+      'color-mix(in srgb, red, blue)'
+    );
     if (bin === medianBin) return 'rgb(var(--color-background-gray))';
     const distance = Math.abs(bin - medianBin);
     const ratio = Math.min(distance / 5, 1);
-    return `color-mix(in srgb, rgb(var(--color-background-gray)) ${(1 - ratio) * 100}%, rgb(var(--color-background-secondary)) ${ratio * 100}%)`;
+
+    if (supportsColorMix) {
+      return `color-mix(in srgb, rgb(var(--color-background-gray)) ${(1 - ratio) * 100}%, rgb(var(--color-background-secondary)) ${ratio * 100}%)`;
+    }
+
+    return ratio > 0.5
+      ? 'rgb(var(--color-background-secondary))'
+      : 'rgb(var(--color-background-gray))';
   };
 
   return (
