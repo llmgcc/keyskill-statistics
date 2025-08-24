@@ -65,3 +65,20 @@ def set_name_by_regex(pattern, file_name):
                 set_name(match, file_name)
 
 
+def delete_image_by_regex(pattern):
+    with Session(engine) as session:
+        statement = select(KeySkill.name).distinct()
+        results = session.exec(statement).all()
+        
+        matches = [s for s in results if re.search(pattern, s, re.IGNORECASE)]
+        
+        for skill in matches:
+            print(f"- {skill}")
+            delete_image(skill)
+
+
+name = 'GitHub'
+regex = 'GitHub'
+url = 'https://images.seeklogo.com/logo-png/30/2/github-logo-png_seeklogo-304612.png'
+upload_image(name, url)
+set_name_by_regex(regex, name)

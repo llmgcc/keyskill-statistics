@@ -1,10 +1,13 @@
 import {
   Category,
   CategoryFilter,
+  Chart,
   KeySkill,
   OrderBy,
   Pagination,
+  SalaryChart,
   SkillFilter,
+  TrendChart,
   TrendFilter,
 } from '@/interfaces';
 
@@ -18,12 +21,22 @@ import {
   getSkills,
 } from './utils';
 
+interface TrendChartStatic extends TrendChart {
+  charts: Record<string, Chart[]>;
+}
+interface SalaryChartStatic extends SalaryChart {
+  charts: Record<string, Chart[]>;
+}
+type ChartData = TrendChartStatic | SalaryChartStatic;
 
-const chartCache = new Map<string, Promise<any>>();
+const chartCache = new Map<string, Promise<ChartData>>();
 
-export function getChartData(url: string): Promise<any> {
+export function getChartData(url: string): Promise<ChartData> {
   if (!chartCache.has(url)) {
-    chartCache.set(url, axios.get(url).then(response => response.data));
+    chartCache.set(
+      url,
+      axios.get(url).then(response => response.data)
+    );
   }
   return chartCache.get(url)!;
 }
@@ -74,10 +87,10 @@ export const StaticAPI: API = {
         image: category?.image,
         categories: category?.categories,
         domains: category?.domains,
-        all_time_place: category?.all_time_place,
         ...categories.find(
           c => c.name === decodeURIComponent(filter?.name ?? '')
         ),
+        all_time_place: category?.all_time_place,
       } as Category;
     },
     favoriteCategories: async (
@@ -126,8 +139,8 @@ export const StaticAPI: API = {
         image: domain?.image,
         categories: domain?.categories,
         domains: domain?.domains,
-        all_time_place: domain?.all_time_place,
         ...domains.find(c => c.name === decodeURIComponent(filter?.name ?? '')),
+        all_time_place: domain?.all_time_place,
       } as Category;
     },
     favoriteDomains: async (
@@ -149,9 +162,9 @@ export const StaticAPI: API = {
   },
   charts: {
     skillTrend: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/skills_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as TrendChartStatic;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -159,9 +172,9 @@ export const StaticAPI: API = {
       };
     },
     domainTrend: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/domains_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as TrendChartStatic;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -169,9 +182,9 @@ export const StaticAPI: API = {
       };
     },
     categoryTrend: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/categories_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as TrendChartStatic;
       return {
         date_from: charts.date_from,
         date_to: charts.date_to,
@@ -179,9 +192,9 @@ export const StaticAPI: API = {
       };
     },
     skillSalary: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/skills_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as SalaryChartStatic;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
@@ -189,9 +202,9 @@ export const StaticAPI: API = {
       };
     },
     domainSalary: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/domains_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as SalaryChartStatic;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
@@ -199,9 +212,9 @@ export const StaticAPI: API = {
       };
     },
     categorySalary: async (filter: TrendFilter) => {
-      const charts = await getChartData(
+      const charts = (await getChartData(
         `/static-api/charts/categories_salary_${filter?.period}_${filter?.experience ?? 'any'}.json`
-      );
+      )) as SalaryChartStatic;
       return {
         salary_from: charts.salary_from,
         salary_to: charts.salary_to,
@@ -241,8 +254,8 @@ export const StaticAPI: API = {
         image: skill?.image,
         categories: skill?.categories,
         domains: skill?.domains,
-        all_time_place: skill?.all_time_place,
         ...skills.find(c => c.name === decodeURIComponent(filter?.skill ?? '')),
+        all_time_place: skill?.all_time_place,
       } as KeySkill;
     },
     favoriteSkills: async (

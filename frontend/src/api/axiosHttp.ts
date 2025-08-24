@@ -2,8 +2,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 
 export const axiosHTTP = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'production' ? '/' : '/',
+  baseURL: process.env.NODE_ENV === 'production' ? '/' : '/',
 });
 
 NProgress.configure({ showSpinner: false });

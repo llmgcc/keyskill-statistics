@@ -1,5 +1,5 @@
 import { skillName } from '@/utils/common';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -35,6 +35,12 @@ export function SkillPage() {
     }
   }, [navigate, isError]);
 
+  const details = useMemo(() => skillDetails ?? null, [skillDetails]);
+  const isDataReady = useMemo(
+    () => !(isLoading || isFetching),
+    [isLoading, isFetching]
+  );
+
   if (isError) {
     return null;
   }
@@ -63,10 +69,7 @@ export function SkillPage() {
 
         <div className="flex flex-col gap-2 lg:flex-row">
           <div className="w-full lg:flex-[65]">
-            <SkillTrend
-              skill={skillDetails ?? null}
-              isDataReady={!(isLoading || isFetching)}
-            />
+            <SkillTrend skill={details} isDataReady={isDataReady} />
           </div>
           <div className="w-full lg:flex-[35]">
             <SkillSalary

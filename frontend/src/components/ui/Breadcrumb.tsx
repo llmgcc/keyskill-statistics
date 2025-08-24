@@ -25,7 +25,10 @@ export function AppBreadcrumb({ routes, className = '' }: AppBreadcrumbPops) {
                 </Breadcrumb.CurrentLink>
               ) : (
                 <Breadcrumb.Link asChild>
-                  <Link to={route.url} className="text-sm text-text-secondary hover:text-text-primary">
+                  <Link
+                    to={route.url}
+                    className="text-sm text-text-secondary hover:text-text-primary"
+                  >
                     {route.displayName}
                   </Link>
                 </Breadcrumb.Link>

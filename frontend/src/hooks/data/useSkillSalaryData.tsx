@@ -1,4 +1,5 @@
 import { API } from '@/api/api';
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { useCurrencyStore } from '@/store/currencyStore';
@@ -35,23 +36,27 @@ export function useSkillSalaryData(
     enabled: !!skill,
   });
 
-  const chartData = [];
-  if (data?.chart) {
-    for (let i = 1; i <= numberOfBins; i++) {
-      const index = data.chart.findIndex(p => p.bin == i);
-      if (index !== -1) {
-        chartData.push({
-          bin: i,
-          count: data.chart[index].count,
-        });
-      } else {
-        chartData.push({
-          bin: i,
-          count: 0,
-        });
+  const chartData = useMemo(() => {
+    const newChart = [];
+    if (data?.chart) {
+      for (let i = 1; i <= numberOfBins; i++) {
+        const index = data.chart.findIndex(p => p.bin == i);
+        if (index !== -1) {
+          newChart.push({
+            bin: i,
+            count: data.chart[index].count,
+          });
+        } else {
+          newChart.push({
+            bin: i,
+            count: 0,
+          });
+        }
       }
+      return newChart;
     }
-  }
+    return data?.chart ?? [];
+  }, [numberOfBins, data]);
 
   return {
     from: (data?.salary_from ?? 0) * (selectedCurrency?.currency_rate ?? 1),

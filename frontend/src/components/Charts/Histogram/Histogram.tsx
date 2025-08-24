@@ -146,7 +146,6 @@ function Histogram_({
               }}
               barSize={100}
               isAnimationActive={!sparkline}
-              animationDuration={1000}
             >
               {chartDataExtended.map(entry => (
                 <Cell key={`cell-${entry.bin}`} fill={getBarColor(entry.bin)} />
