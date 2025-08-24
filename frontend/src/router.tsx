@@ -35,11 +35,6 @@ export function routerConfig() {
     },
     {
       id: 'highlights',
-      path: '/highlights',
-      element: <HighlightsPage />,
-    },
-    {
-      id: 'highlights',
       path: '/highlights/:type',
       element: <HighlightTypePage />,
     },

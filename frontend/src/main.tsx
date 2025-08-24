@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query';
 import { createRoot } from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import './index.css';
 
@@ -30,7 +30,7 @@ export const queryClient = new QueryClient({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter
+    <HashRouter
       basename={
         process.env.NODE_ENV === 'production' ? '/' : '/'
       }
@@ -44,6 +44,6 @@ createRoot(document.getElementById('root')!).render(
           </QueryClientProvider>
         </I18nextProvider>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
