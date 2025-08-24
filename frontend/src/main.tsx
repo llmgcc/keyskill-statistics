@@ -32,7 +32,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter
       basename={
-        process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/'
+        process.env.NODE_ENV === 'production' ? '/' : '/'
       }
     >
       <ScrollToTop />

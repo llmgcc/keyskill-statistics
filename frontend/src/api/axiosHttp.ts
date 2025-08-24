@@ -3,7 +3,7 @@ import NProgress from 'nprogress';
 
 export const axiosHTTP = axios.create({
   baseURL:
-    process.env.NODE_ENV === 'production' ? '/keyskill-statistics/' : '/',
+    process.env.NODE_ENV === 'production' ? '/' : '/',
 });
 
 NProgress.configure({ showSpinner: false });
