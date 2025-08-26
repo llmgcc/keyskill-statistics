@@ -1,6 +1,6 @@
 import i18n from '@/i18n/i18n';
 import { placeholderData, skillName } from '@/utils/common';
-import { useEffect, useMemo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -50,7 +50,7 @@ const DEAFULT_COLUMNS = [
 
 const DEFAULT_PAGE_SIZE_VARIANTS = [10, 25, 50];
 
-export function SkillsTable({
+function SkillsTable_({
   order_by,
   filter,
   columns = DEAFULT_COLUMNS,
@@ -63,7 +63,7 @@ export function SkillsTable({
 }: SkillsTableProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
+  
   const { period, experience } = useFilters();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
     0,
@@ -146,6 +146,8 @@ export function SkillsTable({
     [tableColumns, columns]
   );
 
+
+  console.log('skills table')
   return (
     <>
       <div className="my-1 flex items-center justify-between gap-4 overflow-auto">
@@ -174,3 +176,6 @@ export function SkillsTable({
     </>
   );
 }
+
+
+export const SkillsTable = memo(SkillsTable_)

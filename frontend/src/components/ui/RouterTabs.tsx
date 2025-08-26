@@ -40,19 +40,19 @@ function RouterTabs_({ tabs, paramKey = 'tab' }: RouterTabsProps) {
       setSearchParams(newSearchParams, { replace: true });
     }
   }, [paramKey, searchParams, setSearchParams, location.pathname, currentTab]);
-
+  console.log('router tabs')
   return (
     <div className="">
       <Tabs.Root
         defaultValue={tabs[0].name}
-        value={currentTabConfig.name}
+        // value={currentTabConfig.name}
         variant="enclosed"
         className="mt-2 border-none bg-background-primary p-0"
         size="sm"
         lazyMount
-        onValueChange={details => {
-          handleTabChange(details.value);
-        }}
+        // onValueChange={details => {
+        //   handleTabChange(details.value);
+        // }}
       >
         <div className="flex items-center gap-2 overflow-x-auto p-0">
           <Tabs.List className="flex flex-nowrap gap-2 border-background-secondary bg-background-primary p-0 shadow-background-secondary">

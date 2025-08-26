@@ -10,6 +10,7 @@ import { RouterTabs } from '../../ui/RouterTabs';
 import { CategoriesTable } from '../Common/CategoriesTable';
 import { DomainsTable } from '../Common/DomainsTable';
 import { SkillsTable } from '../Common/SkillsTable';
+import { useMemo } from 'react';
 
 export function Tabs() {
   const { t } = useTranslation();
@@ -26,18 +27,7 @@ export function Tabs() {
   ]);
   const [categoriesOrder, setCategoriesOrder, categoriesOrderButtons] =
     useOrderByState(['popular', 'trending', 'highestSalary']);
-
-  const tabs = [
-    {
-      title: (
-        <div className="flex items-center">
-          <div>
-            <CgList />
-          </div>
-          <div className="ml-1">{t('common.skills')}</div>
-        </div>
-      ),
-      body: (
+  const table = useMemo(() => (
         <SkillsTable
           columns={[
             'favorite_skill',
@@ -60,7 +50,18 @@ export function Tabs() {
           text={<div>{t('common.allSkills')}</div>}
           pageSizes={[25, 50, 100]}
         />
+  ), [skillsOrder, t])
+  const tabs = useMemo(() => [
+    {
+      title: (
+        <div className="flex items-center">
+          <div>
+            <CgList />
+          </div>
+          <div className="ml-1">{t('common.skills')}</div>
+        </div>
       ),
+      body: table,
       name: 'key-skills',
       append: (
         <OrderButtons
@@ -154,7 +155,7 @@ export function Tabs() {
       ),
       name: 'categories',
     },
-  ];
-
+  ], [table, t, categoriesOrder, domainsOrder, skillsOrder, categoriesOrderButtons, domainsOrderButtons, skillsOrderButtons, setCategoriesOrder, setSkillsOrder, setDomainsOrder]);
+  console.log('rerender')
   return <RouterTabs tabs={tabs} />;
 }

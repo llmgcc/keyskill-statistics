@@ -102,6 +102,8 @@ export function DataTable<T extends object>({
     // debugTable: true,
   });
 
+
+  console.log('data table')
   return (
     <div className="d-flex tan-table relative border-collapse justify-center text-sm font-[500]">
       <div

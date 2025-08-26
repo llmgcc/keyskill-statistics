@@ -8,6 +8,7 @@ class Vacancy(SQLModel, table=True):
     name: str
     created_at: datetime = Field(default=None, index=True)
     experience: str = Field(default=None)
+    description: str = Field(default=None)
 
 
 class KeySkill(SQLModel, table=True):
