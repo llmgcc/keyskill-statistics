@@ -42,6 +42,9 @@ export enum Domains {
   'Network Administration' = 'Network Administration',
   'Database Administration' = 'Database Administration',
   'Other' = 'Other',
+  'Data Engineering' = 'Data Engineering',
+  'Fullstack Development' = 'Fullstack Development',
+  'Teaching' = 'Teaching',
   'Unknown' = 'Unknown',
 }
 
@@ -83,6 +86,12 @@ export const DomainDescription: Record<Domains, string> = {
     'Managing database systems, optimization and security',
   Other: 'Non‑technical and supporting roles outside core IT domains',
   Unknown: 'Unclassified or emerging technology domains',
+  [Domains['Data Engineering']]:
+    'Building and maintaining data pipelines, ETL processes, and data infrastructure',
+  [Domains['Fullstack Development']]:
+    'Developing both client-side and server-side software',
+  [Domains.Teaching]:
+    'Educating and mentoring in IT, creating educational content, and conducting training',
 };
 
 export const DomainsStyle = {
@@ -185,5 +194,17 @@ export const DomainsStyle = {
   [Domains.Unknown]: {
     logo: <FaQuestion />,
     color: colors.slate[400],
+  },
+  [Domains['Data Engineering']]: {
+    logo: <PiDatabaseThin />,
+    color: colors.indigo[300],
+  },
+  [Domains['Fullstack Development']]: {
+    logo: <FaCode />,
+    color: colors.cyan[500],
+  },
+  [Domains.Teaching]: {
+    logo: <PiUsersThree />,
+    color: colors.sky[500],
   },
 };

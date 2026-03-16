@@ -180,6 +180,7 @@ def update():
                 if not vacancy_exists:
                     vacancy = request(f"{HH_API}/vacancies/{VACANCY_ID}").json()
                     EXPERIENCE = vacancy["experience"]["id"]
+                    DESCRIPTION = vacancy["description"]
                     create_or_update(
                         connection,
                         Vacancy,
@@ -188,6 +189,7 @@ def update():
                             "name": VACANCY_NAME,
                             "created_at": VACANCY_CREATED_AT,
                             "experience": EXPERIENCE,
+                            "description": DESCRIPTION
                         },
                         ["id"],
                     )
