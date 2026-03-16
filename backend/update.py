@@ -64,7 +64,7 @@ def count_vacancies(days):
     return np.array(list(reversed(data)))
 
 
-def get_dates(days=90):
+def get_dates(days=60):
     dates = count_vacancies(days)
     dates = sorted(dates, key=lambda x: x[0])
     dates_from_to = []
@@ -210,5 +210,5 @@ def update():
                     REQ_STAT["cached"] += 1
 
 
-for i in range(10):
+for i in range(100):
     update()

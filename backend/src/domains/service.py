@@ -3,11 +3,10 @@ from sqlalchemy import case, or_
 from sqlmodel import Session, select, func, desc
 from src.models import (
     Currency,
-    KeySkill,
     Vacancy,
     Domain,
-    KeySkillDomain,
     VacancySalary,
+    VacancyDomain
 )
 import datetime
 from src.common import average_salary_case
@@ -25,13 +24,12 @@ def create_complexity_subquery(current_from, current_to):
             Vacancy.experience.label("experience"),
         )
         .select_from(Domain)
-        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
-        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .join(VacancyDomain, VacancyDomain.domain_id == Domain.id)
+        .join(Vacancy, Vacancy.id == VacancyDomain.vacancy_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(current_from, current_to))
-        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(VacancyDomain.confidence >= settings.min_confidence)
         .where(
             or_(
                 average_salary_case() <= settings.max_salary,
@@ -109,13 +107,12 @@ def create_all_time_place_subquery():
             .label("all_time_place"),
         )
         .select_from(Domain)
-        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
-        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .join(VacancyDomain, VacancyDomain.domain_id == Domain.id)
+        .join(Vacancy, Vacancy.id == VacancyDomain.vacancy_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
-        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(VacancyDomain.confidence >= settings.min_confidence)
         .where(
             or_(
                 average_salary_case() <= settings.max_salary,
@@ -150,13 +147,12 @@ def get_base_domains(
     domain_vacancies = (
         select(Domain.name, Vacancy.id.label("vacancy_id"), Vacancy.created_at)
         .select_from(Domain)
-        .join(KeySkillDomain, KeySkillDomain.domain_id == Domain.id)
-        .join(KeySkill, KeySkill.name == KeySkillDomain.name)
-        .join(Vacancy, Vacancy.id == KeySkill.vacancy_id)
+        .join(VacancyDomain, VacancyDomain.domain_id == Domain.id)
+        .join(Vacancy, Vacancy.id == VacancyDomain.vacancy_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(Vacancy.created_at.between(settings.min_date, settings.max_date))
-        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(VacancyDomain.confidence >= settings.min_confidence)
         .where(
             or_(
                 average_salary_case() <= settings.max_salary,

@@ -1,5 +1,5 @@
 from typing import Optional
-from sqlmodel import Session, or_, select, func, and_, desc, case
+from sqlmodel import Session, distinct, or_, select, func, and_, desc, case
 from src.models import (
     KeySkill,
     KeySkillSimilarity,
@@ -12,6 +12,7 @@ from src.models import (
     KeySkillCategory,
     KeySkillDomain,
     KeySkillTranslation,
+    VacancyDomain
 )
 import datetime
 from sqlalchemy.dialects.postgresql import aggregate_order_by, array_agg
@@ -23,24 +24,105 @@ from src.schemas import Pagination, OrderBy
 from src.keyskills.schemas import SkillsFilter
 
 
-def create_categories_subquery():
-    json_object = func.json_build_object(
-        "name", Domain.name, "confidence", KeySkillDomain.confidence
-    )
-    categories_subquery = (
+# def create_categories_subquery():
+#     json_object = func.json_build_object(
+#         "name", Domain.name, "confidence", KeySkillDomain.confidence
+#     )
+#     categories_subquery = (
+#         select(
+#             KeySkillDomain.name,
+#             array_agg(
+#                 aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
+#             ).label("categories"),
+#         )
+#         .select_from(KeySkillDomain)
+#         .join(Domain, Domain.id == KeySkillDomain.domain_id)
+#         .group_by(KeySkillDomain.name)
+#     ).subquery()
+
+#     return categories_subquery
+
+
+
+def create_categories_subquery(current_from=None, current_to=None, experience=None):
+    if current_from is None:
+        current_from = settings.min_date
+    if current_to is None:
+        current_to = settings.max_date
+    
+    domain_stats = (
         select(
-            KeySkillDomain.name,
-            array_agg(
-                aggregate_order_by(json_object, KeySkillDomain.confidence.desc())
-            ).label("categories"),
+            KeySkill.name.label("skill_name"),
+            Domain.name.label("domain_name"),
+            func.count(distinct(Vacancy.id)).label("vacancy_count")
         )
-        .select_from(KeySkillDomain)
-        .join(Domain, Domain.id == KeySkillDomain.domain_id)
-        .group_by(KeySkillDomain.name)
+        .select_from(KeySkill)
+        .join(Vacancy, KeySkill.vacancy_id == Vacancy.id)
+        .join(VacancyDomain, Vacancy.id == VacancyDomain.vacancy_id)
+        .join(Domain, VacancyDomain.domain_id == Domain.id)
+        .where(
+            and_(
+                Vacancy.created_at.between(current_from, current_to),
+                # VacancyDomain.confidence >= 0.1,
+                Vacancy.experience == experience if experience is not None else True
+            )
+        )
+        .group_by(KeySkill.name, Domain.name)
+        # .having(func.count(distinct(Vacancy.id)) >= 5)
     ).subquery()
-
-    return categories_subquery
-
+    
+    skill_totals = (
+        select(
+            domain_stats.c.skill_name,
+            func.sum(domain_stats.c.vacancy_count).label("total_vacancies")
+        )
+        .group_by(domain_stats.c.skill_name)
+    ).subquery()
+    
+    domain_ratios = (
+        select(
+            domain_stats.c.skill_name,
+            domain_stats.c.domain_name,
+            domain_stats.c.vacancy_count,
+            (domain_stats.c.vacancy_count / skill_totals.c.total_vacancies).label("frequency_ratio")
+        )
+        .select_from(domain_stats)
+        .join(skill_totals, domain_stats.c.skill_name == skill_totals.c.skill_name)
+        # .where(domain_stats.c.vacancy_count / skill_totals.c.total_vacancies >= 0.05)
+    ).subquery()
+    
+    ranked_domains = (
+        select(
+            domain_ratios.c.skill_name,
+            domain_ratios.c.domain_name,
+            domain_ratios.c.vacancy_count,
+            domain_ratios.c.frequency_ratio,
+            func.row_number().over(
+                partition_by=domain_ratios.c.skill_name,
+                order_by=domain_ratios.c.frequency_ratio.desc()
+            ).label("rank")
+        )
+        .select_from(domain_ratios)
+    ).subquery()
+    
+    json_object = func.json_build_object(
+        "name", ranked_domains.c.domain_name,
+        "confidence", ranked_domains.c.frequency_ratio,
+        "vacancy_count", ranked_domains.c.vacancy_count
+    )
+    
+    domains_subquery = (
+        select(
+            ranked_domains.c.skill_name.label("name"),
+            func.array_agg(
+                aggregate_order_by(json_object, ranked_domains.c.frequency_ratio.desc())
+            ).label("domains")
+        )
+        # .where(ranked_domains.c.rank <= 5)
+        .group_by(ranked_domains.c.skill_name)
+    ).subquery()
+    
+    return domains_subquery
 
 def create_technology_subquery():
     json_object = func.json_build_object(
@@ -227,7 +309,7 @@ def get_base_skills(
 
     skills = select(*skills_base.c).select_from(skills_base)
 
-    categories_subquery = create_categories_subquery()
+    categories_subquery = create_categories_subquery(current_from, current_to, experience)
     technologies_subquery = create_technology_subquery()
     complexity_subquery = create_complexity_subquery(current_from, current_to)
     all_time_place_subquery = create_all_time_place_subquery()
@@ -235,7 +317,7 @@ def get_base_skills(
     result = (
         select(
             *skills.c,
-            categories_subquery.c.categories.label("domains"),
+            categories_subquery.c.domains.label("domains"),
             technologies_subquery.c.categories.label("categories"),
             KeySkillImage.image,
             skills.c.skill_translation.label("translation"),
@@ -269,22 +351,31 @@ def get_base_skills(
     )
     result_subquery = result.subquery()
 
+
     if domain:
         if strict:
             highest_domain = (
                 select(
-                    KeySkillDomain.name.label("skill_name"),
+                    KeySkill.name.label("skill_name"),
                     Domain.name.label("domain_name"),
-                    func.row_number()
-                    .over(
-                        partition_by=KeySkillDomain.name,
-                        order_by=KeySkillDomain.confidence.desc(),
-                    )
-                    .label("rank"),
+                    func.avg(VacancyDomain.confidence).label("avg_confidence"),
+                    func.row_number().over(
+                        partition_by=KeySkill.name,
+                        order_by=func.avg(VacancyDomain.confidence).desc()
+                    ).label("rank")
                 )
-                .select_from(KeySkillDomain)
-                .join(Domain, Domain.id == KeySkillDomain.domain_id)
-                .where(KeySkillDomain.confidence >= settings.min_confidence)
+                .select_from(KeySkill)
+                .join(Vacancy, KeySkill.vacancy_id == Vacancy.id)
+                .join(VacancyDomain, Vacancy.id == VacancyDomain.vacancy_id)
+                .join(Domain, VacancyDomain.domain_id == Domain.id)
+                .where(Vacancy.created_at.between(current_from, current_to))
+                .where(
+                    Vacancy.experience == (None if experience == "unknown" else experience)
+                    if experience is not None
+                    else True
+                )
+                .group_by(KeySkill.name, Domain.name)
+                .having(func.avg(VacancyDomain.confidence) >= settings.min_confidence)
             ).subquery()
 
             result = select(*result_subquery.c).where(
@@ -304,13 +395,19 @@ def get_base_skills(
             result = select(*result_subquery.c).where(
                 sqlalchemy.exists(
                     select(1)
-                    .select_from(KeySkillDomain)
-                    .join(Domain, Domain.id == KeySkillDomain.domain_id)
+                    .select_from(KeySkill)
+                    .join(Vacancy, KeySkill.vacancy_id == Vacancy.id)
+                    .join(VacancyDomain, Vacancy.id == VacancyDomain.vacancy_id)
+                    .join(Domain, VacancyDomain.domain_id == Domain.id)
                     .where(
                         and_(
+                            KeySkill.name == result_subquery.c.name,
                             Domain.name == domain,
-                            KeySkillDomain.name == result_subquery.c.name,
-                            KeySkillDomain.confidence >= settings.min_confidence,
+                            VacancyDomain.confidence >= settings.min_confidence,
+                            Vacancy.created_at.between(current_from, current_to),
+                            Vacancy.experience == (None if experience == "unknown" else experience)
+                            if experience is not None
+                            else True
                         )
                     )
                 )
@@ -540,7 +637,10 @@ async def skill_details(
     experience = filter.experience if filter else None
     skill_name = filter.skill if filter else None
 
-    categories_subquery = create_categories_subquery()
+    current_to = settings.max_date
+    current_from = current_to - datetime.timedelta(days=days_period)
+
+    categories_subquery = create_categories_subquery(current_from, current_to, experience)
     technologies_subquery = create_technology_subquery()
 
     base_skill = (
@@ -572,7 +672,7 @@ async def skill_details(
             base_skill.c.name,
             base_skill.c.translation,
             base_skill.c.image,
-            categories_subquery.c.categories.label("domains"),
+            categories_subquery.c.domains.label("domains"),
             technologies_subquery.c.categories.label("categories"),
             skills_subquery.c.count,
             skills_subquery.c.all_time_place,

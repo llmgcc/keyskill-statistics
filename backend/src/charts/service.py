@@ -11,6 +11,7 @@ from src.models import (
     Currency,
     Category,
     Domain,
+    VacancyDomain
 )
 from sqlalchemy.dialects.postgresql import aggregate_order_by
 import datetime
@@ -227,9 +228,8 @@ async def category_chart(
     bins = (
         select(Vacancy.id, Vacancy.created_at, bin, Domain.name)
         .select_from(Vacancy)
-        .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
-        .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
-        .join(Domain, Domain.id == KeySkillDomain.domain_id)
+        .join(VacancyDomain, VacancyDomain.vacancy_id == Vacancy.id)
+        .join(Domain, Domain.id == VacancyDomain.domain_id)
         .outerjoin(VacancySalary, Vacancy.id == VacancySalary.vacancy_id)
         .outerjoin(Currency, Currency.currency_code == VacancySalary.currency)
         .where(
@@ -252,7 +252,7 @@ async def category_chart(
         )
         .where(bin >= 1)
         .where(bin <= number_of_bins)
-        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .where(VacancyDomain.confidence >= settings.min_confidence)
         .order_by(Vacancy.created_at.desc())
     )
 
@@ -307,11 +307,10 @@ async def category_salary_chart(
         )
         .select_from(Vacancy)
         .join(VacancySalary, VacancySalary.vacancy_id == Vacancy.id)
-        .join(KeySkill, Vacancy.id == KeySkill.vacancy_id)
+        .join(VacancyDomain, Vacancy.id == VacancyDomain.vacancy_id)
         .join(Currency, Currency.currency_code == VacancySalary.currency)
-        .join(KeySkillDomain, KeySkillDomain.name == KeySkill.name)
-        .join(Domain, Domain.id == KeySkillDomain.domain_id)
-        .where(KeySkillDomain.confidence >= settings.min_confidence)
+        .join(Domain, Domain.id == VacancyDomain.domain_id)
+        .where(VacancyDomain.confidence >= settings.min_confidence)
         .where(
             and_(
                 Vacancy.created_at.between(current_from, current_to),

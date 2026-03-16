@@ -74,6 +74,14 @@ class KeySkillDomain(SQLModel, table=True):
     name: str = Field(default=None, primary_key=True)
     confidence: float = Field()
 
+class VacancyDomain(SQLModel, table=True):
+    domain_id: Optional[int] = Field(
+        default=None, foreign_key="domain.id", primary_key=True, index=True
+    )
+    vacancy_id: Optional[int] = Field(
+        default=None, foreign_key="vacancy.id", primary_key=True, index=True
+    )
+    confidence: float = Field()
 
 class Category(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
