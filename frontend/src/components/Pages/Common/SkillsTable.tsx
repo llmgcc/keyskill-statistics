@@ -63,7 +63,7 @@ function SkillsTable_({
 }: SkillsTableProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
+
   const { period, experience } = useFilters();
   const { pagination, setPagination, pageSizeVariants } = usePaginationState(
     0,
@@ -146,8 +146,6 @@ function SkillsTable_({
     [tableColumns, columns]
   );
 
-
-  console.log('skills table')
   return (
     <>
       <div className="my-1 flex items-center justify-between gap-4 overflow-auto">
@@ -177,5 +175,4 @@ function SkillsTable_({
   );
 }
 
-
-export const SkillsTable = memo(SkillsTable_)
+export const SkillsTable = memo(SkillsTable_);
