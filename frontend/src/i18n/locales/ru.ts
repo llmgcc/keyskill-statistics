@@ -120,6 +120,12 @@ export default {
       [Domains['Database Administration']]: 'Администрирование Баз Данных',
       [Domains.Other]: 'Другое',
       [Domains.Unknown]: 'Неизвестно',
+      [Domains['Data Engineering']]:
+        'Data Engineering',
+      [Domains['Fullstack Development']]:
+        'Fullstack Разработка',
+      [Domains.Teaching]:
+        'Преподавание',
     },
     domainDescription: {
       [Domains['Frontend Development']]:
