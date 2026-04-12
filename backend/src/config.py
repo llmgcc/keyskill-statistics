@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import datetime
 
-MAX_DATE = datetime.datetime(2026, 3, 21)
+MAX_DATE = datetime.datetime(2026, 4, 11)
 # MAX_DATE = datetime.datetime.now()
 
 
