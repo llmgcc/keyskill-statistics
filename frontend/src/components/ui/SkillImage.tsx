@@ -19,7 +19,6 @@ function _SkillImage({
 }: SkillImageProps) {
   function imageLogo() {
     if (path) {
-      console.log(baseURL, path)
       const url = `${baseURL}/${path}`;
       return (
         <div className="h-full w-full">
