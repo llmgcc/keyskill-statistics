@@ -1,4 +1,3 @@
-import { baseURL } from '@/api/api';
 import { memo } from 'react';
 
 import { Categories, CategoriesStyle } from '@/config/categories';
@@ -19,7 +18,7 @@ function _SkillImage({
 }: SkillImageProps) {
   function imageLogo() {
     if (path) {
-      const url = `/${path}`;
+      const url = `/keyskill-statistics/${path}`;
       return (
         <div className="h-full w-full">
           <img src={url} alt="" className="h-full w-full object-contain" />
