@@ -30,7 +30,7 @@ export const queryClient = new QueryClient({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter basename={process.env.NODE_ENV === 'production' ? '/' : '/'}>
+    <HashRouter basename={process.env.NODE_ENV === 'production' ? '/keyskill-statistics' : '/'}>
       <ScrollToTop />
       <Provider>
         <I18nextProvider i18n={i18n}>
